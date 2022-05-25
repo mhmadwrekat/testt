@@ -1,7 +1,8 @@
+import axios from 'axios'
+import React, { useRef, useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 // page Component
-import React from 'react'
 import HeadComp from '../components/page/HeadComp'
 import Nav from '../components/page/Nav'
 // Apple View component
@@ -71,6 +72,15 @@ if (typeof window !== 'undefined') {
 }
 
 const index = (props) => {
+  const [weather, setWeather] = useState([])
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/v1/Web/Sections?current_country=${props.country_code}`)
+      .then((res) => {
+        setWeather(res.data)
+      })
+  }, [])
+  console.log('WEATHER : ', weather)
   return (
     <React.Fragment>
       {console.log(props.country, props.country_code)}
