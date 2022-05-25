@@ -80,7 +80,7 @@ const index = (props) => {
   //       setWeather(res.data)
   //     })
   // }, [])
-  console.log('WEATHER : ', weather)
+  // console.log('WEATHER : ', weather)
   return (
     <React.Fragment>
       {console.log(props.country, props.country_code)}
