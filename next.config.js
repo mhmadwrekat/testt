@@ -41,6 +41,7 @@ module.exports = {
       },
     ]
   },
+
   images: {
     minimumCacheTTL: 99999999,
     domains: [

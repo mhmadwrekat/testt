@@ -45,22 +45,12 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
             )}
             {important_news_img &&
               (important_news_img.includes('youtube') ? (
-                <Image
+                <img
                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                     important_news_img
                   )}/0.jpg`}
                   alt={important_news.important_data.stories_headlines}
-                  layout="responsive"
-                  width={300}
-                  height={200}
-                  quality={50}
-                  className="rounded-t-lg"
-                  priority
-                  loading="eager"
-                  placeholder="blur"
-                  blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                    important_news_img
-                  )}/0.jpg`}
+                  className="w-full rounded-t-lg"
                 />
               ) : (
                 <Image
