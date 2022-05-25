@@ -6,11 +6,11 @@ import Image from "next/image";
 
 //component imports
 import HeadComp from "../../components/page/HeadComp";
-import Footer from "../../components/page/Footer";
+//import Footer from "../../components/page/Footer";
 
 //image imports
-import AppUpdateImg from "../../public/assets/blogs/app-upadte.jpg";
-import NewUpdateBlogCover from "../../public/assets/blogs/newUpdateBlog/cover.jpg";
+//import AppUpdateImg from "../../public/assets/blogs/app-upadte.jpg";
+//import NewUpdateBlogCover from "../../public/assets/blogs/newUpdateBlog/cover.jpg";
 
 const posts = [
   {
@@ -306,7 +306,7 @@ export default function blogs() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

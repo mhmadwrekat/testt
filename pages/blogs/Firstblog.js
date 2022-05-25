@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 //component imports
-import Footer from "../../components/page/Footer";
+//import Footer from "../../components/page/Footer";
 import HeadComp from "../../components/page/HeadComp";
 
 //image imports
@@ -11,8 +11,8 @@ import img2 from "../../public/assets/blogs/2.jpg";
 import img3 from "../../public/assets/blogs/3.jpg";
 import img4 from "../../public/assets/blogs/4.jpg";
 import img5 from "../../public/assets/blogs/5.jpg";
-import appleStore from "../../public/assets/images/shared/apple-xhdpi.png";
-import googlePlay from "../../public/assets/images/shared/google-xhdpi.png";
+//import appleStore from "../../public/assets/images/shared/apple-xhdpi.png";
+//import googlePlay from "../../public/assets/images/shared/google-xhdpi.png";
 
 export default function Firstblog() {
   function NewTab(url) {
@@ -480,7 +480,7 @@ export default function Firstblog() {
           </div>
         </main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

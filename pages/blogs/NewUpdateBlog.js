@@ -1,27 +1,27 @@
 //next imports
-import Image from "next/image";
+import Image from 'next/image'
 
 //component imports
-import Footer from "../../components/page/Footer";
-import HeadComp from "../../components/page/HeadComp";
+//import Footer from "../../components/page/Footer";
+import HeadComp from '../../components/page/HeadComp'
 
 //image imports
-import vid1 from "../../public/assets/blogs/newUpdateBlog/vid1.gif";
-import vid2 from "../../public/assets/blogs/newUpdateBlog/vid2.gif";
-import vid3 from "../../public/assets/blogs/newUpdateBlog/vid3.gif";
-import vid4 from "../../public/assets/blogs/newUpdateBlog/vid4.gif";
-import appleStore from "../../public/assets/images/shared/apple-xhdpi.png";
-import googlePlay from "../../public/assets/images/shared/google-xhdpi.png";
+import vid1 from '../../public/assets/blogs/newUpdateBlog/vid1.gif'
+import vid2 from '../../public/assets/blogs/newUpdateBlog/vid2.gif'
+import vid3 from '../../public/assets/blogs/newUpdateBlog/vid3.gif'
+import vid4 from '../../public/assets/blogs/newUpdateBlog/vid4.gif'
+//import appleStore from "../../public/assets/images/shared/apple-xhdpi.png";
+//import googlePlay from "../../public/assets/images/shared/google-xhdpi.png";
 
 export default function NewUpdateBlog() {
   function NewTab(url) {
-    window.open(url, "_blank");
+    window.open(url, '_blank')
   }
   return (
     <>
       <HeadComp
         props={{
-          title: "تحديث جديد على تطبيق الزبدة، وإضافة لتقنية الذكاء الإصطناعي",
+          title: 'تحديث جديد على تطبيق الزبدة، وإضافة لتقنية الذكاء الإصطناعي',
           keywords: `
           اخبار,الزبده,Alzubda,عاجل,نبض,العربية, اخبار السعودية,الاخبار,اخبار العالم,اخبار24,الجزيرة,اخبار اليوم,كرة القدم
           الزبدة
@@ -197,16 +197,16 @@ export default function NewUpdateBlog() {
       />
       <div className="min-h-full">
         <main className="py-10">
-          <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 sm:px-6 lg:max-w-6xl lg:grid-flow-col-dense lg:grid-cols-1">
+          <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 sm:px-6 lg:max-w-6xl lg:grid-flow-col-dense lg:grid-cols-1">
             <div dir="rtl" className="p-2">
-              <div className="relative py-16 bg-white overflow-hidden">
-                <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
+              <div className="bg-white relative overflow-hidden py-16">
+                <div className="hidden lg:absolute lg:inset-y-0 lg:block lg:h-full lg:w-full">
                   <div
-                    className="relative h-full text-lg max-w-prose mx-auto"
+                    className="relative mx-auto h-full max-w-prose text-lg"
                     aria-hidden="true"
                   >
                     <svg
-                      className="absolute top-12 left-full transform translate-x-32"
+                      className="absolute top-12 left-full translate-x-32 transform"
                       width={404}
                       height={384}
                       fill="none"
@@ -238,7 +238,7 @@ export default function NewUpdateBlog() {
                       />
                     </svg>
                     <svg
-                      className="absolute top-1/2 right-full transform -translate-y-1/2 -translate-x-32"
+                      className="absolute top-1/2 right-full -translate-y-1/2 -translate-x-32 transform"
                       width={404}
                       height={384}
                       fill="none"
@@ -270,7 +270,7 @@ export default function NewUpdateBlog() {
                       />
                     </svg>
                     <svg
-                      className="absolute bottom-12 left-full transform translate-x-32"
+                      className="absolute bottom-12 left-full translate-x-32 transform"
                       width={404}
                       height={384}
                       fill="none"
@@ -304,35 +304,35 @@ export default function NewUpdateBlog() {
                   </div>
                 </div>
                 <div className="relative px-4 sm:px-6 lg:px-8">
-                  <div className="text-lg max-w-prose mx-auto">
+                  <div className="mx-auto max-w-prose text-lg">
                     <h1>
-                      <span className="font-semibold font-TSbold text-purple-900 mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                      <span className="text-purple-900 text-gray-900 mt-2 block text-center font-TSbold text-3xl font-semibold font-extrabold leading-8 tracking-tight sm:text-4xl">
                         تحديث جديد على تطبيق الزبدة
                       </span>
                     </h1>
                     <div className="my-10 mx-auto text-center ">
-                      <span className="cursor-pointer inline-block mx-2 lg:w-40 w-36">
+                      <span className="mx-2 inline-block w-36 cursor-pointer lg:w-40">
                         <Image
                           src={appleStore}
                           alt="apple Store"
                           onClick={() => {
                             NewTab(
-                              "https://apps.apple.com/us/app/%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-alzubda-%D8%A7%D9%84%D8%B2%D8%A8%D8%AF%D8%A9/id1440466617"
-                            );
+                              'https://apps.apple.com/us/app/%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-alzubda-%D8%A7%D9%84%D8%B2%D8%A8%D8%AF%D8%A9/id1440466617'
+                            )
                           }}
                           priority
                           quality={30}
                           loading="eager"
                         />
                       </span>
-                      <span className="cursor-pointer inline-block lg:w-40 w-36">
+                      <span className="inline-block w-36 cursor-pointer lg:w-40">
                         <Image
                           src={googlePlay}
                           alt="google Play"
                           onClick={() => {
                             NewTab(
-                              "https://play.google.com/store/apps/details?id=com.live.alzubda.newsapp&hl=ar&gl=US"
-                            );
+                              'https://play.google.com/store/apps/details?id=com.live.alzubda.newsapp&hl=ar&gl=US'
+                            )
                           }}
                           priority
                           quality={30}
@@ -340,13 +340,13 @@ export default function NewUpdateBlog() {
                         />
                       </span>
                     </div>
-                    <p className="mt-8 text-xl text-gray-500 leading-8 font-TSmedium">
+                    <p className="text-gray-500 mt-8 font-TSmedium text-xl leading-8">
                       تحديث جديد لنا على التطبيق يلبي احتياجاتك الإخبارية ويسهل
                       حركة تنقلك بين الدول والفئات الإخبارية المختلفة، عملنا على
                       النقاط التالية:
                     </p>
 
-                    <p className="mt-8 text-xl text-gray-500 leading-8 font-TSmedium">
+                    <p className="text-gray-500 mt-8 font-TSmedium text-xl leading-8">
                       ١- يمكنك اختيار عدة دول ومتابعة أخبارها
                       <br /> ٢- يمكنك تصفية/فلترة المحتوى حسب الدولة <br /> ٣-
                       يمكنك التحكم بالإشعارات للفئات الاخبارية لكل دولة. <br />
@@ -355,21 +355,21 @@ export default function NewUpdateBlog() {
                       على التطبيق، وحرية استلام الإشعارات من عدمها.
                     </p>
                   </div>
-                  <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
+                  <div className="prose prose-indigo prose-lg text-gray-500 mx-auto mt-6">
                     <div>
-                      <h1 className="text-3xl font-semibold font-TSbold text-purple-900">
+                      <h1 className="text-purple-900 font-TSbold text-3xl font-semibold">
                         ١- اختيار الدول
                       </h1>
-                      <p className=" mx-5 text-xl text-gray-500 leading-8 font-TSmedium">
+                      <p className=" text-gray-500 mx-5 font-TSmedium text-xl leading-8">
                         بعد توسع تطبيق الزبدة إلى عدة دول عربية جديدة (مصر
                         والأردن)، والتوسع إلى (الإمارات العربية المتحدة، قطر،
                         البحرين، وعُمان) قريبا، أصبح بإمكانك الآن متابعة عدة دول
-                        في نفس الوقت.{" "}
+                        في نفس الوقت.{' '}
                       </p>
                     </div>
 
-                    <figure className="rounded-lg flex justify-center mx-auto">
-                      <span className="w-full md:w-1/2 lg:w-1/3 rounded-lg my-20 ">
+                    <figure className="mx-auto flex justify-center rounded-lg">
+                      <span className="my-20 w-full rounded-lg md:w-1/2 lg:w-1/3 ">
                         <Image
                           src={vid1}
                           alt=""
@@ -383,18 +383,18 @@ export default function NewUpdateBlog() {
                     </figure>
 
                     <div>
-                      <h1 className="text-3xl font-semibold font-TSbold text-purple-900">
+                      <h1 className="text-purple-900 font-TSbold text-3xl font-semibold">
                         ٢- تصفية/ فلترة المحتوى حسب الدولة
                       </h1>
-                      <p className=" mx-5 text-xl text-gray-500 leading-8 font-TSmedium">
+                      <p className=" text-gray-500 mx-5 font-TSmedium text-xl leading-8">
                         بما إنه يمكنك الآن اختيار عدة دول، قمنا بإضافة خاصية
                         تصفية/ فلترة المحتوى حسب الدولة، لإظهار أو إخفاء المحتوى
                         الذي تريده.
                       </p>
                     </div>
 
-                    <figure className="my-20 rounded-lg flex justify-center mx-auto">
-                      <span className="w-full md:w-1/2 lg:w-1/3 rounded-lg  ">
+                    <figure className="my-20 mx-auto flex justify-center rounded-lg">
+                      <span className="w-full rounded-lg md:w-1/2 lg:w-1/3  ">
                         <Image
                           src={vid2}
                           alt=""
@@ -407,7 +407,7 @@ export default function NewUpdateBlog() {
                       </span>
                     </figure>
 
-                    <p className=" mx-5 text-xl text-gray-500 leading-8 font-TSmedium">
+                    <p className=" text-gray-500 mx-5 font-TSmedium text-xl leading-8">
                       مثال:
                       <br /> إذا قمت باختيار متابعة دولة الكويت، مصر، والسعودية،
                       ولكنك تريد رؤية الأخبار المحلية في الكويت فقط، يمكنك
@@ -415,8 +415,8 @@ export default function NewUpdateBlog() {
                       كما هو موضح في المثال أدناه:
                     </p>
 
-                    <figure className="my-20 rounded-lg flex justify-center mx-auto">
-                      <span className="w-full md:w-1/2 lg:w-1/3 rounded-lg  ">
+                    <figure className="my-20 mx-auto flex justify-center rounded-lg">
+                      <span className="w-full rounded-lg md:w-1/2 lg:w-1/3  ">
                         <Image
                           src={vid3}
                           alt=""
@@ -430,10 +430,10 @@ export default function NewUpdateBlog() {
                     </figure>
 
                     <div>
-                      <h1 className="text-3xl font-semibold font-TSbold text-purple-900">
+                      <h1 className="text-purple-900 font-TSbold text-3xl font-semibold">
                         ٣- التحكم بالإشعارات
                       </h1>
-                      <p className=" mx-5 text-xl text-gray-500 leading-8 font-TSmedium">
+                      <p className=" text-gray-500 mx-5 font-TSmedium text-xl leading-8">
                         بناءً على اقتراحاتكم، قمنا بعمل خاصية جديدة للتحكم
                         بالتنبيهات الخاصة بالفئات الاخبارية لكل دولة.
                         <br /> يمكنك اختيار الحصول على تنبيهات جميع الأخبار،
@@ -442,17 +442,17 @@ export default function NewUpdateBlog() {
                       </p>
                       <br />
 
-                      <p className=" mx-5 text-xl text-gray-500 leading-8 font-TSmedium">
+                      <p className=" text-gray-500 mx-5 font-TSmedium text-xl leading-8">
                         مثال:
                         <br />
                         إذا أردت عدم الحصول على تنبيهات أخبار الرياضة من دولة
                         السعودية مثلا، والأخبار المهمة فقط لفئة الحكومة في
-                        الكويت، يمكن عمل ذلك كما هو موضح أدناه:{" "}
+                        الكويت، يمكن عمل ذلك كما هو موضح أدناه:{' '}
                       </p>
                     </div>
 
-                    <figure className="my-20 rounded-lg flex justify-center mx-auto">
-                      <span className="w-full md:w-1/2 lg:w-1/3 rounded-lg  ">
+                    <figure className="my-20 mx-auto flex justify-center rounded-lg">
+                      <span className="w-full rounded-lg md:w-1/2 lg:w-1/3  ">
                         <Image
                           src={vid4}
                           alt=""
@@ -465,7 +465,7 @@ export default function NewUpdateBlog() {
                       </span>
                     </figure>
                     <h1>
-                      <span className="font-semibold font-TSbold text-purple-900 mt-2 block text-xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-xl">
+                      <span className="text-purple-900 text-gray-900 mt-2 block text-center font-TSbold text-xl font-semibold font-extrabold leading-8 tracking-tight sm:text-xl">
                         نتمنى أن ينال هذا التحديث إعجابكم وننتظر ملاحظاتكم.
                       </span>
                     </h1>
@@ -476,7 +476,7 @@ export default function NewUpdateBlog() {
           </div>
         </main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
-  );
+  )
 }
