@@ -43,7 +43,7 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
                 <Image
                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                     important_news_img
-                  )}/0.jpg`}
+                  )}/1.jpg`}
                   alt={important_news.important_data.stories_headlines}
                   layout="responsive"
                   width={300}
@@ -135,7 +135,7 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
                             <Image
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                 item.stories_media_url[0]
-                              )}/0.jpg`}
+                              )}/1.jpg`}
                               alt={item.stories_headlines}
                               quality={25}
                               layout="responsive"
@@ -177,7 +177,7 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
                             <Image
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                 item.stories_media_url[0]
-                              )}/0.jpg`}
+                              )}/1.jpg`}
                               alt={item.stories_headlines}
                               quality={25}
                               layout="responsive"
