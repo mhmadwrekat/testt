@@ -41,7 +41,7 @@ const ColoredSection = ({
         >
           {title}
         </h1>
-        <p className=" px-1 pb-5 font-TSmedium text-base">
+        <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
           {description}
         </p>
         <section className=" grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-10 ">
@@ -94,7 +94,7 @@ const ColoredSection = ({
               <h5 className="mb-1 font-TSbold text-2xl lg:h-14">
                 {important_news.important_data.stories_headlines}
               </h5>
-              <p className="text-gray-200 mb-3 h-28 font-TSmedium text-base lg:h-20">
+              <p className="text-white mb-3 h-28 font-TSmedium text-base lg:h-20">
                 {important_news.important_data.stories_content.slice(0, 150)}{' '}
                 .....
               </p>
