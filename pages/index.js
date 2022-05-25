@@ -105,8 +105,8 @@ const index = (props) => {
         <section className="grid">
           <ColoredSection
             important_news={props.all_news[1]}
-            theme={'bg-yellow-500'}
-            color={'yellow-500'}
+            theme={'bg-yellow-400'}
+            color={'yellow-400'}
             title={'مال و أعمال'}
             description={
               'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
