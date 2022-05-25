@@ -81,16 +81,4 @@ module.exports = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
-  plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-transition-link`,
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-    },
-    'gatsby-transformer-remark',
-  ],
 }
