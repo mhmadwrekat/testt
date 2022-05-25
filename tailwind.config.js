@@ -4,7 +4,23 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    colors: {
+      BLUE: '#1d62a5',
+    },
+    extend: {
+      fontFamily: {
+        TSExtra: ['TsExtrabold'],
+        TSSemi: ['TsSemibold'],
+        TSbold: ['Tsbold'],
+        TSmedium: ['TsMed'],
+        TSthin: ['TsThin'],
+        TSlight: ['TsLight'],
+        NTbold: ['NotoBold'],
+        NTsemibold: ['NotoSemiBold'],
+        NTmedium: ['NotoMedium'],
+        NTregular: ['NotoRegular'],
+      },
+    },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-rtl')],
 }
