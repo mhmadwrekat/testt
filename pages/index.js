@@ -13,7 +13,7 @@ const ForYou = dynamic(() => import('../components/appleStructrue/ForYou'))
 const ColoredSection = dynamic(() =>
   import('../components/appleStructrue/ColoredSection')
 )
-
+const Test = dynamic(() => import('../components/appleStructrue/Test'))
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -104,6 +104,15 @@ const index = (props) => {
           />
         </section>
         <section className="grid">
+          <Test
+            important_news={props.all_news[1]}
+            theme={'bg-pink-600'}
+            color={'pink-600'}
+            title={'مال و أعمال'}
+            description={
+              'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+            }
+          />
           <ColoredSection
             important_news={props.all_news[1]}
             theme={'bg-yellow-600'}
