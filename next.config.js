@@ -89,23 +89,6 @@ module.exports = {
     `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Noto Sans KR`,
-            subsets: [`latin`, 'korean'],
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Open Sans`,
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Roboto`,
-            variants: [`400`, `700`],
-          },
-        ],
-      },
     },
     'gatsby-transformer-remark',
   ],
