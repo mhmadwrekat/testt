@@ -106,10 +106,10 @@ const ColoredSection = ({
             </div>
           </div>
           {/**************************************************************** */}
-          <section className="mx-auto grid w-11/12 grid-cols-1 gap-6">
+          <section className="mx-auto grid grid-cols-1 gap-6">
             {important_news.data.slice(0, 3).map((item) => {
               return (
-                <section className={`${theme} to-white grid`}>
+                <section className={`${theme} to-white grid rounded-lg`}>
                   <div className={` flex justify-between `}>
                     <div className="grid h-10 w-full">
                       <h3
