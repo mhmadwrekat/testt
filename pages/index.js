@@ -28,7 +28,7 @@ export async function getServerSideProps({ req, res }) {
   const ready_country_code = country_code.country_code
 
   // Get All News
-  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=US`
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${ready_country_code}`
   const all_news_res = await fetch(all_news_url)
   const all_news = await all_news_res.json()
 
@@ -43,6 +43,7 @@ export async function getServerSideProps({ req, res }) {
     props: {
       all_news: custom_array,
       country_code: ready_country_code,
+      country: country_code,
     },
   }
 }
@@ -72,7 +73,7 @@ if (typeof window !== 'undefined') {
 const index = (props) => {
   return (
     <React.Fragment>
-      {console.log(props.country_code)}
+      {console.log(props.country, props.country_code)}
       <HeadComp />
       <div
         dir="rtl"
