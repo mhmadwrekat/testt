@@ -72,14 +72,14 @@ if (typeof window !== 'undefined') {
 }
 
 const index = (props) => {
-  const [weather, setWeather] = useState([])
-  useEffect(() => {
-    axios
-      .get(`${BASE_URL}/v1/Web/Sections?current_country=${props.country_code}`)
-      .then((res) => {
-        setWeather(res.data)
-      })
-  }, [])
+  // const [weather, setWeather] = useState([])
+  // useEffect(() => {
+  //   axios
+  //     .get(`${BASE_URL}/v1/Web/Sections?current_country=${props.country_code}`)
+  //     .then((res) => {
+  //       setWeather(res.data)
+  //     })
+  // }, [])
   console.log('WEATHER : ', weather)
   return (
     <React.Fragment>
