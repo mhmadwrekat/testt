@@ -1,7 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
 
-const LocalNews = ({ important_news, theme, title, description, color }) => {
+const ColoredSection = ({
+  important_news,
+  theme,
+  title,
+  description,
+  color,
+}) => {
   const important_news_img =
     important_news?.important_data.stories_media_url.length > 0
       ? important_news.important_data.stories_media_url[0]
@@ -43,36 +49,36 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
             {important_news_img &&
               (important_news_img.includes('youtube') ||
               important_news_img.includes('youtu.be') ? (
-                <Image
+                <img
                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                     important_news_img
                   )}/0.jpg`}
                   alt={important_news.important_data.stories_headlines}
-                  layout="responsive"
-                  width={300}
-                  height={200}
-                  quality={50}
-                  className="rounded-t-lg"
-                  priority
-                  loading="eager"
-                  placeholder="blur"
-                  blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                    important_news_img
-                  )}/0.jpg`}
+                  className="h-60 w-full rounded-t-lg  lg:h-96"
+                  // layout="responsive"
+                  // width={300}
+                  // height={200}
+                  // quality={50}
+                  // priority
+                  // loading="eager"
+                  // placeholder="blur"
+                  // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                  //   important_news_img
+                  // )}/0.jpg`}
                 />
               ) : (
-                <Image
+                <img
                   src={important_news_img}
                   alt={important_news.important_data.stories_headlines}
-                  layout="responsive"
-                  quality={50}
-                  width={300}
-                  height={200}
-                  className="rounded-t-lg"
-                  priority
-                  loading="eager"
-                  placeholder="blur"
-                  blurDataURL={important_news_img}
+                  className="h-60 w-full rounded-t-lg lg:h-96"
+                  // layout="responsive"
+                  // quality={50}
+                  // width={300}
+                  // height={200}
+                  // priority
+                  // loading="eager"
+                  // placeholder="blur"
+                  // blurDataURL={important_news_img}
                 />
               ))}
 
@@ -103,118 +109,76 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
           <section className="mx-auto grid w-11/12 grid-cols-1 gap-6">
             {important_news.data.slice(0, 3).map((item) => {
               return (
-                <section key={item._id} className="relative ">
-                  <div
-                    className={`to-white from-${color} rounded-t-lg bg-gradient-to-r p-2`}
-                  >
-                    <h3 className="text-red-500 px-2 text-right font-TSbold text-base hover:underline">
-                      الزبده
-                    </h3>{' '}
-                  </div>
-                  <div className={`text-white ${theme} max-w-2xl rounded-b-lg`}>
-                    <section
-                      className={`text-white w-7/12 rounded-b-lg ${theme} p-1.5 px-3 pl-2.5 md:w-9/12 lg:w-7/12 lg:p-2 lg:px-4`}
-                    >
-                      <h3 className="pb-2 text-right font-TSmedium text-sm">
-                        {important_news.section_name}
+                <section className={`${theme} to-white grid`}>
+                  <div className={` flex justify-between `}>
+                    <div className="grid h-10 w-full">
+                      <h3
+                        className={`
+                    from-${color} text-red-500 bg-gradient-to-r
+                    p-2 px-2 text-right font-TSbold text-base hover:underline`}
+                      >
+                        الزبده
                       </h3>{' '}
-                      <h5 className="mb-1 h-20 font-TSbold text-sm lg:h-16 lg:text-lg">
-                        {item.stories_headlines}
-                      </h5>
-                      <button className="bg-gray-600 mt-2.5 rounded-full px-2 py-1.5 font-TSmedium text-xs lg:px-5 ">
-                        {' '}
-                        المزيد من {important_news.section_name}
-                      </button>
-                    </section>
-
-                    {/**************************************************************** */}
-                    {/*********************  MOBILE IMAGE  *************************** */}
-                    {/**************************************************************** */}
-
-                    <section className="flex md:hidden lg:hidden">
-                      <section className="bg-red-100 absolute top-4 left-3 w-5/12 rounded-lg lg:left-5 lg:w-4/12">
-                        {item.stories_media_url[0] &&
-                          (item.stories_media_url[0].includes('youtube') ||
-                          item.stories_media_url[0].includes('youtu.be') ? (
-                            <Image
-                              src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                item.stories_media_url[0]
-                              )}/0.jpg`}
-                              alt={item.stories_headlines}
-                              quality={25}
-                              layout="responsive"
-                              width={250}
-                              height={280}
-                              className="rounded-lg"
-                              priority
-                              loading="eager"
-                              placeholder="blur"
-                              blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                                item.stories_media_url[0]
-                              )}/0.jpg`}
-                            />
-                          ) : (
-                            <Image
-                              src={item.stories_media_url[0]}
-                              alt={item.stories_headlines}
-                              quality={25}
-                              layout="responsive"
-                              width={250}
-                              height={280}
-                              className="rounded-lg"
-                              priority
-                              loading="eager"
-                              placeholder="blur"
-                              blurDataURL={item.stories_media_url[0]}
-                            />
-                          ))}
+                      <section
+                        className={`text-white rounded-b-lg p-1.5 px-3 pl-2.5 lg:p-2 lg:px-4`}
+                      >
+                        <h3 className="pb-2 text-right font-TSmedium text-sm">
+                          {important_news.section_name}
+                        </h3>{' '}
+                        <h5 className="mb-1 h-20 font-TSbold text-sm lg:h-16 lg:text-lg">
+                          {item.stories_headlines}
+                        </h5>
+                        <button className="bg-gray-600 rounded-full px-2 py-1.5 font-TSmedium text-xs lg:px-5 ">
+                          {' '}
+                          المزيد من {important_news.section_name}
+                        </button>
                       </section>
-                    </section>
+                    </div>
 
-                    {/**************************************************************** */}
-                    {/*********************  DESKTOP IMAGE  ************************** */}
-                    {/**************************************************************** */}
-                    <section className="hidden h-5 max-w-xl md:flex lg:flex">
-                      {console.log(item)}
-                      <section className="bg-red-100 absolute top-3 left-3 rounded-lg lg:left-5 lg:w-3/12">
-                        {item.stories_media_url[0] &&
-                          (item.stories_media_url[0].includes('youtube') ||
-                          item.stories_media_url[0].includes('youtu.be') ? (
-                            <Image
-                              src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                item.stories_media_url[0]
-                              )}/0.jpg`}
-                              alt={item.stories_headlines}
-                              quality={25}
-                              layout="responsive"
-                              width={550}
-                              height={500}
-                              className="rounded-lg"
-                              priority
-                              loading="eager"
-                              placeholder="blur"
-                              blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                                item.stories_media_url[0]
-                              )}/0.jpg`}
-                            />
-                          ) : (
-                            <Image
-                              src={item.stories_media_url[0]}
-                              alt={item.stories_headlines}
-                              quality={25}
-                              layout="responsive"
-                              width={550}
-                              height={500}
-                              className="rounded-lg"
-                              priority
-                              loading="eager"
-                              placeholder="blur"
-                              blurDataURL={item.stories_media_url[0]}
-                            />
-                          ))}
-                      </section>
-                    </section>
+                    <div className="m-4 h-44 w-52 lg:h-24 lg:w-44">
+                      {item.stories_media_url[0] &&
+                        (item.stories_media_url[0].includes('youtube') ||
+                        item.stories_media_url[0].includes('youtu.be') ? (
+                          <img
+                            src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                              item.stories_media_url[0]
+                            )}/0.jpg`}
+                            alt={item.stories_headlines}
+                            className="h-36 w-48 rounded-lg"
+                            // quality={25}
+                            // layout="responsive"
+                            // width={250}
+                            // height={280}
+                            // priority
+                            // loading="eager"
+                            // placeholder="blur"
+                            // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                            //   item.stories_media_url[0]
+                            // )}/0.jpg`}
+                          />
+                        ) : (
+                          <img
+                            src={item.stories_media_url[0]}
+                            alt={item.stories_headlines}
+                            className="h-36 w-48 rounded-lg"
+
+                            // quality={25}
+                            // layout="responsive"
+                            // width={250}
+                            // height={280}
+                            // className="rounded-lg"
+                            // priority
+                            // loading="eager"
+                            // placeholder="blur"
+                            // blurDataURL={item.stories_media_url[0]}
+                          />
+                        ))}
+                    </div>
                   </div>
+                  {/* <div>Category</div>
+                  <div>title</div>
+                  <div>line</div>
+                  <div>button</div> */}
                 </section>
               )
             })}
@@ -225,7 +189,7 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
   )
 }
 
-export default LocalNews
+export default ColoredSection
 /*
     <React.Fragment>
       <section className="mx-auto w-11/12 pt-5 lg:w-9/12 lg:pt-2">

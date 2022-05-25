@@ -47,22 +47,22 @@ const ForYou = ({ for_you, title, description, color }) => {
                 {for_you_img &&
                   (for_you_img.includes('youtube') ||
                   for_you_img.includes('youtu.be') ? (
-                    <Image
+                    <img
                       src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                         for_you_img
                       )}/0.jpg`}
                       alt={for_you.important_data.stories_headlines}
+                      className="h-56 w-full rounded-lg lg:h-96"
                       layout="responsive"
-                      width={300}
-                      quality={50}
-                      height={235}
-                      className="rounded-lg"
-                      priority
-                      loading="eager"
-                      placeholder="blur"
-                      blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                        for_you_img
-                      )}/0.jpg`}
+                      // width={300}
+                      // quality={50}
+                      // height={235}
+                      // priority
+                      // loading="eager"
+                      // placeholder="blur"
+                      // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                      //   for_you_img
+                      // )}/0.jpg`}
                     />
                   ) : (
                     <Image
@@ -109,36 +109,37 @@ const ForYou = ({ for_you, title, description, color }) => {
                     {item.stories_media_url[0] &&
                       (item.stories_media_url[0].includes('youtube') ||
                       item.stories_media_url[0].includes('youtu.be') ? (
-                        <Image
+                        <img
                           src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                             item.stories_media_url[0]
                           )}/0.jpg`}
                           alt={item.stories_headlines}
-                          quality={25}
-                          layout="responsive"
-                          width={100}
-                          className="rounded-md"
-                          height={60}
-                          priority
-                          loading="eager"
-                          placeholder="blur"
-                          blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                            item.stories_media_url[0]
-                          )}/0.jpg`}
+                          className="h-36 w-full rounded-md lg:h-44"
+                          // quality={25}
+                          // layout="responsive"
+                          // width={100}
+                          // height={60}
+                          // priority
+                          // loading="eager"
+                          // placeholder="blur"
+                          // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                          //   item.stories_media_url[0]
+                          // )}/0.jpg`}
                         />
                       ) : (
-                        <Image
+                        <img
                           src={item.stories_media_url[0]}
                           alt={item.stories_headlines}
-                          quality={25}
-                          layout="responsive"
-                          width={100}
-                          className="rounded-md"
-                          height={60}
-                          priority
-                          loading="eager"
-                          placeholder="blur"
-                          blurDataURL={item.stories_media_url[0]}
+                          className="h-36 w-full rounded-md lg:h-44"
+
+                          // quality={25}
+                          // layout="responsive"
+                          // width={100}
+                          // height={60}
+                          // priority
+                          // loading="eager"
+                          // placeholder="blur"
+                          // blurDataURL={item.stories_media_url[0]}
                         />
                       ))}
                     <div className="px-1 py-1">

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { useRef, useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
@@ -13,7 +12,7 @@ const ForYou = dynamic(() => import('../components/appleStructrue/ForYou'))
 const ColoredSection = dynamic(() =>
   import('../components/appleStructrue/ColoredSection')
 )
-const Test = dynamic(() => import('../components/appleStructrue/Test'))
+// const Test = dynamic(() => import('../components/appleStructrue/Test'))
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -104,19 +103,10 @@ const index = (props) => {
           />
         </section>
         <section className="grid">
-          <Test
-            important_news={props.all_news[1]}
-            theme={'bg-pink-600'}
-            color={'pink-600'}
-            title={'مال و أعمال'}
-            description={
-              'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
-            }
-          />
           <ColoredSection
             important_news={props.all_news[1]}
-            theme={'bg-yellow-600'}
-            color={'yellow-600'}
+            theme={'bg-yellow-500'}
+            color={'yellow-500'}
             title={'مال و أعمال'}
             description={
               'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
@@ -130,8 +120,8 @@ const index = (props) => {
           />
           <ColoredSection
             important_news={props.all_news[5]}
-            theme={'bg-BLUE'}
-            color={'blue-800'}
+            theme={'bg-blue-700'}
+            color={'blue-700'}
             title={' يدور حولك'}
             description={'قصص رائعة من حولك'}
           />
