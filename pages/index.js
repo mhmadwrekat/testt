@@ -21,15 +21,14 @@ export async function getServerSideProps({ req, res }) {
     'public, s-maxage=10, stale-while-revalidate=59'
   )
 
-  //'https://geolocation-db.com/json/'
   // Get Country Code
-  const country_code_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
+  const country_code_url = 'https://geolocation-db.com/json/'
   const country_code_res = await fetch(country_code_url)
   const country_code = await country_code_res.json()
-  const ready_country_code = country_code.location.country.code
+  const ready_country_code = country_code.country_code
 
   // Get All News
-  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${ready_country_code}`
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
   const all_news_res = await fetch(all_news_url)
   const all_news = await all_news_res.json()
 
@@ -44,6 +43,7 @@ export async function getServerSideProps({ req, res }) {
     props: {
       all_news: custom_array,
       country_code: ready_country_code,
+      country: country_code,
     },
   }
 }
@@ -73,7 +73,7 @@ if (typeof window !== 'undefined') {
 const index = (props) => {
   return (
     <React.Fragment>
-      {console.log(props.country_code)}
+      {console.log(props.country, props.country_code)}
       <HeadComp />
       <div
         dir="rtl"
