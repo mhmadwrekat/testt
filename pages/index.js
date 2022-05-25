@@ -28,7 +28,7 @@ export async function getServerSideProps({ req, res }) {
   const ready_country_code = country_code.country_code
 
   // Get All News
-  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${ready_country_code}`
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
   const all_news_res = await fetch(all_news_url)
   const all_news = await all_news_res.json()
 
