@@ -5,12 +5,12 @@ import React from 'react'
 import HeadComp from '../components/page/HeadComp'
 import Nav from '../components/page/Nav'
 // Apple View component
-const TopStories = dynamic(() =>
-  import('../components/appleStructrue/TopStories')
+const ImportantNews = dynamic(() =>
+  import('../components/appleStructrue/ImportantNews')
 )
 const ForYou = dynamic(() => import('../components/appleStructrue/ForYou'))
-const LocalNews = dynamic(() =>
-  import('../components/appleStructrue/LocalNews')
+const ColoredSection = dynamic(() =>
+  import('../components/appleStructrue/ColoredSection')
 )
 
 // Get Server Side Function
@@ -42,32 +42,58 @@ export async function getServerSideProps({ req, res }) {
   return {
     props: {
       all_news: custom_array,
+      country_code: ready_country_code,
     },
   }
 }
 
-// if (
-//   window.matchMedia &&
-//   window.matchMedia('(prefers-color-scheme: dark)').matches
-// ) {
-//   console.log('IT IS DARK')
-// }
+// Dark Or Light Mode
+if (typeof window !== 'undefined') {
+  //Toggle mode
+  const toggle = document.querySelector('.js-change-theme')
+  const projectfoot = document.getElementById('projectfoot')
+  toggle.addEventListener('click', () => {
+    if (projectfoot.classList.contains('text-white')) {
+      toggle.innerHTML = '🌙'
+      projectfoot.classList.remove('bg-gray-900')
+      projectfoot.classList.remove('text-white')
+      projectfoot.classList.add('bg-white')
+      projectfoot.classList.add('text-black')
+    } else {
+      toggle.innerHTML = '🌞'
+      projectfoot.classList.remove('bg-white')
+      projectfoot.classList.remove('text-black')
+      projectfoot.classList.add('bg-gray-900')
+      projectfoot.classList.add('text-white')
+    }
+  })
+}
 
 const index = (props) => {
   return (
     <React.Fragment>
-      {console.log(props.all_news)}
+      {console.log(props.country_code)}
       <HeadComp />
-      <div dir="rtl" className="">
+      <div
+        dir="rtl"
+        id="projectfoot"
+        className="
+      bg-white text-black
+      "
+      >
         <Nav />
-        <section className="from-white to-blue-100 grid bg-gradient-to-b pb-10">
-          <TopStories
+
+        <section
+          className="
+       pb-10"
+        >
+          <ImportantNews
             title={'أهم الأخبار'}
             important_news={props.all_news[0]}
           />
         </section>
         <section className="grid">
-          <LocalNews
+          <ColoredSection
             important_news={props.all_news[1]}
             theme={'bg-yellow-600'}
             color={'yellow-600'}
@@ -82,7 +108,7 @@ const index = (props) => {
             title={'مخصص لك'}
             description={'توصيات بناءً على الموضوعات والقنوات التي تقرأها'}
           />
-          <LocalNews
+          <ColoredSection
             important_news={props.all_news[5]}
             theme={'bg-BLUE'}
             color={'blue-800'}
@@ -95,7 +121,7 @@ const index = (props) => {
             title={'تكنولوجيا'}
             description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
           />
-          <LocalNews
+          <ColoredSection
             important_news={props.all_news[3]}
             theme={'bg-green-700'}
             color={'green-700'}

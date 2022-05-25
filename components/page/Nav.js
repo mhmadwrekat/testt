@@ -9,7 +9,7 @@ const Nav = () => {
 
   return (
     <React.Fragment>
-      <section className="bg-white border-gray-400 mx-4 flex justify-between border-b-2 lg:mx-28">
+      <section className=" border-gray-400 mx-4 flex justify-between border-b-2 lg:mx-28">
         <div>
           <div className="text-white mt-4 mr-6 lg:mt-4 lg:mr-16">
             <svg
@@ -29,14 +29,24 @@ const Nav = () => {
               />
             </svg>
           </div>
-          <p className="text-gray-500 mr-3.5 font-TSExtra text-xl  lg:mr-14">
+          <p className="text-gray-400 mr-3.5 font-TSExtra text-xl  lg:mr-14">
             {moment().format('Do / MMM')}
           </p>
         </div>
-        {/*
+        {/*         
         <div className="float-right my-5 mr-4 sm:flex md:mr-20 lg:mr-24 lg:hidden">
           <MobileMenu />
-        </div>*/}
+        </div> */}
+
+        <div className="float-right my-5 mr-4 flex md:mr-20 lg:mr-24">
+          <button
+            className="js-change-theme text-3xl
+          focus:outline-none
+          "
+          >
+            🌙
+          </button>
+        </div>
         <div className="float-right my-5 ml-2 hidden font-TSmedium lg:mt-7 lg:flex">
           <buttons className="text-purple-900 my-auto ml-10 text-xl lg:cursor-pointer lg:hover:scale-125">
             الأخبار
@@ -49,6 +59,7 @@ const Nav = () => {
           </button>
         </div>
       </section>
+
       {/* <div className="w-6/6 border-gray-500 mx-4 border-b-2 pt-1 opacity-50 lg:mx-28"></div> */}
     </React.Fragment>
   )

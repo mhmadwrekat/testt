@@ -16,15 +16,17 @@ const TopStories = ({ title, important_news }) => {
     if (link.includes('watch/')) {
       code = link.split('watch/')[1]
       return code
-    } else if (link.includes('youtu.be')) {
-      // check for Link without watch
-      code = link.split('youtu.be/')[1]
-      return code
-    } else {
+    } else if (link.includes('watch?')) {
       // check for regular youtube videos
       code = link.split('watch?')[1]
       const youtube_code_for_thumbnail = code?.split('v=')[1]
       return youtube_code_for_thumbnail?.split('&')[0]
+    }
+    // (link.includes('youtu.be'))
+    else {
+      // check for Link without watch
+      code = link.split('youtu.be/')[1]
+      return code
     }
   }
   return (
@@ -36,7 +38,7 @@ const TopStories = ({ title, important_news }) => {
           </h1>
           <section className="grid gap-5  sm:grid-cols-1 lg:grid-cols-2">
             <section>
-              <div className="bg-white rounded-lg shadow-lg " id="card">
+              <div className="rounded-lg shadow-xl " id="card">
                 <div className="p-1 px-4 pb-2 lg:p-3">
                   <h3 className="text-right font-TSSemi text-xl hover:underline">
                     {important_news.section_name}
@@ -44,8 +46,10 @@ const TopStories = ({ title, important_news }) => {
                   <div className="w-6/6 border-blue-400 border-b-2 pt-1 opacity-80"></div>
                 </div>
                 <div className="max-w-full">
+                  {/* {console.log(important_news_img)} */}
                   {important_news_img &&
-                    (important_news_img.includes('youtube') ? (
+                    (important_news_img.includes('youtube') ||
+                    important_news_img.includes('youtu.be') ? (
                       <Image
                         src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                           important_news_img
@@ -81,7 +85,7 @@ const TopStories = ({ title, important_news }) => {
                   <div className="mb-2 font-TSExtra text-xl">
                     {important_news.important_data.stories_headlines}
                   </div>
-                  <p className="text-black h-28 font-TSlight text-base lg:h-24">
+                  <p className="h-28 font-TSlight text-base lg:h-24">
                     {important_news.important_data.stories_content.slice(
                       0,
                       180
@@ -89,16 +93,16 @@ const TopStories = ({ title, important_news }) => {
                     ..........
                   </p>
                   <div
-                    className="text-gray-500 my-3 flex justify-between font-TSlight
+                    className="text-gray-400 my-3 flex justify-between font-TSlight
                   text-xs
                   "
                   >
                     <p className="">
-                      <b className="text-black font-TSmedium">
+                      <b className="font-TSmedium">
                         {important_news.important_data.publisher_name}
                       </b>
                     </p>
-                    <p className="">
+                    <p className="font-TSSemi">
                       منذ{' '}
                       {moment(
                         important_news.important_data.published_on
@@ -117,9 +121,9 @@ const TopStories = ({ title, important_news }) => {
               {important_news.data.slice(0, 4).map((item) => {
                 return (
                   <section key={item._id}>
-                    <div className=" bg-white rounded-lg shadow-lg" id="card">
+                    <div className=" rounded-lg shadow-xl" id="card">
                       <div className="p-1.5 px-3 pb-0 lg:p-2.5 lg:pb-2 ">
-                        <h3 className=" text-black text-right font-TSSemi text-base hover:underline lg:text-lg">
+                        <h3 className="text-right font-TSSemi text-base hover:underline lg:text-lg">
                           {important_news.category_name}
                         </h3>{' '}
                         <div className="w-6/6 border-blue-400 border-b-2 pt-1 opacity-80 "></div>
@@ -127,7 +131,8 @@ const TopStories = ({ title, important_news }) => {
                       <section className="flex lg:grid ">
                         <div className="h-auto w-72 py-5 lg:h-auto lg:w-auto lg:py-0 ">
                           {item.stories_media_url[0] &&
-                            (item.stories_media_url[0].includes('youtube') ? (
+                            (item.stories_media_url[0].includes('youtube') ||
+                            item.stories_media_url[0].includes('youtu.be') ? (
                               <Image
                                 src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                   item.stories_media_url[0]
@@ -177,16 +182,16 @@ const TopStories = ({ title, important_news }) => {
                         </div>
                       </section>
                       <div
-                        className=" text-gray-500 flex justify-between
+                        className=" text-gray-400 flex justify-between
                   px-2 font-TSlight text-xs
                   "
                       >
                         <p className="">
-                          <b className="text-black font-TSmedium">
+                          <b className=" font-TSmedium">
                             {item.publisher_name}
                           </b>
                         </p>
-                        <p className="">
+                        <p className="font-TSSemi">
                           منذ {moment(item.published_on).fromNow(true)}
                         </p>
                       </div>

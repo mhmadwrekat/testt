@@ -15,15 +15,17 @@ const ForYou = ({ for_you, title, description, color }) => {
     if (link.includes('watch/')) {
       code = link.split('watch/')[1]
       return code
-    } else if (link.includes('youtu.be')) {
-      // check for Link without watch
-      code = link.split('youtu.be/')[1]
-      return code
-    } else {
+    } else if (link.includes('watch?')) {
       // check for regular youtube videos
       code = link.split('watch?')[1]
       const youtube_code_for_thumbnail = code?.split('v=')[1]
       return youtube_code_for_thumbnail?.split('&')[0]
+    }
+    // (link.includes('youtu.be'))
+    else {
+      // check for Link without watch
+      code = link.split('youtu.be/')[1]
+      return code
     }
   }
   return (
@@ -34,7 +36,7 @@ const ForYou = ({ for_you, title, description, color }) => {
         >
           {title}{' '}
         </h1>
-        <p className="text-gray-500 px-1 pb-5 font-TSmedium text-base">
+        <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
           {description}
         </p>
 
@@ -43,7 +45,8 @@ const ForYou = ({ for_you, title, description, color }) => {
             <div id="card">
               <div className="">
                 {for_you_img &&
-                  (for_you_img.includes('youtube') ? (
+                  (for_you_img.includes('youtube') ||
+                  for_you_img.includes('youtu.be') ? (
                     <Image
                       src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                         for_you_img
@@ -79,7 +82,7 @@ const ForYou = ({ for_you, title, description, color }) => {
               </div>
             </div>
             <div className="px-1 py-1">
-              <h3 className="text-black py-1 text-right font-TSmedium text-base tracking-tight	hover:underline ">
+              <h3 className=" py-1 text-right font-TSmedium text-base tracking-tight	hover:underline ">
                 {for_you.category_name}
               </h3>
               <div className="mb-1 font-TSbold text-xl">
@@ -87,7 +90,7 @@ const ForYou = ({ for_you, title, description, color }) => {
               </div>
               <div>
                 <p
-                  className=" text-gray-500 font-TSlight
+                  className=" text-gray-400 font-TSmedium
                   text-xs"
                 >
                   منذ{' '}
@@ -104,7 +107,8 @@ const ForYou = ({ for_you, title, description, color }) => {
                   {console.log(item._id)*/}
                   <div id="card">
                     {item.stories_media_url[0] &&
-                      (item.stories_media_url[0].includes('youtube') ? (
+                      (item.stories_media_url[0].includes('youtube') ||
+                      item.stories_media_url[0].includes('youtu.be') ? (
                         <Image
                           src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                             item.stories_media_url[0]
@@ -138,14 +142,14 @@ const ForYou = ({ for_you, title, description, color }) => {
                         />
                       ))}
                     <div className="px-1 py-1">
-                      <h3 className="text-black py-1 text-right font-TSmedium text-xs tracking-tight hover:underline lg:text-sm">
+                      <h3 className="py-1 text-right font-TSmedium text-xs tracking-tight hover:underline lg:text-sm">
                         {for_you.category_name}
                       </h3>
                       <div className="mb-1 h-20 font-TSbold text-sm lg:mb-0 lg:h-14 lg:text-sm">
                         {item.stories_headlines}
                       </div>
                       <p
-                        className=" text-gray-500 font-TSlight
+                        className=" text-gray-400 font-TSmedium
                   text-xs"
                       >
                         منذ {moment(item.published_on).fromNow(true)}

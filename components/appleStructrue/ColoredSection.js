@@ -14,15 +14,17 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
     if (link.includes('watch/')) {
       code = link.split('watch/')[1]
       return code
-    } else if (link.includes('youtu.be')) {
-      // check for Link without watch
-      code = link.split('youtu.be/')[1]
-      return code
-    } else {
+    } else if (link.includes('watch?')) {
       // check for regular youtube videos
       code = link.split('watch?')[1]
       const youtube_code_for_thumbnail = code?.split('v=')[1]
       return youtube_code_for_thumbnail?.split('&')[0]
+    }
+    // (link.includes('youtu.be'))
+    else {
+      // check for Link without watch
+      code = link.split('youtu.be/')[1]
+      return code
     }
   }
   return (
@@ -33,24 +35,30 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
         >
           {title}
         </h1>
-        <p className="text-gray-500 px-1 pb-5 font-TSlight text-base">
+        <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
           {description}
         </p>
         <section className=" grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-10 ">
           <div className="rounded-lg">
-            {console.log(
-              `https://img.youtube.com/vi/${retrieve_youtube_code(
-                important_news_img
-              )}/0.jpg`
-            )}
             {important_news_img &&
-              (important_news_img.includes('youtube') ? (
-                <img
+              (important_news_img.includes('youtube') ||
+              important_news_img.includes('youtu.be') ? (
+                <Image
                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                     important_news_img
                   )}/0.jpg`}
                   alt={important_news.important_data.stories_headlines}
-                  className="w-full rounded-t-lg"
+                  layout="responsive"
+                  width={300}
+                  height={200}
+                  quality={50}
+                  className="rounded-t-lg"
+                  priority
+                  loading="eager"
+                  placeholder="blur"
+                  blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                    important_news_img
+                  )}/0.jpg`}
                 />
               ) : (
                 <Image
@@ -105,7 +113,7 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
                   </div>
                   <div className={`text-white ${theme} max-w-2xl rounded-b-lg`}>
                     <section
-                      className={`text-white w-7/12 rounded-b-lg ${theme} p-1.5 px-3 pl-2 md:w-9/12 lg:w-7/12 lg:p-2 lg:px-4`}
+                      className={`text-white w-7/12 rounded-b-lg ${theme} p-1.5 px-3 pl-2.5 md:w-9/12 lg:w-7/12 lg:p-2 lg:px-4`}
                     >
                       <h3 className="pb-2 text-right font-TSmedium text-sm">
                         {important_news.section_name}
@@ -126,7 +134,8 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
                     <section className="flex md:hidden lg:hidden">
                       <section className="bg-red-100 absolute top-4 left-3 w-5/12 rounded-lg lg:left-5 lg:w-4/12">
                         {item.stories_media_url[0] &&
-                          (item.stories_media_url[0].includes('youtube') ? (
+                          (item.stories_media_url[0].includes('youtube') ||
+                          item.stories_media_url[0].includes('youtu.be') ? (
                             <Image
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                 item.stories_media_url[0]
@@ -168,7 +177,8 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
                     <section className="hidden h-5 max-w-xl md:flex lg:flex">
                       <section className="bg-red-100 absolute top-3 left-3 rounded-lg lg:left-5 lg:w-3/12">
                         {item.stories_media_url[0] &&
-                          (item.stories_media_url[0].includes('youtube') ? (
+                          (item.stories_media_url[0].includes('youtube') ||
+                          item.stories_media_url[0].includes('youtu.be') ? (
                             <Image
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                 item.stories_media_url[0]
