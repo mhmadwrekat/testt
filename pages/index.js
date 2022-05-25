@@ -28,7 +28,7 @@ export async function getServerSideProps({ req, res }) {
   const ready_country_code = country_code.country_code
 
   // Get All News
-  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${ready_country_code}`
   const all_news_res = await fetch(all_news_url)
   const all_news = await all_news_res.json()
 
@@ -45,9 +45,18 @@ export async function getServerSideProps({ req, res }) {
     },
   }
 }
+
+// if (
+//   window.matchMedia &&
+//   window.matchMedia('(prefers-color-scheme: dark)').matches
+// ) {
+//   console.log('IT IS DARK')
+// }
+
 const index = (props) => {
   return (
     <React.Fragment>
+      {console.log(props.all_news)}
       <HeadComp />
       <div dir="rtl" className="">
         <Nav />
@@ -58,33 +67,50 @@ const index = (props) => {
           />
         </section>
         <section className="grid">
+          <LocalNews
+            important_news={props.all_news[1]}
+            theme={'bg-yellow-600'}
+            color={'yellow-600'}
+            title={'مال و أعمال'}
+            description={
+              'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+            }
+          />
           <ForYou
             for_you={props.all_news[2]}
             color={'green-600'}
             title={'مخصص لك'}
             description={'توصيات بناءً على الموضوعات والقنوات التي تقرأها'}
           />
+          <LocalNews
+            important_news={props.all_news[5]}
+            theme={'bg-BLUE'}
+            color={'blue-800'}
+            title={' يدور حولك'}
+            description={'قصص رائعة من حولك'}
+          />
+          <ForYou
+            for_you={props.all_news[4]}
+            color={'purple-700'}
+            title={'تكنولوجيا'}
+            description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
+          />
+          <LocalNews
+            important_news={props.all_news[3]}
+            theme={'bg-green-700'}
+            color={'green-700'}
+            title={' أخبار الرياضه'}
+            description={'جميع ما يخص عالم الرياضه'}
+          />
         </section>
-        <LocalNews
-          important_news={props.all_news[5]}
-          theme={'bg-BLUE'}
-          color={'blue-800'}
-          title={' يدور حولك'}
-          description={'قصص رائعة من حولك'}
-        />
-        <ForYou
-          for_you={props.all_news[4]}
-          color={'purple-700'}
-          title={'تكنولوجيا'}
-          description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
-        />
-        <LocalNews
-          important_news={props.all_news[3]}
-          theme={'bg-green-700'}
-          color={'green-700'}
-          title={' أخبار الرياضه'}
-          description={'جميع ما يخص عالم الرياضه'}
-        />
+
+        {/* <ForYou
+          for_you={props.all_news[5]}
+          color={'pink-600'}
+          title={'منوعات'}
+          description={'منوعات حول العالم'}
+        /> */}
+
         <div className="py-20"></div>
       </div>
     </React.Fragment>
