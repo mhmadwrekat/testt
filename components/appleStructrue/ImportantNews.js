@@ -50,21 +50,22 @@ const TopStories = ({ title, important_news }) => {
                   {important_news_img &&
                     (important_news_img.includes('youtube') ||
                     important_news_img.includes('youtu.be') ? (
-                      <Image
+                      <img
                         src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                           important_news_img
                         )}/0.jpg`}
                         alt={important_news.important_data.stories_headlines}
-                        layout="responsive"
-                        width={600}
-                        height={400}
-                        quality={50}
-                        priority
-                        loading="eager"
-                        placeholder="blur"
-                        blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                          important_news_img
-                        )}/0.jpg`}
+                        className="h-56 w-full lg:h-96"
+                        // layout="responsive"
+                        // width={600}
+                        // height={400}
+                        // quality={50}
+                        // priority
+                        // loading="eager"
+                        // placeholder="blur"
+                        // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                        //   important_news_img
+                        // )}/0.jpg`}
                       />
                     ) : (
                       <Image
@@ -85,7 +86,7 @@ const TopStories = ({ title, important_news }) => {
                   <div className="mb-2 font-TSExtra text-xl">
                     {important_news.important_data.stories_headlines}
                   </div>
-                  <p className="h-28 font-TSlight text-base lg:h-24">
+                  <p className="h-28 font-TSlight text-base lg:h-28">
                     {important_news.important_data.stories_content.slice(
                       0,
                       180
