@@ -41,7 +41,7 @@ const ColoredSection = ({
         >
           {title}
         </h1>
-        <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
+        <p className=" px-1 pb-5 font-TSmedium text-base">
           {description}
         </p>
         <section className=" grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-10 ">
