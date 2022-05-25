@@ -129,40 +129,47 @@ const TopStories = ({ title, important_news }) => {
                         <div className="w-6/6 border-blue-400 border-b-2 pt-1 opacity-80 "></div>
                       </div>
                       <section className="flex lg:grid ">
-                        <div className="h-auto w-72 py-5 lg:h-auto lg:w-auto lg:py-0 ">
+                        <div className="mr-2 h-auto w-72 py-5 lg:mr-0 lg:h-auto lg:w-auto lg:py-0 ">
                           {item.stories_media_url[0] &&
                             (item.stories_media_url[0].includes('youtube') ||
                             item.stories_media_url[0].includes('youtu.be') ? (
-                              <Image
+                              <img
                                 src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                   item.stories_media_url[0]
                                 )}/0.jpg`}
                                 alt={item.stories_headlines}
-                                quality={25}
-                                layout="responsive"
-                                width={80}
-                                className="rounded-md"
-                                height={40}
-                                priority
-                                loading="eager"
-                                placeholder="blur"
-                                blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                                  item.stories_media_url[0]
-                                )}/0.jpg`}
+                                className="
+                                mx-auto
+                                h-24 
+                                w-40 rounded-md lg:h-36 lg:w-60"
+                                // quality={25}
+                                // layout="responsive"
+                                // width={80}
+                                // height={40}
+                                // priority
+                                // loading="eager"
+                                // placeholder="blur"
+                                // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                //   item.stories_media_url[0]
+                                // )}/0.jpg`}
                               />
                             ) : (
-                              <Image
+                              <img
                                 src={item.stories_media_url[0]}
                                 alt={item.stories_headlines}
-                                quality={25}
-                                layout="responsive"
-                                width={80}
-                                className="rounded-md"
-                                height={40}
-                                priority
-                                loading="eager"
-                                placeholder="blur"
-                                blurDataURL={item.stories_media_url[0]}
+                                className="
+                                mx-auto
+                                h-24 
+                                w-40 rounded-md lg:h-36 lg:w-60"
+                                // quality={25}
+                                // layout="responsive"
+                                // width={80}
+                                // className="rounded-md"
+                                // height={40}
+                                // priority
+                                // loading="eager"
+                                // placeholder="blur"
+                                // blurDataURL={item.stories_media_url[0]}
                               />
                             ))}
                         </div>

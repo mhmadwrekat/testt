@@ -175,6 +175,7 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
                     {/*********************  DESKTOP IMAGE  ************************** */}
                     {/**************************************************************** */}
                     <section className="hidden h-5 max-w-xl md:flex lg:flex">
+                      {console.log(item)}
                       <section className="bg-red-100 absolute top-3 left-3 rounded-lg lg:left-5 lg:w-3/12">
                         {item.stories_media_url[0] &&
                           (item.stories_media_url[0].includes('youtube') ||
