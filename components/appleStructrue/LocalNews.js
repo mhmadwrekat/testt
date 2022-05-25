@@ -38,12 +38,17 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
         </p>
         <section className=" grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-10 ">
           <div className="rounded-lg">
+            {console.log(
+              `https://img.youtube.com/vi/${retrieve_youtube_code(
+                important_news_img
+              )}/0.jpg`
+            )}
             {important_news_img &&
               (important_news_img.includes('youtube') ? (
                 <Image
                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                     important_news_img
-                  )}/1.jpg`}
+                  )}/0.jpg`}
                   alt={important_news.important_data.stories_headlines}
                   layout="responsive"
                   width={300}
@@ -135,7 +140,7 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
                             <Image
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                 item.stories_media_url[0]
-                              )}/1.jpg`}
+                              )}/0.jpg`}
                               alt={item.stories_headlines}
                               quality={25}
                               layout="responsive"
@@ -177,7 +182,7 @@ const LocalNews = ({ important_news, theme, title, description, color }) => {
                             <Image
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                 item.stories_media_url[0]
-                              )}/1.jpg`}
+                              )}/0.jpg`}
                               alt={item.stories_headlines}
                               quality={25}
                               layout="responsive"
