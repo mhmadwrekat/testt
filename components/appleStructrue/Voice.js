@@ -96,11 +96,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
@@ -109,11 +109,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
@@ -122,11 +122,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
@@ -135,11 +135,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
@@ -148,11 +148,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
@@ -161,11 +161,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
@@ -174,11 +174,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
@@ -187,11 +187,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
@@ -200,11 +200,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
@@ -213,11 +213,11 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
-                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
                   src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                   controls
                 />{' '}
