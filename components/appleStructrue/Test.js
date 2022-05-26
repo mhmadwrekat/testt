@@ -56,13 +56,6 @@ const Test = ({ important_news, theme, title, description, color }) => {
   return (
     <React.Fragment>
       <section></section>
-    </React.Fragment>
-  )
-}
-
-export default Test
-/**
- 
 
       <p className="py-8"></p>
       <section className="to-blue-900 from-blue-500 mx-auto w-11/12 rounded-lg bg-gradient-to-b pt-2 lg:w-9/12 lg:pt-2">
@@ -100,11 +93,10 @@ export default Test
           >
             <SwiperSlide>
               <div className="my-5 lg:my-10">
-                <iframe
+                <img
                   className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://www.youtube.com/embed/jBJTaLZgYgc"
-                  frameBorder="1"
-                ></iframe>
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
                 <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
                   شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
                 </p>
@@ -112,11 +104,10 @@ export default Test
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
-                <iframe
+                <img
                   className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://www.youtube.com/embed/jBJTaLZgYgc"
-                  frameBorder="1"
-                ></iframe>
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
                 <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
                   شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
                 </p>
@@ -124,11 +115,10 @@ export default Test
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
-                <iframe
+                <img
                   className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://www.youtube.com/embed/jBJTaLZgYgc"
-                  frameBorder="1"
-                ></iframe>
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
                 <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
                   شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
                 </p>
@@ -136,11 +126,10 @@ export default Test
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
-                <iframe
+                <img
                   className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://www.youtube.com/embed/jBJTaLZgYgc"
-                  frameBorder="1"
-                ></iframe>
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
                 <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
                   شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
                 </p>
@@ -148,11 +137,10 @@ export default Test
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
-                <iframe
+                <img
                   className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://www.youtube.com/embed/jBJTaLZgYgc"
-                  frameBorder="1"
-                ></iframe>
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
                 <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
                   شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
                 </p>
@@ -160,11 +148,10 @@ export default Test
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
-                <iframe
+                <img
                   className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://www.youtube.com/embed/jBJTaLZgYgc"
-                  frameBorder="1"
-                ></iframe>
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
                 <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
                   شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
                 </p>
@@ -172,11 +159,10 @@ export default Test
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
-                <iframe
+                <img
                   className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://www.youtube.com/embed/jBJTaLZgYgc"
-                  frameBorder="1"
-                ></iframe>
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
                 <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
                   شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
                 </p>
@@ -184,11 +170,10 @@ export default Test
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
-                <iframe
+                <img
                   className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://www.youtube.com/embed/jBJTaLZgYgc"
-                  frameBorder="1"
-                ></iframe>
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
                 <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
                   شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
                 </p>
@@ -196,11 +181,21 @@ export default Test
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
-                <iframe
+                <img
                   className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://www.youtube.com/embed/jBJTaLZgYgc"
-                  frameBorder="1"
-                ></iframe>
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
+                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
+                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="my-5 lg:my-10">
+                <img
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                />
                 <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
                   شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
                 </p>
@@ -209,6 +204,73 @@ export default Test
           </Swiper>
         )}
       </section>
+    </React.Fragment>
+  )
+}
 
-
+export default Test
+/**
+ <React.Fragment>
+      <section className="mx-auto w-11/12 pt-5 lg:w-9/12 lg:pt-2">
+        <h1
+          className={`mt-4 px-1 font-TSExtra text-3xl text-${color} lg:mt-10 lg:text-4xl`}
+        >
+          {title}
+        </h1>
+        <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
+          {description}
+        </p>
+        <section className=" grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-10 ">
+          {important_news.data.map((item) => {
+            return (
+              <section className="mx-auto grid grid-cols-1 gap-6">
+                <section className={`${theme} to-white grid h-44 w-96 `}>
+                  {item.stories_media_url[0] &&
+                    (item.stories_media_url[0].includes('youtube') ||
+                    item.stories_media_url[0].includes('youtu.be') ? (
+                      <img
+                        src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                          item.stories_media_url[0]
+                        )}/0.jpg`}
+                        alt={item.stories_headlines}
+                        className="w-full rounded-lg"
+                        // quality={25}
+                        // layout="responsive"
+                        // width={250}
+                        // height={280}
+                        // className="rounded-lg"
+                        // priority
+                        // loading="eager"
+                        // placeholder="blur"
+                        // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                        //   item.stories_media_url[0]
+                        // )}/0.jpg`}
+                      />
+                    ) : (
+                      <img
+                        src={item.stories_media_url[0]}
+                        alt={item.stories_headlines}
+                        className="w-full rounded-lg"
+                        // quality={25}
+                        // layout="responsive"
+                        // width={250}
+                        // height={280}
+                        // className="rounded-lg"
+                        // priority
+                        // loading="eager"
+                        // placeholder="blur"
+                        // blurDataURL={item.stories_media_url[0]}
+                      />
+                    ))}
+                  <div>
+                    <p>45645</p>
+                  </div>
+                </section>
+              </section>
+            )
+          })}
+          </section>
+          </section>
+          <p className="p-20"></p>
+        </React.Fragment>
  */
