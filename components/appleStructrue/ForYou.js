@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import moment from 'moment'
 import 'moment/locale/ar'
 const ForYou = ({ for_you, title, description, color }) => {
@@ -52,8 +51,8 @@ const ForYou = ({ for_you, title, description, color }) => {
                         for_you_img
                       )}/0.jpg`}
                       alt={for_you.important_data.stories_headlines}
-                      className="h-56 w-full rounded-lg lg:h-96"
-                      layout="responsive"
+                      className="h-56 w-full rounded-lg lg:h-full"
+                      // layout="responsive"
                       // width={300}
                       // quality={50}
                       // height={235}
@@ -65,18 +64,18 @@ const ForYou = ({ for_you, title, description, color }) => {
                       // )}/0.jpg`}
                     />
                   ) : (
-                    <Image
+                    <img
                       src={for_you_img}
                       alt={for_you.important_data.stories_headlines}
-                      layout="responsive"
-                      quality={50}
-                      width={300}
-                      height={235}
-                      className="rounded-lg"
-                      priority
-                      loading="eager"
-                      placeholder="blur"
-                      blurDataURL={for_you_img}
+                      className="h-56 w-full rounded-lg lg:h-full"
+                      // layout="responsive"
+                      // quality={50}
+                      // width={300}
+                      // height={235}
+                      // priority
+                      // loading="eager"
+                      // placeholder="blur"
+                      // blurDataURL={for_you_img}
                     />
                   ))}
               </div>
@@ -146,7 +145,7 @@ const ForYou = ({ for_you, title, description, color }) => {
                       <h3 className="py-1 text-right font-TSmedium text-xs tracking-tight hover:underline lg:text-sm">
                         {for_you.category_name}
                       </h3>
-                      <div className="mb-1 h-20 font-TSbold text-sm lg:mb-0 lg:h-14 lg:text-sm">
+                      <div className="mb-1 h-20 font-TSbold text-sm lg:mb-0 lg:h-11 lg:text-sm">
                         {item.stories_headlines}
                       </div>
                       <p

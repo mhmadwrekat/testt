@@ -1,9 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
+
 // page Component
 import HeadComp from '../components/page/HeadComp'
 import Nav from '../components/page/Nav'
+
 // Apple View component
 const ImportantNews = dynamic(() =>
   import('../components/appleStructrue/ImportantNews')
@@ -12,7 +14,7 @@ const ForYou = dynamic(() => import('../components/appleStructrue/ForYou'))
 const ColoredSection = dynamic(() =>
   import('../components/appleStructrue/ColoredSection')
 )
-// const Test = dynamic(() => import('../components/appleStructrue/Test'))
+const Test = dynamic(() => import('../components/appleStructrue/Test'))
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -42,61 +44,40 @@ export async function getServerSideProps({ req, res }) {
   return {
     props: {
       all_news: custom_array,
-      country_code: ready_country_code,
-      country: country_code,
     },
   }
 }
 
-// Dark Or Light Mode
+// Dark & Light Mode
 if (typeof window !== 'undefined') {
   //Toggle mode
   const toggle = document.querySelector('.js-change-theme')
-  const projectfoot = document.getElementById('projectfoot')
+  const project_body = document.getElementById('project_body')
   toggle.addEventListener('click', () => {
-    if (projectfoot.classList.contains('text-white')) {
+    if (project_body.classList.contains('text-white')) {
       toggle.innerHTML = '🌙'
-      projectfoot.classList.remove('bg-gray-900')
-      projectfoot.classList.remove('text-white')
-      projectfoot.classList.add('bg-white')
-      projectfoot.classList.add('text-black')
+      project_body.classList.remove('bg-gray-900')
+      project_body.classList.remove('text-white')
+      project_body.classList.add('bg-white')
+      project_body.classList.add('text-black')
     } else {
-      toggle.innerHTML = '🌞'
-      projectfoot.classList.remove('bg-white')
-      projectfoot.classList.remove('text-black')
-      projectfoot.classList.add('bg-gray-900')
-      projectfoot.classList.add('text-white')
+      toggle.innerHTML = '☀️'
+      project_body.classList.remove('bg-white')
+      project_body.classList.remove('text-black')
+      project_body.classList.add('bg-gray-900')
+      project_body.classList.add('text-white')
     }
   })
 }
 
 const index = (props) => {
-  // const [weather, setWeather] = useState([])
-  // useEffect(() => {
-  //   axios
-  //     .get(`${BASE_URL}/v1/Web/Sections?current_country=${props.country_code}`)
-  //     .then((res) => {
-  //       setWeather(res.data)
-  //     })
-  // }, [])
-  // console.log('WEATHER : ', weather)
   return (
     <React.Fragment>
-      {console.log(props.country, props.country_code)}
+      {/* {console.log(props.country, props.country_code)} */}
       <HeadComp />
-      <div
-        dir="rtl"
-        id="projectfoot"
-        className="
-      bg-white text-black
-      "
-      >
+      <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-
-        <section
-          className="
-       pb-10"
-        >
+        <section className="pb-10">
           <ImportantNews
             title={'أهم الأخبار'}
             important_news={props.all_news[0]}
@@ -112,6 +93,7 @@ const index = (props) => {
               'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
             }
           />
+
           <ForYou
             for_you={props.all_news[2]}
             color={'green-600'}
@@ -139,14 +121,15 @@ const index = (props) => {
             description={'جميع ما يخص عالم الرياضه'}
           />
         </section>
-
-        {/* <ForYou
-          for_you={props.all_news[5]}
-          color={'pink-600'}
-          title={'منوعات'}
-          description={'منوعات حول العالم'}
-        /> */}
-
+        <Test
+          important_news={props.all_news[1]}
+          theme={'bg-gray-600'}
+          color={'gray-600'}
+          title={'مال و أعمال'}
+          description={
+            'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+          }
+        />
         <div className="py-20"></div>
       </div>
     </React.Fragment>

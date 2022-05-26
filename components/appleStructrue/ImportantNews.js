@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import moment from 'moment'
 import 'moment/locale/ar'
 
@@ -68,17 +67,18 @@ const TopStories = ({ title, important_news }) => {
                         // )}/0.jpg`}
                       />
                     ) : (
-                      <Image
+                      <img
                         src={important_news_img}
                         alt={important_news.important_data.stories_headlines}
-                        layout="responsive"
-                        width={600}
-                        quality={50}
-                        height={400}
-                        priority
-                        loading="eager"
-                        placeholder="blur"
-                        blurDataURL={important_news_img}
+                        className="h-56 w-full lg:h-96"
+                        // layout="responsive"
+                        // width={600}
+                        // quality={50}
+                        // height={400}
+                        // priority
+                        // loading="eager"
+                        // placeholder="blur"
+                        // blurDataURL={important_news_img}
                       />
                     ))}
                 </div>
