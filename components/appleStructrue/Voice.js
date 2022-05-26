@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ReactAudioPlayer from 'react-audio-player'
 // import Swiper core and required modules
 import { thumbsSwiper, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -10,7 +10,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
-const Test = ({ important_news, theme, title, description, color }) => {
+const Voice = ({ important_news, theme, title, description, color }) => {
   SwiperCore.use([Autoplay])
 
   const important_news_img =
@@ -43,7 +43,7 @@ const Test = ({ important_news, theme, title, description, color }) => {
     window_width = window.innerWidth
   }
   let slides_per_view = 0
-  window_width > 800 ? (slides_per_view = 4) : (slides_per_view = 2)
+  window_width > 800 ? (slides_per_view = 5) : (slides_per_view = 2)
   //(function(){
   //  var ww = $(window).width()
   //  if (ww>1000) mySwiper.params.slidesPerView = 5;
@@ -56,15 +56,14 @@ const Test = ({ important_news, theme, title, description, color }) => {
   return (
     <React.Fragment>
       <section></section>
+      {/* <link rel="stylesheet" href="./styles/global.css" /> */}
 
       <p className="py-8"></p>
-      <section className="to-blue-900 from-blue-500 mx-auto w-11/12 rounded-lg bg-gradient-to-b pt-2 lg:w-9/12 lg:pt-2">
-        <h1 className="text-white m-4 pr-3 font-TSExtra text-xl lg:text-4xl">
-          الفيديوهات
-        </h1>
+      <section className=" mx-auto w-11/12 rounded-lg pt-2 lg:w-9/12 lg:pt-2">
+        <h1 className=" m-4 pr-3 font-TSExtra text-xl lg:text-4xl">الصوتيات</h1>
         <h2 className="border-gray-400 m-6 border-b-2 font-TSbold text-sm lg:text-lg ">
-          <p className="text-gray-200 hover-border-b-2 hover-scale-110 w-2/6 text-center lg:w-1/6">
-            الاكثر مشاهده
+          <p className=" hover-border-b-2 hover-scale-110 w-2/6 text-center lg:w-1/6">
+            الاكثر أستماعا
           </p>
         </h2>
         {console.log(slides_per_view)}
@@ -94,111 +93,131 @@ const Test = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
+                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+                <ReactAudioPlayer
+                  className="bg-gray-100 w-36 font-TSbold text-xs lg:w-60 lg:text-base"
+                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                  controls
+                />{' '}
               </div>
             </SwiperSlide>
           </Swiper>
@@ -208,7 +227,7 @@ const Test = ({ important_news, theme, title, description, color }) => {
   )
 }
 
-export default Test
+export default Voice
 /**
  <React.Fragment>
       <section className="mx-auto w-11/12 pt-5 lg:w-9/12 lg:pt-2">

@@ -14,7 +14,10 @@ const ForYou = dynamic(() => import('../components/appleStructrue/ForYou'))
 const ColoredSection = dynamic(() =>
   import('../components/appleStructrue/ColoredSection')
 )
-const Test = dynamic(() => import('../components/appleStructrue/Test'))
+const Logaimat = dynamic(() => import('../components/appleStructrue/Logaimat'))
+const Video = dynamic(() => import('../components/appleStructrue/Video'))
+const Voice = dynamic(() => import('../components/appleStructrue/Voice'))
+
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -120,8 +123,32 @@ const index = (props) => {
             title={' أخبار الرياضه'}
             description={'جميع ما يخص عالم الرياضه'}
           />
+          <ForYou
+            for_you={props.all_news[2]}
+            color={'pink-700'}
+            title={'الصحه'}
+            description={'جميع ما هو جديد في ابحاث الصحه بين يديك'}
+          />
         </section>
-        <Test
+        <Logaimat
+          important_news={props.all_news[1]}
+          theme={'bg-gray-600'}
+          color={'gray-600'}
+          title={'مال و أعمال'}
+          description={
+            'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+          }
+        />
+        <Voice
+          important_news={props.all_news[1]}
+          theme={'bg-gray-600'}
+          color={'gray-600'}
+          title={'مال و أعمال'}
+          description={
+            'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+          }
+        />
+        <Video
           important_news={props.all_news[1]}
           theme={'bg-gray-600'}
           color={'gray-600'}
