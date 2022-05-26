@@ -43,7 +43,10 @@ const Video = ({ important_news, theme, title, description, color }) => {
     window_width = window.innerWidth
   }
   let slides_per_view = 0
-  window_width > 800 ? (slides_per_view = 4) : (slides_per_view = 2)
+  let space_between = 0
+  window_width > 800
+    ? ((slides_per_view = 5), (space_between = 15))
+    : ((slides_per_view = 2), (space_between = 1))
   //(function(){
   //  var ww = $(window).width()
   //  if (ww>1000) mySwiper.params.slidesPerView = 5;
@@ -74,7 +77,7 @@ const Video = ({ important_news, theme, title, description, color }) => {
             modules={[Pagination, Navigation, Scrollbar, A11y]}
             slidesPerView={slides_per_view}
             centeredSlides={true}
-            spaceBetween={20}
+            spaceBetween={space_between}
             navigation={true}
             // install Swiper modules
             loop={true}

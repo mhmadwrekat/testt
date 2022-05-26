@@ -43,7 +43,10 @@ const Voice = ({ important_news, theme, title, description, color }) => {
     window_width = window.innerWidth
   }
   let slides_per_view = 0
-  window_width > 800 ? (slides_per_view = 5) : (slides_per_view = 2)
+  let space_between = 0
+  window_width > 800
+    ? ((slides_per_view = 5), (space_between = 15))
+    : ((slides_per_view = 2), (space_between = 1))
   //(function(){
   //  var ww = $(window).width()
   //  if (ww>1000) mySwiper.params.slidesPerView = 5;
@@ -73,7 +76,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             modules={[Pagination, Navigation, Scrollbar, A11y]}
             slidesPerView={slides_per_view}
             centeredSlides={true}
-            spaceBetween={20}
+            spaceBetween={space_between}
             navigation={true}
             // install Swiper modules
             loop={true}
@@ -93,7 +96,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
@@ -106,7 +109,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
@@ -119,7 +122,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
@@ -132,7 +135,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
@@ -145,7 +148,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
@@ -158,7 +161,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
@@ -171,7 +174,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
@@ -184,7 +187,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
@@ -197,7 +200,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
@@ -210,7 +213,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
             <SwiperSlide>
               <div className="my-5 lg:my-10">
                 <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-60"
+                  className=" block h-28 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-60"
                   src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
                 />
                 <ReactAudioPlayer
