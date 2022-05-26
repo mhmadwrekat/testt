@@ -1,5 +1,6 @@
 import React from 'react'
-
+import moment from 'moment'
+import 'moment/locale/ar'
 // import Swiper core and required modules
 import { thumbsSwiper, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -10,7 +11,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
-const Video = ({ important_news, theme, title, description, color }) => {
+const Video = ({ title, important_news, color, theme }) => {
   SwiperCore.use([Autoplay])
 
   const important_news_img =
@@ -58,154 +59,182 @@ const Video = ({ important_news, theme, title, description, color }) => {
 
   return (
     <React.Fragment>
-      <section></section>
-
-      <p className="py-8"></p>
-      <section className="to-blue-900 from-blue-500 mx-auto w-11/12 rounded-lg bg-gradient-to-b pt-2 lg:w-9/12 lg:pt-2">
-        <h1 className="text-white m-4 pr-3 font-TSExtra text-xl lg:text-4xl">
-          الفيديوهات
-        </h1>
-        <h2 className="border-gray-400 m-6 border-b-2 font-TSbold text-sm lg:text-lg ">
-          <p className="text-gray-200 hover-border-b-2 hover-scale-110 w-2/6 text-center lg:w-1/6">
-            الاكثر مشاهده
-          </p>
-        </h2>
-        {console.log(slides_per_view)}
-        {slides_per_view && (
-          <Swiper
-            // install Swiper modules
-            modules={[Pagination, Navigation, Scrollbar, A11y]}
-            slidesPerView={slides_per_view}
-            centeredSlides={true}
-            spaceBetween={space_between}
-            navigation={true}
-            // install Swiper modules
-            loop={true}
-            thumbs={{
-              swiper: thumbsSwiper,
-            }}
-            // autoplay={true}
-            // scrollbar={{
-            //   draggable: true,
-            //   dragSize: 'auto',
-            //   hide: true,
-            // }}
-            //    pagination={{
-            //   type: 'fraction',
-            // }}
+      <section className="mx-auto w-11/12 lg:w-9/12">
+        <>
+          <h1
+            className={`text-${color} mb-4 mt-10 font-TSExtra text-3xl lg:mt-12 lg:text-4xl`}
           >
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
+            {title}{' '}
+          </h1>
+          <section className="grid gap-5  sm:grid-cols-1 lg:grid-cols-2">
+            <section>
+              <div className="rounded-lg shadow-xl " id="card">
+                <div className="p-1 px-4 pb-2 lg:p-3">
+                  <h3 className="text-right font-TSSemi text-xl hover:underline">
+                    {important_news.section_name}
+                  </h3>{' '}
+                  <div className="w-6/6 border-blue-400 border-b-2 pt-1 opacity-80"></div>
+                </div>
+                <div className="relative max-w-full">
+                  {/* {console.log(important_news_img)} */}
+                  {important_news_img &&
+                    (important_news_img.includes('youtube') ||
+                    important_news_img.includes('youtu.be') ? (
+                      <img
+                        src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                          important_news_img
+                        )}/0.jpg`}
+                        alt={important_news.important_data.stories_headlines}
+                        className="relative h-56 w-full lg:h-96"
+                        // layout="responsive"
+                        // width={600}
+                        // height={400}
+                        // quality={50}
+                        // priority
+                        // loading="eager"
+                        // placeholder="blur"
+                        // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                        //   important_news_img
+                        // )}/0.jpg`}
+                      />
+                    ) : (
+                      <img
+                        src={important_news_img}
+                        alt={important_news.important_data.stories_headlines}
+                        className=" h-56 w-full lg:h-96"
+                        // layout="responsive"
+                        // width={600}
+                        // quality={50}
+                        // height={400}
+                        // priority
+                        // loading="eager"
+                        // placeholder="blur"
+                        // blurDataURL={important_news_img}
+                      />
+                    ))}
+
+                  <svg
+                    className="
+                  text-red-500 absolute top-2 right-0 h-56 w-full hover:scale-125  lg:h-96"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    {' '}
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />{' '}
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                  </svg>
+                </div>
+
+                <div className="px-3 py-2">
+                  <div className="mb-2 font-TSExtra text-xl">
+                    {important_news.important_data.stories_headlines}
+                  </div>
+                  <p className="h-28 font-TSlight text-base lg:h-20">
+                    {important_news.important_data.stories_content.slice(
+                      0,
+                      140
+                    )}
+                    ..........
+                  </p>
+                </div>
               </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 shadow-2xl lg:h-44 lg:w-72"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white w-11/12 pt-2 font-TSbold text-xs lg:pt-5 lg:text-base">
-                  شقة وزير سابق للبيع في مزاد علني: 66780 دينارا «مديون»
-                </p>
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        )}
+            </section>
+            <section className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+              {important_news.data.slice(0, 4).map((item) => {
+                return (
+                  <section key={item._id}>
+                    <div className=" rounded-lg shadow-xl" id="card">
+                      <div className="p-1.5 px-3 pb-0 lg:p-2.5 lg:pb-2 ">
+                        <h3 className="text-right font-TSSemi text-base hover:underline lg:text-lg">
+                          {important_news.category_name}
+                        </h3>{' '}
+                        <div className="w-6/6 border-blue-400 border-b-2 pt-1 opacity-80 "></div>
+                      </div>
+                      <section className="flex lg:grid ">
+                        <div className="relative mr-2 h-auto w-72 py-5 lg:mr-0 lg:h-auto lg:w-auto lg:py-0 ">
+                          {item.stories_media_url[0] &&
+                            (item.stories_media_url[0].includes('youtube') ||
+                            item.stories_media_url[0].includes('youtu.be') ? (
+                              <img
+                                src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                  item.stories_media_url[0]
+                                )}/0.jpg`}
+                                alt={item.stories_headlines}
+                                className="
+                                mx-auto
+                                h-24 
+                                w-40 rounded-md lg:h-36 lg:w-60"
+                                // quality={25}
+                                // layout="responsive"
+                                // width={80}
+                                // height={40}
+                                // priority
+                                // loading="eager"
+                                // placeholder="blur"
+                                // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                //   item.stories_media_url[0]
+                                // )}/0.jpg`}
+                              />
+                            ) : (
+                              <img
+                                src={item.stories_media_url[0]}
+                                alt={item.stories_headlines}
+                                className="
+                                mx-auto
+                                h-24 
+                                w-40 rounded-md lg:h-36 lg:w-60"
+                                // quality={25}
+                                // layout="responsive"
+                                // width={80}
+                                // className="rounded-md"
+                                // height={40}
+                                // priority
+                                // loading="eager"
+                                // placeholder="blur"
+                                // blurDataURL={item.stories_media_url[0]}
+                              />
+                            ))}
+                          <svg
+                            className="
+                  text-red-500 absolute top-5 right-2 h-16 w-16 hover:scale-125 md:right-20 lg:top-1 lg:right-10"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            {' '}
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />{' '}
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                          </svg>
+                        </div>
+                        <div
+                          className="py-3 px-3 sm:mb-0 lg:mb-1 lg:h-20 lg:px-2
+                        lg:py-2
+                        "
+                        >
+                          <div
+                            className="
+                          my-3 mb-2 font-TSbold text-sm
+                          md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-11
+                          lg:text-base"
+                          >
+                            {item.stories_headlines}
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </section>
+                )
+              })}
+            </section>
+          </section>
+        </>
       </section>
     </React.Fragment>
   )

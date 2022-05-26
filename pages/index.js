@@ -84,6 +84,8 @@ const index = (props) => {
           <ImportantNews
             title={'أهم الأخبار'}
             important_news={props.all_news[0]}
+            color={'red-600'}
+            theme={'bg-red-500'}
           />
         </section>
         <section>
@@ -151,12 +153,9 @@ const index = (props) => {
         </section>
         <Video
           important_news={props.all_news[1]}
-          theme={'bg-gray-600'}
-          color={'gray-600'}
-          title={'مال و أعمال'}
-          description={
-            'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
-          }
+          title={'الفيديوهات'}
+          color={'yellow-400'}
+          theme={'bg-yellow-500'}
         />
         <div className="py-20"></div>
       </div>
