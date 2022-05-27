@@ -11,6 +11,8 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
+import YouTube from 'react-youtube'
+
 const Video = ({ title, important_news, color, theme }) => {
   SwiperCore.use([Autoplay])
 
@@ -78,15 +80,15 @@ const Video = ({ title, important_news, color, theme }) => {
                 <div className="relative max-w-full">
                   {/* {console.log(important_news_img)} */}
 
-                  <iframe
+                  <div className="relative h-56 w-full lg:h-96">
+                    <YouTube videoId="dQw4w9WgXcQ" />
+                  </div>
+                  {/* 
+                   <iframe
                     className="relative h-56 w-full lg:h-96"
                     src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                     frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen=""
                   ></iframe>
-
-                  {/* 
                   {important_news_img &&
                     (important_news_img.includes('youtube') ||
                     important_news_img.includes('youtu.be') ? (
@@ -166,13 +168,10 @@ const Video = ({ title, important_news, color, theme }) => {
                       </div>
                       <section className="flex lg:grid ">
                         <div className="relative mr-2 h-auto w-72 py-5 lg:mr-0 lg:h-auto lg:w-auto lg:py-0 ">
-                          <iframe
-                            className="mx-auto h-24 w-40 rounded-md lg:h-36 lg:w-60"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen=""
-                          ></iframe>
+                          <div className="mx-auto h-24 w-40 rounded-md lg:h-36 lg:w-60">
+                            <YouTube videoId="dQw4w9WgXcQ" />
+                          </div>
+
                           {/* {item.stories_media_url[0] &&
                             (item.stories_media_url[0].includes('youtube') ||
                             item.stories_media_url[0].includes('youtu.be') ? (
