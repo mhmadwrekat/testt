@@ -77,6 +77,16 @@ const Video = ({ title, important_news, color, theme }) => {
                 </div>
                 <div className="relative max-w-full">
                   {/* {console.log(important_news_img)} */}
+
+                  <iframe
+                    className="relative h-56 w-full lg:h-96"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen=""
+                  ></iframe>
+
+                  {/* 
                   {important_news_img &&
                     (important_news_img.includes('youtube') ||
                     important_news_img.includes('youtu.be') ? (
@@ -111,9 +121,9 @@ const Video = ({ title, important_news, color, theme }) => {
                         // placeholder="blur"
                         // blurDataURL={important_news_img}
                       />
-                    ))}
+                    ))} */}
 
-                  <svg
+                  {/* <svg
                     className="
                   text-red-500 absolute top-2 right-0 h-56 w-full hover:scale-125  lg:h-96"
                     viewBox="0 0 24 24"
@@ -126,7 +136,7 @@ const Video = ({ title, important_news, color, theme }) => {
                     {' '}
                     <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />{' '}
                     <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-                  </svg>
+                  </svg> */}
                 </div>
 
                 <div className="px-3 py-2">
@@ -156,7 +166,14 @@ const Video = ({ title, important_news, color, theme }) => {
                       </div>
                       <section className="flex lg:grid ">
                         <div className="relative mr-2 h-auto w-72 py-5 lg:mr-0 lg:h-auto lg:w-auto lg:py-0 ">
-                          {item.stories_media_url[0] &&
+                          <iframe
+                            className="mx-auto h-24 w-40 rounded-md lg:h-36 lg:w-60"
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen=""
+                          ></iframe>
+                          {/* {item.stories_media_url[0] &&
                             (item.stories_media_url[0].includes('youtube') ||
                             item.stories_media_url[0].includes('youtu.be') ? (
                               <img
@@ -211,7 +228,7 @@ const Video = ({ title, important_news, color, theme }) => {
                             {' '}
                             <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />{' '}
                             <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-                          </svg>
+                          </svg> */}
                         </div>
                         <div
                           className="py-3 px-3 sm:mb-0 lg:mb-1 lg:h-20 lg:px-2
