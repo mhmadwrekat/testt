@@ -2,19 +2,18 @@ import React from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
 // import Swiper core and required modules
-import { thumbsSwiper, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Autoplay } from 'swiper'
+// import { thumbsSwiper, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+// import { Swiper, SwiperSlide } from 'swiper/react'
+// import SwiperCore, { Autoplay } from 'swiper'
 // Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-fade'
-import 'swiper/css/scrollbar'
-import YouTube from 'react-youtube'
+// import 'swiper/css'
+// import 'swiper/css/navigation'
+// import 'swiper/css/pagination'
+// import 'swiper/css/effect-fade'
+// import 'swiper/css/scrollbar'
 
 const Video = ({ title, important_news, color, theme }) => {
-  SwiperCore.use([Autoplay])
+  // SwiperCore.use([Autoplay])
 
   const important_news_img =
     important_news?.important_data.stories_media_url.length > 0
@@ -79,10 +78,11 @@ const Video = ({ title, important_news, color, theme }) => {
                 </div>
                 <div className="relative max-w-full">
                   {/* {console.log(important_news_img)} */}
-
-                  <div className="relative h-56 w-full lg:h-96">
-                    <YouTube videoId="dQw4w9WgXcQ" />
-                  </div>
+                  <iframe
+                    className="relative h-56 w-full lg:h-96"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    // loading="lazy"
+                  ></iframe>
                   {/* 
                    <iframe
                     className="relative h-56 w-full lg:h-96"
@@ -168,9 +168,15 @@ const Video = ({ title, important_news, color, theme }) => {
                       </div>
                       <section className="flex lg:grid ">
                         <div className="relative mr-2 h-auto w-72 py-5 lg:mr-0 lg:h-auto lg:w-auto lg:py-0 ">
-                          <div className="mx-auto h-24 w-40 rounded-md lg:h-36 lg:w-60">
+                          <iframe
+                            className="mx-auto h-24 w-40 rounded-md lg:h-36 lg:w-60"
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                            // loading="lazy"
+                          ></iframe>
+
+                          {/* <div className="mx-auto h-24 w-40 rounded-md lg:h-36 lg:w-60">
                             <YouTube videoId="dQw4w9WgXcQ" />
-                          </div>
+                          </div> */}
 
                           {/* {item.stories_media_url[0] &&
                             (item.stories_media_url[0].includes('youtube') ||
