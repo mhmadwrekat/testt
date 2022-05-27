@@ -15,7 +15,7 @@ const ColoredSection = dynamic(() =>
   import('../components/appleStructrue/ColoredSection')
 )
 const Logaimat = dynamic(() => import('../components/appleStructrue/Logaimat'))
-// const Video = dynamic(() => import('../components/appleStructrue/Video'))
+const Video = dynamic(() => import('../components/appleStructrue/Video'))
 const Voice = dynamic(() => import('../components/appleStructrue/Voice'))
 
 // Get Server Side Function
@@ -151,13 +151,13 @@ const index = (props) => {
             description={'جميع ما هو جديد في ابحاث الصحه بين يديك'}
           />
         </section>
-        {/* <Video
+        <Video
           important_news={props.all_news[1]}
           title={'الفيديوهات'}
           color={'yellow-400'}
           theme={'bg-yellow-500'}
         />
-        <div className="py-20"></div> */}
+        <div className="py-20"></div>
       </div>
     </React.Fragment>
   )

@@ -81,7 +81,7 @@ const Video = ({ title, important_news, color, theme }) => {
                   <iframe
                     className="relative h-56 w-full lg:h-96"
                     src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                    // loading="lazy"
+                    loading="lazy"
                   ></iframe>
                   {/* 
                    <iframe
@@ -171,7 +171,7 @@ const Video = ({ title, important_news, color, theme }) => {
                           <iframe
                             className="mx-auto h-24 w-40 rounded-md lg:h-36 lg:w-60"
                             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                            // loading="lazy"
+                            loading="lazy"
                           ></iframe>
 
                           {/* <div className="mx-auto h-24 w-40 rounded-md lg:h-36 lg:w-60">
