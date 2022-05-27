@@ -151,12 +151,15 @@ const index = (props) => {
             description={'جميع ما هو جديد في ابحاث الصحه بين يديك'}
           />
         </section>
-        <Video
-          important_news={props.all_news[1]}
-          title={'الفيديوهات'}
-          color={'yellow-400'}
-          theme={'bg-yellow-500'}
-        />
+        <section className="to-gray-900 from-gray-500 bg-gradient-to-b  pt-1 pb-10">
+          <Video
+            important_news={props.all_news[1]}
+            title={'الفيديوهات'}
+            color={'yellow-400'}
+            theme={'bg-yellow-500'}
+            description={'أكثر ما تم مشاهدته في اللحظات السابقة'}
+          />
+        </section>
         <div className="py-20"></div>
       </div>
     </React.Fragment>
