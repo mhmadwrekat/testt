@@ -10,6 +10,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
+import { PlayIcon } from '@heroicons/react/outline'
 const Voice = ({ important_news, theme, title, description, color }) => {
   SwiperCore.use([Autoplay])
 
@@ -55,176 +56,84 @@ const Voice = ({ important_news, theme, title, description, color }) => {
   // mySwiper.reInit()
   // })
   // $(window).trigger('resize')
-
+  const play = (audio) => {
+    audio = new Audio(audio)
+    audio.pause()
+  }
   return (
     <React.Fragment>
-      <section></section>
-      {/* <link rel="stylesheet" href="./styles/global.css" /> */}
+      <section loading="lazy">
+        {/* <link rel="stylesheet" href="./styles/global.css" /> */}
 
-      <p className="py-8"></p>
-      <section className=" mx-auto w-11/12 rounded-lg pt-2 lg:w-9/12 lg:pt-2">
-        <h1 className=" m-4 pr-3 font-TSExtra text-xl lg:text-4xl">الصوتيات</h1>
-        <h2 className="border-gray-400 m-6 border-b-2 font-TSbold text-sm lg:text-lg ">
-          <p className=" hover-border-b-2 hover-scale-110 w-2/6 text-center lg:w-1/6">
-            الاكثر أستماعا
-          </p>
-        </h2>
-        {console.log(slides_per_view)}
-        {slides_per_view && (
-          <Swiper
-            // install Swiper modules
-            modules={[Pagination, Navigation, Scrollbar, A11y]}
-            slidesPerView={slides_per_view}
-            centeredSlides={true}
-            spaceBetween={space_between}
-            navigation={true}
-            // install Swiper modules
-            loop={true}
-            thumbs={{
-              swiper: thumbsSwiper,
-            }}
-            // autoplay={true}
-            // scrollbar={{
-            //   draggable: true,
-            //   dragSize: 'auto',
-            //   hide: true,
-            // }}
-            //    pagination={{
-            //   type: 'fraction',
-            // }}
-          >
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <ReactAudioPlayer
-                  className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                  src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                  controls
-                />{' '}
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        )}
+        <p className="py-8"></p>
+        <section className=" mx-auto w-11/12 rounded-lg pt-2 lg:w-9/12 lg:pt-2">
+          <h1 className=" m-4 pr-3 font-TSExtra text-xl lg:text-4xl">
+            الصوتيات
+          </h1>
+          <h2 className="border-gray-400 m-6 border-b-2 font-TSbold text-sm lg:text-lg ">
+            <p className=" hover-border-b-2 hover-scale-110 w-2/6 text-center lg:w-1/6">
+              الاكثر أستماعا
+            </p>
+          </h2>
+          {console.log(slides_per_view)}
+          {slides_per_view && (
+            <Swiper
+              // install Swiper modules
+              modules={[Pagination, Navigation, Scrollbar, A11y]}
+              slidesPerView={slides_per_view}
+              centeredSlides={true}
+              spaceBetween={space_between}
+              navigation={true}
+              // install Swiper modules
+              loop={true}
+              thumbs={{
+                swiper: thumbsSwiper,
+              }}
+              // autoplay={true}
+              // scrollbar={{
+              //   draggable: true,
+              //   dragSize: 'auto',
+              //   hide: true,
+              // }}
+              //    pagination={{
+              //   type: 'fraction',
+              // }}
+            >
+              <SwiperSlide>
+                <div className="my-5 lg:my-10">
+                  <img
+                    className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
+                    src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                  />
+                  <ReactAudioPlayer
+                    onPlay={() => {
+                      play('https://cdn1.esm3.com/music/4558/m299431.mp3')
+                    }}
+                    className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
+                    src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                    controls
+                  />{' '}
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="my-5 lg:my-10">
+                  <img
+                    className=" block h-28 w-36 rounded-t-xl shadow-2xl lg:h-44 lg:w-60"
+                    src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
+                  />
+                  <ReactAudioPlayer
+                    onPlay={() => {
+                      play('https://cdn1.esm3.com/music/4558/m299431.mp3')
+                    }}
+                    className="bg-gray-100 w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
+                    src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                    controls
+                  />{' '}
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          )}
+        </section>
       </section>
     </React.Fragment>
   )

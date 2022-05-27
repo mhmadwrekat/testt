@@ -70,7 +70,7 @@ const Video = ({ title, important_news, color, theme, description }) => {
           <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
             {description}
           </p>
-          <section className="grid grid-cols-1 gap-7 lg:grid-cols-2">
+          <section className="grid grid-cols-1 gap-4 lg:gap-7 lg:grid-cols-2">
             <section className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-2">
               {important_news.data.slice(0, 4).map((item) => {
                 return (
@@ -112,7 +112,7 @@ const Video = ({ title, important_news, color, theme, description }) => {
                 )
               })}
             </section>
-            <section className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-2">
+            <section className="grid grid-cols-1 gap-4 lg:gap-7 md:grid-cols-2 lg:grid-cols-2">
               {important_news.data.slice(0, 4).map((item) => {
                 return (
                   <section key={item._id}>
