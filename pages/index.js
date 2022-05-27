@@ -151,7 +151,7 @@ const index = (props) => {
             description={'جميع ما هو جديد في ابحاث الصحه بين يديك'}
           />
         </section>
-        <section className="to-gray-900 from-gray-500 bg-gradient-to-b  pt-1 pb-10">
+        <section className="to-gray-900 from-gray-700 bg-gradient-to-b  pt-1 pb-10">
           <Video
             important_news={props.all_news[1]}
             title={'الفيديوهات'}
