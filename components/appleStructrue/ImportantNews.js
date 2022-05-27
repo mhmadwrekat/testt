@@ -52,6 +52,7 @@ const TopStories = ({ title, important_news, color, theme }) => {
                     (important_news_img.includes('youtube') ||
                     important_news_img.includes('youtu.be') ? (
                       <img
+                        loading="eager"
                         src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                           important_news_img
                         )}/0.jpg`}
@@ -70,6 +71,7 @@ const TopStories = ({ title, important_news, color, theme }) => {
                       />
                     ) : (
                       <img
+                        loading="eager"
                         src={important_news_img}
                         alt={important_news.important_data.stories_headlines}
                         className=" h-56 w-full lg:h-96"
@@ -84,8 +86,6 @@ const TopStories = ({ title, important_news, color, theme }) => {
                       />
                     ))}
                 </div>
-
-           
 
                 <div className="px-3 py-2">
                   <div className="mb-2 font-TSExtra text-xl">
@@ -141,6 +141,7 @@ const TopStories = ({ title, important_news, color, theme }) => {
                             (item.stories_media_url[0].includes('youtube') ||
                             item.stories_media_url[0].includes('youtu.be') ? (
                               <img
+                                loading="eager"
                                 src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                   item.stories_media_url[0]
                                 )}/0.jpg`}
@@ -162,6 +163,7 @@ const TopStories = ({ title, important_news, color, theme }) => {
                               />
                             ) : (
                               <img
+                                loading="eager"
                                 src={item.stories_media_url[0]}
                                 alt={item.stories_headlines}
                                 className="
