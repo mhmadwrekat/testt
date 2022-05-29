@@ -1,63 +1,6 @@
 import React from 'react'
-import moment from 'moment'
-import 'moment/locale/ar'
-// import Swiper core and required modules
-// import { thumbsSwiper, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
-// import { Swiper, SwiperSlide } from 'swiper/react'
-// import SwiperCore, { Autoplay } from 'swiper'
-// Import Swiper styles
-// import 'swiper/css'
-// import 'swiper/css/navigation'
-// import 'swiper/css/pagination'
-// import 'swiper/css/effect-fade'
-// import 'swiper/css/scrollbar'
 
 const Video = ({ title, important_news, color, theme, description }) => {
-  // SwiperCore.use([Autoplay])
-
-  const important_news_img =
-    important_news?.important_data.stories_media_url.length > 0
-      ? important_news.important_data.stories_media_url[0]
-      : null
-
-  // function to return the youtube code to show the thumbnail
-  function retrieve_youtube_code(link) {
-    let code = ''
-    // check for watch videos
-    if (link.includes('watch/')) {
-      code = link.split('watch/')[1]
-      return code
-    } else if (link.includes('watch?')) {
-      // check for regular youtube videos
-      code = link.split('watch?')[1]
-      const youtube_code_for_thumbnail = code?.split('v=')[1]
-      return youtube_code_for_thumbnail?.split('&')[0]
-    }
-    // (link.includes('youtu.be'))
-    else {
-      // check for Link without watch
-      code = link.split('youtu.be/')[1]
-      return code
-    }
-  }
-  let window_width = 0
-  if (typeof window !== 'undefined') {
-    window_width = window.innerWidth
-  }
-  let slides_per_view = 0
-  let space_between = 0
-  window_width > 800
-    ? ((slides_per_view = 5), (space_between = 15))
-    : ((slides_per_view = 2), (space_between = 1))
-  //(function(){
-  //  var ww = $(window).width()
-  //  if (ww>1000) mySwiper.params.slidesPerView = 5;
-  //  if (ww>468 && ww<=1000) mySwiper.params.slidesPerView = 3;
-  //  if (ww<=468) mySwiper.params.slidesPerView = 1;
-  // mySwiper.reInit()
-  // })
-  // $(window).trigger('resize')
-
   return (
     <React.Fragment>
       <section className="text-white mx-auto w-11/12 lg:w-9/12" loading="lazy">
@@ -65,7 +8,7 @@ const Video = ({ title, important_news, color, theme, description }) => {
           <h1
             className={`text-${color} mt-10 font-TSExtra text-3xl lg:mt-12 lg:text-4xl`}
           >
-            {title}{' '}
+            {title}
           </h1>
           <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
             {description}
@@ -82,14 +25,12 @@ const Video = ({ title, important_news, color, theme, description }) => {
                   ></div>
                 </div>
                 <div className=" max-w-full">
-                  {/* {console.log(important_news_img)} */}
                   <iframe
                     className=" h-56 w-full lg:h-96"
                     src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                     loading="lazy"
                   ></iframe>
                 </div>
-
                 <div className="px-3 py-2">
                   <div className="my-2 font-TSExtra text-xl lg:h-28 lg:text-2xl">
                     {important_news.important_data.stories_headlines}
@@ -118,17 +59,8 @@ const Video = ({ title, important_news, color, theme, description }) => {
                             loading="lazy"
                           ></iframe>
                         </div>
-                        <div
-                          className="py-3 px-3 sm:mb-0 lg:mb-1 lg:h-20 lg:px-2
-                        lg:py-2
-                        "
-                        >
-                          <div
-                            className="
-                          my-3 mb-2 font-TSbold text-sm
-                          md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-11
-                          lg:text-base"
-                          >
+                        <div className="py-3 px-3 sm:mb-0 lg:mb-1 lg:h-20 lg:px-2 lg:py-2">
+                          <div className="my-3 mb-2 font-TSbold text-sm md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-11 lg:text-base">
                             {item.stories_headlines}
                           </div>
                         </div>

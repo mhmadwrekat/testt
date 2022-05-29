@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from 'uuid'
 import axios from 'axios'
 import { BASE_URL } from '../config/config'
 //import * as gtag from '../lib/gtag'
+// Themes
+import { ThemeProvider } from 'next-themes'
 
 //import {TagManager} from 'react-gtm-module';
 //function MyApp({ Component, pageProps }) {
@@ -63,7 +65,11 @@ const App = ({ Component, pageProps }) => {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider defaultTheme="system">
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }
 export default App
 
