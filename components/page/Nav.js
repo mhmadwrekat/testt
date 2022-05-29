@@ -43,19 +43,19 @@ const Nav = () => {
             🌙
           </button>
         </div>
-        <section id="logoFooter" className="text-LogoPurp">
-          <div className="float-right my-5 ml-2 hidden font-TSmedium lg:mt-7 lg:flex">
-            <buttons className="my-auto ml-10 text-xl lg:cursor-pointer lg:hover:scale-125">
-              الأخبار
-            </buttons>
-            <button className="my-auto ml-10 text-xl lg:cursor-pointer lg:hover:scale-125">
-              المدونة
-            </button>
-            <button className="my-auto ml-10 text-xl lg:cursor-pointer lg:hover:scale-125">
-              الرئيسية
-            </button>
-          </div>
-        </section>
+        {/* <section id="logoFooter" className="text-LogoPurp"> */}
+        <div className="float-right my-5 ml-2 hidden font-TSmedium text-LogoPurp lg:mt-7 lg:flex ">
+          <buttons className="my-auto ml-10 text-xl lg:cursor-pointer lg:hover:scale-125">
+            الأخبار
+          </buttons>
+          <button className="my-auto ml-10 text-xl lg:cursor-pointer lg:hover:scale-125">
+            المدونة
+          </button>
+          <button className="my-auto ml-10 text-xl lg:cursor-pointer lg:hover:scale-125">
+            الرئيسية
+          </button>
+        </div>
+        {/* </section> */}
       </section>
 
       {/* <div className="w-6/6 border-gray-500 mx-4 border-b-2 pt-1 opacity-50 lg:mx-28"></div> */}

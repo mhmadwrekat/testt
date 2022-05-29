@@ -73,7 +73,7 @@ if (typeof window !== 'undefined') {
   //Toggle mode
   const toggle = document.querySelector('.js-change-theme')
   const project_body = document.getElementById('project_body')
-  const logoFooter = document.getElementById('logoFooter')
+  // const logoFooter = document.getElementById('logoFooter')
   toggle.addEventListener('click', () => {
     if (project_body.classList.contains('text-white')) {
       toggle.innerHTML = '🌙'
@@ -81,16 +81,16 @@ if (typeof window !== 'undefined') {
       project_body.classList.remove('text-white')
       project_body.classList.add('bg-white')
       project_body.classList.add('text-black')
-      logoFooter.classList.remove('text-white')
-      logoFooter.classList.add('text-LogoPurp')
+      // logoFooter.classList.remove('text-white')
+      // logoFooter.classList.add('text-LogoPurp')
     } else {
       toggle.innerHTML = '☀️'
       project_body.classList.remove('bg-white')
       project_body.classList.remove('text-black')
       project_body.classList.add('bg-gray-900')
       project_body.classList.add('text-white')
-      logoFooter.classList.remove('text-LogoPurp')
-      logoFooter.classList.add('text-white')
+      // logoFooter.classList.remove('text-LogoPurp')
+      // logoFooter.classList.add('text-white')
     }
   })
 }
