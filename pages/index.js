@@ -51,26 +51,6 @@ export async function getServerSideProps({ req, res }) {
   }
 }
 
-//   //Toggle mode
-//   const toggle = document.querySelector('.js-change-theme')
-//   const project_body = document.getElementById('project_body')
-//   toggle.addEventListener('click', () => {
-//     if (darkThemeMq.matches === true) {
-//       toggle.innerHTML = '🌙'
-//       // project_body.classList.remove('bg-gray-900')
-//       // project_body.classList.remove('text-white')
-//       project_body.classList.add('bg-gray-900')
-//       project_body.classList.add('text-white')
-//     } else {
-//       toggle.innerHTML = '☀️'
-//       project_body.classList.remove('bg-white')
-//       project_body.classList.remove('text-black')
-//       project_body.classList.add('bg-gray-900')
-//       project_body.classList.add('text-white')
-//     }
-//   })
-// }
-
 // // Dark & Light Mode
 // if (typeof window !== 'undefined') {
 //   darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -88,6 +68,28 @@ export async function getServerSideProps({ req, res }) {
 //   }
 // }
 
+// Dark & Light Mode
+if (typeof window !== 'undefined') {
+  //Toggle mode
+  const toggle = document.querySelector('.js-change-theme')
+  const project_body = document.getElementById('project_body')
+  toggle.addEventListener('click', () => {
+    if (project_body.classList.contains('text-white')) {
+      toggle.innerHTML = '🌙'
+      project_body.classList.remove('bg-gray-900')
+      project_body.classList.remove('text-white')
+      project_body.classList.add('bg-white')
+      project_body.classList.add('text-black')
+    } else {
+      toggle.innerHTML = '☀️'
+      project_body.classList.remove('bg-white')
+      project_body.classList.remove('text-black')
+      project_body.classList.add('bg-gray-900')
+      project_body.classList.add('text-white')
+    }
+  })
+}
+
 const index = (props) => {
   return (
     <React.Fragment>
@@ -95,7 +97,7 @@ const index = (props) => {
       <HeadComp />
 
       {/* <div dir="rtl"> */}
-      <div dir="rtl" id="project_body">
+      <div dir="rtl" id="project_body" className="text-white">
         <Nav />
         <section className="pb-10">
           <ImportantNews
