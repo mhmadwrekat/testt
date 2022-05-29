@@ -51,28 +51,44 @@ export async function getServerSideProps({ req, res }) {
   }
 }
 
+//   //Toggle mode
+//   const toggle = document.querySelector('.js-change-theme')
+//   const project_body = document.getElementById('project_body')
+//   toggle.addEventListener('click', () => {
+//     if (darkThemeMq.matches === true) {
+//       toggle.innerHTML = '🌙'
+//       // project_body.classList.remove('bg-gray-900')
+//       // project_body.classList.remove('text-white')
+//       project_body.classList.add('bg-gray-900')
+//       project_body.classList.add('text-white')
+//     } else {
+//       toggle.innerHTML = '☀️'
+//       project_body.classList.remove('bg-white')
+//       project_body.classList.remove('text-black')
+//       project_body.classList.add('bg-gray-900')
+//       project_body.classList.add('text-white')
+//     }
+//   })
+// }
+
+let backGround = ''
+let textColor = ''
+
 // Dark & Light Mode
 if (typeof window !== 'undefined') {
-  console.log(window.matchMedia('(prefers-color-scheme: light)'))
+  const darkThemeMq = window.matchMedia('(prefers-color-scheme: light)')
 
-  //Toggle mode
-  const toggle = document.querySelector('.js-change-theme')
-  const project_body = document.getElementById('project_body')
-  toggle.addEventListener('click', () => {
-    if (window.matchMedia('(prefers-color-scheme: light)') == true) {
-      toggle.innerHTML = '🌙'
-      project_body.classList.remove('bg-gray-900')
-      project_body.classList.remove('text-white')
-      project_body.classList.add('bg-white')
-      project_body.classList.add('text-black')
-    } else {
-      toggle.innerHTML = '☀️'
-      project_body.classList.remove('bg-white')
-      project_body.classList.remove('text-black')
-      project_body.classList.add('bg-gray-900')
-      project_body.classList.add('text-white')
-    }
-  })
+  if (darkThemeMq.matches) {
+    // Theme set to dark.
+    console.log('FALSE')
+    backGround = 'bg-white'
+    textColor = 'black'
+  } else {
+    // Theme set to light.
+    console.log('TRUE')
+    backGround = 'bg-gray-900'
+    textColor = 'white'
+  }
 }
 
 const index = (props) => {
@@ -81,10 +97,11 @@ const index = (props) => {
       {/* {console.log(props.country, props.country_code)} */}
       <HeadComp />
       {/* <div dir="rtl"> */}
+
       <div
         dir="rtl"
         id="project_body"
-        className="bg-white text-black dark:text-white dark:bg-black"
+        className={`bg-white text-black dark:bg-gray-900 dark:text-white`}
       >
         <Nav />
         <section className="pb-10">
