@@ -45,12 +45,18 @@
     background: #ffffff;
     color: #111827;
   }
+  #logo_footer {
+    color: #453087;
+  }
 }
 /* dark mode */
 @media (prefers-color-scheme: dark) {
   body {
     background: #111827;
     color: rgb(255, 255, 255);
+  }
+  #logo_footer {
+    color: white;
   }
 }
 

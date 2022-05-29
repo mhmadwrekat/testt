@@ -73,19 +73,24 @@ if (typeof window !== 'undefined') {
   //Toggle mode
   const toggle = document.querySelector('.js-change-theme')
   const project_body = document.getElementById('project_body')
+  const logo_footer = document.getElementById('logo_footer')
   toggle.addEventListener('click', () => {
     if (project_body.classList.contains('text-white')) {
       toggle.innerHTML = '🌙'
       project_body.classList.remove('bg-gray-900')
       project_body.classList.remove('text-white')
+      logo_footer.classList.remove('text-LogoPurp')
       project_body.classList.add('bg-white')
       project_body.classList.add('text-black')
+      logo_footer.classList.add('text-white')
     } else {
       toggle.innerHTML = '☀️'
+      logo_footer.classList.remove('text-white')
       project_body.classList.remove('bg-white')
       project_body.classList.remove('text-black')
       project_body.classList.add('bg-gray-900')
       project_body.classList.add('text-white')
+      logo_footer.classList.add('text-LogoPurp')
     }
   })
 }
@@ -97,7 +102,8 @@ const index = (props) => {
       <HeadComp />
 
       {/* <div dir="rtl"> */}
-      <div dir="rtl" id="project_body" className="text-black bg-white">
+      {/* <div dir="rtl" id="project_body" className="text-black bg-white"> */}
+      <div dir="rtl" id="project_body">
         <Nav />
         <section className="pb-10">
           <ImportantNews

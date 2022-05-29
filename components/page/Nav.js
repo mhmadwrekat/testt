@@ -47,7 +47,10 @@ const Nav = () => {
             🌙
           </button>
         </div>
-        <div className="float-right my-5 ml-2 hidden font-TSmedium text-LogoPurp lg:mt-7 lg:flex">
+        <div
+          id="logo_footer"
+          className="float-right my-5 ml-2 hidden font-TSmedium text-LogoPurp lg:mt-7 lg:flex"
+        >
           <buttons className="my-auto ml-10 text-xl lg:cursor-pointer lg:hover:scale-125">
             الأخبار
           </buttons>
