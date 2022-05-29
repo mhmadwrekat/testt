@@ -94,7 +94,7 @@ const index = (props) => {
       {/* {console.log(props.country, props.country_code)} */}
       <HeadComp />
       {/* <div dir="rtl"> */}
-      <div dir="rtl" id="project_body" className="dark:bg-gray-700">
+      <div dir="rtl" id="project_body" className="dark">
         <Nav />
         <section className="pb-10">
           <ImportantNews
