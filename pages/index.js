@@ -80,12 +80,12 @@ if (typeof window !== 'undefined') {
 
   if (darkThemeMq.matches) {
     // Theme set to dark.
-    console.log('FALSE')
+    console.log('LIGHT')
     backGround = 'bg-white'
     textColor = 'black'
   } else {
     // Theme set to light.
-    console.log('TRUE')
+    console.log('DARK')
     backGround = 'bg-gray-900'
     textColor = 'white'
   }
@@ -101,7 +101,7 @@ const index = (props) => {
       <div
         dir="rtl"
         id="project_body"
-        className={`bg-white text-black dark:bg-gray-900 dark:text-white`}
+        className="dark bg-gray-900 text-white dark:bg-white dark:text-black"
       >
         <Nav />
         <section className="pb-10">
