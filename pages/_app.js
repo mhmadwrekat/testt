@@ -66,7 +66,7 @@ const App = ({ Component, pageProps }) => {
   }, [router.events])
 
   return (
-    <ThemeProvider defaultTheme="system">
+    <ThemeProvider defaultTheme="system" attribute="class">
       <Component {...pageProps} />
     </ThemeProvider>
   )
