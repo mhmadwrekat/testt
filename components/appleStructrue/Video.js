@@ -27,7 +27,7 @@ const Video = ({ title, important_news, color, theme, description }) => {
                 <div className=" max-w-full">
                   <iframe
                     className=" h-56 w-full lg:h-96"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    src="https://www.youtube.com/embed/ffHUYQ2Te0c"
                     loading="lazy"
                   ></iframe>
                 </div>

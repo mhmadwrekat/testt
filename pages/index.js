@@ -132,7 +132,7 @@ const index = (props) => {
             title={' يدور حولك'}
             description={'قصص رائعة من حولك'}
           />
-          <Voice
+          {/* <Voice
             important_news={props.all_news[1]}
             theme={'bg-gray-600'}
             color={'gray-600'}
@@ -140,7 +140,7 @@ const index = (props) => {
             description={
               'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
             }
-          />
+          /> */}
 
           <ColoredSection
             important_news={props.all_news[3]}

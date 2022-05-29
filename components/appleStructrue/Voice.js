@@ -46,8 +46,8 @@ const Voice = ({ important_news, theme, title, description, color }) => {
   let slides_per_view = 0
   let space_between = 0
   window_width > 800
-    ? ((slides_per_view = 1), (space_between = 15))
-    : ((slides_per_view = 1), (space_between = 15))
+    ? ((slides_per_view = 4), (space_between = 15))
+    : ((slides_per_view = 4), (space_between = 15))
   /**
 let space_between = 0
   window_width > 800
@@ -77,20 +77,19 @@ let space_between = 0
 
           {console.log(slides_per_view)}
 
-          <section className="mx-auto w-3/6">
+          <section className="w-6/6 mx-auto">
             {slides_per_view && (
               <Swiper
                 // install Swiper modules
-                modules={[Pagination, Navigation, Scrollbar, A11y]}
+                modules={[Navigation]}
                 slidesPerView={slides_per_view}
-                centeredSlides={true}
-                spaceBetween={space_between}
+                spaceBetween={30}
                 navigation={true}
                 // install Swiper modules
-                loop={true}
-                thumbs={{
-                  swiper: thumbsSwiper,
-                }}
+                // loop={true}
+                // thumbs={{
+                //   swiper: thumbsSwiper,
+                // }}
                 // autoplay={true}
                 // scrollbar={{
                 //   draggable: true,
@@ -101,60 +100,6 @@ let space_between = 0
                 //   type: 'fraction',
                 // }}
               >
-                <SwiperSlide>
-                  <div className="my-5 mx-auto lg:my-10" loading="lazy">
-                    <img
-                      className="mx-auto block h-28 w-36 rounded-t-xl shadow-2xl lg:h-72 lg:w-72"
-                      src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                      loading="lazy"
-                    />
-                    <ReactAudioPlayer
-                      onPlay={() => {
-                        play('https://cdn1.esm3.com/music/4558/m299431.mp3')
-                      }}
-                      className="bg-gray-100 mx-auto w-36 rounded-b-xl font-TSbold text-xs lg:w-72 lg:text-base"
-                      src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                      loading="lazy"
-                      controls
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="my-5 mx-auto lg:my-10" loading="lazy">
-                    <img
-                      className="mx-auto block h-28 w-36 rounded-t-xl shadow-2xl lg:h-72 lg:w-72"
-                      src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                      loading="lazy"
-                    />
-                    <ReactAudioPlayer
-                      onPlay={() => {
-                        play('https://cdn1.esm3.com/music/4558/m299431.mp3')
-                      }}
-                      className="bg-gray-100 mx-auto w-36 rounded-b-xl font-TSbold text-xs lg:w-72 lg:text-base"
-                      src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                      loading="lazy"
-                      controls
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="my-5 mx-auto lg:my-10" loading="lazy">
-                    <img
-                      className="mx-auto block h-28 w-36 rounded-t-xl shadow-2xl lg:h-72 lg:w-72"
-                      src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                      loading="lazy"
-                    />
-                    <ReactAudioPlayer
-                      onPlay={() => {
-                        play('https://cdn1.esm3.com/music/4558/m299431.mp3')
-                      }}
-                      className="bg-gray-100 mx-auto w-36 rounded-b-xl font-TSbold text-xs lg:w-72 lg:text-base"
-                      src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                      loading="lazy"
-                      controls
-                    />
-                  </div>
-                </SwiperSlide>
                 <SwiperSlide>
                   <div className="my-5 mx-auto lg:my-10" loading="lazy">
                     <img
