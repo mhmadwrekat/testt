@@ -97,17 +97,15 @@ const index = (props) => {
       {/* {console.log(props.country, props.country_code)} */}
       <HeadComp />
       {/* <div dir="rtl"> */}
+
       {typeof window !== 'undefined' &&
       window.matchMedia('(prefers-color-scheme: light)') ? (
         <h1>LIGHT</h1>
       ) : (
         <h1>Dark</h1>
       )}
-      <div
-        dir="rtl"
-        id="project_body"
-        className="dark bg-white text-black dark:bg-gray-900 dark:text-white"
-      >
+
+      <div dir="rtl" id="project_body">
         <Nav />
         <section className="pb-10">
           <ImportantNews
