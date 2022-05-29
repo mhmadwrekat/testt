@@ -146,7 +146,7 @@ const index = (props) => {
           />
         </section>
         <div className="py-4"></div>
-        <section className="to-gray-900 from-gray-700 bg-gradient-to-b  pt-1 pb-10">
+        <section className="to-gray-800 from-gray-600 bg-gradient-to-b  pt-1 pb-10">
           <Video
             important_news={props.all_news[1]}
             title={'الفيديوهات'}
