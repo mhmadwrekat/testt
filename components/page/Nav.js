@@ -39,13 +39,13 @@ const Nav = () => {
         </div> */}
 
         <div className="float-right my-5 mr-4 flex md:mr-20 lg:mr-24">
-          <button
+          {/* <button
             className="js-change-theme text-3xl
           focus:outline-none
           "
           >
             🌙
-          </button>
+          </button> */}
         </div>
         <div className="float-right my-5 ml-2 hidden font-TSmedium lg:mt-7 lg:flex">
           <buttons className="text-purple-900 my-auto ml-10 text-xl lg:cursor-pointer lg:hover:scale-125">

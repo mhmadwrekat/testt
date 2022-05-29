@@ -71,25 +71,22 @@ export async function getServerSideProps({ req, res }) {
 //   })
 // }
 
-let backGround = ''
-let textColor = ''
+// // Dark & Light Mode
+// if (typeof window !== 'undefined') {
+//   const darkThemeMq = window.matchMedia('(prefers-color-scheme: light)')
 
-// Dark & Light Mode
-if (typeof window !== 'undefined') {
-  const darkThemeMq = window.matchMedia('(prefers-color-scheme: light)')
-
-  if (darkThemeMq.matches) {
-    // Theme set to dark.
-    console.log('LIGHT')
-    backGround = 'bg-white'
-    textColor = 'black'
-  } else {
-    // Theme set to light.
-    console.log('DARK')
-    backGround = 'bg-gray-900'
-    textColor = 'white'
-  }
-}
+//   if (darkThemeMq.matches) {
+//     // Theme set to dark.
+//     console.log('LIGHT')
+//     backGround = 'bg-white'
+//     textColor = 'black'
+//   } else {
+//     // Theme set to light.
+//     console.log('DARK')
+//     backGround = 'bg-gray-900'
+//     textColor = 'white'
+//   }
+// }
 
 const index = (props) => {
   return (
@@ -97,15 +94,7 @@ const index = (props) => {
       {/* {console.log(props.country, props.country_code)} */}
       <HeadComp />
       {/* <div dir="rtl"> */}
-
-      {typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-color-scheme: light)') ? (
-        <h1>LIGHT</h1>
-      ) : (
-        <h1>Dark</h1>
-      )}
-
-      <div dir="rtl" id="project_body">
+      <div dir="rtl" id="project_body" className="dark:bg-gray-700">
         <Nav />
         <section className="pb-10">
           <ImportantNews
@@ -194,3 +183,13 @@ const index = (props) => {
   )
 }
 export default index
+
+/*
+
+      {typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-color-scheme: light)') ? (
+        <h1>LIGHT</h1>
+      ) : (
+        <h1>Dark</h1>
+      )}
+*/
