@@ -60,7 +60,7 @@ const Video = ({ title, important_news, color, theme, description }) => {
 
   return (
     <React.Fragment>
-      <section className="text-white mx-auto w-11/12 lg:w-9/12">
+      <section className="text-white mx-auto w-11/12 lg:w-9/12" loading="lazy">
         <>
           <h1
             className={`text-${color} mt-10 font-TSExtra text-3xl lg:mt-12 lg:text-4xl`}
