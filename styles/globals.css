@@ -39,14 +39,14 @@
     font-display: swap;
   }
 }
-
+/* light mode */
 @media (prefers-color-scheme: light) {
   body {
-    background: rgb(255, 255, 255);
+    background: #111827;
     color: rgb(0, 0, 0);
   }
 }
-
+/* dark mode */
 @media (prefers-color-scheme: dark) {
   body {
     background: #333;

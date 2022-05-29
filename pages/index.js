@@ -71,7 +71,6 @@ export async function getServerSideProps({ req, res }) {
 //   })
 // }
 
-let darkThemeMq = 'saaaaaaaaaaa'
 // // Dark & Light Mode
 // if (typeof window !== 'undefined') {
 //   darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -96,7 +95,7 @@ const index = (props) => {
       <HeadComp />
 
       {/* <div dir="rtl"> */}
-      <div dir="rtl" id="project_body" className="dark">
+      <div dir="rtl" id="project_body">
         <Nav />
         <section className="pb-10">
           <ImportantNews
