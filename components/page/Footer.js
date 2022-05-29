@@ -136,7 +136,7 @@ const Footer = () => {
         <label className="text-xs"> Privacy Policy</label>
         <span className="mx-14" />
         <label className="text-xs"> Terms of Service</label> */}
-          <div className="mx-auto mt-1 py-5 font-TSmedium text-sm">
+          <div className="mt-1 mr-7 py-5 text-center font-TSmedium text-sm lg:mr-10">
             Copyright &#169; {new Date().getFullYear()}{' '}
             <b className="px-1">|</b> Alzubda App
           </div>
