@@ -53,11 +53,13 @@ export async function getServerSideProps({ req, res }) {
 
 // Dark & Light Mode
 if (typeof window !== 'undefined') {
+  console.log(window.matchMedia('(prefers-color-scheme: light)'))
+
   //Toggle mode
   const toggle = document.querySelector('.js-change-theme')
   const project_body = document.getElementById('project_body')
   toggle.addEventListener('click', () => {
-    if (project_body.classList.contains('text-white')) {
+    if (window.matchMedia('(prefers-color-scheme: light)') == true) {
       toggle.innerHTML = '🌙'
       project_body.classList.remove('bg-gray-900')
       project_body.classList.remove('text-white')
