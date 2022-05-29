@@ -42,14 +42,14 @@
 /* light mode */
 @media (prefers-color-scheme: light) {
   body {
-    background: #111827;
+    background: #ffffff;
     color: rgb(0, 0, 0);
   }
 }
 /* dark mode */
 @media (prefers-color-scheme: dark) {
   body {
-    background: #333;
+    background: #111827;
     color: rgb(255, 255, 255);
   }
 }
