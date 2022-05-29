@@ -78,8 +78,12 @@ const index = (props) => {
     <React.Fragment>
       {/* {console.log(props.country, props.country_code)} */}
       <HeadComp />
-      <div dir="rtl">
-        {/* <div dir="rtl" id="project_body" className="bg-white text-black"> */}
+      {/* <div dir="rtl"> */}
+      <div
+        dir="rtl"
+        id="project_body"
+        className="bg-white text-black dark:text-white dark:bg-black"
+      >
         <Nav />
         <section className="pb-10">
           <ImportantNews
