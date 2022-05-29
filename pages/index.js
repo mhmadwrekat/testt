@@ -5,7 +5,7 @@ import { BASE_URL } from '../config/config'
 // page Component
 import HeadComp from '../components/page/HeadComp'
 import Nav from '../components/page/Nav'
-
+import Footer from '../components/page/Footer'
 // Apple View component
 const ImportantNews = dynamic(() =>
   import('../components/appleStructrue/ImportantNews')
@@ -144,13 +144,8 @@ const index = (props) => {
             title={' أخبار الرياضه'}
             description={'جميع ما يخص عالم الرياضه'}
           />
-          <ForYou
-            for_you={props.all_news[2]}
-            color={'pink-700'}
-            title={'الصحه'}
-            description={'جميع ما هو جديد في ابحاث الصحه بين يديك'}
-          />
         </section>
+        <div className="py-4"></div>
         <section className="to-gray-900 from-gray-700 bg-gradient-to-b  pt-1 pb-10">
           <Video
             important_news={props.all_news[1]}
@@ -160,10 +155,15 @@ const index = (props) => {
             description={'أكثر ما تم مشاهدته في اللحظات السابقة'}
           />
         </section>
-        <div className="py-20"></div>
+        <ForYou
+          for_you={props.all_news[2]}
+          color={'pink-700'}
+          title={'الصحه'}
+          description={'جميع ما هو جديد في ابحاث الصحه بين يديك'}
+        />
+        <Footer />
       </div>
     </React.Fragment>
   )
 }
-
 export default index

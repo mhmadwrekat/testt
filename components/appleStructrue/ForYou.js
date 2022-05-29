@@ -47,11 +47,11 @@ const ForYou = ({ for_you, title, description, color }) => {
                   (for_you_img.includes('youtube') ||
                   for_you_img.includes('youtu.be') ? (
                     <img
-                      src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                      src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                         for_you_img
                       )}/0.jpg`}
                       alt={for_you.important_data.stories_headlines}
-                      className="h-56 w-full rounded-lg lg:h-full"
+                      className="h-56 w-full rounded-lg lg:h-96"
                       // layout="responsive"
                       // width={300}
                       // quality={50}
@@ -67,7 +67,7 @@ const ForYou = ({ for_you, title, description, color }) => {
                     <img
                       src={for_you_img}
                       alt={for_you.important_data.stories_headlines}
-                      className="h-56 w-full rounded-lg lg:h-full"
+                      className="h-56 w-full rounded-lg lg:h-96"
                       // layout="responsive"
                       // quality={50}
                       // width={300}
@@ -113,7 +113,7 @@ const ForYou = ({ for_you, title, description, color }) => {
                             item.stories_media_url[0]
                           )}/0.jpg`}
                           alt={item.stories_headlines}
-                          className="h-36 w-full rounded-md lg:h-44"
+                          className="h-36 w-96 rounded-md lg:h-40"
                           // quality={25}
                           // layout="responsive"
                           // width={100}
@@ -129,7 +129,7 @@ const ForYou = ({ for_you, title, description, color }) => {
                         <img
                           src={item.stories_media_url[0]}
                           alt={item.stories_headlines}
-                          className="h-36 w-full rounded-md lg:h-44"
+                          className="h-36 w-96 rounded-md lg:h-40"
 
                           // quality={25}
                           // layout="responsive"

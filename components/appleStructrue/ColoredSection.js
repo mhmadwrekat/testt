@@ -107,7 +107,10 @@ const ColoredSection = ({
           <section className="mx-auto grid grid-cols-1 gap-6">
             {important_news.data.slice(0, 3).map((item) => {
               return (
-                <section className={`${theme} to-white grid rounded-lg`}>
+                <section
+                  className={`${theme} to-white grid rounded-lg`}
+                  key={item._id}
+                >
                   <div className={` flex `}>
                     <div className="grid h-10 w-full">
                       <h3
