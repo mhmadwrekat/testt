@@ -39,16 +39,21 @@
     font-display: swap;
   }
 }
-:root {
-  /* Your default theme */
-  --background: white;
-  --foreground: black;
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  }
 }
 
-[data-theme='dark'] {
-  --background: black;
-  --foreground: white;
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #333;
+    color: rgb(255, 255, 255);
+  }
 }
+
 /* 
 ::-webkit-scrollbar {
   width: 20px;
