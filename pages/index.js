@@ -97,7 +97,7 @@ const index = (props) => {
       <HeadComp />
 
       {/* <div dir="rtl"> */}
-      <div dir="rtl" id="project_body" className="text-white">
+      <div dir="rtl" id="project_body" className="text-black">
         <Nav />
         <section className="pb-10">
           <ImportantNews

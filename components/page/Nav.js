@@ -9,9 +9,9 @@ const Nav = () => {
 
   return (
     <React.Fragment>
-      <section className=" border-gray-400 mx-4 flex justify-between border-b-2 lg:mx-28">
+      <section className="border-gray-400 mx-4 flex justify-between border-b-2 lg:mx-28">
         <div>
-          <div className="text-white mt-4 mr-6 lg:mt-4 lg:mr-16">
+          <div className=" mt-4 mr-6 lg:mt-4 lg:mr-16">
             <svg
               width="61"
               height="28"
