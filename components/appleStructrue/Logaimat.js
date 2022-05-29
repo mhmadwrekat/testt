@@ -61,29 +61,30 @@ const Logaimat = ({ important_news, theme, title, description, color }) => {
       <section></section>
 
       <p className="py-8"></p>
-      <section className="to-green-700 from-green-500 mx-auto w-11/12 rounded-lg bg-gradient-to-b pt-2 lg:w-9/12 lg:pt-2">
-        <h1 className="text-white mx-4 mt-4 pr-3 font-TSExtra text-xl lg:text-4xl">
+      <section className=" mx-auto w-11/12 rounded-lg pt-2 lg:w-9/12 lg:pt-2">
+        <h1 className=" mx-4 mt-4 pr-3 font-TSExtra text-xl lg:text-4xl">
           لقيمات
         </h1>
         <h2 className="border-gray-400 mx-6 mt-1 border-b-2 font-TSbold text-sm lg:text-lg ">
-          <p className="text-gray-200 hover-border-b-2 hover-scale-110 ">
+          <p className="text-gray-500 hover-border-b-2 hover-scale-110 ">
             محتوى خفيف سهل الهضم
           </p>
         </h2>
-        {console.log(slides_per_view)}
+        {/* {console.log(slides_per_view)} */}
         {slides_per_view && (
           <Swiper
             // install Swiper modules
             modules={[Pagination, Navigation, Scrollbar, A11y]}
             slidesPerView={slides_per_view}
-            centeredSlides={true}
             spaceBetween={space_between}
             navigation={true}
             // install Swiper modules
+            autoplay={true}
             loop={true}
-            thumbs={{
-              swiper: thumbsSwiper,
-            }}
+            // centeredSlides={true}
+            // thumbs={{
+            //   swiper: thumbsSwiper,
+            // }}
             // autoplay={true}
             // scrollbar={{
             //   draggable: true,
@@ -94,147 +95,56 @@ const Logaimat = ({ important_news, theme, title, description, color }) => {
             //   type: 'fraction',
             // }}
           >
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
+            {important_news.data.map((item) => {
+              return (
+                <SwiperSlide key={item._id}>
+                  <div className="my-5 lg:my-10">
+                    {item.stories_media_url[0] &&
+                      (item.stories_media_url[0].includes('youtube') ||
+                      item.stories_media_url[0].includes('youtu.be') ? (
+                        <img
+                          src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                            item.stories_media_url[0]
+                          )}/0.jpg`}
+                          alt={item.stories_headlines}
+                          className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
+                          // quality={25}
+                          // layout="responsive"
+                          // width={100}
+                          // height={60}
+                          // priority
+                          // loading="eager"
+                          // placeholder="blur"
+                          // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                          //   item.stories_media_url[0]
+                          // )}/0.jpg`}
+                        />
+                      ) : (
+                        <img
+                          src={item.stories_media_url[0]}
+                          alt={item.stories_headlines}
+                          className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
 
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="my-5 lg:my-10">
-                <img
-                  className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-                  src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                />
-                <p className="text-white ml-5 pt-3 text-center font-TSSemi text-sm lg:text-lg">
-                  شيرين ابو عاقله
-                </p>
-                <p className="grid justify-center pt-2">
-                  <ChevronDoubleDownIcon className="text-white ml-5 h-6 w-6 animate-bounce" />
-                </p>
-              </div>
-            </SwiperSlide>
+                          // quality={25}
+                          // layout="responsive"
+                          // width={100}
+                          // height={60}
+                          // priority
+                          // loading="eager"
+                          // placeholder="blur"
+                          // blurDataURL={item.stories_media_url[0]}
+                        />
+                      ))}
+                    <p className="ml-9 pt-3 text-center font-TSSemi text-sm lg:ml-5 lg:text-lg">
+                      {item.stories_headlines.slice(0, 14)}
+                    </p>
+                    <p className="grid justify-center pt-2">
+                      <ChevronDoubleDownIcon className="ml-10 h-6 w-6 animate-bounce lg:ml-5 " />
+                    </p>
+                  </div>
+                </SwiperSlide>
+              )
+            })}
           </Swiper>
         )}
       </section>

@@ -121,15 +121,15 @@ const index = (props) => {
             title={'مخصص لك'}
             description={'توصيات بناءً على الموضوعات والقنوات التي تقرأها'}
           />
-          {/* <Logaimat
+          <Logaimat
             important_news={props.all_news[1]}
-            theme={'bg-gray-600'}
-            color={'gray-600'}
+            theme={''}
+            color={''}
             title={'مال و أعمال'}
             description={
               'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
             }
-          /> */}
+          />
           <ForYou
             for_you={props.all_news[4]}
             color={'purple-700'}
