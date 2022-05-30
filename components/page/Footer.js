@@ -56,6 +56,7 @@ const Footer = () => {
               src="./assest/images/instagram.jpg"
               className="mx-auto inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:h-9 lg:w-9 lg:hover:scale-110"
               alt="social media alzubda instagram"
+              loading="lazy"
             />
             {/* <svg
               className="mx-auto inline-block h-8 w-8 cursor-pointer md:h-9 md:w-9 lg:h-11 lg:w-11 lg:hover:scale-110"
@@ -77,6 +78,7 @@ const Footer = () => {
               src="./assest/images/twitter.jpg"
               className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110"
               alt="social media alzubda twitter"
+              loading="lazy"
             />
             {/* <svg
               onClick={() => {
@@ -101,6 +103,7 @@ const Footer = () => {
               src="./assest/images/facebook.jpg"
               className="mx-auto mr-7 inline-block  h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110"
               alt="social media alzubda facebook"
+              loading="lazy"
             />
             {/* <svg
               onClick={() => {
@@ -127,6 +130,7 @@ const Footer = () => {
               src="./assest/images/youtube.jpg"
               className="mx-auto mr-7 inline-block  h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110"
               alt="social media alzubda youtube"
+              loading="lazy"
             />
             {/* <svg
               onClick={() => {
@@ -153,6 +157,7 @@ const Footer = () => {
               src="./assest/images/linkedin.jpg"
               className="mx-auto mr-7 inline-block  h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110"
               alt="social media alzubda linkedin"
+              loading="lazy"
             />
             {/* <svg
               onClick={() => {
