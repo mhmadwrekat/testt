@@ -112,9 +112,17 @@ const index = (props) => {
             color={'red-600'}
             theme={'bg-red-500'}
           />
+        </section>
+        <section>
+          <ForYou
+            for_you={props.all_news[2]}
+            color={'green-600'}
+            title={'مخصص لك'}
+            description={'توصيات بناءً على الموضوعات والقنوات التي تقرأها'}
+          />
 
           <Voice
-            important_news={props.all_news[3]}
+            important_news={props.all_news[4]}
             theme={'bg-gray-600'}
             color={'gray-600'}
             title={'مال و أعمال'}
@@ -122,8 +130,6 @@ const index = (props) => {
               'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
             }
           />
-        </section>
-        <section>
           <ColoredSection
             important_news={props.all_news[1]}
             theme={'bg-yellow-400'}
@@ -132,13 +138,6 @@ const index = (props) => {
             description={
               'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
             }
-          />
-
-          <ForYou
-            for_you={props.all_news[2]}
-            color={'green-600'}
-            title={'مخصص لك'}
-            description={'توصيات بناءً على الموضوعات والقنوات التي تقرأها'}
           />
           <Logaimat
             important_news={props.all_news[4]}

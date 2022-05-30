@@ -66,22 +66,16 @@ let space_between = 0
   }
   return (
     <React.Fragment>
-      <audio controls>
-        <source
-          src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-          type="audio/mpeg"
-        />
-      </audio>
       <section loading="lazy">
         {/* <link rel="stylesheet" href="./styles/global.css" /> */}
 
         <p className="py-8"></p>
         <section className=" mx-auto w-11/12 rounded-lg pt-2 lg:w-9/12 lg:pt-2">
-          <h1 className=" m-4 pr-3 font-TSExtra text-xl lg:text-4xl">
+          <h1 className=" text-blue-400 font-TSExtra text-xl lg:text-4xl">
             الصوتيات
           </h1>
-          <h2 className="border-gray-400 m-6 border-b-2 font-TSbold text-sm lg:text-lg ">
-            <p className=" hover-border-b-2 hover-scale-110 w-2/6 text-center lg:w-1/6">
+          <h2 className="border-gray-400 border-b-2 font-TSbold text-sm lg:text-lg">
+            <p className="text-gray-400 hover-border-b-2 hover-scale-110 w-2/6 pt-2 text-right lg:w-1/6">
               الاكثر أستماعا
             </p>
           </h2>
@@ -96,7 +90,7 @@ let space_between = 0
                 slidesPerView={slides_per_view}
                 spaceBetween={10}
                 navigation={true}
-                autoplay={true}
+                // autoplay={true}
                 loop={true}
                 // install Swiper modules
                 // loop={true}
