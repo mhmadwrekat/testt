@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 // import Swiper core and required modules
 import { thumbsSwiper, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
@@ -49,9 +49,13 @@ const Voice = ({ important_news, theme, title, description, color }) => {
   }
   let slides_per_view = 0
   let space_between = 0
-  window_width > 800
-    ? ((slides_per_view = 4), (space_between = 15))
-    : ((slides_per_view = 2), (space_between = 15))
+  if (window_width > 900) {
+    ;(slides_per_view = 4.5), (space_between = 15)
+  } else if (window_width < 900 && window_width > 400) {
+    ;(slides_per_view = 3), (space_between = 15)
+  } else if (window_width < 400) {
+    ;(slides_per_view = 1), (space_between = 15)
+  }
   /**
 let space_between = 0
   window_width > 800
@@ -59,10 +63,26 @@ let space_between = 0
     : ((slides_per_view = 2), (space_between = 1)) 
  
  */
-  const play = (audio) => {
-    audio = new Audio(audio)
-    audio.pause()
-  }
+  // const [showMe, setShowMe] = useState(false)
+
+  // const playy = (audio) => {
+  //   let isPlaying = false
+  //   let audioo = new Audio(audio)
+
+  //   isPlaying ? audioo.pause(audio) : audioo.play(audio)
+  //   isPlaying = true
+
+  //   setShowMe(!showMe)
+  // }
+
+  // const pausee = (audio) => {
+  //   audio = new Audio(audio)
+  //   audio.pause()
+
+  //   setShowMe(showMe)
+  // }
+
+  let voicee = 'ar-KW-FahedNeural'
   return (
     <React.Fragment>
       <section loading="lazy">
@@ -81,13 +101,13 @@ let space_between = 0
 
           {console.log(slides_per_view)}
 
-          <section className="w-6/6 mx-auto">
+          <section className="w-6/6 bg-red mx-auto">
             {slides_per_view && (
               <Swiper
                 // install Swiper modules
                 modules={[Navigation]}
                 slidesPerView={slides_per_view}
-                spaceBetween={10}
+                spaceBetween={0}
                 navigation={true}
                 // autoplay={true}
                 loop={true}
@@ -107,39 +127,102 @@ let space_between = 0
                 // }}
               >
                 {important_news.data.map((item) => {
+                  console.log(Object.values(item.voices)[1])
                   return (
                     <SwiperSlide>
-                      <div className="my-5 mx-auto lg:my-10" loading="lazy">
+                      <div
+                        className="my-5 mx-auto w-60 rounded-md shadow-2xl
+                        lg:my-10 "
+                        loading="lazy"
+                      >
+                        <p className=" py-2"></p>
                         {item.stories_media_url[0] &&
                           (item.stories_media_url[0].includes('youtube') ||
                           item.stories_media_url[0].includes('youtu.be') ? (
-                            <img
-                              loading="lazy"
-                              src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                item.stories_media_url[0]
-                              )}/0.jpg`}
-                              alt={item.stories_headlines}
-                              className="mx-auto block h-28 w-36 rounded-t-xl shadow-2xl lg:h-60 lg:w-60"
-                            />
+                            <div className="relative">
+                              <img
+                                loading="lazy"
+                                src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                  item.stories_media_url[0]
+                                )}/0.jpg`}
+                                alt={item.stories_headlines}
+                                className="mx-auto h-28 w-36 rounded-t-xl lg:h-56 lg:w-52"
+                              />
+                              {/* <img
+                                style={{ display: showMe ? 'none' : 'block' }}
+                                src="https://cdn-icons-png.flaticon.com/512/189/189638.png"
+                                className=" absolute bottom-16 right-6 h-11 w-11"
+                                onClick={() => {
+                                  playy(
+                                    'https://cdn1.esm3.com/music/4558/m299431.mp3'
+                                  )
+                                }}
+                              />
+                              <img
+                                style={{ display: showMe ? 'block' : 'none' }}
+                                src="https://cdn-icons-png.flaticon.com/512/189/189638.png"
+                                className=" absolute bottom-16 right-6 h-8 w-8"
+                                onClick={() => {
+                                  pausee(
+                                    'https://cdn1.esm3.com/music/4558/m299431.mp3'
+                                  )
+                                }}
+                              /> */}
+                              <audio
+                                controlsList="nodownload noplaybackrate"
+                                loading="lazy"
+                                controls
+                                className="bg-gray-100 absolute bottom-0 right-4 mx-auto w-36 rounded-2xl font-TSbold text-xs
+                                lg:w-52 lg:text-base"
+                                src="https://cdn1.esm3.com/music/4558/m299431.mp3"
+                              ></audio>
+                            </div>
                           ) : (
-                            <img
-                              loading="lazy"
-                              src={item.stories_media_url[0]}
-                              alt={item.stories_headlines}
-                              className="mx-auto block h-28 w-36 rounded-t-xl shadow-2xl lg:h-60 lg:w-60"
-                            />
+                            <div className="relative">
+                              <img
+                                loading="lazy"
+                                src={item.stories_media_url[0]}
+                                alt={item.stories_headlines}
+                                className="mx-auto h-36 w-40 rounded-t-xl lg:h-56 lg:w-52"
+                              />
+                              {/* <img
+                                style={{ display: showMe ? 'none' : 'block' }}
+                                src="https://cdn-icons-png.flaticon.com/512/189/189638.png"
+                                className=" absolute bottom-16 right-6 h-11 w-11"
+                                onClick={() => {
+                                  playy(
+                                    'https://cdn1.esm3.com/music/4558/m299431.mp3'
+                                  )
+                                }}
+                              />
+                              <img
+                                style={{ display: showMe ? 'block' : 'none' }}
+                                src="https://cdn-icons-png.flaticon.com/512/189/189638.png"
+                                className=" absolute bottom-16 right-6 h-8 w-8"
+                                onClick={() => {
+                                  pausee(
+                                    'https://cdn1.esm3.com/music/4558/m299431.mp3'
+                                  )
+                                }}
+                              /> */}
+
+                              <audio
+                                controlsList="nodownload noplaybackrate "
+                                loading="lazy"
+                                controls
+                                className="absolute bottom-0 right-10 mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
+                                lg:w-52 lg:text-base"
+                                src={Object.values(item.voices)[1]}
+                              ></audio>
+                            </div>
                           ))}
-                        <audio
-                          loading="lazy"
-                          controls
-                          className="bg-gray-100 mx-auto w-36 rounded-b-xl font-TSbold text-xs lg:w-60 lg:text-base"
-                        >
-                          <source
-                            loading="lazy"
-                            src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                            type="audio/mpeg"
-                          />
-                        </audio>
+
+                        <h1 className="mx-auto w-8/12 pt-3 font-TSbold text-base">
+                          {item.stories_headlines.slice(0, 14)}
+                        </h1>
+                        <h1 className="mx-auto h-20 w-8/12 pb-3 pt-1 font-TSlight text-sm">
+                          {item.stories_headlines}
+                        </h1>
                       </div>
                     </SwiperSlide>
                   )
@@ -155,6 +238,10 @@ let space_between = 0
 
 export default Voice
 /**
+ * 
+ * 
+ * 
+ * https://testin-bucket2021.s3.us-east-2.amazonaws.com/filemjmjihkvwt.mp3
  *          <div className="my-5 mx-auto lg:my-10" loading="lazy">
                   <img
                     className="mx-auto block h-28 w-36 rounded-t-xl shadow-2xl lg:h-72 lg:w-72"

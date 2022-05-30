@@ -59,7 +59,28 @@
     color: white;
   }
 }
+audio::-webkit-media-controls-play-button {
+  background-color: rgb(50, 165, 211);
+  border-radius: 50px 50px;
+}
 
+audio::-webkit-media-controls-mute-button {
+  display: none;
+}
+audio::-webkit-media-controls-volume-slider {
+  display: none;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  display: none;
+}
+audio::-webkit-media-controls-mute-button {
+  display: none;
+}
+audio::-webkit-media-controls-volume-slider {
+  display: none;
+}
 /* 
 ::-webkit-scrollbar {
   width: 20px;
