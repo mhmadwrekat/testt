@@ -112,6 +112,16 @@ const index = (props) => {
             color={'red-600'}
             theme={'bg-red-500'}
           />
+
+          <Voice
+            important_news={props.all_news[3]}
+            theme={'bg-gray-600'}
+            color={'gray-600'}
+            title={'مال و أعمال'}
+            description={
+              'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+            }
+          />
         </section>
         <section>
           <ColoredSection
@@ -131,7 +141,7 @@ const index = (props) => {
             description={'توصيات بناءً على الموضوعات والقنوات التي تقرأها'}
           />
           <Logaimat
-            important_news={props.all_news[1]}
+            important_news={props.all_news[4]}
             theme={''}
             color={''}
             title={'مال و أعمال'}
@@ -152,15 +162,6 @@ const index = (props) => {
             title={' يدور حولك'}
             description={'قصص رائعة من حولك'}
           />
-          {/* <Voice
-            important_news={props.all_news[1]}
-            theme={'bg-gray-600'}
-            color={'gray-600'}
-            title={'مال و أعمال'}
-            description={
-              'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
-            }
-          /> */}
 
           <ColoredSection
             important_news={props.all_news[3]}
