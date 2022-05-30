@@ -51,7 +51,7 @@ const Voice = ({ important_news, theme, title, description, color }) => {
   let space_between = 0
   window_width > 800
     ? ((slides_per_view = 4), (space_between = 15))
-    : ((slides_per_view = 4), (space_between = 15))
+    : ((slides_per_view = 2), (space_between = 15))
   /**
 let space_between = 0
   window_width > 800
@@ -59,7 +59,6 @@ let space_between = 0
     : ((slides_per_view = 2), (space_between = 1)) 
  
  */
-  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 21]
   const play = (audio) => {
     audio = new Audio(audio)
     audio.pause()
