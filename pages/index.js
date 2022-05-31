@@ -17,6 +17,7 @@ const ColoredSection = dynamic(() =>
 const Logaimat = dynamic(() => import('../components/appleStructrue/Logaimat'))
 const Video = dynamic(() => import('../components/appleStructrue/Video'))
 const Voice = dynamic(() => import('../components/appleStructrue/Voice'))
+const Hashtag = dynamic(() => import('../components/appleStructrue/Hashtag'))
 
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
@@ -112,12 +113,29 @@ const index = (props) => {
             color={'red-600'}
             theme={'bg-red-500'}
           />
+          <Hashtag
+            title={'# هاشتاج الاسبوع'}
+            important_news={props.all_news[1]}
+            other_news={props.all_news[4]}
+            color={'purple-500'}
+            theme={'bg-purple-500'}
+          />
+          <ColoredSection
+            important_news={props.all_news[5]}
+            subscripe={null}
+            theme={'bg-blue-700'}
+            color={'blue-700'}
+            temp={'61°F  🌥'}
+            title={' يدور حولك'}
+            description={'قصص رائعة من حولك'}
+          />
         </section>
         <section>
           <ForYou
             for_you={props.all_news[2]}
             color={'green-600'}
             title={'مخصص لك'}
+            subscripe={null}
             description={'توصيات بناءً على الموضوعات والقنوات التي تقرأها'}
           />
 
@@ -134,13 +152,22 @@ const index = (props) => {
             important_news={props.all_news[1]}
             theme={'bg-yellow-400'}
             color={'yellow-400'}
+            subscripe={false}
             title={'مال و أعمال'}
+            temp={''}
             description={
               'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
             }
           />
+          <ForYou
+            for_you={props.all_news[4]}
+            subscripe={false}
+            color={'pink-700'}
+            title={'تكنولوجيا'}
+            description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
+          />
           <Logaimat
-            important_news={props.all_news[4]}
+            important_news={props.all_news[0]}
             theme={''}
             color={''}
             title={'مال و أعمال'}
@@ -148,41 +175,38 @@ const index = (props) => {
               'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
             }
           />
-          <ForYou
-            for_you={props.all_news[4]}
-            color={'purple-700'}
-            title={'تكنولوجيا'}
-            description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
-          />
-          <ColoredSection
-            important_news={props.all_news[5]}
-            theme={'bg-blue-700'}
-            color={'blue-700'}
-            title={' يدور حولك'}
-            description={'قصص رائعة من حولك'}
-          />
-
-          <ColoredSection
-            important_news={props.all_news[3]}
-            theme={'bg-green-700'}
-            color={'green-700'}
-            title={' أخبار الرياضه'}
-            description={'جميع ما يخص عالم الرياضه'}
-          />
         </section>
         <div className="py-4"></div>
-        <section className="to-gray-800 from-gray-600 bg-gradient-to-b  pt-1 pb-10">
+        <section className="to-gray-800 from-gray-600 bg-gradient-to-b pt-1 pb-10">
           <Video
             important_news={props.all_news[1]}
             title={'الفيديوهات'}
             color={'yellow-400'}
-            theme={'bg-yellow-500'}
+            theme={'bg-yellow-400'}
             description={'أكثر ما تم مشاهدته في اللحظات السابقة'}
           />
         </section>
+
         <ForYou
+          for_you={props.all_news[5]}
+          color={'red-400'}
+          title={'الاكثر بحثا'}
+          subscripe={null}
+          description={'توصيات بناءً على الموضوعات التي يتم البحث عنها'}
+        />
+        <ColoredSection
+          important_news={props.all_news[3]}
+          theme={'bg-green-500'}
+          color={'green-500'}
+          subscripe={true}
+          temp={''}
+          title={' أخبار الرياضه'}
+          description={'جميع ما يخص عالم الرياضه'}
+        />
+        <ForYou
+          subscripe={true}
           for_you={props.all_news[2]}
-          color={'pink-700'}
+          color={'purple-600'}
           title={'الصحه'}
           description={'جميع ما هو جديد في ابحاث الصحه بين يديك'}
         />
@@ -201,4 +225,5 @@ export default index
       ) : (
         <h1>Dark</h1>
       )}
+      temp={'61°F 🌥'}
 */

@@ -5,6 +5,8 @@ const ColoredSection = ({
   title,
   description,
   color,
+  temp,
+  subscripe,
 }) => {
   const important_news_img =
     important_news?.important_data.stories_media_url.length > 0
@@ -34,14 +36,55 @@ const ColoredSection = ({
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 pt-5 lg:w-9/12 lg:pt-2">
-        <h1
-          className={`mt-4 px-1 font-TSExtra text-3xl text-${color} lg:mt-10 lg:text-4xl`}
-        >
-          {title}
-        </h1>
-        <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
-          {description}
-        </p>
+        <div>
+          <div className="float-left flex font-TSSemi text-xl lg:text-2xl">
+            <h1 className="mt-2 ml-3">{temp ? temp : null}</h1>
+          </div>
+          <div className="mt-4 flex lg:mt-10">
+            <h1
+              className={` px-1 font-TSExtra text-3xl text-${color}  lg:text-4xl`}
+            >
+              {title}
+            </h1>
+            {subscripe !== null &&
+              (subscripe ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mx-2 mt-1 h-7 w-7 hover:cursor-pointer"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mx-2 mt-1 h-7 w-7 hover:cursor-pointer"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              ))}
+          </div>
+
+          <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
+            {description}
+          </p>
+        </div>
+
         <section className=" grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-10 ">
           <div className="rounded-lg">
             {important_news_img &&

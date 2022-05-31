@@ -59,14 +59,13 @@ const Logaimat = ({ important_news, theme, title, description, color }) => {
   return (
     <React.Fragment>
       <section></section>
-
       <p className="py-8"></p>
       <section className=" mx-auto w-11/12 rounded-lg pt-2 lg:w-9/12 lg:pt-2">
         <h1 className=" mx-4 mt-4 pr-3 font-TSExtra text-xl lg:text-4xl">
           لقيمات
         </h1>
         <h2 className="border-gray-400 mx-6 mt-1 border-b-2 font-TSbold text-sm lg:text-lg ">
-          <p className="text-gray-500 hover-border-b-2 hover-scale-110 ">
+          <p className="text-gray-400 hover-border-b-2 hover-scale-110 ">
             محتوى خفيف سهل الهضم
           </p>
         </h2>
@@ -124,7 +123,6 @@ const Logaimat = ({ important_news, theme, title, description, color }) => {
                           src={item.stories_media_url[0]}
                           alt={item.stories_headlines}
                           className=" block h-36 w-36 rounded-xl shadow-2xl lg:h-44 lg:w-56 "
-
                           // quality={25}
                           // layout="responsive"
                           // width={100}

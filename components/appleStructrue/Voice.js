@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 // import Swiper core and required modules
 import { thumbsSwiper, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay } from 'swiper'
+
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -14,6 +15,8 @@ import { PlayIcon } from '@heroicons/react/outline'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
+
+import { PauseCircleFilled, PlayCircleFilled } from '@material-ui/icons'
 
 const Voice = ({ important_news, theme, title, description, color }) => {
   SwiperCore.use([Autoplay])
@@ -63,26 +66,68 @@ let space_between = 0
     : ((slides_per_view = 2), (space_between = 1)) 
  
  */
-  // const [showMe, setShowMe] = useState(false)
+  const [showMe, setShowMe] = useState(false)
 
-  // const playy = (audio) => {
-  //   let isPlaying = false
+  const playy = (audio) => {
+    let audioo = new Audio(audio)
+    if (showMe) {
+      audioo.pause()
+      console.log('from if', showMe)
+    } else {
+      audioo.play()
+      console.log('from else', showMe)
+    }
+    setShowMe(!showMe)
+  }
+
+  // const pausee = (audio) => {
   //   let audioo = new Audio(audio)
-
-  //   isPlaying ? audioo.pause(audio) : audioo.play(audio)
-  //   isPlaying = true
 
   //   setShowMe(!showMe)
   // }
 
-  // const pausee = (audio) => {
-  //   audio = new Audio(audio)
-  //   audio.pause()
+  // const [isPlaying, setisPlaying] = useState(false)
+  // const [duration, setDuration] = useState(0)
+  // const [currentTime, setCurrentTime] = useState(0)
 
-  //   setShowMe(showMe)
+  // const audioPlayer = useRef()
+  // const progressBar = useRef()
+  // const animationRef = useRef()
+
+  // useEffect(() => {
+  //   const seconds = Math.floor(audioPlayer.current.duration)
+  //   setDuration(seconds)
+  //   // progressBar.current.max = seconds
+  // }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState])
+
+  // const playPause = () => {
+  //   setisPlaying(!isPlaying)
+  //   if (!isPlaying) {
+  //     audioPlayer.current.play()
+  //     // animationRef.current = requestAnimationFrame(whilePlaying)
+  //   } else {
+  //     audioPlayer.current.pause()
+  //     // cancelAnimationFrame(animationRef.current)
+  //   }
+  // }
+  // const whilePlaying = () => {
+  //   progressBar.current.value = audioPlayer.current.currentTime
+  //   setCurrentTime(progressBar.current.value)
+  //   animationRef.current = requestAnimationFrame(whilePlaying)
+  // }
+  // const changeRange = () => {
+  //   audioPlayer.current.currentTime = progressBar.current.value
+  //   setCurrentTime(progressBar.current.value)
   // }
 
-  let voicee = 'ar-KW-FahedNeural'
+  // const calculateTime = (seco) => {
+  //   const minutes = Math.floor(seco / 60)
+  //   const returnMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`
+  //   const seconds = Math.floor(seco % 60)
+  //   const returnSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
+  //   return `${returnMinutes}:${returnSeconds}`
+  // }
+
   return (
     <React.Fragment>
       <section loading="lazy">
@@ -150,23 +195,92 @@ let space_between = 0
                               />
                               {/* <img
                                 style={{ display: showMe ? 'none' : 'block' }}
-                                src="https://cdn-icons-png.flaticon.com/512/189/189638.png"
+                                src="https://png.vector.me/files/images/6/7/678531/windows_media_player_play_button_updated_preview"
+                                className=" absolute bottom-2 right-6 h-11 w-11"
+                                onClick={() => {
+                                  playy(Object.values(item.voices)[1])
+                                }}
+                              />
+                              <img
+                                style={{ display: showMe ? 'block' : 'none' }}
+                                src="https://png.vector.me/files/images/6/7/678557/windows_media_player_pause_button_preview"
+                                className=" absolute bottom-2 right-6 h-11 w-11"
+                                onClick={() => {
+                                  playy(Object.values(item.voices)[1])
+                                }}
+                              /> */}
+                              {/* <audio
+                                ref={audioPlayer}
+                                controlsList="nodownload noplaybackrate "
+                                loading="lazy"
+                                className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
+                            lg:w-52 lg:text-base"
+                                src={Object.values(item.voices)}
+                              ></audio>
+
+                              <button
+                                onClick={playPause(Object.values(item.voices))}
+                              >
+                                {isPlaying ? (
+                                  <img
+                                    src="https://png.vector.me/files/images/6/7/678557/windows_media_player_pause_button_preview"
+                                    className="  right-6 h-11 w-11"
+                                  />
+                                ) : (
+                                  <img
+                                    src="https://png.vector.me/files/images/6/7/678531/windows_media_player_play_button_updated_preview"
+                                    className="  right-6 h-11 w-11"
+                                  />
+                                )}
+                              </button> */}
+                              {/* <button
+                                style={{ display: showMe ? 'none' : 'block' }}
                                 className=" absolute bottom-16 right-6 h-11 w-11"
+                                onClick={() => {
+                                  playy(Object.values(item.voices)[1])
+                                }}
+                              >
+                                <PlayCircleFilled />
+                              </button>
+                              <button
+                                style={{ display: showMe ? 'block' : 'none' }}
+                                className=" absolute bottom-16 right-6 h-11 w-11"
+                                onClick={() => {
+                                  playy(Object.values(item.voices)[1])
+                                }}
+                              >
+                                <PauseCircleFilled />
+                              </button> */}
+
+                              {/* <button
+                                style={{ display: showMe ? 'none' : 'block' }}
+                                className=" absolute bottom-16 right-6 h-16 w-16"
                                 onClick={() => {
                                   playy(
                                     'https://cdn1.esm3.com/music/4558/m299431.mp3'
                                   )
                                 }}
-                              />
-                              <img
+                              >
+                                <PlayCircleFilled />
+                              </button>
+                              <button
                                 style={{ display: showMe ? 'block' : 'none' }}
-                                src="https://cdn-icons-png.flaticon.com/512/189/189638.png"
-                                className=" absolute bottom-16 right-6 h-8 w-8"
+                                className=" absolute bottom-16 right-6 h-16 w-16"
                                 onClick={() => {
                                   pausee(
                                     'https://cdn1.esm3.com/music/4558/m299431.mp3'
                                   )
                                 }}
+                              >
+                                <PauseCircleFilled />
+                              </button> */}
+                              {/* <ReactAudioPlayer
+                                controlsList="nodownload noplaybackrate "
+                                loading="lazy"
+                                controls
+                                className="absolute bottom-0 right-10 mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
+                   lg:w-52 lg:text-base"
+                                src={Object.values(item.voices)[1]}
                               /> */}
                               <audio
                                 controlsList="nodownload noplaybackrate"
@@ -187,31 +301,73 @@ let space_between = 0
                               />
                               {/* <img
                                 style={{ display: showMe ? 'none' : 'block' }}
-                                src="https://cdn-icons-png.flaticon.com/512/189/189638.png"
-                                className=" absolute bottom-16 right-6 h-11 w-11"
+                                src="https://png.vector.me/files/images/6/7/678531/windows_media_player_play_button_updated_preview"
+                                className=" absolute bottom-2 right-6 h-11 w-11"
                                 onClick={() => {
-                                  playy(
-                                    'https://cdn1.esm3.com/music/4558/m299431.mp3'
-                                  )
+                                  playy(Object.values(item.voices)[1])
                                 }}
                               />
                               <img
                                 style={{ display: showMe ? 'block' : 'none' }}
-                                src="https://cdn-icons-png.flaticon.com/512/189/189638.png"
-                                className=" absolute bottom-16 right-6 h-8 w-8"
+                                src="https://png.vector.me/files/images/6/7/678557/windows_media_player_pause_button_preview"
+                                className=" absolute bottom-2 right-6 h-11 w-11"
                                 onClick={() => {
-                                  pausee(
-                                    'https://cdn1.esm3.com/music/4558/m299431.mp3'
-                                  )
+                                  playy(Object.values(item.voices)[1])
                                 }}
                               /> */}
-
-                              <audio
+                              {/* <audio
+                                ref={audioPlayer}
+                                controlsList="nodownload noplaybackrate "
+                                loading="lazy"
+                                className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
+                            lg:w-52 lg:text-base"
+                                src={Object.values(item.voices)[1]}
+                              ></audio>
+                              <button onClick={playPause}>
+                                {isPlaying ? (
+                                  <img
+                                    src="https://png.vector.me/files/images/6/7/678557/windows_media_player_pause_button_preview"
+                                    className=" absolute bottom-7 right-6 h-11 w-11"
+                                  />
+                                ) : (
+                                  <img
+                                    src="https://png.vector.me/files/images/6/7/678531/windows_media_player_play_button_updated_preview"
+                                    className="  absolute bottom-7 right-6 h-11 w-11"
+                                  />
+                                )}
+                              </button> */}
+                              {/* <button
+                                style={{ display: showMe ? 'none' : 'block' }}
+                                className=" absolute bottom-16 right-6 h-16 w-16"
+                                onClick={() => {
+                                  playy(Object.values(item.voices)[1])
+                                }}
+                              >
+                                <PlayCircleFilled />
+                              </button>
+                              <button
+                                style={{ display: showMe ? 'block' : 'none' }}
+                                className=" absolute bottom-16 right-6 h-16 w-16"
+                               onClick={() => {
+                                  playy(Object.values(item.voices)[1])
+                                }}
+                              >
+                                <PauseCircleFilled />
+                              </button> */}
+                              {/* <ReactAudioPlayer
                                 controlsList="nodownload noplaybackrate "
                                 loading="lazy"
                                 controls
                                 className="absolute bottom-0 right-10 mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                                lg:w-52 lg:text-base"
+                   lg:w-52 lg:text-base"
+                                src={Object.values(item.voices)[1]}
+                              /> */}
+                              <audio
+                                controlsList="nodownload noplaybackrate "
+                                loading="lazy"
+                                controls
+                                className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
+                                  lg:w-52 lg:text-base"
                                 src={Object.values(item.voices)[1]}
                               ></audio>
                             </div>
@@ -241,7 +397,15 @@ export default Voice
  * 
  * 
  * 
- * https://testin-bucket2021.s3.us-east-2.amazonaws.com/filemjmjihkvwt.mp3
+   <audio
+                                controlsList="nodownload noplaybackrate "
+                                loading="lazy"
+                                controls
+                                className="absolute bottom-0 right-10 mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
+                                  lg:w-52 lg:text-base"
+                                src="https://testin-bucket2021.s3.us-east-2.amazonaws.com/filemjmjihkvwt.mp3"
+                              ></audio> 
+ * 
  *          <div className="my-5 mx-auto lg:my-10" loading="lazy">
                   <img
                     className="mx-auto block h-28 w-36 rounded-t-xl shadow-2xl lg:h-72 lg:w-72"

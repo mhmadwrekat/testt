@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
-const ForYou = ({ for_you, title, description, color }) => {
+const ForYou = ({ for_you, title, description, color, subscripe }) => {
   const for_you_img =
     for_you?.important_data.stories_media_url.length > 0
       ? for_you.important_data.stories_media_url[0]
@@ -27,14 +27,54 @@ const ForYou = ({ for_you, title, description, color }) => {
       return code
     }
   }
+  //const [subs, setSubscripe] = useState(false)
+
+  // const subscription = (subscripe) => {
+  //   subscripe ? (subscripe = true) : (subscripe = false)
+  //   return subscripe
+  // }
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 pt-5 lg:w-9/12 lg:pt-2">
-        <h1
-          className={`text-${color} px-1 font-TSExtra text-3xl lg:mt-10 lg:text-4xl`}
-        >
-          {title}{' '}
-        </h1>
+        <div className="flex lg:mt-10 ">
+          <h1
+            className={`text-${color} px-1 font-TSExtra text-3xl lg:text-4xl`}
+          >
+            {title}{' '}
+          </h1>
+          {subscripe !== null &&
+            (subscripe ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="mx-2 mt-1 h-7 w-7 hover:cursor-pointer"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="mx-2 mt-1 h-7 w-7 hover:cursor-pointer"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            ))}
+        </div>
         <p className="text-gray-400 px-1 pb-5 font-TSmedium text-base">
           {description}
         </p>

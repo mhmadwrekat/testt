@@ -8,8 +8,10 @@
   "dependencies": {
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.6",
+    "@material-ui/icons": "^4.11.3",
     "@types/node": "^17.0.35",
     "axios": "^0.27.2",
+    "font-awesome-sass": "^4.7.0",
     "moment": "^2.29.3",
     "next": "latest",
     "next-optimized-images": "^2.6.2",
