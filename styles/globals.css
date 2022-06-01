@@ -39,7 +39,7 @@
     font-display: swap;
   }
 }
-/* light mode */
+/* light mode
 @media (prefers-color-scheme: light) {
   body {
     background: #ffffff;
@@ -49,7 +49,7 @@
     color: #453087;
   }
 }
-/* dark mode */
+dark mode 
 @media (prefers-color-scheme: dark) {
   body {
     background: #111827;
@@ -58,7 +58,7 @@
   #logoFooter {
     color: white;
   }
-}
+} */
 /* 
 audio::-webkit-media-controls-play-button {
   background-color: rgb(50, 165, 211);
