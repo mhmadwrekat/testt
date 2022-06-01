@@ -193,7 +193,7 @@ const Technology = ({
                       >
                         <div className="">
                           <h3
-                            className={`${theme} text-white rounded-t-md pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
+                            className={`${theme} text-white rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
                           >
                             {important_news.category_name}
                           </h3>{' '}
@@ -267,7 +267,7 @@ const Technology = ({
                           </div>
                         </section>
 
-                        <div className="flex justify-between px-3 font-TSlight text-xs lg:hidden">
+                        <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                           <p className="">
                             <b className=" text-red-700 font-TSExtra">
                               {item.publisher_name}

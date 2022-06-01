@@ -16,7 +16,7 @@ const Nav = () => {
 
       <section className="border-purple-800 mx-4 flex justify-between border-b-4 lg:mx-12">
         <div className="flex">
-          <div className=" mt-4 lg:mx-2 lg:mt-5 lg:mb-2">
+          <div className=" mt-2 lg:mx-2 lg:mt-5 lg:mb-2">
             <svg
               width="66"
               height="35"
@@ -78,14 +78,14 @@ const Nav = () => {
           </div>
         </div>
 
-        <div className="ml-5 font-TSSemi lg:mt-5">
+        <div className="mt-2 pl-1 font-TSSemi lg:ml-5 lg:mt-5">
           {/* <i className="bg-gray-300 fa fa-search "></i> */}
           <input
             type="text"
             id="fname"
             name="fname"
             placeholder="محرك البحث"
-            className="bg-gray-300 border-white placeholder-white float-left rounded-md border-2 p-0.5"
+            className="bg-gray-300 border-white placeholder-white float-left w-28 rounded-md border-2 p-0.5 lg:w-auto"
           />
         </div>
         {/* </section> */}
