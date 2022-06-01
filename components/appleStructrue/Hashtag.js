@@ -85,11 +85,14 @@ function Hashtag({ theme, color, important_news, title, other_news }) {
           </section>
 
           <section className="mx-auto w-full lg:w-5/12 lg:pt-0">
-            <section class="grid h-72 grid-cols-2 gap-4 md:h-52 lg:grid lg:h-80 lg:grid-cols-1 lg:gap-0">
+            <section className="grid h-72 grid-cols-2 gap-4 md:h-52 lg:grid lg:h-80 lg:grid-cols-1 lg:gap-0">
               {/* overflow-y-scroll */}
               {important_news.data.slice(0, 2).map((item) => {
                 return (
-                  <div className="grid pt-2 md:flex md:pt-0 lg:flex lg:py-2">
+                  <div
+                    className="grid pt-2 md:flex md:pt-0 lg:flex lg:py-2"
+                    key={item._id}
+                  >
                     {item.stories_media_url[0] &&
                       (item.stories_media_url[0].includes('youtube') ||
                       item.stories_media_url[0].includes('youtu.be') ? (
@@ -149,7 +152,7 @@ function Hashtag({ theme, color, important_news, title, other_news }) {
         <section className="grid grid-cols-2 gap-5 lg:mx-5 lg:grid-cols-4 lg:pt-5">
           {other_news.data.map((item) => {
             return (
-              <div>
+              <div key={item._id}>
                 {item.stories_media_url[0] &&
                   (item.stories_media_url[0].includes('youtube') ||
                   item.stories_media_url[0].includes('youtu.be') ? (

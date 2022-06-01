@@ -72,10 +72,10 @@ let space_between = 0
     let audioo = new Audio(audio)
     if (showMe) {
       audioo.pause()
-      console.log('from if', showMe)
+      // console.log('from if', showMe)
     } else {
       audioo.play()
-      console.log('from else', showMe)
+      // console.log('from else', showMe)
     }
     setShowMe(!showMe)
   }
@@ -144,7 +144,7 @@ let space_between = 0
             </p>
           </h2>
 
-          {console.log(slides_per_view)}
+          {/* {console.log(slides_per_view)} */}
 
           <section className="w-6/6 bg-red mx-auto">
             {slides_per_view && (
@@ -172,9 +172,9 @@ let space_between = 0
                 // }}
               >
                 {important_news.data.map((item) => {
-                  console.log(Object.values(item.voices)[1])
+                  // console.log(Object.values(item.voices)[1])
                   return (
-                    <SwiperSlide>
+                    <SwiperSlide key={item._id}>
                       <div
                         className="my-5 mx-auto w-60 rounded-md shadow-2xl
                         lg:my-10 "

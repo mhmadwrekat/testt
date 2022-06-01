@@ -11,21 +11,16 @@
     "@material-ui/icons": "^4.11.3",
     "@types/node": "^17.0.35",
     "axios": "^0.27.2",
-    "font-awesome-sass": "^4.7.0",
     "moment": "^2.29.3",
     "next": "latest",
-    "next-optimized-images": "^2.6.2",
     "next-themes": "^0.2.0",
     "react": "^17.0.2",
     "react-audio-player": "^0.17.0",
     "react-dom": "^17.0.2",
-    "react-player": "^2.10.1",
     "react-responsive-carousel": "^3.2.23",
-    "react-youtube": "^9.0.2",
     "swiper": "^8.1.6",
     "tailwindcss-rtl": "^0.9.0",
-    "uuid": "^8.3.2",
-    "video-react": "^0.15.0"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/react": "17.0.38",

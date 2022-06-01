@@ -208,10 +208,10 @@ const HeadComp = () => {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"
         />
-        <link
+        {/* <link
           rel="stylesheet"
           href="path/to/font-awesome/css/font-awesome.min.css"
-        />
+        /> */}
       </Head>
     </div>
   )
