@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
-import ReactAudioPlayer from 'react-audio-player'
+// import ReactAudioPlayer from 'react-audio-player'
 // import Swiper core and required modules
-import { thumbsSwiper, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+import { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay } from 'swiper'
 
@@ -11,12 +11,12 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
-import { PlayIcon } from '@heroicons/react/outline'
+// import { PlayIcon } from '@heroicons/react/outline'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-import { Carousel } from 'react-responsive-carousel'
+// import { Carousel } from 'react-responsive-carousel'
 
-import { PauseCircleFilled, PlayCircleFilled } from '@material-ui/icons'
+// import { PauseCircleFilled, PlayCircleFilled } from '@material-ui/icons'
 
 const Voice = ({ important_news, theme, title, description, color }) => {
   SwiperCore.use([Autoplay])
@@ -66,19 +66,19 @@ let space_between = 0
     : ((slides_per_view = 2), (space_between = 1)) 
  
  */
-  const [showMe, setShowMe] = useState(false)
+  // const [showMe, setShowMe] = useState(false)
 
-  const playy = (audio) => {
-    let audioo = new Audio(audio)
-    if (showMe) {
-      audioo.pause()
-      // console.log('from if', showMe)
-    } else {
-      audioo.play()
-      // console.log('from else', showMe)
-    }
-    setShowMe(!showMe)
-  }
+  // const playy = (audio) => {
+  //   let audioo = new Audio(audio)
+  //   if (showMe) {
+  //     audioo.pause()
+  //     // console.log('from if', showMe)
+  //   } else {
+  //     audioo.play()
+  //     // console.log('from else', showMe)
+  //   }
+  //   setShowMe(!showMe)
+  // }
 
   // const pausee = (audio) => {
   //   let audioo = new Audio(audio)
@@ -286,8 +286,7 @@ let space_between = 0
                                 controlsList="nodownload noplaybackrate"
                                 loading="lazy"
                                 controls
-                                className="bg-gray-100 absolute bottom-0 right-4 mx-auto w-36 rounded-2xl font-TSbold text-xs
-                                lg:w-52 lg:text-base"
+                                className=" mx-auto w-40 font-TSbold text-xs lg:right-4 lg:w-52 lg:text-base"
                                 src="https://cdn1.esm3.com/music/4558/m299431.mp3"
                               ></audio>
                             </div>
@@ -366,8 +365,7 @@ let space_between = 0
                                 controlsList="nodownload noplaybackrate "
                                 loading="lazy"
                                 controls
-                                className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                                  lg:w-52 lg:text-base"
+                                className=" mx-auto w-40 font-TSbold text-xs lg:right-4 lg:w-52 lg:text-base"
                                 src={Object.values(item.voices)[1]}
                               ></audio>
                             </div>
