@@ -30,7 +30,7 @@ const TopStories = ({ title, important_news, color, theme }) => {
   }
   return (
     <React.Fragment>
-      <section className="mx-auto w-11/12 lg:w-9/12">
+      <section className="mx-auto w-11/12 lg:w-11/12">
         <>
           <h1
             className={`text-${color} mb-4 mt-10 font-TSExtra text-3xl lg:mt-12 lg:text-4xl`}

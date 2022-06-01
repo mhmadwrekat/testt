@@ -19,6 +19,10 @@ const Video = dynamic(() => import('../components/appleStructrue/Video'))
 const Voice = dynamic(() => import('../components/appleStructrue/Voice'))
 const Hashtag = dynamic(() => import('../components/appleStructrue/Hashtag'))
 
+const Technology = dynamic(() =>
+  import('../components/UpdatedDesign/Technology')
+)
+
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -69,32 +73,32 @@ export async function getServerSideProps({ req, res }) {
 //   }
 // }
 
-// Dark & Light Mode
-if (typeof window !== 'undefined') {
-  //Toggle mode
-  const toggle = document.querySelector('.js-change-theme')
-  const project_body = document.getElementById('project_body')
-  // const logoFooter = document.getElementById('logoFooter')
-  toggle.addEventListener('click', () => {
-    if (project_body.classList.contains('text-white')) {
-      toggle.innerHTML = '🌙'
-      project_body.classList.remove('bg-gray-900')
-      project_body.classList.remove('text-white')
-      project_body.classList.add('bg-white')
-      project_body.classList.add('text-black')
-      // logoFooter.classList.remove('text-white')
-      // logoFooter.classList.add('text-LogoPurp')
-    } else {
-      toggle.innerHTML = '☀️'
-      project_body.classList.remove('bg-white')
-      project_body.classList.remove('text-black')
-      project_body.classList.add('bg-gray-900')
-      project_body.classList.add('text-white')
-      // logoFooter.classList.remove('text-LogoPurp')
-      // logoFooter.classList.add('text-white')
-    }
-  })
-}
+// // Dark & Light Mode
+// if (typeof window !== 'undefined') {
+//   //Toggle mode
+//   const toggle = document.querySelector('.js-change-theme')
+//   const project_body = document.getElementById('project_body')
+//   // const logoFooter = document.getElementById('logoFooter')
+//   toggle.addEventListener('click', () => {
+//     if (project_body.classList.contains('text-white')) {
+//       toggle.innerHTML = '🌙'
+//       project_body.classList.remove('bg-gray-900')
+//       project_body.classList.remove('text-white')
+//       project_body.classList.add('bg-white')
+//       project_body.classList.add('text-black')
+//       // logoFooter.classList.remove('text-white')
+//       // logoFooter.classList.add('text-LogoPurp')
+//     } else {
+//       toggle.innerHTML = '☀️'
+//       project_body.classList.remove('bg-white')
+//       project_body.classList.remove('text-black')
+//       project_body.classList.add('bg-gray-900')
+//       project_body.classList.add('text-white')
+//       // logoFooter.classList.remove('text-LogoPurp')
+//       // logoFooter.classList.add('text-white')
+//     }
+//   })
+// }
 
 const index = (props) => {
   return (
@@ -106,13 +110,29 @@ const index = (props) => {
       {/* <div dir="rtl" id="project_body" className="text-black bg-white"> */}
       <div dir="rtl" id="project_body">
         <Nav />
+        <ImportantNews
+          title={'أهم الأخبار'}
+          important_news={props.all_news[0]}
+          color={'red-600'}
+          theme={'bg-red-500'}
+        />
+
         <section className="pb-10">
-          <ImportantNews
-            title={'أهم الأخبار'}
-            important_news={props.all_news[0]}
-            color={'red-600'}
-            theme={'bg-red-500'}
-          />
+          <section
+            className="w-full bg-[url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/821a4c95524615.5e995cb76f80e.png')] bg-cover bg-fixed bg-center 
+            "
+          >
+            <div className="bg-black h-full w-full bg-opacity-50 pb-6">
+              <Technology
+                title={'الصحه '}
+                important_news={props.all_news[2]}
+                subscripe={true}
+                color={'text-GREEN'}
+                theme={'bg-GREEN'}
+                description={'كل ما يخص الاخبار الصحه العالميه من اهم المصادر'}
+              />
+            </div>
+          </section>
           <Hashtag
             title={'# هاشتاج الاسبوع'}
             important_news={props.all_news[1]}

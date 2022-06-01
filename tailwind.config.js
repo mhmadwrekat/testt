@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     colors: {
       BLUE: '#1d62a5',
-      LogoPurp: '#453087',
+      Purp: '#453087',
+      GREEN: '#07ad76',
     },
     extend: {
       fontFamily: {
