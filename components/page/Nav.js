@@ -1,11 +1,19 @@
 import React from 'react'
 //import Router from 'next/router'
 import { useRouter } from 'next/router'
+
+import Select from 'react-select'
+
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
 // import 'moment/locale/ar'
 const Nav = () => {
   const router = useRouter()
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ]
 
   return (
     <React.Fragment>
@@ -73,21 +81,35 @@ const Nav = () => {
              
             "
             >
-              . . .
+              <select class="bg-white appearance-none border-none">
+                <option className="text-xl">. . . </option>
+                <option>No</option>
+                <option>Maybe</option>
+              </select>
             </buttons>
           </div>
         </div>
-
-        <div className="mt-2 pl-1 font-TSSemi lg:ml-5 lg:mt-5">
-          {/* <i className="bg-gray-300 fa fa-search "></i> */}
+        <div className="relative mt-2 pl-1 font-TSSemi lg:ml-5 lg:mt-5">
+          <div class="... pointer-events-auto absolute">
+            <svg
+              class="text-slate-400 absolute mx-2 mt-2 h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="#FFFFFF"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
           <input
             type="text"
-            id="fname"
-            name="fname"
             placeholder="محرك البحث"
-            className="bg-gray-300 border-white placeholder-white float-left w-28 rounded-md border-2 p-0.5 lg:w-auto"
+            class="bg-gray-300 border-white placeholder-white float-left w-32 rounded-md border-2 p-1 pr-8 lg:w-auto"
           />
         </div>
+
         {/* </section> */}
       </section>
 

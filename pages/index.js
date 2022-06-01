@@ -108,7 +108,7 @@ const index = (props) => {
 
       {/* <div dir="rtl"> */}
       {/* <div dir="rtl" id="project_body" className="text-black bg-white"> */}
-      <div dir="rtl" id="project_body">
+      <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
         <ImportantNews
           title={'أهم الأخبار'}
