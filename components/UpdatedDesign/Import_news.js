@@ -90,15 +90,15 @@ const Import_news = ({
                   {title}{' '}
                 </h1>
               </div>
-
               {description && (
                 <p
-                  className={`${desc_color} hidden w-full px-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
+                  className={`${desc_color} hidden w-full px-1 pt-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
                 >
                   {description}
                 </p>
               )}
             </div>
+
             <div className="my-1 mt-4 flex lg:mt-5">
               <p className="mt-5 font-TSbold text-lg lg:text-xl">عرض الجميع</p>
               <svg
@@ -113,8 +113,14 @@ const Import_news = ({
                 />
               </svg>
             </div>
-          </div>
-
+          </div>{' '}
+          {description && (
+            <p
+              className={`${desc_color} grid w-10/12 px-1 pb-2 font-TSmedium text-lg lg:hidden lg:text-xl`}
+            >
+              {description}
+            </p>
+          )}
           <section className="w-12/12 lg:w-12/12 mx-auto">
             <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 ">
               <section className="">
