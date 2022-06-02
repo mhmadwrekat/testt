@@ -15,6 +15,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
 // import { PlayIcon } from '@heroicons/react/outline'
+import Wavesurfer from 'react-wavesurfer.js'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 const Test = ({
@@ -29,7 +30,12 @@ const Test = ({
   news_two,
 }) => {
   const [subscripe, setSubscripe] = useState(subs)
-
+  const [position, setPosition] = useState(0)
+  const [muted, setMuted] = useState(false)
+  const onReadyHandler = () => console.log('done loading!')
+  const handlePositionChange = (position) => {
+    console.log('done handlePositionChange!')
+  }
   const handleSubscripe = () => {
     setSubscripe(!subscripe)
   }
@@ -115,6 +121,13 @@ const Test = ({
   // }, [audioPlayer.current.loadedmetadata, audioPlayer.current.readyState])
   return (
     <React.Fragment>
+      {/* <Wavesurfer
+        src="https://freesound.org/data/previews/462/462807_8386274-lq.mp3"
+        position={position}
+        onPositionChange={handlePositionChange}
+        onReady={onReadyHandler}
+        muted={muted}
+      /> */}
       <section className="mx-auto w-11/12 lg:w-10/12">
         <div className="flex justify-between">
           <div className="my-3 mt-3 lg:mt-4">
