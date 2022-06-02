@@ -81,7 +81,7 @@ const Import_news = ({
                       {important_news.category_name}
                     </h3>{' '}
                   </div>
-                  <div className=" max-w-full">
+                  <div className=" relative max-w-full">
                     {/* {console.log(important_news_img)} */}
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
@@ -120,6 +120,22 @@ const Import_news = ({
                           // blurDataURL={important_news_img}
                         />
                       ))}
+                    <div className="bg-white absolute bottom-2 left-2 rounded-full p-1">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className=" h-7 w-7 cursor-pointer opacity-70"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                        />
+                      </svg>
+                    </div>
                   </div>
                   <div
                     className=" my-2 flex justify-between px-2.5
@@ -145,7 +161,7 @@ const Import_news = ({
                     <p className="hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
                       {important_news.important_data.stories_content.slice(
                         0,
-                        390
+                        350
                       )}
                       .......
                     </p>
@@ -190,7 +206,7 @@ const Import_news = ({
                           </h3>{' '}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid ">
-                          <div className="mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0 ">
+                          <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
@@ -203,7 +219,7 @@ const Import_news = ({
                                   className="
                                 mx-auto
                                 h-32 
-                                w-40 lg:h-28 lg:w-full"
+                                w-40 md:h-full md:w-full lg:h-28 lg:w-full"
                                   // quality={25}
                                   // layout="responsive"
                                   // width={80}
@@ -223,7 +239,7 @@ const Import_news = ({
                                   className="
                                 mx-auto
                                 h-32 
-                                w-40 lg:h-28 lg:w-full"
+                                w-40 md:h-full md:w-full lg:h-28 lg:w-full"
                                   // quality={25}
                                   // layout="responsive"
                                   // width={80}
@@ -235,6 +251,22 @@ const Import_news = ({
                                   // blurDataURL={item.stories_media_url[0]}
                                 />
                               ))}
+                            <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className=" h-4 w-4 cursor-pointer opacity-70"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                />
+                              </svg>
+                            </div>
                           </div>
 
                           <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">

@@ -7,9 +7,6 @@ import HeadComp from '../components/page/HeadComp'
 import Nav from '../components/page/Nav'
 import Footer from '../components/page/Footer'
 // Apple View component
-const ImportantNews = dynamic(() =>
-  import('../components/appleStructrue/ImportantNews')
-)
 const ForYou = dynamic(() => import('../components/appleStructrue/ForYou'))
 const ColoredSection = dynamic(() =>
   import('../components/appleStructrue/ColoredSection')
@@ -120,12 +117,6 @@ const index = (props) => {
         {/**********************************************************************/}
         {/**********************************************************************/}
         {/**********************************************************************/}
-        <ImportantNews
-          title={'أهم الأخبار'}
-          important_news={props.all_news[0]}
-          color={'red-600'}
-          theme={'bg-red-500'}
-        />
 
         <section className="pb-10">
           <Test
