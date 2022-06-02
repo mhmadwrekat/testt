@@ -108,13 +108,12 @@ const index = (props) => {
         <Import_news
           title={'أهم الأخبار'}
           important_news={props.all_news[0]}
-          subscripe={true}
+          subs={null}
           title_color={'text-RED'}
           theme={'bg-RED'}
           card_color={'bg-GRAY100'}
           fill_color={'fill-RED'}
           text_color={'text-black'}
-          desc_color={'text-black'}
         />
         <section className="mt-6 bg-Purp400 pb-8">
           <Colored
@@ -132,12 +131,89 @@ const index = (props) => {
             }
           />
         </section>
+        <Import_news
+          title={' الصحه'}
+          important_news={props.all_news[2]}
+          title_color={'text-BLUE'}
+          subs={true}
+          theme={'bg-BLUE'}
+          card_color={'bg-GRAY100'}
+          fill_color={'fill-BLUE'}
+          desc_color={'text-GRAY400'}
+          description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
+        />
+        <Import_news
+          title={' تكنولوجيا'}
+          important_news={props.all_news[4]}
+          title_color={'text-GREEN'}
+          subs={true}
+          theme={'bg-GREEN'}
+          card_color={'bg-GRAY100'}
+          fill_color={'fill-GREEN'}
+          desc_color={'text-GRAY400'}
+          description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
+        />
+        <Import_news
+          title={' غزو أوكرانيا'}
+          important_news={props.all_news[5]}
+          title_color={'text-YELLOW'}
+          subs={true}
+          theme={'bg-YELLOW'}
+          card_color={'bg-GRAY100'}
+          fill_color={'fill-YELLOW'}
+          desc_color={'text-GRAY400'}
+          description={'جميع ما يخص أحداث غزو أوكرانيا'}
+        />
+        <Import_news
+          title={' رياضه'}
+          important_news={props.all_news[3]}
+          title_color={'text-BLUE'}
+          subs={true}
+          theme={'bg-BLUE'}
+          card_color={'bg-GRAY100'}
+          fill_color={'fill-BLUE'}
+          desc_color={'text-GRAY400'}
+          description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
+        />
+        <Import_news
+          title={' مال وأعمال'}
+          important_news={props.all_news[1]}
+          title_color={'text-GREEN'}
+          subs={false}
+          theme={'bg-GREEN'}
+          card_color={'bg-GRAY100'}
+          fill_color={'fill-GREEN'}
+          desc_color={'text-GRAY400'}
+          description={
+            'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+          }
+        />
+        {/**********************************************************************/}
+        {/**********************************************************************/}
+        {/**********************************************************************/}
+        {/**********************************************************************/}
+        {/**********************************************************************/}
 
-        {/**********************************************************************/}
-        {/**********************************************************************/}
-        {/**********************************************************************/}
-        {/**********************************************************************/}
-        {/**********************************************************************/}
+        <Footer />
+      </div>
+    </React.Fragment>
+  )
+}
+export default index
+
+/*
+
+      {typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-color-scheme: light)') ? (
+        <h1>LIGHT</h1>
+      ) : (
+        <h1>Dark</h1>
+      )}
+      temp={'61°F 🌥'}
+
+
+
+
 
         <section className="pb-10">
           <Test
@@ -247,20 +323,14 @@ const index = (props) => {
           title={'الصحه'}
           description={'جميع ما هو جديد في ابحاث الصحه بين يديك'}
         />
-        <Footer />
-      </div>
-    </React.Fragment>
-  )
-}
-export default index
 
-/*
 
-      {typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-color-scheme: light)') ? (
-        <h1>LIGHT</h1>
-      ) : (
-        <h1>Dark</h1>
-      )}
-      temp={'61°F 🌥'}
+
+
+
+
+
+
+
+
 */

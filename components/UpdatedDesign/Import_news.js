@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
 
@@ -6,9 +6,10 @@ const Import_news = ({
   title,
   important_news,
   fill_color,
-  text_color,
+  title_color,
   theme,
-  subscripe,
+  subs,
+  desc_color,
   description,
 }) => {
   const important_news_img =
@@ -36,20 +37,64 @@ const Import_news = ({
       return code
     }
   }
+  const [subscripe, setSubscripe] = useState(subs)
+
+  const handleSubscripe = () => {
+    setSubscripe(!subscripe)
+  }
 
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12">
         <>
           <div className="flex justify-between">
-            <div className="my-3 mt-4 lg:mt-5">
-              <h1
-                className={`${text_color} mt-5 font-TSExtra text-2xl lg:text-4xl`}
-              >
-                {title}{' '}
-              </h1>
+            <div className="my-3 mt-3 lg:mt-4">
+              <div className="flex">
+                {subscripe !== null &&
+                  (subscripe ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
+                      viewBox="0 0 20 20"
+                      fill="#B0B0B0"
+                      onClick={() => {
+                        handleSubscripe()
+                      }}
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
+                      viewBox="0 0 20 20"
+                      fill="#32CD32"
+                      onClick={() => {
+                        handleSubscripe()
+                      }}
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  ))}
+                <h1
+                  className={`${title_color} mt-5 font-TSExtra text-2xl lg:text-4xl`}
+                >
+                  {title}{' '}
+                </h1>
+              </div>
+
               {description && (
-                <p className="text-gray-400 hidden w-full px-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl">
+                <p
+                  className={`${desc_color} hidden w-full px-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
+                >
                   {description}
                 </p>
               )}
@@ -155,13 +200,13 @@ const Import_news = ({
                     </p>
                   </div>
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 font-TSExtra text-2xl">
+                    <div className="mb-2 font-TSExtra text-2xl lg:w-10/12">
                       {important_news.important_data.stories_headlines}
                     </div>
                     <p className="hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
                       {important_news.important_data.stories_content.slice(
                         0,
-                        350
+                        380
                       )}
                       .......
                     </p>
