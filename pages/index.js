@@ -20,6 +20,7 @@ const Test = dynamic(() => import('../components/appleStructrue/Test'))
 const Import_news = dynamic(() =>
   import('../components/UpdatedDesign/Import_news')
 )
+const Colored = dynamic(() => import('../components/UpdatedDesign/Colored'))
 
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
@@ -108,10 +109,30 @@ const index = (props) => {
           title={'أهم الأخبار'}
           important_news={props.all_news[0]}
           subscripe={true}
-          text_color={'text-RED'}
+          title_color={'text-RED'}
           theme={'bg-RED'}
+          card_color={'bg-GRAY100'}
           fill_color={'fill-RED'}
+          text_color={'text-black'}
+          desc_color={'text-black'}
         />
+        <section className="mt-6 bg-Purp400 pb-8">
+          <Colored
+            title={'مخصص لك'}
+            important_news={props.all_news[0]}
+            subscripe={true}
+            title_color={'text-white'}
+            card_color={'bg-Purp100'}
+            theme={'bg-Purp200'}
+            text_color={'text-white'}
+            fill_color={'fill-Purp200'}
+            desc_color={'text-GRAY'}
+            description={
+              'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
+            }
+          />
+        </section>
+
         {/**********************************************************************/}
         {/**********************************************************************/}
         {/**********************************************************************/}

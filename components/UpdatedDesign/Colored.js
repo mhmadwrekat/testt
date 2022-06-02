@@ -2,11 +2,14 @@ import React from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
 
-const Import_news = ({
+const Colored = ({
   title,
   important_news,
+  title_color,
+  desc_color,
   fill_color,
   text_color,
+  card_color,
   theme,
   subscripe,
   description,
@@ -39,22 +42,24 @@ const Import_news = ({
 
   return (
     <React.Fragment>
-      <section className="mx-auto w-11/12 lg:w-10/12">
+      <section className={`${text_color} mx-auto w-11/12 lg:w-10/12`}>
         <>
           <div className="flex justify-between">
-            <div className="my-3 mt-4 lg:mt-5">
+            <div className="my-3 mt-1 lg:mt-2">
               <h1
                 className={`${text_color} mt-5 font-TSExtra text-2xl lg:text-4xl`}
               >
                 {title}{' '}
               </h1>
               {description && (
-                <p className="text-gray-400 hidden w-full px-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl">
+                <p
+                  className={`${desc_color} hidden w-full px-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
+                >
                   {description}
                 </p>
               )}
             </div>
-            <div className="my-1 mt-4 flex lg:mt-5">
+            <div className="my-1 mt-1 flex lg:mt-5">
               <p className="mt-5 font-TSbold text-lg lg:text-xl">عرض الجميع</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -69,11 +74,17 @@ const Import_news = ({
               </svg>
             </div>
           </div>
-
+          {description && (
+            <p
+              className={`${desc_color} grid w-full px-1 pb-2 font-TSmedium text-lg lg:hidden lg:text-xl`}
+            >
+              {description}
+            </p>
+          )}
           <section className="w-12/12 lg:w-12/12 mx-auto">
             <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 ">
               <section className="">
-                <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
+                <div className={`${card_color} shadow-lg" id="card rounded-lg`}>
                   <div className="">
                     <h3
                       className={`${theme} text-white rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base hover:underline lg:pr-8`}
@@ -120,7 +131,7 @@ const Import_news = ({
                           // blurDataURL={important_news_img}
                         />
                       ))}
-                    <div className="bg-white absolute bottom-2 left-2 rounded-full p-1">
+                    <div className="bg-white text-black absolute bottom-2 left-2 rounded-full p-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className=" h-7 w-7 cursor-pointer opacity-70"
@@ -143,11 +154,11 @@ const Import_news = ({
                   "
                   >
                     <p className="">
-                      <b className="text-red-800 font-TSbold">
+                      <b className="text-red-600 font-TSbold">
                         {important_news.important_data.publisher_name}
                       </b>
                     </p>
-                    <p className="font-TSbold text-GRAY300">
+                    <p className="font-TSbold">
                       قبل{' '}
                       {moment(
                         important_news.important_data.published_on
@@ -174,7 +185,7 @@ const Import_news = ({
                     </p>
                     <div className="my-1 flex  justify-between pt-2.5">
                       <button
-                        className={`rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
+                        className={`rounded-lg py-0.5 font-TSExtra text-GRAY200 hover:text-RED`}
                       >
                         اقرأ المزيد
                       </button>
@@ -182,7 +193,7 @@ const Import_news = ({
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-9 w-9 cursor-pointer "
                         viewBox="0 0 20 20"
-                        fill="#686767"
+                        fill="#7F7F7F"
                       >
                         <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                       </svg>
@@ -195,7 +206,7 @@ const Import_news = ({
                   return (
                     <section key={item._id}>
                       <div
-                        className=" rounded-lg bg-GRAY100 shadow-lg"
+                        className={`${card_color} rounded-lg shadow-lg`}
                         id="card"
                       >
                         <div className="">
@@ -205,7 +216,7 @@ const Import_news = ({
                             {important_news.category_name}
                           </h3>{' '}
                         </div>
-                        <section className="flex bg-GRAY100 lg:grid ">
+                        <section className={`${card_color} flex lg:grid`}>
                           <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
@@ -248,7 +259,7 @@ const Import_news = ({
                                   // blurDataURL={item.stories_media_url[0]}
                                 />
                               ))}
-                            <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
+                            <div className="bg-white text-black absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className=" h-4 w-4 cursor-pointer opacity-70"
@@ -268,11 +279,11 @@ const Import_news = ({
 
                           <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
                             <p className="">
-                              <b className=" text-red-800 font-TSExtra">
+                              <b className=" text-red-600 font-TSExtra">
                                 {item.publisher_name}
                               </b>
                             </p>
-                            <p className="font-TSExtra text-GRAY400">
+                            <p className="font-TSExtra">
                               قبل {moment(item.published_on).fromNow(true)}
                             </p>
                           </div>
@@ -289,11 +300,11 @@ const Import_news = ({
 
                         <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                           <p className="">
-                            <b className=" text-red-800 font-TSExtra">
+                            <b className=" text-red-600 font-TSExtra">
                               {item.publisher_name}
                             </b>
                           </p>
-                          <p className="font-TSExtra text-GRAY300">
+                          <p className="font-TSExtra">
                             قبل {moment(item.published_on).fromNow(true)}
                           </p>
                         </div>
@@ -301,7 +312,7 @@ const Import_news = ({
                         <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
                         <div className="mx-2.5 flex justify-between pt-1 lg:pt-2">
                           <button
-                            className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY200 hover:text-RED`}
                           >
                             اقرا المزيد
                           </button>{' '}
@@ -309,7 +320,7 @@ const Import_news = ({
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-9 w-9 cursor-pointer "
                             viewBox="0 0 20 20"
-                            fill="#686767"
+                            fill="#7F7F7F"
                           >
                             <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                           </svg>
@@ -326,7 +337,7 @@ const Import_news = ({
     </React.Fragment>
   )
 }
-export default Import_news
+export default Colored
 /*
            {subscripe !== null &&
                 (subscripe ? (
