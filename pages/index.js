@@ -118,7 +118,7 @@ const index = (props) => {
         <section className="mt-6 bg-Purp400 pb-8">
           <Colored
             title={'مخصص لك'}
-            important_news={props.all_news[0]}
+            important_news={props.all_news[1]}
             subscripe={true}
             title_color={'text-white'}
             card_color={'bg-Purp100'}

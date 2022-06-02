@@ -289,7 +289,7 @@ const Test = ({
                                   </p>
                                 </div>
                               </section>
-                              <section className="mx-5 flex justify-between">
+                              <section className="float-left mx-2 flex">
                                 {/* <p className="texl-2xl mt-2">. . .</p> */}
                                 {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
                                   <select class="bg-white appearance-none border-none">
@@ -306,12 +306,12 @@ const Test = ({
                                     controlsList="nodownload noplaybackrate "
                                     loading="lazy"
                                     controls
-                                    className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
+                                    className="mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
                             lg:w-52 lg:text-base"
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
 
-                                  <div className="my-3 flex justify-between">
+                                  <div className="my-3 flex justify-between px-2 pt-2">
                                     <input
                                       dir="ltr"
                                       onChange={changeRange}
@@ -334,7 +334,7 @@ const Test = ({
                                   {isPlaying ? (
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
-                                      className="h-14 w-14"
+                                      className="h-12 w-12 lg:h-14 lg:w-14"
                                       fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
@@ -347,7 +347,7 @@ const Test = ({
                                   ) : (
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
-                                      className="h-14 w-14"
+                                      className="h-12 w-12 lg:h-14 lg:w-14"
                                       fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
@@ -427,7 +427,7 @@ const Test = ({
                                   </p>
                                 </div>
                               </section>
-                              <section className="mx-5 flex justify-between">
+                              <section className="float-left mx-2 flex">
                                 {/* <p className="texl-2xl mt-2">. . .</p> */}
                                 {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
                                   <select class="bg-white appearance-none border-none">
@@ -449,7 +449,7 @@ const Test = ({
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
 
-                                  <div className="my-3 flex justify-between">
+                                  <div className="my-3 flex justify-between px-2 pt-2">
                                     <input
                                       dir="ltr"
                                       onChange={changeRange}
@@ -457,7 +457,7 @@ const Test = ({
                                       defaultValue="0"
                                       ref={progressBar}
                                     ></input>
-                                    <div className="hidden lg:grid">
+                                    <div className="">
                                       {calculateTime(currentTime)}
                                     </div>
                                     {/* <div className="hidden lg:grid">
@@ -474,7 +474,7 @@ const Test = ({
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
                                       <path
@@ -488,7 +488,7 @@ const Test = ({
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12 lg:h-14 lg:w-14"
                                       viewBox="0 0 20 20"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                     >
                                       <path
                                         fillRule="evenodd"
@@ -615,7 +615,7 @@ const Test = ({
                                   </p>
                                 </div>
                               </section>
-                              <section className="mx-5 flex justify-between">
+                              <section className="float-left mx-2 flex">
                                 {/* <p className="texl-2xl mt-2">. . .</p> */}
                                 {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
                                   <select class="bg-white appearance-none border-none">
@@ -637,7 +637,7 @@ const Test = ({
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
 
-                                  <div className="my-3 flex justify-between">
+                                  <div className="my-3 flex justify-between px-2 pt-2">
                                     <input
                                       dir="ltr"
                                       onChange={changeRange}
@@ -659,7 +659,7 @@ const Test = ({
                                   {isPlaying ? (
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
-                                      className="h-14 w-14"
+                                      className="h-12 w-12 lg:h-14 lg:w-14"
                                       fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
@@ -672,7 +672,7 @@ const Test = ({
                                   ) : (
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
-                                      className="h-14 w-14"
+                                      className="h-12 w-12 lg:h-14 lg:w-14"
                                       fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
@@ -752,7 +752,7 @@ const Test = ({
                                   </p>
                                 </div>
                               </section>
-                              <section className="mx-5 flex justify-between">
+                              <section className="float-left mx-2 flex">
                                 {/* <p className="texl-2xl mt-2">. . .</p> */}
                                 {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
                                   <select class="bg-white appearance-none border-none">
@@ -774,7 +774,7 @@ const Test = ({
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
 
-                                  <div className="my-3 flex justify-between">
+                                  <div className="my-3 flex justify-between px-2 pt-2">
                                     <input
                                       dir="ltr"
                                       onChange={changeRange}
@@ -782,7 +782,7 @@ const Test = ({
                                       defaultValue="0"
                                       ref={progressBar}
                                     ></input>
-                                    <div className="hidden lg:grid">
+                                    <div className="">
                                       {calculateTime(currentTime)}
                                     </div>
                                     {/* <div className="hidden lg:grid">
@@ -799,7 +799,7 @@ const Test = ({
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
                                       <path
@@ -813,7 +813,7 @@ const Test = ({
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12 lg:h-14 lg:w-14"
                                       viewBox="0 0 20 20"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                     >
                                       <path
                                         fillRule="evenodd"
