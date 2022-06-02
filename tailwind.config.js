@@ -9,6 +9,7 @@ module.exports = {
       BLUE: '#1d62a5',
       Purp: '#453087',
       GREEN: '#07ad76',
+      YELLOW: '#ffab00',
     },
     extend: {
       fontFamily: {

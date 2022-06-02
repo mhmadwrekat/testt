@@ -45,7 +45,7 @@ const Technology = ({
               <h1 className={`${color} mt-5 font-TSExtra text-4xl lg:text-4xl`}>
                 {title}{' '}
               </h1>
-              <p className="text-white w-full px-1 pb-5 font-TSmedium text-lg lg:text-xl">
+              <p className="text-gray-400 w-full px-1 pb-5 font-TSmedium text-lg lg:text-xl">
                 {description}
               </p>
             </div>
@@ -55,15 +55,13 @@ const Technology = ({
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="mx-2 mt-1 mb-5 h-10 w-10 hover:cursor-pointer lg:h-16 lg:w-16"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#FFFFFF"
-                    strokeWidth={2}
+                    viewBox="0 0 20 20"
+                    fill="#FFFFFF"
                   >
                     <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                      clip-rule="evenodd"
                     />
                   </svg>
                 ) : (
@@ -147,7 +145,7 @@ const Technology = ({
                       </b>
                     </p>
                     <p className="text-gray-400 font-TSbold">
-                      منذ{' '}
+                      قبل{' '}
                       {moment(
                         important_news.important_data.published_on
                       ).fromNow(true)}
@@ -254,7 +252,7 @@ const Technology = ({
                               </b>
                             </p>
                             <p className="text-gray-400 font-TSExtra">
-                              منذ {moment(item.published_on).fromNow(true)}
+                              قبل {moment(item.published_on).fromNow(true)}
                             </p>
                           </div>
 
@@ -275,7 +273,7 @@ const Technology = ({
                             </b>
                           </p>
                           <p className="text-gray-400 font-TSExtra">
-                            منذ {moment(item.published_on).fromNow(true)}
+                            قبل {moment(item.published_on).fromNow(true)}
                           </p>
                         </div>
 

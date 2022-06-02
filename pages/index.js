@@ -18,6 +18,7 @@ const Logaimat = dynamic(() => import('../components/appleStructrue/Logaimat'))
 const Video = dynamic(() => import('../components/appleStructrue/Video'))
 const Voice = dynamic(() => import('../components/appleStructrue/Voice'))
 const Hashtag = dynamic(() => import('../components/appleStructrue/Hashtag'))
+const Test = dynamic(() => import('../components/appleStructrue/Test'))
 
 const Technology = dynamic(() =>
   import('../components/UpdatedDesign/Technology')
@@ -118,20 +119,24 @@ const index = (props) => {
         />
 
         <section className="pb-10">
-          <section
-            className="w-full bg-[url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/821a4c95524615.5e995cb76f80e.png')] bg-cover bg-fixed bg-center 
-            "
-          >
-            <div className="bg-black h-full w-full bg-opacity-50 pb-6">
-              <Technology
-                title={'الصحه '}
-                important_news={props.all_news[2]}
-                subscripe={true}
-                color={'text-GREEN'}
-                theme={'bg-GREEN'}
-                description={'كل ما يخص الاخبار الصحه العالميه من اهم المصادر'}
-              />
-            </div>
+          <Test
+            title={'الصوتيات '}
+            news_one={props.all_news[1]}
+            news_two={props.all_news[2]}
+            subscripe={true}
+            color={'text-YELLOW'}
+            theme={'bg-YELLOW'}
+            description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
+          />
+          <section>
+            <Technology
+              title={'الصحه '}
+              important_news={props.all_news[2]}
+              subscripe={true}
+              color={'text-GREEN'}
+              theme={'bg-GREEN'}
+              description={'كل ما يخص الاخبار الصحه العالميه من اهم المصادر'}
+            />
           </section>
           <Hashtag
             title={'# هاشتاج الاسبوع'}

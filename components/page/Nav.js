@@ -75,12 +75,7 @@ const Nav = () => {
             <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
               اقتصاد
             </buttons>
-            <buttons
-              className="my-auto ml-10 lg:cursor-pointer lg:hover:underline
-            
-             
-            "
-            >
+            <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
               <select class="bg-white appearance-none border-none">
                 <option className="text-xl">. . . </option>
                 <option>No</option>

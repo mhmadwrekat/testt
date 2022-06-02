@@ -132,7 +132,7 @@ const ForYou = ({ for_you, title, description, color, subscripe }) => {
                   className=" text-gray-400 font-TSmedium
                   text-xs"
                 >
-                  منذ{' '}
+                  قبل{' '}
                   {moment(for_you.important_data.published_on).fromNow(true)}
                 </p>
               </div>
@@ -192,7 +192,7 @@ const ForYou = ({ for_you, title, description, color, subscripe }) => {
                         className=" text-gray-400 font-TSmedium
                   text-xs"
                       >
-                        منذ {moment(item.published_on).fromNow(true)}
+                        قبل {moment(item.published_on).fromNow(true)}
                       </p>
                     </div>
                   </div>

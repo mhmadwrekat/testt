@@ -109,7 +109,7 @@ const TopStories = ({ title, important_news, color, theme }) => {
                       </b>
                     </p>
                     <p className="font-TSSemi">
-                      منذ{' '}
+                      قبل{' '}
                       {moment(
                         important_news.important_data.published_on
                       ).fromNow(true)}
@@ -208,7 +208,7 @@ const TopStories = ({ title, important_news, color, theme }) => {
                           </b>
                         </p>
                         <p className="font-TSSemi">
-                          منذ {moment(item.published_on).fromNow(true)}
+                          قبل {moment(item.published_on).fromNow(true)}
                         </p>
                       </div>
 
