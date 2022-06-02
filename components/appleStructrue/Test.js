@@ -33,11 +33,6 @@ const Test = ({
   const handleSubscripe = () => {
     setSubscripe(!subscripe)
   }
-  const news_one_img =
-    news_one?.important_data.stories_media_url.length > 0
-      ? news_two.important_data.stories_media_url[0]
-      : null
-
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
     let code = ''
@@ -58,19 +53,7 @@ const Test = ({
       return code
     }
   }
-  let window_width = 0
-  if (typeof window !== 'undefined') {
-    window_width = window.innerWidth
-  }
-  let slides_per_view = 0
-  let space_between = 0
-  if (window_width > 900) {
-    ;(slides_per_view = 3), (space_between = 15)
-  } else if (window_width < 900 && window_width > 400) {
-    ;(slides_per_view = 2), (space_between = 15)
-  } else if (window_width < 400) {
-    ;(slides_per_view = 1), (space_between = 15)
-  }
+
   /********************************************************************************************************/
   /********************************************************************************************************/
   /********************************************************************************************************/
@@ -82,16 +65,9 @@ const Test = ({
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
 
-  const audioPlayer = useRef()
+  let audioPlayer = useRef()
   const progressBar = useRef()
   const animationRef = useRef()
-
-  useEffect(() => {
-    const seconds = Math.floor(audioPlayer.current.duration)
-    setDuration(seconds)
-    progressBar.current.max = seconds
-  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState])
-
   const playPause = () => {
     setisPlaying(!isPlaying)
     if (!isPlaying) {
@@ -119,7 +95,24 @@ const Test = ({
     const returnSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
     return `${returnMinutes}:${returnSeconds}`
   }
-
+  let window_width = 0
+  if (typeof window !== 'undefined') {
+    window_width = window.innerWidth
+  }
+  let slides_per_view = 0
+  let space_between = 0
+  if (window_width > 900) {
+    ;(slides_per_view = 2.8), (space_between = 15)
+  } else if (window_width < 900 && window_width > 400) {
+    ;(slides_per_view = 2), (space_between = 15)
+  } else if (window_width < 400) {
+    ;(slides_per_view = 1), (space_between = 15)
+  }
+  // useEffect(() => {
+  //   const seconds = Math.floor(audioPlayer.current.duration)
+  //   setDuration(seconds)
+  //   progressBar.current.max = seconds
+  // }, [audioPlayer.current.loadedmetadata, audioPlayer.current.readyState])
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12">
@@ -197,7 +190,7 @@ const Test = ({
             {description}
           </p>
         )}
-        <section className="w-6/6 bg-red mx-auto">
+        <section className="w-6/6 mx-auto">
           {slides_per_view && (
             <Swiper
               // install Swiper modules
@@ -206,9 +199,9 @@ const Test = ({
               spaceBetween={0}
               //   navigation={true}
               // autoplay={true}
-              loop={true}
-              // install Swiper modules
               // loop={true}
+              // install Swiper modules
+              loop={true}
               // thumbs={{
               //   swiper: thumbsSwiper,
               // }}
@@ -218,7 +211,7 @@ const Test = ({
               //   dragSize: 'auto',
               //   hide: true,
               // }}
-              //    pagination={{
+              // pagination={{
               //   type: 'fraction',
               // }}
             >
@@ -232,6 +225,7 @@ const Test = ({
                         item.stories_media_url[0].includes('youtu.be') ? (
                           <section className="flex">
                             <div>
+                              {console.log(item.stories_media_url[0])}
                               <div className="">
                                 <h3
                                   className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
@@ -246,7 +240,7 @@ const Test = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" mx-auto h-40 w-60 lg:h-36 lg:w-60"
+                                  className=" mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -317,8 +311,7 @@ const Test = ({
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
 
-                                  <div className="my-3 flex">
-                                    <div>{calculateTime(currentTime)}</div>
+                                  <div className="my-3 flex justify-between">
                                     <input
                                       dir="ltr"
                                       onChange={changeRange}
@@ -326,11 +319,14 @@ const Test = ({
                                       defaultValue="0"
                                       ref={progressBar}
                                     ></input>
-                                    <div>
-                                      {duration &&
-                                        !isNaN(duration) &&
-                                        calculateTime(duration)}
-                                    </div>
+                                    <div>{calculateTime(currentTime)}</div>
+
+                                    {/* <div>
+                                      {duration
+                                        ? !isNaN(duration) &&
+                                          calculateTime(duration)
+                                        : null}
+                                    </div> */}
                                   </div>
                                 </section>
 
@@ -382,7 +378,7 @@ const Test = ({
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 lg:h-36 lg:w-60"
+                                  className="mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -453,10 +449,7 @@ const Test = ({
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
 
-                                  <div className="my-3 flex">
-                                    <div className="hidden lg:grid">
-                                      {calculateTime(currentTime)}
-                                    </div>
+                                  <div className="my-3 flex justify-between">
                                     <input
                                       dir="ltr"
                                       onChange={changeRange}
@@ -465,10 +458,14 @@ const Test = ({
                                       ref={progressBar}
                                     ></input>
                                     <div className="hidden lg:grid">
-                                      {duration &&
-                                        !isNaN(duration) &&
-                                        calculateTime(duration)}
+                                      {calculateTime(currentTime)}
                                     </div>
+                                    {/* <div className="hidden lg:grid">
+                                      {duration
+                                        ? !isNaN(duration) &&
+                                          calculateTime(duration)
+                                        : null}
+                                    </div> */}
                                   </div>
                                 </section>
 
@@ -515,7 +512,7 @@ const Test = ({
           {/******************************* */}
           {/******************************* */}
           {/******************************* */}
-          <div className="w-6/6 border-b-2 border-YELLOW pt-1 opacity-80"></div>
+          <div className="w-6/6 my-3 mx-auto border-b-2 border-YELLOW pt-1 opacity-80"></div>
           {/******************************* */}
           {/******************************* */}
           {/******************************* */}
@@ -548,12 +545,13 @@ const Test = ({
                 // console.log(Object.values(item.voices)[1])
                 return (
                   <SwiperSlide key={item._id}>
-                    <div className=" my-5 mx-auto rounded-md" loading="lazy">
+                    <div className="mx-auto rounded-md " loading="lazy">
                       {item.stories_media_url[0] &&
                         (item.stories_media_url[0].includes('youtube') ||
                         item.stories_media_url[0].includes('youtu.be') ? (
                           <section className="flex">
                             <div>
+                              {console.log(item.stories_media_url[0])}
                               <div className="">
                                 <h3
                                   className={`text-white rounded-t-md bg-BLUE pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
@@ -568,7 +566,7 @@ const Test = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 lg:h-36 lg:w-60"
+                                  className=" mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -606,13 +604,13 @@ const Test = ({
                                 <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
                                   <p className="">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_two.important_data.publisher_name}
+                                      {news_one.important_data.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 font-TSbold">
                                     قبل{' '}
                                     {moment(
-                                      news_two.important_data.published_on
+                                      news_one.important_data.published_on
                                     ).fromNow(true)}
                                   </p>
                                 </div>
@@ -639,10 +637,7 @@ const Test = ({
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
 
-                                  <div className="my-3 flex">
-                                    <div className="hidden lg:grid">
-                                      {calculateTime(currentTime)}
-                                    </div>
+                                  <div className="my-3 flex justify-between">
                                     <input
                                       dir="ltr"
                                       onChange={changeRange}
@@ -650,11 +645,13 @@ const Test = ({
                                       defaultValue="0"
                                       ref={progressBar}
                                     ></input>
-                                    <div className="hidden lg:grid">
-                                      {duration &&
-                                        !isNaN(duration) &&
-                                        calculateTime(duration)}
-                                    </div>
+                                    <div>{calculateTime(currentTime)}</div>
+                                    {/* <div>
+                                      {duration
+                                        ? !isNaN(duration) &&
+                                          calculateTime(duration)
+                                        : null}
+                                    </div> */}
                                   </div>
                                 </section>
 
@@ -700,12 +697,13 @@ const Test = ({
                                   {news_two.category_name}
                                 </h3>{' '}
                               </div>
+
                               <div className="relative">
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 lg:h-36 lg:w-60"
+                                  className="mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -743,13 +741,13 @@ const Test = ({
                                 <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_two.important_data.publisher_name}
+                                      {news_one.important_data.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 ml-3 font-TSbold">
                                     قبل{' '}
                                     {moment(
-                                      news_two.important_data.published_on
+                                      news_one.important_data.published_on
                                     ).fromNow(true)}
                                   </p>
                                 </div>
@@ -776,10 +774,7 @@ const Test = ({
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
 
-                                  <div className="my-3 flex">
-                                    <div className="hidden lg:grid">
-                                      {calculateTime(currentTime)}
-                                    </div>
+                                  <div className="my-3 flex justify-between">
                                     <input
                                       dir="ltr"
                                       onChange={changeRange}
@@ -788,10 +783,14 @@ const Test = ({
                                       ref={progressBar}
                                     ></input>
                                     <div className="hidden lg:grid">
-                                      {duration &&
-                                        !isNaN(duration) &&
-                                        calculateTime(duration)}
+                                      {calculateTime(currentTime)}
                                     </div>
+                                    {/* <div className="hidden lg:grid">
+                                      {duration
+                                        ? !isNaN(duration) &&
+                                          calculateTime(duration)
+                                        : null}
+                                    </div> */}
                                   </div>
                                 </section>
 
@@ -800,7 +799,7 @@ const Test = ({
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#E0A719"
+                                      fill="#ffab00"
                                       viewBox="0 0 20 20"
                                     >
                                       <path
@@ -814,7 +813,7 @@ const Test = ({
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12 lg:h-14 lg:w-14"
                                       viewBox="0 0 20 20"
-                                      fill="#E0A719"
+                                      fill="#ffab00"
                                     >
                                       <path
                                         fillRule="evenodd"
