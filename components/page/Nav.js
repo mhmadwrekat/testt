@@ -97,7 +97,7 @@ const Nav = () => {
           <input
             type="text"
             placeholder="محرك البحث"
-            class="border-white placeholder-white float-left w-40 rounded-md border-2 bg-GRAY100 p-1 pt-2 pr-12 text-base lg:w-96 lg:text-lg"
+            class="border-white placeholder-white float-left w-40 rounded-md border-2 bg-GRAY200 p-1 pt-2 pr-12 text-base lg:w-96 lg:text-lg"
           />
         </div>
 

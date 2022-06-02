@@ -20,7 +20,11 @@ module.exports = {
       GREEN: '#07ad76',
       YELLOW: '#ffab00',
       SKY: '#17C1BC',
-      GRAY100: '#DDDDDD',
+      RED: '#EB5353',
+      GRAY100: '#F5F5F5',
+      GRAY200: '#DDDDDD',
+      GRAY300: '#7F7F7F',
+      GRAY400: '#686767',
     },
     extend: {
       fontFamily: {

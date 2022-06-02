@@ -20,8 +20,8 @@ const Voice = dynamic(() => import('../components/appleStructrue/Voice'))
 const Hashtag = dynamic(() => import('../components/appleStructrue/Hashtag'))
 const Test = dynamic(() => import('../components/appleStructrue/Test'))
 
-const Technology = dynamic(() =>
-  import('../components/UpdatedDesign/Technology')
+const Import_news = dynamic(() =>
+  import('../components/UpdatedDesign/Import_news')
 )
 
 // Get Server Side Function
@@ -104,13 +104,22 @@ export async function getServerSideProps({ req, res }) {
 const index = (props) => {
   return (
     <React.Fragment>
-      {/* {console.log(props.country, props.country_code)} */}
       <HeadComp />
-
-      {/* <div dir="rtl"> */}
-      {/* <div dir="rtl" id="project_body" className="text-black bg-white"> */}
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
+        <Import_news
+          title={'أهم الأخبار'}
+          important_news={props.all_news[0]}
+          subscripe={true}
+          text_color={'text-RED'}
+          theme={'bg-RED'}
+          fill_color={'fill-RED'}
+        />
+        {/**********************************************************************/}
+        {/**********************************************************************/}
+        {/**********************************************************************/}
+        {/**********************************************************************/}
+        {/**********************************************************************/}
         <ImportantNews
           title={'أهم الأخبار'}
           important_news={props.all_news[0]}
@@ -128,16 +137,7 @@ const index = (props) => {
             theme={'bg-YELLOW'}
             description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
           />
-          <section>
-            <Technology
-              title={'الصحه '}
-              important_news={props.all_news[2]}
-              subscripe={true}
-              color={'text-GREEN'}
-              theme={'bg-GREEN'}
-              description={'كل ما يخص الاخبار الصحه العالميه من اهم المصادر'}
-            />
-          </section>
+          <section></section>
           <Hashtag
             title={'# هاشتاج الاسبوع'}
             important_news={props.all_news[1]}
