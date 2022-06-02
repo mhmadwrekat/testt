@@ -80,7 +80,7 @@ const Nav = () => {
             </buttons> */}
           </div>
         </div>
-        <div className="relative mt-3 pl-3 font-TSSemi lg:ml-5 lg:mt-6">
+        <div className="relative mt-3 font-TSSemi lg:ml-5 lg:mt-6 lg:pl-3">
           <div class="... pointer-events-auto absolute">
             <svg
               class="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
@@ -97,7 +97,7 @@ const Nav = () => {
           <input
             type="text"
             placeholder="محرك البحث"
-            class="border-white placeholder-white float-left w-32 rounded-md border-2 bg-GRAY100 p-1 pt-2 pr-12 text-lg lg:w-96"
+            class="border-white placeholder-white float-left w-40 rounded-md border-2 bg-GRAY100 p-1 pt-2 pr-12 text-base lg:w-96 lg:text-lg"
           />
         </div>
 
