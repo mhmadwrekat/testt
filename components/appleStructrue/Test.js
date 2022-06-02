@@ -15,7 +15,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
 // import { PlayIcon } from '@heroicons/react/outline'
-import Wavesurfer from 'react-wavesurfer.js'
+// import Wavesurfer from 'react-wavesurfer.js'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 const Test = ({
@@ -30,12 +30,12 @@ const Test = ({
   news_two,
 }) => {
   const [subscripe, setSubscripe] = useState(subs)
-  const [position, setPosition] = useState(0)
-  const [muted, setMuted] = useState(false)
-  const onReadyHandler = () => console.log('done loading!')
-  const handlePositionChange = (position) => {
-    console.log('done handlePositionChange!')
-  }
+  // const [position, setPosition] = useState(0)
+  // const [muted, setMuted] = useState(false)
+  // const onReadyHandler = () => console.log('done loading!')
+  // const handlePositionChange = (position) => {
+  //   console.log('done handlePositionChange!')
+  // }
   const handleSubscripe = () => {
     setSubscripe(!subscripe)
   }
