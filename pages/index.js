@@ -131,6 +131,7 @@ const index = (props) => {
             }
           />
         </section>
+
         <Import_news
           title={' الصحه'}
           important_news={props.all_news[2]}
@@ -187,6 +188,18 @@ const index = (props) => {
           description={
             'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
           }
+        />
+        <Test
+          title={'الصوتيات '}
+          news_one={props.all_news[5]}
+          news_two={props.all_news[2]}
+          subs={true}
+          title_color={'text-YELLOW'}
+          fill_color={'fill-YELLOW'}
+          card_color={'bg-GRAY100'}
+          desc_color={'text-GRAY400'}
+          theme={'bg-YELLOW'}
+          description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
         />
         {/**********************************************************************/}
         {/**********************************************************************/}

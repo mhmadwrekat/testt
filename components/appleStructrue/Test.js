@@ -19,13 +19,20 @@ import 'swiper/css/scrollbar'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 const Test = ({
   title,
+  fill_color,
+  title_color,
+  theme,
+  subs,
+  desc_color,
+  description,
   news_one,
   news_two,
-  color,
-  theme,
-  subscripe,
-  description,
 }) => {
+  const [subscripe, setSubscripe] = useState(subs)
+
+  const handleSubscripe = () => {
+    setSubscripe(!subscripe)
+  }
   const news_one_img =
     news_one?.important_data.stories_media_url.length > 0
       ? news_two.important_data.stories_media_url[0]
@@ -115,50 +122,81 @@ const Test = ({
 
   return (
     <React.Fragment>
-      <section className="mx-auto w-11/12 lg:w-11/12">
-        <div className="my-4 flex justify-between lg:my-5">
-          <div className="pr-10">
-            <h1 className={`${color} mt-5 font-TSExtra text-4xl lg:text-4xl`}>
-              {title}{' '}
-            </h1>
-            <p className="text-gray-400 w-full px-1 pb-5 font-TSmedium text-lg lg:text-xl">
-              {description}
-            </p>
+      <section className="mx-auto w-11/12 lg:w-10/12">
+        <div className="flex justify-between">
+          <div className="my-3 mt-3 lg:mt-4">
+            <div className="flex">
+              {subscripe !== null &&
+                (subscripe ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
+                    viewBox="0 0 20 20"
+                    fill="#B0B0B0"
+                    onClick={() => {
+                      handleSubscripe()
+                    }}
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
+                    viewBox="0 0 20 20"
+                    fill="#32CD32"
+                    onClick={() => {
+                      handleSubscripe()
+                    }}
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                ))}
+              <h1
+                className={`${title_color} mt-5 font-TSExtra text-2xl lg:text-4xl`}
+              >
+                {title}{' '}
+              </h1>
+            </div>
+            {description && (
+              <p
+                className={`${desc_color} hidden w-full px-1 pt-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
+              >
+                {description}
+              </p>
+            )}
           </div>
-          <div className="pt-3 pl-5">
-            {subscripe !== null &&
-              (subscripe ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="mx-2 mt-1 mb-5 h-10 w-10 hover:cursor-pointer lg:h-16 lg:w-16"
-                  viewBox="0 0 20 20"
-                  fill="#A0A0A0"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="mx-2 mt-1 h-16 w-16 hover:cursor-pointer"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="#A0A0A0"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              ))}
-          </div>
-        </div>
 
+          <div className="my-1 mt-4 flex lg:mt-5">
+            <p className="mt-5 font-TSbold text-lg lg:text-xl"> أستمع للمزيد</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>{' '}
+        {description && (
+          <p
+            className={`${desc_color} grid w-10/12 px-1 pb-2 font-TSmedium text-lg lg:hidden lg:text-xl`}
+          >
+            {description}
+          </p>
+        )}
         <section className="w-6/6 bg-red mx-auto">
           {slides_per_view && (
             <Swiper
@@ -188,20 +226,55 @@ const Test = ({
                 // console.log(Object.values(item.voices)[1])
                 return (
                   <SwiperSlide key={item._id}>
-                    <div className=" my-5 mx-auto rounded-md " loading="lazy">
+                    <div className="mx-auto rounded-md " loading="lazy">
                       {item.stories_media_url[0] &&
                         (item.stories_media_url[0].includes('youtube') ||
                         item.stories_media_url[0].includes('youtu.be') ? (
                           <section className="flex">
                             <div>
-                              <img
-                                loading="lazy"
-                                src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                  item.stories_media_url[0]
-                                )}/0.jpg`}
-                                alt={item.stories_headlines}
-                                className="mx-auto h-28 w-36 lg:h-40 lg:w-40"
-                              />
+                              <div className="">
+                                <h3
+                                  className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                >
+                                  {news_one.category_name}
+                                </h3>{' '}
+                              </div>
+                              <div className="relative">
+                                <img
+                                  loading="lazy"
+                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className=" mx-auto h-40 w-60 lg:h-36 lg:w-60"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
                             </div>
                             <section>
                               <section>
@@ -223,7 +296,7 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="mx-5 flex justify-between">
-                                <p className="texl-2xl mt-2">. . .</p>
+                                {/* <p className="texl-2xl mt-2">. . .</p> */}
                                 {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
                                   <select class="bg-white appearance-none border-none">
                                     <option className="text-3xl">. . . </option>
@@ -266,7 +339,7 @@ const Test = ({
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-14 w-14"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
                                       <path
@@ -279,7 +352,7 @@ const Test = ({
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-14 w-14"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
                                       <path
@@ -296,12 +369,48 @@ const Test = ({
                         ) : (
                           <section className="flex">
                             <div>
-                              <img
-                                loading="lazy"
-                                src={item.stories_media_url[0]}
-                                alt={item.stories_headlines}
-                                className="mx-auto h-36 w-40 lg:h-40 lg:w-40"
-                              />
+                              <div className="">
+                                <h3
+                                  className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                >
+                                  {news_one.category_name}
+                                </h3>{' '}
+                              </div>
+
+                              <div className="relative">
+                                <img
+                                  loading="lazy"
+                                  src={item.stories_media_url[0]}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-40 w-60 lg:h-36 lg:w-60"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
                             </div>
                             <section>
                               <section>
@@ -323,7 +432,7 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="mx-5 flex justify-between">
-                                <p className="texl-2xl mt-2">. . .</p>
+                                {/* <p className="texl-2xl mt-2">. . .</p> */}
                                 {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
                                   <select class="bg-white appearance-none border-none">
                                     <option className="text-3xl">. . . </option>
@@ -445,14 +554,49 @@ const Test = ({
                         item.stories_media_url[0].includes('youtu.be') ? (
                           <section className="flex">
                             <div>
-                              <img
-                                loading="lazy"
-                                src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                  item.stories_media_url[0]
-                                )}/0.jpg`}
-                                alt={item.stories_headlines}
-                                className="mx-auto h-28 w-36 lg:h-40 lg:w-40"
-                              />
+                              <div className="">
+                                <h3
+                                  className={`text-white rounded-t-md bg-BLUE pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                >
+                                  {news_two.category_name}
+                                </h3>{' '}
+                              </div>
+                              <div className="relative">
+                                <img
+                                  loading="lazy"
+                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-40 w-60 lg:h-36 lg:w-60"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
                             </div>
                             <section>
                               <section>
@@ -474,7 +618,7 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="mx-5 flex justify-between">
-                                <p className="texl-2xl mt-2">. . .</p>
+                                {/* <p className="texl-2xl mt-2">. . .</p> */}
                                 {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
                                   <select class="bg-white appearance-none border-none">
                                     <option className="text-3xl">. . . </option>
@@ -519,7 +663,7 @@ const Test = ({
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-14 w-14"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
                                       <path
@@ -532,7 +676,7 @@ const Test = ({
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-14 w-14"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
                                       <path
@@ -549,12 +693,47 @@ const Test = ({
                         ) : (
                           <section className="flex">
                             <div>
-                              <img
-                                loading="lazy"
-                                src={item.stories_media_url[0]}
-                                alt={item.stories_headlines}
-                                className="mx-auto h-36 w-40 lg:h-40 lg:w-40"
-                              />
+                              <div className="">
+                                <h3
+                                  className={`text-white rounded-t-md bg-BLUE pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                >
+                                  {news_two.category_name}
+                                </h3>{' '}
+                              </div>
+                              <div className="relative">
+                                <img
+                                  loading="lazy"
+                                  src={item.stories_media_url[0]}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-40 w-60 lg:h-36 lg:w-60"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
                             </div>
                             <section>
                               <section>
@@ -576,7 +755,7 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="mx-5 flex justify-between">
-                                <p className="texl-2xl mt-2">. . .</p>
+                                {/* <p className="texl-2xl mt-2">. . .</p> */}
                                 {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
                                   <select class="bg-white appearance-none border-none">
                                     <option className="text-3xl">. . . </option>
@@ -621,7 +800,7 @@ const Test = ({
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                       viewBox="0 0 20 20"
                                     >
                                       <path
@@ -635,7 +814,7 @@ const Test = ({
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12 lg:h-14 lg:w-14"
                                       viewBox="0 0 20 20"
-                                      fill="#ffab00"
+                                      fill="#E0A719"
                                     >
                                       <path
                                         fillRule="evenodd"
