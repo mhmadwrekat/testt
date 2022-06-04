@@ -1,6 +1,7 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
+import axios from 'axios'
 
 // page Component
 import HeadComp from '../components/page/HeadComp'
@@ -11,11 +12,16 @@ const ForYou = dynamic(() => import('../components/appleStructrue/ForYou'))
 const ColoredSection = dynamic(() =>
   import('../components/appleStructrue/ColoredSection')
 )
-const Logaimat = dynamic(() => import('../components/appleStructrue/Logaimat'))
+const Logaimat = dynamic(() => import('../components/UpdatedDesign/Logaimat'))
 const Video = dynamic(() => import('../components/appleStructrue/Video'))
 const Voice = dynamic(() => import('../components/appleStructrue/Voice'))
 const Hashtag = dynamic(() => import('../components/appleStructrue/Hashtag'))
-const Test = dynamic(() => import('../components/appleStructrue/Test'))
+const Test = dynamic(() => import('../components/appleStructrue/Test'), {
+  ssr: false,
+})
+const Test4 = dynamic(() => import('../components/appleStructrue/Test4'), {
+  ssr: false,
+})
 
 const Import_news = dynamic(() =>
   import('../components/UpdatedDesign/Import_news')
@@ -36,6 +42,12 @@ export async function getServerSideProps({ req, res }) {
   const country_code = await country_code_res.json()
   const ready_country_code = country_code.country_code
 
+  let user_token = ''
+  if (typeof window !== 'undefined') {
+    // Perform localStorage action
+    user_token = localStorage.getItem('user_token')
+  }
+
   // Get All News
   const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
   const all_news_res = await fetch(all_news_url)
@@ -47,10 +59,20 @@ export async function getServerSideProps({ req, res }) {
   keys.map((item) => {
     custom_array.push(all_news.data[item])
   })
+  // Get Logaimat API
+  const LoqaimatDataReq = axios({
+    method: 'GET',
+    url: `${BASE_URL}/v1/Web/Loqaimat`,
+    headers: {
+      Authorization: `Basic ${user_token}`,
+    },
+  })
+  const loqaimat = await LoqaimatDataReq
 
   return {
     props: {
       all_news: custom_array,
+      loqaimat: loqaimat.data,
     },
   }
 }
@@ -102,6 +124,7 @@ export async function getServerSideProps({ req, res }) {
 const index = (props) => {
   return (
     <React.Fragment>
+      {/* {console.log(props.loqaimat.data[0].screens)} */}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
@@ -143,6 +166,7 @@ const index = (props) => {
           desc_color={'text-GRAY400'}
           description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
         />
+
         <Import_news
           title={' تكنولوجيا'}
           important_news={props.all_news[4]}
@@ -154,6 +178,18 @@ const index = (props) => {
           desc_color={'text-GRAY400'}
           description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
         />
+        {/* <Logaimat
+          title={'لقيمات'}
+          important_news={props.loqaimat.data[0].screens}
+          subs={true}
+          title_color={'text-SKY'}
+          theme={'bg-SKY'}
+          card_color={'bg-GRAY100'}
+          fill_color={'fill-SKY'}
+          desc_color={'text-GRAY400'}
+          text_color={'text-black'}
+          description={'بطريقة جميلة يمكنك قرائه المواضيع'}
+        /> */}
         <Import_news
           title={' غزو أوكرانيا'}
           important_news={props.all_news[5]}

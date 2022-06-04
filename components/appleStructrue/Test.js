@@ -1,21 +1,21 @@
 // import Styles from '../../styles/Audio.css'
-import React, { useState, useRef, useEffect } from 'react'
 // import ReactAudioPlayer from 'react-audio-player'
 // import Swiper core and required modules
+// import { PlayIcon } from '@heroicons/react/outline'
+// import Wavesurfer from 'react-wavesurfer.js'
 import { Navigation } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Autoplay } from 'swiper'
+import React, { useState, useRef, useEffect } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Autoplay } from 'swiper'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
-// import { PlayIcon } from '@heroicons/react/outline'
-// import Wavesurfer from 'react-wavesurfer.js'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 const Test = ({
@@ -238,7 +238,7 @@ const Test = ({
                         item.stories_media_url[0].includes('youtu.be') ? (
                           <section className="flex">
                             <div>
-                              {console.log(item.stories_media_url[0])}
+                              {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <h3
                                   className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
@@ -323,7 +323,10 @@ const Test = ({
                             lg:w-52 lg:text-base"
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
-
+                                  {/* {console.log(
+                                    'MP3 = ',
+                                    Object.values(item.voices)[1]
+                                  )} */}
                                   <div className="my-3 flex justify-between px-2 pt-2">
                                     <input
                                       dir="ltr"
@@ -564,7 +567,7 @@ const Test = ({
                         item.stories_media_url[0].includes('youtu.be') ? (
                           <section className="flex">
                             <div>
-                              {console.log(item.stories_media_url[0])}
+                              {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <h3
                                   className={`text-white rounded-t-md bg-BLUE pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
