@@ -45,7 +45,6 @@ const Voice = ({
       return code
     }
   }
-
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12">

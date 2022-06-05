@@ -25,6 +25,7 @@ const Logaimat = dynamic(
     ssr: false,
   }
 )
+import Test from '..//components/appleStructrue/Test'
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -43,7 +44,7 @@ export async function getServerSideProps({ req, res }) {
   const ready_country_code = country_code.country_code
 
   // Get All News
-  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${ready_country_code}`
   const all_news_res = await fetch(all_news_url)
   const all_news = await all_news_res.json()
 
@@ -74,6 +75,7 @@ export async function getServerSideProps({ req, res }) {
     props: {
       all_news: custom_array,
       loqaimat: loqaimat.data,
+      ready_country_code: ready_country_code,
       // test: ready_test,
     },
   }
@@ -81,11 +83,13 @@ export async function getServerSideProps({ req, res }) {
 const index = (props) => {
   return (
     <React.Fragment>
-      {/* {console.log(props.test)} */}
+      {console.log(props.ready_country_code)}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
+        {/* <Test />  */}
         <Category_news
+          loading="eager"
           title={'أهم الأخبار'}
           category_news={props.all_news[0]}
           subs={null}

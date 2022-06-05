@@ -25,28 +25,24 @@ const WaveAudio = ({ url }) => {
   // On component mount and when url changes
   useEffect(() => {
     setPlay(false)
-
     const options = formWaveSurferOptions(waveformRef.current)
     wavesurfer.current = WaveSurfer.create(options)
-
     wavesurfer.current.load(url)
+    // wavesurfer.current.on('ready', function () {
+    //   // https://wavesurfer-js.org/docs/methods.html
+    //   // wavesurfer.current.play();
+    //   // setPlay(true);
 
-    wavesurfer.current.on('ready', function () {
-      // https://wavesurfer-js.org/docs/methods.html
-      // wavesurfer.current.play();
-      // setPlay(true);
-
-      // make sure object stillavailable when file loaded
-      if (wavesurfer.current) {
-        wavesurfer.current.setVolume(volume)
-        setVolume(volume)
-      }
-    })
-
+    //   // make sure object stillavailable when file loaded
+    //   // if (wavesurfer.current) {
+    //   //   wavesurfer.current.setVolume(volume)
+    //   //   setVolume(volume)
+    //   // }
+    // })
     // Removes events, elements and disconnects Web Audio nodes.
     // when component unmount
     return () => wavesurfer.current.destroy()
-  }, [url])
+  }, [])
 
   const handlePlayPause = () => {
     setPlay(!playing)
@@ -55,6 +51,8 @@ const WaveAudio = ({ url }) => {
 
   return (
     <React.Fragment>
+      {/* <iframe src="https://cross-origin.com/myvideo.html" allow="autoplay" /> */}
+
       <div className="mx-auto grid w-10/12">
         <section className="flex pl-0 pr-4 lg:pl-5 lg:pr-0">
           <div id="waveform" className=" w-56 lg:w-44" ref={waveformRef} />
@@ -70,7 +68,6 @@ const WaveAudio = ({ url }) => {
               max="1"
               step=".025"
               // onChange={onVolumeChange}
-              defaultValue={volume}
             />
             {/* <label htmlFor="volume">Volume</label> */}
           </div>

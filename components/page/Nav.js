@@ -1,6 +1,10 @@
 import React from 'react'
 //import Router from 'next/router'
 import { useRouter } from 'next/router'
+import { Menu } from '@headlessui/react'
+import { useState } from 'react'
+import { Dialog } from '@headlessui/react'
+
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
 // import 'moment/locale/ar'
@@ -11,10 +15,32 @@ const Nav = () => {
     { value: 'strawberry', label: 'Strawberry' },
     { value: 'vanilla', label: 'Vanilla' },
   ]
+  let [isOpen, setIsOpen] = useState(true)
+  const [clicks, setClicks] = useState(true)
+  const handleClicks = () => {
+    setClicks(!clicks)
+  }
   // border = 45378B
   //
   return (
     <React.Fragment>
+      {/* <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+        <Dialog.Panel>
+          <Dialog.Title>Deactivate account</Dialog.Title>
+          <Dialog.Description>
+            This will permanently deactivate your account
+          </Dialog.Description>
+
+          <p>
+            Are you sure you want to deactivate your account? All of your data
+            will be permanently removed. This action cannot be undone.
+          </p>
+
+          <button onClick={() => setIsOpen(false)}>Deactivate</button>
+          <button onClick={() => setIsOpen(false)}>Cancel</button>
+        </Dialog.Panel>
+      </Dialog> */}
+
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -62,12 +88,59 @@ const Nav = () => {
             <buttons className="my-auto ml-10 lg:cursor-pointer ">
               رياضه
             </buttons>
-            <buttons className="my-auto ml-10 lg:cursor-pointer ">
-              الخليج العربي
+
+            <buttons className="my-auto ml-10 pt-3 lg:cursor-pointer ">
+              <React.Fragment>
+                <div className="w-auto">
+                  <Menu as="div" className="">
+                    {clicks ? (
+                      <Menu.Button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-9 w-9 cursor-pointer "
+                          viewBox="0 0 20 20"
+                          fill="#686767"
+                          onClick={() => {
+                            handleClicks()
+                          }}
+                        >
+                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                        </svg>
+                      </Menu.Button>
+                    ) : (
+                      <></>
+                    )}
+
+                    <Menu.Items>
+                      <section className="flex w-auto text-left font-TSbold text-lg">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <p className={`${active && ''} ml-10 pb-2`} href="">
+                              اقتصاد{' '}
+                            </p>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <p className={`${active && ''} ml-10`} href="">
+                              الخليج العربي
+                            </p>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <p className={`${active && ''} ml-10`} href="">
+                              مشاركة
+                            </p>
+                          )}
+                        </Menu.Item>
+                      </section>
+                    </Menu.Items>
+                  </Menu>
+                </div>
+              </React.Fragment>
             </buttons>
-            <buttons className="my-auto ml-10 lg:cursor-pointer ">
-              اقتصاد
-            </buttons>
+
             {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
               <select class="bg-white appearance-none border-none">
                 <option className="text-xl">. . . </option>
