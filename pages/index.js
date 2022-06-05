@@ -32,12 +32,10 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
-
-  const test_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
-  const test_req = await fetch(test_url)
-  const test = await test_req.json()
-  const ready_test = test.location.country.code
-
+  // const test_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
+  // const test_req = await fetch(test_url)
+  // const test = await test_req.json()
+  // const ready_test = test.location.country.code
   // Get Country Code
   const country_code_url = 'https://geolocation-db.com/json/'
   const country_code_res = await fetch(country_code_url)
@@ -45,7 +43,7 @@ export async function getServerSideProps({ req, res }) {
   const ready_country_code = country_code.country_code
 
   // Get All News
-  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${ready_test}`
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
   const all_news_res = await fetch(all_news_url)
   const all_news = await all_news_res.json()
 
@@ -76,14 +74,14 @@ export async function getServerSideProps({ req, res }) {
     props: {
       all_news: custom_array,
       loqaimat: loqaimat.data,
-      test: ready_test,
+      // test: ready_test,
     },
   }
 }
 const index = (props) => {
   return (
     <React.Fragment>
-      {console.log(props.test)}
+      {/* {console.log(props.test)} */}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
@@ -180,7 +178,7 @@ const index = (props) => {
             'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
           }
         />
-        <Footer />
+        <Footer loading="lazy" />
       </div>
     </React.Fragment>
   )

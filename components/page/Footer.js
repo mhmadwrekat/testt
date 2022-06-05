@@ -9,7 +9,7 @@ const Footer = () => {
   }
   return (
     <React.Fragment>
-      <div className="pt-2">
+      <div className="pt-2" loading="lazy">
         <footer className="py-2">
           <div className="border-gray-400 text-white mx-auto overflow-hidden border-t-2 bg-Purp100 py-5">
             <h1 className="text-md my-3 mr-1 text-center font-TSbold">

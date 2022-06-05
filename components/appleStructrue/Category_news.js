@@ -216,17 +216,17 @@ const Category_news = ({
                     </p>
                   </div>
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 font-TSExtra text-2xl lg:w-9/12">
+                    <div className="mb-2 font-TSExtra md:text-xl lg:h-16 lg:w-9/12 lg:text-2xl">
                       {category_news.important_data.stories_headlines}
                     </div>
-                    <p className="hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
+                    <p className=" hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
                       {category_news.important_data.stories_content.slice(
                         0,
-                        360
+                        300
                       )}
                       .......
                     </p>
-                    <p className="grid h-24 font-TSmedium text-base lg:hidden lg:h-28">
+                    <p className="grid h-24 font-TSmedium text-base md:grid lg:hidden lg:h-28">
                       {category_news.important_data.stories_content.slice(
                         0,
                         170

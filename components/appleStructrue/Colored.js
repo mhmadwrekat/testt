@@ -146,7 +146,7 @@ const Colored = ({
                     </p>
                   </div>
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 h-16 font-TSExtra text-2xl">
+                    <div className="mb-2 font-TSExtra text-2xl lg:h-16">
                       {important_news.important_data.stories_headlines}
                     </div>
                     <p className="hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
