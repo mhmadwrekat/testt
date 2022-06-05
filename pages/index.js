@@ -12,6 +12,10 @@ const ForYou = dynamic(() => import('../components/appleStructrue/ForYou'))
 const ColoredSection = dynamic(() =>
   import('../components/appleStructrue/ColoredSection')
 )
+
+const Wave = dynamic(() => import('../components/appleStructrue/Wave'), {
+  ssr: false,
+})
 const Logaimat = dynamic(() => import('../components/UpdatedDesign/Logaimat'))
 const Video = dynamic(() => import('../components/appleStructrue/Video'))
 const Voice = dynamic(() => import('../components/appleStructrue/Voice'))
@@ -59,6 +63,7 @@ export async function getServerSideProps({ req, res }) {
   keys.map((item) => {
     custom_array.push(all_news.data[item])
   })
+
   // Get Logaimat API
   const LoqaimatDataReq = axios({
     method: 'GET',
@@ -128,6 +133,9 @@ const index = (props) => {
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
+
+        {/* <Wave url="https://testin-bucket2021.s3.us-east-2.amazonaws.com/filejhnxwnrais.mp3" /> */}
+        {/* <Test4 important_news={props.all_news[0]} /> */}
         <Import_news
           title={'أهم الأخبار'}
           important_news={props.all_news[0]}
@@ -166,7 +174,18 @@ const index = (props) => {
           desc_color={'text-GRAY400'}
           description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
         />
-
+        <Test
+          title={'الصوتيات '}
+          news_one={props.all_news[1]}
+          news_two={props.all_news[3]}
+          subs={true}
+          title_color={'text-YELLOW'}
+          fill_color={'fill-YELLOW'}
+          card_color={'bg-GRAY100'}
+          desc_color={'text-GRAY400'}
+          theme={'bg-YELLOW'}
+          description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
+        />
         <Import_news
           title={' تكنولوجيا'}
           important_news={props.all_news[4]}
@@ -225,18 +244,16 @@ const index = (props) => {
             'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
           }
         />
-        <Test
-          title={'الصوتيات '}
-          news_one={props.all_news[5]}
-          news_two={props.all_news[2]}
-          subs={true}
-          title_color={'text-YELLOW'}
-          fill_color={'fill-YELLOW'}
-          card_color={'bg-GRAY100'}
-          desc_color={'text-GRAY400'}
-          theme={'bg-YELLOW'}
-          description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
-        />
+        {/* <Voice
+          important_news={props.all_news[4]}
+          theme={'bg-gray-600'}
+          color={'gray-600'}
+          title={'مال و أعمال'}
+          description={
+            'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+          }
+        /> */}
+
         {/**********************************************************************/}
         {/**********************************************************************/}
         {/**********************************************************************/}

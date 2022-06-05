@@ -7,7 +7,7 @@ import { Navigation } from 'swiper'
 import React, { useState, useRef, useEffect } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
-
+import Wave from '../appleStructrue/Wave'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay } from 'swiper'
 // Import Swiper styles
@@ -59,7 +59,6 @@ const Test = ({
       return code
     }
   }
-
   /********************************************************************************************************/
   /********************************************************************************************************/
   /********************************************************************************************************/
@@ -229,7 +228,7 @@ const Test = ({
               // }}
             >
               {news_one.data.map((item) => {
-                // console.log(Object.values(item.voices)[1])
+                console.log(Object.values(item.voices)[1])
                 return (
                   <SwiperSlide key={item._id}>
                     <div className="mx-auto rounded-md " loading="lazy">
@@ -303,14 +302,10 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                {/* <p className="texl-2xl mt-2">. . .</p> */}
-                                {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
-                                  <select class="bg-white appearance-none border-none">
-                                    <option className="text-3xl">. . . </option>
-                                    <option>No</option>
-                                    <option>Maybe</option>
-                                  </select>
-                                </buttons> */}
+                                <Wave url={Object.values(item.voices)[1]} />
+                              </section>
+                              {/* <section className="float-left mx-2 flex">
+                       
                                 <section>
                                   <audio
                                     hidden="true"
@@ -323,10 +318,7 @@ const Test = ({
                             lg:w-52 lg:text-base"
                                     src={Object.values(item.voices)[1]}
                                   ></audio>
-                                  {/* {console.log(
-                                    'MP3 = ',
-                                    Object.values(item.voices)[1]
-                                  )} */}
+                                
                                   <div className="my-3 flex justify-between px-2 pt-2">
                                     <input
                                       dir="ltr"
@@ -337,12 +329,7 @@ const Test = ({
                                     ></input>
                                     <div>{calculateTime(currentTime)}</div>
 
-                                    {/* <div>
-                                      {duration
-                                        ? !isNaN(duration) &&
-                                          calculateTime(duration)
-                                        : null}
-                                    </div> */}
+                              
                                   </div>
                                 </section>
 
@@ -375,7 +362,7 @@ const Test = ({
                                     </svg>
                                   )}
                                 </button>
-                              </section>
+                              </section> */}
                             </section>
                           </section>
                         ) : (
@@ -444,76 +431,7 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                {/* <p className="texl-2xl mt-2">. . .</p> */}
-                                {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
-                                  <select class="bg-white appearance-none border-none">
-                                    <option className="text-3xl">. . . </option>
-                                    <option>No</option>
-                                    <option>Maybe</option>
-                                  </select>
-                                </buttons> */}
-                                <section>
-                                  <audio
-                                    hidden="true"
-                                    ref={audioPlayer}
-                                    preload="metadata"
-                                    controlsList="nodownload noplaybackrate "
-                                    loading="lazy"
-                                    controls
-                                    className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                            lg:w-52 lg:text-base"
-                                    src={Object.values(item.voices)[1]}
-                                  ></audio>
-
-                                  <div className="my-3 flex justify-between px-2 pt-2">
-                                    <input
-                                      dir="ltr"
-                                      onChange={changeRange}
-                                      type="range"
-                                      defaultValue="0"
-                                      ref={progressBar}
-                                    ></input>
-                                    <div className="">
-                                      {calculateTime(currentTime)}
-                                    </div>
-                                    {/* <div className="hidden lg:grid">
-                                      {duration
-                                        ? !isNaN(duration) &&
-                                          calculateTime(duration)
-                                        : null}
-                                    </div> */}
-                                  </div>
-                                </section>
-
-                                <button onClick={playPause}>
-                                  {isPlaying ? (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#E0A719"
-                                      viewBox="0 0 20 20"
-                                    >
-                                      <path
-                                        fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"
-                                      />
-                                    </svg>
-                                  ) : (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      viewBox="0 0 20 20"
-                                      fill="#E0A719"
-                                    >
-                                      <path
-                                        fillRule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                        clipRule="evenodd"
-                                      />
-                                    </svg>
-                                  )}
-                                </button>
+                                <Wave url={Object.values(item.voices)[1]} />
                               </section>
                             </section>
                           </section>
@@ -632,74 +550,7 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                {/* <p className="texl-2xl mt-2">. . .</p> */}
-                                {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
-                                  <select class="bg-white appearance-none border-none">
-                                    <option className="text-3xl">. . . </option>
-                                    <option>No</option>
-                                    <option>Maybe</option>
-                                  </select>
-                                </buttons> */}
-                                <section>
-                                  <audio
-                                    hidden="true"
-                                    ref={audioPlayer}
-                                    preload="metadata"
-                                    controlsList="nodownload noplaybackrate "
-                                    loading="lazy"
-                                    controls
-                                    className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                            lg:w-52 lg:text-base"
-                                    src={Object.values(item.voices)[1]}
-                                  ></audio>
-
-                                  <div className="my-3 flex justify-between px-2 pt-2">
-                                    <input
-                                      dir="ltr"
-                                      onChange={changeRange}
-                                      type="range"
-                                      defaultValue="0"
-                                      ref={progressBar}
-                                    ></input>
-                                    <div>{calculateTime(currentTime)}</div>
-                                    {/* <div>
-                                      {duration
-                                        ? !isNaN(duration) &&
-                                          calculateTime(duration)
-                                        : null}
-                                    </div> */}
-                                  </div>
-                                </section>
-
-                                <button onClick={playPause}>
-                                  {isPlaying ? (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#E0A719"
-                                      viewBox="0 0 20 20"
-                                    >
-                                      <path
-                                        fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"
-                                      />
-                                    </svg>
-                                  ) : (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#E0A719"
-                                      viewBox="0 0 20 20"
-                                    >
-                                      <path
-                                        fillRule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                        clipRule="evenodd"
-                                      />
-                                    </svg>
-                                  )}
-                                </button>
+                                <Wave url={Object.values(item.voices)[1]} />
                               </section>
                             </section>
                           </section>
@@ -769,76 +620,7 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                {/* <p className="texl-2xl mt-2">. . .</p> */}
-                                {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
-                                  <select class="bg-white appearance-none border-none">
-                                    <option className="text-3xl">. . . </option>
-                                    <option>No</option>
-                                    <option>Maybe</option>
-                                  </select>
-                                </buttons> */}
-                                <section>
-                                  <audio
-                                    hidden="true"
-                                    ref={audioPlayer}
-                                    preload="metadata"
-                                    controlsList="nodownload noplaybackrate "
-                                    loading="lazy"
-                                    controls
-                                    className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                            lg:w-52 lg:text-base"
-                                    src={Object.values(item.voices)[1]}
-                                  ></audio>
-
-                                  <div className="my-3 flex justify-between px-2 pt-2">
-                                    <input
-                                      dir="ltr"
-                                      onChange={changeRange}
-                                      type="range"
-                                      defaultValue="0"
-                                      ref={progressBar}
-                                    ></input>
-                                    <div className="">
-                                      {calculateTime(currentTime)}
-                                    </div>
-                                    {/* <div className="hidden lg:grid">
-                                      {duration
-                                        ? !isNaN(duration) &&
-                                          calculateTime(duration)
-                                        : null}
-                                    </div> */}
-                                  </div>
-                                </section>
-
-                                <button onClick={playPause}>
-                                  {isPlaying ? (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#E0A719"
-                                      viewBox="0 0 20 20"
-                                    >
-                                      <path
-                                        fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"
-                                      />
-                                    </svg>
-                                  ) : (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      viewBox="0 0 20 20"
-                                      fill="#E0A719"
-                                    >
-                                      <path
-                                        fillRule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                        clipRule="evenodd"
-                                      />
-                                    </svg>
-                                  )}
-                                </button>
+                                <Wave url={Object.values(item.voices)[1]} />
                               </section>
                             </section>
                           </section>
