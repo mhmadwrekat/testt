@@ -151,7 +151,7 @@ const Logaimat = ({
             <Swiper
               // install Swiper modules
               modules={[Navigation]}
-              slidesPerView={4}
+              slidesPerView={5}
               spaceBetween={15}
               autoplay={true}
               loop={true}
@@ -177,7 +177,7 @@ const Logaimat = ({
                 return (
                   <SwiperSlide key={item._id}>
                     <section className="px-0">
-                      <div className="relative mr-2 py-2 lg:mr-0 lg:h-96 lg:w-72 lg:py-0">
+                      <div className="relative mr-2 py-2 lg:mr-0 lg:h-96 lg:w-60 lg:py-0">
                         {item.screen_link &&
                           (item.screen_link.includes('youtube') ||
                           item.screen_link.includes('youtu.be') ? (
@@ -190,7 +190,7 @@ const Logaimat = ({
                               className="
                                 mx-auto
                                 h-32 
-                                w-40 md:h-full md:w-full lg:h-96 lg:w-72"
+                                w-40 rounded-md md:h-full md:w-full lg:h-96 lg:w-60"
                               // quality={25}
                               // layout="responsive"
                               // width={80}
@@ -207,7 +207,7 @@ const Logaimat = ({
                               loading="eager"
                               src={item.screen_link}
                               alt="test"
-                              className="mx-auto h-32 w-40 md:h-full md:w-full lg:h-96 lg:w-72"
+                              className="mx-auto h-32 w-40 rounded-md md:h-full md:w-full lg:h-96 lg:w-60"
                               // quality={25}
                               // layout="responsive"
                               // width={80}
@@ -225,7 +225,7 @@ const Logaimat = ({
                           </p>
                         </div>
                       </div>
-                      <div className="pt-3 text-center font-TSExtra text-2xl lg:w-72">
+                      <div className="pt-3 text-center font-TSExtra text-2xl lg:w-60">
                         {test_text[counter]}
                       </div>
                     </section>

@@ -197,7 +197,7 @@ const index = (props) => {
           desc_color={'text-GRAY400'}
           description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
         />
-        {/* <Logaimat
+        <Logaimat
           title={'لقيمات'}
           important_news={props.loqaimat.data[0].screens}
           subs={true}
@@ -208,7 +208,7 @@ const index = (props) => {
           desc_color={'text-GRAY400'}
           text_color={'text-black'}
           description={'بطريقة جميلة يمكنك قرائه المواضيع'}
-        /> */}
+        />
         <Import_news
           title={' غزو أوكرانيا'}
           important_news={props.all_news[5]}
