@@ -6,9 +6,9 @@ const Wave = ({ url }) => {
     container: ref,
     waveColor: '#eeeeee',
     progressColor: '#E0A719',
-    cursorColor: '#E0A719',
-    barWidth: 1,
-    barRadius: 1,
+    cursorColor: '#FFFFFF',
+    barWidth: 4,
+    barRadius: 4,
     responsive: true,
     height: 100,
     // If true, normalize by the maximum peak instead of 1.0.
