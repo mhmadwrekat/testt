@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import WaveSurfer from 'wavesurfer.js'
 
-const Wave = ({ url }) => {
+const WaveAudio = ({ url }) => {
   const formWaveSurferOptions = (ref) => ({
     container: ref,
     waveColor: '#eeeeee',
@@ -118,4 +118,4 @@ const Wave = ({ url }) => {
   )
 }
 
-export default Wave
+export default WaveAudio

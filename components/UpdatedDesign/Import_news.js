@@ -2,19 +2,10 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
 
-const Import_news = ({
-  title,
-  important_news,
-  fill_color,
-  title_color,
-  theme,
-  subs,
-  desc_color,
-  description,
-}) => {
+const Import_news = ({ title, category_news, theme, subs, description }) => {
   const important_news_img =
-    important_news?.important_data.stories_media_url.length > 0
-      ? important_news.important_data.stories_media_url[0]
+    category_news?.important_data.stories_media_url.length > 0
+      ? category_news.important_data.stories_media_url[0]
       : null
 
   // function to return the youtube code to show the thumbnail
@@ -91,14 +82,14 @@ const Import_news = ({
                     </svg>
                   ))}
                 <h1
-                  className={`${title_color} mt-5 font-TSExtra text-2xl lg:text-4xl`}
+                  className={`text-${theme} mt-5 font-TSExtra text-2xl lg:text-4xl`}
                 >
                   {title}{' '}
                 </h1>
               </div>
               {description && (
                 <p
-                  className={`${desc_color} hidden w-full px-1 pt-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
+                  className={`text-black hidden w-full px-1 pt-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
                 >
                   {description}
                 </p>
@@ -109,7 +100,7 @@ const Import_news = ({
               <p className="mt-5 font-TSbold text-lg lg:text-xl">عرض الجميع</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
+                className={`fill-${theme} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
                 viewBox="0 0 20 20"
               >
                 <path
@@ -122,7 +113,7 @@ const Import_news = ({
           </div>{' '}
           {description && (
             <p
-              className={`${desc_color} grid w-10/12 px-1 pb-2 font-TSmedium text-lg lg:hidden lg:text-xl`}
+              className={`text-black grid w-10/12 px-1 pb-2 font-TSmedium text-lg lg:hidden lg:text-xl`}
             >
               {description}
             </p>
@@ -133,9 +124,9 @@ const Import_news = ({
                 <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
                   <div className="">
                     <h3
-                      className={`${theme} text-white rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base hover:underline lg:pr-8`}
+                      className={`bg-${theme} text-white rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base hover:underline lg:pr-8`}
                     >
-                      {important_news.category_name}
+                      {category_news.category_name}
                     </h3>{' '}
                   </div>
                   <div className=" relative max-w-full">
@@ -148,33 +139,15 @@ const Import_news = ({
                           src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
-                          alt={important_news.important_data.stories_headlines}
+                          alt={category_news.important_data.stories_headlines}
                           className="relative h-56 w-full lg:h-80"
-                          // layout="responsive"
-                          // width={600}
-                          // height={400}
-                          // quality={50}
-                          // priority
-                          // loading="eager"
-                          // placeholder="blur"
-                          // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                          //   important_news_img
-                          // )}/0.jpg`}
                         />
                       ) : (
                         <img
                           loading="eager"
                           src={important_news_img}
-                          alt={important_news.important_data.stories_headlines}
+                          alt={category_news.important_data.stories_headlines}
                           className=" h-56 w-full lg:h-80"
-                          // layout="responsive"
-                          // width={600}
-                          // quality={50}
-                          // height={400}
-                          // priority
-                          // loading="eager"
-                          // placeholder="blur"
-                          // blurDataURL={important_news_img}
                         />
                       ))}
                     <div className="bg-white absolute bottom-2 left-2 rounded-full p-1">
@@ -224,29 +197,29 @@ const Import_news = ({
                   >
                     <p className="">
                       <b className="text-red-800 font-TSbold">
-                        {important_news.important_data.publisher_name}
+                        {category_news.important_data.publisher_name}
                       </b>
                     </p>
                     <p className="font-TSbold text-GRAY300">
                       قبل{' '}
                       {moment(
-                        important_news.important_data.published_on
+                        category_news.important_data.published_on
                       ).fromNow(true)}
                     </p>
                   </div>
                   <div className="px-2.5 pt-2 pb-0.5">
                     <div className="mb-2 font-TSExtra text-2xl lg:w-9/12">
-                      {important_news.important_data.stories_headlines}
+                      {category_news.important_data.stories_headlines}
                     </div>
                     <p className="hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
-                      {important_news.important_data.stories_content.slice(
+                      {category_news.important_data.stories_content.slice(
                         0,
-                        380
+                        360
                       )}
                       .......
                     </p>
                     <p className="grid h-24 font-TSmedium text-base lg:hidden lg:h-28">
-                      {important_news.important_data.stories_content.slice(
+                      {category_news.important_data.stories_content.slice(
                         0,
                         170
                       )}
@@ -271,7 +244,7 @@ const Import_news = ({
                 </div>
               </section>
               <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {important_news.data.slice(0, 4).map((item) => {
+                {category_news.data.slice(0, 4).map((item) => {
                   return (
                     <section key={item._id}>
                       <div
@@ -280,9 +253,9 @@ const Import_news = ({
                       >
                         <div className="">
                           <h3
-                            className={`${theme} text-white rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
+                            className={`bg-${theme} text-white rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
                           >
-                            {important_news.category_name}
+                            {category_news.category_name}
                           </h3>{' '}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid ">
@@ -300,16 +273,6 @@ const Import_news = ({
                                 mx-auto
                                 h-32 
                                 w-40 md:h-full md:w-full lg:h-28 lg:w-full"
-                                  // quality={25}
-                                  // layout="responsive"
-                                  // width={80}
-                                  // height={40}
-                                  // priority
-                                  // loading="eager"
-                                  // placeholder="blur"
-                                  // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                                  //   item.stories_media_url[0]
-                                  // )}/0.jpg`}
                                 />
                               ) : (
                                 <img
@@ -317,15 +280,6 @@ const Import_news = ({
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 md:h-full md:w-full lg:h-28 lg:w-full"
-                                  // quality={25}
-                                  // layout="responsive"
-                                  // width={80}
-                                  // className="rounded-md"
-                                  // height={40}
-                                  // priority
-                                  // loading="eager"
-                                  // placeholder="blur"
-                                  // blurDataURL={item.stories_media_url[0]}
                                 />
                               ))}
                             <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
@@ -407,35 +361,3 @@ const Import_news = ({
   )
 }
 export default Import_news
-/*
-           {subscripe !== null &&
-                (subscripe ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="mx-2 mt-1 mb-5 h-10 w-10 hover:cursor-pointer lg:h-16 lg:w-16"
-                    viewBox="0 0 20 20"
-                    fill="#000000"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="mx-2 mt-1 h-16 w-16 hover:cursor-pointer"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                ))}
-*/

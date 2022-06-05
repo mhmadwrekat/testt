@@ -1,24 +1,15 @@
-// import Styles from '../../styles/Audio.css'
-// import ReactAudioPlayer from 'react-audio-player'
-// import Swiper core and required modules
-// import { PlayIcon } from '@heroicons/react/outline'
-// import Wavesurfer from 'react-wavesurfer.js'
-import { Navigation } from 'swiper'
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
-import Wave from '../appleStructrue/Wave'
+import WaveAudio from './WaveAudio'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Autoplay } from 'swiper'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
-
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-const Test = ({
+const Voice = ({
   title,
   fill_color,
   title_color,
@@ -30,12 +21,7 @@ const Test = ({
   news_two,
 }) => {
   const [subscripe, setSubscripe] = useState(subs)
-  // const [position, setPosition] = useState(0)
-  // const [muted, setMuted] = useState(false)
-  // const onReadyHandler = () => console.log('done loading!')
-  // const handlePositionChange = (position) => {
-  //   console.log('done handlePositionChange!')
-  // }
+
   const handleSubscripe = () => {
     setSubscripe(!subscripe)
   }
@@ -209,26 +195,9 @@ const Test = ({
             {/**** SWIPER ONE DESKTOP ****/}
             <Swiper
               // install Swiper modules
-              modules={[Navigation]}
               slidesPerView={2.8}
               spaceBetween={0}
-              //   navigation={true}
-              // autoplay={true}
-              // loop={true}
-              // install Swiper modules
               loop={true}
-              // thumbs={{
-              //   swiper: thumbsSwiper,
-              // }}
-              // autoplay={true}
-              // scrollbar={{
-              //   draggable: true,
-              //   dragSize: 'auto',
-              //   hide: true,
-              // }}
-              // pagination={{
-              //   type: 'fraction',
-              // }}
             >
               {news_one.data.map((item) => {
                 console.log(Object.values(item.voices)[1])
@@ -305,7 +274,9 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                <Wave url={Object.values(item.voices)[1]} />
+                                <WaveAudio
+                                  url={Object.values(item.voices)[1]}
+                                />
                               </section>
                             </section>
                           </section>
@@ -375,7 +346,9 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                <Wave url={Object.values(item.voices)[1]} />
+                                <WaveAudio
+                                  url={Object.values(item.voices)[1]}
+                                />
                               </section>
                             </section>
                           </section>
@@ -389,7 +362,6 @@ const Test = ({
             {/**** SWIPER TWO DESKTOP ****/}
             <Swiper
               // install Swiper modules
-              modules={[Navigation]}
               slidesPerView={2.8}
               spaceBetween={0}
               loop={true}
@@ -469,7 +441,9 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                <Wave url={Object.values(item.voices)[1]} />
+                                <WaveAudio
+                                  url={Object.values(item.voices)[1]}
+                                />
                               </section>
                             </section>
                           </section>
@@ -539,7 +513,9 @@ const Test = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                <Wave url={Object.values(item.voices)[1]} />
+                                <WaveAudio
+                                  url={Object.values(item.voices)[1]}
+                                />
                               </section>
                             </section>
                           </section>
@@ -558,7 +534,6 @@ const Test = ({
             {/**** SWIPER ONE Mobile ****/}
             <Swiper
               // install Swiper modules
-              modules={[Navigation]}
               slidesPerView={1}
               spaceBetween={0}
               loop={true}
@@ -590,7 +565,7 @@ const Test = ({
                                   alt={item.stories_headlines}
                                   className=" h-full w-full rounded-b-md "
                                 />
-                                <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -606,7 +581,7 @@ const Test = ({
                                     />
                                   </svg>
                                 </div>
-                                <div className="absolute bottom-1 left-3">
+                                <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -639,7 +614,7 @@ const Test = ({
                               </section>
                             </section>
                             <section className="float-left mx-2 flex">
-                              <Wave url={Object.values(item.voices)[1]} />
+                              <WaveAudio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
                         ) : (
@@ -660,7 +635,7 @@ const Test = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md"
                                 />
-                                <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -676,7 +651,7 @@ const Test = ({
                                     />
                                   </svg>
                                 </div>
-                                <div className="absolute bottom-1 left-3">
+                                <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -709,7 +684,7 @@ const Test = ({
                               </section>
                             </section>
                             <section className="float-left mx-2 flex">
-                              <Wave url={Object.values(item.voices)[1]} />
+                              <WaveAudio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
                         ))}
@@ -722,7 +697,6 @@ const Test = ({
             {/**** SWIPER TWO Mobile ****/}
             <Swiper
               // install Swiper modules
-              modules={[Navigation]}
               slidesPerView={1}
               spaceBetween={0}
               loop={true}
@@ -739,7 +713,7 @@ const Test = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`bg-SKY text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                  className={`text-white w-40 rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
                                   {news_two.category_name}
                                 </h3>
@@ -754,7 +728,7 @@ const Test = ({
                                   alt={item.stories_headlines}
                                   className=" h-full w-full rounded-b-md "
                                 />
-                                <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -770,7 +744,7 @@ const Test = ({
                                     />
                                   </svg>
                                 </div>
-                                <div className="absolute bottom-1 left-3">
+                                <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -803,7 +777,7 @@ const Test = ({
                               </section>
                             </section>
                             <section className="float-left mx-2 flex">
-                              <Wave url={Object.values(item.voices)[1]} />
+                              <WaveAudio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
                         ) : (
@@ -811,7 +785,7 @@ const Test = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`bg-SKY text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                  className={`text-white w-40 rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
                                   {news_two.category_name}
                                 </h3>
@@ -824,7 +798,7 @@ const Test = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md"
                                 />
-                                <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -840,7 +814,7 @@ const Test = ({
                                     />
                                   </svg>
                                 </div>
-                                <div className="absolute bottom-1 left-3">
+                                <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -873,7 +847,7 @@ const Test = ({
                               </section>
                             </section>
                             <section className="float-left mx-2 flex">
-                              <Wave url={Object.values(item.voices)[1]} />
+                              <WaveAudio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
                         ))}
@@ -889,4 +863,4 @@ const Test = ({
   )
 }
 
-export default Test
+export default Voice

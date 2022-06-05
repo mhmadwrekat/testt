@@ -5,13 +5,11 @@ import 'moment/locale/ar'
 const Colored = ({
   title,
   important_news,
-  title_color,
   desc_color,
   fill_color,
   text_color,
   card_color,
   theme,
-  subscripe,
   description,
 }) => {
   const important_news_img =
@@ -104,16 +102,6 @@ const Colored = ({
                           )}/0.jpg`}
                           alt={important_news.important_data.stories_headlines}
                           className="relative h-56 w-full lg:h-80"
-                          // layout="responsive"
-                          // width={600}
-                          // height={400}
-                          // quality={50}
-                          // priority
-                          // loading="eager"
-                          // placeholder="blur"
-                          // blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                          //   important_news_img
-                          // )}/0.jpg`}
                         />
                       ) : (
                         <img
@@ -121,14 +109,6 @@ const Colored = ({
                           src={important_news_img}
                           alt={important_news.important_data.stories_headlines}
                           className=" h-56 w-full lg:h-80"
-                          // layout="responsive"
-                          // width={600}
-                          // quality={50}
-                          // height={400}
-                          // priority
-                          // loading="eager"
-                          // placeholder="blur"
-                          // blurDataURL={important_news_img}
                         />
                       ))}
                     <div className="bg-white text-black absolute bottom-2 left-2 rounded-full p-1">
@@ -166,13 +146,13 @@ const Colored = ({
                     </p>
                   </div>
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 font-TSExtra text-2xl">
+                    <div className="mb-2 h-16 font-TSExtra text-2xl">
                       {important_news.important_data.stories_headlines}
                     </div>
                     <p className="hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
                       {important_news.important_data.stories_content.slice(
                         0,
-                        350
+                        330
                       )}
                       .......
                     </p>
