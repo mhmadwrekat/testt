@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Image from 'next/image'
 import moment from 'moment'
 import 'moment/locale/ar'
 import Test from './Test'
@@ -137,7 +138,7 @@ const Category_news = ({
                       {category_news.category_name}
                     </h3>{' '}
                   </div>
-                  <div className=" relative max-w-full">
+                  <div className=" relative h-56 w-full lg:h-80">
                     {/* {console.log(important_news_img)} */}
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
@@ -151,11 +152,15 @@ const Category_news = ({
                           className="relative h-56 w-full lg:h-80"
                         />
                       ) : (
-                        <img
-                          loading="eager"
+                        <Image
                           src={important_news_img}
                           alt={category_news.important_data.stories_headlines}
-                          className=" h-56 w-full lg:h-80"
+                          // className="relative h-56 w-full lg:h-80"
+                          layout="fill"
+                          quality={50}
+                          loading="eager"
+                          placeholder="blur"
+                          blurDataURL={important_news_img}
                         />
                       ))}
                     <div className="bg-white absolute bottom-2 left-2 rounded-full p-1">
