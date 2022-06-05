@@ -2,30 +2,22 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
-// page Component
-import HeadComp from '../components/page/HeadComp'
-import Nav from '../components/page/Nav'
-import Footer from '../components/page/Footer'
 // Apple View component
-const Category_news = dynamic(
-  () => import('../components/appleStructrue/Category_news'),
-  {
-    ssr: false,
-  }
+const Category_news = dynamic(() =>
+  import('../components/appleStructrue/Category_news')
 )
-const Colored = dynamic(() => import('../components/appleStructrue/Colored'), {
-  ssr: false,
-})
+const Colored = dynamic(() => import('../components/appleStructrue/Colored'))
 const Voice = dynamic(() => import('../components/appleStructrue/Voice'), {
   ssr: false,
 })
-const Logaimat = dynamic(
-  () => import('../components/appleStructrue/Logaimat'),
-  {
-    ssr: false,
-  }
-)
-import Test from '..//components/appleStructrue/Test'
+const Logaimat = dynamic(() => import('../components/appleStructrue/Logaimat'))
+
+// page Component
+const HeadComp = dynamic(() => import('../components/page/HeadComp'))
+const Nav = dynamic(() => import('../components/page/Nav'))
+const Footer = dynamic(() => import('../components/page/Footer'))
+//
+// import Test from '..//components/appleStructrue/Test'
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -44,16 +36,9 @@ export async function getServerSideProps({ req, res }) {
   const ready_country_code = country_code.country_code
 
   // Get All News
-  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${ready_country_code}`
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
   const all_news_res = await fetch(all_news_url)
   const all_news = await all_news_res.json()
-
-  // Get user token from Local Storage
-  let user_token = ''
-  if (typeof window !== 'undefined') {
-    // Perform localStorage action
-    user_token = localStorage.getItem('user_token')
-  }
 
   // Convert API Data From (Object To Array)
   let keys = Object.keys(all_news.data)
@@ -61,7 +46,12 @@ export async function getServerSideProps({ req, res }) {
   keys.map((item) => {
     custom_array.push(all_news.data[item])
   })
-
+  // Get user token from Local Storage
+  let user_token = ''
+  if (typeof window !== 'undefined') {
+    // Perform localStorage action
+    user_token = localStorage.getItem('user_token')
+  }
   // Get Logaimat API
   const LoqaimatDataReq = axios({
     method: 'GET',
@@ -76,7 +66,7 @@ export async function getServerSideProps({ req, res }) {
       all_news: custom_array,
       loqaimat: loqaimat.data,
       ready_country_code: ready_country_code,
-      // test: ready_test,
+      // // test: ready_test,
     },
   }
 }
@@ -99,6 +89,7 @@ const index = (props) => {
         />
         <section className="mt-6 bg-Purp400 pb-8">
           <Colored
+            loading="lazy"
             title={'مخصص لك'}
             important_news={props.all_news[1]}
             card_color={'bg-Purp100'}
@@ -112,6 +103,7 @@ const index = (props) => {
           />
         </section>
         <Category_news
+          loading="lazy"
           title={' الصحه'}
           category_news={props.all_news[2]}
           subs={true}
@@ -121,6 +113,7 @@ const index = (props) => {
           description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
         />
         <Voice
+          loading="lazy"
           title={'الصوتيات '}
           news_one={props.all_news[1]}
           news_two={props.all_news[3]}
@@ -133,6 +126,7 @@ const index = (props) => {
           description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
         />
         <Category_news
+          loading="lazy"
           title={' تكنولوجيا'}
           category_news={props.all_news[4]}
           subs={true}
@@ -142,6 +136,7 @@ const index = (props) => {
           description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
         />
         <Logaimat
+          loading="lazy"
           title={'لقيمات'}
           important_news={props.loqaimat.data[0].screens}
           subs={true}
@@ -154,6 +149,7 @@ const index = (props) => {
           description={'بطريقة جميلة يمكنك قرائه المواضيع'}
         />
         <Category_news
+          loading="lazy"
           title={' غزو أوكرانيا'}
           category_news={props.all_news[5]}
           subs={true}
@@ -163,6 +159,7 @@ const index = (props) => {
           description={'جميع ما يخص أحداث غزو أوكرانيا'}
         />
         <Category_news
+          loading="lazy"
           title={' رياضه'}
           category_news={props.all_news[3]}
           subs={true}
@@ -172,6 +169,7 @@ const index = (props) => {
           description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
         />
         <Category_news
+          loading="lazy"
           title={' مال وأعمال'}
           category_news={props.all_news[1]}
           subs={false}

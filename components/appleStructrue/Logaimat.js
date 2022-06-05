@@ -18,7 +18,7 @@ const Logaimat = ({
   desc_color,
   description,
 }) => {
-  SwiperCore.use([Autoplay])
+  // SwiperCore.use([Autoplay])
   const test_text = [
     'جورج قرداحي',
     ' شيرين',
@@ -149,7 +149,7 @@ const Logaimat = ({
               modules={[Navigation]}
               slidesPerView={5}
               spaceBetween={15}
-              autoplay={true}
+              // autoplay={true}
               loop={true}
             >
               {important_news.map((item) => {
@@ -162,7 +162,7 @@ const Logaimat = ({
                           (item.screen_link.includes('youtube') ||
                           item.screen_link.includes('youtu.be') ? (
                             <img
-                              loading="eager"
+                              loading="lazy"
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                 item.screen_link
                               )}/0.jpg`}
@@ -174,7 +174,7 @@ const Logaimat = ({
                             />
                           ) : (
                             <img
-                              loading="eager"
+                              loading="lazy"
                               src={item.screen_link}
                               alt="test"
                               className="mx-auto h-32 w-40 rounded-md md:h-full md:w-full lg:h-96 lg:w-60"
@@ -204,7 +204,7 @@ const Logaimat = ({
               modules={[Navigation]}
               slidesPerView={1.8}
               spaceBetween={10}
-              autoplay={true}
+              // autoplay={true}
               loop={true}
             >
               {important_news.map((item) => {
@@ -217,7 +217,7 @@ const Logaimat = ({
                           (item.screen_link.includes('youtube') ||
                           item.screen_link.includes('youtu.be') ? (
                             <img
-                              loading="eager"
+                              loading="lazy"
                               src={item.screen_link}
                               alt="test"
                               className="
@@ -227,7 +227,7 @@ const Logaimat = ({
                             />
                           ) : (
                             <img
-                              loading="eager"
+                              loading="lazy"
                               src={item.screen_link}
                               alt="test"
                               className="mx-auto h-72 w-40 md:h-full md:w-full"

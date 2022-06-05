@@ -270,7 +270,7 @@ const Category_news = ({
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
                                 <img
-                                  loading="eager"
+                                  loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}

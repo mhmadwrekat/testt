@@ -1,46 +1,19 @@
-import React from 'react'
 //import Router from 'next/router'
 import { useRouter } from 'next/router'
 import { Menu } from '@headlessui/react'
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
+import React, { useState } from 'react'
 
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
 // import 'moment/locale/ar'
 const Nav = () => {
   const router = useRouter()
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ]
-  let [isOpen, setIsOpen] = useState(true)
   const [clicks, setClicks] = useState(true)
   const handleClicks = () => {
     setClicks(!clicks)
   }
-  // border = 45378B
-  //
   return (
     <React.Fragment>
-      {/* <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <Dialog.Panel>
-          <Dialog.Title>Deactivate account</Dialog.Title>
-          <Dialog.Description>
-            This will permanently deactivate your account
-          </Dialog.Description>
-
-          <p>
-            Are you sure you want to deactivate your account? All of your data
-            will be permanently removed. This action cannot be undone.
-          </p>
-
-          <button onClick={() => setIsOpen(false)}>Deactivate</button>
-          <button onClick={() => setIsOpen(false)}>Cancel</button>
-        </Dialog.Panel>
-      </Dialog> */}
-
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
