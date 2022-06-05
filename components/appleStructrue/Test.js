@@ -307,65 +307,6 @@ const Test = ({
                               <section className="float-left mx-2 flex">
                                 <Wave url={Object.values(item.voices)[1]} />
                               </section>
-                              {/* <section className="float-left mx-2 flex">
-                       
-                                <section>
-                                  <audio
-                                    hidden="true"
-                                    ref={audioPlayer}
-                                    preload="metadata"
-                                    controlsList="nodownload noplaybackrate "
-                                    loading="lazy"
-                                    controls
-                                    className="mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                            lg:w-52 lg:text-base"
-                                    src={Object.values(item.voices)[1]}
-                                  ></audio>
-                                
-                                  <div className="my-3 flex justify-between px-2 pt-2">
-                                    <input
-                                      dir="ltr"
-                                      onChange={changeRange}
-                                      type="range"
-                                      defaultValue="0"
-                                      ref={progressBar}
-                                    ></input>
-                                    <div>{calculateTime(currentTime)}</div>
-
-                              
-                                  </div>
-                                </section>
-
-                                <button onClick={playPause}>
-                                  {isPlaying ? (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#E0A719"
-                                      viewBox="0 0 20 20"
-                                    >
-                                      <path
-                                        fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"
-                                      />
-                                    </svg>
-                                  ) : (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#E0A719"
-                                      viewBox="0 0 20 20"
-                                    >
-                                      <path
-                                        fillRule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                        clipRule="evenodd"
-                                      />
-                                    </svg>
-                                  )}
-                                </button>
-                              </section> */}
                             </section>
                           </section>
                         ) : (
@@ -451,25 +392,9 @@ const Test = ({
               modules={[Navigation]}
               slidesPerView={2.8}
               spaceBetween={0}
-              //   navigation={true}
-              // autoplay={true}
-              // loop={true}
-              // install Swiper modules
               loop={true}
-              // thumbs={{
-              //   swiper: thumbsSwiper,
-              // }}
-              // autoplay={true}
-              // scrollbar={{
-              //   draggable: true,
-              //   dragSize: 'auto',
-              //   hide: true,
-              // }}
-              // pagination={{
-              //   type: 'fraction',
-              // }}
             >
-              {news_one.data.map((item) => {
+              {news_two.data.map((item) => {
                 console.log(Object.values(item.voices)[1])
                 return (
                   <SwiperSlide key={item._id}>
@@ -482,9 +407,9 @@ const Test = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <h3
-                                  className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                  className={`text-white rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
                                 >
-                                  {news_one.category_name}
+                                  {news_two.category_name}
                                 </h3>{' '}
                               </div>
                               <div className="relative">
@@ -546,65 +471,6 @@ const Test = ({
                               <section className="float-left mx-2 flex">
                                 <Wave url={Object.values(item.voices)[1]} />
                               </section>
-                              {/* <section className="float-left mx-2 flex">
-                       
-                                <section>
-                                  <audio
-                                    hidden="true"
-                                    ref={audioPlayer}
-                                    preload="metadata"
-                                    controlsList="nodownload noplaybackrate "
-                                    loading="lazy"
-                                    controls
-                                    className="mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                            lg:w-52 lg:text-base"
-                                    src={Object.values(item.voices)[1]}
-                                  ></audio>
-                                
-                                  <div className="my-3 flex justify-between px-2 pt-2">
-                                    <input
-                                      dir="ltr"
-                                      onChange={changeRange}
-                                      type="range"
-                                      defaultValue="0"
-                                      ref={progressBar}
-                                    ></input>
-                                    <div>{calculateTime(currentTime)}</div>
-
-                              
-                                  </div>
-                                </section>
-
-                                <button onClick={playPause}>
-                                  {isPlaying ? (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#E0A719"
-                                      viewBox="0 0 20 20"
-                                    >
-                                      <path
-                                        fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        clip-rule="evenodd"
-                                      />
-                                    </svg>
-                                  ) : (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 lg:h-14 lg:w-14"
-                                      fill="#E0A719"
-                                      viewBox="0 0 20 20"
-                                    >
-                                      <path
-                                        fillRule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                        clipRule="evenodd"
-                                      />
-                                    </svg>
-                                  )}
-                                </button>
-                              </section> */}
                             </section>
                           </section>
                         ) : (
@@ -612,9 +478,9 @@ const Test = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                  className={`text-white rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
                                 >
-                                  {news_one.category_name}
+                                  {news_two.category_name}
                                 </h3>{' '}
                               </div>
 
@@ -740,7 +606,7 @@ const Test = ({
                                   alt={item.stories_headlines}
                                   className=" mx-auto h-40 w-40 rounded-b-md "
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -756,7 +622,7 @@ const Test = ({
                                     />
                                   </svg>
                                 </div>
-                                <div className="absolute bottom-1 left-1">
+                                <div className="absolute bottom-1 left-3">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -770,10 +636,10 @@ const Test = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-3 pt-3 font-TSbold text-base lg:text-xl">
+                                <h1 className="mx-1 pt-3 font-TSbold text-lg lg:text-xl">
                                   {item.stories_headlines}
                                 </h1>
-                                <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
+                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
                                       {news_one.important_data.publisher_name}
@@ -810,7 +676,7 @@ const Test = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-40 w-40 rounded-b-md"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -826,7 +692,7 @@ const Test = ({
                                     />
                                   </svg>
                                 </div>
-                                <div className="absolute bottom-1 left-1">
+                                <div className="absolute bottom-1 left-3">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -840,10 +706,10 @@ const Test = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-3 pt-3 font-TSbold text-base lg:text-xl">
+                                <h1 className="mx-1 pt-3 font-TSbold text-lg lg:text-xl">
                                   {item.stories_headlines}
                                 </h1>
-                                <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
+                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
                                       {news_one.important_data.publisher_name}
@@ -875,23 +741,7 @@ const Test = ({
               modules={[Navigation]}
               slidesPerView={1}
               spaceBetween={0}
-              //   navigation={true}
-              // autoplay={true}
-              // loop={true}
-              // install Swiper modules
               loop={true}
-              // thumbs={{
-              //   swiper: thumbsSwiper,
-              // }}
-              // autoplay={true}
-              // scrollbar={{
-              //   draggable: true,
-              //   dragSize: 'auto',
-              //   hide: true,
-              // }}
-              // pagination={{
-              //   type: 'fraction',
-              // }}
             >
               {news_two.data.map((item) => {
                 console.log(Object.values(item.voices)[1])
@@ -920,7 +770,7 @@ const Test = ({
                                   alt={item.stories_headlines}
                                   className=" mx-auto h-40 w-40 rounded-b-md "
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -936,7 +786,7 @@ const Test = ({
                                     />
                                   </svg>
                                 </div>
-                                <div className="absolute bottom-1 left-1">
+                                <div className="absolute bottom-1 left-3">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -950,10 +800,10 @@ const Test = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-3 pt-3 font-TSbold text-base lg:text-xl">
+                                <h1 className="mx-1 pt-3 font-TSbold text-lg lg:text-xl">
                                   {item.stories_headlines}
                                 </h1>
-                                <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
+                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
                                       {news_one.important_data.publisher_name}
@@ -990,7 +840,7 @@ const Test = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-40 w-40 rounded-b-md"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -1006,7 +856,7 @@ const Test = ({
                                     />
                                   </svg>
                                 </div>
-                                <div className="absolute bottom-1 left-1">
+                                <div className="absolute bottom-1 left-3">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -1020,11 +870,11 @@ const Test = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-3 pt-3 font-TSbold text-base lg:text-xl">
+                                <h1 className="mx-1 pt-3 font-TSbold text-lg lg:text-xl">
                                   {item.stories_headlines}
                                 </h1>
-                                <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
-                                  <p className="text-">
+                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
+                                  <p className="">
                                     <b className="text-red-700 font-TSbold">
                                       {news_one.important_data.publisher_name}
                                     </b>
