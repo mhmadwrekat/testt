@@ -53,15 +53,6 @@ const WaveAudio = ({ url }) => {
     wavesurfer.current.playPause()
   }
 
-  const onVolumeChange = (e) => {
-    const { target } = e
-    const newVolume = +target.value
-
-    if (newVolume) {
-      setVolume(newVolume)
-      wavesurfer.current.setVolume(newVolume || 1)
-    }
-  }
   return (
     <React.Fragment>
       <div className="mx-auto grid w-10/12">
@@ -78,7 +69,7 @@ const WaveAudio = ({ url }) => {
               min="0.01"
               max="1"
               step=".025"
-              onChange={onVolumeChange}
+              // onChange={onVolumeChange}
               defaultValue={volume}
             />
             {/* <label htmlFor="volume">Volume</label> */}
@@ -105,9 +96,9 @@ const WaveAudio = ({ url }) => {
                 viewBox="0 0 20 20"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
             )}

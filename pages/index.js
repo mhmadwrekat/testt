@@ -2,35 +2,29 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
-
 // page Component
 import HeadComp from '../components/page/HeadComp'
 import Nav from '../components/page/Nav'
 import Footer from '../components/page/Footer'
 // Apple View component
-const ForYou = dynamic(() => import('../components/appleStructrue/ForYou'))
-const ColoredSection = dynamic(() =>
-  import('../components/appleStructrue/ColoredSection')
+const Category_news = dynamic(
+  () => import('../components/appleStructrue/Category_news'),
+  {
+    ssr: false,
+  }
 )
-
-const Wave = dynamic(() => import('../components/UpdatedDesign/WaveAudio'), {
+const Colored = dynamic(() => import('../components/appleStructrue/Colored'), {
   ssr: false,
 })
-const Logaimat = dynamic(() => import('../components/UpdatedDesign/Logaimat'))
-const Video = dynamic(() => import('../components/appleStructrue/Video'))
-const Hashtag = dynamic(() => import('../components/appleStructrue/Hashtag'))
-const Voice = dynamic(() => import('../components/UpdatedDesign/Voice'), {
+const Voice = dynamic(() => import('../components/appleStructrue/Voice'), {
   ssr: false,
 })
-const Test4 = dynamic(() => import('../components/appleStructrue/Test4'), {
-  ssr: false,
-})
-
-const Import_news = dynamic(() =>
-  import('../components/UpdatedDesign/Import_news')
+const Logaimat = dynamic(
+  () => import('../components/appleStructrue/Logaimat'),
+  {
+    ssr: false,
+  }
 )
-const Colored = dynamic(() => import('../components/UpdatedDesign/Colored'))
-
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -39,22 +33,28 @@ export async function getServerSideProps({ req, res }) {
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
 
+  const test_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
+  const test_req = await fetch(test_url)
+  const test = await test_req.json()
+  const ready_test = test.location.country.code
+
   // Get Country Code
   const country_code_url = 'https://geolocation-db.com/json/'
   const country_code_res = await fetch(country_code_url)
   const country_code = await country_code_res.json()
   const ready_country_code = country_code.country_code
 
+  // Get All News
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${ready_test}`
+  const all_news_res = await fetch(all_news_url)
+  const all_news = await all_news_res.json()
+
+  // Get user token from Local Storage
   let user_token = ''
   if (typeof window !== 'undefined') {
     // Perform localStorage action
     user_token = localStorage.getItem('user_token')
   }
-
-  // Get All News
-  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${ready_country_code}`
-  const all_news_res = await fetch(all_news_url)
-  const all_news = await all_news_res.json()
 
   // Convert API Data From (Object To Array)
   let keys = Object.keys(all_news.data)
@@ -72,25 +72,28 @@ export async function getServerSideProps({ req, res }) {
     },
   })
   const loqaimat = await LoqaimatDataReq
-
   return {
     props: {
       all_news: custom_array,
       loqaimat: loqaimat.data,
+      test: ready_test,
     },
   }
 }
 const index = (props) => {
   return (
     <React.Fragment>
+      {console.log(props.test)}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-        <Import_news
+        <Category_news
           title={'أهم الأخبار'}
           category_news={props.all_news[0]}
           subs={null}
-          theme={'RED'}
+          bg_color={'bg-RED'}
+          title_color={'text-RED'}
+          fill_color={'fill-RED'}
         />
         <section className="mt-6 bg-Purp400 pb-8">
           <Colored
@@ -106,12 +109,13 @@ const index = (props) => {
             }
           />
         </section>
-
-        <Import_news
+        <Category_news
           title={' الصحه'}
           category_news={props.all_news[2]}
           subs={true}
-          theme={'BLUE'}
+          bg_color={'bg-BLUE'}
+          title_color={'text-BLUE'}
+          fill_color={'fill-BLUE'}
           description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
         />
         <Voice
@@ -126,11 +130,13 @@ const index = (props) => {
           theme={'bg-YELLOW'}
           description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
         />
-        <Import_news
+        <Category_news
           title={' تكنولوجيا'}
           category_news={props.all_news[4]}
           subs={true}
-          theme={'GREEN'}
+          bg_color={'bg-GREEN'}
+          title_color={'text-GREEN'}
+          fill_color={'fill-GREEN'}
           description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
         />
         <Logaimat
@@ -145,25 +151,31 @@ const index = (props) => {
           text_color={'text-black'}
           description={'بطريقة جميلة يمكنك قرائه المواضيع'}
         />
-        <Import_news
+        <Category_news
           title={' غزو أوكرانيا'}
           category_news={props.all_news[5]}
           subs={true}
-          theme={'YELLOW'}
+          bg_color={'bg-YELLOW'}
+          title_color={'text-YELLOW'}
+          fill_color={'fill-YELLOW'}
           description={'جميع ما يخص أحداث غزو أوكرانيا'}
         />
-        <Import_news
+        <Category_news
           title={' رياضه'}
           category_news={props.all_news[3]}
           subs={true}
-          theme={'BLUE'}
+          bg_color={'bg-BLUE'}
+          title_color={'text-BLUE'}
+          fill_color={'fill-BLUE'}
           description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
         />
-        <Import_news
+        <Category_news
           title={' مال وأعمال'}
           category_news={props.all_news[1]}
           subs={false}
-          theme={'GREEN'}
+          bg_color={'bg-GREEN'}
+          title_color={'text-GREEN'}
+          fill_color={'fill-GREEN'}
           description={
             'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
           }

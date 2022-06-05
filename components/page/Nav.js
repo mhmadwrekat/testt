@@ -1,9 +1,6 @@
 import React from 'react'
 //import Router from 'next/router'
 import { useRouter } from 'next/router'
-
-import Select from 'react-select'
-
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
 // import 'moment/locale/ar'
@@ -81,23 +78,23 @@ const Nav = () => {
           </div>
         </div>
         <div className="relative mt-3 font-TSSemi lg:ml-5 lg:mt-6 lg:pl-3">
-          <div class="... pointer-events-auto absolute">
+          <div className="... pointer-events-auto absolute">
             <svg
-              class="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
+              className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
               viewBox="0 0 20 20"
               fill="#FFFFFF"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </div>
           <input
             type="text"
             placeholder="محرك البحث"
-            class="border-white placeholder-white float-left w-40 rounded-md border-2 bg-GRAY200 p-1 pt-2 pr-12 text-base lg:w-96 lg:text-lg"
+            className="border-white placeholder-white float-left w-40 rounded-md border-2 bg-GRAY200 p-1 pt-2 pr-12 text-base lg:w-96 lg:text-lg"
           />
         </div>
 

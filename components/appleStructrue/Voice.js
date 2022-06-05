@@ -1,31 +1,30 @@
-import React, { useState, useRef, useEffect } from 'react'
-// import ReactAudioPlayer from 'react-audio-player'
-// import Swiper core and required modules
-import { Navigation } from 'swiper'
+import React, { useState, useRef } from 'react'
+import moment from 'moment'
+import 'moment/locale/ar'
+import WaveAudio from './WaveAudio'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Autoplay } from 'swiper'
-
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
-// import { PlayIcon } from '@heroicons/react/outline'
+const Voice = ({
+  title,
+  fill_color,
+  title_color,
+  theme,
+  subs,
+  desc_color,
+  description,
+  news_one,
+  news_two,
+}) => {
+  const [subscripe, setSubscripe] = useState(subs)
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-// import { Carousel } from 'react-responsive-carousel'
-
-// import { PauseCircleFilled, PlayCircleFilled } from '@material-ui/icons'
-
-const Voice = ({ important_news, theme, title, description, color }) => {
-  SwiperCore.use([Autoplay])
-
-  const important_news_img =
-    important_news?.important_data.stories_media_url.length > 0
-      ? important_news.important_data.stories_media_url[0]
-      : null
-
+  const handleSubscripe = () => {
+    setSubscripe(!subscripe)
+  }
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
     let code = ''
@@ -46,343 +45,752 @@ const Voice = ({ important_news, theme, title, description, color }) => {
       return code
     }
   }
-  let window_width = 0
-  if (typeof window !== 'undefined') {
-    window_width = window.innerWidth
-  }
-  let slides_per_view = 0
-  let space_between = 0
-  if (window_width > 900) {
-    ;(slides_per_view = 4.5), (space_between = 15)
-  } else if (window_width < 900 && window_width > 400) {
-    ;(slides_per_view = 3), (space_between = 15)
-  } else if (window_width < 400) {
-    ;(slides_per_view = 1), (space_between = 15)
-  }
-  /**
-let space_between = 0
-  window_width > 800
-    ? ((slides_per_view = 5), (space_between = 15))
-    : ((slides_per_view = 2), (space_between = 1)) 
- 
- */
-  // const [showMe, setShowMe] = useState(false)
-
-  // const playy = (audio) => {
-  //   let audioo = new Audio(audio)
-  //   if (showMe) {
-  //     audioo.pause()
-  //     // console.log('from if', showMe)
-  //   } else {
-  //     audioo.play()
-  //     // console.log('from else', showMe)
-  //   }
-  //   setShowMe(!showMe)
-  // }
-
-  // const pausee = (audio) => {
-  //   let audioo = new Audio(audio)
-
-  //   setShowMe(!showMe)
-  // }
-
-  // const [isPlaying, setisPlaying] = useState(false)
-  // const [duration, setDuration] = useState(0)
-  // const [currentTime, setCurrentTime] = useState(0)
-
-  // const audioPlayer = useRef()
-  // const progressBar = useRef()
-  // const animationRef = useRef()
-
-  // useEffect(() => {
-  //   const seconds = Math.floor(audioPlayer.current.duration)
-  //   setDuration(seconds)
-  //   // progressBar.current.max = seconds
-  // }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState])
-
-  // const playPause = () => {
-  //   setisPlaying(!isPlaying)
-  //   if (!isPlaying) {
-  //     audioPlayer.current.play()
-  //     // animationRef.current = requestAnimationFrame(whilePlaying)
-  //   } else {
-  //     audioPlayer.current.pause()
-  //     // cancelAnimationFrame(animationRef.current)
-  //   }
-  // }
-  // const whilePlaying = () => {
-  //   progressBar.current.value = audioPlayer.current.currentTime
-  //   setCurrentTime(progressBar.current.value)
-  //   animationRef.current = requestAnimationFrame(whilePlaying)
-  // }
-  // const changeRange = () => {
-  //   audioPlayer.current.currentTime = progressBar.current.value
-  //   setCurrentTime(progressBar.current.value)
-  // }
-
-  // const calculateTime = (seco) => {
-  //   const minutes = Math.floor(seco / 60)
-  //   const returnMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`
-  //   const seconds = Math.floor(seco % 60)
-  //   const returnSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
-  //   return `${returnMinutes}:${returnSeconds}`
-  // }
 
   return (
     <React.Fragment>
-      <section loading="lazy">
-        {/* <link rel="stylesheet" href="./styles/global.css" /> */}
-
-        <p className="py-8"></p>
-        <section className=" mx-auto w-11/12 rounded-lg pt-2 lg:w-9/12 lg:pt-2">
-          <h1 className=" text-blue-400 font-TSExtra text-xl lg:text-4xl">
-            الصوتيات
-          </h1>
-          <h2 className="border-gray-400 border-b-2 font-TSbold text-sm lg:text-lg">
-            <p className="text-gray-400 hover-border-b-2 hover-scale-110 w-2/6 pt-2 text-right lg:w-1/6">
-              الاكثر أستماعا
-            </p>
-          </h2>
-
-          {/* {console.log(slides_per_view)} */}
-
-          <section className="w-6/6 bg-red mx-auto">
-            {slides_per_view && (
-              <Swiper
-                // install Swiper modules
-                modules={[Navigation]}
-                slidesPerView={slides_per_view}
-                spaceBetween={0}
-                navigation={true}
-                // autoplay={true}
-                loop={true}
-                // install Swiper modules
-                // loop={true}
-                // thumbs={{
-                //   swiper: thumbsSwiper,
-                // }}
-                // autoplay={true}
-                // scrollbar={{
-                //   draggable: true,
-                //   dragSize: 'auto',
-                //   hide: true,
-                // }}
-                //    pagination={{
-                //   type: 'fraction',
-                // }}
+      <section className="mx-auto w-11/12 lg:w-10/12">
+        <div className="flex justify-between">
+          <div className="my-3 mt-3 lg:mt-4">
+            <div className="flex">
+              {subscripe !== null &&
+                (subscripe ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
+                    viewBox="0 0 20 20"
+                    fill="#B0B0B0"
+                    onClick={() => {
+                      handleSubscripe()
+                    }}
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
+                    viewBox="0 0 20 20"
+                    fill="#32CD32"
+                    onClick={() => {
+                      handleSubscripe()
+                    }}
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ))}
+              <h1
+                className={`${title_color} mt-5 font-TSExtra text-2xl lg:text-4xl`}
               >
-                {important_news.data.map((item) => {
-                  // console.log(Object.values(item.voices)[1])
-                  return (
-                    <SwiperSlide key={item._id}>
-                      <div
-                        className="my-5 mx-auto w-60 rounded-md shadow-2xl
-                        lg:my-10 "
-                        loading="lazy"
-                      >
-                        <p className=" py-2"></p>
-                        {item.stories_media_url[0] &&
-                          (item.stories_media_url[0].includes('youtube') ||
-                          item.stories_media_url[0].includes('youtu.be') ? (
-                            <div className="relative">
-                              <img
-                                loading="lazy"
-                                src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                  item.stories_media_url[0]
-                                )}/0.jpg`}
-                                alt={item.stories_headlines}
-                                className="mx-auto h-28 w-36 rounded-t-xl lg:h-56 lg:w-52"
-                              />
-                              {/* <img
-                                style={{ display: showMe ? 'none' : 'block' }}
-                                src="https://png.vector.me/files/images/6/7/678531/windows_media_player_play_button_updated_preview"
-                                className=" absolute bottom-2 right-6 h-11 w-11"
-                                onClick={() => {
-                                  playy(Object.values(item.voices)[1])
-                                }}
-                              />
-                              <img
-                                style={{ display: showMe ? 'block' : 'none' }}
-                                src="https://png.vector.me/files/images/6/7/678557/windows_media_player_pause_button_preview"
-                                className=" absolute bottom-2 right-6 h-11 w-11"
-                                onClick={() => {
-                                  playy(Object.values(item.voices)[1])
-                                }}
-                              /> */}
-                              {/* <audio
-                                ref={audioPlayer}
-                                controlsList="nodownload noplaybackrate "
-                                loading="lazy"
-                                className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                            lg:w-52 lg:text-base"
-                                src={Object.values(item.voices)}
-                              ></audio>
-
-                              <button
-                                onClick={playPause(Object.values(item.voices))}
-                              >
-                                {isPlaying ? (
-                                  <img
-                                    src="https://png.vector.me/files/images/6/7/678557/windows_media_player_pause_button_preview"
-                                    className="  right-6 h-11 w-11"
-                                  />
-                                ) : (
-                                  <img
-                                    src="https://png.vector.me/files/images/6/7/678531/windows_media_player_play_button_updated_preview"
-                                    className="  right-6 h-11 w-11"
-                                  />
-                                )}
-                              </button> */}
-                              {/* <button
-                                style={{ display: showMe ? 'none' : 'block' }}
-                                className=" absolute bottom-16 right-6 h-11 w-11"
-                                onClick={() => {
-                                  playy(Object.values(item.voices)[1])
-                                }}
-                              >
-                                <PlayCircleFilled />
-                              </button>
-                              <button
-                                style={{ display: showMe ? 'block' : 'none' }}
-                                className=" absolute bottom-16 right-6 h-11 w-11"
-                                onClick={() => {
-                                  playy(Object.values(item.voices)[1])
-                                }}
-                              >
-                                <PauseCircleFilled />
-                              </button> */}
-
-                              {/* <button
-                                style={{ display: showMe ? 'none' : 'block' }}
-                                className=" absolute bottom-16 right-6 h-16 w-16"
-                                onClick={() => {
-                                  playy(
-                                    'https://cdn1.esm3.com/music/4558/m299431.mp3'
-                                  )
-                                }}
-                              >
-                                <PlayCircleFilled />
-                              </button>
-                              <button
-                                style={{ display: showMe ? 'block' : 'none' }}
-                                className=" absolute bottom-16 right-6 h-16 w-16"
-                                onClick={() => {
-                                  pausee(
-                                    'https://cdn1.esm3.com/music/4558/m299431.mp3'
-                                  )
-                                }}
-                              >
-                                <PauseCircleFilled />
-                              </button> */}
-                              {/* <ReactAudioPlayer
-                                controlsList="nodownload noplaybackrate "
-                                loading="lazy"
-                                controls
-                                className="absolute bottom-0 right-10 mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                   lg:w-52 lg:text-base"
-                                src={Object.values(item.voices)[1]}
-                              /> */}
-                              <audio
-                                controlsList="nodownload noplaybackrate"
-                                loading="lazy"
-                                controls
-                                className=" mx-auto w-40 font-TSbold text-xs lg:right-4 lg:w-52 lg:text-base"
-                                src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                              ></audio>
-                            </div>
-                          ) : (
-                            <div className="relative">
-                              <img
-                                loading="lazy"
-                                src={item.stories_media_url[0]}
-                                alt={item.stories_headlines}
-                                className="mx-auto h-36 w-40 rounded-t-xl lg:h-56 lg:w-52"
-                              />
-                              {/* <img
-                                style={{ display: showMe ? 'none' : 'block' }}
-                                src="https://png.vector.me/files/images/6/7/678531/windows_media_player_play_button_updated_preview"
-                                className=" absolute bottom-2 right-6 h-11 w-11"
-                                onClick={() => {
-                                  playy(Object.values(item.voices)[1])
-                                }}
-                              />
-                              <img
-                                style={{ display: showMe ? 'block' : 'none' }}
-                                src="https://png.vector.me/files/images/6/7/678557/windows_media_player_pause_button_preview"
-                                className=" absolute bottom-2 right-6 h-11 w-11"
-                                onClick={() => {
-                                  playy(Object.values(item.voices)[1])
-                                }}
-                              /> */}
-                              {/* <audio
-                                ref={audioPlayer}
-                                controlsList="nodownload noplaybackrate "
-                                loading="lazy"
-                                className=" mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                            lg:w-52 lg:text-base"
-                                src={Object.values(item.voices)[1]}
-                              ></audio>
-                              <button onClick={playPause}>
-                                {isPlaying ? (
-                                  <img
-                                    src="https://png.vector.me/files/images/6/7/678557/windows_media_player_pause_button_preview"
-                                    className=" absolute bottom-7 right-6 h-11 w-11"
-                                  />
-                                ) : (
-                                  <img
-                                    src="https://png.vector.me/files/images/6/7/678531/windows_media_player_play_button_updated_preview"
-                                    className="  absolute bottom-7 right-6 h-11 w-11"
-                                  />
-                                )}
-                              </button> */}
-                              {/* <button
-                                style={{ display: showMe ? 'none' : 'block' }}
-                                className=" absolute bottom-16 right-6 h-16 w-16"
-                                onClick={() => {
-                                  playy(Object.values(item.voices)[1])
-                                }}
-                              >
-                                <PlayCircleFilled />
-                              </button>
-                              <button
-                                style={{ display: showMe ? 'block' : 'none' }}
-                                className=" absolute bottom-16 right-6 h-16 w-16"
-                               onClick={() => {
-                                  playy(Object.values(item.voices)[1])
-                                }}
-                              >
-                                <PauseCircleFilled />
-                              </button> */}
-                              {/* <ReactAudioPlayer
-                                controlsList="nodownload noplaybackrate "
-                                loading="lazy"
-                                controls
-                                className="absolute bottom-0 right-10 mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                   lg:w-52 lg:text-base"
-                                src={Object.values(item.voices)[1]}
-                              /> */}
-                              <audio
-                                controlsList="nodownload noplaybackrate "
-                                loading="lazy"
-                                controls
-                                className=" mx-auto w-40 font-TSbold text-xs lg:right-4 lg:w-52 lg:text-base"
-                                src={Object.values(item.voices)[1]}
-                              ></audio>
-                            </div>
-                          ))}
-
-                        <h1 className="mx-auto w-8/12 pt-3 font-TSbold text-base">
-                          {item.stories_headlines.slice(0, 14)}
-                        </h1>
-                        <h1 className="mx-auto h-20 w-8/12 pb-3 pt-1 font-TSlight text-sm">
-                          {item.stories_headlines}
-                        </h1>
-                      </div>
-                    </SwiperSlide>
-                  )
-                })}
-              </Swiper>
+                {title}{' '}
+              </h1>
+            </div>
+            {description && (
+              <p
+                className={`${desc_color} hidden w-full px-1 pt-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
+              >
+                {description}
+              </p>
             )}
+          </div>
+
+          <div className="my-1 mt-4 flex lg:mt-5">
+            <p className="mt-5 font-TSbold text-lg lg:text-xl"> أستمع للمزيد</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>{' '}
+        {description && (
+          <p
+            className={`${desc_color} grid w-10/12 px-1 pb-2 font-TSmedium text-lg lg:hidden lg:text-xl`}
+          >
+            {description}
+          </p>
+        )}
+        {/**** Desktop View ****/}
+        {/**** Desktop View ****/}
+        <section className="hidden lg:block">
+          <section className="w-6/6 mx-auto">
+            {/**** SWIPER ONE DESKTOP ****/}
+            <Swiper
+              // install Swiper modules
+              slidesPerView={2.8}
+              spaceBetween={0}
+              loop={true}
+            >
+              {news_one.data.map((item) => {
+                // console.log(Object.values(item.voices)[1])
+                return (
+                  <SwiperSlide key={item._id}>
+                    <div className="mx-auto rounded-md " loading="lazy">
+                      {item.stories_media_url[0] &&
+                        (item.stories_media_url[0].includes('youtube') ||
+                        item.stories_media_url[0].includes('youtu.be') ? (
+                          <section className="flex">
+                            <div>
+                              {/* {console.log(item.stories_media_url[0])} */}
+                              <div className="">
+                                <h3
+                                  className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                >
+                                  {news_one.category_name}
+                                </h3>{' '}
+                              </div>
+                              <div className="relative">
+                                <img
+                                  loading="lazy"
+                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className=" mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <section>
+                              <section>
+                                <h1 className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
+                                  {item.stories_headlines}
+                                </h1>
+                                <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
+                                  <p className="">
+                                    <b className="text-red-700 font-TSbold">
+                                      {news_one.important_data.publisher_name}
+                                    </b>
+                                  </p>
+                                  <p className="text-gray-500 font-TSbold">
+                                    قبل{' '}
+                                    {moment(
+                                      news_one.important_data.published_on
+                                    ).fromNow(true)}
+                                  </p>
+                                </div>
+                              </section>
+                              <section className="float-left mx-2 flex">
+                                <WaveAudio
+                                  url={Object.values(item.voices)[1]}
+                                />
+                              </section>
+                            </section>
+                          </section>
+                        ) : (
+                          <section className="flex">
+                            <div>
+                              <div className="">
+                                <h3
+                                  className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                >
+                                  {news_one.category_name}
+                                </h3>{' '}
+                              </div>
+
+                              <div className="relative">
+                                <img
+                                  loading="lazy"
+                                  src={item.stories_media_url[0]}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <section>
+                              <section>
+                                <h1 className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
+                                  {item.stories_headlines}
+                                </h1>
+                                <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
+                                  <p className="text-">
+                                    <b className="text-red-700 font-TSbold">
+                                      {news_one.important_data.publisher_name}
+                                    </b>
+                                  </p>
+                                  <p className="text-gray-500 ml-3 font-TSbold">
+                                    قبل{' '}
+                                    {moment(
+                                      news_one.important_data.published_on
+                                    ).fromNow(true)}
+                                  </p>
+                                </div>
+                              </section>
+                              <section className="float-left mx-2 flex">
+                                <WaveAudio
+                                  url={Object.values(item.voices)[1]}
+                                />
+                              </section>
+                            </section>
+                          </section>
+                        ))}
+                    </div>
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper>
+            <div className="w-6/6 my-3 mx-auto border-b-2 border-YELLOW pt-1 opacity-80"></div>
+            {/**** SWIPER TWO DESKTOP ****/}
+            <Swiper
+              // install Swiper modules
+              slidesPerView={2.8}
+              spaceBetween={0}
+              loop={true}
+            >
+              {news_two.data.map((item) => {
+                // console.log(Object.values(item.voices)[1])
+                return (
+                  <SwiperSlide key={item._id}>
+                    <div className="mx-auto rounded-md " loading="lazy">
+                      {item.stories_media_url[0] &&
+                        (item.stories_media_url[0].includes('youtube') ||
+                        item.stories_media_url[0].includes('youtu.be') ? (
+                          <section className="flex">
+                            <div>
+                              {/* {console.log(item.stories_media_url[0])} */}
+                              <div className="">
+                                <h3
+                                  className={`text-white rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                >
+                                  {news_two.category_name}
+                                </h3>{' '}
+                              </div>
+                              <div className="relative">
+                                <img
+                                  loading="lazy"
+                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className=" mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <section>
+                              <section>
+                                <h1 className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
+                                  {item.stories_headlines}
+                                </h1>
+                                <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
+                                  <p className="">
+                                    <b className="text-red-700 font-TSbold">
+                                      {news_one.important_data.publisher_name}
+                                    </b>
+                                  </p>
+                                  <p className="text-gray-500 font-TSbold">
+                                    قبل{' '}
+                                    {moment(
+                                      news_one.important_data.published_on
+                                    ).fromNow(true)}
+                                  </p>
+                                </div>
+                              </section>
+                              <section className="float-left mx-2 flex">
+                                <WaveAudio
+                                  url={Object.values(item.voices)[1]}
+                                />
+                              </section>
+                            </section>
+                          </section>
+                        ) : (
+                          <section className="flex">
+                            <div>
+                              <div className="">
+                                <h3
+                                  className={`text-white rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                >
+                                  {news_two.category_name}
+                                </h3>{' '}
+                              </div>
+
+                              <div className="relative">
+                                <img
+                                  loading="lazy"
+                                  src={item.stories_media_url[0]}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <section>
+                              <section>
+                                <h1 className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
+                                  {item.stories_headlines}
+                                </h1>
+                                <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
+                                  <p className="text-">
+                                    <b className="text-red-700 font-TSbold">
+                                      {news_one.important_data.publisher_name}
+                                    </b>
+                                  </p>
+                                  <p className="text-gray-500 ml-3 font-TSbold">
+                                    قبل{' '}
+                                    {moment(
+                                      news_one.important_data.published_on
+                                    ).fromNow(true)}
+                                  </p>
+                                </div>
+                              </section>
+                              <section className="float-left mx-2 flex">
+                                <WaveAudio
+                                  url={Object.values(item.voices)[1]}
+                                />
+                              </section>
+                            </section>
+                          </section>
+                        ))}
+                    </div>
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper>
+          </section>
+        </section>
+        {/**** Mobile View ****/}
+        {/**** Mobile View ****/}
+        <section className="block lg:hidden">
+          <section className="w-6/6 mx-auto">
+            {/**** SWIPER ONE Mobile ****/}
+            <Swiper
+              // install Swiper modules
+              slidesPerView={1}
+              spaceBetween={0}
+              loop={true}
+            >
+              {news_one.data.map((item) => {
+                // console.log(Object.values(item.voices)[1])
+                return (
+                  <SwiperSlide key={item._id}>
+                    <div className="mx-auto rounded-md " loading="lazy">
+                      {item.stories_media_url[0] &&
+                        (item.stories_media_url[0].includes('youtube') ||
+                        item.stories_media_url[0].includes('youtu.be') ? (
+                          <section className="grid grid-cols-2">
+                            <div>
+                              <div className="">
+                                <h3
+                                  className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                >
+                                  {news_one.category_name}
+                                </h3>
+                              </div>
+
+                              <div className="relative h-40 w-40 md:h-72 md:w-96">
+                                <img
+                                  loading="lazy"
+                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className=" h-full w-full rounded-b-md "
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <section>
+                              <section>
+                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
+                                  {item.stories_headlines}
+                                </h1>
+                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
+                                  <p className="text-">
+                                    <b className="text-red-700 font-TSbold">
+                                      {news_one.important_data.publisher_name}
+                                    </b>
+                                  </p>
+                                  <p className="text-gray-500 ml-3 font-TSbold">
+                                    قبل{' '}
+                                    {moment(
+                                      news_one.important_data.published_on
+                                    ).fromNow(true)}
+                                  </p>
+                                </div>
+                              </section>
+                            </section>
+                            <section className="float-left mx-2 flex">
+                              <WaveAudio url={Object.values(item.voices)[1]} />
+                            </section>
+                          </section>
+                        ) : (
+                          <section className="grid grid-cols-2">
+                            <div>
+                              <div className="">
+                                <h3
+                                  className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                >
+                                  {news_one.category_name}
+                                </h3>
+                              </div>
+
+                              <div className="relative h-40 w-40 md:h-72 md:w-96">
+                                <img
+                                  loading="lazy"
+                                  src={item.stories_media_url[0]}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-full w-full rounded-b-md"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <section>
+                              <section>
+                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
+                                  {item.stories_headlines}
+                                </h1>
+                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
+                                  <p className="text-">
+                                    <b className="text-red-700 font-TSbold">
+                                      {news_one.important_data.publisher_name}
+                                    </b>
+                                  </p>
+                                  <p className="text-gray-500 ml-3 font-TSbold">
+                                    قبل{' '}
+                                    {moment(
+                                      news_one.important_data.published_on
+                                    ).fromNow(true)}
+                                  </p>
+                                </div>
+                              </section>
+                            </section>
+                            <section className="float-left mx-2 flex">
+                              <WaveAudio url={Object.values(item.voices)[1]} />
+                            </section>
+                          </section>
+                        ))}
+                    </div>
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper>
+            <div className="w-6/6 mx-auto mb-3 border-b-2 border-YELLOW pt-1 opacity-80"></div>
+            {/**** SWIPER TWO Mobile ****/}
+            <Swiper
+              // install Swiper modules
+              slidesPerView={1}
+              spaceBetween={0}
+              loop={true}
+            >
+              {news_two.data.map((item) => {
+                // console.log(Object.values(item.voices)[1])
+                return (
+                  <SwiperSlide key={item._id}>
+                    <div className="mx-auto rounded-md " loading="lazy">
+                      {item.stories_media_url[0] &&
+                        (item.stories_media_url[0].includes('youtube') ||
+                        item.stories_media_url[0].includes('youtu.be') ? (
+                          <section className="grid grid-cols-2">
+                            <div>
+                              <div className="">
+                                <h3
+                                  className={`text-white w-40 rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                >
+                                  {news_two.category_name}
+                                </h3>
+                              </div>
+
+                              <div className="relative h-40 w-40 md:h-72 md:w-96">
+                                <img
+                                  loading="lazy"
+                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className=" h-full w-full rounded-b-md "
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <section>
+                              <section>
+                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
+                                  {item.stories_headlines}
+                                </h1>
+                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
+                                  <p className="text-">
+                                    <b className="text-red-700 font-TSbold">
+                                      {news_one.important_data.publisher_name}
+                                    </b>
+                                  </p>
+                                  <p className="text-gray-500 ml-3 font-TSbold">
+                                    قبل{' '}
+                                    {moment(
+                                      news_one.important_data.published_on
+                                    ).fromNow(true)}
+                                  </p>
+                                </div>
+                              </section>
+                            </section>
+                            <section className="float-left mx-2 flex">
+                              <WaveAudio url={Object.values(item.voices)[1]} />
+                            </section>
+                          </section>
+                        ) : (
+                          <section className="grid grid-cols-2">
+                            <div>
+                              <div className="">
+                                <h3
+                                  className={`text-white w-40 rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                >
+                                  {news_two.category_name}
+                                </h3>
+                              </div>
+
+                              <div className="relative h-40 w-40 md:h-72 md:w-96">
+                                <img
+                                  loading="lazy"
+                                  src={item.stories_media_url[0]}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-full w-full rounded-b-md"
+                                />
+                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="absolute bottom-1 left-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-9 w-9 cursor-pointer "
+                                    viewBox="0 0 20 20"
+                                    fill="#FFFFFF"
+                                  >
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <section>
+                              <section>
+                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
+                                  {item.stories_headlines}
+                                </h1>
+                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
+                                  <p className="text-">
+                                    <b className="text-red-700 font-TSbold">
+                                      {news_one.important_data.publisher_name}
+                                    </b>
+                                  </p>
+                                  <p className="text-gray-500 ml-3 font-TSbold">
+                                    قبل{' '}
+                                    {moment(
+                                      news_one.important_data.published_on
+                                    ).fromNow(true)}
+                                  </p>
+                                </div>
+                              </section>
+                            </section>
+                            <section className="float-left mx-2 flex">
+                              <WaveAudio url={Object.values(item.voices)[1]} />
+                            </section>
+                          </section>
+                        ))}
+                    </div>
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper>
           </section>
         </section>
       </section>
@@ -391,76 +799,3 @@ let space_between = 0
 }
 
 export default Voice
-/**
- * 
- * 
- * 
-   <audio
-                                controlsList="nodownload noplaybackrate "
-                                loading="lazy"
-                                controls
-                                className="absolute bottom-0 right-10 mx-auto w-40 rounded-2xl font-TSbold text-xs lg:right-4
-                                  lg:w-52 lg:text-base"
-                                src="https://testin-bucket2021.s3.us-east-2.amazonaws.com/filemjmjihkvwt.mp3"
-                              ></audio> 
- * 
- *          <div className="my-5 mx-auto lg:my-10" loading="lazy">
-                  <img
-                    className="mx-auto block h-28 w-36 rounded-t-xl shadow-2xl lg:h-72 lg:w-72"
-                    src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                    loading="lazy"
-                  />
-                  <ReactAudioPlayer
-                    onPlay={() => {
-                      play('https://cdn1.esm3.com/music/4558/m299431.mp3')
-                    }}
-                    className="bg-gray-100 mx-auto w-36 rounded-b-xl font-TSbold text-xs lg:w-72 lg:text-base"
-                    src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                    loading="lazy"
-                    controls
-                  />
-                </div>
- * 
- * 
- * 
-    <Swiper
-                // install Swiper modules
-                modules={[Navigation]}
-                slidesPerView={slides_per_view}
-                spaceBetween={30}
-                navigation={true}
-                // install Swiper modules
-                // loop={true}
-                // thumbs={{
-                //   swiper: thumbsSwiper,
-                // }}
-                // autoplay={true}
-                // scrollbar={{
-                //   draggable: true,
-                //   dragSize: 'auto',
-                //   hide: true,
-                // }}
-                //    pagination={{
-                //   type: 'fraction',
-                // }}
-              >
-                <SwiperSlide>
-                  <div className="my-5 mx-auto lg:my-10" loading="lazy">
-                    <img
-                      className="mx-auto block h-28 w-36 rounded-t-xl shadow-2xl lg:h-72 lg:w-72"
-                      src="https://img.youtube.com/vi/jBJTaLZgYgc/0.jpg"
-                      loading="lazy"
-                    />
-                    <ReactAudioPlayer
-                      onPlay={() => {
-                        play('https://cdn1.esm3.com/music/4558/m299431.mp3')
-                      }}
-                      className="bg-gray-100 mx-auto w-36 rounded-b-xl font-TSbold text-xs lg:w-72 lg:text-base"
-                      src="https://cdn1.esm3.com/music/4558/m299431.mp3"
-                      loading="lazy"
-                      controls
-                    />
-                  </div>
-                </SwiperSlide>
-              </Swiper>
- */
