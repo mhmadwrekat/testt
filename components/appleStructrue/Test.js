@@ -561,23 +561,7 @@ const Test = ({
               modules={[Navigation]}
               slidesPerView={1}
               spaceBetween={0}
-              //   navigation={true}
-              // autoplay={true}
-              // loop={true}
-              // install Swiper modules
               loop={true}
-              // thumbs={{
-              //   swiper: thumbsSwiper,
-              // }}
-              // autoplay={true}
-              // scrollbar={{
-              //   draggable: true,
-              //   dragSize: 'auto',
-              //   hide: true,
-              // }}
-              // pagination={{
-              //   type: 'fraction',
-              // }}
             >
               {news_one.data.map((item) => {
                 console.log(Object.values(item.voices)[1])
@@ -591,20 +575,20 @@ const Test = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`${theme} text-white mx-auto w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                  className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
                                   {news_one.category_name}
-                                </h3>{' '}
+                                </h3>
                               </div>
 
-                              <div className="relative">
+                              <div className="relative h-40 w-40 md:h-72 md:w-96">
                                 <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" mx-auto h-40 w-40 rounded-b-md "
+                                  className=" h-full w-full rounded-b-md "
                                 />
                                 <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
                                   <svg
@@ -636,7 +620,7 @@ const Test = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-1 pt-3 font-TSbold text-lg lg:text-xl">
+                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
                                   {item.stories_headlines}
                                 </h1>
                                 <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
@@ -663,18 +647,18 @@ const Test = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`${theme} text-white mx-auto w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                  className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
                                   {news_one.category_name}
-                                </h3>{' '}
+                                </h3>
                               </div>
 
-                              <div className="relative">
+                              <div className="relative h-40 w-40 md:h-72 md:w-96">
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-40 rounded-b-md"
+                                  className="mx-auto h-full w-full rounded-b-md"
                                 />
                                 <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
                                   <svg
@@ -706,7 +690,7 @@ const Test = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-1 pt-3 font-TSbold text-lg lg:text-xl">
+                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
                                   {item.stories_headlines}
                                 </h1>
                                 <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
@@ -755,20 +739,20 @@ const Test = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`text-white mx-auto w-40 rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                  className={`bg-SKY text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
                                   {news_two.category_name}
-                                </h3>{' '}
+                                </h3>
                               </div>
 
-                              <div className="relative">
+                              <div className="relative h-40 w-40 md:h-72 md:w-96">
                                 <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" mx-auto h-40 w-40 rounded-b-md "
+                                  className=" h-full w-full rounded-b-md "
                                 />
                                 <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
                                   <svg
@@ -800,7 +784,7 @@ const Test = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-1 pt-3 font-TSbold text-lg lg:text-xl">
+                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
                                   {item.stories_headlines}
                                 </h1>
                                 <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
@@ -827,18 +811,18 @@ const Test = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`text-white mx-auto w-40 rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                  className={`bg-SKY text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
-                                  {news_one.category_name}
-                                </h3>{' '}
+                                  {news_two.category_name}
+                                </h3>
                               </div>
 
-                              <div className="relative">
+                              <div className="relative h-40 w-40 md:h-72 md:w-96">
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-40 rounded-b-md"
+                                  className="mx-auto h-full w-full rounded-b-md"
                                 />
                                 <div className="bg-white absolute bottom-1 right-3 rounded-full p-1">
                                   <svg
@@ -870,11 +854,11 @@ const Test = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-1 pt-3 font-TSbold text-lg lg:text-xl">
+                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
                                   {item.stories_headlines}
                                 </h1>
                                 <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
-                                  <p className="">
+                                  <p className="text-">
                                     <b className="text-red-700 font-TSbold">
                                       {news_one.important_data.publisher_name}
                                     </b>

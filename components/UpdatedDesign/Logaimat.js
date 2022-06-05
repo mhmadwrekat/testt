@@ -221,7 +221,7 @@ const Logaimat = ({
                           ))}
                         <div class="bg-white absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-70">
                           <p className="mx-auto w-8/12 text-center font-TSExtra text-2xl lg:pt-24">
-                            اضغط هنا لمتابعة القرائة
+                            اضغط هنا لمتابعة القراءة
                           </p>
                         </div>
                       </div>
@@ -310,7 +310,7 @@ const Logaimat = ({
                           ))}
                         <div class="bg-white absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-70">
                           <p className="mx-auto w-8/12 pt-20 text-center font-TSExtra text-xl">
-                            اضغط هنا لمتابعة القرائة
+                            اضغط هنا لمتابعة القراءة
                           </p>
                         </div>
                       </div>
