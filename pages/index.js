@@ -82,6 +82,7 @@ const index = (props) => {
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
+        {console.log(props.all_news[0])}
         <Category_news
           loading="eager"
           title={'أهم الأخبار'}

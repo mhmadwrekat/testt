@@ -66,7 +66,7 @@ const Category_news = ({
     arr.map((item) => {
       if (id.id == item.id) {
         item.status = !item.status
-        console.log(item.status)
+        // console.log(item.status)
         return arr
       }
     })
@@ -267,7 +267,7 @@ const Category_news = ({
               <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                 {category_news.data.slice(1, 5).map((item, key) => {
                   arr.push({ id: item._id, status: true })
-                  console.log(arr)
+                  // console.log(arr)
                   return (
                     <section key={item._id}>
                       <div

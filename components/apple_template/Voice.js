@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Like from '../apple_template/child_comp/Like'
 import moment from 'moment'
 import 'moment/locale/ar'
 import Wave_audio from './child_comp/Wave_audio'
@@ -163,22 +164,8 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className=" mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36  lg:w-60"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-7 w-7 cursor-pointer opacity-70"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                    />
-                                  </svg>
-                                </div>
+                                <Like />
+
                                 <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -233,22 +220,8 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-7 w-7 cursor-pointer opacity-70"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                    />
-                                  </svg>
-                                </div>
+                                <Like />
+
                                 <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -325,22 +298,8 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className=" mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-7 w-7 cursor-pointer opacity-70"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                    />
-                                  </svg>
-                                </div>
+                                <Like />
+
                                 <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -382,7 +341,7 @@ const Voice = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`text-white rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                  className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
                                 >
                                   {news_two.section_name}
                                 </h3>{' '}
@@ -395,22 +354,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-7 w-7 cursor-pointer opacity-70"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                    />
-                                  </svg>
-                                </div>
+                                <Like />
                                 <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
