@@ -160,7 +160,7 @@ const Category_news = ({
                     <h3
                       className={`${bg_color} text-white rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base hover:underline lg:pr-8`}
                     >
-                      {category_news.section_name}
+                      {category_news?.section_name}
                     </h3>{' '}
                   </div>
                   <div className=" relative h-56 w-full lg:h-80">
@@ -265,7 +265,7 @@ const Category_news = ({
                 </div>
               </section>
               <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {category_news.data.slice(1, 5).map((item, key) => {
+                {category_news?.data?.slice(1, 5).map((item, key) => {
                   arr.push({ id: item._id, status: true })
                   // console.log(arr)
                   return (

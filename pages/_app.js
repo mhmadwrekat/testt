@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 import { useRouter } from 'next/router'
@@ -20,7 +21,7 @@ const App = ({ Component, pageProps }) => {
   const router = useRouter()
 
   // function to handle the user auth.
-  /*  const register_user = async () => {
+  const register_user = async () => {
     try {
       let device_id = null
 
@@ -29,7 +30,11 @@ const App = ({ Component, pageProps }) => {
       } else {
         device_id = uuidv4()
       }
+      //       https://api.alzubda.com/v1/Web/Sections?
 
+      // current_country=JO&
+
+      // userId=5e4ee6b352561e16596649fc
       axios
         .post(`${BASE_URL}/v1/Users/`, {
           device_id: device_id,
@@ -50,14 +55,17 @@ const App = ({ Component, pageProps }) => {
       console.log(err)
     }
   }
+
   //Myne : G-CC35HDRGKD
   //'GTM-WSLC3QB'
-*/
+  const [user_id, setUser_id] = useState(null)
   useEffect(() => {
-    //register_user()
+    register_user()
+    setUser_id(localStorage.getItem('user_id'))
+    // console.log(user_id)
     const handleRouteChange = (url) => {
-      //  gtag.pageview(url)
-      //  TagManager.initialize({ gtmId: 'GTM-WSLC3QB' })
+      gtag.pageview(url)
+      TagManager.initialize({ gtmId: 'GTM-WSLC3QB' })
     }
     router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
@@ -65,9 +73,32 @@ const App = ({ Component, pageProps }) => {
     }
   }, [router.events])
 
+  // const send_user = async () => {
+  //   try {
+  //     //       https://api.alzubda.com/v1/Web/Sections?
+
+  //     // current_country=JO&
+
+  //     // userId=5e4ee6b352561e16596649fc
+  //     let url = `${BASE_URL}/v1/Web/Sections?`
+  //     console.log(url)
+
+  //     axios
+  //       .post(url, {
+  //         current_country: 'JO',
+  //         userId: user_id,
+  //       })
+  //       .catch(function (error) {
+  //         console.log(error)
+  //       })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  // send_user()
   return (
     <ThemeProvider defaultTheme="system">
-      <Component {...pageProps} />
+      <Component {...pageProps} user_id={user_id} />
     </ThemeProvider>
   )
 }
