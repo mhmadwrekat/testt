@@ -93,7 +93,22 @@ const index = (props) => {
           title_color={'text-RED'}
           fill_color={'fill-RED'}
         />
-        {props.all_news[1] > 0 ? (
+        <section className="mt-6 bg-Purp400 pb-8 lg:mt-12">
+          <Colored
+            loading="lazy"
+            title={'مخصص لك'}
+            important_news={props.all_news[3]}
+            card_color={'bg-Purp100'}
+            theme={'bg-Purp200'}
+            text_color={'text-white'}
+            fill_color={'fill-Purp200'}
+            desc_color={'text-GRAY'}
+            description={
+              'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
+            }
+          />
+        </section>
+        {/* {props.all_news[1] > 0 ? (
           <section className="mt-6 bg-Purp400 pb-8 lg:mt-12">
             <Colored
               loading="lazy"
@@ -109,7 +124,7 @@ const index = (props) => {
               }
             />
           </section>
-        ) : null}
+        ) : null} */}
         <Category_news
           loading="lazy"
           title={'  الشأن الدولي'}
