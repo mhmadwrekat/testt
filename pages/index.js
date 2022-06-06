@@ -79,7 +79,7 @@ export async function getServerSideProps({ req, res }) {
 const index = (props) => {
   return (
     <React.Fragment>
-      {console.log(props.all_news[6])}
+      {console.log(props.all_news[1] > 0)}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
@@ -93,19 +93,23 @@ const index = (props) => {
           title_color={'text-RED'}
           fill_color={'fill-RED'}
         />
-        <section className="mt-6 bg-Purp400 pb-8">
-          <Colored
-            loading="lazy"
-            title={'يدور حولك'}
-            important_news={props.all_news[2]}
-            card_color={'bg-Purp100'}
-            theme={'bg-Purp200'}
-            text_color={'text-white'}
-            fill_color={'fill-Purp200'}
-            desc_color={'text-GRAY'}
-            description={'الأخبار المقترحه لك بناء على المنطقه المحيطه بك    '}
-          />
-        </section>
+        {props.all_news[1] > 0 ? (
+          <section className="mt-6 bg-Purp400 pb-8 lg:mt-12">
+            <Colored
+              loading="lazy"
+              title={'مخصص لك'}
+              important_news={props.all_news[2]}
+              card_color={'bg-Purp100'}
+              theme={'bg-Purp200'}
+              text_color={'text-white'}
+              fill_color={'fill-Purp200'}
+              desc_color={'text-GRAY'}
+              description={
+                'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
+              }
+            />
+          </section>
+        ) : null}
         <Category_news
           loading="lazy"
           title={'  الشأن الدولي'}
@@ -315,6 +319,17 @@ const index = (props) => {
 }
 export default index
 /*
+          <Colored
+            loading="lazy"
+            title={'يدور حولك'}
+            important_news={props.all_news[2]}
+            card_color={'bg-Purp100'}
+            theme={'bg-Purp200'}
+            text_color={'text-white'}
+            fill_color={'fill-Purp200'}
+            desc_color={'text-GRAY'}
+            description={'الأخبار المقترحه لك بناء على المنطقه المحيطه بك    '}
+          />
         <section className="mt-6 bg-Purp400 pb-8">
           <Colored
             loading="lazy"

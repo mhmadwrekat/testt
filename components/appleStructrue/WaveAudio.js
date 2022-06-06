@@ -53,9 +53,13 @@ const WaveAudio = ({ url }) => {
     <React.Fragment>
       {/* <iframe src="https://cross-origin.com/myvideo.html" allow="autoplay" /> */}
 
-      <div className="mx-auto grid w-10/12">
-        <section className="flex pl-0 pr-4 lg:pl-5 lg:pr-0">
-          <div id="waveform" className=" w-56 lg:w-44" ref={waveformRef} />
+      <div className="w-12/12 mx-auto grid lg:w-10/12">
+        <section className="flex pl-0 pr-1 lg:pl-5 lg:pr-0">
+          <div
+            id="waveform"
+            className=" mx-auto w-60 lg:w-44"
+            ref={waveformRef}
+          />
           <div className="controls w-12/12 flex">
             <input
               hidden={true}

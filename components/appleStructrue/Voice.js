@@ -47,7 +47,7 @@ const Voice = ({
   }
   return (
     <React.Fragment>
-      <section className="mx-auto w-11/12 lg:w-10/12">
+      <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
         <div className="flex justify-between">
           <div className="my-3 mt-3 lg:mt-4">
             <div className="flex">
@@ -472,15 +472,13 @@ const Voice = ({
                         item.stories_media_url[0].includes('youtu.be') ? (
                           <section className="grid grid-cols-2">
                             <div>
-                              <div className="">
-                                <h3
-                                  className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
-                                >
-                                  {news_one.section_name}
-                                </h3>
-                              </div>
+                              <h3
+                                className={`${theme} text-white w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                              >
+                                {news_one.section_name}
+                              </h3>
 
-                              <div className="relative h-40 w-40 md:h-72 md:w-96">
+                              <div className="relative h-36 w-36 md:h-72 md:w-96">
                                 <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
@@ -519,7 +517,7 @@ const Voice = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
+                                <h1 className="mx-0 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
                                   {item.stories_headlines}
                                 </h1>
                                 <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
@@ -544,13 +542,13 @@ const Voice = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                  className={`${theme} text-white w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
                                   {news_one.section_name}
                                 </h3>
                               </div>
 
-                              <div className="relative h-40 w-40 md:h-72 md:w-96">
+                              <div className="relative h-36 w-36 md:h-72 md:w-96">
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
@@ -632,13 +630,13 @@ const Voice = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                  className={`${theme} text-white w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
                                   {news_one.section_name}
                                 </h3>
                               </div>
 
-                              <div className="relative h-40 w-40 md:h-72 md:w-96">
+                              <div className="relative h-36 w-36 md:h-72 md:w-96">
                                 <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
@@ -702,13 +700,13 @@ const Voice = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`text-white w-40 rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                  className={`${theme} text-white w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
                                   {news_one.section_name}
                                 </h3>
                               </div>
 
-                              <div className="relative h-40 w-40 md:h-72 md:w-96">
+                              <div className="relative h-36 w-36 md:h-72 md:w-96">
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
