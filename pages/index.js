@@ -79,11 +79,10 @@ export async function getServerSideProps({ req, res }) {
 const index = (props) => {
   return (
     <React.Fragment>
-      {console.log(props.all_news[1] > 0)}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-        {/* <Test />  */}
+
         <Category_news
           loading="eager"
           title={'أهم الأخبار'}
@@ -125,7 +124,7 @@ const index = (props) => {
             />
           </section>
         ) : null} */}
-        <Category_news
+        {/* <Category_news
           loading="lazy"
           title={'  الشأن الدولي'}
           category_news={props.all_news[11]}
@@ -271,12 +270,8 @@ const index = (props) => {
           title_color={'text-YELLOW'}
           fill_color={'fill-YELLOW'}
           description={'جميع ما يخص أحداث الخليج العربي'}
-        />
-        {/******************** */}
-        {/******************** */}
-        {/******************** */}
-        {/******************** */}
-
+        /> */}
+        <Footer loading="lazy" />
         {/* <Voice
           loading="lazy"
           title={'الصوتيات '}

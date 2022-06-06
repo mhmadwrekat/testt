@@ -45,10 +45,33 @@ const Category_news = ({
 
   const defaultLike = false
   const [like, setLike] = useState(defaultLike)
+  const [likee, setLikee] = useState(defaultLike)
 
   const handleLike = () => {
     setLike(!like)
   }
+
+  let arr = []
+
+  // let counter = -1
+
+  // const [like1, setLike1] = useState(defaultLike)
+  // const [like2, setLike2] = useState(defaultLike)
+  // const [like3, setLike3] = useState(defaultLike)
+  // const [like4, setLike4] = useState(defaultLike)
+
+  const handleLiked = (id) => {
+    setLikee(!likee)
+
+    arr.map((item) => {
+      if (id.id == item.id) {
+        item.status = !item.status
+        console.log(item.status)
+        return arr
+      }
+    })
+  }
+
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
@@ -205,11 +228,7 @@ const Category_news = ({
                       )}
                     </div>
                   </div>
-                  <div
-                    className=" my-2 flex justify-between px-2.5
-                  font-TSlight text-sm
-                  "
-                  >
+                  <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
                     <p>
                       <b className="text-red-800 font-TSbold">
                         {category_news?.data[0]?.publisher_name}
@@ -246,7 +265,10 @@ const Category_news = ({
                 </div>
               </section>
               <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {category_news.data.slice(1, 5).map((item) => {
+                {category_news.data.slice(1, 5).map((item, key) => {
+                  arr.push({ id: item._id, status: true })
+                  console.log(arr)
+
                   return (
                     <section key={item._id}>
                       <div
@@ -284,22 +306,68 @@ const Category_news = ({
                                   className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ))}
-                            <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className=" h-4 w-4 cursor-pointer opacity-70"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                />
-                              </svg>
-                            </div>
+
+                            {likee ? (
+                              <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
+                                {arr[key].status ? (
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-4 w-4 cursor-pointer"
+                                    fill="#FF0000"
+                                    viewBox="0 0 24 24"
+                                    stroke="#FF0000"
+                                    strokeWidth="2"
+                                    onClick={() => {
+                                      handleLiked(arr[key])
+                                    }}
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                ) : (
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-4 w-4 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    onClick={() => {
+                                      handleLiked(arr[key])
+                                    }}
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                )}
+                              </div>
+                            ) : (
+                              <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className=" h-4 w-4 cursor-pointer opacity-70"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  onClick={() => {
+                                    handleLiked(arr[key])
+                                  }}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                  />
+                                </svg>
+                              </div>
+                            )}
                           </div>
 
                           <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">

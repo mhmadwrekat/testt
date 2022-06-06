@@ -19,12 +19,10 @@ const WaveAudio = ({ url }) => {
   const waveformRef = useRef(null)
   const wavesurfer = useRef(null)
   const [playing, setPlay] = useState(false)
-  const [volume, setVolume] = useState(0.5)
 
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
-    setPlay(false)
     const options = formWaveSurferOptions(waveformRef.current)
     wavesurfer.current = WaveSurfer.create(options)
     wavesurfer.current.load(url)

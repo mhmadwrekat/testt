@@ -17,25 +17,38 @@ const Test = ({ title_color }) => {
             </svg>
           </Menu.Button>
           <Menu.Items>
-            <section className="text-black bg-white absolute top-7 left-0 w-24 rounded-lg p-2 lg:left-10 lg:right-0">
-              <section className="grid w-auto text-right font-TSbold text-sm">
+            <section className="absolute top-1 left-0 w-32 lg:left-10 lg:right-0">
+              <section className="text-black bg-white grid w-auto rounded-lg p-2 text-right font-TSbold text-sm ">
                 <Menu.Item>
                   {({ active }) => (
-                    <p className={`pt-1 ${active && `${title_color}`}`} href="">
+                    <p
+                      className={`border-b-1 border-GRAY200 py-1 px-2 ${
+                        active && `${title_color}`
+                      }`}
+                      href=""
+                    >
                       نسخ الرابط
                     </p>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <p className={`pt-1 ${active && `${title_color}`}`} href="">
+                    <p
+                      className={`border-b-1 border-GRAY200 py-1 px-2 ${
+                        active && `${title_color}`
+                      }`}
+                      href=""
+                    >
                       مشاركه
                     </p>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <p className={`pt-1 ${active && `${title_color}`}`} href="">
+                    <p
+                      className={`py-1 px-2 ${active && `${title_color}`}`}
+                      href=""
+                    >
                       ابلاغ
                     </p>
                   )}
