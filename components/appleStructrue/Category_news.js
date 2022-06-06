@@ -98,7 +98,7 @@ const Category_news = ({
               </div>
               {description && (
                 <p
-                  className={`text-black hidden w-full px-1 pt-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
+                  className={`hidden w-full px-1 pt-1 pb-5 font-TSmedium text-lg text-GRAY400 lg:grid lg:text-xl`}
                 >
                   {description}
                 </p>
@@ -106,7 +106,9 @@ const Category_news = ({
             </div>
 
             <div className="my-1 mt-4 flex lg:mt-5">
-              <p className="mt-5 font-TSbold text-lg lg:text-xl">عرض الجميع</p>
+              <p className="mt-5 font-TSbold text-lg text-GRAY50 lg:text-xl">
+                عرض الجميع
+              </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
@@ -148,7 +150,7 @@ const Category_news = ({
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
-                          className="relative h-56 w-full lg:h-80"
+                          className="relative h-56 w-full object-cover lg:h-80"
                         />
                       ) : (
                         <Image
@@ -157,6 +159,7 @@ const Category_news = ({
                           // className="relative h-56 w-full lg:h-80"
                           layout="fill"
                           quality={50}
+                          className="object-cover"
                           loading="eager"
                           placeholder="blur"
                           blurDataURL={important_news_img}
@@ -271,14 +274,14 @@ const Category_news = ({
                                   className="
                                 mx-auto
                                 h-32 
-                                w-40 md:h-full md:w-full lg:h-28 lg:w-full"
+                                w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full                                "
                                 />
                               ) : (
                                 <img
                                   loading="eager"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ))}
                             <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">

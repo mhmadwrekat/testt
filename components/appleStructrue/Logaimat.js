@@ -18,7 +18,7 @@ const Logaimat = ({
   desc_color,
   description,
 }) => {
-  // SwiperCore.use([Autoplay])
+  SwiperCore.use([Autoplay])
   const test_text = [
     'جورج قرداحي',
     ' شيرين',
@@ -120,7 +120,9 @@ const Logaimat = ({
             </div>
 
             <div className="my-1 mt-4 flex lg:mt-5">
-              <p className="mt-5 font-TSbold text-lg lg:text-xl">عرض الجميع</p>
+              <p className="mt-5 font-TSbold text-lg text-GRAY50 lg:text-xl">
+                عرض الجميع
+              </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
@@ -149,7 +151,7 @@ const Logaimat = ({
               modules={[Navigation]}
               slidesPerView={5}
               spaceBetween={15}
-              // autoplay={true}
+              autoplay={true}
               loop={true}
             >
               {important_news.map((item) => {
@@ -170,20 +172,24 @@ const Logaimat = ({
                               className="
                                 mx-auto
                                 h-32 
-                                w-40 rounded-md md:h-full md:w-full lg:h-96 lg:w-60"
+                                w-40 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-60"
                             />
                           ) : (
                             <img
                               loading="lazy"
                               src={item.screen_link}
                               alt="test"
-                              className="mx-auto h-32 w-40 rounded-md md:h-full md:w-full lg:h-96 lg:w-60"
+                              className="mx-auto h-32 w-40 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-60"
                             />
                           ))}
-                        <div className="bg-white absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-70">
+                        <div className="bg-white absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-80">
                           <p className="mx-auto w-8/12 text-center font-TSExtra text-2xl lg:pt-24">
                             اضغط هنا لمتابعة القراءة
                           </p>
+                          <img
+                            src="./assest/images/LogaimatHand.svg"
+                            className="mx-auto w-4/12 justify-center pt-4"
+                          />
                         </div>
                       </div>
                       <div className="pt-3 text-center font-TSExtra text-2xl lg:w-60">
@@ -204,7 +210,7 @@ const Logaimat = ({
               modules={[Navigation]}
               slidesPerView={1.8}
               spaceBetween={10}
-              // autoplay={true}
+              autoplay={true}
               loop={true}
             >
               {important_news.map((item) => {
@@ -233,10 +239,14 @@ const Logaimat = ({
                               className="mx-auto h-72 w-40 md:h-full md:w-full"
                             />
                           ))}
-                        <div className="bg-white absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-70">
-                          <p className="mx-auto w-8/12 pt-20 text-center font-TSExtra text-xl">
+                        <div className="bg-white absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-80">
+                          <p className="mx-auto w-8/12 pt-16 text-center font-TSExtra text-xl">
                             اضغط هنا لمتابعة القراءة
                           </p>
+                          <img
+                            src="./assest/images/LogaimatHand.svg"
+                            className="mx-auto w-4/12 justify-center pt-4"
+                          />{' '}
                         </div>
                       </div>
                       <div className="w-40 pt-3 text-center font-TSExtra text-xl">

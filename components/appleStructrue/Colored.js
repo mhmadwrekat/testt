@@ -87,7 +87,10 @@ const Colored = ({
           <section className="w-12/12 lg:w-12/12 mx-auto">
             <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 ">
               <section>
-                <div className={`${card_color} shadow-lg" id="card rounded-lg`}>
+                <div
+                  id="card"
+                  className={`${card_color} rounded-lg border-2 border-Purp200 shadow-lg`}
+                >
                   <div>
                     <h3
                       className={`${theme} text-white rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base hover:underline lg:pr-8`}
@@ -106,14 +109,14 @@ const Colored = ({
                             important_news_img
                           )}/0.jpg`}
                           alt={important_news.data[0].stories_headlines}
-                          className="relative h-56 w-full lg:h-80"
+                          className="relative h-56 w-full object-cover lg:h-80"
                         />
                       ) : (
                         <img
                           loading="eager"
                           src={important_news_img}
                           alt={important_news.data[0].stories_headlines}
-                          className=" h-56 w-full lg:h-80"
+                          className=" h-56 w-full object-cover lg:h-80"
                         />
                       ))}
                     <div className="bg-white text-black absolute bottom-2 left-2 rounded-full p-1">
@@ -208,7 +211,7 @@ const Colored = ({
                   return (
                     <section key={item._id}>
                       <div
-                        className={`${card_color} rounded-lg shadow-lg`}
+                        className={`${card_color} rounded-lg border-2 border-Purp200 shadow-lg`}
                         id="card"
                       >
                         <div>
@@ -232,14 +235,14 @@ const Colored = ({
                                   className="
                                 mx-auto
                                 h-32 
-                                w-40 md:h-full md:w-full lg:h-28 lg:w-full"
+                                w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ) : (
                                 <img
                                   loading="eager"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ))}
                             <div className="bg-white text-black absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">

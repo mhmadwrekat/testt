@@ -101,7 +101,10 @@ const Voice = ({
           </div>
 
           <div className="my-1 mt-4 flex lg:mt-5">
-            <p className="mt-5 font-TSbold text-lg lg:text-xl"> أستمع للمزيد</p>
+            <p className="mt-5 font-TSbold text-lg text-GRAY50 lg:text-xl">
+              {' '}
+              أستمع للمزيد
+            </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
@@ -158,7 +161,7 @@ const Voice = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
+                                  className=" mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36  lg:w-60"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -228,7 +231,7 @@ const Voice = ({
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
+                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -320,7 +323,7 @@ const Voice = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
+                                  className=" mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -390,7 +393,7 @@ const Voice = ({
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 rounded-b-md lg:h-36 lg:w-60"
+                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -485,7 +488,7 @@ const Voice = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" h-full w-full rounded-b-md "
+                                  className=" h-full w-full rounded-b-md object-cover"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -553,7 +556,7 @@ const Voice = ({
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-full w-full rounded-b-md"
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -643,7 +646,7 @@ const Voice = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" h-full w-full rounded-b-md "
+                                  className=" h-full w-full rounded-b-md object-cover"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -711,7 +714,7 @@ const Voice = ({
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-full w-full rounded-b-md"
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
