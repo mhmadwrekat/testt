@@ -13,8 +13,8 @@ const Category_news = ({
   fill_color,
 }) => {
   const important_news_img =
-    category_news?.important_data.stories_media_url.length > 0
-      ? category_news.important_data.stories_media_url[0]
+    category_news?.data[0]?.stories_media_url.length > 0
+      ? category_news.data[0].stories_media_url[0]
       : null
 
   // function to return the youtube code to show the thumbnail
@@ -135,11 +135,10 @@ const Category_news = ({
                     <h3
                       className={`${bg_color} text-white rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base hover:underline lg:pr-8`}
                     >
-                      {category_news.category_name}
+                      {category_news.section_name}
                     </h3>{' '}
                   </div>
                   <div className=" relative h-56 w-full lg:h-80">
-                    {/* {console.log(important_news_img)} */}
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
@@ -148,13 +147,13 @@ const Category_news = ({
                           src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
-                          alt={category_news.important_data.stories_headlines}
+                          alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full lg:h-80"
                         />
                       ) : (
                         <Image
                           src={important_news_img}
-                          alt={category_news.important_data.stories_headlines}
+                          alt={category_news.data[0].stories_headlines}
                           // className="relative h-56 w-full lg:h-80"
                           layout="fill"
                           quality={50}
@@ -170,7 +169,7 @@ const Category_news = ({
                           className=" h-7 w-7 cursor-pointer"
                           fill="#FF0000"
                           viewBox="0 0 24 24"
-                          stroke="currentColor"
+                          stroke="#FF0000"
                           strokeWidth="2"
                           onClick={() => {
                             handleLike()
@@ -210,32 +209,26 @@ const Category_news = ({
                   >
                     <p>
                       <b className="text-red-800 font-TSbold">
-                        {category_news.important_data.publisher_name}
+                        {category_news?.data[0]?.publisher_name}
                       </b>
                     </p>
                     <p className="font-TSbold text-GRAY300">
                       قبل{' '}
-                      {moment(
-                        category_news.important_data.published_on
-                      ).fromNow(true)}
+                      {moment(category_news?.data[0]?.published_on).fromNow(
+                        true
+                      )}
                     </p>
                   </div>
                   <div className="px-2.5 pt-2 pb-0.5">
                     <div className="mb-2 font-TSExtra md:text-xl lg:h-16 lg:w-9/12 lg:text-2xl">
-                      {category_news.important_data.stories_headlines}
+                      {category_news?.data[0]?.stories_headlines}
                     </div>
                     <p className=" hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
-                      {category_news.important_data.stories_content.slice(
-                        0,
-                        300
-                      )}
+                      {category_news?.data[0]?.stories_content.slice(0, 300)}
                       .......
                     </p>
                     <p className="grid h-24 font-TSmedium text-base md:grid lg:hidden lg:h-28">
-                      {category_news.important_data.stories_content.slice(
-                        0,
-                        170
-                      )}
+                      {category_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
                     <div className="my-1 flex  justify-between pt-2.5">
@@ -250,7 +243,7 @@ const Category_news = ({
                 </div>
               </section>
               <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {category_news.data.slice(0, 4).map((item) => {
+                {category_news.data.slice(1, 5).map((item) => {
                   return (
                     <section key={item._id}>
                       <div
@@ -261,7 +254,7 @@ const Category_news = ({
                           <h3
                             className={`${bg_color} text-white rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
                           >
-                            {category_news.category_name}
+                            {category_news.section_name}
                           </h3>{' '}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid ">

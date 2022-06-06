@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
 import WaveAudio from './WaveAudio'
@@ -133,7 +133,7 @@ const Voice = ({
               spaceBetween={0}
               loop={true}
             >
-              {news_one.data.map((item) => {
+              {news_one.data.slice(0, 7).map((item) => {
                 // console.log(Object.values(item.voices)[1])
                 return (
                   <SwiperSlide key={item._id}>
@@ -148,7 +148,7 @@ const Voice = ({
                                 <h3
                                   className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
                                 >
-                                  {news_one.category_name}
+                                  {news_one.section_name}
                                 </h3>{' '}
                               </div>
                               <div className="relative">
@@ -196,14 +196,12 @@ const Voice = ({
                                 <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
                                   <p className="">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_one.important_data.publisher_name}
+                                      {item.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 font-TSbold">
                                     قبل{' '}
-                                    {moment(
-                                      news_one.important_data.published_on
-                                    ).fromNow(true)}
+                                    {moment(item.published_on).fromNow(true)}
                                   </p>
                                 </div>
                               </section>
@@ -221,7 +219,7 @@ const Voice = ({
                                 <h3
                                   className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
                                 >
-                                  {news_one.category_name}
+                                  {news_one.section_name}
                                 </h3>{' '}
                               </div>
 
@@ -268,14 +266,12 @@ const Voice = ({
                                 <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_one.important_data.publisher_name}
+                                      {item.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 ml-3 font-TSbold">
                                     قبل{' '}
-                                    {moment(
-                                      news_one.important_data.published_on
-                                    ).fromNow(true)}
+                                    {moment(item.published_on).fromNow(true)}
                                   </p>
                                 </div>
                               </section>
@@ -300,7 +296,7 @@ const Voice = ({
               spaceBetween={0}
               loop={true}
             >
-              {news_two.data.map((item) => {
+              {news_one.data.slice(7, 15).map((item) => {
                 // console.log(Object.values(item.voices)[1])
                 return (
                   <SwiperSlide key={item._id}>
@@ -310,12 +306,11 @@ const Voice = ({
                         item.stories_media_url[0].includes('youtu.be') ? (
                           <section className="flex">
                             <div>
-                              {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <h3
-                                  className={`text-white rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
+                                  className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
                                 >
-                                  {news_two.category_name}
+                                  {news_two.section_name}
                                 </h3>{' '}
                               </div>
                               <div className="relative">
@@ -363,14 +358,12 @@ const Voice = ({
                                 <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
                                   <p className="">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_one.important_data.publisher_name}
+                                      {item.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 font-TSbold">
                                     قبل{' '}
-                                    {moment(
-                                      news_one.important_data.published_on
-                                    ).fromNow(true)}
+                                    {moment(item.published_on).fromNow(true)}
                                   </p>
                                 </div>
                               </section>
@@ -388,7 +381,7 @@ const Voice = ({
                                 <h3
                                   className={`text-white rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
                                 >
-                                  {news_two.category_name}
+                                  {news_two.section_name}
                                 </h3>{' '}
                               </div>
 
@@ -435,14 +428,12 @@ const Voice = ({
                                 <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_one.important_data.publisher_name}
+                                      {item.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 ml-3 font-TSbold">
                                     قبل{' '}
-                                    {moment(
-                                      news_one.important_data.published_on
-                                    ).fromNow(true)}
+                                    {moment(item.published_on).fromNow(true)}
                                   </p>
                                 </div>
                               </section>
@@ -465,14 +456,13 @@ const Voice = ({
         {/**** Mobile View ****/}
         <section className="block lg:hidden">
           <section className="w-6/6 mx-auto">
-            {/**** SWIPER ONE Mobile ****/}
             <Swiper
               // install Swiper modules
               slidesPerView={1}
               spaceBetween={0}
               loop={true}
             >
-              {news_one.data.map((item) => {
+              {news_one.data.slice(0, 7).map((item) => {
                 // console.log(Object.values(item.voices)[1])
                 return (
                   <SwiperSlide key={item._id}>
@@ -486,7 +476,7 @@ const Voice = ({
                                 <h3
                                   className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
-                                  {news_one.category_name}
+                                  {news_one.section_name}
                                 </h3>
                               </div>
 
@@ -535,14 +525,12 @@ const Voice = ({
                                 <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_one.important_data.publisher_name}
+                                      {item.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 ml-3 font-TSbold">
                                     قبل{' '}
-                                    {moment(
-                                      news_one.important_data.published_on
-                                    ).fromNow(true)}
+                                    {moment(item.published_on).fromNow(true)}
                                   </p>
                                 </div>
                               </section>
@@ -558,7 +546,7 @@ const Voice = ({
                                 <h3
                                   className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
-                                  {news_one.category_name}
+                                  {news_one.section_name}
                                 </h3>
                               </div>
 
@@ -605,14 +593,12 @@ const Voice = ({
                                 <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_one.important_data.publisher_name}
+                                      {item.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 ml-3 font-TSbold">
                                     قبل{' '}
-                                    {moment(
-                                      news_one.important_data.published_on
-                                    ).fromNow(true)}
+                                    {moment(item.published_on).fromNow(true)}
                                   </p>
                                 </div>
                               </section>
@@ -628,14 +614,13 @@ const Voice = ({
               })}
             </Swiper>
             <div className="w-6/6 mx-auto mb-3 border-b-2 border-YELLOW pt-1 opacity-80"></div>
-            {/**** SWIPER TWO Mobile ****/}
             <Swiper
               // install Swiper modules
               slidesPerView={1}
               spaceBetween={0}
               loop={true}
             >
-              {news_two.data.map((item) => {
+              {news_one.data.slice(7, 15).map((item) => {
                 // console.log(Object.values(item.voices)[1])
                 return (
                   <SwiperSlide key={item._id}>
@@ -647,9 +632,9 @@ const Voice = ({
                             <div>
                               <div className="">
                                 <h3
-                                  className={`text-white w-40 rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
+                                  className={`${theme} text-white w-40 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
-                                  {news_two.category_name}
+                                  {news_one.section_name}
                                 </h3>
                               </div>
 
@@ -698,14 +683,12 @@ const Voice = ({
                                 <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_one.important_data.publisher_name}
+                                      {item.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 ml-3 font-TSbold">
                                     قبل{' '}
-                                    {moment(
-                                      news_one.important_data.published_on
-                                    ).fromNow(true)}
+                                    {moment(item.published_on).fromNow(true)}
                                   </p>
                                 </div>
                               </section>
@@ -721,7 +704,7 @@ const Voice = ({
                                 <h3
                                   className={`text-white w-40 rounded-t-md bg-SKY pt-1.5 pr-1 text-right font-TSbold text-base hover:underline md:w-96`}
                                 >
-                                  {news_two.category_name}
+                                  {news_one.section_name}
                                 </h3>
                               </div>
 
@@ -768,14 +751,12 @@ const Voice = ({
                                 <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
                                   <p className="text-">
                                     <b className="text-red-700 font-TSbold">
-                                      {news_one.important_data.publisher_name}
+                                      {item.publisher_name}
                                     </b>
                                   </p>
                                   <p className="text-gray-500 ml-3 font-TSbold">
                                     قبل{' '}
-                                    {moment(
-                                      news_one.important_data.published_on
-                                    ).fromNow(true)}
+                                    {moment(item.published_on).fromNow(true)}
                                   </p>
                                 </div>
                               </section>

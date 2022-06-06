@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
 
@@ -13,8 +13,8 @@ const Colored = ({
   description,
 }) => {
   const important_news_img =
-    important_news?.important_data.stories_media_url.length > 0
-      ? important_news.important_data.stories_media_url[0]
+    important_news?.data[0]?.stories_media_url.length > 0
+      ? important_news.data[0].stories_media_url[0]
       : null
 
   // function to return the youtube code to show the thumbnail
@@ -37,7 +37,12 @@ const Colored = ({
       return code
     }
   }
+  const defaultLike = false
+  const [like, setLike] = useState(defaultLike)
 
+  const handleLike = () => {
+    setLike(!like)
+  }
   return (
     <React.Fragment>
       <section className={`${text_color} mx-auto w-11/12 lg:w-10/12`}>
@@ -87,7 +92,7 @@ const Colored = ({
                     <h3
                       className={`${theme} text-white rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base hover:underline lg:pr-8`}
                     >
-                      {important_news.category_name}
+                      {important_news.section_name}
                     </h3>{' '}
                   </div>
                   <div className="relative max-w-full">
@@ -100,32 +105,55 @@ const Colored = ({
                           src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
-                          alt={important_news.important_data.stories_headlines}
+                          alt={important_news.data[0].stories_headlines}
                           className="relative h-56 w-full lg:h-80"
                         />
                       ) : (
                         <img
                           loading="eager"
                           src={important_news_img}
-                          alt={important_news.important_data.stories_headlines}
+                          alt={important_news.data[0].stories_headlines}
                           className=" h-56 w-full lg:h-80"
                         />
                       ))}
                     <div className="bg-white text-black absolute bottom-2 left-2 rounded-full p-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className=" h-7 w-7 cursor-pointer opacity-70"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                        />
-                      </svg>
+                      {like ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className=" h-7 w-7 cursor-pointer opacity-70"
+                          fill="#FF0000"
+                          viewBox="0 0 24 24"
+                          stroke="#FF0000"
+                          strokeWidth="2"
+                          onClick={() => {
+                            handleLike()
+                          }}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className=" h-7 w-7 cursor-pointer opacity-70"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          onClick={() => {
+                            handleLike()
+                          }}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                          />
+                        </svg>
+                      )}
                     </div>
                   </div>
                   <div
@@ -135,32 +163,26 @@ const Colored = ({
                   >
                     <p>
                       <b className="text-red-600 font-TSbold">
-                        {important_news.important_data.publisher_name}
+                        {important_news?.data[0]?.publisher_name}
                       </b>
                     </p>
                     <p className="font-TSbold">
                       قبل{' '}
-                      {moment(
-                        important_news.important_data.published_on
-                      ).fromNow(true)}
+                      {moment(important_news?.data[0]?.published_on).fromNow(
+                        true
+                      )}
                     </p>
                   </div>
                   <div className="px-2.5 pt-2 pb-0.5">
                     <div className="mb-2 font-TSExtra text-2xl lg:h-16">
-                      {important_news.important_data.stories_headlines}
+                      {important_news?.data[0]?.stories_headlines}
                     </div>
                     <p className="hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
-                      {important_news.important_data.stories_content.slice(
-                        0,
-                        330
-                      )}
+                      {important_news?.data[0]?.stories_content.slice(0, 330)}
                       .......
                     </p>
                     <p className="grid h-24 font-TSmedium text-base lg:hidden lg:h-28">
-                      {important_news.important_data.stories_content.slice(
-                        0,
-                        170
-                      )}
+                      {important_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
                     <div className="my-1 flex  justify-between pt-2.5">
@@ -182,7 +204,7 @@ const Colored = ({
                 </div>
               </section>
               <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {important_news.data.slice(0, 4).map((item) => {
+                {important_news.data.slice(1, 5).map((item) => {
                   return (
                     <section key={item._id}>
                       <div
@@ -193,7 +215,7 @@ const Colored = ({
                           <h3
                             className={`${theme} text-white rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
                           >
-                            {important_news.category_name}
+                            {important_news.section_name}
                           </h3>{' '}
                         </div>
                         <section className={`${card_color} flex lg:grid`}>

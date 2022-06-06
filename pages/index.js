@@ -64,16 +64,22 @@ export async function getServerSideProps({ req, res }) {
   return {
     props: {
       all_news: custom_array,
+      big_news: all_news,
       loqaimat: loqaimat.data,
       ready_country_code: ready_country_code,
       // // test: ready_test,
     },
   }
 }
+// 1 -> مخصص لك
+// 2 -> يدور حولك
+// 6 -> الصوتيات
+// 9 -> الفيديوهات
+// 8 -> lifr_style
 const index = (props) => {
   return (
     <React.Fragment>
-      {console.log(props.ready_country_code)}
+      {console.log(props.all_news[6])}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
@@ -90,22 +96,30 @@ const index = (props) => {
         <section className="mt-6 bg-Purp400 pb-8">
           <Colored
             loading="lazy"
-            title={'مخصص لك'}
-            important_news={props.all_news[1]}
+            title={'يدور حولك'}
+            important_news={props.all_news[2]}
             card_color={'bg-Purp100'}
             theme={'bg-Purp200'}
             text_color={'text-white'}
             fill_color={'fill-Purp200'}
             desc_color={'text-GRAY'}
-            description={
-              'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
-            }
+            description={'الأخبار المقترحه لك بناء على المنطقه المحيطه بك    '}
           />
         </section>
         <Category_news
           loading="lazy"
+          title={'  الشأن الدولي'}
+          category_news={props.all_news[11]}
+          subs={true}
+          bg_color={'bg-YELLOW'}
+          title_color={'text-YELLOW'}
+          fill_color={'fill-YELLOW'}
+          description={'جميع ما يحدث حول العالم '}
+        />
+        <Category_news
+          loading="lazy"
           title={' الصحه'}
-          category_news={props.all_news[2]}
+          category_news={props.all_news[4]}
           subs={true}
           bg_color={'bg-BLUE'}
           title_color={'text-BLUE'}
@@ -113,6 +127,138 @@ const index = (props) => {
           description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
         />
         <Voice
+          loading="lazy"
+          title={'الصوتيات '}
+          news_one={props.all_news[6]}
+          news_two={props.all_news[6]}
+          subs={true}
+          title_color={'text-YELLOW'}
+          fill_color={'fill-YELLOW'}
+          card_color={'bg-GRAY100'}
+          desc_color={'text-GRAY400'}
+          theme={'bg-YELLOW'}
+          description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
+        />
+        <Category_news
+          loading="lazy"
+          title={' تكنولوجيا'}
+          category_news={props.all_news[12]}
+          subs={true}
+          bg_color={'bg-GREEN'}
+          title_color={'text-GREEN'}
+          fill_color={'fill-GREEN'}
+          description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
+        />
+        <Category_news
+          loading="lazy"
+          title={' لايف ستايل'}
+          category_news={props.all_news[16]}
+          subs={true}
+          bg_color={'bg-RED'}
+          title_color={'text-RED'}
+          fill_color={'fill-RED'}
+        />
+        <Category_news
+          loading="lazy"
+          title={' غزو أوكرانيا'}
+          category_news={props.all_news[8]}
+          subs={true}
+          bg_color={'bg-YELLOW'}
+          title_color={'text-YELLOW'}
+          fill_color={'fill-YELLOW'}
+          description={'جميع ما يخص أحداث غزو أوكرانيا'}
+        />
+        <Logaimat
+          loading="lazy"
+          title={'لقيمات'}
+          important_news={props.loqaimat.data[0].screens}
+          subs={true}
+          title_color={'text-SKY'}
+          theme={'bg-SKY'}
+          card_color={'bg-GRAY100'}
+          fill_color={'fill-SKY'}
+          desc_color={'text-GRAY400'}
+          text_color={'text-black'}
+          description={'بطريقة جميلة يمكنك قرائه المواضيع'}
+        />
+        <Category_news
+          loading="lazy"
+          title={'اخبار الفن'}
+          category_news={props.all_news[15]}
+          subs={true}
+          bg_color={'bg-BLUE'}
+          title_color={'text-BLUE'}
+          fill_color={'fill-BLUE'}
+          description={'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'}
+        />
+        <Category_news
+          loading="lazy"
+          title={' مال وأعمال'}
+          category_news={props.all_news[7]}
+          subs={true}
+          bg_color={'bg-GREEN'}
+          title_color={'text-GREEN'}
+          fill_color={'fill-GREEN'}
+          description={
+            'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+          }
+        />
+        <Category_news
+          loading="lazy"
+          title={' ترند'}
+          category_news={props.all_news[5]}
+          subs={true}
+          bg_color={'bg-RED'}
+          title_color={'text-RED'}
+          fill_color={'fill-RED'}
+          description={'جميع الأخبار المتعلقة في عالميات الترند من أهم المصادر'}
+        />
+        <Category_news
+          loading="lazy"
+          title={'  الشرق الأوسط'}
+          category_news={props.all_news[14]}
+          subs={true}
+          bg_color={'bg-YELLOW'}
+          title_color={'text-YELLOW'}
+          fill_color={'fill-YELLOW'}
+          description={'جميع ما يحدث حول العالم '}
+        />
+        <Category_news
+          loading="lazy"
+          title={' رياضه'}
+          category_news={props.all_news[3]}
+          subs={true}
+          bg_color={'bg-BLUE'}
+          title_color={'text-BLUE'}
+          fill_color={'fill-BLUE'}
+          description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
+        />
+        <Category_news
+          loading="lazy"
+          title={' العاب'}
+          category_news={props.all_news[13]}
+          subs={true}
+          bg_color={'bg-GREEN'}
+          title_color={'text-GREEN'}
+          fill_color={'fill-GREEN'}
+          description={'جميع ما يخص عالم الالعاب بين يديك'}
+        />
+        <Category_news
+          loading="lazy"
+          title={' الخليج العربي '}
+          category_news={props.all_news[10]}
+          subs={true}
+          bg_color={'bg-YELLOW'}
+          title_color={'text-YELLOW'}
+          fill_color={'fill-YELLOW'}
+          description={'جميع ما يخص أحداث الخليج العربي'}
+        />
+        {/******************** */}
+        {/******************** */}
+        {/******************** */}
+        {/******************** */}
+
+        {/* <Voice
           loading="lazy"
           title={'الصوتيات '}
           news_one={props.all_news[1]}
@@ -148,26 +294,8 @@ const index = (props) => {
           text_color={'text-black'}
           description={'بطريقة جميلة يمكنك قرائه المواضيع'}
         />
-        <Category_news
-          loading="lazy"
-          title={' غزو أوكرانيا'}
-          category_news={props.all_news[5]}
-          subs={true}
-          bg_color={'bg-YELLOW'}
-          title_color={'text-YELLOW'}
-          fill_color={'fill-YELLOW'}
-          description={'جميع ما يخص أحداث غزو أوكرانيا'}
-        />
-        <Category_news
-          loading="lazy"
-          title={' رياضه'}
-          category_news={props.all_news[3]}
-          subs={true}
-          bg_color={'bg-BLUE'}
-          title_color={'text-BLUE'}
-          fill_color={'fill-BLUE'}
-          description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
-        />
+       
+      
         <Category_news
           loading="lazy"
           title={' مال وأعمال'}
@@ -180,13 +308,28 @@ const index = (props) => {
             'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
           }
         />
-        <Footer loading="lazy" />
+        <Footer loading="lazy" /> */}
       </div>
     </React.Fragment>
   )
 }
 export default index
 /*
+        <section className="mt-6 bg-Purp400 pb-8">
+          <Colored
+            loading="lazy"
+            title={'مخصص لك'}
+            important_news={props.all_news[2]}
+            card_color={'bg-Purp100'}
+            theme={'bg-Purp200'}
+            text_color={'text-white'}
+            fill_color={'fill-Purp200'}
+            desc_color={'text-GRAY'}
+            description={
+              'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
+            }
+          />
+        </section>
 // // Dark & Light Mode
 // if (typeof window !== 'undefined') {
 //   darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
