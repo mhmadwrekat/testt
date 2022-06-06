@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
-import WaveAudio from './WaveAudio'
+import Wave_audio from './child_comp/Wave_audio'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
@@ -209,7 +209,7 @@ const Voice = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                <WaveAudio
+                                <Wave_audio
                                   url={Object.values(item.voices)[1]}
                                 />
                               </section>
@@ -279,7 +279,7 @@ const Voice = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                <WaveAudio
+                                <Wave_audio
                                   url={Object.values(item.voices)[1]}
                                 />
                               </section>
@@ -371,7 +371,7 @@ const Voice = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                <WaveAudio
+                                <Wave_audio
                                   url={Object.values(item.voices)[1]}
                                 />
                               </section>
@@ -441,7 +441,7 @@ const Voice = ({
                                 </div>
                               </section>
                               <section className="float-left mx-2 flex">
-                                <WaveAudio
+                                <Wave_audio
                                   url={Object.values(item.voices)[1]}
                                 />
                               </section>
@@ -537,7 +537,7 @@ const Voice = ({
                               </section>
                             </section>
                             <section className="float-left mx-2 flex">
-                              <WaveAudio url={Object.values(item.voices)[1]} />
+                              <Wave_audio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
                         ) : (
@@ -605,7 +605,7 @@ const Voice = ({
                               </section>
                             </section>
                             <section className="float-left mx-2 flex">
-                              <WaveAudio url={Object.values(item.voices)[1]} />
+                              <Wave_audio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
                         ))}
@@ -695,7 +695,7 @@ const Voice = ({
                               </section>
                             </section>
                             <section className="float-left mx-2 flex">
-                              <WaveAudio url={Object.values(item.voices)[1]} />
+                              <Wave_audio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
                         ) : (
@@ -763,7 +763,7 @@ const Voice = ({
                               </section>
                             </section>
                             <section className="float-left mx-2 flex">
-                              <WaveAudio url={Object.values(item.voices)[1]} />
+                              <Wave_audio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
                         ))}

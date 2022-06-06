@@ -4,13 +4,13 @@ import { BASE_URL } from '../config/config'
 import axios from 'axios'
 // Apple View component
 const Category_news = dynamic(() =>
-  import('../components/appleStructrue/Category_news')
+  import('../components/apple_template/Category_news')
 )
-const Colored = dynamic(() => import('../components/appleStructrue/Colored'))
-const Voice = dynamic(() => import('../components/appleStructrue/Voice'), {
+const Colored = dynamic(() => import('../components/apple_template/Colored'))
+const Voice = dynamic(() => import('../components/apple_template/Voice'), {
   ssr: false,
 })
-const Logaimat = dynamic(() => import('../components/appleStructrue/Logaimat'))
+const Logaimat = dynamic(() => import('../components/apple_template/Logaimat'))
 
 // page Component
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))

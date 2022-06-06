@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import moment from 'moment'
 import 'moment/locale/ar'
-import Test from './Test'
+import Menu_three_dot from './child_comp/Menu_three_dot'
 const Category_news = ({
   title,
   title_color,
@@ -240,7 +240,7 @@ const Category_news = ({
                       >
                         اقرأ المزيد
                       </button>
-                      <Test title_color={title_color} />
+                      <Menu_three_dot title_color={title_color} />
                     </div>
                   </div>
                 </div>
@@ -341,7 +341,7 @@ const Category_news = ({
                           >
                             اقرا المزيد
                           </button>{' '}
-                          <Test title_color={title_color} />
+                          <Menu_three_dot title_color={title_color} />
                         </div>
                       </div>
                     </section>

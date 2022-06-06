@@ -14,11 +14,6 @@ const Nav = () => {
   }
   return (
     <React.Fragment>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      />
-
       <section className="mx-4 flex justify-between border-b-3 border-Purp100 lg:mx-10">
         <div className="flex">
           <div className=" mt-2 lg:mx-8 lg:mt-5 lg:mb-2">
@@ -64,49 +59,47 @@ const Nav = () => {
 
             <buttons className="my-auto ml-10 pt-3 lg:cursor-pointer ">
               <React.Fragment>
-                <div className="w-auto">
-                  <Menu as="div" className="">
-                    {clicks ? (
-                      <Menu.Button>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-9 w-9 cursor-pointer "
-                          viewBox="0 0 20 20"
-                          fill="#686767"
-                          onClick={() => {
-                            handleClicks()
-                          }}
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </Menu.Button>
-                    ) : (
-                      <></>
-                    )}
+                <div className="w-full">
+                  <Menu as="div" className="relative">
+                    <Menu.Button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-9 w-9 cursor-pointer "
+                        viewBox="0 0 20 20"
+                        fill="#686767"
+                      >
+                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                      </svg>
+                    </Menu.Button>
 
                     <Menu.Items>
-                      <section className="flex w-auto text-left font-TSbold text-lg">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <p className={`${active && ''} ml-10 pb-2`} href="">
-                              اقتصاد{' '}
-                            </p>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <p className={`${active && ''} ml-10`} href="">
-                              الخليج العربي
-                            </p>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <p className={`${active && ''} ml-10`} href="">
-                              مشاركة
-                            </p>
-                          )}
-                        </Menu.Item>
+                      <section className="bg-white text-white absolute top-16 w-full ">
+                        <section className="flex text-left font-TSbold text-lg">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <p
+                                className={`${active && ''} ml-10 pb-2`}
+                                href=""
+                              >
+                                اقتصاد{' '}
+                              </p>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <p className={`${active && ''} ml-10`} href="">
+                                الخليج العربي
+                              </p>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <p className={`${active && ''} ml-10`} href="">
+                                مشاركة
+                              </p>
+                            )}
+                          </Menu.Item>
+                        </section>
                       </section>
                     </Menu.Items>
                   </Menu>
