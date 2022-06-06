@@ -5,7 +5,7 @@ const Test = ({ title_color }) => {
   return (
     <React.Fragment>
       <div className="relative">
-        <Menu as="div" className="relative inline-block text-left">
+        <Menu as="div" className="inline-block text-left">
           <Menu.Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -17,8 +17,8 @@ const Test = ({ title_color }) => {
             </svg>
           </Menu.Button>
           <Menu.Items>
-            <section className="absolute top-1 left-0 w-32 lg:left-10 lg:right-0">
-              <section className="text-black bg-white grid w-auto rounded-lg p-2 text-right font-TSbold text-sm ">
+            <section className="absolute top-3 left-8 w-32">
+              <section className="text-black bg-white grid w-auto rounded-lg p-1 text-right font-TSbold text-sm ">
                 <Menu.Item>
                   {({ active }) => (
                     <p

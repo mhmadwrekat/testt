@@ -82,7 +82,6 @@ const index = (props) => {
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-
         <Category_news
           loading="eager"
           title={'أهم الأخبار'}
@@ -107,7 +106,7 @@ const index = (props) => {
             }
           />
         </section>
-        {/* {props.all_news[1] > 0 ? (
+        {/*    {props.all_news[1] > 0 ? (
           <section className="mt-6 bg-Purp400 pb-8 lg:mt-12">
             <Colored
               loading="lazy"
@@ -123,8 +122,9 @@ const index = (props) => {
               }
             />
           </section>
-        ) : null} */}
-        {/* <Category_news
+        ) : null}{' '}
+        */}
+        <Category_news
           loading="lazy"
           title={'  الشأن الدولي'}
           category_news={props.all_news[11]}
@@ -270,7 +270,7 @@ const index = (props) => {
           title_color={'text-YELLOW'}
           fill_color={'fill-YELLOW'}
           description={'جميع ما يخص أحداث الخليج العربي'}
-        /> */}
+        />
         <Footer loading="lazy" />
         {/* <Voice
           loading="lazy"

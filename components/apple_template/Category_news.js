@@ -268,7 +268,6 @@ const Category_news = ({
                 {category_news.data.slice(1, 5).map((item, key) => {
                   arr.push({ id: item._id, status: true })
                   console.log(arr)
-
                   return (
                     <section key={item._id}>
                       <div
