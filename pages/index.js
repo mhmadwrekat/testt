@@ -31,14 +31,6 @@ export async function getServerSideProps({ req, res }) {
   // const ready_test = test.location.country.code
   // Get Country Code
 
-  // const all_news_res = await fetch(all_news_url)
-  // const all_news = await all_news_res.json()
-  // Convert API Data From (Object To Array)
-  //   let keys = Object.keys(all_news.data)
-  //   let custom_array = []
-  //   keys.map((item) => {
-  //     custom_array.push(all_news.data[item])
-  //   })
   const country_code_url = 'https://geolocation-db.com/json/'
   const country_code_res = await fetch(country_code_url)
   const country_code = await country_code_res.json()
@@ -75,7 +67,7 @@ export async function getServerSideProps({ req, res }) {
 // 9 -> الفيديوهات
 // 8 -> lifr_style
 const index = (props) => {
-  props.user_id && console.log(props.user_id)
+  // props.user_id && console.log(props.user_id)
   const [all_news, setAll_news] = useState([])
 
   // Get All News
