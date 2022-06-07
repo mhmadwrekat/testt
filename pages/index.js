@@ -24,9 +24,9 @@ export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=604800, stale-while-revalidate=59'
+    'public, s-maxage=0, stale-while-revalidate=59'
   )
-
+  //604800
   // Create a cookies instance
   const cookies = new Cookies(req, res)
 
