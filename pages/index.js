@@ -19,27 +19,119 @@ const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
 import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next'
 
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
+// Get Server Side Function
+export async function getServerSideProps({ req, res }) {
+  // Cache the content of this page for 12 hrs
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=604800, stale-while-revalidate=59'
+  )
+  const cookies = new Cookies(req, res)
+  // let user_id = cookies.get('user_id')
+  const register_user = async () => {
+    console.log('111111111111')
+    try {
+      let device_id = null
+      console.log('2222222222222222')
+      if ('device_id' in localStorage) {
+        device_id = localStorage.getItem('device_id')
+        console.log('33333333333333')
+      } else {
+        device_id = uuidv4()
+        console.log('44444444444444444444')
+      }
+      axios
+        .post(`${BASE_URL}/v1/Users/`, {
+          device_id: device_id,
+          device_model_type: '2022',
+          device_operating_system: 'web',
+          current_version_app: '1.0.0',
+          device_type: 'WEB',
+        })
+        .then(function (response) {
+          console.log('5555555555555555555')
+          localStorage.setItem('device_id', device_id)
+          setCookies('device_id', device_id)
+          setCookies('user_token', response.data.data.user_token)
+          setCookies('user_id', response.data.data._id)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   // Get Country Code
   const country_code_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
   const country_code_res = await fetch(country_code_url)
   const country_code = await country_code_res.json()
   // const ready_country_code = country_code.country_code
-  console.log(country_code.location.country.code)
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
+  // setCookies('country_code', ready_country_code)
+
+  // fetch('https://geolocation-db.com/json/').then((data) => {
+  //   console.log(data.country_code)
+  //   setCookies('country_code', data.country_code)
+  // })
+
+  // function get_country_code() {
+  //   console.log('777777777777777777777')
+  //   fetch('https://geolocation-db.com/json/')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log('88888888888888888888888')
+  //       setCookies('country_code', data.country_code)
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error)
+  //     })
+  // }
+  // let option = 'testtttt'
+  // setCookies('key', 'value', option)
+  // console.log(setCookies(option))
+  // Create a cookies instance
+  // const id = ''
+  // getCookie('user_id', id) // => 'value'
+
+  // let user_token = cookies.get('user_token')
+
+  // Get All News
+  let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
+  const all_news_res = await fetch(all_news_url)
+  const all_news = await all_news_res.json()
+
+  // Convert API Data From (Object To Array)
+  let keys = Object.keys(all_news.data)
+  let custom_array = []
+  keys.map((item) => {
+    custom_array.push(all_news.data[item])
+  })
+  // console.log('=== ', all_news_url)
+  // // Get Logaimat API
+  // const LoqaimatDataReq = axios({
+  //   method: 'GET',
+  //   url: `${BASE_URL}/v1/Web/Loqaimat`,
+  //   headers: {
+  //     Authorization: `Basic ${user_token}`,
+  //   },
+  // })
+
+  // const loqaimat = await LoqaimatDataReq
+  //return props
+  // let user_id = cookies.get('user_id')
+
   return {
     props: {
+      all: '',
       country_code: country_code?.location?.country.code,
+      // loqaimat: loqaimat.data,
+      all_news: custom_array,
+      // userid: user_id,
     },
   }
 }
-
-// Get Server Side Function
-
 // typeof window !== 'undefined' &&
 //   console.log(window.localStorage.getItem('user_id'))
 const index = (props) => {
@@ -67,7 +159,7 @@ const index = (props) => {
   // console.log(all_news[0])
   return (
     <React.Fragment>
-      {console.log(props.country_code)}
+      {/* {console.log(props.country_code)} */}
       {/* {console.log(props.all_news)} */}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
@@ -464,111 +556,4 @@ export default index
 //     }
 //   })
 // }
-*/
-/*
-export async function getServerSideProps({ req, res }) {
-  // Cache the content of this page for 12 hrs
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=604800, stale-while-revalidate=59'
-  )
-  const cookies = new Cookies(req, res)
-  // let user_id = cookies.get('user_id')
-  const register_user = async () => {
-    console.log('111111111111')
-    try {
-      let device_id = null
-      console.log('2222222222222222')
-      if ('device_id' in localStorage) {
-        device_id = localStorage.getItem('device_id')
-        console.log('33333333333333')
-      } else {
-        device_id = uuidv4()
-        console.log('44444444444444444444')
-      }
-      axios
-        .post(`${BASE_URL}/v1/Users/`, {
-          device_id: device_id,
-          device_model_type: '2022',
-          device_operating_system: 'web',
-          current_version_app: '1.0.0',
-          device_type: 'WEB',
-        })
-        .then(function (response) {
-          console.log('5555555555555555555')
-          localStorage.setItem('device_id', device_id)
-          setCookies('device_id', device_id)
-          setCookies('user_token', response.data.data.user_token)
-          setCookies('user_id', response.data.data._id)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  // setCookies('country_code', ready_country_code)
-
-  // fetch('https://geolocation-db.com/json/').then((data) => {
-  //   console.log(data.country_code)
-  //   setCookies('country_code', data.country_code)
-  // })
-
-  // function get_country_code() {
-  //   console.log('777777777777777777777')
-  //   fetch('https://geolocation-db.com/json/')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log('88888888888888888888888')
-  //       setCookies('country_code', data.country_code)
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error:', error)
-  //     })
-  // }
-  // let option = 'testtttt'
-  // setCookies('key', 'value', option)
-  // console.log(setCookies(option))
-  // Create a cookies instance
-  // const id = ''
-  // getCookie('user_id', id) // => 'value'
-
-  // let user_token = cookies.get('user_token')
-
-  // Get All News
-  let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
-  const all_news_res = await fetch(all_news_url)
-  const all_news = await all_news_res.json()
-
-  // Convert API Data From (Object To Array)
-  let keys = Object.keys(all_news.data)
-  let custom_array = []
-  keys.map((item) => {
-    custom_array.push(all_news.data[item])
-  })
-  // console.log('=== ', all_news_url)
-  // // Get Logaimat API
-  // const LoqaimatDataReq = axios({
-  //   method: 'GET',
-  //   url: `${BASE_URL}/v1/Web/Loqaimat`,
-  //   headers: {
-  //     Authorization: `Basic ${user_token}`,
-  //   },
-  // })
-
-  // const loqaimat = await LoqaimatDataReq
-  //return props
-  // let user_id = cookies.get('user_id')
-
-  return {
-    props: {
-      all: '',
-      // loqaimat: loqaimat.data,
-      all_news: custom_array,
-      // userid: user_id,
-    },
-  }
-}
 */
