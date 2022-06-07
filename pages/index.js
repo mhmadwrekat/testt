@@ -23,10 +23,10 @@ const Footer = dynamic(() => import('../components/page/Footer'))
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=604800, stale-while-revalidate=59'
-  )
+  // res.setHeader(
+  //   'Cache-Control',
+  //   'public, s-maxage=604800, stale-while-revalidate=59'
+  // )
 
   // // Create a cookies instance
   // const cookies = new Cookies(req, res)
