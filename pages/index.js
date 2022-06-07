@@ -159,7 +159,7 @@ const index = (props) => {
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
         {console.log(user_id)}
-        {all_news[0]?.data ? (
+        {all_news[0]?.data && (
           <>
             <Category_news
               loading="eager"
@@ -354,8 +354,14 @@ const index = (props) => {
             />
             <Footer loading="lazy" />
           </>
-        ) : (
-          <>
+        )}
+      </div>
+    </React.Fragment>
+  )
+}
+export default index
+/*
+         <>
             <Category_news
               loading="eager"
               title={'أهم الأخبار'}
@@ -517,55 +523,6 @@ const index = (props) => {
             />
             <Footer loading="lazy" />
           </>
-        )}
-      </div>
-    </React.Fragment>
-  )
-}
-export default index
-/*
-          <Colored
-            loading="lazy"
-            title={'يدور حولك'}
-            important_news={props.all_news[2]}
-            card_color={'bg-Purp100'}
-            theme={'bg-Purp200'}
-            text_color={'text-white'}
-            fill_color={'fill-Purp200'}
-            desc_color={'text-GRAY'}
-            description={'الأخبار المقترحه لك بناء على المنطقه المحيطه بك    '}
-          />
-        <section className="mt-6 bg-Purp400 pb-8">
-          <Colored
-            loading="lazy"
-            title={'مخصص لك'}
-            important_news={props.all_news[2]}
-            card_color={'bg-Purp100'}
-            theme={'bg-Purp200'}
-            text_color={'text-white'}
-            fill_color={'fill-Purp200'}
-            desc_color={'text-GRAY'}
-            description={
-              'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
-            }
-          />
-        </section>
-// // Dark & Light Mode
-// if (typeof window !== 'undefined') {
-//   darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
-// }
-//   if (darkThemeMq.matches) {
-//     // Theme set to dark.
-//     console.log('LIGHT')
-//     backGround = 'bg-white'
-//     textColor = 'black'
-//   } else {
-//     // Theme set to light.
-//     console.log('DARK')
-//     backGround = 'bg-gray-900'
-//     textColor = 'white'
-//   }
-// }
 
 // // Dark & Light Mode
 // if (typeof window !== 'undefined') {
