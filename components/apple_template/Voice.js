@@ -164,7 +164,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className=" mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36  lg:w-60"
                                 />
-                                <Like />
+                                {/* <Like /> */}
 
                                 <div className="absolute bottom-1 left-1">
                                   <svg

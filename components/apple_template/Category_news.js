@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { BASE_URL } from '../../config/config'
+import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/ar'
 import Menu_three_dot from './child_comp/Menu_three_dot'
+import Like from '../apple_template/child_comp/Like'
+
 const Category_news = ({
   title,
   title_color,
@@ -11,6 +15,7 @@ const Category_news = ({
   subs,
   description,
   fill_color,
+  user_id,
 }) => {
   const important_news_img =
     category_news?.data[0]?.stories_media_url.length > 0
@@ -43,37 +48,49 @@ const Category_news = ({
     setSubscripe(!subscripe)
   }
 
-  const defaultLike = false
-  const [like, setLike] = useState(defaultLike)
-  const [likee, setLikee] = useState(defaultLike)
-
-  const handleLike = () => {
-    setLike(!like)
+  const [like, setLike] = useState(category_news?.data[0]?.is_loved)
+  const handleLike = (story_id, is_loved) => {
+    console.log(story_id, is_loved)
+    let config = {
+      method: 'PUT',
+      baseURL: `${BASE_URL}`,
+      url: `/v1/Web/Story/Love`,
+      data: {
+        userId: user_id,
+        story: story_id,
+        isLove: !is_loved,
+      },
+    }
+    axios(config).then((res) => {
+      console.log(res)
+      setLike(!like)
+    })
+    // return !is_loved
+  }
+  const handleLiked = (story_id, is_loved) => {
+    // console.log(story_id, is_loved)
+    let config = {
+      method: 'PUT',
+      baseURL: `${BASE_URL}`,
+      url: `/v1/Web/Story/Love`,
+      data: {
+        userId: user_id,
+        story: story_id,
+        isLove: !is_loved,
+      },
+    }
+    axios(config).then((res) => {
+      console.log(res)
+      // setLike(!like)
+    })
+    // return !is_loved
   }
 
   let arr = []
 
-  // let counter = -1
-
-  // const [like1, setLike1] = useState(defaultLike)
-  // const [like2, setLike2] = useState(defaultLike)
-  // const [like3, setLike3] = useState(defaultLike)
-  // const [like4, setLike4] = useState(defaultLike)
-
-  const handleLiked = (id) => {
-    setLikee(!likee)
-
-    arr.map((item) => {
-      if (id.id == item.id) {
-        item.status = !item.status
-        // console.log(item.status)
-        return arr
-      }
-    })
-  }
-
   return (
     <React.Fragment>
+      {/* {console.log('User_ID = ', user_id)} */}
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
         <>
           <div className="flex justify-between">
@@ -188,7 +205,7 @@ const Category_news = ({
                           blurDataURL={important_news_img}
                         />
                       ))}
-                    <div className="bg-white absolute bottom-2 left-2 rounded-full p-1">
+                    <div className="bg-white absolute bottom-2 right-2 rounded-full p-1">
                       {like ? (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -198,7 +215,10 @@ const Category_news = ({
                           stroke="#FF0000"
                           strokeWidth="2"
                           onClick={() => {
-                            handleLike()
+                            handleLike(
+                              category_news.data[0]._id,
+                              category_news.data[0].is_loved
+                            )
                           }}
                         >
                           <path
@@ -216,7 +236,10 @@ const Category_news = ({
                           stroke="currentColor"
                           strokeWidth="2"
                           onClick={() => {
-                            handleLike()
+                            handleLike(
+                              category_news.data[0]._id,
+                              category_news.data[0].is_loved
+                            )
                           }}
                         >
                           <path
@@ -268,6 +291,9 @@ const Category_news = ({
                 {category_news?.data?.slice(1, 5).map((item, key) => {
                   arr.push({ id: item._id, status: true })
                   // console.log(arr)
+                  // {
+                  //   console.log(item._id)
+                  // }
                   return (
                     <section key={item._id}>
                       <div
@@ -305,8 +331,12 @@ const Category_news = ({
                                   className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ))}
-
-                            {likee ? (
+                            <Like
+                              user_id={user_id}
+                              story_id={item._id}
+                              isLoved={item.is_loved}
+                            />
+                            {/* {item.is_loved ? (
                               <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
                                 {arr[key].status ? (
                                   <svg
@@ -317,7 +347,7 @@ const Category_news = ({
                                     stroke="#FF0000"
                                     strokeWidth="2"
                                     onClick={() => {
-                                      handleLiked(arr[key])
+                                      handleLike(item._id, item.is_loved)
                                     }}
                                   >
                                     <path
@@ -335,7 +365,7 @@ const Category_news = ({
                                     stroke="currentColor"
                                     strokeWidth="2"
                                     onClick={() => {
-                                      handleLiked(arr[key])
+                                      handleLike(item._id, item.is_loved)
                                     }}
                                   >
                                     <path
@@ -366,7 +396,7 @@ const Category_news = ({
                                   />
                                 </svg>
                               </div>
-                            )}
+                            )} */}
                           </div>
 
                           <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">

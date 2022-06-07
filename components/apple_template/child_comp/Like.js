@@ -1,25 +1,40 @@
 import React, { useState } from 'react'
-const Like = () => {
-  const defaultLike = false
-  const [like, setLike] = useState(defaultLike)
-  const [likee, setLikee] = useState(defaultLike)
+import { BASE_URL } from '../../../config/config'
+import axios from 'axios'
 
-  const handleLike = () => {
-    setLike(!like)
+const Like = ({ user_id, isLoved, story_id }) => {
+  const [like, setLike] = useState(isLoved)
+
+  const handleLike = (story_id, isLoved) => {
+    let config = {
+      method: 'PUT',
+      baseURL: `${BASE_URL}`,
+      url: `/v1/Web/Story/Love`,
+      data: {
+        userId: user_id,
+        story: story_id,
+        isLove: !isLoved,
+      },
+    }
+    axios(config).then((res) => {
+      console.log(res)
+      setLike(!like)
+    })
   }
   return (
     <React.Fragment>
-      <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+      {/* {user_id && console.log('0', user_id, ' 0 ', isLoved)} */}
+      <div className="bg-white absolute bottom-5 right-1 rounded-full p-1 lg:bottom-1">
         {like ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className=" h-7 w-7 cursor-pointer"
+            className=" h-5 w-5 cursor-pointer"
             fill="#FF0000"
             viewBox="0 0 24 24"
             stroke="#FF0000"
             strokeWidth="2"
             onClick={() => {
-              handleLike()
+              handleLike(story_id, isLoved)
             }}
           >
             <path
@@ -31,13 +46,13 @@ const Like = () => {
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className=" h-7 w-7 cursor-pointer opacity-70"
+            className=" h-5 w-5 cursor-pointer opacity-70"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth="2"
             onClick={() => {
-              handleLike()
+              handleLike(story_id, isLoved)
             }}
           >
             <path

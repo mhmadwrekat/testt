@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
-
+import Like from '../apple_template/child_comp/Like'
+import { BASE_URL } from '../../config/config'
+import axios from 'axios'
 const Colored = ({
   title,
   important_news,
   desc_color,
+  user_id,
   fill_color,
   text_color,
   card_color,
@@ -37,11 +40,44 @@ const Colored = ({
       return code
     }
   }
-  const defaultLike = false
-  const [like, setLike] = useState(defaultLike)
 
-  const handleLike = () => {
-    setLike(!like)
+  const [like, setLike] = useState(important_news?.data[0]?.is_loved)
+
+  const handleLike = (story_id, is_loved) => {
+    console.log(story_id, is_loved)
+    let config = {
+      method: 'PUT',
+      baseURL: `${BASE_URL}`,
+      url: `/v1/Web/Story/Love`,
+      data: {
+        userId: user_id,
+        story: story_id,
+        isLove: !is_loved,
+      },
+    }
+    axios(config).then((res) => {
+      console.log(res)
+      setLike(!like)
+    })
+    // return !is_loved
+  }
+  const handleLiked = (story_id, is_loved) => {
+    console.log(story_id, is_loved)
+    let config = {
+      method: 'PUT',
+      baseURL: `${BASE_URL}`,
+      url: `/v1/Web/Story/Love`,
+      data: {
+        userId: user_id,
+        story: story_id,
+        isLove: !is_loved,
+      },
+    }
+    axios(config).then((res) => {
+      console.log(res)
+      // setLike(!like)
+    })
+    // return !is_loved
   }
   return (
     <React.Fragment>
@@ -119,17 +155,20 @@ const Colored = ({
                           className=" h-56 w-full object-cover lg:h-80"
                         />
                       ))}
-                    <div className="bg-white text-black absolute bottom-2 left-2 rounded-full p-1">
+                    <div className="bg-white text-black absolute bottom-2 right-2 rounded-full p-1">
                       {like ? (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className=" h-7 w-7 cursor-pointer opacity-70"
+                          className=" h-7 w-7 cursor-pointer"
                           fill="#FF0000"
                           viewBox="0 0 24 24"
                           stroke="#FF0000"
                           strokeWidth="2"
                           onClick={() => {
-                            handleLike()
+                            handleLike(
+                              important_news.data[0]._id,
+                              important_news.data[0].is_loved
+                            )
                           }}
                         >
                           <path
@@ -147,7 +186,10 @@ const Colored = ({
                           stroke="currentColor"
                           strokeWidth="2"
                           onClick={() => {
-                            handleLike()
+                            handleLike(
+                              important_news.data[0]._id,
+                              important_news.data[0].is_loved
+                            )
                           }}
                         >
                           <path
@@ -245,21 +287,12 @@ const Colored = ({
                                   className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ))}
-                            <div className="bg-white text-black absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className=" h-4 w-4 cursor-pointer opacity-70"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                />
-                              </svg>
+                            <div className="bg-white text-black rounded-full">
+                              <Like
+                                user_id={user_id}
+                                story_id={item._id}
+                                isLoved={item.is_loved}
+                              />
                             </div>
                           </div>
 
