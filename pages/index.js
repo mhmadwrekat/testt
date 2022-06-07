@@ -66,20 +66,18 @@ export async function getServerSideProps({ req, res }) {
   }
 }
 
-const index = ({ all_news }) => {
+const index = (props) => {
   return (
     <React.Fragment>
-      {/* {props.ready_test && console.log(props.ready_test)} */}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-        {/* {console.log(all_news[0])} */}
-        {all_news[0]?.data && (
+        {props.all_news[0]?.data && (
           <>
             <Category_news
               loading="eager"
               title={'أهم الأخبار'}
-              category_news={all_news[0]}
+              category_news={props.all_news[0]}
               subs={null}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
