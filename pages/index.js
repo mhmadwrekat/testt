@@ -46,7 +46,7 @@ export async function getServerSideProps({ req, res }) {
   keys.map((item) => {
     custom_array.push(all_news.data[item])
   })
-
+  //
   // Get Logaimat API
   const LoqaimatDataReq = axios({
     method: 'GET',
