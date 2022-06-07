@@ -18,7 +18,6 @@ const Logaimat = dynamic(() => import('../components/apple_template/Logaimat'))
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
 const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
-// import Test from '..//components/appleStructrue/Test'
 
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
@@ -28,42 +27,42 @@ export async function getServerSideProps({ req, res }) {
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
 
-  // // Create a cookies instance
-  // const cookies = new Cookies(req, res)
+  // Create a cookies instance
+  const cookies = new Cookies(req, res)
 
-  // let country_code = cookies.get('country_code')
-  // let user_id = cookies.get('user_id')
-  // let user_token = cookies.get('user_token')
+  let country_code = cookies.get('country_code')
+  let user_id = cookies.get('user_id')
+  let user_token = cookies.get('user_token')
 
-  // // Get All News
-  // const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
-  // const all_news_res = await fetch(all_news_url)
-  // const all_news = await all_news_res.json()
+  // Get All News
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+  const all_news_res = await fetch(all_news_url)
+  const all_news = await all_news_res.json()
 
-  // // Convert API Data From (Object To Array)
-  // let keys = Object.keys(all_news.data)
-  // let custom_array = []
-  // keys.map((item) => {
-  //   custom_array.push(all_news.data[item])
-  // })
-  // // Get Logaimat API
-  // const LoqaimatDataReq = axios({
-  //   method: 'GET',
-  //   url: `${BASE_URL}/v1/Web/Loqaimat`,
-  //   headers: {
-  //     Authorization: `Basic ${user_token}`,
-  //   },
-  // })
+  // Convert API Data From (Object To Array)
+  let keys = Object.keys(all_news.data)
+  let custom_array = []
+  keys.map((item) => {
+    custom_array.push(all_news.data[item])
+  })
+  // Get Logaimat API
+  const LoqaimatDataReq = axios({
+    method: 'GET',
+    url: `${BASE_URL}/v1/Web/Loqaimat`,
+    headers: {
+      Authorization: `Basic ${user_token}`,
+    },
+  })
 
-  // const loqaimat = await LoqaimatDataReq
+  const loqaimat = await LoqaimatDataReq
 
   //return props
   return {
     props: {
       all: '',
-      // loqaimat: loqaimat.data,
-      // all_news: custom_array,
-      // user_id: user_id,
+      loqaimat: loqaimat.data,
+      all_news: custom_array,
+      user_id: user_id,
     },
   }
 }
@@ -72,8 +71,7 @@ const index = (props) => {
   return (
     <React.Fragment>
       <HeadComp />
-      <p className="text-4xl">hellooo</p>
-      {/* <div dir="rtl" id="project_body" className="bg-white text-black">
+      <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
         {console.log(props.user_id)}
         {props.all_news[0]?.data && (
@@ -88,7 +86,7 @@ const index = (props) => {
               fill_color={'fill-RED'}
             />
 
-            <Category_news
+            {/* <Category_news
               loading="lazy"
               title={'  الشأن الدولي'}
               category_news={props.all_news[11]}
@@ -236,11 +234,11 @@ const index = (props) => {
               title_color={'text-YELLOW'}
               fill_color={'fill-YELLOW'}
               description={'جميع ما يخص أحداث الخليج العربي'}
-            />
+            /> */}
             <Footer loading="lazy" />
           </>
         )}
-      </div> */}
+      </div>
     </React.Fragment>
   )
 }

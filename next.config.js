@@ -35,7 +35,7 @@ module.exports = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=9999999999, must-revalidate',
+            value: 'public, max-age=9999, must-revalidate',
           },
         ],
       },
@@ -43,7 +43,7 @@ module.exports = {
   },
 
   images: {
-    minimumCacheTTL: 99999999,
+    // minimumCacheTTL: 99999999,
     domains: [
       'netaq.s3.ap-south-1.amazonaws.com',
       'admin-panel-alzubda.s3.us-east-2.amazonaws.com',
