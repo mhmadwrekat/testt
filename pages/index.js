@@ -66,24 +66,24 @@ export async function getServerSideProps({ req, res }) {
   }
 }
 
-const index = (props) => {
+const index = ({ all_news }) => {
   return (
     <React.Fragment>
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-        {props.all_news[0]?.data && (
+        {all_news[0]?.data && (
           <>
             <Category_news
               loading="eager"
               title={'أهم الأخبار'}
-              category_news={props.all_news[0]}
+              category_news={all_news[0]}
               subs={null}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
               fill_color={'fill-RED'}
             />
-            {/* 
+
             <Category_news
               loading="lazy"
               title={'  الشأن الدولي'}
@@ -146,7 +146,7 @@ const index = (props) => {
               fill_color={'fill-YELLOW'}
               description={'جميع ما يخص أحداث غزو أوكرانيا'}
             />
-            <Logaimat
+            {/* <Logaimat
               loading="lazy"
               title={'لقيمات'}
               important_news={props.loqaimat.data[0].screens}
@@ -158,7 +158,7 @@ const index = (props) => {
               desc_color={'text-GRAY400'}
               text_color={'text-black'}
               description={'بطريقة جميلة يمكنك قرائه المواضيع'}
-            />
+            /> */}
             <Category_news
               loading="lazy"
               title={'اخبار الفن'}
@@ -232,7 +232,7 @@ const index = (props) => {
               title_color={'text-YELLOW'}
               fill_color={'fill-YELLOW'}
               description={'جميع ما يخص أحداث الخليج العربي'}
-            /> */}
+            />
             <Footer loading="lazy" />
           </>
         )}
