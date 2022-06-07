@@ -23,10 +23,10 @@ const Footer = dynamic(() => import('../components/page/Footer'))
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
-  // res.setHeader(
-  //   'Cache-Control',
-  //   'public, s-maxage=604800, stale-while-revalidate=59'
-  // )
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=604800, stale-while-revalidate=59'
+  )
 
   // // Create a cookies instance
   // const cookies = new Cookies(req, res)
@@ -63,6 +63,7 @@ export async function getServerSideProps({ req, res }) {
       all: '',
       // loqaimat: loqaimat.data,
       // all_news: custom_array,
+      // user_id: user_id,
     },
   }
 }
@@ -71,15 +72,16 @@ const index = (props) => {
   return (
     <React.Fragment>
       <HeadComp />
-      <div dir="rtl" id="project_body" className="bg-white text-black">
-        <p className="text-4xl ">Hello</p>
+      <p className="text-4xl">hello</p>
+      {/* <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-        {/* {all_news[0]?.data && (
+        {console.log(props.user_id)}
+        {props.all_news[0]?.data && (
           <>
             <Category_news
               loading="eager"
               title={'أهم الأخبار'}
-              category_news={all_news[0]}
+              category_news={props.all_news[0]}
               subs={null}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
@@ -89,7 +91,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={'  الشأن الدولي'}
-              category_news={all_news[11]}
+              category_news={props.all_news[11]}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -99,7 +101,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={' الصحه'}
-              category_news={all_news[4]}
+              category_news={props.all_news[4]}
               subs={true}
               bg_color={'bg-BLUE'}
               title_color={'text-BLUE'}
@@ -109,8 +111,8 @@ const index = (props) => {
             <Voice
               loading="lazy"
               title={'الصوتيات '}
-              news_one={all_news[6]}
-              news_two={all_news[6]}
+              news_one={props.all_news[6]}
+              news_two={props.all_news[6]}
               subs={true}
               title_color={'text-YELLOW'}
               fill_color={'fill-YELLOW'}
@@ -122,7 +124,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={' تكنولوجيا'}
-              category_news={all_news[12]}
+              category_news={props.all_news[12]}
               subs={true}
               bg_color={'bg-GREEN'}
               title_color={'text-GREEN'}
@@ -132,7 +134,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={' لايف ستايل'}
-              category_news={all_news[16]}
+              category_news={props.all_news[16]}
               subs={true}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
@@ -141,7 +143,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={' غزو أوكرانيا'}
-              category_news={all_news[8]}
+              category_news={props.all_news[8]}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -160,11 +162,11 @@ const index = (props) => {
               desc_color={'text-GRAY400'}
               text_color={'text-black'}
               description={'بطريقة جميلة يمكنك قرائه المواضيع'}
-            /> 
+            />
             <Category_news
               loading="lazy"
               title={'اخبار الفن'}
-              category_news={all_news[15]}
+              category_news={props.all_news[15]}
               subs={true}
               bg_color={'bg-BLUE'}
               title_color={'text-BLUE'}
@@ -174,7 +176,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={' مال وأعمال'}
-              category_news={all_news[7]}
+              category_news={props.all_news[7]}
               subs={true}
               bg_color={'bg-GREEN'}
               title_color={'text-GREEN'}
@@ -186,7 +188,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={' ترند'}
-              category_news={all_news[5]}
+              category_news={props.all_news[5]}
               subs={true}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
@@ -198,7 +200,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={'  الشرق الأوسط'}
-              category_news={all_news[14]}
+              category_news={props.all_news[14]}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -208,7 +210,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={' رياضه'}
-              category_news={all_news[3]}
+              category_news={props.all_news[3]}
               subs={true}
               bg_color={'bg-BLUE'}
               title_color={'text-BLUE'}
@@ -218,7 +220,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={' العاب'}
-              category_news={all_news[13]}
+              category_news={props.all_news[13]}
               subs={true}
               bg_color={'bg-GREEN'}
               title_color={'text-GREEN'}
@@ -228,7 +230,7 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={' الخليج العربي '}
-              category_news={all_news[10]}
+              category_news={props.all_news[10]}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -237,8 +239,8 @@ const index = (props) => {
             />
             <Footer loading="lazy" />
           </>
-        )} */}
-      </div>
+        )}
+      </div> */}
     </React.Fragment>
   )
 }
