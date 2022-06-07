@@ -49,6 +49,8 @@ export async function getServerSideProps({ req, res }) {
       Authorization: `Basic ${user_token}`,
     },
   })
+
+  //ts
   const loqaimat = await LoqaimatDataReq
   return {
     props: {
