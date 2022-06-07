@@ -25,10 +25,10 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
-  // const test_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
-  // const test_req = await fetch(test_url)
-  // const test = await test_req.json()
-  // const ready_test = test.location.country.code
+  const test_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
+  const test_req = await fetch(test_url)
+  const test = await test_req.json()
+  const ready_test = test.location.country.code
   // Get Country Code
 
   const country_code_url = 'https://geolocation-db.com/json/'
@@ -57,6 +57,7 @@ export async function getServerSideProps({ req, res }) {
       // big_news: all_news,
       loqaimat: loqaimat.data,
       ready_country_code: ready_country_code,
+      ready_test: ready_test,
       // // test: ready_test,
     },
   }
@@ -100,23 +101,23 @@ const index = (props) => {
       setAll_news(custom_array)
     })
   }
-  let url = `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`
+  // let url = `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`
   // props?.userId &&
   //   // (url = `${BASE_URL}/v1/Web/Sections?current_country=JO&userId=${props.userId}`)
   //   (url = `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`)
-  console.log(url)
   // setA(localStorage.getItem('userId'))
   // let as = '&userId=' + a
   props?.userId &&
-    props.ready_country_code &&
+    props.ready_test &&
     get_all_news(
-      `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`
+      `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_test}&userId=${props.userId}`
     )
   // props?.userId && console.log('1 - ', props?.userId)
   // props?.useri && console.log('2 - ', props?.useri)
 
   return (
     <React.Fragment>
+      {console.log(props.ready_test)}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
