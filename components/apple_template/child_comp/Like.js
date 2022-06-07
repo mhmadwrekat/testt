@@ -6,6 +6,7 @@ const Like = ({ user_id, isLoved, story_id }) => {
   const [like, setLike] = useState(isLoved)
 
   const handleLike = (story_id, isLoved) => {
+    setLike(!like)
     let config = {
       method: 'PUT',
       baseURL: `${BASE_URL}`,
@@ -18,7 +19,6 @@ const Like = ({ user_id, isLoved, story_id }) => {
     }
     axios(config).then((res) => {
       console.log(res)
-      setLike(!like)
     })
   }
   return (

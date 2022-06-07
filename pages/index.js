@@ -158,7 +158,7 @@ const index = (props) => {
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-        {/* {console.log(props.user_id)} */}
+        {console.log(user_id)}
         {all_news[0]?.data ? (
           <>
             <Category_news
@@ -360,7 +360,7 @@ const index = (props) => {
               loading="eager"
               title={'أهم الأخبار'}
               category_news={props.all_news[0]}
-              user_id={user_id}
+              user_id={' '}
               subs={null}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
@@ -370,7 +370,7 @@ const index = (props) => {
               loading="lazy"
               title={'  الشأن الدولي'}
               category_news={props.all_news[11]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -381,7 +381,7 @@ const index = (props) => {
               loading="lazy"
               title={' الصحه'}
               category_news={props.all_news[4]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-BLUE'}
               title_color={'text-BLUE'}
@@ -405,7 +405,7 @@ const index = (props) => {
               loading="lazy"
               title={' تكنولوجيا'}
               category_news={props.all_news[12]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-GREEN'}
               title_color={'text-GREEN'}
@@ -416,7 +416,7 @@ const index = (props) => {
               loading="lazy"
               title={' لايف ستايل'}
               category_news={props.all_news[16]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
@@ -426,7 +426,7 @@ const index = (props) => {
               loading="lazy"
               title={' غزو أوكرانيا'}
               category_news={props.all_news[8]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -438,7 +438,7 @@ const index = (props) => {
               loading="lazy"
               title={'اخبار الفن'}
               category_news={props.all_news[15]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-BLUE'}
               title_color={'text-BLUE'}
@@ -449,7 +449,7 @@ const index = (props) => {
               loading="lazy"
               title={' مال وأعمال'}
               category_news={props.all_news[7]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-GREEN'}
               title_color={'text-GREEN'}
@@ -462,7 +462,7 @@ const index = (props) => {
               loading="lazy"
               title={' ترند'}
               category_news={props.all_news[5]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
@@ -475,7 +475,7 @@ const index = (props) => {
               loading="lazy"
               title={'  الشرق الأوسط'}
               category_news={props.all_news[14]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -486,7 +486,7 @@ const index = (props) => {
               loading="lazy"
               title={' رياضه'}
               category_news={props.all_news[3]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-BLUE'}
               title_color={'text-BLUE'}
@@ -497,7 +497,7 @@ const index = (props) => {
               loading="lazy"
               title={' العاب'}
               category_news={props.all_news[13]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-GREEN'}
               title_color={'text-GREEN'}
@@ -508,7 +508,7 @@ const index = (props) => {
               loading="lazy"
               title={' الخليج العربي '}
               category_news={props.all_news[10]}
-              user_id={user_id}
+              user_id={' '}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}

@@ -51,6 +51,7 @@ const Category_news = ({
   const [like, setLike] = useState(category_news?.data[0]?.is_loved)
   const handleLike = (story_id, is_loved) => {
     console.log(story_id, is_loved)
+    setLike(!like)
     let config = {
       method: 'PUT',
       baseURL: `${BASE_URL}`,
@@ -63,7 +64,6 @@ const Category_news = ({
     }
     axios(config).then((res) => {
       console.log(res)
-      setLike(!like)
     })
     // return !is_loved
   }
@@ -206,7 +206,7 @@ const Category_news = ({
                         />
                       ))}
                     <div className="bg-white absolute bottom-2 right-2 rounded-full p-1">
-                      {console.log(category_news.data[0]._id)}
+                      {/* {console.log(category_news.data[0]._id)} */}
                       {like ? (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
