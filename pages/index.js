@@ -117,7 +117,7 @@ const index = (props) => {
 
   return (
     <React.Fragment>
-      {console.log(props.ready_test)}
+      {/* {props.ready_test && console.log(props.ready_test)} */}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
