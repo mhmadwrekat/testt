@@ -48,6 +48,8 @@ module.exports = {
       'netaq.s3.ap-south-1.amazonaws.com',
       'admin-panel-alzubda.s3.us-east-2.amazonaws.com',
       'https://img.youtube.com/',
+      'psycatgames.com',
+      'cdnuploads.aa.com.tr',
       'orient-news.net',
       'alghad.com',
       'www.youtube.com',

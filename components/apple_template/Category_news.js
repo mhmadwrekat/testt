@@ -206,6 +206,7 @@ const Category_news = ({
                         />
                       ))}
                     <div className="bg-white absolute bottom-2 right-2 rounded-full p-1">
+                      {console.log(category_news.data[0]._id)}
                       {like ? (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
-import { getCookies, setCookies, removeCookies } from 'cookies-next'
+import { v4 as uuidv4 } from 'uuid'
 import Cookies from 'cookies'
-// import { getCookie } from 'cookies-next'
-
 // Apple View component
 const Category_news = dynamic(() =>
   import('../components/apple_template/Category_news')
@@ -15,11 +13,11 @@ const Voice = dynamic(() => import('../components/apple_template/Voice'), {
   ssr: false,
 })
 const Logaimat = dynamic(() => import('../components/apple_template/Logaimat'))
-
 // page Component
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
 const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
+import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next'
 
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
@@ -28,22 +26,74 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
+  const cookies = new Cookies(req, res)
+  // let user_id = cookies.get('user_id')
+  const register_user = async () => {
+    console.log('HHHHHHHHHH')
+    try {
+      let device_id = null
+      console.log('HHHHHHHHHH')
+      if ('device_id' in localStorage) {
+        device_id = localStorage.getItem('device_id')
+        console.log('HHHHHHHHHH')
+      } else {
+        device_id = uuidv4()
+        console.log('HHHHHHHHHH')
+      }
+      axios
+        .post(`${BASE_URL}/v1/Users/`, {
+          device_id: device_id,
+          device_model_type: '2022',
+          device_operating_system: 'web',
+          current_version_app: '1.0.0',
+          device_type: 'WEB',
+        })
+        .then(function (response) {
+          console.log('HHHHHHHHHH')
+          localStorage.setItem('device_id', device_id)
+          setCookies('device_id', device_id)
+          setCookies('user_token', response.data.data.user_token)
+          setCookies('user_id', response.data.data._id)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  fetch('https://geolocation-db.com/json/')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('HHHHHHHHHH')
+      setCookies('country_code', data.country_code)
+    })
+    .catch((error) => {
+      console.error('Error:', error)
+    })
+  function get_country_code() {
+    console.log('HHHHHHHHHH')
+    fetch('https://geolocation-db.com/json/')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('HHHHHHHHHH')
+        setCookies('country_code', data.country_code)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+  }
   // let option = 'testtttt'
   // setCookies('key', 'value', option)
   // console.log(setCookies(option))
-
   // Create a cookies instance
-  const cookies = new Cookies(req, res)
-
   // const id = ''
   // getCookie('user_id', id) // => 'value'
 
-  // let country_code = cookies.get('country_code')
-  let user_id = cookies.get('user_id')
   // let user_token = cookies.get('user_token')
 
   // Get All News
-  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
+  let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=EG`
   const all_news_res = await fetch(all_news_url)
   const all_news = await all_news_res.json()
 
@@ -53,7 +103,7 @@ export async function getServerSideProps({ req, res }) {
   keys.map((item) => {
     custom_array.push(all_news.data[item])
   })
-  console.log('=== ', user_id)
+  // console.log('=== ', all_news_url)
   // // Get Logaimat API
   // const LoqaimatDataReq = axios({
   //   method: 'GET',
@@ -64,36 +114,58 @@ export async function getServerSideProps({ req, res }) {
   // })
 
   // const loqaimat = await LoqaimatDataReq
-
   //return props
+
   return {
     props: {
       all: '',
+      // country_code: country_code,
       // loqaimat: loqaimat.data,
       all_news: custom_array,
-      user_id: user_id,
+      // user_id: user_id,
     },
   }
 }
 // typeof window !== 'undefined' &&
 //   console.log(window.localStorage.getItem('user_id'))
 const index = (props) => {
+  const [all_news, setAll_news] = useState([])
+  // const cookies = new Cookies(req, res)
+  // let user_id = cookies.get('user_id')
+  // console.log(user_id)
+  // let country_code = cookies.get('country_code')
+
+  let country_code = getCookie('country_code')
+  let user_id = getCookie('user_id')
+
+  useEffect(() => {
+    let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+    axios.get(all_news_url).then((res) => {
+      // setAll_news(res.data.data)
+      // Convert API Data From (Object To Array)
+      let keys = Object.keys(res.data.data)
+      let custom_array = []
+      keys.map((item) => {
+        custom_array.push(res.data.data[item])
+      })
+      setAll_news(custom_array)
+    })
+  }, [user_id])
+  // console.log(all_news[0])
   return (
     <React.Fragment>
-      {console.log(props.user_id)}
-      <p className="py-20 text-center text-6xl">Hello</p>
-      {/* <HeadComp />
+      {/* {console.log(props.all_news)} */}
+      <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-        {console.log(props.user_id)}
-
-        {props.all_news[0]?.data && (
+        {/* {console.log(props.user_id)} */}
+        {all_news[0]?.data ? (
           <>
             <Category_news
               loading="eager"
               title={'أهم الأخبار'}
-              category_news={props.all_news[0]}
-              user_id={props.user_id}
+              category_news={all_news[0]}
+              user_id={user_id}
               subs={null}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
@@ -105,8 +177,8 @@ const index = (props) => {
                 <Colored
                   loading="lazy"
                   title={'مخصص لك'}
-                  important_news={props.all_news[1]}
-                  user_id={props.user_id}
+                  important_news={all_news[1]}
+                  user_id={user_id}
                   card_color={'bg-Purp100'}
                   theme={'bg-Purp200'}
                   text_color={'text-white'}
@@ -122,8 +194,183 @@ const index = (props) => {
             <Category_news
               loading="lazy"
               title={'  الشأن الدولي'}
+              category_news={all_news[11]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-YELLOW'}
+              title_color={'text-YELLOW'}
+              fill_color={'fill-YELLOW'}
+              description={'جميع ما يحدث حول العالم '}
+            />
+            <Category_news
+              loading="lazy"
+              title={' الصحه'}
+              category_news={all_news[4]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-BLUE'}
+              title_color={'text-BLUE'}
+              fill_color={'fill-BLUE'}
+              description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
+            />
+            <Voice
+              loading="lazy"
+              title={'الصوتيات '}
+              news_one={all_news[6]}
+              news_two={all_news[6]}
+              subs={true}
+              title_color={'text-YELLOW'}
+              fill_color={'fill-YELLOW'}
+              card_color={'bg-GRAY100'}
+              desc_color={'text-GRAY400'}
+              theme={'bg-YELLOW'}
+              description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' تكنولوجيا'}
+              category_news={all_news[12]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-GREEN'}
+              title_color={'text-GREEN'}
+              fill_color={'fill-GREEN'}
+              description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' لايف ستايل'}
+              category_news={all_news[16]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-RED'}
+              title_color={'text-RED'}
+              fill_color={'fill-RED'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' غزو أوكرانيا'}
+              category_news={all_news[8]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-YELLOW'}
+              title_color={'text-YELLOW'}
+              fill_color={'fill-YELLOW'}
+              description={'جميع ما يخص أحداث غزو أوكرانيا'}
+            />
+            {/* <Logaimat
+              loading="lazy"
+              title={'لقيمات'}
+              important_news={props.loqaimat.data[0].screens}
+              subs={true}
+              title_color={'text-SKY'}
+              theme={'bg-SKY'}
+              card_color={'bg-GRAY100'}
+              fill_color={'fill-SKY'}
+              desc_color={'text-GRAY400'}
+              text_color={'text-black'}
+              description={'بطريقة جميلة يمكنك قرائه المواضيع'}
+            /> */}
+            <Category_news
+              loading="lazy"
+              title={'اخبار الفن'}
+              category_news={all_news[15]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-BLUE'}
+              title_color={'text-BLUE'}
+              fill_color={'fill-BLUE'}
+              description={'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' مال وأعمال'}
+              category_news={all_news[7]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-GREEN'}
+              title_color={'text-GREEN'}
+              fill_color={'fill-GREEN'}
+              description={
+                'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+              }
+            />
+            <Category_news
+              loading="lazy"
+              title={' ترند'}
+              category_news={all_news[5]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-RED'}
+              title_color={'text-RED'}
+              fill_color={'fill-RED'}
+              description={
+                'جميع الأخبار المتعلقة في عالميات الترند من أهم المصادر'
+              }
+            />
+            <Category_news
+              loading="lazy"
+              title={'  الشرق الأوسط'}
+              category_news={all_news[14]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-YELLOW'}
+              title_color={'text-YELLOW'}
+              fill_color={'fill-YELLOW'}
+              description={'جميع ما يحدث حول العالم '}
+            />
+            <Category_news
+              loading="lazy"
+              title={' رياضه'}
+              category_news={all_news[3]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-BLUE'}
+              title_color={'text-BLUE'}
+              fill_color={'fill-BLUE'}
+              description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' العاب'}
+              category_news={all_news[13]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-GREEN'}
+              title_color={'text-GREEN'}
+              fill_color={'fill-GREEN'}
+              description={'جميع ما يخص عالم الالعاب بين يديك'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' الخليج العربي '}
+              category_news={all_news[10]}
+              user_id={user_id}
+              subs={true}
+              bg_color={'bg-YELLOW'}
+              title_color={'text-YELLOW'}
+              fill_color={'fill-YELLOW'}
+              description={'جميع ما يخص أحداث الخليج العربي'}
+            />
+            <Footer loading="lazy" />
+          </>
+        ) : (
+          <>
+            <Category_news
+              loading="eager"
+              title={'أهم الأخبار'}
+              category_news={props.all_news[0]}
+              user_id={user_id}
+              subs={null}
+              bg_color={'bg-RED'}
+              title_color={'text-RED'}
+              fill_color={'fill-RED'}
+            />
+            <Category_news
+              loading="lazy"
+              title={'  الشأن الدولي'}
               category_news={props.all_news[11]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -134,7 +381,7 @@ const index = (props) => {
               loading="lazy"
               title={' الصحه'}
               category_news={props.all_news[4]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-BLUE'}
               title_color={'text-BLUE'}
@@ -158,7 +405,7 @@ const index = (props) => {
               loading="lazy"
               title={' تكنولوجيا'}
               category_news={props.all_news[12]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-GREEN'}
               title_color={'text-GREEN'}
@@ -169,7 +416,7 @@ const index = (props) => {
               loading="lazy"
               title={' لايف ستايل'}
               category_news={props.all_news[16]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
@@ -179,31 +426,19 @@ const index = (props) => {
               loading="lazy"
               title={' غزو أوكرانيا'}
               category_news={props.all_news[8]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
               fill_color={'fill-YELLOW'}
               description={'جميع ما يخص أحداث غزو أوكرانيا'}
             />
-            <Logaimat
-              loading="lazy"
-              title={'لقيمات'}
-              important_news={props.loqaimat.data[0].screens}
-              subs={true}
-              title_color={'text-SKY'}
-              theme={'bg-SKY'}
-              card_color={'bg-GRAY100'}
-              fill_color={'fill-SKY'}
-              desc_color={'text-GRAY400'}
-              text_color={'text-black'}
-              description={'بطريقة جميلة يمكنك قرائه المواضيع'}
-            />
+
             <Category_news
               loading="lazy"
               title={'اخبار الفن'}
               category_news={props.all_news[15]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-BLUE'}
               title_color={'text-BLUE'}
@@ -214,7 +449,7 @@ const index = (props) => {
               loading="lazy"
               title={' مال وأعمال'}
               category_news={props.all_news[7]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-GREEN'}
               title_color={'text-GREEN'}
@@ -227,7 +462,7 @@ const index = (props) => {
               loading="lazy"
               title={' ترند'}
               category_news={props.all_news[5]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-RED'}
               title_color={'text-RED'}
@@ -240,7 +475,7 @@ const index = (props) => {
               loading="lazy"
               title={'  الشرق الأوسط'}
               category_news={props.all_news[14]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -251,7 +486,7 @@ const index = (props) => {
               loading="lazy"
               title={' رياضه'}
               category_news={props.all_news[3]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-BLUE'}
               title_color={'text-BLUE'}
@@ -262,7 +497,7 @@ const index = (props) => {
               loading="lazy"
               title={' العاب'}
               category_news={props.all_news[13]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-GREEN'}
               title_color={'text-GREEN'}
@@ -273,7 +508,7 @@ const index = (props) => {
               loading="lazy"
               title={' الخليج العربي '}
               category_news={props.all_news[10]}
-              user_id={props.user_id}
+              user_id={user_id}
               subs={true}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
@@ -283,7 +518,7 @@ const index = (props) => {
             <Footer loading="lazy" />
           </>
         )}
-      </div> */}
+      </div>
     </React.Fragment>
   )
 }
