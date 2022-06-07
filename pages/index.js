@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
 import { getCookies, setCookies, removeCookies } from 'cookies-next'
-// import Cookies from 'cookies'
+import Cookies from 'cookies'
 // import { getCookie } from 'cookies-next'
 
 // Apple View component
@@ -33,13 +33,13 @@ export async function getServerSideProps({ req, res }) {
   // console.log(setCookies(option))
 
   // Create a cookies instance
-  // const cookies = new Cookies(req, res)
+  const cookies = new Cookies(req, res)
 
   // const id = ''
   // getCookie('user_id', id) // => 'value'
 
   // let country_code = cookies.get('country_code')
-  // let user_id = cookies.get('user_id')
+  let user_id = cookies.get('user_id')
   // let user_token = cookies.get('user_token')
 
   // Get All News
@@ -53,7 +53,7 @@ export async function getServerSideProps({ req, res }) {
   keys.map((item) => {
     custom_array.push(all_news.data[item])
   })
-  console.log('=== ', getCookies())
+  console.log('=== ', user_id)
   // // Get Logaimat API
   // const LoqaimatDataReq = axios({
   //   method: 'GET',
@@ -71,7 +71,7 @@ export async function getServerSideProps({ req, res }) {
       all: '',
       // loqaimat: loqaimat.data,
       all_news: custom_array,
-      // user_id: user_id,
+      user_id: user_id,
     },
   }
 }
@@ -80,6 +80,7 @@ export async function getServerSideProps({ req, res }) {
 const index = (props) => {
   return (
     <React.Fragment>
+      {console.log(props.user_id)}
       <p className="py-20 text-center text-6xl">Hello</p>
       {/* <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
