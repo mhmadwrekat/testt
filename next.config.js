@@ -56,6 +56,7 @@ module.exports = {
       'cdn.discordapp.com',
       'inappimagesalzubda.s3.us-east-2.amazonaws.com',
       'assets.devops.arabiaweather.com',
+      'akm-img-a-in.tosshub.com',
       'images.unsplash.com',
       'media.istockphoto.com',
       'storage.googleapis.com',

@@ -58,10 +58,10 @@ const App = ({ Component, pageProps }) => {
 
   //Myne : G-CC35HDRGKD
   //'GTM-WSLC3QB'
-  const [user_id, setUser_id] = useState(null)
+  const [userId, setUserId] = useState()
   useEffect(() => {
     register_user()
-    setUser_id(localStorage.getItem('user_id'))
+    setUserId(localStorage.getItem('user_id'))
     // console.log(user_id)
     const handleRouteChange = (url) => {
       gtag.pageview(url)
@@ -98,7 +98,7 @@ const App = ({ Component, pageProps }) => {
   // send_user()
   return (
     <ThemeProvider defaultTheme="system">
-      <Component {...pageProps} user_id={user_id} />
+      <Component {...pageProps} userId={userId} />
     </ThemeProvider>
   )
 }

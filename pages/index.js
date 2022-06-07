@@ -67,16 +67,31 @@ export async function getServerSideProps({ req, res }) {
 // 9 -> الفيديوهات
 // 8 -> lifr_style
 const index = (props) => {
+  /*
+  // GET: function to get the country code for the user
+  function get_user_country_code() {
+    axios
+      .get("https://geolocation-db.com/json/")
+      .then((res) => {
+        //get sectioned news based on user country code
+        get_all_news(res.data.country_code);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  */
   // props.user_id && console.log(props.user_id)
   const [all_news, setAll_news] = useState([])
 
-  // Get All News
-  const all_news_url = props.user_id
-    ? `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.user_id}`
-    : `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}`
+  // const all_news_url = props.user_id
+  //   ? `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.user_id}`
+  //   : `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.user_id}`
 
-  useEffect(() => {
-    axios.get(all_news_url).then((res) => {
+  // Get All News
+  const get_all_news = (url) => {
+    axios.get(url).then((res) => {
+      // console.log(res.data.data)
       let keys = Object.keys(res.data.data)
       let custom_array = []
       keys.map((item) => {
@@ -84,14 +99,27 @@ const index = (props) => {
       })
       setAll_news(custom_array)
     })
-  }, [])
-  // console.log(all_news[0]?.section_name)
+  }
+  let url = `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`
+  // props?.userId &&
+  //   // (url = `${BASE_URL}/v1/Web/Sections?current_country=JO&userId=${props.userId}`)
+  //   (url = `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`)
+  console.log(url)
+  // setA(localStorage.getItem('userId'))
+  // let as = '&userId=' + a
+  props?.userId &&
+    get_all_news(
+      `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`
+    )
+  // props?.userId && console.log('1 - ', props?.userId)
+  // props?.useri && console.log('2 - ', props?.useri)
+
   return (
     <React.Fragment>
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-        {/* {console.log(props.all_news[0])} */}
+        {/* {console.log(all_news[0])} */}
         {all_news[0]?.data && (
           <>
             <Category_news
