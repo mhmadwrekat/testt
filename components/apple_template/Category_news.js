@@ -90,7 +90,7 @@ const Category_news = ({
 
   return (
     <React.Fragment>
-      {console.log('User_ID = ', user_id)}
+      {/* {console.log('User_ID = ', user_id)} */}
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
         <>
           <div className="flex justify-between">
