@@ -42,19 +42,9 @@ const App = ({ Component, pageProps }) => {
       console.log(err)
     }
   }
-  function get_country_code() {
-    fetch('https://geolocation-db.com/json/')
-      .then((response) => response.json())
-      .then((data) => {
-        setCookies('country_code', data.country_code)
-      })
-      .catch((error) => {
-        console.error('Error:', error)
-      })
-  }
+
   useEffect(() => {
     register_user()
-    get_country_code()
   }, [])
 
   useEffect(() => {

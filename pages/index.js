@@ -29,16 +29,16 @@ export async function getServerSideProps({ req, res }) {
   const cookies = new Cookies(req, res)
   // let user_id = cookies.get('user_id')
   const register_user = async () => {
-    console.log('HHHHHHHHHH')
+    console.log('111111111111')
     try {
       let device_id = null
-      console.log('HHHHHHHHHH')
+      console.log('2222222222222222')
       if ('device_id' in localStorage) {
         device_id = localStorage.getItem('device_id')
-        console.log('HHHHHHHHHH')
+        console.log('33333333333333')
       } else {
         device_id = uuidv4()
-        console.log('HHHHHHHHHH')
+        console.log('44444444444444444444')
       }
       axios
         .post(`${BASE_URL}/v1/Users/`, {
@@ -49,7 +49,7 @@ export async function getServerSideProps({ req, res }) {
           device_type: 'WEB',
         })
         .then(function (response) {
-          console.log('HHHHHHHHHH')
+          console.log('5555555555555555555')
           localStorage.setItem('device_id', device_id)
           setCookies('device_id', device_id)
           setCookies('user_token', response.data.data.user_token)
@@ -62,27 +62,32 @@ export async function getServerSideProps({ req, res }) {
       console.log(err)
     }
   }
-  fetch('https://geolocation-db.com/json/')
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('HHHHHHHHHH')
-      setCookies('country_code', data.country_code)
-    })
-    .catch((error) => {
-      console.error('Error:', error)
-    })
-  function get_country_code() {
-    console.log('HHHHHHHHHH')
-    fetch('https://geolocation-db.com/json/')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('HHHHHHHHHH')
-        setCookies('country_code', data.country_code)
-      })
-      .catch((error) => {
-        console.error('Error:', error)
-      })
-  }
+
+  // Get Country Code
+  const country_code_url = 'https://geolocation-db.com/json/'
+  const country_code_res = await fetch(country_code_url)
+  const country_code = await country_code_res.json()
+  const ready_country_code = country_code.country_code
+
+  setCookies('country_code', ready_country_code)
+
+  // fetch('https://geolocation-db.com/json/').then((data) => {
+  //   console.log(data.country_code)
+  //   setCookies('country_code', data.country_code)
+  // })
+
+  // function get_country_code() {
+  //   console.log('777777777777777777777')
+  //   fetch('https://geolocation-db.com/json/')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log('88888888888888888888888')
+  //       setCookies('country_code', data.country_code)
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error)
+  //     })
+  // }
   // let option = 'testtttt'
   // setCookies('key', 'value', option)
   // console.log(setCookies(option))
@@ -115,14 +120,15 @@ export async function getServerSideProps({ req, res }) {
 
   // const loqaimat = await LoqaimatDataReq
   //return props
+  // let user_id = cookies.get('user_id')
 
   return {
     props: {
       all: '',
-      // country_code: country_code,
+      country_code: ready_country_code,
       // loqaimat: loqaimat.data,
       all_news: custom_array,
-      // user_id: user_id,
+      // userid: user_id,
     },
   }
 }
@@ -134,7 +140,6 @@ const index = (props) => {
   // let user_id = cookies.get('user_id')
   // console.log(user_id)
   // let country_code = cookies.get('country_code')
-
   let country_code = getCookie('country_code')
   let user_id = getCookie('user_id')
 
@@ -154,11 +159,12 @@ const index = (props) => {
   // console.log(all_news[0])
   return (
     <React.Fragment>
+      {console.log(props.country_code)}
       {/* {console.log(props.all_news)} */}
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
-        {console.log(user_id)}
+        {/* {console.log(user_id)} */}
         {all_news[0]?.data && (
           <>
             <Category_news
@@ -172,7 +178,7 @@ const index = (props) => {
               fill_color={'fill-RED'}
             />
 
-            {props.all_news[1].data.length > 4 ? (
+            {all_news[1].data.length > 4 ? (
               <section className="mt-6 bg-Purp400 pb-8">
                 <Colored
                   loading="lazy"
