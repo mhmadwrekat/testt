@@ -64,12 +64,12 @@ export async function getServerSideProps({ req, res }) {
   }
 
   // Get Country Code
-  const country_code_url = 'https://geolocation-db.com/json/'
+  const country_code_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
   const country_code_res = await fetch(country_code_url)
   const country_code = await country_code_res.json()
-  const ready_country_code = country_code.country_code
-
-  setCookies('country_code', ready_country_code)
+  // const ready_country_code = country_code.country_code
+  console.log(country_code.location.country.code)
+  // setCookies('country_code', ready_country_code)
 
   // fetch('https://geolocation-db.com/json/').then((data) => {
   //   console.log(data.country_code)
@@ -125,7 +125,7 @@ export async function getServerSideProps({ req, res }) {
   return {
     props: {
       all: '',
-      country_code: ready_country_code,
+      country_code: country_code?.location?.country.code,
       // loqaimat: loqaimat.data,
       all_news: custom_array,
       // userid: user_id,
