@@ -32,14 +32,20 @@ export async function getServerSideProps({ req, res }) {
   const cookies = new Cookies(req, res)
 
   let country_code = cookies.get('country_code')
+  let user_id = cookies.get('user_id')
+  let user_token = cookies.get('user_token')
 
-  // Get user token from Local Storage
-  let user_token = ''
+  // Get All News
+  const all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+  const all_news_res = await fetch(all_news_url)
+  const all_news = await all_news_res.json()
 
-  if (typeof window !== 'undefined') {
-    // Perform localStorage action
-    user_token = JSON.parse(localStorage.getItem('user_token'))
-  }
+  // Convert API Data From (Object To Array)
+  let keys = Object.keys(all_news.data)
+  let custom_array = []
+  keys.map((item) => {
+    custom_array.push(all_news.data[item])
+  })
 
   // Get Logaimat API
   const LoqaimatDataReq = axios({
@@ -50,41 +56,17 @@ export async function getServerSideProps({ req, res }) {
     },
   })
 
-  //ts
   const loqaimat = await LoqaimatDataReq
+
   return {
     props: {
       loqaimat: loqaimat.data,
-      country_code: country_code,
+      all_news: custom_array,
     },
   }
 }
 
-const index = (props) => {
-  const [all_news, setAll_news] = useState([])
-  console.log('country_code=======================')
-  console.log(props.country_code)
-  console.log('country_code=======================')
-
-  // Get All News
-  // const get_all_news = (url) => {
-  //   axios.get(url).then((res) => {
-  //     let keys = Object.keys(res.data.data)
-  //     let custom_array = []
-  //     keys.map((item) => {
-  //       custom_array.push(res.data.data[item])
-  //     })
-  //     setAll_news(custom_array)
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   user_id &&
-  //     get_all_news(
-  //       `${BASE_URL}/v1/Web/Sections?current_country=JO&userId=${user_id}`
-  //     )
-  // }, [user_id])
-
+const index = ({ all_news }) => {
   return (
     <React.Fragment>
       {/* {props.ready_test && console.log(props.ready_test)} */}
@@ -103,7 +85,7 @@ const index = (props) => {
               title_color={'text-RED'}
               fill_color={'fill-RED'}
             />
-
+            {/* 
             <Category_news
               loading="lazy"
               title={'  الشأن الدولي'}
@@ -252,7 +234,7 @@ const index = (props) => {
               title_color={'text-YELLOW'}
               fill_color={'fill-YELLOW'}
               description={'جميع ما يخص أحداث الخليج العربي'}
-            />
+            /> */}
             <Footer loading="lazy" />
           </>
         )}

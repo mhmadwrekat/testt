@@ -15,13 +15,9 @@ const App = ({ Component, pageProps }) => {
   // function to handle the user auth.
   const register_user = async () => {
     try {
-      let device_id = null
-
-      if ('device_id' in localStorage) {
-        device_id = localStorage.getItem('device_id')
-      } else {
-        device_id = uuidv4()
-      }
+      let device_id = cookieCutter.get('device_id')
+        ? cookieCutter.get('device_id')
+        : uuidv4()
 
       axios
         .post(`${BASE_URL}/v1/Users/`, {
@@ -32,9 +28,9 @@ const App = ({ Component, pageProps }) => {
           device_type: 'WEB',
         })
         .then(function (response) {
-          localStorage.setItem('device_id', device_id)
-          localStorage.setItem('user_token', response.data.data.user_token)
-          localStorage.setItem('user_id', response.data.data._id)
+          // cookieCutter.set('device_id', device_id)
+          cookieCutter.set('user_token', response.data.data.user_token)
+          cookieCutter.set('user_id', response.data.data._id)
         })
         .catch(function (error) {
           console.log(error)
@@ -48,7 +44,6 @@ const App = ({ Component, pageProps }) => {
     fetch('https://geolocation-db.com/json/')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         cookieCutter.set('country_code', data.country_code)
       })
       .catch((error) => {
