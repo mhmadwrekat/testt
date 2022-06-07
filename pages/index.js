@@ -108,6 +108,7 @@ const index = (props) => {
   // setA(localStorage.getItem('userId'))
   // let as = '&userId=' + a
   props?.userId &&
+    props.ready_country_code &&
     get_all_news(
       `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`
     )
