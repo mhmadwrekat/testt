@@ -11,7 +11,7 @@ import cookieCutter from 'cookie-cutter'
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
-
+  //
   // function to handle the user auth.
   const register_user = async () => {
     try {
