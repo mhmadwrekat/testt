@@ -72,7 +72,7 @@ const index = (props) => {
   return (
     <React.Fragment>
       <HeadComp />
-      <p className="text-4xl">hello</p>
+      <p className="text-4xl">hellooo</p>
       {/* <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
         {console.log(props.user_id)}
