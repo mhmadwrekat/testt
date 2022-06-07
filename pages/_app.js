@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import axios from 'axios'
 import { BASE_URL } from '../config/config'
 import { ThemeProvider } from 'next-themes'
+import cookieCutter from 'cookie-cutter'
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
@@ -48,7 +49,7 @@ const App = ({ Component, pageProps }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
-        localStorage.setItem('country_code', data.country_code)
+        cookieCutter.set('country_code', data.country_code)
       })
       .catch((error) => {
         console.error('Error:', error)

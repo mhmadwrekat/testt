@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
+import Cookies from 'cookies'
+
 // Apple View component
 const Category_news = dynamic(() =>
   import('../components/apple_template/Category_news')
@@ -26,12 +28,17 @@ export async function getServerSideProps({ req, res }) {
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
 
+  // Create a cookies instance
+  const cookies = new Cookies(req, res)
+
+  let country_code = cookies.get('country_code')
+
   // Get user token from Local Storage
   let user_token = ''
 
   if (typeof window !== 'undefined') {
     // Perform localStorage action
-    user_token = localStorage.getItem('user_token')
+    user_token = JSON.parse(localStorage.getItem('user_token'))
   }
 
   // Get Logaimat API
@@ -46,39 +53,35 @@ export async function getServerSideProps({ req, res }) {
   return {
     props: {
       loqaimat: loqaimat.data,
+      country_code: country_code,
     },
   }
 }
 
 const index = (props) => {
-  let country_code =
-    typeof window !== 'undefined' ? localStorage.getItem('country_code') : ''
-
   const [all_news, setAll_news] = useState([])
+  console.log('country_code=======================')
+  console.log(props.country_code)
+  console.log('country_code=======================')
 
   // Get All News
-  const get_all_news = (url) => {
-    axios.get(url).then((res) => {
-      // console.log(res.data.data)
-      let keys = Object.keys(res.data.data)
-      let custom_array = []
-      keys.map((item) => {
-        custom_array.push(res.data.data[item])
-      })
-      setAll_news(custom_array)
-    })
-  }
+  // const get_all_news = (url) => {
+  //   axios.get(url).then((res) => {
+  //     let keys = Object.keys(res.data.data)
+  //     let custom_array = []
+  //     keys.map((item) => {
+  //       custom_array.push(res.data.data[item])
+  //     })
+  //     setAll_news(custom_array)
+  //   })
+  // }
 
-  props?.userId &&
-    props.ready_test &&
-    get_all_news(
-      `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_test}&userId=${props.userId}`
-    )
-
-  useEffect(() => {
-    console.log(props)
-    console.log(country_code)
-  }, [props, country_code])
+  // useEffect(() => {
+  //   user_id &&
+  //     get_all_news(
+  //       `${BASE_URL}/v1/Web/Sections?current_country=JO&userId=${user_id}`
+  //     )
+  // }, [user_id])
 
   return (
     <React.Fragment>
