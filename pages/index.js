@@ -93,7 +93,7 @@ export async function getServerSideProps({ req, res }) {
   // let user_token = cookies.get('user_token')
 
   // Get All News
-  let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=EG`
+  let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
   const all_news_res = await fetch(all_news_url)
   const all_news = await all_news_res.json()
 
