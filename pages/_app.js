@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 import { useRouter } from 'next/router'
