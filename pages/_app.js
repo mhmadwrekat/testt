@@ -10,7 +10,6 @@ import { ThemeProvider } from 'next-themes'
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
-  const [userId, setUserId] = useState()
 
   // function to handle the user auth.
   const register_user = async () => {
@@ -59,7 +58,6 @@ const App = ({ Component, pageProps }) => {
   useEffect(() => {
     register_user()
     get_country_code()
-    setUserId(localStorage.getItem('user_id'))
     const handleRouteChange = (url) => {
       gtag.pageview(url)
       TagManager.initialize({ gtmId: 'GTM-WSLC3QB' })
@@ -72,7 +70,7 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <ThemeProvider defaultTheme="system">
-      <Component {...pageProps} userId={userId} />
+      <Component {...pageProps} />
     </ThemeProvider>
   )
 }

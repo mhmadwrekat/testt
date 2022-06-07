@@ -16,8 +16,8 @@ const Logaimat = dynamic(() => import('../components/apple_template/Logaimat'))
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
 const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
-//
 // import Test from '..//components/appleStructrue/Test'
+
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -25,23 +25,15 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
-  const test_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
-  const test_req = await fetch(test_url)
-  const test = await test_req.json()
-  const ready_test = test.location.country.code
-  // Get Country Code
-
-  const country_code_url = 'https://geolocation-db.com/json/'
-  const country_code_res = await fetch(country_code_url)
-  const country_code = await country_code_res.json()
-  const ready_country_code = country_code.country_code
 
   // Get user token from Local Storage
   let user_token = ''
+
   if (typeof window !== 'undefined') {
     // Perform localStorage action
     user_token = localStorage.getItem('user_token')
   }
+
   // Get Logaimat API
   const LoqaimatDataReq = axios({
     method: 'GET',
@@ -53,41 +45,16 @@ export async function getServerSideProps({ req, res }) {
   const loqaimat = await LoqaimatDataReq
   return {
     props: {
-      // all_news: custom_array,
-      // big_news: all_news,
       loqaimat: loqaimat.data,
-      ready_country_code: ready_country_code,
-      ready_test: ready_test,
-      // // test: ready_test,
     },
   }
 }
-// 1 -> مخصص لك
-// 2 -> يدور حولك
-// 6 -> الصوتيات
-// 9 -> الفيديوهات
-// 8 -> lifr_style
-const index = (props) => {
-  /*
-  // GET: function to get the country code for the user
-  function get_user_country_code() {
-    axios
-      .get("https://geolocation-db.com/json/")
-      .then((res) => {
-        //get sectioned news based on user country code
-        get_all_news(res.data.country_code);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-  */
-  // props.user_id && console.log(props.user_id)
-  const [all_news, setAll_news] = useState([])
 
-  // const all_news_url = props.user_id
-  //   ? `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.user_id}`
-  //   : `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.user_id}`
+const index = (props) => {
+  let country_code =
+    typeof window !== 'undefined' ? localStorage.getItem('country_code') : ''
+
+  const [all_news, setAll_news] = useState([])
 
   // Get All News
   const get_all_news = (url) => {
@@ -101,19 +68,17 @@ const index = (props) => {
       setAll_news(custom_array)
     })
   }
-  // let url = `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`
-  // props?.userId &&
-  //   // (url = `${BASE_URL}/v1/Web/Sections?current_country=JO&userId=${props.userId}`)
-  //   (url = `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_country_code}&userId=${props.userId}`)
-  // setA(localStorage.getItem('userId'))
-  // let as = '&userId=' + a
+
   props?.userId &&
     props.ready_test &&
     get_all_news(
       `${BASE_URL}/v1/Web/Sections?current_country=${props.ready_test}&userId=${props.userId}`
     )
-  // props?.userId && console.log('1 - ', props?.userId)
-  // props?.useri && console.log('2 - ', props?.useri)
+
+  useEffect(() => {
+    console.log(props)
+    console.log(country_code)
+  }, [props, country_code])
 
   return (
     <React.Fragment>
