@@ -29,14 +29,6 @@ export async function getServerSideProps({ req, res }) {
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
   const cookies = new Cookies(req, res)
-  let country = ''
-  getCookie('country_code')
-    ? (country = getCookie('country_code'))
-    : axios.get('https://geolocation-db.com/json/').then((res) => {
-        console.log('GETTTTTTTTTT')
-        setCookies('country_code', res.data.country_code)
-        country = res.data.country_code
-      })
 
   // typeof window !== 'undefined' &&
   // console.log('hhhhhhhhhhhhhhhhh')
@@ -75,19 +67,6 @@ export async function getServerSideProps({ req, res }) {
   // Create a cookies instance
   // const id = ''
   // getCookie('user_id', id) // => 'value'
-  function get_country_code() {
-    fetch('https://geolocation-db.com/json/')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('SETS')
-        setCookies('country', '1')
-      })
-      .catch((error) => {
-        console.log('ERROR')
-        console.error('Error:', error)
-      })
-  }
-  get_country_code()
 
   let user_token = cookies.get('user_token')
 
@@ -122,11 +101,15 @@ export async function getServerSideProps({ req, res }) {
       loqaimat: loqaimat.data,
       all_news: custom_array,
       // userid: user_id,
-      country: country,
     },
   }
 }
-/*
+
+// typeof window !== 'undefined' &&
+//   console.log(window.localStorage.getItem('user_id'))
+const index = (props) => {
+  const [country, setCountry] = useState()
+
   useEffect(() => {
     getCookie('country_code')
       ? setCountry(getCookie('country_code'))
@@ -136,12 +119,7 @@ export async function getServerSideProps({ req, res }) {
           setCountry(res.data.country_code)
         })
   }, [country])
-*/
-// typeof window !== 'undefined' &&
-//   console.log(window.localStorage.getItem('user_id'))
-const index = (props) => {
-  console.log('YEE-> ', props.country)
-
+  console.log('YEE-> ', country)
   // const cookies = new Cookies(req, res)
   // let user_id = cookies.get('user_id')
   // console.log(user_id)
