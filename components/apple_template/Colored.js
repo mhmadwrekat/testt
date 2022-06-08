@@ -44,7 +44,7 @@ const Colored = ({
   // function to handle Love & Unlove for First News
   const [like, setLike] = useState(important_news?.data[0]?.is_loved)
   const handleLike = (story_id, is_loved) => {
-    console.log(story_id, is_loved)
+    // console.log(story_id, is_loved)
     let config = {
       method: 'PUT',
       baseURL: `${BASE_URL}`,
@@ -56,7 +56,7 @@ const Colored = ({
       },
     }
     axios(config).then((res) => {
-      console.log(res)
+      // console.log(res)
       setLike(!like)
     })
     // return !is_loved

@@ -21,67 +21,15 @@ const Footer = dynamic(() => import('../components/page/Footer'))
 import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next'
 
 // Get Server Side Function
-// const [country, setCountry] = useState()
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
-  const cookies = new Cookies(req, res)
-
-  // typeof window !== 'undefined' &&
-  // console.log('hhhhhhhhhhhhhhhhh')
-  // if (localStorage !== undefined) {
-  //   const token = localStorage.getItem('token')
-  //   localStorage.setItem('test', '123')
-  // }
-  // // Get Country Code
-  // const country_code_url = 'https://api.ipregistry.co/?key=rxw4ldwhlsthgalj'
-  // const country_code_res = await fetch(country_code_url)
-  // const country_code = await country_code_res.json()
-  // const ready_country_code = country_code.country_code
-
-  // setCookies('country_code', ready_country_code)
-
-  // fetch('https://geolocation-db.com/json/').then((data) => {
-  //   console.log(data.country_code)
-  //   setCookies('country_code', data.country_code)
-  // })
-
-  // function get_country_code() {
-  //   console.log('777777777777777777777')
-  //   fetch('https://geolocation-db.com/json/')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log('88888888888888888888888')
-  //       setCookies('country_code', data.country_code)
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error:', error)
-  //     })
-  // }
-  // let option = 'testtttt'
-  // setCookies('key', 'value', option)
-  // console.log(setCookies(option))
-  // Create a cookies instance
-  // const id = ''
-  // getCookie('user_id', id) // => 'value'
-
-  let user_token = cookies.get('user_token')
-
-  // Get All News
-  let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=JO`
-  const all_news_res = await fetch(all_news_url)
-  const all_news = await all_news_res.json()
-
-  // Convert API Data From (Object To Array)
-  let keys = Object.keys(all_news.data)
-  let custom_array = []
-  keys.map((item) => {
-    custom_array.push(all_news.data[item])
-  })
   // Get Logaimat API
+  const cookies = new Cookies(req, res)
+  let user_token = cookies.get('user_token')
   const LoqaimatDataReq = axios({
     method: 'GET',
     url: `${BASE_URL}/v1/Web/Loqaimat`,
@@ -90,86 +38,498 @@ export async function getServerSideProps({ req, res }) {
     },
   })
   const loqaimat = await LoqaimatDataReq
-
-  //return props
-  // let user_id = cookies.get('user_id')
-
   return {
     props: {
-      all: '',
-      // country_code: country_code?.location?.country.code,
       loqaimat: loqaimat.data,
-      all_news: custom_array,
-      // userid: user_id,
     },
   }
 }
 
-// typeof window !== 'undefined' &&
-//   console.log(window.localStorage.getItem('user_id'))
 const index = (props) => {
-  const [country, setCountry] = useState()
+  // Declare State
+  const [country_code, set_country_code] = useState()
+  const [user_id, set_user_id] = useState()
+  const [all_news, setAll_news] = useState()
+  const [bg_image, setBg_image] = useState('bg-kuwait')
 
-  useEffect(() => {
+  // Function Get User Info From LocalStorage else From API
+  const register_user = async () => {
+    try {
+      let device_id = null
+      if ('device_id' in localStorage) {
+        // console.log('Not Get User ID')
+        device_id = localStorage.getItem('device_id')
+        set_user_id(localStorage.getItem('user_id'))
+      } else {
+        device_id = uuidv4()
+        axios
+          .post(`${BASE_URL}/v1/Users/`, {
+            device_id: device_id,
+            device_model_type: '2022',
+            device_operating_system: 'web',
+            current_version_app: '1.0.0',
+            device_type: 'WEB',
+          })
+          .then(function (response) {
+            // console.log('Get User Id')
+            localStorage.setItem('device_id', device_id)
+            localStorage.setItem('user_token', response.data.data.user_token)
+            localStorage.setItem('user_id', response.data.data._id)
+            setCookies('device_id', device_id)
+            setCookies('user_token', response.data.data.user_token)
+            setCookies('user_id', response.data.data._id)
+            set_user_id(response.data.data._id)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  // Function Get Country Code From LocalStorage else From API
+  const get_country = async () => {
     getCookie('country_code')
-      ? setCountry(getCookie('country_code'))
+      ? set_country_code(getCookie('country_code'))
       : axios.get('https://geolocation-db.com/json/').then((res) => {
-          console.log('GETTTTTTTTTT')
+          // console.log('Get Country Code')
           setCookies('country_code', res.data.country_code)
-          setCountry(res.data.country_code)
+          localStorage.setItem('country_code', res.data.country_code)
+          set_country_code(res.data.country_code)
         })
-  }, [country])
-  console.log('YEE-> ', country)
-  // const cookies = new Cookies(req, res)
-  // let user_id = cookies.get('user_id')
-  // console.log(user_id)
-  // let country_code = cookies.get('country_code')
-  // let country_code = getCookie('country_code')
-  // let user_id = getCookie('user_id')
+  }
 
-  // function get_all() {
-  //   let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${get_country_code()}&userId=${user_id}`
-  //   axios.get(all_news_url).then((res) => {
-  //     // setAll_news(res.data.data)
-  //     // Convert API Data From (Object To Array)
-  //     let keys = Object.keys(res.data.data)
-  //     let custom_array = []
-  //     keys.map((item) => {
-  //       custom_array.push(res.data.data[item])
-  //     })
-  //     setAll_news(custom_array)
-  //   })
-  // }
-  // get_all()
-  // useEffect(() => {
-
-  // }, [country_code])
-  // console.log(all_news)
-  // all_news.map((item) => {
-  //   item.is_subscribed !== null &&
-  //     item.is_subscribed == true &&
-  //     console.log(item.is_subscribed)
-  // })
-
-  // console.log('C.C -> ', getCookie('country'))
-  // console.log('U.ID -> ', user_id)
+  // Function Get all News
+  const get_all = async () => {
+    let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+    axios.get(all_news_url).then((res) => {
+      // setAll_news(res.data.data)
+      // console.log(all_news_url)
+      // Convert API Data From (Object To Array)
+      let keys = Object.keys(res.data.data)
+      let custom_array = []
+      keys.map((item) => {
+        custom_array.push(res.data.data[item])
+      })
+      setAll_news(custom_array)
+    })
+  }
 
   // Function Returned Background Image Based on Country Code
-  // let bg_image = 'bg-kuwait'
-  // const get_bg_image = () => {
-  //   if (country_code?.includes('JO')) {
-  //     return (bg_image = 'bg-jordan')
-  //   } else if (country_code?.includes('SA')) {
-  //     return (bg_image = 'bg-saudi')
-  //   } else if (country_code?.includes('EG')) {
-  //     return (bg_image = 'bg-egypt')
-  //   } else {
-  //     return (bg_image = 'bg-kuwait')
-  //   }
-  // }
-  // get_bg_image()
+  const get_bg_image = async () => {
+    if (country_code?.includes('JO')) {
+      setBg_image('bg-jordan')
+    } else if (country_code?.includes('SA')) {
+      setBg_image('bg-saudi')
+    } else if (country_code?.includes('EG')) {
+      setBg_image('bg-egypt')
+    }
+  }
+  // Call All Functions
+  useEffect(() => {
+    register_user()
+    get_country()
+    get_all()
+    get_bg_image()
+  }, [country_code, user_id])
 
-  return <>{/* <p>hello</p> */}</>
+  return (
+    <React.Fragment>
+      <HeadComp />
+      <div dir="rtl" id="project_body" className="bg-white text-black">
+        <Nav />
+        {all_news && (
+          <React.Fragment>
+            <Category_news
+              loading="eager"
+              title={'أهم الأخبار'}
+              category_news={all_news[0]}
+              user_id={user_id}
+              subs={null}
+              bg_color={'bg-RED'}
+              title_color={'text-RED'}
+              fill_color={'fill-RED'}
+            />
+            {all_news[1]?.data?.length > 4 ? (
+              <section className="mt-6 bg-Purp400 pb-8">
+                <Colored
+                  loading="lazy"
+                  title={'مخصص لك'}
+                  important_news={all_news[1]}
+                  user_id={user_id}
+                  card_color={'bg-Purp100'}
+                  theme={'bg-Purp200'}
+                  text_color={'text-white'}
+                  fill_color={'fill-Purp200'}
+                  desc_color={'text-GRAY'}
+                  description={
+                    'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
+                  }
+                />
+              </section>
+            ) : null}
+            <Category_news
+              loading="lazy"
+              title={'  الشأن الدولي'}
+              category_news={all_news[11]}
+              user_id={user_id}
+              subs={all_news[11]?.is_subscribed}
+              bg_color={'bg-YELLOW'}
+              title_color={'text-YELLOW'}
+              fill_color={'fill-YELLOW'}
+              description={'جميع ما يحدث حول العالم '}
+            />
+            <Category_news
+              loading="lazy"
+              title={' الصحه'}
+              category_news={all_news[4]}
+              user_id={user_id}
+              subs={all_news[4]?.is_subscribed}
+              bg_color={'bg-BLUE'}
+              title_color={'text-BLUE'}
+              fill_color={'fill-BLUE'}
+              description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
+            />
+            <section
+              className={`${bg_image} bg-arroud mt-6 bg-auto bg-fixed bg-top bg-no-repeat pb-8`}
+            >
+              <Colored
+                loading="lazy"
+                title={'يدور حولك'}
+                important_news={all_news[0]}
+                user_id={user_id}
+                card_color={'bg-GRAY400'}
+                theme={'bg-Purp200'}
+                text_color={'text-GRAY100'}
+                fill_color={'fill-Purp200'}
+                desc_color={'text-white'}
+                description={'جميع ما يدور من حولك'}
+              />
+            </section>
+            {all_news[9]?.data?.length > 3 && (
+              <Video
+                title={'الأكثر مشاهدة'}
+                category_news={all_news[9]}
+                user_id={user_id}
+                subs={null}
+                bg_color={'bg-Purp300'}
+                title_color={'text-Purp300'}
+                fill_color={'fill-Purp300'}
+                description={'بطريقة جميلة يمكنك مشاهدة الأخبار'}
+              />
+            )}
+            <Category_news
+              loading="lazy"
+              title={'اخبار الفن'}
+              category_news={all_news[15]}
+              user_id={user_id}
+              subs={all_news[15]?.is_subscribed}
+              bg_color={'bg-BLUE'}
+              title_color={'text-BLUE'}
+              fill_color={'fill-BLUE'}
+              description={'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' مال وأعمال'}
+              category_news={all_news[7]}
+              user_id={user_id}
+              subs={all_news[7]?.is_subscribed}
+              bg_color={'bg-GREEN'}
+              title_color={'text-GREEN'}
+              fill_color={'fill-GREEN'}
+              description={
+                'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+              }
+            />
+            <Logaimat
+              loading="lazy"
+              title={'لقيمات'}
+              important_news={props?.loqaimat?.data[0].screens}
+              subs={null}
+              title_color={'text-SKY'}
+              theme={'bg-SKY'}
+              card_color={'bg-GRAY100'}
+              fill_color={'fill-SKY'}
+              desc_color={'text-GRAY400'}
+              text_color={'text-black'}
+              description={'بطريقة جميلة يمكنك قرائه المواضيع'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' ترند'}
+              category_news={all_news[5]}
+              user_id={user_id}
+              subs={all_news[5]?.is_subscribed}
+              bg_color={'bg-RED'}
+              title_color={'text-RED'}
+              fill_color={'fill-RED'}
+              description={
+                'جميع الأخبار المتعلقة في عالميات الترند من أهم المصادر'
+              }
+            />
+            <Voice
+              loading="lazy"
+              title={'الصوتيات '}
+              news_one={all_news[6]}
+              news_two={all_news[6]}
+              subs={null}
+              title_color={'text-YELLOW'}
+              fill_color={'fill-YELLOW'}
+              card_color={'bg-GRAY100'}
+              desc_color={'text-GRAY400'}
+              theme={'bg-YELLOW'}
+              description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' العاب'}
+              category_news={all_news[13]}
+              user_id={user_id}
+              subs={all_news[13]?.is_subscribed}
+              bg_color={'bg-GREEN'}
+              title_color={'text-GREEN'}
+              fill_color={'fill-GREEN'}
+              description={'جميع ما يخص عالم الالعاب بين يديك'}
+            />
+            <Category_news
+              loading="lazy"
+              title={' الخليج العربي '}
+              category_news={all_news[10]}
+              user_id={user_id}
+              subs={all_news[10]?.is_subscribed}
+              bg_color={'bg-YELLOW'}
+              title_color={'text-YELLOW'}
+              fill_color={'fill-YELLOW'}
+              description={'جميع ما يخص أحداث الخليج العربي'}
+            />
+          </React.Fragment>
+        )}
+        {/* {all_news[0]?.data.length > 4 && ( */}
+        <>
+          {/* <Logaimat
+            loading="lazy"
+            title={'لقيمات'}
+            important_news={props.loqaimat.data[0].screens}
+            subs={null}
+            title_color={'text-SKY'}
+            theme={'bg-SKY'}
+            card_color={'bg-GRAY100'}
+            fill_color={'fill-SKY'}
+            desc_color={'text-GRAY400'}
+            text_color={'text-black'}
+            description={'بطريقة جميلة يمكنك قرائه المواضيع'}
+          /> */}
+          {/* {all_news[0]?.data?.length > 4 && (
+            <>
+              <section
+                className={`${bg_image} bg-arroud mt-6 bg-auto bg-fixed bg-top bg-no-repeat pb-8`}
+              >
+                <Colored
+                  loading="lazy"
+                  title={'مخصص لك'}
+                  important_news={all_news[0]}
+                  user_id={user_id}
+                  card_color={'bg-Purp100'}
+                  theme={'bg-Purp200'}
+                  text_color={'text-white'}
+                  fill_color={'fill-Purp200'}
+                  desc_color={'text-GRAY'}
+                  description={
+                    'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
+                  }
+                />
+              </section>
+              <Category_news
+                loading="eager"
+                title={'أهم الأخبار'}
+                category_news={all_news[0]}
+                user_id={user_id}
+                subs={null}
+                bg_color={'bg-RED'}
+                title_color={'text-RED'}
+                fill_color={'fill-RED'}
+              />
+            </>
+          )}
+          {all_news[9]?.data?.length > 3 && (
+            <Video
+              title={'الأكثر مشاهدة'}
+              category_news={all_news[9]}
+              user_id={user_id}
+              subs={null}
+              bg_color={'bg-Purp300'}
+              title_color={'text-Purp300'}
+              fill_color={'fill-Purp300'}
+              description={'بطريقة جميلة يمكنك مشاهدة الأخبار'}
+            />
+          )}
+         
+          {all_news[11]?.data?.length > 4 && (
+            <React.Fragment>
+              <Category_news
+                loading="lazy"
+                title={'  الشأن الدولي'}
+                category_news={all_news[11]}
+                user_id={user_id}
+                subs={all_news[11]?.is_subscribed}
+                bg_color={'bg-YELLOW'}
+                title_color={'text-YELLOW'}
+                fill_color={'fill-YELLOW'}
+                description={'جميع ما يحدث حول العالم '}
+              />
+              <Category_news
+                loading="lazy"
+                title={' الصحه'}
+                category_news={all_news[4]}
+                user_id={user_id}
+                subs={all_news[4]?.is_subscribed}
+                bg_color={'bg-BLUE'}
+                title_color={'text-BLUE'}
+                fill_color={'fill-BLUE'}
+                description={
+                  'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'
+                }
+              />
+              <Category_news
+                loading="lazy"
+                title={' تكنولوجيا'}
+                category_news={all_news[12]}
+                user_id={user_id}
+                subs={all_news[12]?.is_subscribed}
+                bg_color={'bg-GREEN'}
+                title_color={'text-GREEN'}
+                fill_color={'fill-GREEN'}
+                description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
+              />
+              <Category_news
+                loading="lazy"
+                title={' لايف ستايل'}
+                category_news={all_news[16]}
+                user_id={user_id}
+                subs={all_news[16]?.is_subscribed}
+                bg_color={'bg-RED'}
+                title_color={'text-RED'}
+                fill_color={'fill-RED'}
+              />
+              <Category_news
+                loading="lazy"
+                title={' غزو أوكرانيا'}
+                category_news={all_news[8]}
+                user_id={user_id}
+                subs={all_news[8]?.is_subscribed}
+                bg_color={'bg-YELLOW'}
+                title_color={'text-YELLOW'}
+                fill_color={'fill-YELLOW'}
+                description={'جميع ما يخص أحداث غزو أوكرانيا'}
+              />
+            </React.Fragment>
+          )}
+          {all_news[6]?.data && (
+            <Voice
+              loading="lazy"
+              title={'الصوتيات '}
+              news_one={all_news[6]}
+              news_two={all_news[6]}
+              subs={true}
+              title_color={'text-YELLOW'}
+              fill_color={'fill-YELLOW'}
+              card_color={'bg-GRAY100'}
+              desc_color={'text-GRAY400'}
+              theme={'bg-YELLOW'}
+              description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
+            />
+          )} */}
+
+          {/*  */}
+          {/* <Category_news
+            loading="lazy"
+            title={'اخبار الفن'}
+            category_news={all_news[15]}
+            user_id={user_id}
+            subs={true}
+            bg_color={'bg-BLUE'}
+            title_color={'text-BLUE'}
+            fill_color={'fill-BLUE'}
+            description={'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'}
+          />
+          <Category_news
+            loading="lazy"
+            title={' مال وأعمال'}
+            category_news={all_news[7]}
+            user_id={user_id}
+            subs={true}
+            bg_color={'bg-GREEN'}
+            title_color={'text-GREEN'}
+            fill_color={'fill-GREEN'}
+            description={
+              'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+            }
+          />
+          <Category_news
+            loading="lazy"
+            title={' ترند'}
+            category_news={all_news[5]}
+            user_id={user_id}
+            subs={true}
+            bg_color={'bg-RED'}
+            title_color={'text-RED'}
+            fill_color={'fill-RED'}
+            description={
+              'جميع الأخبار المتعلقة في عالميات الترند من أهم المصادر'
+            }
+          />
+          <Category_news
+            loading="lazy"
+            title={'  الشرق الأوسط'}
+            category_news={all_news[14]}
+            user_id={user_id}
+            subs={true}
+            bg_color={'bg-YELLOW'}
+            title_color={'text-YELLOW'}
+            fill_color={'fill-YELLOW'}
+            description={'جميع ما يحدث حول العالم '}
+          />
+          <Category_news
+            loading="lazy"
+            title={' رياضه'}
+            category_news={all_news[3]}
+            user_id={user_id}
+            subs={true}
+            bg_color={'bg-BLUE'}
+            title_color={'text-BLUE'}
+            fill_color={'fill-BLUE'}
+            description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
+          />
+          <Category_news
+            loading="lazy"
+            title={' العاب'}
+            category_news={all_news[13]}
+            user_id={user_id}
+            subs={true}
+            bg_color={'bg-GREEN'}
+            title_color={'text-GREEN'}
+            fill_color={'fill-GREEN'}
+            description={'جميع ما يخص عالم الالعاب بين يديك'}
+          />
+          <Category_news
+            loading="lazy"
+            title={' الخليج العربي '}
+            category_news={all_news[10]}
+            user_id={user_id}
+            subs={true}
+            bg_color={'bg-YELLOW'}
+            title_color={'text-YELLOW'}
+            fill_color={'fill-YELLOW'}
+            description={'جميع ما يخص أحداث الخليج العربي'}
+          /> */}
+          <Footer loading="lazy" />
+        </>
+      </div>
+    </React.Fragment>
+  )
 }
 export default index
 /*

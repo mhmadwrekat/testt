@@ -62,7 +62,7 @@ const Category_news = ({
   // function to handle Love & Unlove for First News
   const [like, setLike] = useState(category_news?.data[0]?.is_loved)
   const handleLike = (story_id, is_loved) => {
-    console.log(user_id, story_id, is_loved)
+    // console.log(user_id, story_id, is_loved)
     setLike(!like)
     let url = `${BASE_URL}/v1/Web/Story/Love`
     let data = {
@@ -71,7 +71,7 @@ const Category_news = ({
       isLove: !is_loved,
     }
     axios.put(url, data).then((res) => {
-      console.log(res)
+      // console.log(res)
     })
   }
   return (
