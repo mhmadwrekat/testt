@@ -42,52 +42,38 @@ const Category_news = ({
       return code
     }
   }
-  const [subscripe, setSubscripe] = useState(subs)
 
-  const handleSubscripe = () => {
+  // function to handle Subscribe Category & Unsubscribe
+  const [subscripe, setSubscripe] = useState(category_news?.is_subscribed)
+  const handleSubscripe = (category_id, is_subscribed) => {
     setSubscripe(!subscripe)
+    // console.log(category_id, is_subscribed, user_id)
+    let url = `${BASE_URL}/v1/Web/Category/Subscribe`
+    let data = {
+      userId: `${user_id}`,
+      category: `${category_id}`,
+      isSubscribe: !is_subscribed,
+    }
+    axios.post(url, data).then((res) => {
+      // console.log(res)
+    })
   }
 
+  // function to handle Love & Unlove for First News
   const [like, setLike] = useState(category_news?.data[0]?.is_loved)
   const handleLike = (story_id, is_loved) => {
-    console.log(story_id, is_loved)
+    console.log(user_id, story_id, is_loved)
     setLike(!like)
-    let config = {
-      method: 'PUT',
-      baseURL: `${BASE_URL}`,
-      url: `/v1/Web/Story/Love`,
-      data: {
-        userId: user_id,
-        story: story_id,
-        isLove: !is_loved,
-      },
+    let url = `${BASE_URL}/v1/Web/Story/Love`
+    let data = {
+      userId: `${user_id}`,
+      story: `${story_id}`,
+      isLove: !is_loved,
     }
-    axios(config).then((res) => {
+    axios.put(url, data).then((res) => {
       console.log(res)
     })
-    // return !is_loved
   }
-  const handleLiked = (story_id, is_loved) => {
-    // console.log(story_id, is_loved)
-    let config = {
-      method: 'PUT',
-      baseURL: `${BASE_URL}`,
-      url: `/v1/Web/Story/Love`,
-      data: {
-        userId: user_id,
-        story: story_id,
-        isLove: !is_loved,
-      },
-    }
-    axios(config).then((res) => {
-      console.log(res)
-      // setLike(!like)
-    })
-    // return !is_loved
-  }
-
-  let arr = []
-
   return (
     <React.Fragment>
       {/* {console.log('User_ID = ', user_id)} */}
@@ -96,20 +82,23 @@ const Category_news = ({
           <div className="flex justify-between">
             <div className="my-3 mt-3 lg:mt-4">
               <div className="flex">
-                {subscripe !== null &&
+                {subs !== null &&
                   (subscripe ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
                       viewBox="0 0 20 20"
-                      fill="#B0B0B0"
+                      fill="#32CD32"
                       onClick={() => {
-                        handleSubscripe()
+                        handleSubscripe(
+                          category_news?.category_id,
+                          category_news?.is_subscribed
+                        )
                       }}
                     >
                       <path
                         fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                         clipRule="evenodd"
                       />
                     </svg>
@@ -118,14 +107,17 @@ const Category_news = ({
                       xmlns="http://www.w3.org/2000/svg"
                       className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
                       viewBox="0 0 20 20"
-                      fill="#32CD32"
+                      fill="#B0B0B0"
                       onClick={() => {
-                        handleSubscripe()
+                        handleSubscripe(
+                          category_news?.category_id,
+                          category_news?.is_subscribed
+                        )
                       }}
                     >
                       <path
                         fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
                         clipRule="evenodd"
                       />
                     </svg>
@@ -217,8 +209,8 @@ const Category_news = ({
                           strokeWidth="2"
                           onClick={() => {
                             handleLike(
-                              category_news.data[0]._id,
-                              category_news.data[0].is_loved
+                              category_news?.data[0]?._id,
+                              category_news?.data[0]?.is_loved
                             )
                           }}
                         >
@@ -238,8 +230,8 @@ const Category_news = ({
                           strokeWidth="2"
                           onClick={() => {
                             handleLike(
-                              category_news.data[0]._id,
-                              category_news.data[0].is_loved
+                              category_news?.data[0]?._id,
+                              category_news?.data[0]?.is_loved
                             )
                           }}
                         >
@@ -290,7 +282,6 @@ const Category_news = ({
               </section>
               <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                 {category_news?.data?.slice(1, 5).map((item, key) => {
-                  arr.push({ id: item._id, status: true })
                   // console.log(arr)
                   // {
                   //   console.log(item._id)

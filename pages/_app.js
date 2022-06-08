@@ -6,8 +6,10 @@ import { v4 as uuidv4 } from 'uuid'
 import axios from 'axios'
 import { BASE_URL } from '../config/config'
 import { ThemeProvider } from 'next-themes'
+import gtag from '../lib/gtag'
 import Cookies from 'cookies'
-import { setCookies } from 'cookies-next'
+import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next'
+
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
   // function to handle the user auth.
@@ -42,19 +44,17 @@ const App = ({ Component, pageProps }) => {
       console.log(err)
     }
   }
-  function get_country_code() {
-    fetch('https://geolocation-db.com/json/')
-      .then((response) => response.json())
-      .then((data) => {
-        setCookies('country_code', data.country_code)
-      })
-      .catch((error) => {
-        console.error('Error:', error)
-      })
+
+  function returned() {
+    if (typeof window !== 'undefined') {
+      return localStorage?.getItem('country_code')
+    }
   }
+
   useEffect(() => {
     register_user()
-    get_country_code()
+    // get_country_code()
+    returned()
   }, [])
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <ThemeProvider defaultTheme="system">
-      <Component {...pageProps} />
+      <Component {...pageProps} coun={returned()} />
     </ThemeProvider>
   )
 }

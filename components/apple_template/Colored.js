@@ -41,8 +41,8 @@ const Colored = ({
     }
   }
 
+  // function to handle Love & Unlove for First News
   const [like, setLike] = useState(important_news?.data[0]?.is_loved)
-
   const handleLike = (story_id, is_loved) => {
     console.log(story_id, is_loved)
     let config = {
@@ -61,24 +61,7 @@ const Colored = ({
     })
     // return !is_loved
   }
-  const handleLiked = (story_id, is_loved) => {
-    console.log(story_id, is_loved)
-    let config = {
-      method: 'PUT',
-      baseURL: `${BASE_URL}`,
-      url: `/v1/Web/Story/Love`,
-      data: {
-        userId: user_id,
-        story: story_id,
-        isLove: !is_loved,
-      },
-    }
-    axios(config).then((res) => {
-      console.log(res)
-      // setLike(!like)
-    })
-    // return !is_loved
-  }
+
   return (
     <React.Fragment>
       <section className={`${text_color} mx-auto w-11/12 lg:w-10/12`}>

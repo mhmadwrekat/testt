@@ -17,12 +17,12 @@ const Test = ({ title_color }) => {
             </svg>
           </Menu.Button>
           <Menu.Items>
-            <section className="absolute top-3 left-8 w-32">
-              <section className="text-black bg-white grid w-auto rounded-lg p-1 text-right font-TSbold text-sm ">
+            <section className="absolute top-3 left-24 w-32 lg:left-32">
+              <section className="text-black bg-white grid w-48 rounded-lg p-1 text-center font-TSbold text-sm shadow-lg lg:w-56 ">
                 <Menu.Item>
                   {({ active }) => (
                     <p
-                      className={`border-b-1 border-GRAY200 py-1 px-2 ${
+                      className={`cursor-pointer border-b-1 border-GRAY200 pt-2 text-GRAY400 ${
                         active && `${title_color}`
                       }`}
                       href=""
@@ -34,22 +34,24 @@ const Test = ({ title_color }) => {
                 <Menu.Item>
                   {({ active }) => (
                     <p
-                      className={`border-b-1 border-GRAY200 py-1 px-2 ${
+                      className={`cursor-pointer border-b-1 border-GRAY200 pt-2 text-GRAY400 ${
                         active && `${title_color}`
                       }`}
                       href=""
                     >
-                      مشاركه
+                      أبلاغ عن الخبر
                     </p>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
                     <p
-                      className={`py-1 px-2 ${active && `${title_color}`}`}
+                      className={`mt-1 cursor-pointer font-TSExtra ${
+                        active && `${title_color}`
+                      }`}
                       href=""
                     >
-                      ابلاغ
+                      الغاء
                     </p>
                   )}
                 </Menu.Item>

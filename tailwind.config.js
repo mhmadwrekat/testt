@@ -19,6 +19,7 @@ module.exports = {
       BLUE: '#187498',
       Purp100: '#45378B',
       Purp200: '#695CAD',
+      Purp300: '#453783',
       Purp400: '#382F68',
       GREEN: '#36AE7C',
       YELLOW: '#E0A719',
@@ -32,6 +33,12 @@ module.exports = {
       GRAY400: '#686767',
     },
     extend: {
+      backgroundImage: {
+        jordan: "url('/assest/images/jordan.jpg')",
+        kuwait: "url('/assest/images/kuwait.jpg')",
+        saudi: "url('/assest/images/saudi.jpg')",
+        egypt: "url('/assest/images/egypt.jpg')",
+      },
       fontFamily: {
         TSExtra: ['TsExtrabold'],
         TSSemi: ['TsSemibold'],

@@ -5,6 +5,7 @@ import googlePlay from '../../public/assest/images/google-xhdpi.png'
 import React from 'react'
 const Footer = () => {
   const NewTab = (url) => {
+    // window.open(url)
     window.open(url, '_blank')
   }
   return (

@@ -65,6 +65,7 @@ const Logaimat = ({
   }
   return (
     <React.Fragment>
+      {/* {console.log(important_news)} */}
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
         <>
           <div className="flex justify-between">
@@ -150,7 +151,7 @@ const Logaimat = ({
               // install Swiper modules
               modules={[Navigation]}
               slidesPerView={5}
-              spaceBetween={15}
+              spaceBetween={100}
               autoplay={true}
               loop={true}
             >
