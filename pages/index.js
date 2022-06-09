@@ -203,7 +203,9 @@ const index = (props) => {
               />
             </div>
 
-            <section className={`${bg_image} mt-6	bg-no-repeat pb-8`}>
+            <section
+              className={`${bg_image} mt-6	bg-no-repeat pb-8 lg:bg-contain`}
+            >
               {/* bg-auto bg-top */}
               <Arround_you
                 loading="lazy"
