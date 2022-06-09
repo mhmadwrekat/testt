@@ -20,6 +20,7 @@ const Voice = ({
   description,
   news_one,
   news_two,
+  user_id,
 }) => {
   const [subscripe, setSubscripe] = useState(subs)
 
@@ -164,9 +165,13 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className=" mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36  lg:w-60"
                                 />
-                                {/* <Like /> */}
+                                <Like
+                                  user_id={user_id}
+                                  story_id={item._id}
+                                  isLoved={item.is_loved}
+                                />
 
-                                <div className="absolute bottom-1 left-1">
+                                {/* <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -175,7 +180,7 @@ const Voice = ({
                                   >
                                     <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                   </svg>
-                                </div>
+                                </div> */}
                               </div>
                             </div>
                             <section>
@@ -220,9 +225,13 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
-                                <Like />
+                                <Like
+                                  user_id={user_id}
+                                  story_id={item._id}
+                                  isLoved={item.is_loved}
+                                />
 
-                                <div className="absolute bottom-1 left-1">
+                                {/* <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -231,7 +240,7 @@ const Voice = ({
                                   >
                                     <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                   </svg>
-                                </div>
+                                </div> */}
                               </div>
                             </div>
                             <section>
@@ -298,9 +307,13 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className=" mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
-                                <Like />
+                                <Like
+                                  user_id={user_id}
+                                  story_id={item._id}
+                                  isLoved={item.is_loved}
+                                />
 
-                                <div className="absolute bottom-1 left-1">
+                                {/* <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -309,7 +322,7 @@ const Voice = ({
                                   >
                                     <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                   </svg>
-                                </div>
+                                </div> */}
                               </div>
                             </div>
                             <section>
@@ -354,8 +367,12 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
-                                <Like />
-                                <div className="absolute bottom-1 left-1">
+                                <Like
+                                  user_id={user_id}
+                                  story_id={item._id}
+                                  isLoved={item.is_loved}
+                                />
+                                {/* <div className="absolute bottom-1 left-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-9 w-9 cursor-pointer "
@@ -364,7 +381,7 @@ const Voice = ({
                                   >
                                     <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                   </svg>
-                                </div>
+                                </div> */}
                               </div>
                             </div>
                             <section>
@@ -434,7 +451,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className=" h-full w-full rounded-b-md object-cover"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -449,17 +466,12 @@ const Voice = ({
                                       d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                                     />
                                   </svg>
-                                </div>
-                                <div className="absolute bottom-1 left-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-9 w-9 cursor-pointer "
-                                    viewBox="0 0 20 20"
-                                    fill="#FFFFFF"
-                                  >
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                  </svg>
-                                </div>
+                                </div> */}
+                                <Like
+                                  user_id={user_id}
+                                  story_id={item._id}
+                                  isLoved={item.is_loved}
+                                />
                               </div>
                             </div>
                             <section>
@@ -502,7 +514,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -517,17 +529,12 @@ const Voice = ({
                                       d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                                     />
                                   </svg>
-                                </div>
-                                <div className="absolute bottom-1 left-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-9 w-9 cursor-pointer "
-                                    viewBox="0 0 20 20"
-                                    fill="#FFFFFF"
-                                  >
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                  </svg>
-                                </div>
+                                </div> */}
+                                <Like
+                                  user_id={user_id}
+                                  story_id={item._id}
+                                  isLoved={item.is_loved}
+                                />
                               </div>
                             </div>
                             <section>
@@ -592,7 +599,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className=" h-full w-full rounded-b-md object-cover"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -607,17 +614,12 @@ const Voice = ({
                                       d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                                     />
                                   </svg>
-                                </div>
-                                <div className="absolute bottom-1 left-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-9 w-9 cursor-pointer "
-                                    viewBox="0 0 20 20"
-                                    fill="#FFFFFF"
-                                  >
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                  </svg>
-                                </div>
+                                </div> */}
+                                <Like
+                                  user_id={user_id}
+                                  story_id={item._id}
+                                  isLoved={item.is_loved}
+                                />
                               </div>
                             </div>
                             <section>
@@ -660,7 +662,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
-                                <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -675,17 +677,12 @@ const Voice = ({
                                       d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                                     />
                                   </svg>
-                                </div>
-                                <div className="absolute bottom-1 left-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-9 w-9 cursor-pointer "
-                                    viewBox="0 0 20 20"
-                                    fill="#FFFFFF"
-                                  >
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                  </svg>
-                                </div>
+                                </div> */}
+                                <Like
+                                  user_id={user_id}
+                                  story_id={item._id}
+                                  isLoved={item.is_loved}
+                                />
                               </div>
                             </div>
                             <section>

@@ -275,7 +275,7 @@ const Category_news = ({
                       >
                         اقرأ المزيد
                       </button>
-                      <Menu_three_dot title_color={title_color} />
+                      {/* <Menu_three_dot title_color={title_color} /> */}
                     </div>
                   </div>
                 </div>
@@ -430,7 +430,7 @@ const Category_news = ({
                           >
                             اقرا المزيد
                           </button>{' '}
-                          <Menu_three_dot title_color={title_color} />
+                          {/* <Menu_three_dot title_color={title_color} /> */}
                         </div>
                       </div>
                     </section>

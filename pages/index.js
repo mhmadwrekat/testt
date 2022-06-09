@@ -203,7 +203,7 @@ const index = (props) => {
               />
             </div>
 
-            <section className={`${bg_image}  mt-6	bg-no-repeat pb-8`}>
+            <section className={`${bg_image} mt-6	bg-no-repeat pb-8`}>
               {/* bg-auto bg-top */}
               <Arround_you
                 loading="lazy"
@@ -302,6 +302,7 @@ const index = (props) => {
               title={'الصوتيات '}
               news_one={all_news[6]}
               news_two={all_news[6]}
+              user_id={user_id}
               subs={null}
               title_color={'text-YELLOW'}
               fill_color={'fill-YELLOW'}

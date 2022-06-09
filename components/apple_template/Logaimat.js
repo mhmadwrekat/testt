@@ -40,7 +40,6 @@ const Logaimat = ({
     ' شيرين',
     'جورج قرداحي',
   ]
-  let counter = 1
   // function open_new_tab(url) {
   //   window.open(url, '_blank')
   // }
@@ -163,8 +162,7 @@ const Logaimat = ({
               loop={true}
             >
               {important_news.map((item) => {
-                console.log('Item -> ', item.cover_photo)
-                counter++
+                console.log('Item -> ', item)
                 return (
                   <SwiperSlide key={item._id}>
                     <section
@@ -206,7 +204,7 @@ const Logaimat = ({
                         </div>
                       </div>
                       <div className="pt-3 text-center font-TSExtra text-2xl lg:w-60">
-                        {test_text[counter]}
+                        {item.topic_name}{' '}
                       </div>
                     </section>
                   </SwiperSlide>
@@ -214,7 +212,6 @@ const Logaimat = ({
               })}
             </Swiper>
           </section>
-          {<p className="hidden">{counter--}</p>}
           {/**** Mobile View ****/}
           {/**** Mobile View ****/}
           <section className="w-12/12 lg:w-12/12 mx-auto flex lg:hidden">
@@ -254,7 +251,7 @@ const Logaimat = ({
                         </div>
                       </div>
                       <div className="w-40 pt-3 text-center font-TSExtra text-xl">
-                        {test_text[counter]}
+                        {item.topic_name}{' '}
                       </div>
                     </section>
                   </SwiperSlide>

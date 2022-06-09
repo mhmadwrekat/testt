@@ -5,6 +5,7 @@ import axios from 'axios'
 const Like = ({ user_id, isLoved, story_id }) => {
   const [like, setLike] = useState(isLoved)
 
+  // function to handle Love & Unlove
   const handleLike = (story_id, isLoved) => {
     setLike(!like)
     let config = {

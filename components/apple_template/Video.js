@@ -217,7 +217,7 @@ const Video = ({
                         >
                           اقرا المزيد
                         </button>{' '}
-                        <Menu_three_dot title_color={title_color} />
+                        {/* <Menu_three_dot title_color={title_color} /> */}
                       </div>
                     </div>
                   </section>

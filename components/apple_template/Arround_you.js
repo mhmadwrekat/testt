@@ -67,9 +67,7 @@ const Arround_you = ({
         <section className="bg-black absolute top-8 h-screen w-screen opacity-20"></section>
       </section> */}
 
-      <section
-        className={` ${text_color} mx-auto w-11/12 lg:w-10/12`}
-      >
+      <section className={` ${text_color} mx-auto w-11/12 lg:w-10/12`}>
         <>
           <div className="flex justify-between ">
             <div className="my-3 mt-1 lg:mt-2">
@@ -225,14 +223,14 @@ const Arround_you = ({
                       >
                         اقرأ المزيد
                       </button>
-                      <svg
+                      {/* <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-9 w-9 cursor-pointer "
                         viewBox="0 0 20 20"
                         fill="#7F7F7F"
                       >
                         <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                      </svg>
+                      </svg> */}
                     </div>
                   </div>
                 </div>
@@ -324,14 +322,14 @@ const Arround_you = ({
                           >
                             اقرا المزيد
                           </button>{' '}
-                          <svg
+                          {/* <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-9 w-9 cursor-pointer "
                             viewBox="0 0 20 20"
                             fill="#7F7F7F"
                           >
                             <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
+                          </svg> */}
                         </div>
                       </div>
                     </section>

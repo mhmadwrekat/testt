@@ -49,6 +49,7 @@ module.exports = {
       'admin-panel-alzubda.s3.us-east-2.amazonaws.com',
       'https://img.youtube.com/',
       'psycatgames.com',
+      'www.rd.com',
       'cdnuploads.aa.com.tr',
       'orient-news.net',
       'alghad.com',
