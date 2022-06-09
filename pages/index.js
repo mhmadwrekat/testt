@@ -8,6 +8,9 @@ import Cookies from 'cookies'
 const Category_news = dynamic(() =>
   import('../components/apple_template/Category_news')
 )
+const Arround_you = dynamic(() =>
+  import('../components/apple_template/Arround_you')
+)
 const Colored = dynamic(() => import('../components/apple_template/Colored'))
 const Video = dynamic(() => import('../components/apple_template/Video'))
 const Voice = dynamic(() => import('../components/apple_template/Voice'), {
@@ -193,19 +196,18 @@ const index = (props) => {
               description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
             />
             <section
-              className={`${bg_image} bg-arroud mt-6 bg-auto bg-fixed bg-top bg-no-repeat pb-8`}
+              className={`${bg_image} bg-arroud mt-6 bg-auto bg-top bg-no-repeat pb-8`}
             >
-              <Colored
+              <Arround_you
                 loading="lazy"
                 title={'يدور حولك'}
                 important_news={all_news[0]}
                 user_id={user_id}
-                card_color={'bg-GRAY400'}
+                card_color={'bg-GRAY100'}
                 theme={'bg-Purp200'}
                 text_color={'text-GRAY100'}
                 fill_color={'fill-Purp200'}
-                desc_color={'text-white'}
-                description={'جميع ما يدور من حولك'}
+                description={' جميع ما يدور من حولك من أخبار و مواضيع'}
               />
             </section>
             {all_news[9]?.data?.length > 3 && (
@@ -305,6 +307,7 @@ const index = (props) => {
               fill_color={'fill-YELLOW'}
               description={'جميع ما يخص أحداث الخليج العربي'}
             />
+            <Footer loading="lazy" />
           </React.Fragment>
         )}
         {/* {all_news[0]?.data.length > 4 && ( */}
@@ -525,7 +528,6 @@ const index = (props) => {
             fill_color={'fill-YELLOW'}
             description={'جميع ما يخص أحداث الخليج العربي'}
           /> */}
-          <Footer loading="lazy" />
         </>
       </div>
     </React.Fragment>
