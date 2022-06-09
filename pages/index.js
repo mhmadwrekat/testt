@@ -21,6 +21,8 @@ const Logaimat = dynamic(() => import('../components/apple_template/Logaimat'))
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
 const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
+// const One = dynamic(() => import('../components/1'))
+
 import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next'
 
 // Get Server Side Function
@@ -143,6 +145,7 @@ const index = (props) => {
       <HeadComp />
       <div dir="rtl" id="project_body" className="bg-white text-black">
         <Nav />
+        {/* <One loqaimat={props?.loqaimat?.data} /> */}
         {all_news && (
           <React.Fragment>
             <Category_news
@@ -184,29 +187,33 @@ const index = (props) => {
               fill_color={'fill-YELLOW'}
               description={'جميع ما يحدث حول العالم '}
             />
-            <Category_news
-              loading="lazy"
-              title={' الصحه'}
-              category_news={all_news[4]}
-              user_id={user_id}
-              subs={all_news[4]?.is_subscribed}
-              bg_color={'bg-BLUE'}
-              title_color={'text-BLUE'}
-              fill_color={'fill-BLUE'}
-              description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
-            />
-            <section
-              className={`${bg_image} bg-arroud mt-6 bg-auto bg-top bg-no-repeat pb-8`}
-            >
+            <div id="الصحه">
+              <Category_news
+                loading="lazy"
+                title={' الصحه'}
+                category_news={all_news[4]}
+                user_id={user_id}
+                subs={all_news[4]?.is_subscribed}
+                bg_color={'bg-BLUE'}
+                title_color={'text-BLUE'}
+                fill_color={'fill-BLUE'}
+                description={
+                  'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'
+                }
+              />
+            </div>
+
+            <section className={`${bg_image}  mt-6	bg-no-repeat pb-8`}>
+              {/* bg-auto bg-top */}
               <Arround_you
                 loading="lazy"
                 title={'يدور حولك'}
                 important_news={all_news[0]}
                 user_id={user_id}
                 card_color={'bg-GRAY100'}
-                theme={'bg-Purp200'}
+                theme={'bg-Purp100'}
                 text_color={'text-GRAY100'}
-                fill_color={'fill-Purp200'}
+                fill_color={'fill-Purp100'}
                 description={' جميع ما يدور من حولك من أخبار و مواضيع'}
               />
             </section>
@@ -246,32 +253,50 @@ const index = (props) => {
                 'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
               }
             />
-            <Logaimat
-              loading="lazy"
-              title={'لقيمات'}
-              important_news={props?.loqaimat?.data[0].screens}
-              subs={null}
-              title_color={'text-SKY'}
-              theme={'bg-SKY'}
-              card_color={'bg-GRAY100'}
-              fill_color={'fill-SKY'}
-              desc_color={'text-GRAY400'}
-              text_color={'text-black'}
-              description={'بطريقة جميلة يمكنك قرائه المواضيع'}
-            />
-            <Category_news
-              loading="lazy"
-              title={' ترند'}
-              category_news={all_news[5]}
-              user_id={user_id}
-              subs={all_news[5]?.is_subscribed}
-              bg_color={'bg-RED'}
-              title_color={'text-RED'}
-              fill_color={'fill-RED'}
-              description={
-                'جميع الأخبار المتعلقة في عالميات الترند من أهم المصادر'
-              }
-            />
+            <div id="اوكرانيا">
+              <Category_news
+                loading="lazy"
+                title={' غزو أوكرانيا'}
+                category_news={all_news[8]}
+                user_id={user_id}
+                subs={all_news[8]?.is_subscribed}
+                bg_color={'bg-YELLOW'}
+                title_color={'text-YELLOW'}
+                fill_color={'fill-YELLOW'}
+                description={'جميع ما يخص أحداث غزو أوكرانيا'}
+              />
+            </div>
+            <div id="لقيمات">
+              <Logaimat
+                loading="lazy"
+                title={'لقيمات'}
+                important_news={props?.loqaimat?.data}
+                subs={null}
+                title_color={'text-SKY'}
+                theme={'bg-SKY'}
+                card_color={'bg-GRAY100'}
+                fill_color={'fill-SKY'}
+                desc_color={'text-GRAY400'}
+                text_color={'text-black'}
+                description={'بطريقة جميلة يمكنك قرائه المواضيع'}
+              />
+            </div>
+
+            <div id="ترند">
+              <Category_news
+                loading="lazy"
+                title={' ترند'}
+                category_news={all_news[5]}
+                user_id={user_id}
+                subs={all_news[5]?.is_subscribed}
+                bg_color={'bg-RED'}
+                title_color={'text-RED'}
+                fill_color={'fill-RED'}
+                description={
+                  'جميع الأخبار المتعلقة في عالميات الترند من أهم المصادر'
+                }
+              />
+            </div>
             <Voice
               loading="lazy"
               title={'الصوتيات '}
@@ -296,117 +321,78 @@ const index = (props) => {
               fill_color={'fill-GREEN'}
               description={'جميع ما يخص عالم الالعاب بين يديك'}
             />
+            <div id="الخليج العربي">
+              <Category_news
+                loading="lazy"
+                title={' الخليج العربي '}
+                category_news={all_news[10]}
+                user_id={user_id}
+                subs={all_news[10]?.is_subscribed}
+                bg_color={'bg-YELLOW'}
+                title_color={'text-YELLOW'}
+                fill_color={'fill-YELLOW'}
+                description={'جميع ما يخص أحداث الخليج العربي'}
+              />
+            </div>
+
+            <div id="الرياضه">
+              <Category_news
+                loading="lazy"
+                title={' رياضه'}
+                category_news={all_news[3]}
+                user_id={user_id}
+                subs={all_news[3]?.is_subscribed}
+                bg_color={'bg-BLUE'}
+                title_color={'text-BLUE'}
+                fill_color={'fill-BLUE'}
+                description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
+              />
+            </div>
             <Category_news
               loading="lazy"
-              title={' الخليج العربي '}
-              category_news={all_news[10]}
+              title={' لايف ستايل'}
+              category_news={all_news[16]}
               user_id={user_id}
-              subs={all_news[10]?.is_subscribed}
+              subs={all_news[16]?.is_subscribed}
+              bg_color={'bg-RED'}
+              title_color={'text-RED'}
+              fill_color={'fill-RED'}
+            />
+            <Category_news
+              loading="lazy"
+              title={'  الشرق الأوسط'}
+              category_news={all_news[14]}
+              user_id={user_id}
+              subs={all_news[14]?.is_subscribed}
               bg_color={'bg-YELLOW'}
               title_color={'text-YELLOW'}
               fill_color={'fill-YELLOW'}
-              description={'جميع ما يخص أحداث الخليج العربي'}
+              description={'جميع ما يحدث حول العالم '}
+            />
+            <Category_news
+              loading="lazy"
+              title={' تكنولوجيا'}
+              category_news={all_news[12]}
+              user_id={user_id}
+              subs={all_news[12]?.is_subscribed}
+              bg_color={'bg-GREEN'}
+              title_color={'text-GREEN'}
+              fill_color={'fill-GREEN'}
+              description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
             />
             <Footer loading="lazy" />
           </React.Fragment>
         )}
         {/* {all_news[0]?.data.length > 4 && ( */}
         <>
-          {/* <Logaimat
-            loading="lazy"
-            title={'لقيمات'}
-            important_news={props.loqaimat.data[0].screens}
-            subs={null}
-            title_color={'text-SKY'}
-            theme={'bg-SKY'}
-            card_color={'bg-GRAY100'}
-            fill_color={'fill-SKY'}
-            desc_color={'text-GRAY400'}
-            text_color={'text-black'}
-            description={'بطريقة جميلة يمكنك قرائه المواضيع'}
-          /> */}
           {/* {all_news[0]?.data?.length > 4 && (
             <>
-              <section
-                className={`${bg_image} bg-arroud mt-6 bg-auto bg-fixed bg-top bg-no-repeat pb-8`}
-              >
-                <Colored
-                  loading="lazy"
-                  title={'مخصص لك'}
-                  important_news={all_news[0]}
-                  user_id={user_id}
-                  card_color={'bg-Purp100'}
-                  theme={'bg-Purp200'}
-                  text_color={'text-white'}
-                  fill_color={'fill-Purp200'}
-                  desc_color={'text-GRAY'}
-                  description={
-                    'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
-                  }
-                />
-              </section>
-              <Category_news
-                loading="eager"
-                title={'أهم الأخبار'}
-                category_news={all_news[0]}
-                user_id={user_id}
-                subs={null}
-                bg_color={'bg-RED'}
-                title_color={'text-RED'}
-                fill_color={'fill-RED'}
-              />
+        
             </>
           )}
-          {all_news[9]?.data?.length > 3 && (
-            <Video
-              title={'الأكثر مشاهدة'}
-              category_news={all_news[9]}
-              user_id={user_id}
-              subs={null}
-              bg_color={'bg-Purp300'}
-              title_color={'text-Purp300'}
-              fill_color={'fill-Purp300'}
-              description={'بطريقة جميلة يمكنك مشاهدة الأخبار'}
-            />
-          )}
+
          
-          {all_news[11]?.data?.length > 4 && (
-            <React.Fragment>
-              <Category_news
-                loading="lazy"
-                title={'  الشأن الدولي'}
-                category_news={all_news[11]}
-                user_id={user_id}
-                subs={all_news[11]?.is_subscribed}
-                bg_color={'bg-YELLOW'}
-                title_color={'text-YELLOW'}
-                fill_color={'fill-YELLOW'}
-                description={'جميع ما يحدث حول العالم '}
-              />
-              <Category_news
-                loading="lazy"
-                title={' الصحه'}
-                category_news={all_news[4]}
-                user_id={user_id}
-                subs={all_news[4]?.is_subscribed}
-                bg_color={'bg-BLUE'}
-                title_color={'text-BLUE'}
-                fill_color={'fill-BLUE'}
-                description={
-                  'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'
-                }
-              />
-              <Category_news
-                loading="lazy"
-                title={' تكنولوجيا'}
-                category_news={all_news[12]}
-                user_id={user_id}
-                subs={all_news[12]?.is_subscribed}
-                bg_color={'bg-GREEN'}
-                title_color={'text-GREEN'}
-                fill_color={'fill-GREEN'}
-                description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
-              />
+
               <Category_news
                 loading="lazy"
                 title={' لايف ستايل'}
@@ -417,34 +403,10 @@ const index = (props) => {
                 title_color={'text-RED'}
                 fill_color={'fill-RED'}
               />
-              <Category_news
-                loading="lazy"
-                title={' غزو أوكرانيا'}
-                category_news={all_news[8]}
-                user_id={user_id}
-                subs={all_news[8]?.is_subscribed}
-                bg_color={'bg-YELLOW'}
-                title_color={'text-YELLOW'}
-                fill_color={'fill-YELLOW'}
-                description={'جميع ما يخص أحداث غزو أوكرانيا'}
-              />
+          
             </React.Fragment>
           )}
-          {all_news[6]?.data && (
-            <Voice
-              loading="lazy"
-              title={'الصوتيات '}
-              news_one={all_news[6]}
-              news_two={all_news[6]}
-              subs={true}
-              title_color={'text-YELLOW'}
-              fill_color={'fill-YELLOW'}
-              card_color={'bg-GRAY100'}
-              desc_color={'text-GRAY400'}
-              theme={'bg-YELLOW'}
-              description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
-            />
-          )} */}
+
 
           {/*  */}
           {/* <Category_news

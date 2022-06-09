@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay, Navigation } from 'swiper'
+import LogaimaModal from '../apple_template/child_comp/LogamiatModal'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -19,6 +20,9 @@ const Logaimat = ({
   description,
 }) => {
   SwiperCore.use([Autoplay])
+  const [openLoqaima, setOpenLoqaima] = useState(false)
+  const [loqaimatScreens, setLoqaimatScreens] = useState([])
+
   const test_text = [
     'جورج قرداحي',
     ' شيرين',
@@ -37,6 +41,9 @@ const Logaimat = ({
     'جورج قرداحي',
   ]
   let counter = 1
+  // function open_new_tab(url) {
+  //   window.open(url, '_blank')
+  // }
 
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
@@ -146,41 +153,46 @@ const Logaimat = ({
           )}
           {/**** Desktop View ****/}
           {/**** Desktop View ****/}
-          <section className="w-12/12 lg:w-12/12 mx-auto hidden lg:flex">
+          <section className="w-12/12 mx-auto hidden lg:flex lg:w-10/12">
             <Swiper
               // install Swiper modules
               modules={[Navigation]}
-              slidesPerView={5}
-              spaceBetween={100}
+              slidesPerView={4}
+              spaceBetween={20}
               autoplay={true}
               loop={true}
             >
               {important_news.map((item) => {
+                console.log('Item -> ', item.cover_photo)
                 counter++
                 return (
                   <SwiperSlide key={item._id}>
-                    <section className="px-0">
+                    <section
+                      className=""
+                      onClick={() => {
+                        setOpenLoqaima(true)
+                        setLoqaimatScreens(item.screens)
+                      }}
+                    >
                       <div className="relative mr-2 py-2 lg:mr-0 lg:h-96 lg:w-60 lg:py-0">
-                        {item.screen_link &&
-                          (item.screen_link.includes('youtube') ||
-                          item.screen_link.includes('youtu.be') ? (
+                        {item.cover_photo &&
+                          (item.cover_photo.includes('youtube') ||
+                          item.cover_photo.includes('youtu.be') ? (
                             <img
                               loading="lazy"
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                item.screen_link
+                                item.cover_photo
                               )}/0.jpg`}
                               alt="test"
                               className="
-                                mx-auto
-                                h-32 
-                                w-40 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-60"
+                                mx-auto h-32 w-40 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
                             />
                           ) : (
                             <img
                               loading="lazy"
-                              src={item.screen_link}
+                              src={item.cover_photo}
                               alt="test"
-                              className="mx-auto h-32 w-40 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-60"
+                              className="mx-auto h-32 w-40 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
                             />
                           ))}
                         <div className="bg-white absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-80">
@@ -209,38 +221,29 @@ const Logaimat = ({
             <Swiper
               // install Swiper modules
               modules={[Navigation]}
-              slidesPerView={1.8}
-              spaceBetween={10}
+              slidesPerView={2}
+              spaceBetween={5}
               autoplay={true}
               loop={true}
             >
-              {important_news.map((item) => {
-                counter--
+              {important_news?.map((item) => {
                 return (
                   <SwiperSlide key={item._id}>
-                    <section className="px-0">
+                    <section
+                      className="px-0"
+                      onClick={() => {
+                        setOpenLoqaima(true)
+                        setLoqaimatScreens(item.screens)
+                      }}
+                    >
                       <div className="relative mr-2 h-72 w-40 lg:mr-0  lg:py-0">
-                        {item.screen_link &&
-                          (item.screen_link.includes('youtube') ||
-                          item.screen_link.includes('youtu.be') ? (
-                            <img
-                              loading="lazy"
-                              src={item.screen_link}
-                              alt="test"
-                              className="
-                                mx-auto
-                                h-72 
-                                w-40 md:h-full md:w-full"
-                            />
-                          ) : (
-                            <img
-                              loading="lazy"
-                              src={item.screen_link}
-                              alt="test"
-                              className="mx-auto h-72 w-40 md:h-full md:w-full"
-                            />
-                          ))}
-                        <div className="bg-white absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-80">
+                        <img
+                          loading="lazy"
+                          src={item.cover_photo}
+                          alt="test"
+                          className="mx-auto h-72 w-44 md:h-full md:w-full"
+                        />
+                        <div className="bg-white absolute top-0 right-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-80">
                           <p className="mx-auto w-8/12 pt-16 text-center font-TSExtra text-xl">
                             اضغط هنا لمتابعة القراءة
                           </p>
@@ -261,6 +264,11 @@ const Logaimat = ({
           </section>
         </>
       </section>
+      <LogaimaModal
+        open={openLoqaima}
+        setOpen={setOpenLoqaima}
+        loqaimatScreens={loqaimatScreens}
+      />
     </React.Fragment>
   )
 }

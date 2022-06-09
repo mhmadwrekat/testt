@@ -18,7 +18,7 @@ const Test = ({ title_color }) => {
           </Menu.Button>
           <Menu.Items>
             <section className="absolute top-3 left-24 w-32 lg:left-32">
-              <section className="text-black bg-white grid w-48 rounded-lg p-1 text-center font-TSbold text-sm shadow-lg lg:w-56 ">
+              <section className="text-black bg-white grid w-48 rounded p-1 text-center font-TSbold text-sm shadow-lg lg:w-56 ">
                 <Menu.Item>
                   {({ active }) => (
                     <p
@@ -39,19 +39,20 @@ const Test = ({ title_color }) => {
                       }`}
                       href=""
                     >
-                      أبلاغ عن الخبر
+                      مشاركه{' '}
                     </p>
                   )}
                 </Menu.Item>
                 <Menu.Item>
+                  {/* font-TSExtra */}
                   {({ active }) => (
                     <p
-                      className={`mt-1 cursor-pointer font-TSExtra ${
+                      className={`mt-1 cursor-pointer text-GRAY400  ${
                         active && `${title_color}`
                       }`}
                       href=""
                     >
-                      الغاء
+                      أبلاغ
                     </p>
                   )}
                 </Menu.Item>

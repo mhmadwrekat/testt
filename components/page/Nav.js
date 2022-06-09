@@ -61,8 +61,8 @@ const Nav = () => {
               <buttons className="my-auto ml-10 lg:cursor-pointer">
                 أخبار
               </buttons>
-              <buttons className="my-auto ml-10 lg:cursor-pointer ">
-                رياضه
+              <buttons className="my-auto ml-10 lg:cursor-pointer">
+                <a href="#الصحه"> الصحه</a>
               </buttons>
               {/* <img
                             src="./assest/images/LogaimatHand.svg"
@@ -89,52 +89,52 @@ const Nav = () => {
                           <section className="text-white top-18 absolute right-0 flex w-full justify-center bg-Purp100 text-center font-TSbold text-lg">
                             <Menu.Item>
                               {({ active }) => (
-                                <p
+                                <a
                                   className={`${active && ''} ml-10 p-2`}
-                                  href=""
-                                >
-                                  اقتصاد{' '}
-                                </p>
-                              )}
-                            </Menu.Item>
-                            <Menu.Item>
-                              {({ active }) => (
-                                <p
-                                  className={`${active && ''} ml-10 p-2`}
-                                  href=""
+                                  href="#الخليج العربي"
                                 >
                                   الخليج العربي
-                                </p>
+                                </a>
                               )}
                             </Menu.Item>
                             <Menu.Item>
                               {({ active }) => (
-                                <p
+                                <a
                                   className={`${active && ''} ml-10 p-2`}
-                                  href=""
+                                  href="#اوكرانيا"
                                 >
                                   غزو اوكرانيا
-                                </p>
+                                </a>
                               )}
                             </Menu.Item>
                             <Menu.Item>
                               {({ active }) => (
-                                <p
+                                <a
                                   className={`${active && ''} ml-10 p-2`}
-                                  href=""
+                                  href="#ترند"
                                 >
                                   ترند{' '}
-                                </p>
+                                </a>
                               )}
                             </Menu.Item>
                             <Menu.Item>
                               {({ active }) => (
-                                <p
+                                <a
                                   className={`${active && ''} ml-10 p-2`}
-                                  href=""
+                                  href="#الرياضه"
                                 >
-                                  الصحه{' '}
-                                </p>
+                                  رياضه{' '}
+                                </a>
+                              )}
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  className={`${active && ''} ml-10 p-2`}
+                                  href="#لقيمات"
+                                >
+                                  لقيمات{' '}
+                                </a>
                               )}
                             </Menu.Item>
                           </section>

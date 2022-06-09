@@ -63,9 +63,15 @@ const Arround_you = ({
 
   return (
     <React.Fragment>
-      <section className={`${text_color} mx-auto w-11/12 lg:w-10/12`}>
+      {/* <section className="relative">
+        <section className="bg-black absolute top-8 h-screen w-screen opacity-20"></section>
+      </section> */}
+
+      <section
+        className={` ${text_color} mx-auto w-11/12 lg:w-10/12`}
+      >
         <>
-          <div className="flex justify-between">
+          <div className="flex justify-between ">
             <div className="my-3 mt-1 lg:mt-2">
               <h1
                 className={`${text_color} mt-5 font-TSExtra text-2xl lg:text-4xl`}
@@ -102,7 +108,8 @@ const Arround_you = ({
               {description}
             </p>
           )}
-          <section className="w-12/12 lg:w-12/12 mx-auto">
+
+          <section className="w-12/12 lg:w-12/12 mx-auto ">
             <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 ">
               <section>
                 <div
