@@ -19,7 +19,6 @@ const Voice = ({
   desc_color,
   description,
   news_one,
-  news_two,
   user_id,
 }) => {
   const [subscripe, setSubscripe] = useState(subs)
@@ -295,7 +294,7 @@ const Voice = ({
                                 <h3
                                   className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
                                 >
-                                  {news_two.section_name}
+                                  {news_one.section_name}
                                 </h3>{' '}
                               </div>
                               <div className="relative">
@@ -356,7 +355,7 @@ const Voice = ({
                                 <h3
                                   className={`${theme} text-white rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base hover:underline`}
                                 >
-                                  {news_two.section_name}
+                                  {news_one.section_name}
                                 </h3>{' '}
                               </div>
 
@@ -492,7 +491,7 @@ const Voice = ({
                                 </div>
                               </section>
                             </section>
-                            <section className="float-left mx-2 flex">
+                            <section className="float-left mx-5 flex">
                               <Wave_audio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
@@ -555,7 +554,7 @@ const Voice = ({
                                 </div>
                               </section>
                             </section>
-                            <section className="float-left mx-2 flex">
+                            <section className="float-left mx-5 flex">
                               <Wave_audio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
@@ -640,7 +639,7 @@ const Voice = ({
                                 </div>
                               </section>
                             </section>
-                            <section className="float-left mx-2 flex">
+                            <section className="float-left mx-5 flex">
                               <Wave_audio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>
@@ -703,7 +702,7 @@ const Voice = ({
                                 </div>
                               </section>
                             </section>
-                            <section className="float-left mx-2 flex">
+                            <section className="float-left mx-5 flex">
                               <Wave_audio url={Object.values(item.voices)[1]} />
                             </section>
                           </section>

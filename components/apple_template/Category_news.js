@@ -76,20 +76,30 @@ const Category_news = ({
       // console.log(res)
     })
   }
-  // Get Section Views
+  // Call the View/Impression API
+  let stories = [category_news.data[0]._id]
   const { observe, inView } = useInView({
     // Track the actual visibility of the target
     trackVisibility: false,
     unobserveOnEnter: true,
-    // Set a minimum delay between notifications, it must be set to 100 (ms) or greater
-    // For performance perspective, use the largest tolerable value as much as possible
-    delay: 1000,
+    // For performance perspective, use the largest tolerable value as much as possible // (ms)
+    delay: 1500,
     onEnter: () => {
-      console.log(title)
+      let url = `https://sjffdhemsj.execute-api.us-east-2.amazonaws.com/prod`
+      let data = {
+        body: {
+          user: user_id,
+          stories: stories,
+        },
+      }
+      axios.post(url, data).then((res) => {
+        // console.log(res)
+        // console.log(data)
+        console.log(title, 'Post Succesful')
+      })
+      // console.log(Data)
     },
-    // onLeave: () => {
-    //   console.log('None')
-    // },
+    // onLeave: () => {console.log('None')},
   })
   return (
     <React.Fragment>
@@ -180,7 +190,7 @@ const Category_news = ({
           )}
           <section className="w-12/12 lg:w-12/12 mx-auto">
             <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 ">
-              <section className="">
+              <section>
                 <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
                   <div className="">
                     <h3
@@ -301,7 +311,7 @@ const Category_news = ({
                 {category_news?.data?.slice(1, 5).map((item, key) => {
                   // console.log(arr)
                   // {
-                  //   console.log(item._id)
+                  stories.push(item._id)
                   // }
                   return (
                     <section key={item._id}>
@@ -454,11 +464,12 @@ const Category_news = ({
                   )
                 })}
               </section>
+              <div ref={observe}></div>
             </section>
           </section>
         </>
       </section>
-      <div ref={observe}></div>
+      {/* {console.log('Stories', stories)} */}
     </React.Fragment>
   )
 }

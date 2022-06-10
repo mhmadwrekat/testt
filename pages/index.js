@@ -24,7 +24,6 @@ const Footer = dynamic(() => import('../components/page/Footer'))
 // const One = dynamic(() => import('../components/1'))
 
 import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next'
-
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -302,9 +301,8 @@ const index = (props) => {
             </div>
             <Voice
               loading="lazy"
-              title={'الصوتيات '}
+              title={'الصوتيات'}
               news_one={all_news[6]}
-              news_two={all_news[6]}
               user_id={user_id}
               subs={null}
               title_color={'text-YELLOW'}
@@ -316,7 +314,7 @@ const index = (props) => {
             />
             <Category_news
               loading="lazy"
-              title={' العاب'}
+              title={'العاب'}
               category_news={all_news[13]}
               user_id={user_id}
               subs={all_news[13]?.is_subscribed}
