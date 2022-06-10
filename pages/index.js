@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
@@ -158,6 +158,7 @@ const index = (props) => {
               title_color={'text-RED'}
               fill_color={'fill-RED'}
             />
+
             {all_news[1]?.data?.length > 4 ? (
               <section className="mt-6 bg-Purp400 pb-8">
                 <Colored
@@ -190,7 +191,7 @@ const index = (props) => {
             <div id="الصحه">
               <Category_news
                 loading="lazy"
-                title={' الصحه'}
+                title={'الصحه'}
                 category_news={all_news[4]}
                 user_id={user_id}
                 subs={all_news[4]?.is_subscribed}

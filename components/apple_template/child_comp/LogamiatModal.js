@@ -26,7 +26,7 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={setOpen}
         >
-          <section className="bg-gray-500 relative">
+          <section className="bg-gray-500">
             <div className=" min-h-xl flex items-end justify-center text-center sm:block sm:p-0 ">
               <Transition.Child
                 as={Fragment}
@@ -72,13 +72,14 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
                     showThumbs={false}
                     useKeyboardArrows
                   >
+                    {/* key={item._id} */}
                     {loqaimatScreens.length > 0 ? (
-                      loqaimatScreens.map((screen) => {
+                      loqaimatScreens.map((item) => {
+                        // console.log(item)
                         return (
-                          <img
-                            className="h-full w-60"
-                            src={screen.screen_link}
-                          />
+                          <div key={item._id} className="relative">
+                            <img className="h-full" src={item.screen_link} />
+                          </div>
                         )
                       })
                     ) : (
@@ -92,64 +93,69 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
                   >
                     <i className="fa fa-chevron-right" />
                   </button> */}
-                  <div className=" fixed bottom-0 w-full"></div>
+                  {/* <div className="fixed bottom-0 w-full"></div> */}
                 </div>
               </Transition.Child>
+              <span
+                onClick={() => setOpen(false)}
+                className="absolute top-0 right-2 p-3 lg:right-10"
+              >
+                <img
+                  src="./assest/images/close.svg"
+                  className="mx-auto w-12 cursor-pointer justify-center pt-4"
+                />
+              </span>
             </div>
             {sum > 0 && (
-              <div className="absolute z-20 p-3 lg:top-96 lg:left-96">
+              <div className="absolute z-20 p-3 lg:top-96 lg:left-48">
+                <div className="absolute z-20 p-3 lg:bottom-0 lg:left-48">
+                  <div className="absolute z-20 p-3 lg:bottom-0 lg:left-48">
+                    <button
+                      className="control-arrow control-next"
+                      onClick={() => {
+                        prevF()
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-12 w-12"
+                        viewBox="0 0 20 20"
+                        fill="#666666"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div className="absolute z-20 p-3 lg:top-96 lg:right-96">
+              <div className="absolute z-20 p-3 lg:bottom-0 lg:right-48">
                 <button
-                  class="control-arrow control-next"
+                  className="control-arrow control-next"
                   onClick={() => {
-                    prevF()
+                    nextF()
                   }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-11 w-11"
+                    className="h-12 w-12"
                     viewBox="0 0 20 20"
                     fill="#666666"
                   >
                     <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </button>
               </div>
-            )}
-            <div className="absolute z-20 p-3 lg:top-96 lg:right-96">
-              <button
-                class="control-arrow control-next"
-                onClick={() => {
-                  nextF()
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-11 w-11"
-                  viewBox="0 0 20 20"
-                  fill="#666666"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
             </div>
-
-            <span
-              onClick={() => setOpen(false)}
-              className="absolute top-0 right-2 z-20 p-3 lg:right-10"
-            >
-              <img
-                src="./assest/images/close.svg"
-                className="mx-auto w-10 cursor-pointer justify-center pt-4"
-              />
-            </span>
           </section>
         </Dialog>
       </Transition.Root>

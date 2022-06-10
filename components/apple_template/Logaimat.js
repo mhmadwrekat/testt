@@ -152,17 +152,17 @@ const Logaimat = ({
           )}
           {/**** Desktop View ****/}
           {/**** Desktop View ****/}
-          <section className="w-12/12 mx-auto hidden lg:flex lg:w-10/12">
+          <section className="w-12/12 lg:w-12/12 mx-auto hidden lg:flex">
             <Swiper
               // install Swiper modules
               modules={[Navigation]}
-              slidesPerView={4}
-              spaceBetween={20}
+              slidesPerView={5}
+              spaceBetween={50}
               autoplay={true}
               loop={true}
             >
               {important_news.map((item) => {
-                console.log('Item -> ', item)
+                // console.log('Item -> ', item)
                 return (
                   <SwiperSlide key={item._id}>
                     <section

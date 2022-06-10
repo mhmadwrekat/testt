@@ -1,3 +1,4 @@
+// Import Libraries
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { BASE_URL } from '../../config/config'
@@ -6,6 +7,7 @@ import moment from 'moment'
 import 'moment/locale/ar'
 import Menu_three_dot from './child_comp/Menu_three_dot'
 import Like from '../apple_template/child_comp/Like'
+import { useInView } from 'react-cool-inview'
 
 const Category_news = ({
   title,
@@ -74,6 +76,21 @@ const Category_news = ({
       // console.log(res)
     })
   }
+  // Get Section Views
+  const { observe, inView } = useInView({
+    // Track the actual visibility of the target
+    trackVisibility: false,
+    unobserveOnEnter: true,
+    // Set a minimum delay between notifications, it must be set to 100 (ms) or greater
+    // For performance perspective, use the largest tolerable value as much as possible
+    delay: 1000,
+    onEnter: () => {
+      console.log(title)
+    },
+    // onLeave: () => {
+    //   console.log('None')
+    // },
+  })
   return (
     <React.Fragment>
       {/* {console.log('User_ID = ', user_id)} */}
@@ -441,6 +458,7 @@ const Category_news = ({
           </section>
         </>
       </section>
+      <div ref={observe}></div>
     </React.Fragment>
   )
 }
