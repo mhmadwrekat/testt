@@ -19,6 +19,8 @@ const Arround_you = ({
       ? important_news.data[0].stories_media_url[0]
       : null
 
+  const [like, setLike] = useState(important_news?.data[0]?.is_loved)
+
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
     let code = ''
@@ -41,9 +43,7 @@ const Arround_you = ({
   }
 
   // function to handle Love & Unlove for First News
-  const [like, setLike] = useState(important_news?.data[0]?.is_loved)
   const handleLike = (story_id, is_loved) => {
-    // console.log(story_id, is_loved)
     let config = {
       method: 'PUT',
       baseURL: `${BASE_URL}`,
@@ -54,19 +54,17 @@ const Arround_you = ({
         isLove: !is_loved,
       },
     }
-    axios(config).then((res) => {
-      // console.log(res)
-      setLike(!like)
-    })
-    // return !is_loved
+    axios(config)
+      .then((res) => {
+        setLike(!like)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
     <React.Fragment>
-      {/* <section className="relative">
-        <section className="bg-black absolute top-8 h-screen w-screen opacity-20"></section>
-      </section> */}
-
       <section className={` ${text_color} mx-auto w-11/12 lg:w-10/12`}>
         <>
           <div className="flex justify-between ">
@@ -122,7 +120,6 @@ const Arround_you = ({
                     </h3>{' '}
                   </div>
                   <div className="relative max-w-full">
-                    {/* {console.log(important_news_img)} */}
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (

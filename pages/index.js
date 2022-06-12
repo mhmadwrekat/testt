@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
@@ -107,21 +107,22 @@ const index = (props) => {
 
   // Function Get all News
   const get_all = async () => {
-    let all_news_url = `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
-    axios.get(all_news_url).then((res) => {
-      // setAll_news(res.data.data)
-      // console.log(all_news_url)
-      // Convert API Data From (Object To Array)
-      let keys = Object.keys(res.data.data)
-      let custom_array = []
-      keys.map((item) => {
-        custom_array.push(res.data.data[item])
+    axios
+      .get(
+        `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+      )
+      .then((res) => {
+        // Convert API Data From (Object To Array)
+        let keys = Object.keys(res.data.data)
+        let custom_array = []
+        keys.map((item) => {
+          custom_array.push(res.data.data[item])
+        })
+        setAll_news(custom_array)
       })
-      setAll_news(custom_array)
-    })
   }
 
-  // Function Returned Background Image Based on Country Code
+  // Function Returns Background Image Based on Country Code
   const get_bg_image = async () => {
     if (country_code?.includes('JO')) {
       setBg_image('bg-jordan')
@@ -142,9 +143,14 @@ const index = (props) => {
   return (
     <React.Fragment>
       <HeadComp />
-      <div dir="rtl" id="project_body" className="bg-white text-black">
+      <div
+        dir="rtl"
+        id="project_body"
+        className="bg-white text-black"
+        translate="no"
+      >
         <Nav />
-        {/* <One loqaimat={props?.loqaimat?.data} /> */}
+
         {all_news && (
           <React.Fragment>
             <Category_news
@@ -157,7 +163,6 @@ const index = (props) => {
               title_color={'text-RED'}
               fill_color={'fill-RED'}
             />
-
             {all_news[1]?.data?.length > 4 ? (
               <section className="mt-6 bg-Purp400 pb-8">
                 <Colored
@@ -385,307 +390,8 @@ const index = (props) => {
             <Footer loading="lazy" />
           </React.Fragment>
         )}
-        {/* {all_news[0]?.data.length > 4 && ( */}
-        <>
-          {/* {all_news[0]?.data?.length > 4 && (
-            <>
-        
-            </>
-          )}
-
-         
-
-              <Category_news
-                loading="lazy"
-                title={' لايف ستايل'}
-                category_news={all_news[16]}
-                user_id={user_id}
-                subs={all_news[16]?.is_subscribed}
-                bg_color={'bg-RED'}
-                title_color={'text-RED'}
-                fill_color={'fill-RED'}
-              />
-          
-            </React.Fragment>
-          )}
-
-
-          {/*  */}
-          {/* <Category_news
-            loading="lazy"
-            title={'اخبار الفن'}
-            category_news={all_news[15]}
-            user_id={user_id}
-            subs={true}
-            bg_color={'bg-BLUE'}
-            title_color={'text-BLUE'}
-            fill_color={'fill-BLUE'}
-            description={'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'}
-          />
-          <Category_news
-            loading="lazy"
-            title={' مال وأعمال'}
-            category_news={all_news[7]}
-            user_id={user_id}
-            subs={true}
-            bg_color={'bg-GREEN'}
-            title_color={'text-GREEN'}
-            fill_color={'fill-GREEN'}
-            description={
-              'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
-            }
-          />
-          <Category_news
-            loading="lazy"
-            title={' ترند'}
-            category_news={all_news[5]}
-            user_id={user_id}
-            subs={true}
-            bg_color={'bg-RED'}
-            title_color={'text-RED'}
-            fill_color={'fill-RED'}
-            description={
-              'جميع الأخبار المتعلقة في عالميات الترند من أهم المصادر'
-            }
-          />
-          <Category_news
-            loading="lazy"
-            title={'  الشرق الأوسط'}
-            category_news={all_news[14]}
-            user_id={user_id}
-            subs={true}
-            bg_color={'bg-YELLOW'}
-            title_color={'text-YELLOW'}
-            fill_color={'fill-YELLOW'}
-            description={'جميع ما يحدث حول العالم '}
-          />
-          <Category_news
-            loading="lazy"
-            title={' رياضه'}
-            category_news={all_news[3]}
-            user_id={user_id}
-            subs={true}
-            bg_color={'bg-BLUE'}
-            title_color={'text-BLUE'}
-            fill_color={'fill-BLUE'}
-            description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
-          />
-          <Category_news
-            loading="lazy"
-            title={' العاب'}
-            category_news={all_news[13]}
-            user_id={user_id}
-            subs={true}
-            bg_color={'bg-GREEN'}
-            title_color={'text-GREEN'}
-            fill_color={'fill-GREEN'}
-            description={'جميع ما يخص عالم الالعاب بين يديك'}
-          />
-          <Category_news
-            loading="lazy"
-            title={' الخليج العربي '}
-            category_news={all_news[10]}
-            user_id={user_id}
-            subs={true}
-            bg_color={'bg-YELLOW'}
-            title_color={'text-YELLOW'}
-            fill_color={'fill-YELLOW'}
-            description={'جميع ما يخص أحداث الخليج العربي'}
-          /> */}
-        </>
       </div>
     </React.Fragment>
   )
 }
 export default index
-/*
-         <>
-            <Category_news
-              loading="eager"
-              title={'أهم الأخبار'}
-              category_news={props.all_news[0]}
-              user_id={' '}
-              subs={null}
-              bg_color={'bg-RED'}
-              title_color={'text-RED'}
-              fill_color={'fill-RED'}
-            />
-            <Category_news
-              loading="lazy"
-              title={'  الشأن الدولي'}
-              category_news={props.all_news[11]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-YELLOW'}
-              title_color={'text-YELLOW'}
-              fill_color={'fill-YELLOW'}
-              description={'جميع ما يحدث حول العالم '}
-            />
-            <Category_news
-              loading="lazy"
-              title={' الصحه'}
-              category_news={props.all_news[4]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-BLUE'}
-              title_color={'text-BLUE'}
-              fill_color={'fill-BLUE'}
-              description={'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'}
-            />
-            <Voice
-              loading="lazy"
-              title={'الصوتيات '}
-              news_one={props.all_news[6]}
-              news_two={props.all_news[6]}
-              subs={true}
-              title_color={'text-YELLOW'}
-              fill_color={'fill-YELLOW'}
-              card_color={'bg-GRAY100'}
-              desc_color={'text-GRAY400'}
-              theme={'bg-YELLOW'}
-              description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
-            />
-            <Category_news
-              loading="lazy"
-              title={' تكنولوجيا'}
-              category_news={props.all_news[12]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-GREEN'}
-              title_color={'text-GREEN'}
-              fill_color={'fill-GREEN'}
-              description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
-            />
-            <Category_news
-              loading="lazy"
-              title={' لايف ستايل'}
-              category_news={props.all_news[16]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-RED'}
-              title_color={'text-RED'}
-              fill_color={'fill-RED'}
-            />
-            <Category_news
-              loading="lazy"
-              title={' غزو أوكرانيا'}
-              category_news={props.all_news[8]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-YELLOW'}
-              title_color={'text-YELLOW'}
-              fill_color={'fill-YELLOW'}
-              description={'جميع ما يخص أحداث غزو أوكرانيا'}
-            />
-
-            <Category_news
-              loading="lazy"
-              title={'اخبار الفن'}
-              category_news={props.all_news[15]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-BLUE'}
-              title_color={'text-BLUE'}
-              fill_color={'fill-BLUE'}
-              description={'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'}
-            />
-            <Category_news
-              loading="lazy"
-              title={' مال وأعمال'}
-              category_news={props.all_news[7]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-GREEN'}
-              title_color={'text-GREEN'}
-              fill_color={'fill-GREEN'}
-              description={
-                'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
-              }
-            />
-            <Category_news
-              loading="lazy"
-              title={' ترند'}
-              category_news={props.all_news[5]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-RED'}
-              title_color={'text-RED'}
-              fill_color={'fill-RED'}
-              description={
-                'جميع الأخبار المتعلقة في عالميات الترند من أهم المصادر'
-              }
-            />
-            <Category_news
-              loading="lazy"
-              title={'  الشرق الأوسط'}
-              category_news={props.all_news[14]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-YELLOW'}
-              title_color={'text-YELLOW'}
-              fill_color={'fill-YELLOW'}
-              description={'جميع ما يحدث حول العالم '}
-            />
-            <Category_news
-              loading="lazy"
-              title={' رياضه'}
-              category_news={props.all_news[3]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-BLUE'}
-              title_color={'text-BLUE'}
-              fill_color={'fill-BLUE'}
-              description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
-            />
-            <Category_news
-              loading="lazy"
-              title={' العاب'}
-              category_news={props.all_news[13]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-GREEN'}
-              title_color={'text-GREEN'}
-              fill_color={'fill-GREEN'}
-              description={'جميع ما يخص عالم الالعاب بين يديك'}
-            />
-            <Category_news
-              loading="lazy"
-              title={' الخليج العربي '}
-              category_news={props.all_news[10]}
-              user_id={' '}
-              subs={true}
-              bg_color={'bg-YELLOW'}
-              title_color={'text-YELLOW'}
-              fill_color={'fill-YELLOW'}
-              description={'جميع ما يخص أحداث الخليج العربي'}
-            />
-            <Footer loading="lazy" />
-          </>
-
-// // Dark & Light Mode
-// if (typeof window !== 'undefined') {
-//   //Toggle mode
-//   const toggle = document.querySelector('.js-change-theme')
-//   const project_body = document.getElementById('project_body')
-//   // const logoFooter = document.getElementById('logoFooter')
-//   toggle.addEventListener('click', () => {
-//     if (project_body.classList.contains('text-white')) {
-//       toggle.innerHTML = '🌙'
-//       project_body.classList.remove('bg-gray-900')
-//       project_body.classList.remove('text-white')
-//       project_body.classList.add('bg-white')
-//       project_body.classList.add('text-black')
-//       // logoFooter.classList.remove('text-white')
-//       // logoFooter.classList.add('text-LogoPurp')
-//     } else {
-//       toggle.innerHTML = '☀️'
-//       project_body.classList.remove('bg-white')
-//       project_body.classList.remove('text-black')
-//       project_body.classList.add('bg-gray-900')
-//       project_body.classList.add('text-white')
-//       // logoFooter.classList.remove('text-LogoPurp')
-//       // logoFooter.classList.add('text-white')
-//     }
-//   })
-// }
-*/

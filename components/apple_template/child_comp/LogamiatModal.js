@@ -17,6 +17,10 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
     set_num(sum - 1)
   }
 
+  const close_loqaima = () => {
+    setOpen(false)
+    set_num(0)
+  }
   // currentImageIndex
   return (
     <React.Fragment>
@@ -78,7 +82,11 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
                         // console.log(item)
                         return (
                           <div key={item._id} className="relative">
-                            <img className="h-full" src={item.screen_link} />
+                            <img
+                              className="h-full"
+                              src={item.screen_link}
+                              alt={item.screen_link}
+                            />
                           </div>
                         )
                       })
@@ -97,12 +105,13 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
                 </div>
               </Transition.Child>
               <span
-                onClick={() => setOpen(false)}
+                onClick={() => close_loqaima()}
                 className="absolute top-0 right-2 p-3 lg:right-10"
               >
                 <img
                   src="./assest/images/close.svg"
                   className="mx-auto w-12 cursor-pointer justify-center pt-4"
+                  alt="close button"
                 />
               </span>
             </div>

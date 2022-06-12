@@ -1,18 +1,54 @@
-//import Router from 'next/router'
-import { useRouter } from 'next/router'
+import React from 'react'
 import { Menu } from '@headlessui/react'
-import React, { useState } from 'react'
-import Link from 'next/link'
 
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
 // import 'moment/locale/ar'
 const Nav = () => {
-  const router = useRouter()
-  const [clicks, setClicks] = useState(true)
-  const handleClicks = () => {
-    setClicks(!clicks)
-  }
+  // const router = useRouter()
+
+  const nav_items = [
+    {
+      name: 'الرئيسية',
+      link: '',
+    },
+    {
+      name: 'المدونة',
+      link: '',
+    },
+    {
+      name: 'أخبار',
+      link: '',
+    },
+  ]
+
+  const secondary_nav_items = [
+    {
+      name: 'الصحه',
+      link: '#الصحه',
+    },
+    {
+      name: 'الخليج العربي',
+      link: '#الخليج العربي',
+    },
+    {
+      name: 'غزو اوكرانيا',
+      link: '#اوكرانيا',
+    },
+    {
+      name: 'ترند',
+      link: '#ترند',
+    },
+    {
+      name: 'رياضه',
+      link: '#الرياضه',
+    },
+    {
+      name: 'لقيمات',
+      link: '#لقيمات',
+    },
+  ]
+
   return (
     <React.Fragment>
       <section className="relative">
@@ -40,10 +76,6 @@ const Nav = () => {
             {/* <p className="text-gray-400 mr-3.5 font-TSExtra text-xl  lg:mr-14">
             {moment().format('Do / MMM')}
           </p> */}
-            {/*         
-        <div className="float-right my-5 mr-4 sm:flex md:mr-20 lg:mr-24 lg:hidden">
-          <MobileMenu />
-        </div> */}
 
             {/* <div className="float-right my-5 mr-4 flex md:mr-20 lg:mr-24">
           <button className="js-change-theme text-3xl focus:outline-none">
@@ -52,22 +84,13 @@ const Nav = () => {
         </div> */}
             {/* <section id="logoFooter" className="text-LogoPurp"> */}
             <div className=" hidden pr-20 font-TSbold text-lg lg:mt-3 lg:flex">
-              <button className="my-auto ml-10 lg:cursor-pointer">
-                الرئيسية
-              </button>
-              <button className="my-auto ml-10 lg:cursor-pointer">
-                المدونة
-              </button>
-              <buttons className="my-auto ml-10 lg:cursor-pointer">
-                أخبار
-              </buttons>
-              <buttons className="my-auto ml-10 lg:cursor-pointer">
-                <a href="#الصحه"> الصحه</a>
-              </buttons>
-              {/* <img
-                            src="./assest/images/LogaimatHand.svg"
-                            className="mx-auto w-4/12 justify-center pt-4"
-                          /> */}
+              {nav_items.map((item) => {
+                return (
+                  <button className="my-auto ml-10 lg:cursor-pointer">
+                    {item.name}
+                  </button>
+                )
+              })}
 
               <buttons className="my-auto ml-10 pt-3 lg:cursor-pointer ">
                 <React.Fragment>
@@ -87,56 +110,20 @@ const Nav = () => {
                       <Menu.Items>
                         <section className="">
                           <section className="text-white top-18 absolute right-0 flex w-full justify-center bg-Purp100 text-center font-TSbold text-lg">
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  className={`${active && ''} ml-10 p-2`}
-                                  href="#الخليج العربي"
-                                >
-                                  الخليج العربي
-                                </a>
-                              )}
-                            </Menu.Item>
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  className={`${active && ''} ml-10 p-2`}
-                                  href="#اوكرانيا"
-                                >
-                                  غزو اوكرانيا
-                                </a>
-                              )}
-                            </Menu.Item>
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  className={`${active && ''} ml-10 p-2`}
-                                  href="#ترند"
-                                >
-                                  ترند{' '}
-                                </a>
-                              )}
-                            </Menu.Item>
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  className={`${active && ''} ml-10 p-2`}
-                                  href="#الرياضه"
-                                >
-                                  رياضه{' '}
-                                </a>
-                              )}
-                            </Menu.Item>
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  className={`${active && ''} ml-10 p-2`}
-                                  href="#لقيمات"
-                                >
-                                  لقيمات{' '}
-                                </a>
-                              )}
-                            </Menu.Item>
+                            {secondary_nav_items.map((item) => {
+                              return (
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <a
+                                      className={`${active && ''} ml-10 p-2`}
+                                      href={item.link}
+                                    >
+                                      {item.name}
+                                    </a>
+                                  )}
+                                </Menu.Item>
+                              )
+                            })}
                           </section>
                         </section>
                       </Menu.Items>
@@ -155,7 +142,7 @@ const Nav = () => {
             </div>
           </div>
           <div className="relative mt-3 font-TSSemi lg:ml-5 lg:mt-6 lg:pl-3">
-            <div className="... pointer-events-auto absolute">
+            <div className="pointer-events-auto absolute">
               <svg
                 className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
                 viewBox="0 0 20 20"

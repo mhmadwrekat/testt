@@ -212,16 +212,17 @@ const Category_news = ({
                           className="relative h-56 w-full object-cover lg:h-80"
                         />
                       ) : (
-                        <Image
+                        <img
                           src={important_news_img}
                           alt={category_news.data[0].stories_headlines}
+                          className="relative h-56 w-full object-cover lg:h-80"
                           // className="relative h-56 w-full lg:h-80"
-                          layout="fill"
-                          quality={50}
-                          className="object-cover"
-                          loading="eager"
-                          placeholder="blur"
-                          blurDataURL={important_news_img}
+                          // layout="fill"
+                          // quality={50}
+                          // className="object-cover"
+                          // loading="eager"
+                          // placeholder="blur"
+                          // blurDataURL={important_news_img}
                         />
                       ))}
                     <div className="bg-white absolute bottom-2 right-2 rounded-full p-1">

@@ -62,6 +62,7 @@ module.exports = {
       'akm-img-a-in.tosshub.com',
       'images.unsplash.com',
       'media.istockphoto.com',
+      'safetravelbarometer.com',
       'storage.googleapis.com',
       'miro.medium.com',
       'assets.devops.arabiaweather.com',

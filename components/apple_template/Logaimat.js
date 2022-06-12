@@ -181,7 +181,7 @@ const Logaimat = ({
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                 item.cover_photo
                               )}/0.jpg`}
-                              alt="test"
+                              alt={item.topic_name}
                               className="
                                 mx-auto h-32 w-40 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
                             />
@@ -189,7 +189,7 @@ const Logaimat = ({
                             <img
                               loading="lazy"
                               src={item.cover_photo}
-                              alt="test"
+                              alt={item.topic_name}
                               className="mx-auto h-32 w-40 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
                             />
                           ))}
@@ -200,6 +200,7 @@ const Logaimat = ({
                           <img
                             src="./assest/images/LogaimatHand.svg"
                             className="mx-auto w-4/12 justify-center pt-4"
+                            alt="hand click"
                           />
                         </div>
                       </div>
@@ -233,11 +234,12 @@ const Logaimat = ({
                         setLoqaimatScreens(item.screens)
                       }}
                     >
+                      {/* {console.log(item)} */}
                       <div className="relative mr-2 h-72 w-40 lg:mr-0  lg:py-0">
                         <img
                           loading="lazy"
                           src={item.cover_photo}
-                          alt="test"
+                          alt={item.topic_name}
                           className="mx-auto h-72 w-44 md:h-full md:w-full"
                         />
                         <div className="bg-white absolute top-0 right-0 left-0 h-full w-full overflow-hidden opacity-0 transition ease-in-out hover:opacity-80">
@@ -247,6 +249,7 @@ const Logaimat = ({
                           <img
                             src="./assest/images/LogaimatHand.svg"
                             className="mx-auto w-4/12 justify-center pt-4"
+                            alt="hand click"
                           />{' '}
                         </div>
                       </div>
