@@ -57,13 +57,13 @@ export default function ThirdSection() {
       {/* ------------------- MOBILE VIEW ----------------------- */}
 
       <div className="relative min-h-full overflow-hidden bg-GRAYLIGHT lg:hidden">
-        <div className="mx-auto flex h-12 justify-center">
-          <img
+        {/* <div className="mx-auto flex h-12 justify-center">
+         <img
             src="./assest/images/images/mobile/thirdSection/Rectangle-mobile.png"
             alt="rectangle"
             loading="lazy"
-          />
-        </div>
+          /> 
+        </div> */}
         <div className="flex justify-center ">
           <div className="mx-auto text-center">
             <div className="text-purple-900 mx-4 my-12 text-center font-TSmedium text-2xl ">

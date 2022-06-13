@@ -58,8 +58,9 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
+    // register_user()
     get_country()
-  }, [router.events])
+  }, [])
   // useEffect(() => {
   //   // register_user()
   //   const handleRouteChange = (url) => {

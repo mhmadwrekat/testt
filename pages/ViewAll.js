@@ -5,9 +5,11 @@ import Like from '../components/appleTemplate/childComponent/Like'
 
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
 const Nav = dynamic(() => import('../components/page/Nav'))
+const AllData = dynamic(() =>
+  import('../components/appleTemplate/childComponent/AllData')
+)
 
 const ViewAll = () => {
-  let loading = 'eager'
   let title = 'أهم الأخبار'
   //   let category_news = all_news[0]
   //   let user_id = user_id
@@ -21,7 +23,7 @@ const ViewAll = () => {
       <div dir="rtl" id="project_body" translate="no">
         <HeadComp />
         <Nav />
-        <section className="bg-white text-black mx-auto w-11/12 lg:w-10/12 lg:pt-10">
+        <section className="text-black mx-auto w-11/12 bg-white lg:w-10/12 lg:pt-10">
           <div className="flex justify-between">
             <div className="my-3 mt-3 lg:mt-4">
               <div className="flex">
@@ -76,25 +78,25 @@ const ViewAll = () => {
             </p>
           )}
           {/* key={item?._id} */}
-          <section className="grid grid-cols-3 gap-16">
+          <section className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-16">
             {FakeData.slice(0, 3).map((item) => {
               return (
-                <section>
+                <section className="">
                   <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
                     <div>
                       <p
-                        className={`${bg_color} text-white rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
+                        className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
                       >
                         {item.section}
                       </p>{' '}
                     </div>
-                    <section className="flex bg-GRAY100 lg:grid ">
-                      <div className="relative mr-2 w-72 py-2 lg:mr-0 lg:w-auto lg:py-0">
+                    <section className="grid bg-GRAY100 lg:grid ">
+                      <div className="relative w-full lg:w-auto">
                         <img
                           loading="eager"
                           src={item.image}
                           alt={item.title}
-                          className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-72 lg:w-full"
+                          className="mx-auto h-32 w-full object-cover md:h-full md:w-full lg:h-72 lg:w-full"
                         />
 
                         <Like
@@ -147,77 +149,7 @@ const ViewAll = () => {
               )
             })}
           </section>
-          <section className="grid grid-cols-3 gap-16 pt-10">
-            {FakeData.map((item) => {
-              return (
-                <section>
-                  <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
-                    <div>
-                      <p
-                        className={`${bg_color} text-white rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
-                      >
-                        {item.section}
-                      </p>{' '}
-                    </div>
-                    <section className="flex bg-GRAY100 lg:grid ">
-                      <div className="relative mr-2 w-72 py-2 lg:mr-0 lg:w-auto lg:py-0">
-                        <img
-                          loading="eager"
-                          src={item.image}
-                          alt={item.title}
-                          className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-44 lg:w-full"
-                        />
-
-                        <Like
-                          user_id="62a0dd4b86fdbd34fc3bad58"
-                          story_id="60d9d86c8eeb1109bd6f17ce"
-                          isLoved={true}
-                        />
-                      </div>
-
-                      <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
-                        <p>
-                          <b className=" text-red-800 font-TSExtra">
-                            {item.logo}
-                          </b>
-                        </p>
-                        <p className="font-TSExtra text-GRAY400">
-                          {item.time}{' '}
-                        </p>
-                      </div>
-
-                      <div className=" py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2">
-                        <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-14 lg:text-xl">
-                          {item.title}
-                        </div>
-                        <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-24 lg:pt-1.5 lg:text-sm">
-                          {item.desc}
-                        </div>
-                      </div>
-                    </section>
-
-                    <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
-                      <p>
-                        <b className=" text-red-800 font-TSExtra">
-                          {item.logo}
-                        </b>
-                      </p>
-                      <p className="font-TSExtra text-GRAY300">{item.time} </p>
-                    </div>
-                    <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
-                    <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
-                      <p
-                        className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
-                      >
-                        اقرا المزيد
-                      </p>{' '}
-                      {/* <MenuThreeDot title_color={title_color} /> */}
-                    </div>
-                  </div>
-                </section>
-              )
-            })}
-          </section>
+          <AllData data={FakeData} bg_color={'bg-GREEN'} />
         </section>
       </div>
       <div className="py-20"></div>

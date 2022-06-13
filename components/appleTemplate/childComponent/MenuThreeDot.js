@@ -17,11 +17,10 @@ const Test = ({ title_color }) => {
             >
               <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
             </svg>
-            Menu
           </Menu.Button>
           <Menu.Items>
             <section className="absolute top-3 left-24 w-32 lg:left-32">
-              <section className="text-black bg-white grid w-48 rounded p-1 text-center font-TSbold text-sm shadow-lg lg:w-56 ">
+              <section className="text-black grid w-48 rounded bg-white p-1 text-center font-TSbold text-sm shadow-lg lg:w-56 ">
                 <Menu.Item>
                   {({ active }) => (
                     <p

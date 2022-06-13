@@ -4,6 +4,8 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/ar'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 // import MenuThreeDot from './child_comp/MenuThreeDot'
 const Like = dynamic(() => import('./childComponent/Like'))
@@ -20,6 +22,7 @@ const Category_news = ({
   fill_color,
   user_id,
 }) => {
+  const router = useRouter()
   const important_news_img =
     category_news?.data[0]?.stories_media_url.length > 0
       ? category_news.data[0].stories_media_url[0]
@@ -139,24 +142,25 @@ const Category_news = ({
                 </p>
               )}
             </div>
-
-            <div className="my-1 mt-4 flex lg:mt-5">
-              <p className="mt-5 font-TSbold text-lg text-GRAY50 lg:text-xl">
-                عرض الجميع
-              </p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>{' '}
+            <Link href="/ViewAll">
+              <div className="my-1 mt-4 flex cursor-pointer lg:mt-5">
+                <p className="mt-5 font-TSbold text-lg text-GRAY50 lg:text-xl">
+                  عرض الجميع
+                </p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </Link>
+          </div>
           {description && (
             <p
               className={`text-black grid w-10/12 px-1 pb-2 font-TSmedium text-lg lg:hidden lg:text-xl`}
@@ -271,11 +275,13 @@ const Category_news = ({
                       .....
                     </p>
                     <div className="my-1 flex  justify-between pt-2.5">
-                      <p
-                        className={`rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
-                      >
-                        اقرأ المزيد
-                      </p>
+                      <Link href="/More">
+                        <p
+                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
+                        >
+                          اقرأ المزيد
+                        </p>
+                      </Link>
                       {/* <MenuThreeDot title_color={title_color} /> */}
                     </div>
                   </div>
@@ -299,6 +305,9 @@ const Category_news = ({
                         <div>
                           <p
                             className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                            onClick={() => {
+                              router.push(`/${category_news.section_name}`)
+                            }}
                           >
                             {category_news.section_name}
                           </p>{' '}
@@ -332,67 +341,6 @@ const Category_news = ({
                               story_id={item?._id}
                               isLoved={item?.is_loved}
                             />
-                            {/* {item.is_loved ? (
-                              <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
-                                {arr[key].status ? (
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-4 w-4 cursor-pointer"
-                                    fill="#FF0000"
-                                    viewBox="0 0 24 24"
-                                    stroke="#FF0000"
-                                    strokeWidth="2"
-                                    onClick={() => {
-                                      handleLike(item._id, item.is_loved)
-                                    }}
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                    />
-                                  </svg>
-                                ) : (
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-4 w-4 cursor-pointer opacity-70"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    onClick={() => {
-                                      handleLike(item._id, item.is_loved)
-                                    }}
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                    />
-                                  </svg>
-                                )}
-                              </div>
-                            ) : (
-                              <div className="bg-white absolute bottom-5 left-1 rounded-full p-1 lg:bottom-1">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className=" h-4 w-4 cursor-pointer opacity-70"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  onClick={() => {
-                                    handleLiked(arr[key])
-                                  }}
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                  />
-                                </svg>
-                              </div>
-                            )} */}
                           </div>
 
                           <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
@@ -428,11 +376,13 @@ const Category_news = ({
                         </div>
                         <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
                         <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
-                          <p
-                            className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
-                          >
-                            اقرا المزيد
-                          </p>{' '}
+                          <Link href="/More">
+                            <p
+                              className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            >
+                              اقرأ المزيد
+                            </p>
+                          </Link>
                           {/* <MenuThreeDot title_color={title_color} /> */}
                         </div>
                       </div>

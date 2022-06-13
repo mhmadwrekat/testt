@@ -22,18 +22,20 @@ const Logaimat = dynamic(() => import('../components/appleTemplate/Logaimat'))
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
 const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
-
+const All = dynamic(() =>
+  import('../components/appleTemplate/childComponent/AllData')
+)
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
-  // res.setHeader(
-  //   'Cache-Control',
-  //   'public, s-maxage=604800, stale-while-revalidate=59'
-  // )
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
+    'public, s-maxage=604800, stale-while-revalidate=59'
   )
+  // res.setHeader(
+  //   'Cache-Control',
+  //   'public, s-maxage=10, stale-while-revalidate=59'
+  // )
   // Get Logaimat API
   let user_token = ''
   const LoqaimatDataReq = axios({
@@ -149,8 +151,11 @@ const index = (props) => {
   }, [user_id])
   // console.log('---> ', country_code, user_id)
 
+  // let uuid = new DeviceUUID()
   return (
     <React.Fragment>
+      {/* {console.log(v4())} */}
+
       <HeadComp />
       <div
         dir="rtl"
@@ -159,7 +164,6 @@ const index = (props) => {
         translate="no"
       >
         <Nav />
-
         {all_news && (
           <React.Fragment>
             <CategoryNews

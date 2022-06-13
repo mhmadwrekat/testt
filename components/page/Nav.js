@@ -1,27 +1,29 @@
 import React from 'react'
 import { Menu } from '@headlessui/react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { Refresh } from '@material-ui/icons'
 
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
 // import 'moment/locale/ar'
 const Nav = () => {
-  // const router = useRouter()
-
+  const router = useRouter()
   const nav_items = [
     {
       name: 'الرئيسية',
       id: 1,
-      link: '',
+      link: '/home',
     },
     {
       name: 'المدونة',
       id: 2,
-      link: '',
+      link: '/blogs',
     },
     {
       name: 'أخبار',
       id: 3,
-      link: '',
+      link: 'window.location.reload()',
     },
   ]
 
@@ -72,7 +74,9 @@ const Nav = () => {
       id: 9,
     },
   ]
-
+  const refresh = () => {
+    router.push('/')
+  }
   return (
     <React.Fragment>
       <section className="relative">
@@ -86,7 +90,10 @@ const Nav = () => {
                 viewBox="0 0 61 28"
                 xmlns="http://www.w3.org/2000/svg"
                 className="cursor-pointer fill-Purp100 hover:fill-SKY"
-                // onClick={() => router.replace('/')}
+                onClick={() => router.push('/')}
+                // onClick={() => {
+                //   router.push('/')
+                // }}
               >
                 <path
                   className="fill-Purp100 hover:fill-SKY"
@@ -108,14 +115,32 @@ const Nav = () => {
         </div> */}
             {/* <section id="logoFooter" className="text-LogoPurp"> */}
             <div className=" hidden pr-20 font-TSbold text-lg lg:mt-3 lg:flex">
-              {nav_items.map((item) => {
-                return (
-                  <p key={item.id} className="my-auto ml-10 lg:cursor-pointer">
-                    {item.name}
-                  </p>
-                )
-              })}
-
+              <p
+                className="my-auto ml-10 lg:cursor-pointer"
+                onClick={() => {
+                  router.push('/home')
+                }}
+              >
+                الرئيسية{' '}
+              </p>
+              <p
+                className="my-auto ml-10 lg:cursor-pointer"
+                onClick={() => {
+                  router.push('/blogs')
+                }}
+              >
+                المدونة{' '}
+              </p>
+              <Link href="/">
+                <p
+                  className="my-auto ml-10 lg:cursor-pointer"
+                  // onClick={() => {
+                  //   window.location.reload()
+                  // }}
+                >
+                  أخبار
+                </p>
+              </Link>
               <div className="my-auto ml-10 pt-3 lg:cursor-pointer ">
                 <React.Fragment>
                   <div className="w-10">
@@ -165,7 +190,12 @@ const Nav = () => {
             </buttons> */}
             </div>
           </div>
-          <div className="relative mt-3 font-TSSemi lg:ml-5 lg:mt-6 lg:pl-3">
+          <div
+            className="relative mt-3 font-TSSemi lg:ml-5 lg:mt-6 lg:pl-3"
+            onClick={() => {
+              router.push('/Search')
+            }}
+          >
             <div className="pointer-events-auto absolute">
               <svg
                 className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"

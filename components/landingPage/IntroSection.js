@@ -16,7 +16,7 @@ import { useRouter } from 'next/dist/client/router'
 
 export default function IntroSection() {
   const router = useRouter()
-  function NewTab(url) {
+  function new_tab(url) {
     window.open(url, '_blank')
   }
   const navigation = [
@@ -94,7 +94,7 @@ export default function IntroSection() {
           <img
             src="./assest/images/images/web/introSection/phoneNewsWeb.png"
             alt="logo"
-            loading="lazy"
+            loading="eager"
           />
         </div>
         <div className="hidden  lg:col-span-3 lg:col-end-7 lg:block  lg:flex lg:flex-row-reverse ">
@@ -106,7 +106,7 @@ export default function IntroSection() {
                 className="float-right mx-2 my-4 "
                 width="450"
                 height="300"
-                loading="lazy"
+                loading="eager"
               />
 
               <div className="text-center font-TSbold text-5xl text-white  ">
@@ -120,11 +120,11 @@ export default function IntroSection() {
                   src="./assest/images/images/shared/apple-xhdpi.png"
                   alt="apple Store"
                   onClick={() => {
-                    NewTab(
+                    new_tab(
                       'https://apps.apple.com/us/app/%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-alzubda-%D8%A7%D9%84%D8%B2%D8%A8%D8%AF%D8%A9/id1440466617'
                     )
                   }}
-                  loading="lazy"
+                  loading="eager"
                 />
               </span>
               <span className="inline-block h-10 cursor-pointer lg:h-auto">
@@ -132,11 +132,11 @@ export default function IntroSection() {
                   src="./assest/images/images/shared/google-xhdpi.png"
                   alt="google Play"
                   onClick={() => {
-                    NewTab(
+                    new_tab(
                       'https://play.google.com/store/apps/details?id=com.live.alzubda.newsapp&hl=ar&gl=US'
                     )
                   }}
-                  loading="lazy"
+                  loading="eager"
                 />
               </span>
             </div>
@@ -147,7 +147,7 @@ export default function IntroSection() {
       {/* ------------------- MOBILE VIEW ----------------------- */}
       {/* ------------------- MOBILE VIEW ----------------------- */}
       <>
-        <div className="not-sr-only fixed z-20 block w-full w-1/3 pb-5 pl-5 pr-2 pt-10   backdrop-blur-2xl backdrop-filter lg:sr-only">
+        <div className="w-3/3 not-sr-only fixed z-20 block w-full pb-5 pl-5 pr-2 pt-10   backdrop-blur-2xl backdrop-filter lg:sr-only">
           <div>
             <svg
               width="15"
@@ -191,19 +191,20 @@ export default function IntroSection() {
               <img
                 src="./assest/images/images/shared/alzubda-logo.png"
                 alt="logo"
-                loading="lazy"
+                loading="eager"
               />
             </div>
 
-            <div className=" font-TSbold text-xl text-white  ">
+            <div className="font-TSbold text-xl text-white">
               <h1>أخبار العالم ب60 كلمة</h1>
             </div>
           </div>
+          <div className="py-44"></div>
           <div className="absolute -bottom-10 z-10 w-full">
             <img
               src="./assest/images/images/mobile/firstSection/phoneNews.png"
               alt="logo"
-              loading="lazy"
+              loading="eager"
             />
           </div>
         </div>
