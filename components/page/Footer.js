@@ -1,28 +1,34 @@
 import Image from 'next/image'
 import appleStore from '../../public/assest/images/apple-xhdpi.png'
 import googlePlay from '../../public/assest/images/google-xhdpi.png'
+import facebook from '../../public/assest/images/facebook.jpg'
+import twiter from '../../public/assest/images/twitter.jpg'
+import youtube from '../../public/assest/images/youtube.jpg'
+import instagram from '../../public/assest/images/instagram.jpg'
+import linkedin from '../../public/assest/images/linkedin.jpg'
+
 // import instagram from '../../public/assest/images/instagram.png'
 import React from 'react'
 const Footer = () => {
-  const NewTab = (url) => {
+  const new_tab = (url) => {
     // window.open(url)
     window.open(url, '_blank')
   }
   return (
     <React.Fragment>
-      <div className="pt-2" loading="lazy">
-        <footer className="py-2">
-          <div className="border-gray-400 text-white mx-auto overflow-hidden border-t-2 bg-Purp100 py-5">
-            <h1 className="text-md my-3 mr-1 text-center font-TSbold">
+      <div className="" loading="lazy">
+        <footer className="pb-2">
+          <div className="border-gray-400 mx-auto overflow-hidden border-t-2 bg-Purp100 py-5 text-white">
+            <p className="text-md my-3 mr-1 text-center font-TSbold">
               إستخدم التطبيق لتجربة أفضل
-            </h1>
+            </p>
             <div className="mx-auto block flex  w-full justify-center">
               <span className="relative ml-2 inline-block w-32 cursor-pointer ">
                 <Image
                   src={appleStore}
                   alt="apple Store"
                   onClick={() => {
-                    NewTab(
+                    new_tab(
                       'https://apps.apple.com/us/app/%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-alzubda-%D8%A7%D9%84%D8%B2%D8%A8%D8%AF%D8%A9/id1440466617'
                     )
                   }}
@@ -34,7 +40,7 @@ const Footer = () => {
                   src={googlePlay}
                   alt="google Play"
                   onClick={() => {
-                    NewTab(
+                    new_tab(
                       'https://play.google.com/store/apps/details?id=com.live.alzubda.newsapp&hl=ar&gl=US'
                     )
                   }}
@@ -45,20 +51,24 @@ const Footer = () => {
           </div>
         </footer>
         <div className=" text-center">
-          <p className="mt-4 font-TSSemi text-sm lg:text-lg">
-            تابع الزبده على :
-          </p>
+          <p className="mt-4 font-TSSemi text-sm lg:text-lg">تابع الزبده على</p>
           <div className="my-1 mt-4">
             {/* instagram */}
-            <img
-              onClick={() => {
-                NewTab('https://instagram.com/alzubdaapp?utm_medium=copy_link')
-              }}
-              src="./assest/images/instagram.jpg"
-              className="mx-auto inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:h-9 lg:w-9 lg:hover:scale-110"
-              alt="social media alzubda instagram"
-              loading="lazy"
-            />
+
+            <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
+              <Image
+                src={instagram}
+                alt="social media alzubda instagram"
+                onClick={() => {
+                  new_tab(
+                    'https://instagram.com/alzubdaapp?utm_medium=copy_link'
+                  )
+                }}
+                priority
+                width="35"
+                height="35"
+              />
+            </div>
             {/* <svg
               className="mx-auto inline-block h-8 w-8 cursor-pointer md:h-9 md:w-9 lg:h-11 lg:w-11 lg:hover:scale-110"
               viewBox="0 0 66 65"
@@ -72,15 +82,19 @@ const Footer = () => {
             </svg> */}
 
             {/* twitter */}
-            <img
-              onClick={() => {
-                NewTab('https://twitter.com/alzubdaapp')
-              }}
-              src="./assest/images/twitter.jpg"
-              className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110"
-              alt="social media alzubda twitter"
-              loading="lazy"
-            />
+
+            <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
+              <Image
+                src={twiter}
+                alt="social media alzubda twitter"
+                onClick={() => {
+                  new_tab('https://twitter.com/alzubdaapp')
+                }}
+                priority
+                width="35"
+                height="35"
+              />
+            </div>
             {/* <svg
               onClick={() => {
                 NewTab('https://twitter.com/alzubdaapp')
@@ -97,15 +111,19 @@ const Footer = () => {
             </svg> */}
 
             {/* facebook */}
-            <img
-              onClick={() => {
-                NewTab('https://www.facebook.com/alzubdaapp/')
-              }}
-              src="./assest/images/facebook.jpg"
-              className="mx-auto mr-7 inline-block  h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110"
-              alt="social media alzubda facebook"
-              loading="lazy"
-            />
+            <div className="mx-auto mr-7 inline-block  h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
+              <Image
+                src={facebook}
+                alt="social media alzubda facebook"
+                onClick={() => {
+                  new_tab('https://www.facebook.com/alzubdaapp/')
+                }}
+                priority
+                width="35"
+                height="35"
+              />
+            </div>
+
             {/* <svg
               onClick={() => {
                 NewTab('https://www.facebook.com/alzubdaapp/')
@@ -122,17 +140,21 @@ const Footer = () => {
             </svg> */}
 
             {/* youtube */}
-            <img
-              onClick={() => {
-                NewTab(
-                  'https://www.youtube.com/channel/UC-0-lhAWZAg3MJcFgC-daVg'
-                )
-              }}
-              src="./assest/images/youtube.jpg"
-              className="mx-auto mr-7 inline-block  h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110"
-              alt="social media alzubda youtube"
-              loading="lazy"
-            />
+
+            <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
+              <Image
+                src={youtube}
+                alt="social media alzubda youtube"
+                onClick={() => {
+                  new_tab(
+                    'https://www.youtube.com/channel/UC-0-lhAWZAg3MJcFgC-daVg'
+                  )
+                }}
+                priority
+                width="35"
+                height="35"
+              />
+            </div>
             {/* <svg
               onClick={() => {
                 NewTab(
@@ -151,15 +173,19 @@ const Footer = () => {
             </svg> */}
 
             {/* linkedin */}
-            <img
-              onClick={() => {
-                NewTab('https://www.linkedin.com/company/alzubda/')
-              }}
-              src="./assest/images/linkedin.jpg"
-              className="mx-auto mr-7 inline-block  h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110"
-              alt="social media alzubda linkedin"
-              loading="lazy"
-            />
+
+            <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
+              <Image
+                src={linkedin}
+                alt="social media alzubda linkedin"
+                onClick={() => {
+                  new_tab('https://www.linkedin.com/company/alzubda/')
+                }}
+                priority
+                width="35"
+                height="35"
+              />
+            </div>
             {/* <svg
               onClick={() => {
                 NewTab('https://www.linkedin.com/company/alzubda/')

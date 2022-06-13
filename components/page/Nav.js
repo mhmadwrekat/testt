@@ -10,14 +10,17 @@ const Nav = () => {
   const nav_items = [
     {
       name: 'الرئيسية',
+      id: 1,
       link: '',
     },
     {
       name: 'المدونة',
+      id: 2,
       link: '',
     },
     {
       name: 'أخبار',
+      id: 3,
       link: '',
     },
   ]
@@ -26,26 +29,47 @@ const Nav = () => {
     {
       name: 'الصحه',
       link: '#الصحه',
+      id: 1,
     },
     {
       name: 'الخليج العربي',
       link: '#الخليج العربي',
+      id: 2,
     },
     {
       name: 'غزو اوكرانيا',
       link: '#اوكرانيا',
+      id: 3,
     },
     {
       name: 'ترند',
       link: '#ترند',
+      id: 4,
+    },
+    {
+      name: 'الصوتيات',
+      link: '#الصوتيات',
+      id: 5,
     },
     {
       name: 'رياضه',
       link: '#الرياضه',
+      id: 6,
     },
     {
       name: 'لقيمات',
       link: '#لقيمات',
+      id: 7,
+    },
+    {
+      name: 'لايف ستايل',
+      link: '#لايف ستايل',
+      id: 8,
+    },
+    {
+      name: 'تكنولوجيا',
+      link: '#تكنولوجيا',
+      id: 9,
     },
   ]
 
@@ -86,13 +110,13 @@ const Nav = () => {
             <div className=" hidden pr-20 font-TSbold text-lg lg:mt-3 lg:flex">
               {nav_items.map((item) => {
                 return (
-                  <button className="my-auto ml-10 lg:cursor-pointer">
+                  <p key={item.id} className="my-auto ml-10 lg:cursor-pointer">
                     {item.name}
-                  </button>
+                  </p>
                 )
               })}
 
-              <buttons className="my-auto ml-10 pt-3 lg:cursor-pointer ">
+              <div className="my-auto ml-10 pt-3 lg:cursor-pointer ">
                 <React.Fragment>
                   <div className="w-10">
                     <Menu as="div" className="">
@@ -109,10 +133,10 @@ const Nav = () => {
 
                       <Menu.Items>
                         <section className="">
-                          <section className="text-white top-18 absolute right-0 flex w-full justify-center bg-Purp100 text-center font-TSbold text-lg">
+                          <section className="top-18 absolute right-0 flex w-full justify-center bg-Purp100 text-center font-TSbold text-lg text-white">
                             {secondary_nav_items.map((item) => {
                               return (
-                                <Menu.Item>
+                                <Menu.Item key={item.id}>
                                   {({ active }) => (
                                     <a
                                       className={`${active && ''} ml-10 p-2`}
@@ -130,7 +154,7 @@ const Nav = () => {
                     </Menu>
                   </div>
                 </React.Fragment>
-              </buttons>
+              </div>
 
               {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
               <select class="bg-white appearance-none border-none">
@@ -158,7 +182,7 @@ const Nav = () => {
             <input
               type="text"
               placeholder="محرك البحث"
-              className="border-white placeholder-white float-left w-40 rounded-md border-2 bg-GRAY200 p-1 pt-2 pr-12 text-base lg:w-96 lg:text-lg"
+              className="float-left w-40 rounded-md border-2 border-white bg-GRAY200 p-1 pt-2 pr-12 text-base placeholder-white lg:w-96 lg:text-lg"
             />
           </div>
 

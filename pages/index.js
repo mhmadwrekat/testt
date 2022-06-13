@@ -3,27 +3,26 @@ import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid'
-import Cookies from 'cookies'
+
 // Apple View component
-const Category_news = dynamic(() =>
-  import('../components/apple_template/Category_news')
+const CategoryNews = dynamic(() =>
+  import('../components/appleTemplate/CategoryNews')
 )
-const Arround_you = dynamic(() =>
-  import('../components/apple_template/Arround_you')
+const ArroundYou = dynamic(() =>
+  import('../components/appleTemplate/ArroundYou')
 )
-const Colored = dynamic(() => import('../components/apple_template/Colored'))
-const Video = dynamic(() => import('../components/apple_template/Video'))
-const Voice = dynamic(() => import('../components/apple_template/Voice'), {
+const Colored = dynamic(() => import('../components/appleTemplate/Colored'))
+const Video = dynamic(() => import('../components/appleTemplate/Video'))
+const Voice = dynamic(() => import('../components/appleTemplate/Voice'), {
   ssr: false,
 })
-const Logaimat = dynamic(() => import('../components/apple_template/Logaimat'))
+const Logaimat = dynamic(() => import('../components/appleTemplate/Logaimat'))
+
 // page Component
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
 const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
-// const One = dynamic(() => import('../components/1'))
 
-import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next'
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -32,8 +31,7 @@ export async function getServerSideProps({ req, res }) {
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
   // Get Logaimat API
-  const cookies = new Cookies(req, res)
-  let user_token = cookies.get('user_token')
+  let user_token = ''
   const LoqaimatDataReq = axios({
     method: 'GET',
     url: `${BASE_URL}/v1/Web/Loqaimat`,
@@ -42,6 +40,7 @@ export async function getServerSideProps({ req, res }) {
     },
   })
   const loqaimat = await LoqaimatDataReq
+
   return {
     props: {
       loqaimat: loqaimat.data,
@@ -51,19 +50,27 @@ export async function getServerSideProps({ req, res }) {
 
 const index = (props) => {
   // Declare State
-  const [country_code, set_country_code] = useState()
-  const [user_id, set_user_id] = useState()
-  const [all_news, setAll_news] = useState()
-  const [bg_image, setBg_image] = useState('bg-kuwait')
+  const [country_code, setCountryCode] =
+    typeof window !== 'undefined'
+      ? useState(localStorage.getItem('country_code'))
+      : useState()
+  const [user_id, setUserId] = useState()
+  const [all_news, setAllNews] = useState()
+  const [bg_image, setBackgroundImage] = useState('')
+  const [test, setTesst] = useState()
 
+  let isMobile =
+    typeof window !== 'undefined'
+      ? /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+      : ''
   // Function Get User Info From LocalStorage else From API
   const register_user = async () => {
     try {
       let device_id = null
-      if ('device_id' in localStorage) {
+      if ('device_id' in localStorage && 'user_id' in localStorage) {
         // console.log('Not Get User ID')
         device_id = localStorage.getItem('device_id')
-        set_user_id(localStorage.getItem('user_id'))
+        setUserId(localStorage.getItem('user_id'))
       } else {
         device_id = uuidv4()
         axios
@@ -79,66 +86,63 @@ const index = (props) => {
             localStorage.setItem('device_id', device_id)
             localStorage.setItem('user_token', response.data.data.user_token)
             localStorage.setItem('user_id', response.data.data._id)
-            setCookies('device_id', device_id)
-            setCookies('user_token', response.data.data.user_token)
-            setCookies('user_id', response.data.data._id)
-            set_user_id(response.data.data._id)
+            setUserId(response.data.data._id)
           })
           .catch(function (error) {
-            console.log(error)
+            // console.log(error)
           })
       }
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
   }
 
-  // Function Get Country Code From LocalStorage else From API
-  const get_country = async () => {
-    getCookie('country_code')
-      ? set_country_code(getCookie('country_code'))
-      : axios.get('https://geolocation-db.com/json/').then((res) => {
-          // console.log('Get Country Code')
-          setCookies('country_code', res.data.country_code)
-          localStorage.setItem('country_code', res.data.country_code)
-          set_country_code(res.data.country_code)
-        })
-  }
-
   // Function Get all News
-  const get_all = async () => {
+  const get_all_news = async () => {
     axios
       .get(
         `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
       )
       .then((res) => {
+        // console.log(
+        //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+        // )
         // Convert API Data From (Object To Array)
         let keys = Object.keys(res.data.data)
         let custom_array = []
         keys.map((item) => {
           custom_array.push(res.data.data[item])
         })
-        setAll_news(custom_array)
+        setAllNews(custom_array)
       })
   }
-
   // Function Returns Background Image Based on Country Code
-  const get_bg_image = async () => {
+  const get_background_image = async () => {
     if (country_code?.includes('JO')) {
-      setBg_image('bg-jordan')
+      setBackgroundImage('bg-jordan')
     } else if (country_code?.includes('SA')) {
-      setBg_image('bg-saudi')
+      setBackgroundImage('bg-saudi')
     } else if (country_code?.includes('EG')) {
-      setBg_image('bg-egypt')
+      setBackgroundImage('bg-egypt')
+    } else if (country_code?.includes('KW')) {
+      setBackgroundImage('bg-kuwait')
     }
   }
+
   // Call All Functions
   useEffect(() => {
     register_user()
-    get_country()
-    get_all()
-    get_bg_image()
-  }, [country_code, user_id])
+    typeof window !== 'undefined'
+      ? setUserId(localStorage.getItem('user_id'))
+      : ''
+    typeof window !== 'undefined'
+      ? setCountryCode(localStorage.getItem('country_code'))
+      : ''
+    // get_country()
+    get_background_image()
+    get_all_news()
+  }, [user_id])
+  // console.log('---> ', country_code, user_id)
 
   return (
     <React.Fragment>
@@ -146,14 +150,14 @@ const index = (props) => {
       <div
         dir="rtl"
         id="project_body"
-        className="bg-white text-black"
+        className="text-black bg-white"
         translate="no"
       >
         <Nav />
 
         {all_news && (
           <React.Fragment>
-            <Category_news
+            <CategoryNews
               loading="eager"
               title={'أهم الأخبار'}
               category_news={all_news[0]}
@@ -181,7 +185,7 @@ const index = (props) => {
                 />
               </section>
             ) : null}
-            <Category_news
+            <CategoryNews
               loading="lazy"
               title={'  الشأن الدولي'}
               category_news={all_news[11]}
@@ -193,7 +197,7 @@ const index = (props) => {
               description={'جميع ما يحدث حول العالم '}
             />
             <div id="الصحه">
-              <Category_news
+              <CategoryNews
                 loading="lazy"
                 title={'الصحه'}
                 category_news={all_news[4]}
@@ -208,35 +212,40 @@ const index = (props) => {
               />
             </div>
 
-            <section
-              className={`${bg_image} mt-6	bg-no-repeat pb-8 lg:bg-contain`}
-            >
-              {/* bg-auto bg-top */}
-              <Arround_you
-                loading="lazy"
-                title={'يدور حولك'}
-                important_news={all_news[0]}
-                user_id={user_id}
-                card_color={'bg-GRAY100'}
-                theme={'bg-Purp100'}
-                text_color={'text-GRAY100'}
-                fill_color={'fill-Purp100'}
-                description={' جميع ما يدور من حولك من أخبار و مواضيع'}
-              />
-            </section>
+            {bg_image ? (
+              <section
+                className={`${bg_image} mt-6	bg-no-repeat pb-8 lg:bg-contain`}
+              >
+                {/* bg-auto bg-top */}
+                <ArroundYou
+                  loading="lazy"
+                  title={'يدور حولك'}
+                  important_news={all_news[0]}
+                  user_id={user_id}
+                  card_color={'bg-GRAY100'}
+                  theme={'bg-Purp100'}
+                  text_color={'text-GRAY100'}
+                  fill_color={'fill-Purp100'}
+                  description={' جميع ما يدور من حولك من أخبار و مواضيع'}
+                />
+              </section>
+            ) : null}
+
             {all_news[9]?.data?.length > 3 && (
-              <Video
-                title={'الأكثر مشاهدة'}
-                category_news={all_news[9]}
-                user_id={user_id}
-                subs={null}
-                bg_color={'bg-Purp300'}
-                title_color={'text-Purp300'}
-                fill_color={'fill-Purp300'}
-                description={'بطريقة جميلة يمكنك مشاهدة الأخبار'}
-              />
+              <div id="الفيديوهات">
+                <Video
+                  title={'الأكثر مشاهدة'}
+                  category_news={all_news[9]}
+                  user_id={user_id}
+                  subs={null}
+                  bg_color={'bg-Purp300'}
+                  title_color={'text-Purp300'}
+                  fill_color={'fill-Purp300'}
+                  description={'بطريقة جميلة يمكنك مشاهدة الأخبار'}
+                />
+              </div>
             )}
-            <Category_news
+            <CategoryNews
               loading="lazy"
               title={'اخبار الفن'}
               category_news={all_news[15]}
@@ -247,7 +256,7 @@ const index = (props) => {
               fill_color={'fill-BLUE'}
               description={'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'}
             />
-            <Category_news
+            <CategoryNews
               loading="lazy"
               title={' مال وأعمال'}
               category_news={all_news[7]}
@@ -261,7 +270,7 @@ const index = (props) => {
               }
             />
             <div id="اوكرانيا">
-              <Category_news
+              <CategoryNews
                 loading="lazy"
                 title={' غزو أوكرانيا'}
                 category_news={all_news[8]}
@@ -290,7 +299,7 @@ const index = (props) => {
             </div>
 
             <div id="ترند">
-              <Category_news
+              <CategoryNews
                 loading="lazy"
                 title={' ترند'}
                 category_news={all_news[5]}
@@ -304,20 +313,23 @@ const index = (props) => {
                 }
               />
             </div>
-            <Voice
-              loading="lazy"
-              title={'الصوتيات'}
-              news_one={all_news[6]}
-              user_id={user_id}
-              subs={null}
-              title_color={'text-YELLOW'}
-              fill_color={'fill-YELLOW'}
-              card_color={'bg-GRAY100'}
-              desc_color={'text-GRAY400'}
-              theme={'bg-YELLOW'}
-              description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
-            />
-            <Category_news
+            <div id="الصوتيات">
+              <Voice
+                loading="lazy"
+                title={'الصوتيات'}
+                news_one={all_news[6]}
+                user_id={user_id}
+                subs={null}
+                title_color={'text-YELLOW'}
+                fill_color={'fill-YELLOW'}
+                card_color={'bg-GRAY100'}
+                desc_color={'text-GRAY400'}
+                theme={'bg-YELLOW'}
+                description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
+              />
+            </div>
+
+            <CategoryNews
               loading="lazy"
               title={'العاب'}
               category_news={all_news[13]}
@@ -329,7 +341,7 @@ const index = (props) => {
               description={'جميع ما يخص عالم الالعاب بين يديك'}
             />
             <div id="الخليج العربي">
-              <Category_news
+              <CategoryNews
                 loading="lazy"
                 title={' الخليج العربي '}
                 category_news={all_news[10]}
@@ -343,7 +355,7 @@ const index = (props) => {
             </div>
 
             <div id="الرياضه">
-              <Category_news
+              <CategoryNews
                 loading="lazy"
                 title={' رياضه'}
                 category_news={all_news[3]}
@@ -355,17 +367,19 @@ const index = (props) => {
                 description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
               />
             </div>
-            <Category_news
-              loading="lazy"
-              title={' لايف ستايل'}
-              category_news={all_news[16]}
-              user_id={user_id}
-              subs={all_news[16]?.is_subscribed}
-              bg_color={'bg-RED'}
-              title_color={'text-RED'}
-              fill_color={'fill-RED'}
-            />
-            <Category_news
+            <div id="لايف ستايل">
+              <CategoryNews
+                loading="lazy"
+                title={'لايف ستايل'}
+                category_news={all_news[16]}
+                user_id={user_id}
+                subs={all_news[16]?.is_subscribed}
+                bg_color={'bg-RED'}
+                title_color={'text-RED'}
+                fill_color={'fill-RED'}
+              />
+            </div>
+            <CategoryNews
               loading="lazy"
               title={'  الشرق الأوسط'}
               category_news={all_news[14]}
@@ -376,17 +390,20 @@ const index = (props) => {
               fill_color={'fill-YELLOW'}
               description={'جميع ما يحدث حول العالم '}
             />
-            <Category_news
-              loading="lazy"
-              title={' تكنولوجيا'}
-              category_news={all_news[12]}
-              user_id={user_id}
-              subs={all_news[12]?.is_subscribed}
-              bg_color={'bg-GREEN'}
-              title_color={'text-GREEN'}
-              fill_color={'fill-GREEN'}
-              description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
-            />
+            <div id="تكنولوجيا">
+              <CategoryNews
+                loading="lazy"
+                title={' تكنولوجيا'}
+                category_news={all_news[12]}
+                user_id={user_id}
+                subs={all_news[12]?.is_subscribed}
+                bg_color={'bg-GREEN'}
+                title_color={'text-GREEN'}
+                fill_color={'fill-GREEN'}
+                description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
+              />
+            </div>
+            <div className="py-3"></div>
             <Footer loading="lazy" />
           </React.Fragment>
         )}

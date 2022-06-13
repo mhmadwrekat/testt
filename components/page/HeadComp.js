@@ -195,7 +195,10 @@ const HeadComp = () => {
         <link rel="icon" href="/favicon.ico" />
         <meta name="keywords" content={headKeywords} />
         <meta name="description" content={headDescription} />
-
+        <meta
+          name="facebook-domain-verification"
+          content="y4ylg5eq8d7lgh9w8vol92gr076mfd"
+        />
         <link
           rel="stylesheet"
           href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
@@ -212,6 +215,7 @@ const HeadComp = () => {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
+
         {/* <link
           rel="stylesheet"
           href="path/to/font-awesome/css/font-awesome.min.css"
