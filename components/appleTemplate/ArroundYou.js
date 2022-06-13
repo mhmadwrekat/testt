@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
-import Like from './childComponent/Like'
 import { BASE_URL } from '../../config/config'
 import axios from 'axios'
+import dynamic from 'next/dynamic'
+// import MenuThreeDot from './child_comp/MenuThreeDot'
+const Like = dynamic(() => import('./childComponent/Like'))
+const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
+const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Arround_you = ({
   title,
   important_news,
@@ -62,6 +66,7 @@ const Arround_you = ({
         // console.log(err)
       })
   }
+  let stories = important_news && [important_news?.data[0]?._id]
 
   return (
     <React.Fragment>
@@ -120,6 +125,8 @@ const Arround_you = ({
                     </p>{' '}
                   </div>
                   <div className="relative max-w-full">
+                    <ViewImpression stories={stories} user_id={user_id} /> <></>
+                    <ReadImpression stories={stories[0]} user_id={user_id} />
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
@@ -234,6 +241,7 @@ const Arround_you = ({
               </section>
               <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                 {important_news.data.slice(1, 5).map((item) => {
+                  stories.push(item?._id)
                   return (
                     <section key={item?._id}>
                       <div
@@ -337,6 +345,7 @@ const Arround_you = ({
           </section>
         </>
       </section>
+      <ReadImpression stories={stories.slice(1, 5)} user_id={user_id} />
     </React.Fragment>
   )
 }

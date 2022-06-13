@@ -4,11 +4,11 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/ar'
+import dynamic from 'next/dynamic'
 // import MenuThreeDot from './child_comp/MenuThreeDot'
-import Like from './childComponent/Like'
-import { useInView, InView } from 'react-cool-inview'
-import View from './childComponent/View'
-import Read from './childComponent/Read'
+const Like = dynamic(() => import('./childComponent/Like'))
+const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
+const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 
 const Category_news = ({
   title,
@@ -77,35 +77,11 @@ const Category_news = ({
       // console.log(res)
     })
   }
-  // const HelloText = ({ observed }) => {
-  //   const { observed, inView } = useInView({
-  //     trackVisibility: false,
-  //     unobserveOnEnter: true,
-  //     // For performance perspective, use the largest tolerable value as much as possible // (ms)
-  //     delay: 4000,
-  //     onEnter: () => {
-  //       console.log('INNNNNNNN')
-  //     },
-  //   })
-  //   return <div ref={observed}></div>
-  // }
-  // Call the View/Impression API
-
   let stories = category_news && [category_news?.data[0]?._id]
-
-  // => {
-
-  //   return (
-  //   <div ref={observe}>
-  //     {inView ? console.log('IIIIIIIIIIN') : console.log('OOUUUUUUT')}
-  //   </div>
-  //   )
-  // }
   return (
     <React.Fragment>
-      {/* {console.log('User_ID = ', user_id)} */}
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
-        <>
+        <React.Fragment>
           <div className="flex justify-between">
             <div className="my-3 mt-3 lg:mt-4">
               <div className="flex">
@@ -194,15 +170,15 @@ const Category_news = ({
                 <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
                   <div className="">
                     <p
-                      className={`${bg_color} text-white rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base hover:underline lg:pr-8`}
+                      className={`${bg_color} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
                     >
                       {category_news?.section_name}
                     </p>{' '}
                   </div>
                   <div className=" relative h-56 w-full lg:h-80">
                     {/* Desktop View */}
-                    <View stories={stories} user_id={user_id} />{' '}
-                    <Read stories={stories} user_id={user_id} />{' '}
+                    <ViewImpression stories={stories} user_id={user_id} /> <></>
+                    <ReadImpression stories={stories[0]} user_id={user_id} />
                     {/* <div ref={entry}></div> */}
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
@@ -220,16 +196,9 @@ const Category_news = ({
                           src={important_news_img}
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full object-cover lg:h-80"
-                          // className="relative h-56 w-full lg:h-80"
-                          // layout="fill"
-                          // quality={50}
-                          // className="object-cover"
-                          // loading="eager"
-                          // placeholder="blur"
-                          // blurDataURL={important_news_img}
                         />
                       ))}
-                    <div className="bg-white absolute bottom-2 right-2 rounded-full p-1">
+                    <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
                       {/* {console.log(category_news.data[0]._id)} */}
                       {like ? (
                         <svg
@@ -329,7 +298,7 @@ const Category_news = ({
                       >
                         <div>
                           <p
-                            className={`${bg_color} text-white rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
+                            className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
                           >
                             {category_news.section_name}
                           </p>{' '}
@@ -473,9 +442,10 @@ const Category_news = ({
               </section>
             </section>
           </section>
-        </>
+        </React.Fragment>
       </section>
       {/* {console.log('Stories', stories)} */}
+      <ReadImpression stories={stories.slice(1, 5)} user_id={user_id} />
     </React.Fragment>
   )
 }

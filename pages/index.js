@@ -26,9 +26,13 @@ const Footer = dynamic(() => import('../components/page/Footer'))
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
+  // res.setHeader(
+  //   'Cache-Control',
+  //   'public, s-maxage=604800, stale-while-revalidate=59'
+  // )
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=604800, stale-while-revalidate=59'
+    'public, s-maxage=10, stale-while-revalidate=59'
   )
   // Get Logaimat API
   let user_token = ''
@@ -99,22 +103,23 @@ const index = (props) => {
 
   // Function Get all News
   const get_all_news = async () => {
-    axios
-      .get(
-        `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
-      )
-      .then((res) => {
-        // console.log(
-        //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
-        // )
-        // Convert API Data From (Object To Array)
-        let keys = Object.keys(res.data.data)
-        let custom_array = []
-        keys.map((item) => {
-          custom_array.push(res.data.data[item])
+    user_id &&
+      axios
+        .get(
+          `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+        )
+        .then((res) => {
+          console.log(
+            `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+          )
+          // Convert API Data From (Object To Array)
+          let keys = Object.keys(res.data.data)
+          let custom_array = []
+          keys.map((item) => {
+            custom_array.push(res.data.data[item])
+          })
+          setAllNews(custom_array)
         })
-        setAllNews(custom_array)
-      })
   }
   // Function Returns Background Image Based on Country Code
   const get_background_image = async () => {

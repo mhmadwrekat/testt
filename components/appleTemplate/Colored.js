@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
-import Like from './childComponent/Like'
 import { BASE_URL } from '../../config/config'
 import axios from 'axios'
+import dynamic from 'next/dynamic'
+// import MenuThreeDot from './child_comp/MenuThreeDot'
+const Like = dynamic(() => import('./childComponent/Like'))
+const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
+const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Colored = ({
   title,
   important_news,
@@ -61,11 +65,12 @@ const Colored = ({
     })
     // return !is_loved
   }
+  let stories = important_news && [important_news?.data[0]?._id]
 
   return (
     <React.Fragment>
       <section className={`${text_color} mx-auto w-11/12 lg:w-10/12`}>
-        <>
+        <React.Fragment>
           <div className="flex justify-between">
             <div className="my-3 mt-1 lg:mt-2">
               <p
@@ -112,12 +117,14 @@ const Colored = ({
                 >
                   <div>
                     <p
-                      className={`${theme} text-white rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base hover:underline lg:pr-8`}
+                      className={`${theme} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
                     >
                       {important_news.section_name}
                     </p>{' '}
                   </div>
                   <div className="relative max-w-full">
+                    <ViewImpression stories={stories} user_id={user_id} /> <></>
+                    <ReadImpression stories={stories[0]} user_id={user_id} />
                     {/* {console.log(important_news_img)} */}
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
@@ -138,7 +145,7 @@ const Colored = ({
                           className=" h-56 w-full object-cover lg:h-80"
                         />
                       ))}
-                    <div className="bg-white text-black absolute bottom-2 right-2 rounded-full p-1">
+                    <div className="text-black absolute bottom-2 right-2 rounded-full bg-white p-1">
                       {like ? (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -233,6 +240,8 @@ const Colored = ({
               </section>
               <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                 {important_news.data.slice(1, 5).map((item) => {
+                  stories.push(item?._id)
+
                   return (
                     <section key={item?._id}>
                       <div
@@ -241,7 +250,7 @@ const Colored = ({
                       >
                         <div>
                           <p
-                            className={`${theme} text-white rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base hover:underline lg:pr-5`}
+                            className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
                           >
                             {important_news.section_name}
                           </p>
@@ -270,7 +279,7 @@ const Colored = ({
                                   className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ))}
-                            <div className="bg-white text-black rounded-full">
+                            <div className="text-black rounded-full bg-white">
                               <Like
                                 user_id={user_id}
                                 story_id={item?._id}
@@ -334,8 +343,9 @@ const Colored = ({
               </section>
             </section>
           </section>
-        </>
+        </React.Fragment>
       </section>
+      <ReadImpression stories={stories.slice(1, 5)} user_id={user_id} />
     </React.Fragment>
   )
 }

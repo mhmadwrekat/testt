@@ -3,9 +3,11 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/ar'
-import MenuThreeDot from './childComponent/MenuThreeDot'
-import Like from './childComponent/Like'
-
+import dynamic from 'next/dynamic'
+// import MenuThreeDot from './childComponent/MenuThreeDot'
+// const Like = dynamic(() => import('./childComponent/Like'))
+const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
+const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Video = ({
   title,
   title_color,
@@ -52,6 +54,7 @@ const Video = ({
       // console.log(res)
     })
   }
+  let stories = []
   return (
     <React.Fragment>
       {/* {console.log('User_ID = ', user_id)} */}
@@ -142,6 +145,7 @@ const Video = ({
           <section className="w-12/12 lg:w-12/12 mx-auto">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
               {category_news?.data?.slice(0, 4).map((item, key) => {
+                stories.push(item?._id)
                 return (
                   <section key={item._id}>
                     <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
@@ -227,6 +231,8 @@ const Video = ({
           </section>
         </>
       </section>
+      <ViewImpression stories={stories} user_id={user_id} /> <></>
+      <ReadImpression stories={stories} user_id={user_id} />
     </React.Fragment>
   )
 }
