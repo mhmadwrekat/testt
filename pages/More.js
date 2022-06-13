@@ -87,7 +87,11 @@ const More = () => {
               </div>
             </section>
           </section>
-
+          <p
+            className={`mt-12 mb-3 font-TSExtra text-2xl text-BLUE lg:text-4xl`}
+          >
+            أخبار ذات صلة
+          </p>
           <AllData data={FakeData} bg_color={'bg-BLUE'} />
         </section>
       </div>

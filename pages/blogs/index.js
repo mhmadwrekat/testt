@@ -1,4 +1,5 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 
 //next imports
 import Link from 'next/link'
@@ -6,7 +7,8 @@ import Image from 'next/image'
 
 //component imports
 import HeadComp from '../../components/page/HeadComp'
-import Footer from '../../components/page/Footer'
+const Footer = dynamic(() => import('../../components/page/Footer'))
+
 // import Nav from '../../components/page/Nav'
 
 //image imports
@@ -49,7 +51,7 @@ export default function blogs() {
     <>
       <HeadComp />
 
-      <div className="relative bg-Purp100 px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-12 lg:pb-28">
+      <div className="relative px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-12 lg:pb-28">
         <div className="absolute inset-0">
           <div className="h-1/3 bg-white sm:h-2/3" />
         </div>

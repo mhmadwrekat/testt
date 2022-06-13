@@ -22,8 +22,8 @@ const Footer = () => {
             <p className="text-md my-3 mr-1 text-center font-TSbold">
               إستخدم التطبيق لتجربة أفضل
             </p>
-            <div className="mx-auto block flex  w-full justify-center">
-              <span className="relative ml-2 inline-block w-32 cursor-pointer ">
+            <div className="mx-auto block flex w-full justify-center">
+              <div className="relative inline-block w-32 cursor-pointer ">
                 <Image
                   src={appleStore}
                   alt="apple Store"
@@ -34,8 +34,9 @@ const Footer = () => {
                   }}
                   priority
                 />
-              </span>
-              <span className="relative mr-2 inline-block w-32 cursor-pointer">
+              </div>
+              <div className="w-10"></div>
+              <div className="relative inline-block w-32 cursor-pointer">
                 <Image
                   src={googlePlay}
                   alt="google Play"
@@ -46,7 +47,7 @@ const Footer = () => {
                   }}
                   priority
                 />
-              </span>
+              </div>
             </div>
           </div>
         </footer>
@@ -55,7 +56,7 @@ const Footer = () => {
           <div className="my-1 mt-4">
             {/* instagram */}
 
-            <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
+            <div className=" mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
                 src={instagram}
                 alt="social media alzubda instagram"
