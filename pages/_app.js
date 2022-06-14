@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    register_user()
+    // register_user()
     get_country()
   }, [])
   // useEffect(() => {

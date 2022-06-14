@@ -85,6 +85,9 @@ const Category_news = ({
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
+        {/* {console.log(title)}
+        {console.log(category_news.category_id)} */}
+
         <React.Fragment>
           <div className="flex justify-between">
             <div className="my-3 mt-3 lg:mt-4">
@@ -129,13 +132,14 @@ const Category_news = ({
                       />
                     </svg>
                   ))}
-                <Link href="/ViewAll">
-                  <p
-                    className={`${title_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
-                  >
-                    {title}
-                  </p>
-                </Link>
+                <p
+                  className={`${title_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                  onClick={() => {
+                    router.push(item.link)
+                  }}
+                >
+                  {title}
+                </p>
               </div>
               {description && (
                 <p

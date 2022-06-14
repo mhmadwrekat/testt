@@ -240,7 +240,7 @@ const Nav = ({ showCategory }) => {
       </section>
 
       {showCategory ? (
-        <section className="top-0 z-50 lg:sticky">
+        <section className="sticky top-0 z-50">
           <section className="flex w-full justify-center bg-white py-0 text-center font-TSbold text-lg text-white lg:bg-Purp100">
             <div className="mx-auto flex w-full justify-center overflow-x-auto">
               {secondary_nav_items.map((item) => {
