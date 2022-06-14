@@ -133,7 +133,7 @@ const Colored = ({
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
                         <img
-                          loading="eager"
+                          loading="lazy"
                           src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
@@ -142,7 +142,7 @@ const Colored = ({
                         />
                       ) : (
                         <img
-                          loading="eager"
+                          loading="lazy"
                           src={important_news_img}
                           alt={important_news.data[0].stories_headlines}
                           className=" h-56 w-full object-cover lg:h-80"
@@ -264,7 +264,7 @@ const Colored = ({
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
                                 <img
-                                  loading="eager"
+                                  loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
@@ -276,7 +276,7 @@ const Colored = ({
                                 />
                               ) : (
                                 <img
-                                  loading="eager"
+                                  loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"

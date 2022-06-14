@@ -1,9 +1,11 @@
 //next imports
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 
 //component imports
 import HeadComp from '../../components/page/HeadComp'
-import Footer from '../../components/page/Footer'
+const Footer = dynamic(() => import('../../components/page/Footer'))
+const Nav = dynamic(() => import('../../components/page/Nav'))
 
 //image imports
 import vid1 from '../../public/assest/blogs/newUpdateBlog/vid1.gif'
@@ -20,6 +22,14 @@ export default function NewUpdateBlog() {
   return (
     <>
       <HeadComp />
+      <div
+        dir="rtl"
+        id="project_body"
+        className="text-black bg-white"
+        translate="no"
+      >
+        <Nav />
+      </div>
       <div className="min-h-full">
         <main className="py-10">
           <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 sm:px-6 lg:max-w-6xl lg:grid-flow-col-dense lg:grid-cols-1">

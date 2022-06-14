@@ -8,6 +8,7 @@ import Image from 'next/image'
 //component imports
 import HeadComp from '../../components/page/HeadComp'
 const Footer = dynamic(() => import('../../components/page/Footer'))
+const Nav = dynamic(() => import('../../components/page/Nav'))
 
 // import Nav from '../../components/page/Nav'
 
@@ -50,6 +51,14 @@ export default function blogs() {
   return (
     <>
       <HeadComp />
+      <div
+        dir="rtl"
+        id="project_body"
+        className="text-black bg-white"
+        translate="no"
+      >
+        <Nav />
+      </div>
 
       <div className="relative px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-12 lg:pb-28">
         <div className="absolute inset-0">

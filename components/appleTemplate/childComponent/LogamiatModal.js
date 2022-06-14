@@ -3,13 +3,19 @@ import { Dialog, Transition } from '@headlessui/react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
 
-export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
+export default function LoqaimaModal({
+  setShowCategory,
+  open,
+  setOpen,
+  loqaimatScreens,
+}) {
   var isMobile =
     typeof window !== 'undefined'
       ? /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
       : ''
   const [sum, setNum] = useState(0)
 
+  // setShowCategory(false)
   const next = () => {
     setNum(sum + 1)
   }
@@ -19,6 +25,7 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
 
   const close_loqaima = () => {
     setOpen(false)
+    setShowCategory(true)
     setNum(0)
   }
   // currentImageIndex
@@ -60,7 +67,7 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <div className="bg-white inline-block h-screen w-screen transform overflow-hidden text-left align-bottom transition-all lg:w-1/4">
+                <div className="inline-block h-screen w-screen transform overflow-hidden bg-white text-left align-bottom transition-all lg:w-1/4">
                   {/* <button
                     className="gallery_previous"
                     onClick={prevF()}
@@ -91,7 +98,7 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
                         )
                       })
                     ) : (
-                      <div className="bg-white h-screen" />
+                      <div className="h-screen bg-white" />
                     )}
                   </Carousel>
                   {/* <button
@@ -121,7 +128,7 @@ export default function LoqaimaModal({ open, setOpen, loqaimatScreens }) {
                   <div className="absolute z-20 p-3 lg:bottom-0 lg:left-48">
                     <div
                       className="control-arrow control-next"
-                    aria-label="Left Align"
+                      aria-label="Left Align"
                       onClick={() => {
                         prev()
                       }}

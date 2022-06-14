@@ -11,6 +11,7 @@ import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
 
 const Logaimat = ({
+  setShowCategory,
   title,
   important_news,
   fill_color,
@@ -56,9 +57,9 @@ const Logaimat = ({
   const handle_subscripe = () => {
     setSubscripe(!subscripe)
   }
+
   return (
     <React.Fragment>
-      {/* {console.log(important_news)} */}
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
         <>
           <div className="flex justify-between">
@@ -155,6 +156,7 @@ const Logaimat = ({
                       onClick={() => {
                         setOpenLoqaima(true)
                         setLoqaimatScreens(item.screens)
+                        setShowCategory(false)
                       }}
                     >
                       <div className="relative mr-2 py-2 lg:mr-0 lg:h-96 lg:w-60 lg:py-0">
@@ -204,6 +206,7 @@ const Logaimat = ({
         open={openLoqaima}
         setOpen={setOpenLoqaima}
         loqaimatScreens={loqaimatScreens}
+        setShowCategory={setShowCategory}
       />
     </React.Fragment>
   )

@@ -33,9 +33,9 @@ const Search = () => {
             <input
               type="text"
               placeholder="محرك البحث"
-              className=" w-40 rounded-r-md border-1 border-GRAY bg-GRAY200 py-1.5 pr-12 text-base placeholder-white lg:w-96 lg:text-lg"
+              className="w-48 rounded-r-md bg-GRAY200 py-2 pr-12 text-base placeholder-white lg:w-96 lg:text-lg"
             />
-            <button className="rounded-l-md border-t-2 border-Purp500 bg-Purp500 py-2 px-8 pt-1.5 font-TSbold text-base text-white">
+            <button className="rounded-l-md bg-Purp500 py-2 px-8 font-TSbold text-base text-white lg:text-lg">
               بحث
             </button>
           </div>
@@ -48,3 +48,8 @@ const Search = () => {
 }
 
 export default Search
+/*
+   <button className="rounded-l-md border-t-3 border-Purp500 bg-Purp500 py-2 px-8 pt-1.5 font-TSbold text-base text-white">
+              بحث
+            </button>
+*/

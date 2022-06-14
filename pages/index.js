@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
-// import { v4 as uuidv4 } from 'uuid'
-// import { nanoid } from 'nanoid'
 
 // Apple View component
 const CategoryNews = dynamic(() =>
@@ -29,6 +27,9 @@ const Footer = dynamic(() => import('../components/page/Footer'))
 const All = dynamic(() =>
   import('../components/appleTemplate/childComponent/AllData')
 )
+// import { v4 as uuidv4 } from 'uuid'
+// import { nanoid } from 'nanoid'
+
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -67,6 +68,7 @@ const index = (props) => {
   const [user_id, setUserId] = useState()
   const [all_news, setAllNews] = useState()
   const [bg_image, setBackgroundImage] = useState('')
+  const [showCategory, setShowCategory] = useState(true)
 
   let isMobile =
     typeof window !== 'undefined'
@@ -80,9 +82,9 @@ const index = (props) => {
           `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
         )
         .then((res) => {
-          console.log(
-            `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
-          )
+          // console.log(
+          //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+          // )
           // Convert API Data From (Object To Array)
           let keys = Object.keys(res.data.data)
           let custom_array = []
@@ -118,10 +120,9 @@ const index = (props) => {
     get_background_image()
     get_all_news()
   }, [user_id])
-  // console.log('---> ', country_code, user_id)
 
+  // console.log('---> ', country_code, user_id)
   // console.log('---> ', nanoid())
-  // model.id = nanoid()
   return (
     <React.Fragment>
       {/* {console.log(v4())} */}
@@ -133,7 +134,7 @@ const index = (props) => {
         className="text-black bg-white"
         translate="no"
       >
-        <Nav />
+        <Nav showCategory={showCategory} />
         {all_news && (
           <React.Fragment>
             <ImportantNews
@@ -263,6 +264,7 @@ const index = (props) => {
             </div>
             <div id="لقيمات">
               <Logaimat
+                setShowCategory={setShowCategory}
                 loading="lazy"
                 title={'لقيمات'}
                 important_news={props?.loqaimat?.data}

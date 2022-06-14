@@ -7,7 +7,7 @@ import { Refresh } from '@material-ui/icons'
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
 // import 'moment/locale/ar'
-const Nav = () => {
+const Nav = ({ showCategory }) => {
   const [active, setActive] = useState(true)
 
   const router = useRouter()
@@ -25,7 +25,7 @@ const Nav = () => {
     {
       name: 'أخبار',
       id: 3,
-      link: 'window.location.reload()',
+      link: '/',
     },
   ]
 
@@ -98,10 +98,9 @@ const Nav = () => {
                 viewBox="0 0 61 28"
                 xmlns="http://www.w3.org/2000/svg"
                 className="cursor-pointer fill-Purp100 hover:fill-SKY"
-                onClick={() => router.push('/')}
-                // onClick={() => {
-                //   router.push('/')
-                // }}
+                onClick={() => {
+                  window.location.reload()
+                }}
               >
                 <path
                   className="fill-Purp100 hover:fill-SKY"
@@ -122,33 +121,21 @@ const Nav = () => {
           </button>
         </div> */}
             {/* <section id="logoFooter" className="text-LogoPurp"> */}
-            <div className=" hidden pr-20 font-TSbold text-lg lg:mt-3 lg:flex">
-              <p
-                className="my-auto ml-10 lg:cursor-pointer"
-                onClick={() => {
-                  router.push('/home')
-                }}
-              >
-                الرئيسية{' '}
-              </p>
-              <p
-                className="my-auto ml-10 lg:cursor-pointer"
-                onClick={() => {
-                  router.push('/blogs')
-                }}
-              >
-                المدونة{' '}
-              </p>
-              <Link href="/">
-                <p
-                  className="my-auto ml-10 lg:cursor-pointer"
-                  // onClick={() => {
-                  //   window.location.reload()
-                  // }}
-                >
-                  أخبار
-                </p>
-              </Link>
+
+            <div className="hidden pr-20 font-TSbold text-lg lg:mt-3 lg:flex">
+              {nav_items.map((item) => {
+                return (
+                  <p
+                    key={item.id}
+                    className="my-auto ml-10 lg:cursor-pointer"
+                    onClick={() => {
+                      router.push(item.link)
+                    }}
+                  >
+                    {item.name}
+                  </p>
+                )
+              })}
 
               <div className="my-auto ml-10 pt-3 lg:cursor-pointer ">
                 {/* {active ? (
@@ -219,6 +206,7 @@ const Nav = () => {
             </div>
           </div>
           {/* {active && ( */}
+
           <div
             className=" mt-3 font-TSSemi lg:ml-5 lg:mt-4 lg:pl-3"
             onClick={() => {
@@ -250,17 +238,30 @@ const Nav = () => {
 
         {/* <div className="w-6/6 border-gray-500 mx-4 border-b-2 pt-1 opacity-50 lg:mx-28"></div> */}
       </section>
-      <section className="top-0 z-50 hidden lg:sticky lg:flex">
-        <section className="flex w-full justify-center bg-Purp100 py-0 text-center font-TSbold text-lg text-white">
-          {secondary_nav_items.map((item) => {
-            return (
-              <a key={item.id} className={`ml-10 p-1.5`} href={item.link}>
-                {item.name}
-              </a>
-            )
-          })}
+
+      {showCategory ? (
+        <section className="top-0 z-50 lg:sticky">
+          <section className="flex w-full justify-center bg-Purp100 py-0 text-center font-TSbold text-lg text-white">
+            <div class="mx-auto flex w-full justify-center overflow-x-auto">
+              {secondary_nav_items.map((item) => {
+                return (
+                  <div class="flex-none bg-Purp100 py-1 px-3 first:pl-6 last:pr-6">
+                    <div class="flex flex-col items-center justify-center gap-3">
+                      <a
+                        key={item.id}
+                        className={`ml-5 p-1.5 lg:ml-8`}
+                        href={item.link}
+                      >
+                        {item.name}
+                      </a>{' '}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </section>
         </section>
-      </section>
+      ) : null}
     </React.Fragment>
   )
 }

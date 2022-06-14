@@ -187,7 +187,7 @@ const Category_news = ({
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
                         <img
-                          loading="eager"
+                          loading="lazy"
                           src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
@@ -196,6 +196,7 @@ const Category_news = ({
                         />
                       ) : (
                         <img
+                          loading="lazy"
                           src={important_news_img}
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full object-cover lg:h-80"
@@ -324,7 +325,7 @@ const Category_news = ({
                                 />
                               ) : (
                                 <img
-                                  loading="eager"
+                                  loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
