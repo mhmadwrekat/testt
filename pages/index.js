@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid'
+// import { v4 as uuidv4 } from 'uuid'
+// import { nanoid } from 'nanoid'
 
 // Apple View component
 const CategoryNews = dynamic(() =>
   import('../components/appleTemplate/CategoryNews')
+)
+const ImportantNews = dynamic(() =>
+  import('../components/appleTemplate/ImportantNews')
 )
 const ArroundYou = dynamic(() =>
   import('../components/appleTemplate/ArroundYou')
@@ -63,46 +67,11 @@ const index = (props) => {
   const [user_id, setUserId] = useState()
   const [all_news, setAllNews] = useState()
   const [bg_image, setBackgroundImage] = useState('')
-  const [test, setTesst] = useState()
 
   let isMobile =
     typeof window !== 'undefined'
       ? /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
       : ''
-  // Function Get User Info From LocalStorage else From API
-  const register_user = async () => {
-    try {
-      let device_id = null
-      if ('device_id' in localStorage && 'user_id' in localStorage) {
-        // console.log('Not Get User ID')
-        device_id = localStorage.getItem('device_id')
-        setUserId(localStorage.getItem('user_id'))
-      } else {
-        device_id = uuidv4()
-        axios
-          .post(`${BASE_URL}/v1/Users/`, {
-            device_id: device_id,
-            device_model_type: '2022',
-            device_operating_system: 'web',
-            current_version_app: '1.0.0',
-            device_type: 'WEB',
-          })
-          .then(function (response) {
-            // console.log('Get User Id')
-            localStorage.setItem('device_id', device_id)
-            localStorage.setItem('user_token', response.data.data.user_token)
-            localStorage.setItem('user_id', response.data.data._id)
-            setUserId(response.data.data._id)
-          })
-          .catch(function (error) {
-            // console.log(error)
-          })
-      }
-    } catch (err) {
-      // console.log(err)
-    }
-  }
-
   // Function Get all News
   const get_all_news = async () => {
     user_id &&
@@ -138,7 +107,7 @@ const index = (props) => {
 
   // Call All Functions
   useEffect(() => {
-    register_user()
+    // register_user()
     typeof window !== 'undefined'
       ? setUserId(localStorage.getItem('user_id'))
       : ''
@@ -151,7 +120,8 @@ const index = (props) => {
   }, [user_id])
   // console.log('---> ', country_code, user_id)
 
-  // let uuid = new DeviceUUID()
+  // console.log('---> ', nanoid())
+  // model.id = nanoid()
   return (
     <React.Fragment>
       {/* {console.log(v4())} */}
@@ -166,7 +136,7 @@ const index = (props) => {
         <Nav />
         {all_news && (
           <React.Fragment>
-            <CategoryNews
+            <ImportantNews
               loading="eager"
               title={'أهم الأخبار'}
               category_news={all_news[0]}

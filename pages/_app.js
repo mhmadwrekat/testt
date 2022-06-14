@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    // register_user()
+    register_user()
     get_country()
   }, [])
   // useEffect(() => {
@@ -170,4 +170,39 @@ export default App
 © 2022 GitHub, Inc.
 Terms
 
+*/
+/*
+  // Function Get User Info From LocalStorage else From API
+  const register_user = async () => {
+    try {
+      let device_id = null
+      if ('device_id' in localStorage && 'user_id' in localStorage) {
+        // console.log('Not Get User ID')
+        device_id = localStorage.getItem('device_id')
+        setUserId(localStorage.getItem('user_id'))
+      } else {
+        device_id = uuidv4()
+        axios
+          .post(`${BASE_URL}/v1/Users/`, {
+            device_id: device_id,
+            device_model_type: '2022',
+            device_operating_system: 'web',
+            current_version_app: '1.0.0',
+            device_type: 'WEB',
+          })
+          .then(function (response) {
+            // console.log('Get User Id')
+            localStorage.setItem('device_id', device_id)
+            localStorage.setItem('user_token', response.data.data.user_token)
+            localStorage.setItem('user_id', response.data.data._id)
+            setUserId(response.data.data._id)
+          })
+          .catch(function (error) {
+            // console.log(error)
+          })
+      }
+    } catch (err) {
+      // console.log(err)
+    }
+  }
 */

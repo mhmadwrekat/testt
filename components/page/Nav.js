@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Menu } from '@headlessui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -8,6 +8,8 @@ import { Refresh } from '@material-ui/icons'
 // import moment from 'moment'
 // import 'moment/locale/ar'
 const Nav = () => {
+  const [active, setActive] = useState(true)
+
   const router = useRouter()
   const nav_items = [
     {
@@ -74,15 +76,21 @@ const Nav = () => {
       id: 9,
     },
   ]
-  const refresh = () => {
-    router.push('/')
+  // const refresh = () => {
+  //   router.push('/')
+  // }
+  const activate = () => {
+    setActive(false)
+    console.log(active)
   }
+
+  // typeof window != 'undefined' && window.scroll && console.log(true)
   return (
     <React.Fragment>
-      <section className="relative">
-        <section className="mx-4 flex justify-between border-b-3 border-Purp100 lg:mx-10">
+      <section className="fixed z-50 w-full bg-white">
+        <section className="mx-4 flex justify-between lg:mx-10">
           <div className="flex">
-            <div className=" mt-2 lg:mx-8 lg:mt-5 lg:mb-2">
+            <div className=" mt-2 lg:mx-8 lg:mt-3 lg:mb-2">
               {/* <Link href="/"> */}
               <svg
                 width="90"
@@ -141,8 +149,28 @@ const Nav = () => {
                   أخبار
                 </p>
               </Link>
+
               <div className="my-auto ml-10 pt-3 lg:cursor-pointer ">
-                <React.Fragment>
+                {/* {active ? (
+                  <button
+                    className="mobile-menu-button"
+                    type="button"
+                    onClick={() => {
+                      activate()
+                    }}
+                  >
+                    <span className="sr-only">Open main menu</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-9 w-9 cursor-pointer "
+                      viewBox="0 0 20 20"
+                      fill="#686767"
+                    >
+                      <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                    </svg>
+                  </button>
+                ) : null} */}
+                {/* <React.Fragment>
                   <div className="w-10">
                     <Menu as="div" className="">
                       <Menu.Button>
@@ -158,7 +186,7 @@ const Nav = () => {
 
                       <Menu.Items>
                         <section className="">
-                          <section className="top-18 absolute right-0 flex w-full justify-center bg-Purp100 text-center font-TSbold text-lg text-white">
+                          <section className="top-18 fixed absolute right-0 flex w-full justify-center bg-Purp100 text-center font-TSbold text-lg text-white">
                             {secondary_nav_items.map((item) => {
                               return (
                                 <Menu.Item key={item.id}>
@@ -178,7 +206,7 @@ const Nav = () => {
                       </Menu.Items>
                     </Menu>
                   </div>
-                </React.Fragment>
+                </React.Fragment> */}
               </div>
 
               {/* <buttons className="my-auto ml-10 lg:cursor-pointer lg:hover:underline">
@@ -190,8 +218,9 @@ const Nav = () => {
             </buttons> */}
             </div>
           </div>
+          {/* {active && ( */}
           <div
-            className="relative mt-3 font-TSSemi lg:ml-5 lg:mt-6 lg:pl-3"
+            className=" mt-3 font-TSSemi lg:ml-5 lg:mt-4 lg:pl-3"
             onClick={() => {
               router.push('/Search')
             }}
@@ -215,12 +244,24 @@ const Nav = () => {
               className="float-left w-40 rounded-md border-2 border-white bg-GRAY200 p-1 pt-2 pr-12 text-base placeholder-white lg:w-96 lg:text-lg"
             />
           </div>
-
+          {/* )} */}
           {/* </section> */}
         </section>
 
+        <section className="hidden lg:flex">
+          <section className="flex w-full justify-center bg-Purp100 py-0 text-center font-TSbold text-lg text-white">
+            {secondary_nav_items.map((item) => {
+              return (
+                <a key={item.id} className={`ml-10 p-1.5`} href={item.link}>
+                  {item.name}
+                </a>
+              )
+            })}
+          </section>
+        </section>
         {/* <div className="w-6/6 border-gray-500 mx-4 border-b-2 pt-1 opacity-50 lg:mx-28"></div> */}
       </section>
+      <div className="pt-10 lg:pt-14"></div>
     </React.Fragment>
   )
 }

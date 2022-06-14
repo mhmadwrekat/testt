@@ -119,7 +119,10 @@ const Colored = ({
                     <p
                       className={`${theme} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
                     >
-                      {important_news.section_name}
+                      {
+                        important_news?.data[0]?.primary_category[0]
+                          ?.category_name
+                      }{' '}
                     </p>{' '}
                   </div>
                   <div className="relative max-w-full">
@@ -252,7 +255,7 @@ const Colored = ({
                           <p
                             className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
                           >
-                            {important_news.section_name}
+                            {item?.primary_category[0]?.category_name}{' '}
                           </p>
                         </div>
                         <section className={`${card_color} flex lg:grid`}>

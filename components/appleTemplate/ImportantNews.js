@@ -12,7 +12,7 @@ const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 
-const Category_news = ({
+const ImportantNews = ({
   title,
   title_color,
   category_news,
@@ -175,8 +175,13 @@ const Category_news = ({
                 <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
                   <div className="">
                     <p
-                      className={`${bg_color} hover:underlin rounded-t-md py-3.5 text-right font-TSbold text-base text-white`}
-                    ></p>
+                      className={`${bg_color} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
+                    >
+                      {
+                        category_news?.data[0]?.primary_category[0]
+                          ?.category_name
+                      }{' '}
+                    </p>
                   </div>
                   <div className=" relative h-56 w-full lg:h-80">
                     {/* Desktop View */}
@@ -303,8 +308,13 @@ const Category_news = ({
                       >
                         <div>
                           <p
-                            className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline`}
-                          ></p>{' '}
+                            className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                            onClick={() => {
+                              router.push(`/${category_news.section_name}`)
+                            }}
+                          >
+                            {item?.primary_category[0]?.category_name}
+                          </p>{' '}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid ">
                           <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
@@ -393,4 +403,4 @@ const Category_news = ({
     </React.Fragment>
   )
 }
-export default Category_news
+export default ImportantNews

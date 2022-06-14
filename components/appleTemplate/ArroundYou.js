@@ -119,9 +119,12 @@ const Arround_you = ({
                 >
                   <div>
                     <p
-                      className={`${theme} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
+                      className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-white hover:underline`}
                     >
-                      {important_news.section_name}
+                      {/* <p
+                      className={`${theme} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
+                    > */}
+                      {/* {important_news.section_name} */}
                     </p>{' '}
                   </div>
                   <div className="relative max-w-full">
@@ -250,9 +253,12 @@ const Arround_you = ({
                       >
                         <div>
                           <p
-                            className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                            className={`${theme} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline`}
                           >
-                            {important_news.section_name}
+                            {/* <p
+                            className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                          > */}
+                            {/* {important_news.section_name} */}
                           </p>{' '}
                         </div>
                         <section className={`${card_color} flex lg:grid`}>

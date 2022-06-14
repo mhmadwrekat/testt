@@ -150,10 +150,8 @@ const Voice = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base text-white hover:underline`}
-                                >
-                                  {news_one.section_name}
-                                </p>{' '}
+                                  className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                ></p>
                               </div>
                               <div className="relative">
                                 <img
@@ -211,10 +209,8 @@ const Voice = ({
                             <div>
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base text-white hover:underline`}
-                                >
-                                  {news_one.section_name}
-                                </p>{' '}
+                                  className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                ></p>{' '}
                               </div>
 
                               <div className="relative">
@@ -292,10 +288,8 @@ const Voice = ({
                             <div>
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base text-white hover:underline`}
-                                >
-                                  {news_one.section_name}
-                                </p>{' '}
+                                  className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                ></p>
                               </div>
                               <div className="relative">
                                 <img
@@ -353,10 +347,8 @@ const Voice = ({
                             <div>
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-base text-white hover:underline`}
-                                >
-                                  {news_one.section_name}
-                                </p>{' '}
+                                  className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                ></p>
                               </div>
 
                               <div className="relative">
