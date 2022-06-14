@@ -1,6 +1,6 @@
 import React from 'react'
-// import FakeData from '../../../pages/FakeData.json'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 // import MenuThreeDot from './child_comp/MenuThreeDot'
 const Like = dynamic(() => import('./Like'))
 
@@ -12,7 +12,7 @@ const AllData = ({ data, bg_color }) => {
           <section className="grid grid-cols-1 gap-5 pt-5 lg:grid-cols-3 lg:gap-16 lg:pt-10">
             {data.map((item) => {
               return (
-                <section>
+                <section key={item.id}>
                   <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
                     <div>
                       <p
@@ -68,11 +68,13 @@ const AllData = ({ data, bg_color }) => {
                     </div>
                     <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
                     <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
-                      <p
-                        className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
-                      >
-                        اقرا المزيد
-                      </p>{' '}
+                      <Link href="/More">
+                        <p
+                          className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                        >
+                          اقرا المزيد
+                        </p>
+                      </Link>
                       {/* <MenuThreeDot title_color={title_color} /> */}
                     </div>
                   </div>

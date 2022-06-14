@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import moment from 'moment'
+import Link from 'next/link'
 import 'moment/locale/ar'
 import { BASE_URL } from '../../config/config'
 import axios from 'axios'
@@ -74,11 +75,13 @@ const Arround_you = ({
         <>
           <div className="flex justify-between ">
             <div className="my-3 mt-1 lg:mt-2">
-              <p
-                className={`${text_color} mt-5 font-TSExtra text-2xl lg:text-4xl`}
-              >
-                {title}
-              </p>
+              <Link href="/ViewAll">
+                <p
+                  className={`${text_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                >
+                  {title}
+                </p>
+              </Link>
               {description && (
                 <p
                   className={`hidden w-full px-1 pb-5 font-TSmedium text-lg text-white lg:grid lg:text-xl`}
@@ -87,20 +90,24 @@ const Arround_you = ({
                 </p>
               )}
             </div>
-            <div className="my-1 mt-1 flex lg:mt-5">
-              <p className="mt-5 font-TSbold text-lg lg:text-xl">عرض الجميع</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
+            <Link href="/ViewAll">
+              <div className="my-1 mt-1 flex cursor-pointer lg:mt-5">
+                <p className="mt-5 font-TSbold text-lg lg:text-xl">
+                  عرض الجميع
+                </p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </Link>
           </div>
           {description && (
             <p
@@ -212,37 +219,33 @@ const Arround_you = ({
                       )}
                     </p>
                   </div>
+
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 font-TSExtra text-2xl lg:h-16">
+                    <div className="mb-2 font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl">
                       {important_news?.data[0]?.stories_headlines}
                     </div>
-                    <p className="hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
-                      {important_news?.data[0]?.stories_content.slice(0, 330)}
-                      .......
+                    <p className=" hidden h-36 font-TSmedium text-base lg:grid lg:h-32">
+                      {important_news?.data[0]?.stories_content.slice(0, 335)}
+                      ......
                     </p>
-                    <p className="grid h-24 font-TSmedium text-base lg:hidden lg:h-28">
+                    <p className="grid h-24 font-TSmedium text-base md:grid lg:hidden lg:h-32">
                       {important_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
                     <div className="my-1 flex  justify-between pt-2.5">
-                      <p
-                        className={`rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
-                      >
-                        اقرأ المزيد
-                      </p>
-                      {/* <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-9 w-9 cursor-pointer "
-                        viewBox="0 0 20 20"
-                        fill="#7F7F7F"
-                      >
-                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                      </svg> */}
+                      <Link href="/More">
+                        <p
+                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
+                        >
+                          اقرأ المزيد
+                        </p>
+                      </Link>
+                      {/* <MenuThreeDot title_color={title_color} /> */}
                     </div>
                   </div>
                 </div>
               </section>
-              <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 {important_news.data.slice(1, 5).map((item) => {
                   stories.push(item?._id)
                   return (
@@ -294,9 +297,9 @@ const Arround_you = ({
                             </div>
                           </div>
 
-                          <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
+                          <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">
                             <p>
-                              <b className="text-red-600 font-TSExtra">
+                              <b className="text-red-800 font-TSExtra">
                                 {item.publisher_name}
                               </b>
                             </p>
@@ -305,12 +308,12 @@ const Arround_you = ({
                             </p>
                           </div>
 
-                          <div className=" py-1.5 px-3 sm:mb-0 lg:mb-1 lg:h-20 lg:px-2 lg:py-2">
-                            <div className="my-3 mb-2 font-TSbold text-sm md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-9 lg:text-sm">
+                          <div className="py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2">
+                            <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:h-10 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:text-sm">
                               {item.stories_headlines}
                             </div>
-                            <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-20 lg:pt-1.5 lg:text-sm">
-                              {item.stories_content.slice(0, 80)}....
+                            <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:pt-1.5 lg:text-sm">
+                              {item.stories_content.slice(0, 70)}....
                             </div>
                           </div>
                         </section>
@@ -321,26 +324,19 @@ const Arround_you = ({
                               {item.publisher_name}
                             </b>
                           </p>
-                          <p className="font-TSExtra text-GRAY400">
+                          <p className="font-TSExtra text-GRAY300">
                             قبل {moment(item.published_on).fromNow(true)}
                           </p>
                         </div>
-
-                        <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
-                        <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
-                          <p
-                            className={`rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
-                          >
-                            اقرا المزيد
-                          </p>{' '}
-                          {/* <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-9 w-9 cursor-pointer "
-                            viewBox="0 0 20 20"
-                            fill="#7F7F7F"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg> */}
+                        <div className="mx-2.5 flex justify-between py-1.5 lg:pt-1">
+                          <Link href="/More">
+                            <p
+                              className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            >
+                              اقرأ المزيد
+                            </p>
+                          </Link>
+                          {/* <MenuThreeDot title_color={title_color} /> */}
                         </div>
                       </div>
                     </section>

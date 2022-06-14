@@ -129,11 +129,13 @@ const Category_news = ({
                       />
                     </svg>
                   ))}
-                <p
-                  className={`${title_color} mt-5 font-TSExtra text-2xl lg:text-4xl`}
-                >
-                  {title}
-                </p>
+                <Link href="/ViewAll">
+                  <p
+                    className={`${title_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                  >
+                    {title}
+                  </p>
+                </Link>
               </div>
               {description && (
                 <p
@@ -262,15 +264,16 @@ const Category_news = ({
                       )}
                     </p>
                   </div>
+
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 font-TSExtra md:text-xl lg:h-16 lg:w-9/12 lg:text-2xl">
+                    <div className="mb-2 font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl">
                       {category_news?.data[0]?.stories_headlines}
                     </div>
-                    <p className=" hidden h-36 font-TSmedium text-base lg:grid lg:h-28">
-                      {category_news?.data[0]?.stories_content.slice(0, 300)}
-                      .......
+                    <p className=" hidden h-36 font-TSmedium text-base lg:grid lg:h-32">
+                      {category_news?.data[0]?.stories_content.slice(0, 335)}
+                      ......
                     </p>
-                    <p className="grid h-24 font-TSmedium text-base md:grid lg:hidden lg:h-28">
+                    <p className="grid h-24 font-TSmedium text-base md:grid lg:hidden lg:h-32">
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
@@ -287,7 +290,7 @@ const Category_news = ({
                   </div>
                 </div>
               </section>
-              <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 {category_news?.data?.slice(1, 5).map((item, key) => {
                   // console.log(arr)
                   // {
@@ -338,9 +341,9 @@ const Category_news = ({
                             />
                           </div>
 
-                          <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
+                          <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">
                             <p>
-                              <b className=" text-red-800 font-TSExtra">
+                              <b className="text-red-800 font-TSExtra">
                                 {item.publisher_name}
                               </b>
                             </p>
@@ -349,12 +352,12 @@ const Category_news = ({
                             </p>
                           </div>
 
-                          <div className=" py-1.5 px-3 sm:mb-0 lg:mb-1 lg:h-20 lg:px-2 lg:py-2">
-                            <div className="my-3 mb-2 font-TSbold text-sm md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-9 lg:text-sm">
+                          <div className="py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2">
+                            <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:h-10 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:text-sm">
                               {item.stories_headlines}
                             </div>
-                            <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-20 lg:pt-1.5 lg:text-sm">
-                              {item.stories_content.slice(0, 80)}....
+                            <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:pt-1.5 lg:text-sm">
+                              {item.stories_content.slice(0, 70)}....
                             </div>
                           </div>
                         </section>
@@ -370,7 +373,7 @@ const Category_news = ({
                           </p>
                         </div>
                         <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
-                        <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
+                        <div className="mx-2.5 flex justify-between py-1.5 lg:pt-1">
                           <Link href="/More">
                             <p
                               className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}

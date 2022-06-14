@@ -241,17 +241,16 @@ const Nav = ({ showCategory }) => {
 
       {showCategory ? (
         <section className="top-0 z-50 lg:sticky">
-          <section className="flex w-full justify-center bg-Purp100 py-0 text-center font-TSbold text-lg text-white">
-            <div class="mx-auto flex w-full justify-center overflow-x-auto">
+          <section className="flex w-full justify-center bg-white py-0 text-center font-TSbold text-lg text-white lg:bg-Purp100">
+            <div className="mx-auto flex w-full justify-center overflow-x-auto">
               {secondary_nav_items.map((item) => {
                 return (
-                  <div class="flex-none bg-Purp100 py-1 px-3 first:pl-6 last:pr-6">
-                    <div class="flex flex-col items-center justify-center gap-3">
-                      <a
-                        key={item.id}
-                        className={`ml-5 p-1.5 lg:ml-8`}
-                        href={item.link}
-                      >
+                  <div
+                    key={item.id}
+                    className="flex-none bg-Purp100 py-1 px-3 first:pl-6 last:pr-6"
+                  >
+                    <div className="flex flex-col items-center justify-center gap-3">
+                      <a className={`ml-5 p-1.5 lg:ml-8`} href={item.link}>
                         {item.name}
                       </a>{' '}
                     </div>

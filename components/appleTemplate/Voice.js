@@ -129,7 +129,7 @@ const Voice = ({
         {/**** Desktop View ****/}
         {/**** Desktop View ****/}
         <section className="hidden lg:block">
-          <section className="w-6/6 mx-auto">
+          <div className="w-6/6 mx-auto">
             {/**** SWIPER ONE DESKTOP ****/}
             <Swiper
               // install Swiper modules
@@ -153,14 +153,14 @@ const Voice = ({
                                   className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
                                 ></p>
                               </div>
-                              <div className="relative">
+                              <div className="relative h-40 w-60 lg:h-36 lg:w-60">
                                 <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36  lg:w-60"
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
                                   user_id={user_id}
@@ -207,18 +207,18 @@ const Voice = ({
                         ) : (
                           <section className="flex">
                             <div>
+                              {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
                                   className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
-                                ></p>{' '}
+                                ></p>
                               </div>
-
-                              <div className="relative">
+                              <div className="relative h-40 w-60 lg:h-36 lg:w-60">
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
                                   user_id={user_id}
@@ -227,15 +227,15 @@ const Voice = ({
                                 />
 
                                 {/* <div className="absolute bottom-1 left-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-9 w-9 cursor-pointer "
-                                    viewBox="0 0 20 20"
-                                    fill="#FFFFFF"
-                                  >
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                  </svg>
-                                </div> */}
+                                 <svg
+                                   xmlns="http://www.w3.org/2000/svg"
+                                   className="h-9 w-9 cursor-pointer "
+                                   viewBox="0 0 20 20"
+                                   fill="#FFFFFF"
+                                 >
+                                   <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                 </svg>
+                               </div> */}
                               </div>
                             </div>
                             <section>
@@ -243,13 +243,13 @@ const Voice = ({
                                 <p className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
                                   {item.stories_headlines}
                                 </p>
-                                <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
-                                  <p className="text-">
+                                <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
+                                  <p className="">
                                     <b className="text-red-700 font-TSbold">
                                       {item.publisher_name}
                                     </b>
                                   </p>
-                                  <p className="text-gray-500 ml-3 font-TSbold">
+                                  <p className="text-gray-500 font-TSbold">
                                     قبل{' '}
                                     {moment(item.published_on).fromNow(true)}
                                   </p>
@@ -286,19 +286,20 @@ const Voice = ({
                         item.stories_media_url[0].includes('youtu.be') ? (
                           <section className="flex">
                             <div>
+                              {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
                                   className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
                                 ></p>
                               </div>
-                              <div className="relative">
+                              <div className="relative h-40 w-60 lg:h-36 lg:w-60">
                                 <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
                                   user_id={user_id}
@@ -320,9 +321,9 @@ const Voice = ({
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
+                                <p className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
                                   {item.stories_headlines}
-                                </h1>
+                                </p>
                                 <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
                                   <p className="">
                                     <b className="text-red-700 font-TSbold">
@@ -345,48 +346,49 @@ const Voice = ({
                         ) : (
                           <section className="flex">
                             <div>
+                              {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
                                   className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
                                 ></p>
                               </div>
-
-                              <div className="relative">
+                              <div className="relative h-40 w-60 lg:h-36 lg:w-60">
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
                                 />
+
                                 {/* <div className="absolute bottom-1 left-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-9 w-9 cursor-pointer "
-                                    viewBox="0 0 20 20"
-                                    fill="#FFFFFF"
-                                  >
-                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                  </svg>
-                                </div> */}
+                                 <svg
+                                   xmlns="http://www.w3.org/2000/svg"
+                                   className="h-9 w-9 cursor-pointer "
+                                   viewBox="0 0 20 20"
+                                   fill="#FFFFFF"
+                                 >
+                                   <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                 </svg>
+                               </div> */}
                               </div>
                             </div>
                             <section>
                               <section>
-                                <h1 className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
+                                <p className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
                                   {item.stories_headlines}
-                                </h1>
-                                <div className=" my-3 mx-3 flex justify-between font-TSlight text-xs">
-                                  <p className="text-">
+                                </p>
+                                <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
+                                  <p className="">
                                     <b className="text-red-700 font-TSbold">
                                       {item.publisher_name}
                                     </b>
                                   </p>
-                                  <p className="text-gray-500 ml-3 font-TSbold">
+                                  <p className="text-gray-500 font-TSbold">
                                     قبل{' '}
                                     {moment(item.published_on).fromNow(true)}
                                   </p>
@@ -405,7 +407,7 @@ const Voice = ({
                 )
               })}
             </Swiper>
-          </section>
+          </div>
         </section>
         {/**** Mobile View ****/}
         {/**** Mobile View ****/}
@@ -440,7 +442,7 @@ const Voice = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" h-full w-full rounded-b-md object-cover"
+                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
                                 {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -503,7 +505,7 @@ const Voice = ({
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-full w-full rounded-b-md object-cover"
+                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
                                 {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -588,7 +590,7 @@ const Voice = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className=" h-full w-full rounded-b-md object-cover"
+                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
                                 {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -651,7 +653,7 @@ const Voice = ({
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-full w-full rounded-b-md object-cover"
+                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                 />
                                 {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg

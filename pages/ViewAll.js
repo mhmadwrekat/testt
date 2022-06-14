@@ -140,7 +140,6 @@ const ViewAll = () => {
                       <p
                         className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                       >
-                        اقرا المزيد
                       </p>{' '}
                       {/* <MenuThreeDot title_color={title_color} /> */}
                     </div>
