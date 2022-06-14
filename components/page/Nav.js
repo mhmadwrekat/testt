@@ -87,7 +87,7 @@ const Nav = () => {
   // typeof window != 'undefined' && window.scroll && console.log(true)
   return (
     <React.Fragment>
-      <section className="fixed z-50 w-full bg-white">
+      <section className="z-50 w-full bg-white">
         <section className="mx-4 flex justify-between lg:mx-10">
           <div className="flex">
             <div className=" mt-2 lg:mx-8 lg:mt-3 lg:mb-2">
@@ -248,20 +248,19 @@ const Nav = () => {
           {/* </section> */}
         </section>
 
-        <section className="hidden lg:flex">
-          <section className="flex w-full justify-center bg-Purp100 py-0 text-center font-TSbold text-lg text-white">
-            {secondary_nav_items.map((item) => {
-              return (
-                <a key={item.id} className={`ml-10 p-1.5`} href={item.link}>
-                  {item.name}
-                </a>
-              )
-            })}
-          </section>
-        </section>
         {/* <div className="w-6/6 border-gray-500 mx-4 border-b-2 pt-1 opacity-50 lg:mx-28"></div> */}
       </section>
-      <div className="pt-10 lg:pt-14"></div>
+      <section className="top-0 z-50 hidden lg:sticky lg:flex">
+        <section className="flex w-full justify-center bg-Purp100 py-0 text-center font-TSbold text-lg text-white">
+          {secondary_nav_items.map((item) => {
+            return (
+              <a key={item.id} className={`ml-10 p-1.5`} href={item.link}>
+                {item.name}
+              </a>
+            )
+          })}
+        </section>
+      </section>
     </React.Fragment>
   )
 }
