@@ -30,6 +30,32 @@ const Nav = ({ showCategory }) => {
   ]
 
   const secondary_nav_items = [
+    // {
+    //   name: '',
+    //   link: '',
+    //   id: 0,
+    // },
+    // {
+    //   name: '',
+    //   link: '',
+    //   id: 0,
+    // },
+    // {
+    //   name: '',
+    //   link: '',
+    //   id: 0,
+    // },
+    // {
+    //   name: '',
+    //   link: '',
+    //   id: 0,
+    // },
+
+    // {
+    //   name: '',
+    //   link: '',
+    //   id: 0,
+    // },
     {
       name: 'الصحه',
       link: '#الصحه',
@@ -247,10 +273,10 @@ const Nav = ({ showCategory }) => {
                 return (
                   <div
                     key={item.id}
-                    className="flex-none bg-Purp100 py-1 px-3 first:pl-6 last:pr-6"
+                    className="flex-none bg-Purp100 py-1 px-3 first:mr-96 first:pr-72 lg:first:mr-0 lg:first:pr-0"
                   >
                     <div className="flex flex-col items-center justify-center gap-3">
-                      <a className={`ml-5 p-1.5 lg:ml-8`} href={item.link}>
+                      <a className={`ml-3 p-1.5 lg:ml-8`} href={item.link}>
                         {item.name}
                       </a>{' '}
                     </div>
