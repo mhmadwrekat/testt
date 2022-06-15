@@ -42,7 +42,6 @@ const Search = () => {
   }
   const handelFeedback = () => {
     event.preventDefault()
-
     setSearchKey(event.target.name.value)
     search()
   }

@@ -54,7 +54,7 @@ const AllData = ({ data, bg_color, category }) => {
       <section className="text-black w-12/12 lg:w-12/12 mx-auto bg-white">
         <div dir="rtl" id="project_body" translate="no">
           <section className="grid grid-cols-1 gap-5 pt-5 lg:grid-cols-3 lg:gap-16 lg:pt-10">
-            {data?.slice(3, 50).map((item) => {
+            {data?.slice(0, 50).map((item) => {
               return (
                 <section key={item?._id}>
                   <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
