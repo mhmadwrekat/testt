@@ -20,7 +20,7 @@ const Logaimat = ({
   desc_color,
   description,
 }) => {
-  SwiperCore.use([Autoplay])
+  // SwiperCore.use([Autoplay])
   const [openLoqaima, setOpenLoqaima] = useState(false)
   const [loqaimatScreens, setLoqaimatScreens] = useState([])
 
@@ -144,7 +144,7 @@ const Logaimat = ({
               modules={[Navigation]}
               slidesPerView={slides_per_view}
               spaceBetween={space_between}
-              autoplay={true}
+              // autoplay={true}
               loop={true}
             >
               {important_news.map((item) => {
@@ -169,18 +169,18 @@ const Logaimat = ({
                                 item.cover_photo
                               )}/0.jpg`}
                               alt={item.topic_name}
-                              className="
-                                mx-auto h-72 w-44 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
+                              className="mx-auto
+                                h-72 w-44 cursor-pointer rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
                             />
                           ) : (
                             <img
                               loading="lazy"
                               src={item.cover_photo}
                               alt={item.topic_name}
-                              className="mx-auto h-72 w-44 rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
+                              className="mx-auto h-72 w-44 cursor-pointer rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
                             />
                           ))}
-                        <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-white opacity-0 transition ease-in-out hover:opacity-80">
+                        <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full cursor-pointer overflow-hidden bg-white opacity-0 transition ease-in-out hover:opacity-80">
                           <p className="mx-auto w-8/12 text-center font-TSExtra text-2xl lg:pt-24">
                             اضغط هنا لمتابعة القراءة
                           </p>

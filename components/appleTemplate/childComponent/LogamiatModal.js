@@ -29,6 +29,7 @@ export default function LoqaimaModal({
     setNum(0)
   }
   // currentImageIndex
+  console.log(open)
   return (
     <React.Fragment>
       <Transition.Root show={open} as={Fragment}>
@@ -111,14 +112,44 @@ export default function LoqaimaModal({
                   {/* <div className="fixed bottom-0 w-full"></div> */}
                 </div>
               </Transition.Child>
-              <span
-                onClick={() => close_loqaima()}
-                className="absolute top-0 right-2 p-3 lg:right-10"
+              <div
+                className="absolute top-0 right-24 h-screen w-96 p-3 opacity-70"
+                onClick={() => {
+                  setOpen(true)
+                }}
               >
+                <div
+                  className="absolute top-0 right-28 h-screen w-96 p-3 opacity-70"
+                  onClick={() => {
+                    setOpen(true)
+                  }}
+                ></div>
+              </div>
+              <div
+                className="absolute top-20 right-0 h-screen w-96 p-3 opacity-70"
+                onClick={() => {
+                  setOpen(true)
+                }}
+              ></div>
+              <div
+                className="absolute top-0 left-0 h-screen w-96 p-3 opacity-70"
+                onClick={() => {
+                  setOpen(true)
+                }}
+              >
+                <div
+                  className="absolute top-0 left-52 h-screen w-96 p-3 opacity-70"
+                  onClick={() => {
+                    setOpen(true)
+                  }}
+                ></div>
+              </div>
+              <span className="absolute top-0 right-2 p-3 lg:right-10">
                 <img
                   src="./assest/images/close.svg"
-                  className="mx-auto w-12 cursor-pointer justify-center pt-4"
+                  className="mx-auto w-12 cursor-pointer cursor-pointer justify-center pt-4"
                   alt="close button"
+                  onClick={() => close_loqaima()}
                 />
               </span>
             </div>
@@ -127,7 +158,7 @@ export default function LoqaimaModal({
                 <div className="absolute z-20 p-3 lg:bottom-0 lg:left-48">
                   <div className="absolute z-20 p-3 lg:bottom-0 lg:left-48">
                     <div
-                      className="control-arrow control-next"
+                      className="control-arrow control-next cursor-pointer"
                       aria-label="Left Align"
                       onClick={() => {
                         prev()
@@ -153,7 +184,7 @@ export default function LoqaimaModal({
             <div className="absolute z-20 p-3 lg:top-96 lg:right-96">
               <div className="absolute z-20 p-3 lg:bottom-0 lg:right-48">
                 <div
-                  className="control-arrow control-next"
+                  className="control-arrow control-next cursor-pointer"
                   onClick={() => {
                     next()
                   }}
