@@ -205,17 +205,19 @@ const index = (props) => {
                 />
               </section>
             ) : null}
-            <CategoryNews
-              loading="lazy"
-              title={'الشأن الدولي'}
-              category_news={all_news[11]}
-              user_id={user_id}
-              subs={all_news[11]?.is_subscribed}
-              bg_color={'bg-YELLOW'}
-              title_color={'text-YELLOW'}
-              fill_color={'fill-YELLOW'}
-              description={'جميع ما يحدث حول العالم '}
-            />
+            <div id="الشأن الدولي">
+              <CategoryNews
+                loading="lazy"
+                title={'الشأن الدولي'}
+                category_news={all_news[11]}
+                user_id={user_id}
+                subs={all_news[11]?.is_subscribed}
+                bg_color={'bg-YELLOW'}
+                title_color={'text-YELLOW'}
+                fill_color={'fill-YELLOW'}
+                description={'جميع ما يحدث حول العالم '}
+              />
+            </div>
             <div id="الصحه">
               <CategoryNews
                 loading="lazy"
@@ -252,7 +254,7 @@ const index = (props) => {
             ) : null}
 
             {all_news[9]?.data?.length > 3 && (
-              <div id="الفيديوهات">
+              <div id="الأكثر مشاهدة">
                 <Video
                   title={'الأكثر مشاهدة'}
                   category_news={all_news[9]}
@@ -349,18 +351,20 @@ const index = (props) => {
                 description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
               />
             </div>
+            <div id="العاب">
+              <CategoryNews
+                loading="lazy"
+                title={'العاب'}
+                category_news={all_news[13]}
+                user_id={user_id}
+                subs={all_news[13]?.is_subscribed}
+                bg_color={'bg-GREEN'}
+                title_color={'text-GREEN'}
+                fill_color={'fill-GREEN'}
+                description={'جميع ما يخص عالم الالعاب بين يديك'}
+              />
+            </div>
 
-            <CategoryNews
-              loading="lazy"
-              title={'العاب'}
-              category_news={all_news[13]}
-              user_id={user_id}
-              subs={all_news[13]?.is_subscribed}
-              bg_color={'bg-GREEN'}
-              title_color={'text-GREEN'}
-              fill_color={'fill-GREEN'}
-              description={'جميع ما يخص عالم الالعاب بين يديك'}
-            />
             <div id="الخليج العربي">
               <CategoryNews
                 loading="lazy"
@@ -400,17 +404,20 @@ const index = (props) => {
                 fill_color={'fill-RED'}
               />
             </div>
-            <CategoryNews
-              loading="lazy"
-              title={'الشرق الاوسط'}
-              category_news={all_news[14]}
-              user_id={user_id}
-              subs={all_news[14]?.is_subscribed}
-              bg_color={'bg-YELLOW'}
-              title_color={'text-YELLOW'}
-              fill_color={'fill-YELLOW'}
-              description={'جميع ما يحدث حول العالم '}
-            />
+            <div id="الشرق الاوسط">
+              <CategoryNews
+                loading="lazy"
+                title={'الشرق الاوسط'}
+                category_news={all_news[14]}
+                user_id={user_id}
+                subs={all_news[14]?.is_subscribed}
+                bg_color={'bg-YELLOW'}
+                title_color={'text-YELLOW'}
+                fill_color={'fill-YELLOW'}
+                description={'جميع ما يحدث حول العالم '}
+              />
+            </div>
+
             <div id="تكنولوجيا">
               <CategoryNews
                 loading="lazy"

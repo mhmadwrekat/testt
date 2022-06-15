@@ -65,9 +65,9 @@ const AllData = ({ data, bg_color, category }) => {
                     </div>
                     <section className="grid bg-GRAY100">
                       <div className="relative w-full lg:w-auto">
-                        {item.stories_media_url[0] &&
-                          (item.stories_media_url[0].includes('youtube') ||
-                          item.stories_media_url[0].includes('youtu.be') ? (
+                        {item?.stories_media_url[0] &&
+                          (item?.stories_media_url[0].includes('youtube') ||
+                          item?.stories_media_url[0].includes('youtu.be') ? (
                             <img
                               loading="eager"
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(

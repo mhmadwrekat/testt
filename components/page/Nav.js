@@ -45,17 +45,16 @@ const Nav = ({ showCategory }) => {
     //   link: '',
     //   id: 0,
     // },
-    // {
-    //   name: '',
-    //   link: '',
-    //   id: 0,
-    // },
-
-    // {
-    //   name: '',
-    //   link: '',
-    //   id: 0,
-    // },
+    {
+      name: '',
+      link: '',
+      id: -1,
+    },
+    {
+      name: '',
+      link: '',
+      id: 0,
+    },
     {
       name: 'الصحه',
       link: '#الصحه',
@@ -67,18 +66,18 @@ const Nav = ({ showCategory }) => {
       id: 2,
     },
     {
+      name: 'العاب',
+      link: '#العاب',
+      id: 3,
+    },
+    {
       name: 'غزو اوكرانيا',
       link: '#اوكرانيا',
-      id: 3,
+      id: 4,
     },
     {
       name: 'ترند',
       link: '#ترند',
-      id: 4,
-    },
-    {
-      name: 'الصوتيات',
-      link: '#الصوتيات',
       id: 5,
     },
     {
@@ -87,19 +86,45 @@ const Nav = ({ showCategory }) => {
       id: 6,
     },
     {
-      name: 'لقيمات',
-      link: '#لقيمات',
-      id: 7,
-    },
-    {
       name: 'لايف ستايل',
       link: '#لايف ستايل',
-      id: 8,
+      id: 7,
     },
     {
       name: 'تكنولوجيا',
       link: '#تكنولوجيا',
+      id: 8,
+    },
+
+    {
+      name: 'الشأن الدولي',
+      link: '#الشأن الدولي',
       id: 9,
+    },
+    {
+      name: 'لقيمات',
+      link: '#لقيمات',
+      id: 10,
+    },
+    {
+      name: 'الصوتيات',
+      link: '#الصوتيات',
+      id: 11,
+    },
+    {
+      name: 'الأكثر مشاهدة',
+      link: '#الأكثر مشاهدة',
+      id: 12,
+    },
+    {
+      name: 'الشرق الاوسط',
+      link: '#الشرق الاوسط',
+      id: 13,
+    },
+    {
+      name: '',
+      link: '',
+      id: 14,
     },
   ]
   // const refresh = () => {
@@ -148,7 +173,7 @@ const Nav = ({ showCategory }) => {
         </div> */}
             {/* <section id="logoFooter" className="text-LogoPurp"> */}
 
-            <div className="flex pt-5 pr-7 font-TSbold text-base lg:mt-3 lg:flex lg:pr-20 lg:text-lg">
+            <div className="flex pt-2 pr-8 font-TSbold text-base lg:mt-3 lg:flex lg:pt-0 lg:pr-20 lg:text-lg">
               {nav_items.map((item) => {
                 return (
                   <p
@@ -239,25 +264,30 @@ const Nav = ({ showCategory }) => {
             //   router.push('/Search')
             // }}
           >
-            <div className="pointer-events-auto absolute ">
-              <svg
-                className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
-                viewBox="0 0 20 20"
-                fill="#FFFFFF"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-            <input
-              type="text"
-              placeholder="محرك البحث"
-              className="float-left w-40 rounded-md border-2 border-white bg-GRAY200 p-1 pt-2 pr-12 text-base placeholder-white lg:w-96 lg:text-lg"
-            />
+            <Link href="/Search">
+              <div className="pointer-events-auto absolute ">
+                <svg
+                  className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
+                  viewBox="0 0 20 20"
+                  fill="#FFFFFF"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </Link>
+            <Link href="/Search">
+              <input
+                type="text"
+                placeholder="محرك البحث"
+                className="float-left w-40 rounded-md border-2 border-white bg-GRAY200 p-1 pt-2 pr-12 text-base placeholder-white lg:w-96 lg:text-lg"
+              />
+            </Link>
           </div>
+
           {/* )} */}
           {/* </section> */}
         </section>
@@ -266,9 +296,9 @@ const Nav = ({ showCategory }) => {
       </section>
 
       {showCategory ? (
-        <section className="sticky top-0 z-50">
-          <section className="flex w-full justify-center bg-white py-0 text-center font-TSbold text-lg text-white lg:bg-Purp100">
-            <div className="mx-auto flex w-full justify-center overflow-x-auto">
+        <section className="sticky top-0 left-0 z-50 w-screen ">
+          <section className="flex w-screen justify-start bg-white py-0 text-center font-TSbold text-lg text-white">
+            <div className="mx-auto flex w-screen justify-center overflow-x-auto">
               {secondary_nav_items.map((item) => {
                 return (
                   <div

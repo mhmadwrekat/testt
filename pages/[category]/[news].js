@@ -87,11 +87,11 @@ const indexx = () => {
                 {head_news?.stories_media_url[0] &&
                   (head_news?.stories_media_url[0].includes('youtube') ||
                   head_news?.stories_media_url[0].includes('youtu.be') ? (
-                    <img
+                    <iframe
                       loading="eager"
-                      src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                      src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                         head_news?.stories_media_url[0]
-                      )}/0.jpg`}
+                      )}`}
                       alt={head_news?.stories_headlines}
                       className="relative h-72 w-full object-cover lg:h-full"
                     />
