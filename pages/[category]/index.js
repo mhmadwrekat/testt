@@ -9,6 +9,7 @@ import axios from 'axios'
 import Like from '../../components/appleTemplate/childComponent/Like'
 const HeadComp = dynamic(() => import('../../components/page/HeadComp'))
 const Nav = dynamic(() => import('../../components/page/Nav'))
+const Footer = dynamic(() => import('../../components/page/Footer'))
 const AllData = dynamic(() =>
   import('../../components/appleTemplate/childComponent/AllData')
 )
@@ -384,7 +385,8 @@ const index = () => {
           />
         </section>
       </div>
-      <div className="py-20"></div>
+      <div className="py-4"></div>
+      <Footer />
     </React.Fragment>
   )
 }

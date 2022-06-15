@@ -9,6 +9,7 @@ import axios from 'axios'
 import Like from '../../components/appleTemplate/childComponent/Like'
 const HeadComp = dynamic(() => import('../../components/page/HeadComp'))
 const Nav = dynamic(() => import('../../components/page/Nav'))
+const Footer = dynamic(() => import('../../components/page/Footer'))
 const AllData = dynamic(() =>
   import('../../components/appleTemplate/childComponent/AllData')
 )
@@ -30,11 +31,11 @@ const indexx = () => {
         )
         .then((res) => {
           // console.log(res.data.data)
-          setHeadNews(res.data.data.story)
-          let keys = Object.keys(res.data.data.relevant_stories)
+          setHeadNews(res?.data?.data?.story)
+          let keys = Object.keys(res?.data?.data?.relevant_stories)
           let custom_array = []
           keys.map((item) => {
-            custom_array.push(res.data.data.relevant_stories[item])
+            custom_array.push(res?.data?.data?.relevant_stories[item])
           })
           setRelatedNews(custom_array)
         })
@@ -79,7 +80,7 @@ const indexx = () => {
             <section className="">
               <div className="">
                 <p
-                  className={`${bg_color} rounded-t-md py-3 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
+                  className={`rounded-t-md bg-Purp300 py-3 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
                 ></p>{' '}
               </div>
               <div className="relative h-72 w-full shadow-md lg:h-96">
@@ -102,8 +103,7 @@ const indexx = () => {
                       className="relative h-72 w-full object-cover lg:h-full"
                     />
                   ))}
-                <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
-                  {/* {console.log(category_news.data[0]._id)} */}
+                {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className=" h-7 w-7 cursor-pointer"
@@ -118,7 +118,7 @@ const indexx = () => {
                       d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                     />
                   </svg>
-                </div>
+                </div> */}
               </div>
             </section>
             <section className="">
@@ -146,18 +146,19 @@ const indexx = () => {
             </section>
           </section>
           <p
-            className={`mt-12 mb-3 font-TSExtra text-2xl text-BLUE lg:text-4xl`}
+            className={`mt-12 mb-3 font-TSExtra text-2xl text-Purp300 lg:text-4xl`}
           >
             أخبار ذات صلة
           </p>
           <AllData
             data={related_news}
-            bg_color={'bg-YELLOW'}
+            bg_color={'bg-Purp300'}
             category={router.query.news}
           />
         </section>
       </div>
-      <div className="py-20"></div>
+      <div className="py-4"></div>
+      <Footer />
     </React.Fragment>
   )
 }

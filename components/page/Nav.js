@@ -148,12 +148,12 @@ const Nav = ({ showCategory }) => {
         </div> */}
             {/* <section id="logoFooter" className="text-LogoPurp"> */}
 
-            <div className="hidden pr-20 font-TSbold text-lg lg:mt-3 lg:flex">
+            <div className="flex pt-5 pr-7 font-TSbold text-base lg:mt-3 lg:flex lg:pr-20 lg:text-lg">
               {nav_items.map((item) => {
                 return (
                   <p
                     key={item.id}
-                    className="my-auto ml-10 lg:cursor-pointer"
+                    className="my-auto ml-5 lg:ml-10 lg:cursor-pointer"
                     onClick={() => {
                       router.push(item.link)
                     }}
@@ -234,12 +234,12 @@ const Nav = ({ showCategory }) => {
           {/* {active && ( */}
 
           <div
-            className=" mt-3 font-TSSemi lg:ml-5 lg:mt-4 lg:pl-3"
-            onClick={() => {
-              router.push('/Search')
-            }}
+            className="mt-3 hidden font-TSSemi lg:ml-5 lg:mt-4 lg:block lg:pl-3"
+            // onClick={() => {
+            //   router.push('/Search')
+            // }}
           >
-            <div className="pointer-events-auto absolute">
+            <div className="pointer-events-auto absolute ">
               <svg
                 className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
                 viewBox="0 0 20 20"
