@@ -68,7 +68,11 @@ const Search = () => {
                 />
               </svg>
             </div>
-            <form onSubmit={handelFeedback}>
+            <form
+              onSubmit={() => {
+                handelFeedback()
+              }}
+            >
               <input
                 type="text"
                 name="name"
@@ -84,10 +88,8 @@ const Search = () => {
               </button>
             </form>
           </div>
-          {search_data?.length > 0 ? (
+          {search_data?.length > 0 && (
             <AllData data={search_data} bg_color={'bg-GREEN'} />
-          ) : (
-            <></>
           )}
         </section>
       </div>
