@@ -173,7 +173,7 @@ const Nav = ({ showCategory }) => {
         </div> */}
             {/* <section id="logoFooter" className="text-LogoPurp"> */}
 
-            <div className="flex pt-2 pr-8 font-TSbold text-base lg:mt-3 lg:flex lg:pt-0 lg:pr-20 lg:text-lg">
+            <div className="hidden pt-2 pr-8 font-TSbold text-base lg:mt-3 lg:flex lg:pt-0 lg:pr-20 lg:text-lg">
               {nav_items.map((item) => {
                 return (
                   <p
@@ -259,7 +259,7 @@ const Nav = ({ showCategory }) => {
           {/* {active && ( */}
 
           <div
-            className="mt-3 hidden font-TSSemi lg:ml-5 lg:mt-4 lg:block lg:pl-3"
+            className="mt-3 font-TSSemi lg:ml-5 lg:mt-4 lg:block lg:pl-3"
             // onClick={() => {
             //   router.push('/Search')
             // }}
