@@ -2,11 +2,13 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import moment from 'moment'
+import { useRouter } from 'next/router'
 import 'moment/locale/ar'
 // import MenuThreeDot from './child_comp/MenuThreeDot'
 const Like = dynamic(() => import('./Like'))
 
-const AllData = ({ data, bg_color }) => {
+const AllData = ({ data, bg_color, category }) => {
+  const router = useRouter()
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
     let code = ''
@@ -26,6 +28,26 @@ const AllData = ({ data, bg_color }) => {
       code = link.split('youtu.be/')[1]
       return code
     }
+  }
+  const handle_news_redirection_story = (category, titles) => {
+    let ready_title = ''
+
+    if (titles.includes('%')) {
+      let title = titles.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_title = `${title.replace('%', '_')}`
+    } else if (titles.includes(' ')) {
+      let title = titles.replace(/\s+/g, '_')
+      ready_title = `${title.replace(' ', '_')}`
+    } else {
+      ready_title = titles
+    }
+    if (titles.includes('?')) {
+      let title = titles.replace(/\s+/g, '')
+      ready_title = `${title.replace('?', '_')}`
+    }
+    router.push(`/${ready_title}/${category}`)
+    // console.log(category)
   }
   return (
     <React.Fragment>
@@ -101,16 +123,21 @@ const AllData = ({ data, bg_color }) => {
                       <p className="font-TSExtra text-GRAY300">
                         قبل {moment(item.published_on).fromNow(true)}
                       </p>
+                      {/* {console.log(item?.primary_category[0]?.category_name)} */}
                     </div>
                     <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
                     <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
-                      <Link href="/More">
-                        <p
-                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
-                        >
-                          اقرا المزيد
-                        </p>
-                      </Link>
+                      <p
+                        className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                        onClick={() => {
+                          handle_news_redirection_story(
+                            category,
+                            item?.stories_headlines
+                          )
+                        }}
+                      >
+                        اقرا المزيد
+                      </p>
                       {/* <MenuThreeDot title_color={title_color} /> */}
                     </div>
                   </div>

@@ -150,8 +150,10 @@ const Voice = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
-                                ></p>
+                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                >
+                                  {item?.primary_category[0]?.category_name}
+                                </p>
                               </div>
                               <div className="relative h-40 w-60 lg:h-36 lg:w-60">
                                 <img
@@ -210,8 +212,10 @@ const Voice = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
-                                ></p>
+                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                >
+                                  {item?.primary_category[0]?.category_name}
+                                </p>
                               </div>
                               <div className="relative h-40 w-60 lg:h-36 lg:w-60">
                                 <img
@@ -289,8 +293,10 @@ const Voice = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
-                                ></p>
+                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                >
+                                  {item?.primary_category[0]?.category_name}
+                                </p>
                               </div>
                               <div className="relative h-40 w-60 lg:h-36 lg:w-60">
                                 <img
@@ -349,8 +355,10 @@ const Voice = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-base text-white hover:underline`}
-                                ></p>
+                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                >
+                                  {item?.primary_category[0]?.category_name}
+                                </p>
                               </div>
                               <div className="relative h-40 w-60 lg:h-36 lg:w-60">
                                 <img
@@ -432,7 +440,7 @@ const Voice = ({
                               <p
                                 className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
                               >
-                                {news_one.section_name}
+                                {item?.primary_category[0]?.category_name}{' '}
                               </p>
 
                               <div className="relative h-36 w-36 md:h-72 md:w-96">
@@ -496,7 +504,7 @@ const Voice = ({
                                 <p
                                   className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
                                 >
-                                  {news_one.section_name}
+                                  {item?.primary_category[0]?.category_name}{' '}
                                 </p>
                               </div>
 
@@ -579,7 +587,7 @@ const Voice = ({
                                 <p
                                   className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
                                 >
-                                  {news_one.section_name}
+                                  {item?.primary_category[0]?.category_name}{' '}
                                 </p>
                               </div>
 
@@ -644,7 +652,7 @@ const Voice = ({
                                 <p
                                   className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
                                 >
-                                  {news_one.section_name}
+                                  {item?.primary_category[0]?.category_name}{' '}
                                 </p>
                               </div>
 

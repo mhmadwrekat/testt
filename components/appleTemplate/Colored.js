@@ -83,7 +83,37 @@ const Colored = ({
     }
   }
   let stories = important_news && [important_news?.data[0]?._id]
+  const handle_news_redirection_story = (category, titles) => {
+    let ready_category = ''
+    let ready_title = ''
+    if (category.includes('%')) {
+      let title = category.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_category = `${title.replace('%', '_')}`
+    } else if (category.includes(' ')) {
+      let title = category.replace(/\s+/g, '_')
+      ready_category = `${title.replace(' ', '_')}`
+    } else {
+      ready_category = category
+    }
+    if (titles.includes('%')) {
+      let title = titles.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_title = `${title.replace('%', '_')}`
+    } else if (titles.includes(' ')) {
+      let title = titles.replace(/\s+/g, '_')
+      ready_title = `${title.replace(' ', '_')}`
+    } else {
+      ready_title = titles
+    }
+    if (titles.includes('?')) {
+      let title = titles.replace(/\s+/g, '')
+      ready_title = `${title.replace('?', '_')}`
+    }
 
+    router.push(`/${ready_title}/${ready_category}`)
+    // console.log(ready_title)
+  }
   return (
     <React.Fragment>
       <section className={`${text_color} mx-auto w-11/12 lg:w-10/12`}>
@@ -249,13 +279,18 @@ const Colored = ({
                       .....
                     </p>
                     <div className="my-1 flex  justify-between pt-2.5">
-                      <Link href="/More">
-                        <p
-                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY200 hover:text-RED`}
-                        >
-                          اقرأ المزيد
-                        </p>
-                      </Link>
+                      <p
+                        className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY200 hover:text-RED`}
+                        onClick={() => {
+                          handle_news_redirection_story(
+                            important_news?.data[0]?.primary_category[0]
+                              ?.category_name,
+                            important_news?.data[0]?.stories_headlines
+                          )
+                        }}
+                      >
+                        اقرأ المزيد
+                      </p>
                       {/* <MenuThreeDot title_color={title_color} /> */}
                     </div>
                   </div>
@@ -344,13 +379,17 @@ const Colored = ({
                         </div>
 
                         <div className="mx-2.5 flex justify-between py-1.5 lg:pt-1">
-                          <Link href="/More">
-                            <p
-                              className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY200 hover:text-RED`}
-                            >
-                              اقرأ المزيد
-                            </p>
-                          </Link>
+                          <p
+                            className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY200 hover:text-RED`}
+                            onClick={() => {
+                              handle_news_redirection_story(
+                                item?.primary_category[0]?.category_name,
+                                item?.stories_headlines
+                              )
+                            }}
+                          >
+                            اقرأ المزيد
+                          </p>
                           {/* <MenuThreeDot title_color={title_color} /> */}
                         </div>
 

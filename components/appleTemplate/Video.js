@@ -3,6 +3,7 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/ar'
+import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 // import MenuThreeDot from './childComponent/MenuThreeDot'
 // const Like = dynamic(() => import('./childComponent/Like'))
@@ -18,6 +19,8 @@ const Video = ({
   fill_color,
   user_id,
 }) => {
+  const router = useRouter()
+
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
     let code = ''
@@ -55,6 +58,37 @@ const Video = ({
     })
   }
   let stories = []
+  const handle_news_redirection_story = (category, titles) => {
+    let ready_category = ''
+    let ready_title = ''
+    if (category.includes('%')) {
+      let title = category.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_category = `${title.replace('%', '_')}`
+    } else if (category.includes(' ')) {
+      let title = category.replace(/\s+/g, '_')
+      ready_category = `${title.replace(' ', '_')}`
+    } else {
+      ready_category = category
+    }
+    if (titles.includes('%')) {
+      let title = titles.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_title = `${title.replace('%', '_')}`
+    } else if (titles.includes(' ')) {
+      let title = titles.replace(/\s+/g, '_')
+      ready_title = `${title.replace(' ', '_')}`
+    } else {
+      ready_title = titles
+    }
+    if (titles.includes('?')) {
+      let title = titles.replace(/\s+/g, '')
+      ready_title = `${title.replace('?', '_')}`
+    }
+
+    router.push(`/${ready_title}/${ready_category}`)
+    // console.log(ready_title)
+  }
   return (
     <React.Fragment>
       {/* {console.log('User_ID = ', user_id)} */}
@@ -154,7 +188,7 @@ const Video = ({
                           className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
                         >
                           {/* {category_news.section_name} */}
-                          الفيديوهات
+                          {item?.primary_category[0]?.category_name}{' '}
                         </p>{' '}
                       </div>
                       <section className="flex bg-GRAY100 lg:grid ">
@@ -218,6 +252,12 @@ const Video = ({
                       <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
                         <p
                           className={`$rounded-lg cursor-pointer py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              item?.primary_category[0]?.category_name,
+                              item?.stories_headlines
+                            )
+                          }}
                         >
                           اقرا المزيد
                         </p>{' '}

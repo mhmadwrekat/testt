@@ -229,6 +229,7 @@ const index = () => {
       return code
     }
   }
+
   // console.log('All ->>>>>>>>>>>> ', all_news)
   // console.log('All ->> ', category_theme(router.query.category))
   return (
@@ -379,6 +380,7 @@ const index = () => {
           <AllData
             data={all_news}
             bg_color={category_theme(router.query.category)}
+            category={router.query.category}
           />
         </section>
       </div>
