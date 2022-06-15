@@ -22,23 +22,19 @@ const Search = () => {
     // console.log(
     //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}&category_id=5e4e90ac52561e16596649f9`
     // )
-    search &&
-      axios
-        .get(
-          `${BASE_URL}/v1/User/Stories/Search/Keywords?phrase=${search_key}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then(function (response) {
-          setSearchData(response.data.data)
-          console.log(response)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+    axios
+      .get(`${BASE_URL}/v1/User/Stories/Search/Keywords?phrase=${search_key}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(function (response) {
+        setSearchData(response.data.data)
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
   const handelFeedback = () => {
     event.preventDefault()
