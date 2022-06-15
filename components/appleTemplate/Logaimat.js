@@ -114,7 +114,7 @@ const Logaimat = ({
               )}
             </div>
 
-            <div className="my-1 mt-4 flex lg:mt-5">
+            {/* <div className="my-1 mt-4 flex lg:mt-5">
               <p className="mt-5 font-TSbold text-lg text-GRAY50 lg:text-xl">
                 عرض الجميع
               </p>
@@ -129,7 +129,7 @@ const Logaimat = ({
                   clipRule="evenodd"
                 />
               </svg>
-            </div>
+            </div> */}
           </div>
           {description && (
             <p

@@ -182,7 +182,7 @@ const ImportantNews = ({
                       {
                         category_news?.data[0]?.primary_category[0]
                           ?.category_name
-                      }{' '}
+                      }
                     </p>
                   </div>
                   <div className=" relative h-56 w-full lg:h-80">

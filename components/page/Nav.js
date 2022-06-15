@@ -286,7 +286,9 @@ const Nav = ({ showCategory }) => {
             </div>
           </section>
         </section>
-      ) : null}
+      ) : (
+        <div className="mx-auto w-11/12 border-t-2 border-Purp100"></div>
+      )}
     </React.Fragment>
   )
 }

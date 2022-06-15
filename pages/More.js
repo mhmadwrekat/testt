@@ -30,11 +30,11 @@ const More = () => {
                   category
                 </p>{' '}
               </div>
-              <div className="relative h-56 w-full shadow-md lg:h-96">
+              <div className="relative h-60 w-full shadow-md lg:h-96">
                 <img
                   src="https://safetravelbarometer.com/wp-content/uploads/2020/11/North-America-630X335.jpg"
                   alt="test"
-                  className="relative h-56 w-full object-cover lg:h-full"
+                  className="relative h-60 w-full object-cover lg:h-full"
                 />
                 <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
                   {/* {console.log(category_news.data[0]._id)} */}
@@ -59,9 +59,8 @@ const More = () => {
               <div className="px-2.5 pt-2">
                 <div className="mt-3 font-TSExtra text-lg md:text-xl lg:h-24 lg:w-10/12 lg:text-2xl">
                   "«أمريكا تناديك» سافر بدون فحص كورونا حتى لو كنت مريضا",
-                  "«أمريكا تناديك» سافر بدون فحص كورونا حتى لو كنت مريضا",
                 </div>
-                <p className="pt-4 font-TSmedium text-base lg:grid lg:h-56 lg:pt-0 ">
+                <p className="pt-4 font-TSmedium text-base lg:grid lg:h-64 lg:pt-0 ">
                   "ألغى مركز السيطرة على الأمراض الأمريكي CDC شرط إجراء فحص
                   كورونا COVID19 ووجوب سلبية النتيجة قبل مغادرة الرحلة إلى
                   الولايات المتحدة ، اعتبارًا من 12 يونيو 2022. وبرر المركز
@@ -72,8 +71,6 @@ const More = () => {
                   الرحلة إلى الولايات المتحدة ، اعتبارًا من 12 يونيو 2022. وبرر
                   المركز قراره بسبب انتشار اللقاحات وتحسن المناعة الاجتماعية،
                   ودخول جائحة كورونا مرحلة جديدة، حيث لم يعد الفيروس خطيرا كما ك
-                  الولايات المتحدة ، اعتبارًا من 12 يونيو 2022. وبرر المركز
-                  قراره بسبب انتشار اللقاحات وتحسن المناعة الاجتماعية، ودخول ك
                 </p>
               </div>
               <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">

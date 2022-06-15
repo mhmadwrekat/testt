@@ -117,7 +117,7 @@ const Video = ({
                 </p>
               )}
             </div>
-
+            {/* 
             <div className="my-1 mt-4 flex lg:mt-5">
               <p className="mt-5 font-TSbold text-lg text-GRAY50 lg:text-xl">
                 عرض الجميع
@@ -133,7 +133,7 @@ const Video = ({
                   clipRule="evenodd"
                 />
               </svg>
-            </div>
+            </div> */}
           </div>{' '}
           {description && (
             <p
@@ -217,7 +217,7 @@ const Video = ({
                       <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
                       <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
                         <p
-                          className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                          className={`$rounded-lg cursor-pointer py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                         >
                           اقرا المزيد
                         </p>{' '}

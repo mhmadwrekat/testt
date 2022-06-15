@@ -49,11 +49,11 @@ const AllData = ({ data, bg_color }) => {
                       </div>
 
                       <div className=" py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2">
-                        <div className="my-3 mb-2 font-TSExtra text-lg md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-14 lg:text-xl">
+                        <div className="my-3 mb-2 font-TSExtra text-lg md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-20 lg:text-xl">
                           {item.title}
                         </div>
-                        <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-24 lg:pt-1.5 lg:text-sm">
-                          {item.desc}
+                        <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-16 lg:pt-1.5 lg:text-sm">
+                          {item.desc.slice(0, 145)}............
                         </div>
                       </div>
                     </section>
@@ -70,7 +70,7 @@ const AllData = ({ data, bg_color }) => {
                     <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
                       <Link href="/More">
                         <p
-                          className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                         >
                           اقرا المزيد
                         </p>
