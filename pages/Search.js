@@ -14,7 +14,7 @@ const Search = () => {
     typeof window !== 'undefined'
       ? useState(localStorage.getItem('user_token'))
       : useState()
-  const [search_key, setSearchKey] = useState()
+  const [search_key, setSearchKey] = useState('الاردن')
   const [search_data, setSearchData] = useState()
   let bg_color = 'bg-GREEN'
 
@@ -39,8 +39,10 @@ const Search = () => {
   const handelFeedback = () => {
     event.preventDefault()
     setSearchKey(event.target.name.value)
-    search()
   }
+  useEffect(() => {
+    search()
+  }, [search_key])
   console.log('DATA ->>>>>> ', search_data)
   return (
     <React.Fragment>
