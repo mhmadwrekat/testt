@@ -4,6 +4,7 @@ import 'moment/locale/ar'
 import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 // import MenuThreeDot from './child_comp/MenuThreeDot'
 const Like = dynamic(() => import('./childComponent/Like'))
@@ -20,6 +21,8 @@ const Colored = ({
   theme,
   description,
 }) => {
+  const router = useRouter()
+
   const important_news_img =
     important_news?.data[0]?.stories_media_url.length > 0
       ? important_news.data[0].stories_media_url[0]
@@ -66,6 +69,19 @@ const Colored = ({
     })
     // return !is_loved
   }
+  // Function to handle specific Redirection
+  const handle_news_redirection = (story) => {
+    if (story.includes('%')) {
+      let title = story.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      router.push(`/${title.replace('%', '_')}`)
+    } else if (story.includes(' ')) {
+      let title = story.replace(/\s+/g, '_')
+      router.push(`/${title.replace(' ', '_')}`)
+    } else {
+      router.push(story)
+    }
+  }
   let stories = important_news && [important_news?.data[0]?._id]
 
   return (
@@ -74,13 +90,14 @@ const Colored = ({
         <React.Fragment>
           <div className="flex justify-between">
             <div className="my-3 mt-1 lg:mt-2">
-              <Link href="/ViewAll">
-                <p
-                  className={`${text_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
-                >
-                  {title}
-                </p>
-              </Link>
+              <p
+                className={`${text_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                onClick={() => {
+                  handle_news_redirection(title)
+                }}
+              >
+                {title}
+              </p>
               {description && (
                 <p
                   className={`${desc_color} hidden w-full px-1 pb-5 font-TSmedium text-lg lg:grid lg:text-xl`}
@@ -89,8 +106,12 @@ const Colored = ({
                 </p>
               )}
             </div>
-            <Link href="/ViewAll">
-            <div className="my-1 mt-1 flex lg:mt-5 cursor-pointer">
+            <div
+              className="my-1 mt-1 flex cursor-pointer lg:mt-5"
+              onClick={() => {
+                handle_news_redirection(title)
+              }}
+            >
               <p className="mt-5 font-TSbold text-lg lg:text-xl">عرض الجميع</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +125,6 @@ const Colored = ({
                 />
               </svg>
             </div>
-            </Link>
           </div>
           {description && (
             <p

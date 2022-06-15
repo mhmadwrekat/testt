@@ -4,6 +4,7 @@ import Link from 'next/link'
 import 'moment/locale/ar'
 import { BASE_URL } from '../../config/config'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 // import MenuThreeDot from './child_comp/MenuThreeDot'
 const Like = dynamic(() => import('./childComponent/Like'))
@@ -19,6 +20,7 @@ const Arround_you = ({
   theme,
   description,
 }) => {
+  const router = useRouter()
   const important_news_img =
     important_news?.data[0]?.stories_media_url.length > 0
       ? important_news.data[0].stories_media_url[0]
@@ -67,6 +69,19 @@ const Arround_you = ({
         // console.log(err)
       })
   }
+  // Function to handle specific Redirection
+  const handle_news_redirection = (story) => {
+    if (story.includes('%')) {
+      let title = story.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      router.push(`/${title.replace('%', '_')}`)
+    } else if (story.includes(' ')) {
+      let title = story.replace(/\s+/g, '_')
+      router.push(`/${title.replace(' ', '_')}`)
+    } else {
+      router.push(story)
+    }
+  }
   let stories = important_news && [important_news?.data[0]?._id]
 
   return (
@@ -75,13 +90,14 @@ const Arround_you = ({
         <>
           <div className="flex justify-between ">
             <div className="my-3 mt-1 lg:mt-2">
-              <Link href="/ViewAll">
-                <p
-                  className={`${text_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
-                >
-                  {title}
-                </p>
-              </Link>
+              <p
+                className={`${text_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                onClick={() => {
+                  handle_news_redirection(title)
+                }}
+              >
+                {title}
+              </p>
               {description && (
                 <p
                   className={`hidden w-full px-1 pb-5 font-TSmedium text-lg text-white lg:grid lg:text-xl`}
@@ -90,24 +106,25 @@ const Arround_you = ({
                 </p>
               )}
             </div>
-            <Link href="/ViewAll">
-              <div className="my-1 mt-1 flex cursor-pointer lg:mt-5">
-                <p className="mt-5 font-TSbold text-lg lg:text-xl">
-                  عرض الجميع
-                </p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-            </Link>
+            <div
+              className="my-1 mt-1 flex cursor-pointer lg:mt-5"
+              onClick={() => {
+                handle_news_redirection(title)
+              }}
+            >
+              <p className="mt-5 font-TSbold text-lg lg:text-xl">عرض الجميع</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
           </div>
           {description && (
             <p

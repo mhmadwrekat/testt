@@ -162,7 +162,7 @@ const index = (props) => {
   }, [user_id])
   // console.log(user_id)
   // console.log('---> ', country_code, user_id)
-  // console.log('---> ', nanoid())
+  // console.log('---> ', all_news)
   return (
     <React.Fragment>
       {/* {console.log('>> ', user_id)} */}
@@ -207,7 +207,7 @@ const index = (props) => {
             ) : null}
             <CategoryNews
               loading="lazy"
-              title={'  الشأن الدولي'}
+              title={'الشأن الدولي'}
               category_news={all_news[11]}
               user_id={user_id}
               subs={all_news[11]?.is_subscribed}
@@ -278,7 +278,7 @@ const index = (props) => {
             />
             <CategoryNews
               loading="lazy"
-              title={' مال وأعمال'}
+              title={'مال وأعمال'}
               category_news={all_news[7]}
               user_id={user_id}
               subs={all_news[7]?.is_subscribed}
@@ -292,7 +292,7 @@ const index = (props) => {
             <div id="اوكرانيا">
               <CategoryNews
                 loading="lazy"
-                title={' غزو أوكرانيا'}
+                title={'غزو أوكرانيا'}
                 category_news={all_news[8]}
                 user_id={user_id}
                 subs={all_news[8]?.is_subscribed}
@@ -322,7 +322,7 @@ const index = (props) => {
             <div id="ترند">
               <CategoryNews
                 loading="lazy"
-                title={' ترند'}
+                title={'ترند'}
                 category_news={all_news[5]}
                 user_id={user_id}
                 subs={all_news[5]?.is_subscribed}
@@ -364,7 +364,7 @@ const index = (props) => {
             <div id="الخليج العربي">
               <CategoryNews
                 loading="lazy"
-                title={' الخليج العربي '}
+                title={'الخليج العربي'}
                 category_news={all_news[10]}
                 user_id={user_id}
                 subs={all_news[10]?.is_subscribed}
@@ -378,7 +378,7 @@ const index = (props) => {
             <div id="الرياضه">
               <CategoryNews
                 loading="lazy"
-                title={' رياضه'}
+                title={'رياضة'}
                 category_news={all_news[3]}
                 user_id={user_id}
                 subs={all_news[3]?.is_subscribed}
@@ -402,7 +402,7 @@ const index = (props) => {
             </div>
             <CategoryNews
               loading="lazy"
-              title={'  الشرق الأوسط'}
+              title={'الشرق الاوسط'}
               category_news={all_news[14]}
               user_id={user_id}
               subs={all_news[14]?.is_subscribed}
@@ -414,7 +414,7 @@ const index = (props) => {
             <div id="تكنولوجيا">
               <CategoryNews
                 loading="lazy"
-                title={' تكنولوجيا'}
+                title={'تكنولوجيا'}
                 category_news={all_news[12]}
                 user_id={user_id}
                 subs={all_news[12]?.is_subscribed}

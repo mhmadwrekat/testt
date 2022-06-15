@@ -29,7 +29,6 @@ export default function LoqaimaModal({
     setNum(0)
   }
   // currentImageIndex
-  console.log(open)
   return (
     <React.Fragment>
       <Transition.Root show={open} as={Fragment}>

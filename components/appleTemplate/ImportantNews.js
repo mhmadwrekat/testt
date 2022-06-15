@@ -80,8 +80,20 @@ const ImportantNews = ({
       // console.log(res)
     })
   }
+  // Function to handle specific Redirection
+  const handle_news_redirection = (story) => {
+    if (story.includes('%')) {
+      let title = story.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      router.push(`/${title.replace('%', '_')}`)
+    } else if (story.includes(' ')) {
+      let title = story.replace(/\s+/g, '_')
+      router.push(`/${title.replace(' ', '_')}`)
+    } else {
+      router.push(story)
+    }
+  }
   let stories = category_news && [category_news?.data[0]?._id]
-  // console.log(category_news?.data[0]?.primary_category[0]?.category_name)
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
@@ -129,13 +141,14 @@ const ImportantNews = ({
                       />
                     </svg>
                   ))}
-                <Link href="/ViewAll">
-                  <p
-                    className={`${title_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
-                  >
-                    {title}
-                  </p>
-                </Link>
+                <p
+                  className={`${title_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                  onClick={() => {
+                    handle_news_redirection(title)
+                  }}
+                >
+                  {title}
+                </p>
               </div>
               {description && (
                 <p
@@ -145,24 +158,27 @@ const ImportantNews = ({
                 </p>
               )}
             </div>
-            <Link href="/ViewAll">
-              <div className="my-1 mt-4 flex cursor-pointer lg:mt-5">
-                <p className="mt-5 font-TSbold text-lg text-GRAY50 lg:text-xl">
-                  عرض الجميع
-                </p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-            </Link>
+            <div
+              className="my-1 mt-4 flex cursor-pointer lg:mt-5"
+              onClick={() => {
+                handle_news_redirection(title)
+              }}
+            >
+              <p className="mt-5 font-TSbold text-lg text-GRAY50 lg:text-xl">
+                عرض الجميع
+              </p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
           </div>
           {description && (
             <p
