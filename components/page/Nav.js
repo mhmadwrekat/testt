@@ -212,7 +212,39 @@ const Nav = ({ showCategory, all_news }) => {
             //   router.push('/Search')
             // }}
           >
-            <Link href="/Search">
+            <div className="pointer-events-auto absolute ">
+              <svg
+                className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
+                viewBox="0 0 20 20"
+                fill="#FFFFFF"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+            <form
+            // onSubmit={() => {
+            //   handelFeedback()
+            // }}
+            >
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="محرك البحث"
+                className="w-48 rounded-r-md bg-GRAY200 py-2 pr-12 text-base placeholder-white lg:w-96 lg:text-lg"
+              />
+              <button
+                type="submit"
+                className="rounded-l-md bg-Purp500 py-2 px-8 font-TSbold text-base text-white lg:text-lg"
+              >
+                بحث
+              </button>
+            </form>
+            {/* <Link href="/Search">
               <div className="pointer-events-auto absolute ">
                 <svg
                   className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
@@ -233,7 +265,7 @@ const Nav = ({ showCategory, all_news }) => {
                 placeholder="محرك البحث"
                 className="float-left w-40 rounded-md border-2 border-white bg-GRAY200 p-1 pt-2 pr-12 text-base placeholder-white lg:w-96 lg:text-lg"
               />
-            </Link>
+            </Link> */}
           </div>
 
           {/* )} */}

@@ -212,6 +212,7 @@ const Video = ({
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen=""
+                                loading="lazy"
                               ></iframe>
                             ) : (
                               // <iframe
@@ -231,11 +232,19 @@ const Video = ({
                               //   className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60                            "
                               // />
                               <iframe
+                                className="aspect-video h-full w-full rounded-lg shadow-lg"
+                                src={`https://www.youtube.com/embed/65416`}
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen=""
                                 loading="lazy"
-                                src="https://www.youtube.com/embed/65416"
-                                alt={item.stories_headlines}
-                                className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60 lg:w-full                                "
-                              />
+                              ></iframe>
+                              // <iframe
+                              //   loading="lazy"
+                              //   src="https://www.youtube.com/embed/65416"
+                              //   alt={item.stories_headlines}
+                              //   className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60 lg:w-full                                "
+                              // />
                             ))}
                           {/* <Like
                             user_id={user_id}

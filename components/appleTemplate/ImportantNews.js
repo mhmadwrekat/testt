@@ -173,7 +173,7 @@ const ImportantNews = ({
                     </svg>
                   ))}
                 <p
-                  className={`${title_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                  className={`${title_color} mt-5 cursor-pointer font-TSExtra text-2xl hover:underline lg:text-4xl`}
                   onClick={() => {
                     handle_news_redirection(title)
                   }}
@@ -224,7 +224,7 @@ const ImportantNews = ({
                 <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
                   <div className="">
                     <p
-                      className={`${bg_color} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
+                      className={`${bg_color} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white lg:pr-8`}
                     >
                       {
                         category_news?.data[0]?.primary_category[0]
@@ -246,13 +246,13 @@ const ImportantNews = ({
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
-                          className="relative h-56 w-full object-cover lg:h-80"
+                          className="relative h-56 w-full rounded-b-md object-cover lg:h-80"
                         />
                       ) : (
                         <img
                           src={important_news_img}
                           alt={category_news.data[0].stories_headlines}
-                          className="relative h-56 w-full object-cover lg:h-80"
+                          className="relative h-56 w-full rounded-b-md object-cover lg:h-80"
                         />
                       ))}
                     <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
@@ -361,14 +361,25 @@ const ImportantNews = ({
                         id="card"
                       >
                         <div>
-                          <p
-                            className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
-                            // onClick={() => {
-                            //   router.push(`/${category_news.section_name}`)
-                            // }}
-                          >
-                            {item?.primary_category[0]?.category_name}
-                          </p>{' '}
+                          {item?.primary_category[0]?.category_name ? (
+                            <p
+                              className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white lg:pr-5`}
+                              // onClick={() => {
+                              //   router.push(`/${category_news.section_name}`)
+                              // }}
+                            >
+                              {item?.primary_category[0]?.category_name}
+                            </p>
+                          ) : (
+                            <p
+                              className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white lg:pr-5`}
+                              // onClick={() => {
+                              //   router.push(`/${category_news.section_name}`)
+                              // }}
+                            >
+                              {/* {item?.primary_category[0]?.category_name} */}
+                            </p>
+                          )}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid ">
                           <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
@@ -381,17 +392,14 @@ const ImportantNews = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="
-                                mx-auto
-                                h-32 
-                                w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full                                "
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full                                "
                                 />
                               ) : (
                                 <img
                                   loading="eager"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ))}
                             <Like

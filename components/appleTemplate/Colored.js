@@ -121,7 +121,7 @@ const Colored = ({
           <div className="flex justify-between">
             <div className="my-3 mt-1 lg:mt-2">
               <p
-                className={`${text_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                className={`${text_color} mt-5 cursor-pointer font-TSExtra text-2xl hover:underline lg:text-4xl`}
                 onClick={() => {
                   handle_news_redirection(title)
                 }}
@@ -172,7 +172,7 @@ const Colored = ({
                 >
                   <div>
                     <p
-                      className={`${theme} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
+                      className={`${theme} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white lg:pr-8`}
                     >
                       {
                         important_news?.data[0]?.primary_category[0]
@@ -307,11 +307,17 @@ const Colored = ({
                         id="card"
                       >
                         <div>
-                          <p
-                            className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
-                          >
-                            {item?.primary_category[0]?.category_name}{' '}
-                          </p>
+                          {item?.primary_category[0]?.category_name ? (
+                            <p
+                              className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white lg:pr-5`}
+                            >
+                              {item?.primary_category[0]?.category_name}{' '}
+                            </p>
+                          ) : (
+                            <p
+                              className={`${theme} rounded-t-md py-3 text-right font-TSSemi text-base text-white lg:pr-5`}
+                            ></p>
+                          )}
                         </div>
                         <section className={`${card_color} flex lg:grid`}>
                           <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
@@ -324,17 +330,14 @@ const Colored = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="
-                                mx-auto
-                                h-32 
-                                w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ) : (
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ))}
                             <div className="text-black rounded-full bg-white">
@@ -346,7 +349,7 @@ const Colored = ({
                             </div>
                           </div>
 
-                          <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">
+                          <div className="hidden h-6 justify-between px-0 pt-1.5 font-TSlight text-xs lg:flex">
                             <p>
                               <b className="text-red-600 font-TSExtra">
                                 {item.publisher_name}

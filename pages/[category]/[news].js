@@ -87,14 +87,25 @@ const indexx = () => {
                 {head_news?.stories_media_url[0] &&
                   (head_news?.stories_media_url[0].includes('youtube') ||
                   head_news?.stories_media_url[0].includes('youtu.be') ? (
+                    // <iframe
+                    //   loading="eager"
+                    //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                    //     head_news?.stories_media_url[0]
+                    //   )}`}
+                    //   alt={head_news?.stories_headlines}
+                    //   className="relative h-72 w-full object-cover lg:h-full"
+                    // />
                     <iframe
-                      loading="eager"
+                      className="relative h-72 w-full object-cover lg:h-full"
                       src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                         head_news?.stories_media_url[0]
                       )}`}
                       alt={head_news?.stories_headlines}
-                      className="relative h-72 w-full object-cover lg:h-full"
-                    />
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen=""
+                      loading="eager"
+                    ></iframe>
                   ) : (
                     <img
                       loading="eager"
@@ -123,7 +134,7 @@ const indexx = () => {
             </section>
             <section className="">
               <div className="px-2.5 pt-2">
-                <div className="mt-3 font-TSExtra text-lg md:text-xl lg:h-24 lg:w-10/12 lg:text-3xl">
+                <div className="mt-3 font-TSExtra text-lg md:text-xl lg:h-28 lg:w-11/12 lg:text-3xl">
                   {head_news?.stories_headlines}
                 </div>
                 <p className="pt-4 font-TSmedium text-lg lg:grid lg:h-64 lg:pt-0 ">

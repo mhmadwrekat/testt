@@ -178,7 +178,7 @@ const Category_news = ({
                     </svg>
                   ))}
                 <p
-                  className={`${title_color} mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                  className={`${title_color} hover:underline mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
                   onClick={() => {
                     handle_news_redirection(title)
                   }}
@@ -246,14 +246,14 @@ const Category_news = ({
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
-                          className="relative h-56 w-full object-cover lg:h-80"
+                          className="relative h-56 w-full rounded-b-md object-cover lg:h-80"
                         />
                       ) : (
                         <img
                           loading="lazy"
                           src={important_news_img}
                           alt={category_news.data[0].stories_headlines}
-                          className="relative h-56 w-full object-cover lg:h-80"
+                          className="relative h-56 w-full rounded-b-md object-cover lg:h-80"
                         />
                       ))}
                     <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
@@ -363,7 +363,7 @@ const Category_news = ({
                       >
                         <div>
                           <p
-                            className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline`}
+                            className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white`}
                           ></p>{' '}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid ">
@@ -377,17 +377,14 @@ const Category_news = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="
-                                mx-auto
-                                h-32 
-                                w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full                                "
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full                                "
                                 />
                               ) : (
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full"
                                 />
                               ))}
                             <Like
