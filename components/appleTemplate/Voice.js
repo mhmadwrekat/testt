@@ -435,87 +435,25 @@ const Voice = ({
                       {item.stories_media_url[0] &&
                         (item.stories_media_url[0].includes('youtube') ||
                         item.stories_media_url[0].includes('youtu.be') ? (
-                          <section className="grid grid-cols-2">
-                            <div>
-                              <p
-                                className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
-                              >
-                                {item?.primary_category[0]?.category_name}{' '}
-                              </p>
-
-                              <div className="relative h-36 w-36 md:h-72 md:w-96">
-                                <img
-                                  loading="lazy"
-                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                    item.stories_media_url[0]
-                                  )}/0.jpg`}
-                                  alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
-                                />
-                                {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className=" h-7 w-7 cursor-pointer opacity-70"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                    />
-                                  </svg>
-                                </div> */}
-                                <Like
-                                  user_id={user_id}
-                                  story_id={item._id}
-                                  isLoved={item.is_loved}
-                                />
-                              </div>
-                            </div>
-                            <section>
-                              <section>
-                                <h1 className="mx-0 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
-                                  {item.stories_headlines}
-                                </h1>
-                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
-                                  <p className="text-">
-                                    <b className="text-red-700 font-TSbold">
-                                      {item.publisher_name}
-                                    </b>
-                                  </p>
-                                  <p className="text-gray-500 ml-3 font-TSbold">
-                                    قبل{' '}
-                                    {moment(item.published_on).fromNow(true)}
-                                  </p>
-                                </div>
-                              </section>
-                            </section>
-                            <section className="float-left mx-5 flex">
-                              <WaveAudio url={Object.values(item.voices)[1]} />
-                            </section>
-                          </section>
-                        ) : (
-                          <section className="grid grid-cols-2">
-                            <div>
-                              <div className="">
+                          <>
+                            <section className="grid grid-cols-2">
+                              <div>
                                 <p
                                   className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
                                 >
                                   {item?.primary_category[0]?.category_name}{' '}
                                 </p>
-                              </div>
 
-                              <div className="relative h-36 w-36 md:h-72 md:w-96">
-                                <img
-                                  loading="lazy"
-                                  src={item.stories_media_url[0]}
-                                  alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
-                                />
-                                {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                <div className="relative h-36 w-36 md:h-72 md:w-96">
+                                  <img
+                                    loading="lazy"
+                                    src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  />
+                                  {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -531,35 +469,101 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                <Like
-                                  user_id={user_id}
-                                  story_id={item._id}
-                                  isLoved={item.is_loved}
-                                />
+                                  <Like
+                                    user_id={user_id}
+                                    story_id={item._id}
+                                    isLoved={item.is_loved}
+                                  />
+                                </div>
                               </div>
-                            </div>
-                            <section>
                               <section>
-                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
-                                  {item.stories_headlines}
-                                </h1>
-                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
-                                  <p className="text-">
-                                    <b className="text-red-700 font-TSbold">
-                                      {item.publisher_name}
-                                    </b>
-                                  </p>
-                                  <p className="text-gray-500 ml-3 font-TSbold">
-                                    قبل{' '}
-                                    {moment(item.published_on).fromNow(true)}
+                                <section>
+                                  <h1 className="mx-0 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
+                                    {item.stories_headlines}
+                                  </h1>
+                                  <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
+                                    <p className="text-">
+                                      <b className="text-red-700 font-TSbold">
+                                        {item.publisher_name}
+                                      </b>
+                                    </p>
+                                    <p className="text-gray-500 ml-3 font-TSbold">
+                                      قبل{' '}
+                                      {moment(item.published_on).fromNow(true)}
+                                    </p>
+                                  </div>
+                                </section>
+                              </section>
+                            </section>
+                            <section className="float-left mx-6 mt-3 flex">
+                              <WaveAudio url={Object.values(item.voices)[1]} />
+                            </section>
+                          </>
+                        ) : (
+                          <>
+                            <section className="grid grid-cols-2">
+                              <div>
+                                <div className="">
+                                  <p
+                                    className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
+                                  >
+                                    {item?.primary_category[0]?.category_name}{' '}
                                   </p>
                                 </div>
+
+                                <div className="relative h-36 w-36 md:h-72 md:w-96">
+                                  <img
+                                    loading="lazy"
+                                    src={item.stories_media_url[0]}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  />
+                                  {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className=" h-7 w-7 cursor-pointer opacity-70"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </div> */}
+                                  <Like
+                                    user_id={user_id}
+                                    story_id={item._id}
+                                    isLoved={item.is_loved}
+                                  />
+                                </div>
+                              </div>
+                              <section>
+                                <section>
+                                  <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
+                                    {item.stories_headlines}
+                                  </h1>
+                                  <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
+                                    <p className="text-">
+                                      <b className="text-red-700 font-TSbold">
+                                        {item.publisher_name}
+                                      </b>
+                                    </p>
+                                    <p className="text-gray-500 ml-3 font-TSbold">
+                                      قبل{' '}
+                                      {moment(item.published_on).fromNow(true)}
+                                    </p>
+                                  </div>
+                                </section>
                               </section>
                             </section>
                             <section className="float-left mx-5 flex">
                               <WaveAudio url={Object.values(item.voices)[1]} />
                             </section>
-                          </section>
+                          </>
                         ))}
                     </div>
                   </SwiperSlide>
@@ -581,26 +585,27 @@ const Voice = ({
                       {item.stories_media_url[0] &&
                         (item.stories_media_url[0].includes('youtube') ||
                         item.stories_media_url[0].includes('youtu.be') ? (
-                          <section className="grid grid-cols-2">
-                            <div>
-                              <div className="">
-                                <p
-                                  className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
-                                >
-                                  {item?.primary_category[0]?.category_name}{' '}
-                                </p>
-                              </div>
+                          <>
+                            <section className="grid grid-cols-2">
+                              <div>
+                                <div className="">
+                                  <p
+                                    className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
+                                  >
+                                    {item?.primary_category[0]?.category_name}{' '}
+                                  </p>
+                                </div>
 
-                              <div className="relative h-36 w-36 md:h-72 md:w-96">
-                                <img
-                                  loading="lazy"
-                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                    item.stories_media_url[0]
-                                  )}/0.jpg`}
-                                  alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
-                                />
-                                {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                <div className="relative h-36 w-36 md:h-72 md:w-96">
+                                  <img
+                                    loading="lazy"
+                                    src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  />
+                                  {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -616,54 +621,56 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                <Like
-                                  user_id={user_id}
-                                  story_id={item._id}
-                                  isLoved={item.is_loved}
-                                />
-                              </div>
-                            </div>
-                            <section>
-                              <section>
-                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
-                                  {item.stories_headlines}
-                                </h1>
-                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
-                                  <p className="text-">
-                                    <b className="text-red-700 font-TSbold">
-                                      {item.publisher_name}
-                                    </b>
-                                  </p>
-                                  <p className="text-gray-500 ml-3 font-TSbold">
-                                    قبل{' '}
-                                    {moment(item.published_on).fromNow(true)}
-                                  </p>
+                                  <Like
+                                    user_id={user_id}
+                                    story_id={item._id}
+                                    isLoved={item.is_loved}
+                                  />
                                 </div>
+                              </div>
+                              <section>
+                                <section>
+                                  <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
+                                    {item.stories_headlines}
+                                  </h1>
+                                  <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
+                                    <p className="text-">
+                                      <b className="text-red-700 font-TSbold">
+                                        {item.publisher_name}
+                                      </b>
+                                    </p>
+                                    <p className="text-gray-500 ml-3 font-TSbold">
+                                      قبل{' '}
+                                      {moment(item.published_on).fromNow(true)}
+                                    </p>
+                                  </div>
+                                </section>
                               </section>
                             </section>
                             <section className="float-left mx-5 flex">
                               <WaveAudio url={Object.values(item.voices)[1]} />
                             </section>
-                          </section>
+                          </>
                         ) : (
-                          <section className="grid grid-cols-2">
-                            <div>
-                              <div className="">
-                                <p
-                                  className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
-                                >
-                                  {item?.primary_category[0]?.category_name}{' '}
-                                </p>
-                              </div>
+                          <>
+                            <section className="grid grid-cols-2">
+                              <div>
+                                <div className="">
+                                  <p
+                                    className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
+                                  >
+                                    {item?.primary_category[0]?.category_name}{' '}
+                                  </p>
+                                </div>
 
-                              <div className="relative h-36 w-36 md:h-72 md:w-96">
-                                <img
-                                  loading="lazy"
-                                  src={item.stories_media_url[0]}
-                                  alt={item.stories_headlines}
-                                  className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
-                                />
-                                {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
+                                <div className="relative h-36 w-36 md:h-72 md:w-96">
+                                  <img
+                                    loading="lazy"
+                                    src={item.stories_media_url[0]}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  />
+                                  {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className=" h-7 w-7 cursor-pointer opacity-70"
@@ -679,35 +686,36 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                <Like
-                                  user_id={user_id}
-                                  story_id={item._id}
-                                  isLoved={item.is_loved}
-                                />
-                              </div>
-                            </div>
-                            <section>
-                              <section>
-                                <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
-                                  {item.stories_headlines}
-                                </h1>
-                                <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
-                                  <p className="text-">
-                                    <b className="text-red-700 font-TSbold">
-                                      {item.publisher_name}
-                                    </b>
-                                  </p>
-                                  <p className="text-gray-500 ml-3 font-TSbold">
-                                    قبل{' '}
-                                    {moment(item.published_on).fromNow(true)}
-                                  </p>
+                                  <Like
+                                    user_id={user_id}
+                                    story_id={item._id}
+                                    isLoved={item.is_loved}
+                                  />
                                 </div>
+                              </div>
+                              <section>
+                                <section>
+                                  <h1 className="mx-1 mr-0 pt-3 font-TSbold text-lg md:text-2xl">
+                                    {item.stories_headlines}
+                                  </h1>
+                                  <div className=" mx-1 mt-3 flex justify-between font-TSlight text-xs">
+                                    <p className="text-">
+                                      <b className="text-red-700 font-TSbold">
+                                        {item.publisher_name}
+                                      </b>
+                                    </p>
+                                    <p className="text-gray-500 ml-3 font-TSbold">
+                                      قبل{' '}
+                                      {moment(item.published_on).fromNow(true)}
+                                    </p>
+                                  </div>
+                                </section>
                               </section>
                             </section>
                             <section className="float-left mx-5 flex">
                               <WaveAudio url={Object.values(item.voices)[1]} />
                             </section>
-                          </section>
+                          </>
                         ))}
                     </div>
                   </SwiperSlide>

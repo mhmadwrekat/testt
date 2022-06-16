@@ -192,7 +192,7 @@ const Video = ({
                         </p>{' '}
                       </div>
                       <section className="flex bg-GRAY100 lg:grid ">
-                        <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
+                        <div className="relative h-auto w-80 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
                           {item.stories_media_url[0] &&
                             (item.stories_media_url[0].includes('youtube') ||
                             item.stories_media_url[0].includes('youtu.be') ? (
@@ -202,14 +202,14 @@ const Video = ({
                                   item.stories_media_url[0]
                                 )}`}
                                 alt={item.stories_headlines}
-                                className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-60 lg:w-full                                "
+                                className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60 lg:w-full                                "
                               />
                             ) : (
                               <iframe
                                 loading="lazy"
                                 src="https://www.youtube.com/embed/65416"
                                 alt={item.stories_headlines}
-                                className="mx-auto h-32 w-40 object-cover md:h-full md:w-full lg:h-60 lg:w-full"
+                                className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60 lg:w-full"
                               />
                             ))}
                           {/* <Like

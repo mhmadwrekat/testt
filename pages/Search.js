@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import FakeData from './FakeData.json'
 import { BASE_URL } from '../config/config'
 import dynamic from 'next/dynamic'
 import axios from 'axios'
@@ -14,7 +13,7 @@ const Search = () => {
     typeof window !== 'undefined'
       ? useState(localStorage.getItem('user_token'))
       : useState()
-  const [search_key, setSearchKey] = useState('الاردن')
+  const [search_key, setSearchKey] = useState('')
   const [search_data, setSearchData] = useState()
   let bg_color = 'bg-GREEN'
 
@@ -30,7 +29,7 @@ const Search = () => {
       })
       .then(function (response) {
         setSearchData(response.data.data)
-        console.log(response)
+        // console.log(response)
       })
       .catch(function (error) {
         console.log(error)
@@ -43,7 +42,7 @@ const Search = () => {
   useEffect(() => {
     search()
   }, [search_key])
-  console.log('DATA ->>>>>> ', search_data)
+  // console.log('DATA ->>>>>> ', search_data)
   return (
     <React.Fragment>
       <div dir="rtl" id="project_body" translate="no">
@@ -85,7 +84,7 @@ const Search = () => {
               </button>
             </form>
           </div>
-          {search_data?.length > 0 && (
+          {search_data?.length > 3 && (
             <AllData data={search_data} bg_color={'bg-GREEN'} />
           )}
         </section>

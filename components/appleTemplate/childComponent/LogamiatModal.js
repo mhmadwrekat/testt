@@ -112,32 +112,32 @@ export default function LoqaimaModal({
                 </div>
               </Transition.Child>
               <div
-                className="absolute top-0 right-24 h-screen w-96 p-3 opacity-70"
+                className="top-0 right-24 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
                 onClick={() => {
                   setOpen(true)
                 }}
               >
                 <div
-                  className="absolute top-0 right-28 h-screen w-96 p-3 opacity-70"
+                  className="top-0 right-28 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
                   onClick={() => {
                     setOpen(true)
                   }}
                 ></div>
               </div>
               <div
-                className="absolute top-20 right-0 h-screen w-96 p-3 opacity-70"
+                className="top-20 right-0 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
                 onClick={() => {
                   setOpen(true)
                 }}
               ></div>
               <div
-                className="absolute top-0 left-0 h-screen w-96 p-3 opacity-70"
+                className="top-0 left-0 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
                 onClick={() => {
                   setOpen(true)
                 }}
               >
                 <div
-                  className="absolute top-0 left-52 h-screen w-96 p-3 opacity-70"
+                  className="top-0 left-52 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
                   onClick={() => {
                     setOpen(true)
                   }}

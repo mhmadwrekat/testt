@@ -30,8 +30,18 @@ const AllData = ({ data, bg_color, category }) => {
     }
   }
   const handle_news_redirection_story = (category, titles) => {
+    let ready_category = ''
     let ready_title = ''
-
+    if (category?.includes('%')) {
+      let title = category.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_category = `${title.replace('%', '_')}`
+    } else if (category.includes(' ')) {
+      let title = category.replace(/\s+/g, '_')
+      ready_category = `${title.replace(' ', '_')}`
+    } else {
+      ready_category = category
+    }
     if (titles.includes('%')) {
       let title = titles.replace(/\s+/g, '_')
       // console.log(`/${title.replace('%', '_')}`)
@@ -46,22 +56,25 @@ const AllData = ({ data, bg_color, category }) => {
       let title = titles.replace(/\s+/g, '')
       ready_title = `${title.replace('?', '_')}`
     }
-    router.push(`/${ready_title}/${category}`)
-    // console.log(category)
+
+    router.push(`/${ready_title}/${ready_category}`)
   }
   return (
     <React.Fragment>
       <section className="text-black w-12/12 lg:w-12/12 mx-auto bg-white">
         <div dir="rtl" id="project_body" translate="no">
           <section className="grid grid-cols-1 gap-5 pt-5 lg:grid-cols-3 lg:gap-16 lg:pt-10">
-            {data?.slice(0, 50).map((item) => {
+            {data?.slice(3, 50).map((item) => {
+              console.log(item?.primary_category[0]?.category_name)
               return (
                 <section key={item?._id}>
                   <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
                     <div>
                       <p
                         className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
-                      ></p>{' '}
+                      >
+                        {/* {item?.primary_category[0]?.category_name} */}
+                      </p>{' '}
                     </div>
                     <section className="grid bg-GRAY100">
                       <div className="relative w-full lg:w-auto">
@@ -127,17 +140,32 @@ const AllData = ({ data, bg_color, category }) => {
                     </div>
                     <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
                     <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
-                      <p
-                        className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
-                        onClick={() => {
-                          handle_news_redirection_story(
-                            category,
-                            item?.stories_headlines
-                          )
-                        }}
-                      >
-                        اقرا المزيد
-                      </p>
+                      {category ? (
+                        <p
+                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              category,
+                              item?.stories_headlines
+                            )
+                          }}
+                        >
+                          اقرا المزيد
+                        </p>
+                      ) : (
+                        <p
+                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              item?.primary_category[0]?.category_name,
+                              item?.stories_headlines
+                            )
+                          }}
+                        >
+                          اقرا المزيد
+                        </p>
+                      )}
+
                       {/* <MenuThreeDot title_color={title_color} /> */}
                     </div>
                   </div>

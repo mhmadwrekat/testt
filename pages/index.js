@@ -162,7 +162,7 @@ const index = (props) => {
   }, [user_id])
   // console.log(user_id)
   // console.log('---> ', country_code, user_id)
-  // console.log('---> ', all_news)
+  all_news && console.log('---> ', all_news[0])
   return (
     <React.Fragment>
       {/* {console.log('>> ', user_id)} */}

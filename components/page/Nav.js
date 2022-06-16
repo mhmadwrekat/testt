@@ -150,7 +150,7 @@ const Nav = ({ showCategory }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 className="cursor-pointer fill-Purp100 hover:fill-SKY"
                 onClick={() => {
-                  window.location.reload()
+                  router.push('/')
                 }}
               >
                 <path

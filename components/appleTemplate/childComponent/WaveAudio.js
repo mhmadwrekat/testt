@@ -70,10 +70,10 @@ const WaveAudio = ({ url }) => {
       {/* <iframe src="https://cross-origin.com/myvideo.html" allow="autoplay" /> */}
 
       <div className="w-12/12 mx-auto grid lg:w-10/12">
-        <section className="flex pl-0 pr-1 lg:pl-5 lg:pr-0">
+        <section className=" flex justify-center pt-5 pl-0 pr-0 lg:pt-0 lg:pl-5 lg:pr-0">
           <div
             id="waveform"
-            className=" mx-auto w-60 lg:w-44"
+            className="mx-auto w-56 lg:w-40"
             ref={waveformRef}
           />
           <div className="controls w-12/12 flex">

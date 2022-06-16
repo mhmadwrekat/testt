@@ -32,7 +32,9 @@ const indexx = () => {
         .then((res) => {
           // console.log(res.data.data)
           setHeadNews(res?.data?.data?.story)
-          let keys = Object.keys(res?.data?.data?.relevant_stories)
+          let keys =
+            res?.data?.data?.story &&
+            Object.keys(res?.data?.data?.relevant_stories)
           let custom_array = []
           keys.map((item) => {
             custom_array.push(res?.data?.data?.relevant_stories[item])
@@ -156,6 +158,7 @@ const indexx = () => {
             category={router.query.news}
           />
         </section>
+        {console.log(related_news)}
       </div>
       <div className="py-4"></div>
       <Footer />
