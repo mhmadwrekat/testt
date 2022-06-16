@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import WaveSurfer from 'wavesurfer.js'
+import { useInView, InView } from 'react-cool-inview'
 
 const WaveAudio = ({ url }) => {
   const formWaveSurferOptions = (ref) => ({
@@ -21,29 +22,42 @@ const WaveAudio = ({ url }) => {
   const [playing, setPlay] = useState(false)
 
   // create new WaveSurfer instance
-
-  useEffect(() => {
-    const options = formWaveSurferOptions(waveformRef.current)
-    wavesurfer.current = WaveSurfer.create(options)
-    wavesurfer.current.load(url)
-    // const options = formWaveSurferOptions(waveformRef.current)
-    // wavesurfer.current = WaveSurfer.create(options)
-    // wavesurfer.current.load(url)
-    // wavesurfer.current.pause(url)
-    // wavesurfer.current.on('ready', function () {
-    //   // https://wavesurfer-js.org/docs/methods.html
-    //   // wavesurfer.current.play();
-    //   // setPlay(true);
-    //   // make sure object stillavailable when file loaded
-    //   // if (wavesurfer.current) {
-    //   //   wavesurfer.current.setVolume(volume)
-    //   //   setVolume(volume)
-    //   // }
-    // })
-    // Removes events, elements and disconnects Web Audio nodes.
-    // when component unmount
-    // return () => wavesurfer.current.destroy()
-  }, [])
+  const { observe, inView } = useInView({
+    // Track the actual visibility of the target
+    trackVisibility: false,
+    unobserveOnEnter: true,
+    // For performance perspective, use the largest tolerable value as much as possible // (ms)
+    delay: 100,
+    onEnter: () => {
+      const options = formWaveSurferOptions(waveformRef.current)
+      wavesurfer.current = WaveSurfer.create(options)
+      wavesurfer.current.load(url)
+      // console.log('Not Loaded')
+    },
+    // onLeave: () => {console.log('None')},
+  })
+  // useEffect(() => {
+  //   const options = formWaveSurferOptions(waveformRef.current)
+  //   wavesurfer.current = WaveSurfer.create(options)
+  //   wavesurfer.current.load(url)
+  //   // const options = formWaveSurferOptions(waveformRef.current)
+  //   // wavesurfer.current = WaveSurfer.create(options)
+  //   // wavesurfer.current.load(url)
+  //   // wavesurfer.current.pause(url)
+  //   // wavesurfer.current.on('ready', function () {
+  //   //   // https://wavesurfer-js.org/docs/methods.html
+  //   //   // wavesurfer.current.play();
+  //   //   // setPlay(true);
+  //   //   // make sure object stillavailable when file loaded
+  //   //   // if (wavesurfer.current) {
+  //   //   //   wavesurfer.current.setVolume(volume)
+  //   //   //   setVolume(volume)
+  //   //   // }
+  //   // })
+  //   // Removes events, elements and disconnects Web Audio nodes.
+  //   // when component unmount
+  //   // return () => wavesurfer.current.destroy()
+  // }, [])
   // On component mount and when url changes
   // const get_voice = async () => {
   //   const options = formWaveSurferOptions(waveformRef.current)
@@ -69,7 +83,7 @@ const WaveAudio = ({ url }) => {
     <React.Fragment>
       {/* <iframe src="https://cross-origin.com/myvideo.html" allow="autoplay" /> */}
 
-      <div className="w-12/12 mx-auto grid lg:w-10/12">
+      <div className="w-12/12 mx-auto grid lg:w-10/12" ref={observe}>
         <section className=" flex justify-center pt-5 pl-0 pr-0 lg:pt-0 lg:pl-5 lg:pr-0">
           <div
             id="waveform"

@@ -192,19 +192,44 @@ const Video = ({
                         </p>{' '}
                       </div>
                       <section className="flex bg-GRAY100 lg:grid ">
-                        <div className="relative h-auto w-80 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
+                        <div className="relative h-32 w-80 py-2 lg:mr-0 lg:h-auto lg:w-full lg:py-0">
                           {item.stories_media_url[0] &&
                             (item.stories_media_url[0].includes('youtube') ||
                             item.stories_media_url[0].includes('youtu.be') ? (
+                              // <video controls>
+                              //   <source
+                              //     src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                              //       item.stories_media_url[0]
+                              //     )}`}
+                              //     type="video/mp4/ogg"
+                              //   />
+                              // </video>
                               <iframe
-                                loading="lazy"
+                                className="aspect-video h-full w-full rounded-lg shadow-lg"
                                 src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                                   item.stories_media_url[0]
                                 )}`}
-                                alt={item.stories_headlines}
-                                className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60 lg:w-full                                "
-                              />
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen=""
+                              ></iframe>
                             ) : (
+                              // <iframe
+                              //   loading="lazy"
+                              //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                              //     item.stories_media_url[0]
+                              //   )}`}
+                              //   alt={item.stories_headlines}
+                              //   className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60                            "
+                              // />
+                              // <iframe
+                              //   loading="lazy"
+                              //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                              //     item.stories_media_url[0]
+                              //   )}`}
+                              //   alt={item.stories_headlines}
+                              //   className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60                            "
+                              // />
                               <iframe
                                 loading="lazy"
                                 src="https://www.youtube.com/embed/65416"
