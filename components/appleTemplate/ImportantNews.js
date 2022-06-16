@@ -363,9 +363,9 @@ const ImportantNews = ({
                         <div>
                           <p
                             className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
-                            onClick={() => {
-                              router.push(`/${category_news.section_name}`)
-                            }}
+                            // onClick={() => {
+                            //   router.push(`/${category_news.section_name}`)
+                            // }}
                           >
                             {item?.primary_category[0]?.category_name}
                           </p>{' '}

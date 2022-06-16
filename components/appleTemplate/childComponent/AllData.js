@@ -122,7 +122,7 @@ const AllData = ({ data, bg_color, category }) => {
                           {item.stories_headlines}{' '}
                         </div>
                         <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-16 lg:pt-1.5 lg:text-sm">
-                          {item.stories_content.slice(0, 145)}......
+                          {item.stories_content.slice(0, 125)}......
                         </div>
                       </div>
                     </section>

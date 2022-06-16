@@ -209,7 +209,7 @@ const Video = ({
                                 loading="lazy"
                                 src="https://www.youtube.com/embed/65416"
                                 alt={item.stories_headlines}
-                                className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60 lg:w-full"
+                                className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60 lg:w-full                                "
                               />
                             ))}
                           {/* <Like
@@ -260,7 +260,7 @@ const Video = ({
                           }}
                         >
                           اقرا المزيد
-                        </p>{' '}
+                        </p>
                         {/* <MenuThreeDot title_color={title_color} /> */}
                       </div>
                     </div>

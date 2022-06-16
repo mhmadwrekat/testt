@@ -90,7 +90,7 @@ export default function LoqaimaModal({
                         return (
                           <div key={item._id} className="relative">
                             <img
-                              className="h-full"
+                              className="h-screen"
                               src={item.screen_link}
                               alt={item.screen_link}
                             />
@@ -153,7 +153,7 @@ export default function LoqaimaModal({
               </span>
             </div>
             {sum > 0 && (
-              <div className="absolute z-20 p-3 lg:top-96 lg:left-48">
+              <div className="absolute z-20 hidden p-3 lg:top-96 lg:left-48 lg:flex">
                 <div className="absolute z-20 p-3 lg:bottom-0 lg:left-48">
                   <div className="absolute z-20 p-3 lg:bottom-0 lg:left-48">
                     <div
@@ -180,7 +180,7 @@ export default function LoqaimaModal({
                 </div>
               </div>
             )}
-            <div className="absolute z-20 p-3 lg:top-96 lg:right-96">
+            <div className="absolute z-20 hidden p-3 lg:top-96 lg:right-96 lg:flex">
               <div className="absolute z-20 p-3 lg:bottom-0 lg:right-48">
                 <div
                   className="control-arrow control-next cursor-pointer"
