@@ -322,17 +322,11 @@ const Nav = ({ showCategory, all_news }) => {
               )}
               {unsubscribe_item?.length > 0 && (
                 <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 px-3">
-                  <div className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
+                  <div className="flex w-screen py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
                     {unsubscribe_item?.map((item) => {
                       return (
-                        <div
-                          key={item.id}
-                          className="mr-5 flex w-fit items-center justify-center gap-3"
-                        >
-                          <a
-                            className={`w-36 rounded-full py-1 lg:w-32 lg:py-1.5`}
-                            href={item.link}
-                          >
+                        <div key={item.id} className="ml-5 py-1 lg:py-1.5">
+                          <a className={`rounded-full`} href={item.link}>
                             {item.name}
                           </a>
                         </div>
