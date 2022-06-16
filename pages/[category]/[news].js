@@ -26,9 +26,7 @@ const indexx = () => {
     // )
     router.query.category &&
       axios
-        .get(
-          `https://api.alzubda.com/v1/Web/Story?title=${router.query.category}`
-        )
+        .get(`${BASE_URL}/v1/Web/Story?title=${router.query.category}`)
         .then((res) => {
           // console.log(res.data.data)
           setHeadNews(res?.data?.data?.story)
