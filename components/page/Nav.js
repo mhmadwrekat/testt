@@ -209,7 +209,7 @@ const Nav = ({ showCategory }) => {
       {showCategory ? (
         <section className="sticky top-0 left-0 z-50 w-screen">
           <section className="flex w-screen justify-start bg-Purp100 py-0 text-center font-TSbold text-base text-white lg:text-lg">
-            <div className="mx-auto flex w-full items-center justify-start overflow-x-auto pt-3 lg:pt-4">
+            <div className="mx-auto flex w-full items-center justify-start overflow-x-auto pt-1.5 lg:pt-4">
               <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
                 {/* <img
                   src="./assest/images/additional.jpg"
