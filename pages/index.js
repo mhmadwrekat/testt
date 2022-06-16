@@ -162,7 +162,7 @@ const index = (props) => {
   }, [user_id])
   // console.log(user_id)
   // console.log('---> ', country_code, user_id)
-  all_news && console.log('---> ', all_news[0])
+  // all_news && console.log('---> ', all_news[0])
   return (
     <React.Fragment>
       {/* {console.log('>> ', user_id)} */}
@@ -174,7 +174,7 @@ const index = (props) => {
         className="text-black bg-white"
         translate="no"
       >
-        <Nav showCategory={showCategory} />
+        <Nav showCategory={showCategory} all_news={all_news} />
         {all_news && (
           <React.Fragment>
             <ImportantNews
@@ -218,7 +218,7 @@ const index = (props) => {
                 description={'جميع ما يحدث حول العالم '}
               />
             </div>
-            <div id="الصحه">
+            <div id="صحة">
               <CategoryNews
                 loading="lazy"
                 title={'الصحه'}
@@ -267,31 +267,38 @@ const index = (props) => {
                 />
               </div>
             )}
-            <CategoryNews
-              loading="lazy"
-              title={'اخبار الفن'}
-              category_news={all_news[15]}
-              user_id={user_id}
-              subs={all_news[15]?.is_subscribed}
-              bg_color={'bg-BLUE'}
-              title_color={'text-BLUE'}
-              fill_color={'fill-BLUE'}
-              description={'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'}
-            />
-            <CategoryNews
-              loading="lazy"
-              title={'مال وأعمال'}
-              category_news={all_news[7]}
-              user_id={user_id}
-              subs={all_news[7]?.is_subscribed}
-              bg_color={'bg-GREEN'}
-              title_color={'text-GREEN'}
-              fill_color={'fill-GREEN'}
-              description={
-                'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
-              }
-            />
-            <div id="اوكرانيا">
+            <div id="اخبار الفن">
+              <CategoryNews
+                loading="lazy"
+                title={'اخبار الفن'}
+                category_news={all_news[15]}
+                user_id={user_id}
+                subs={all_news[15]?.is_subscribed}
+                bg_color={'bg-BLUE'}
+                title_color={'text-BLUE'}
+                fill_color={'fill-BLUE'}
+                description={
+                  'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'
+                }
+              />
+            </div>
+            <div id="مال وأعمال">
+              <CategoryNews
+                loading="lazy"
+                title={'مال وأعمال'}
+                category_news={all_news[7]}
+                user_id={user_id}
+                subs={all_news[7]?.is_subscribed}
+                bg_color={'bg-GREEN'}
+                title_color={'text-GREEN'}
+                fill_color={'fill-GREEN'}
+                description={
+                  'جميع ما يخص عالم المال والأعمال على المستوى المحلي والدولي'
+                }
+              />
+            </div>
+
+            <div id="غزو أوكرانيا">
               <CategoryNews
                 loading="lazy"
                 title={'غزو أوكرانيا'}
@@ -351,7 +358,7 @@ const index = (props) => {
                 description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
               />
             </div>
-            <div id="العاب">
+            <div id="ألعاب">
               <CategoryNews
                 loading="lazy"
                 title={'العاب'}
@@ -379,7 +386,7 @@ const index = (props) => {
               />
             </div>
 
-            <div id="الرياضه">
+            <div id="رياضة">
               <CategoryNews
                 loading="lazy"
                 title={'رياضة'}

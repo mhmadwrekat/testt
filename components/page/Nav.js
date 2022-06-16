@@ -8,7 +8,7 @@ import Image from 'next/image'
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
 // import 'moment/locale/ar'
-const Nav = ({ showCategory }) => {
+const Nav = ({ showCategory, all_news }) => {
   const [active, setActive] = useState(true)
 
   const router = useRouter()
@@ -32,59 +32,58 @@ const Nav = ({ showCategory }) => {
   ]
 
   const subscribe_item = [
-    {
-      name: 'الصحه',
-      link: '#الصحه',
-      id: 1,
-    },
-    {
-      name: 'الخليج العربي',
-      link: '#الخليج العربي',
-      id: 2,
-    },
-    {
-      name: 'العاب',
-      link: '#العاب',
-      id: 3,
-    },
+    // {
+    //   name: 'الصحه',
+    //   link: '#الصحه',
+    //   id: 1,
+    // },
+    // {
+    //   name: 'الخليج العربي',
+    //   link: '#الخليج العربي',
+    //   id: 2,
+    // },
+    // {
+    //   name: 'العاب',
+    //   link: '#العاب',
+    //   id: 3,
+    // },
   ]
   const unsubscribe_item = [
-    {
-      name: 'غزو اوكرانيا',
-      link: '#اوكرانيا',
-      id: 4,
-    },
-    {
-      name: 'ترند',
-      link: '#ترند',
-      id: 5,
-    },
-    {
-      name: 'رياضه',
-      link: '#الرياضه',
-      id: 6,
-    },
-    {
-      name: 'لايف ستايل',
-      link: '#لايف ستايل',
-      id: 7,
-    },
-    {
-      name: 'تكنولوجيا',
-      link: '#تكنولوجيا',
-      id: 8,
-    },
-
-    {
-      name: 'الشأن الدولي',
-      link: '#الشأن الدولي',
-      id: 9,
-    },
-    {
-      name: 'الشرق الاوسط',
-      link: '#الشرق الاوسط',
-      id: 10,
-    },
+    // {
+    //   name: 'غزو اوكرانيا',
+    //   link: '#اوكرانيا',
+    //   id: 4,
+    // },
+    // {
+    //   name: 'ترند',
+    //   link: '#ترند',
+    //   id: 5,
+    // },
+    // {
+    //   name: 'رياضه',
+    //   link: '#الرياضه',
+    //   id: 6,
+    // },
+    // {
+    //   name: 'لايف ستايل',
+    //   link: '#لايف ستايل',
+    //   id: 7,
+    // },
+    // {
+    //   name: 'تكنولوجيا',
+    //   link: '#تكنولوجيا',
+    //   id: 8,
+    // },
+    // {
+    //   name: 'الشأن الدولي',
+    //   link: '#الشأن الدولي',
+    //   id: 9,
+    // },
+    // {
+    //   name: 'الشرق الاوسط',
+    //   link: '#الشرق الاوسط',
+    //   id: 10,
+    // },
   ]
   const media_item = [
     {
@@ -103,12 +102,26 @@ const Nav = ({ showCategory }) => {
       id: 3,
     },
   ]
-  // const refresh = () => {
-  //   router.push('/')
-  // }
+  all_news?.map((item) => {
+    // item?.is_subscribed !== null &&
+    if (item?.is_subscribed === true) {
+      subscribe_item.push({
+        name: item?.section_name,
+        link: `#${item?.section_name}`,
+      })
+      console.log('yes -> ', item?.section_name)
+    }
+    if (item?.is_subscribed === false) {
+      unsubscribe_item.push({
+        name: item?.section_name,
+        link: `#${item?.section_name}`,
+      })
+      console.log('No -> ', item?.section_name)
+    }
+  })
   const activate = () => {
     setActive(false)
-    console.log(active)
+    // console.log(active)
   }
 
   // typeof window != 'undefined' && window.scroll && console.log(true)
@@ -222,9 +235,9 @@ const Nav = ({ showCategory }) => {
                   fill="#695CAD"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   />
                 </svg>
                 <div className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
@@ -242,55 +255,59 @@ const Nav = ({ showCategory }) => {
                   })}
                 </div>
               </div>
-              <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
-                {/* <img
-                  src="./assest/images/additional.jpg"
-                  className="h-8 w-8 bg-Purp300"
-                /> */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10 rounded-full bg-Purp300"
-                  viewBox="0 0 20 20"
-                  fill="#695CAD"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    className="rounded-full"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                <div className="flex bg-Purp100 py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
-                  {subscribe_item.map((item) => {
-                    return (
-                      <div
-                        key={item.id}
-                        className="flex items-center justify-center gap-3"
-                      >
-                        <a className={`w-28 lg:w-32`} href={item.link}>
-                          {item.name}
-                        </a>
-                      </div>
-                    )
-                  })}
+              {subscribe_item.length > 0 && (
+                <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
+                  {/* <img
+              src="./assest/images/additional.jpg"
+              className="h-8 w-8 bg-Purp300"
+            /> */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-10 w-10 rounded-full bg-Purp300"
+                    viewBox="0 0 20 20"
+                    fill="#695CAD"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      className="rounded-full"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <div className="flex bg-Purp100 py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
+                    {subscribe_item.map((item) => {
+                      return (
+                        <div
+                          key={item.id}
+                          className="flex items-center justify-center gap-3"
+                        >
+                          <a className={`w-28 lg:w-32`} href={item.link}>
+                            {item.name}
+                          </a>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
-              </div>
-              <div className="mx-2 flex h-12 justify-start rounded-full border-3 border-Purp200 px-3">
-                <div className="flex bg-Purp100 py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
-                  {unsubscribe_item.map((item) => {
-                    return (
-                      <div
-                        key={item.id}
-                        className="flex items-center justify-center gap-0"
-                      >
-                        <a className={`w-28 py-1 lg:w-32`} href={item.link}>
-                          {item.name}
-                        </a>
-                      </div>
-                    )
-                  })}
+              )}
+              {unsubscribe_item.length > 0 && (
+                <div className="mx-2 flex h-12 justify-start rounded-full border-3 border-Purp200 px-3">
+                  <div className="flex bg-Purp100 py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
+                    {unsubscribe_item.map((item) => {
+                      return (
+                        <div
+                          key={item.id}
+                          className="flex items-center justify-center gap-0"
+                        >
+                          <a className={`w-28 py-1 lg:w-32`} href={item.link}>
+                            {item.name}
+                          </a>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </section>
         </section>
