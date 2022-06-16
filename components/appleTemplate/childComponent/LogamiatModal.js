@@ -28,6 +28,8 @@ export default function LoqaimaModal({
     setShowCategory(true)
     setNum(0)
   }
+  // open === false && setNum(0)
+
   // currentImageIndex
   return (
     <React.Fragment>
@@ -35,7 +37,9 @@ export default function LoqaimaModal({
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={setOpen}
+          onClose={() => {
+            close_loqaima()
+          }}
         >
           <section className="bg-gray-500">
             <div className=" min-h-xl flex items-end justify-center text-center sm:block sm:p-0 ">
@@ -75,6 +79,29 @@ export default function LoqaimaModal({
                   >
                     <i className="fa fa-chevron-left" />
                   </button> */}
+                  <div className=" z-50 hidden  lg:flex">
+                    <div className=" z-50 p-3">
+                      <div
+                        className="control-arrow control-next cursor-pointer"
+                        onClick={() => {
+                          next()
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-12 w-12"
+                          viewBox="0 0 20 20"
+                          fill="#666666"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                   <Carousel
                     selectedItem={sum}
                     // showArrows={isMobile ? false : true}
@@ -101,6 +128,7 @@ export default function LoqaimaModal({
                       <div className="h-screen bg-white" />
                     )}
                   </Carousel>
+
                   {/* <button
                     className="gallery_next"
                     onClick={nextF()}
@@ -111,7 +139,7 @@ export default function LoqaimaModal({
                   {/* <div className="fixed bottom-0 w-full"></div> */}
                 </div>
               </Transition.Child>
-              <div
+              {/* <div
                 className="top-0 right-24 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
                 onClick={() => {
                   setOpen(true)
@@ -142,7 +170,8 @@ export default function LoqaimaModal({
                     setOpen(true)
                   }}
                 ></div>
-              </div>
+              </div> */}
+
               <span className="absolute top-0 right-2 p-3 lg:right-10">
                 <img
                   src="./assest/images/close.svg"
@@ -152,10 +181,11 @@ export default function LoqaimaModal({
                 />
               </span>
             </div>
+
             {sum > 0 && (
-              <div className="absolute z-20 hidden p-3 lg:top-96 lg:left-48 lg:flex">
-                <div className="absolute z-20 p-3 lg:bottom-0 lg:left-48">
-                  <div className="absolute z-20 p-3 lg:bottom-0 lg:left-48">
+              <div className="absolute z-50 hidden p-3 lg:top-96 lg:left-48 lg:flex">
+                <div className="absolute z-50 p-3 lg:bottom-0 lg:left-48">
+                  <div className="absolute z-50 p-3 lg:bottom-0 lg:left-48">
                     <div
                       className="control-arrow control-next cursor-pointer"
                       aria-label="Left Align"
@@ -180,29 +210,6 @@ export default function LoqaimaModal({
                 </div>
               </div>
             )}
-            <div className="absolute z-20 hidden p-3 lg:top-96 lg:right-96 lg:flex">
-              <div className="absolute z-20 p-3 lg:bottom-0 lg:right-48">
-                <div
-                  className="control-arrow control-next cursor-pointer"
-                  onClick={() => {
-                    next()
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-12 w-12"
-                    viewBox="0 0 20 20"
-                    fill="#666666"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
           </section>
         </Dialog>
       </Transition.Root>

@@ -85,6 +85,7 @@ const Nav = ({ showCategory, all_news }) => {
     //   id: 10,
     // },
   ]
+  let count = 0
   const media_item = [
     {
       name: 'لقيمات',
@@ -108,15 +109,17 @@ const Nav = ({ showCategory, all_news }) => {
       subscribe_item.push({
         name: item?.section_name,
         link: `#${item?.section_name}`,
+        id: count++,
       })
-      console.log('yes -> ', item?.section_name)
+      // console.log('yes -> ', item?.section_name)
     }
     if (item?.is_subscribed === false) {
       unsubscribe_item.push({
         name: item?.section_name,
         link: `#${item?.section_name}`,
+        id: count++,
       })
-      console.log('No -> ', item?.section_name)
+      // console.log('No -> ', item?.section_name)
     }
   })
   const activate = () => {
@@ -222,7 +225,7 @@ const Nav = ({ showCategory, all_news }) => {
       {showCategory ? (
         <section className="sticky top-0 left-0 z-50 w-screen">
           <section className="flex w-screen justify-start bg-Purp100 py-0 text-center font-TSbold text-base text-white lg:text-lg">
-            <div className="mx-auto flex w-full items-center justify-start overflow-x-auto pt-1.5 lg:pt-4">
+            <div className="mx-auto flex w-full items-center justify-start overflow-x-auto pb-1 pt-1.5 lg:pb-0 lg:pt-4">
               <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
                 {/* <img
                   src="./assest/images/additional.jpg"
@@ -230,7 +233,7 @@ const Nav = ({ showCategory, all_news }) => {
                 /> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10 rounded-full bg-Purp300"
+                  className="h-8 w-8 rounded-full bg-Purp300 lg:h-10 lg:w-10"
                   viewBox="0 0 20 20"
                   fill="#695CAD"
                 >
@@ -263,7 +266,7 @@ const Nav = ({ showCategory, all_news }) => {
             /> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-10 w-10 rounded-full bg-Purp300"
+                    className="h-8 w-8 rounded-full bg-Purp300 lg:h-10 lg:w-10"
                     viewBox="0 0 20 20"
                     fill="#695CAD"
                   >
