@@ -96,6 +96,7 @@ const indexx = () => {
                     //   className="relative h-72 w-full object-cover lg:h-full"
                     // />
                     <iframe
+                      width="100%"
                       className="relative mr-auto h-72 w-full object-cover text-right lg:h-full"
                       src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                         head_news?.stories_media_url[0]
