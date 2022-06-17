@@ -208,7 +208,7 @@ const Nav = ({ showCategory, all_news }) => {
                 // height="50"
                 viewBox="0 0 61 28"
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-20 cursor-pointer fill-Purp100 hover:fill-SKY lg:h-12 lg:w-24"
+                className="h-8 w-20 cursor-pointer fill-Purp100 hover:fill-SKY lg:h-12 lg:w-24"
                 onClick={() => {
                   router.push('/')
                 }}
@@ -233,12 +233,12 @@ const Nav = ({ showCategory, all_news }) => {
         </div> */}
             {/* <section id="logoFooter" className="text-LogoPurp"> */}
 
-            <div className="mt-3 flex pr-5 font-TSbold text-base lg:flex lg:pt-0 lg:pr-20 lg:text-lg">
+            <div className="mt-3 flex pr-3 font-TSbold text-base lg:flex lg:pt-0 lg:pr-20 lg:text-lg">
               {nav_items.map((item) => {
                 return (
                   <p
                     key={item.id}
-                    className="my-auto ml-5 lg:ml-10 lg:cursor-pointer"
+                    className="my-auto ml-3 lg:ml-10 lg:cursor-pointer"
                     onClick={() => {
                       router.push(item.link)
                     }}
@@ -330,7 +330,21 @@ const Nav = ({ showCategory, all_news }) => {
           {/* )} */}
           {/* </section> */}
           <div className="mt-4 flex h-6 w-6 text-left lg:hidden">
-            <img src="./assest/images/Union.jpg" className=" h-full w-full" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="#FFFFFF"
+              viewBox="0 0 24 24"
+              stroke="#B0B0B0"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            {/* <img src="./assest/images/Union.jpg" className=" h-full w-full" /> */}
           </div>
         </section>
 
