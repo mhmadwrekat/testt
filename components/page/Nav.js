@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Menu } from '@headlessui/react'
-import Link from 'next/link'
+// import { Menu } from '@headlessui/react'
+// import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Refresh } from '@material-ui/icons'
-import Image from 'next/image'
+// import { Refresh } from '@material-ui/icons'
+// import Image from 'next/image'
 
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
@@ -107,36 +107,69 @@ const Nav = ({ showCategory, all_news }) => {
     },
   ]
 
-  // let su = []
-  // let un = []
   // useEffect(() => {
   //   all_news?.map((item) => {
   //     // item?.is_subscribed !== null &&
   //     if (item?.is_subscribed === true) {
-  //       su.push({
-  //         name: item?.section_name,
-  //         link: `#${item?.section_name}`,
-  //         id: count++,
-  //       })
+  //       // console.log('Y')
+
+  //       if (item?.section_name === 'الشرق الاوسط') {
+  //         subscribe_item.push({
+  //           name: item?.section_name,
+  //           link: `#${item?.section_name}`,
+  //           id: count++,
+  //           width: 'w-28',
+  //         })
+  //       } else if (item?.section_name.length >= 9) {
+  //         subscribe_item.push({
+  //           name: item?.section_name,
+  //           link: `#${item?.section_name}`,
+  //           id: count++,
+  //           width: 'w-24',
+  //         })
+  //       } else {
+  //         subscribe_item.push({
+  //           name: item?.section_name,
+  //           link: `#${item?.section_name}`,
+  //           id: count++,
+  //           width: 'w-12',
+  //         })
+  //       }
   //       // console.log('yes -> ', item?.section_name)
   //     }
   //     if (item?.is_subscribed === false) {
-  //       un.push({
-  //         name: item?.section_name,
-  //         link: `#${item?.section_name}`,
-  //         id: count++,
-  //       })
+  //       if (item?.section_name === 'الشرق الاوسط') {
+  //         unsubscribe_item.push({
+  //           name: item?.section_name,
+  //           link: `#${item?.section_name}`,
+  //           id: count++,
+  //           width: 'w-28',
+  //         })
+  //       } else if (item?.section_name.length >= 9) {
+  //         unsubscribe_item.push({
+  //           name: item?.section_name,
+  //           link: `#${item?.section_name}`,
+  //           id: count++,
+  //           width: 'w-24',
+  //         })
+  //       } else {
+  //         unsubscribe_item.push({
+  //           name: item?.section_name,
+  //           link: `#${item?.section_name}`,
+  //           id: count++,
+  //           width: 'w-12',
+  //         })
+  //       }
   //       // console.log('No -> ', item?.section_name)
   //     }
   //   })
   // }, [all_news])
-  // su.map((item) => {
-  //   console.log('item Name --> ', item.name)
-  // })
-  // console.log('B --> ', un)
+
   all_news?.map((item) => {
     // item?.is_subscribed !== null &&
     if (item?.is_subscribed === true) {
+      // console.log('Y')
+
       if (item?.section_name === 'الشرق الاوسط') {
         subscribe_item.push({
           name: item?.section_name,

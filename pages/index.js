@@ -65,8 +65,8 @@ const index = (props) => {
   const [all_news, setAllNews] = useState()
   const [bg_image, setBackgroundImage] = useState('')
   const [showCategory, setShowCategory] = useState(true)
-  let user_id = props.user_id
-  let country_code = props.country_code
+  let user_id = props.user_id && props.user_id
+  let country_code = props.country_code && props.country_code
 
   let isMobile =
     typeof window !== 'undefined'
@@ -116,9 +116,8 @@ const index = (props) => {
     //   ? setUserId(localStorage.getItem('user_id'))
     //   : ''
   }, [user_id])
-  // console.log(user_id)
-  console.log('---> ', country_code, user_id)
-  // all_news && console.log('---> ', all_news)
+  // all_news && console.log(all_news[8].is_subscribed)
+  // console.log('---> ', country_code, user_id)
   return (
     <React.Fragment>
       <HeadComp />

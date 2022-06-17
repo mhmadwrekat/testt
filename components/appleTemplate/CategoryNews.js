@@ -237,6 +237,7 @@ const Category_news = ({
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
                     {/* <div ref={entry}></div> */}
+                    {/* {console.log(category_news.data[0])} */}
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
