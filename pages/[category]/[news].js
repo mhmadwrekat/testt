@@ -96,18 +96,28 @@ const indexx = () => {
                     //   className="relative h-72 w-full object-cover lg:h-full"
                     // />
                     <iframe
-                      width="100%"
-                      className="relative mr-auto h-72 w-full object-cover text-right lg:h-full"
+                      className="aspect-video h-full w-full rounded-lg shadow-lg"
                       src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                         head_news?.stories_media_url[0]
                       )}`}
-                      alt={head_news?.stories_headlines}
                       frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen=""
-                      loading="eager"
+                      loading="lazy"
                     ></iframe>
                   ) : (
+                    // <iframe
+                    //   width="100%"
+                    //   className="relative mr-auto h-72 w-full object-cover text-right lg:h-full"
+                    //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                    //     head_news?.stories_media_url[0]
+                    //   )}`}
+                    //   alt={head_news?.stories_headlines}
+                    //   frameborder="0"
+                    //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    //   allowfullscreen=""
+                    //   loading="eager"
+                    // ></iframe>
                     <img
                       loading="eager"
                       src={head_news?.stories_media_url[0]}
