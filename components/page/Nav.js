@@ -332,15 +332,15 @@ const Nav = ({ showCategory, all_news }) => {
           <div className="mt-4 flex h-6 w-6 text-left lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="#FFFFFF"
               viewBox="0 0 24 24"
               stroke="#B0B0B0"
-              stroke-width="2"
+              // stroke-width="2"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>

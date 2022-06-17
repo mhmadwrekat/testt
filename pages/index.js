@@ -61,62 +61,18 @@ export async function getServerSideProps({ req, res }) {
 
 const index = (props) => {
   // Declare State
-  const [country_code, setCountryCode] = useState()
-  const [user_id, setUserId] = useState()
+  // const [country_code, setCountryCode] = useState()
   const [all_news, setAllNews] = useState()
   const [bg_image, setBackgroundImage] = useState('')
   const [showCategory, setShowCategory] = useState(true)
+  let user_id = props.user_id
+  let country_code = props.country_code
 
   let isMobile =
     typeof window !== 'undefined'
       ? /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
       : ''
-  // Function Get User Info From LocalStorage else From API
-  const register_user = async () => {
-    try {
-      let device_id = null
-      if ('device_id' in localStorage && 'user_id' in localStorage) {
-        // console.log('Not Get User ID')
-        device_id = localStorage.getItem('device_id')
-        setUserId(localStorage.getItem('user_id'))
-      } else {
-        device_id = uuidv4()
-        axios
-          .post(`${BASE_URL}/v1/Users/`, {
-            device_id: device_id,
-            device_model_type: '2022',
-            device_operating_system: 'web',
-            current_version_app: '1.0.0',
-            device_type: 'WEB',
-          })
-          .then(function (response) {
-            // console.log('Get User Id')
-            localStorage.setItem('device_id', device_id)
-            localStorage.setItem('user_token', response.data.data.user_token)
-            localStorage.setItem('user_id', response.data.data._id)
-            setUserId(response.data.data._id)
-          })
-          .catch(function (error) {
-            // console.log(error)
-          })
-      }
-    } catch (err) {
-      // console.log(err)
-    }
-  }
 
-  // Function Get Country Code From LocalStorage else From API
-  const get_country = async () => {
-    // getCookie('country_code')
-    localStorage.getItem('country_code')
-      ? setCountryCode(localStorage.getItem('country_code'))
-      : axios.get('https://geolocation-db.com/json/').then((res) => {
-          // console.log('Get Country Code')
-          // setCookies('country_code', res.data.country_code)
-          localStorage.setItem('country_code', res.data.country_code)
-          setCountryCode(res.data.country_code)
-        })
-  }
   // Function Get all News
   const get_all_news = async () => {
     user_id &&
@@ -152,21 +108,19 @@ const index = (props) => {
 
   // Call All Functions
   useEffect(() => {
-    register_user()
-    get_country()
+    // register_user()
+    // get_country()
     get_all_news()
     get_background_image()
-    typeof window !== 'undefined'
-      ? setUserId(localStorage.getItem('user_id'))
-      : ''
+    // typeof window !== 'undefined'
+    //   ? setUserId(localStorage.getItem('user_id'))
+    //   : ''
   }, [user_id])
   // console.log(user_id)
-  // console.log('---> ', country_code, user_id)
-  // all_news && console.log('---> ', all_news[0])
+  console.log('---> ', country_code, user_id)
+  // all_news && console.log('---> ', all_news)
   return (
     <React.Fragment>
-      {/* {console.log('>> ', user_id)} */}
-
       <HeadComp />
       <div
         dir="rtl"
@@ -238,7 +192,6 @@ const index = (props) => {
               <section
                 className={`${bg_image} mt-6	bg-no-repeat pb-8 lg:bg-contain`}
               >
-                {/* bg-auto bg-top */}
                 <ArroundYou
                   loading="lazy"
                   title={'يدور حولك'}
@@ -447,3 +400,6 @@ const index = (props) => {
   )
 }
 export default index
+/*
+
+*/

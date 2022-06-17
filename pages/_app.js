@@ -1,7 +1,7 @@
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import axios from 'axios'
 import { BASE_URL } from '../config/config'
@@ -12,7 +12,9 @@ const ANALYTICS = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
-  // function to handle the user auth.
+  const [country_code, setCountryCode] = useState()
+  const [user_id, setUserId] = useState()
+
   // Function Get User Info From LocalStorage else From API
   const register_user = async () => {
     try {
@@ -20,6 +22,7 @@ function MyApp({ Component, pageProps }) {
       if ('device_id' in localStorage && 'user_id' in localStorage) {
         // console.log('Not Get User ID')
         device_id = localStorage.getItem('device_id')
+        setUserId(localStorage.getItem('user_id'))
       } else {
         device_id = uuidv4()
         axios
@@ -35,6 +38,7 @@ function MyApp({ Component, pageProps }) {
             localStorage.setItem('device_id', device_id)
             localStorage.setItem('user_token', response.data.data.user_token)
             localStorage.setItem('user_id', response.data.data._id)
+            setUserId(response.data.data._id)
           })
           .catch(function (error) {
             // console.log(error)
@@ -48,18 +52,21 @@ function MyApp({ Component, pageProps }) {
   const get_country = async () => {
     // getCookie('country_code')
     localStorage.getItem('country_code')
-      ? null
+      ? setCountryCode(localStorage.getItem('country_code'))
       : axios.get('https://geolocation-db.com/json/').then((res) => {
           // console.log('Get Country Code')
           // setCookies('country_code', res.data.country_code)
           localStorage.setItem('country_code', res.data.country_code)
-          // setCountryCode(res.data.country_code)
+          setCountryCode(res.data.country_code)
         })
   }
 
   useEffect(() => {
-    // register_user()
+    register_user()
     get_country()
+    typeof window !== 'undefined'
+      ? setUserId(localStorage.getItem('user_id'))
+      : ''
   }, [])
   // useEffect(() => {
   //   // register_user()
@@ -87,7 +94,7 @@ function MyApp({ Component, pageProps }) {
           gtag('config', '${ANALYTICS}');
         `}
       </Script>
-      <Component {...pageProps} />
+      <Component {...pageProps} country_code={country_code} user_id={user_id}/>
     </React.Fragment>
   )
 }

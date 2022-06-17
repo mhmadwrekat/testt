@@ -27,7 +27,7 @@ const WaveAudio = ({ url }) => {
     trackVisibility: false,
     unobserveOnEnter: true,
     // For performance perspective, use the largest tolerable value as much as possible // (ms)
-    delay: 100,
+    delay: 500,
     onEnter: () => {
       const options = formWaveSurferOptions(waveformRef.current)
       wavesurfer.current = WaveSurfer.create(options)
