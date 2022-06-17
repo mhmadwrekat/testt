@@ -83,7 +83,7 @@ const indexx = () => {
                   className={`rounded-t-md bg-Purp300 py-3 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
                 ></p>{' '}
               </div>
-              <div className="relative float-right h-72 w-80 shadow-md lg:h-96 ">
+              <div className="relative mx-auto h-72 w-full shadow-md lg:h-96 ">
                 {head_news?.stories_media_url[0] &&
                   (head_news?.stories_media_url[0].includes('youtube') ||
                   head_news?.stories_media_url[0].includes('youtu.be') ? (
@@ -96,7 +96,7 @@ const indexx = () => {
                     //   className="relative h-72 w-full object-cover lg:h-full"
                     // />
                     <iframe
-                      className="relative h-72 w-80 object-cover lg:h-full"
+                      className="relative mr-auto h-72 w-full object-cover text-right lg:h-full"
                       src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                         head_news?.stories_media_url[0]
                       )}`}
