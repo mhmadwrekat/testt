@@ -88,19 +88,22 @@ const Nav = ({ showCategory, all_news }) => {
   let count = 0
   const media_item = [
     {
+      name: 'الأكثر مشاهدة',
+      link: '#الأكثر مشاهدة',
+      id: 1,
+      width: 'w-28',
+    },
+    {
       name: 'لقيمات',
       link: '#لقيمات',
-      id: 1,
+      id: 2,
+      width: 'w-12',
     },
     {
       name: 'الصوتيات',
       link: '#الصوتيات',
-      id: 2,
-    },
-    {
-      name: 'الأكثر مشاهدة',
-      link: '#الأكثر مشاهدة',
       id: 3,
+      width: 'w-16',
     },
   ]
   // useEffect(() => {
@@ -127,19 +130,53 @@ const Nav = ({ showCategory, all_news }) => {
   all_news?.map((item) => {
     // item?.is_subscribed !== null &&
     if (item?.is_subscribed === true) {
-      subscribe_item.push({
-        name: item?.section_name,
-        link: `#${item?.section_name}`,
-        id: count++,
-      })
+      if (item?.section_name === 'الشرق الاوسط') {
+        subscribe_item.push({
+          name: item?.section_name,
+          link: `#${item?.section_name}`,
+          id: count++,
+          width: 'w-28',
+        })
+      } else if (item?.section_name.length >= 9) {
+        subscribe_item.push({
+          name: item?.section_name,
+          link: `#${item?.section_name}`,
+          id: count++,
+          width: 'w-24',
+        })
+      } else {
+        subscribe_item.push({
+          name: item?.section_name,
+          link: `#${item?.section_name}`,
+          id: count++,
+          width: 'w-12',
+        })
+      }
       // console.log('yes -> ', item?.section_name)
     }
     if (item?.is_subscribed === false) {
-      unsubscribe_item.push({
-        name: item?.section_name,
-        link: `#${item?.section_name}`,
-        id: count++,
-      })
+      if (item?.section_name === 'الشرق الاوسط') {
+        unsubscribe_item.push({
+          name: item?.section_name,
+          link: `#${item?.section_name}`,
+          id: count++,
+          width: 'w-28',
+        })
+      } else if (item?.section_name.length >= 9) {
+        unsubscribe_item.push({
+          name: item?.section_name,
+          link: `#${item?.section_name}`,
+          id: count++,
+          width: 'w-24',
+        })
+      } else {
+        unsubscribe_item.push({
+          name: item?.section_name,
+          link: `#${item?.section_name}`,
+          id: count++,
+          width: 'w-12',
+        })
+      }
       // console.log('No -> ', item?.section_name)
     }
   })
@@ -147,6 +184,9 @@ const Nav = ({ showCategory, all_news }) => {
     setActive(false)
     // console.log(active)
   }
+
+  let a = 'الاكثر مشاهدة'
+  console.log(' --> ', a.length)
 
   // typeof window != 'undefined' && window.scroll && console.log(true)
   return (
@@ -292,8 +332,8 @@ const Nav = ({ showCategory, all_news }) => {
 
       {showCategory ? (
         <section className="sticky top-0 left-0 z-50 w-screen">
-          <section className="flex w-screen justify-start bg-Purp100 py-0 text-center font-TSbold text-base text-white lg:text-lg">
-            <div className="mx-auto flex w-full items-center justify-start overflow-x-auto pb-1 pt-1.5 lg:pb-0 lg:pt-4">
+          <section className="flex w-screen justify-center bg-Purp100 py-0 text-center font-TSbold text-sm text-white lg:text-base">
+            <div className="mx-auto my-0 mt-3 flex w-screen items-center justify-start overflow-x-auto lg:my-4 lg:mt-3 lg:justify-center">
               <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
                 {/* <img
                   src="./assest/images/additional.jpg"
@@ -316,12 +356,9 @@ const Nav = ({ showCategory, all_news }) => {
                     return (
                       <div
                         key={item.id}
-                        className="flex items-center justify-center gap-3"
+                        className={`${item.width} mx-2 flex items-center justify-center gap-3`}
                       >
-                        <a
-                          className={`w-28 rounded-full lg:w-32`}
-                          href={item.link}
-                        >
+                        <a className={`rounded-full`} href={item.link}>
                           {item.name}
                         </a>
                       </div>
@@ -348,17 +385,15 @@ const Nav = ({ showCategory, all_news }) => {
                       clipRule="evenodd"
                     />
                   </svg>
+
                   <div className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
                     {subscribe_item?.map((item) => {
                       return (
                         <div
                           key={item.id}
-                          className="mr-5 flex w-fit items-center justify-center gap-3"
+                          className={`${item.width} flex items-center justify-center gap-0`}
                         >
-                          <a
-                            className={`w-28 rounded-full lg:w-32`}
-                            href={item.link}
-                          >
+                          <a className={`rounded-full`} href={item.link}>
                             {item.name}
                           </a>
                         </div>
@@ -368,12 +403,15 @@ const Nav = ({ showCategory, all_news }) => {
                 </div>
               )}
               {unsubscribe_item?.length > 0 && (
-                <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 px-3">
-                  <div className="flex w-screen py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
+                <div className="mx-2 flex h-10 justify-start rounded-full border-3 border-Purp200 px-3 lg:h-11">
+                  <div className="flex w-full py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
                     {unsubscribe_item?.map((item) => {
                       return (
-                        <div key={item.id} className="ml-5 py-1 lg:py-1.5">
-                          <a className={`rounded-full`} href={item.link}>
+                        <div
+                          key={item.id}
+                          className={`${item.width} flex items-center justify-center gap-3`}
+                        >
+                          <a className={``} href={item.link}>
                             {item.name}
                           </a>
                         </div>

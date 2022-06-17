@@ -205,7 +205,7 @@ const Video = ({
                               //   />
                               // </video>
                               <iframe
-                                className="aspect-video h-full w-full rounded-b-lg shadow-lg"
+                                className="aspect-video h-full w-full rounded-lg shadow-lg lg:rounded-none lg:rounded-b-md "
                                 src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                                   item.stories_media_url[0]
                                 )}`}
@@ -232,7 +232,7 @@ const Video = ({
                               //   className=" h-32 w-full object-cover md:h-full md:w-full lg:h-60                            "
                               // />
                               <iframe
-                                className="aspect-video h-full w-full rounded-lg shadow-lg"
+                                className="aspect-video h-full w-full rounded-lg shadow-lg lg:rounded-none lg:rounded-b-md "
                                 src={`https://www.youtube.com/embed/65416`}
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

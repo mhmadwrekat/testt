@@ -148,7 +148,7 @@ const indexx = () => {
                 <div className="mt-3 font-TSExtra text-lg md:text-xl lg:h-28 lg:w-11/12 lg:text-3xl">
                   {head_news?.stories_headlines}
                 </div>
-                <p className="pt-4 font-TSmedium text-lg lg:grid lg:h-64 lg:pt-0 ">
+                <p className="pt-4 font-TSmedium text-lg lg:grid lg:h-60 lg:pt-0 ">
                   {head_news?.stories_content}
                 </p>
               </div>
