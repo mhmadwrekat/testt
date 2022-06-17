@@ -333,7 +333,7 @@ const Nav = ({ showCategory, all_news }) => {
       {showCategory ? (
         <section className="sticky top-0 left-0 z-50 w-screen">
           <section className="flex w-screen justify-center bg-Purp100 py-0 text-center font-TSbold text-sm text-white lg:text-base">
-            <div className="mx-auto my-0 mt-3 flex w-screen items-center justify-start overflow-x-auto lg:my-4 lg:mt-3 lg:justify-center">
+            <div className="mx-auto my-3 flex w-screen items-center justify-start overflow-x-auto lg:my-4 lg:mt-3 lg:justify-center">
               <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
                 {/* <img
                   src="./assest/images/additional.jpg"
