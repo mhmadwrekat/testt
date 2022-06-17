@@ -134,7 +134,7 @@ const Voice = ({
             {/**** SWIPER ONE DESKTOP ****/}
             <Swiper
               // install Swiper modules
-              slidesPerView={2.8}
+              slidesPerView={2.5}
               spaceBetween={0}
               loop={true}
             >
@@ -277,7 +277,7 @@ const Voice = ({
             {/**** SWIPER TWO DESKTOP ****/}
             <Swiper
               // install Swiper modules
-              slidesPerView={2.8}
+              slidesPerView={2.5}
               spaceBetween={0}
               loop={true}
             >

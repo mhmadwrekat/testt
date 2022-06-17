@@ -106,11 +106,14 @@ const Nav = ({ showCategory, all_news }) => {
       width: 'w-16',
     },
   ]
+
+  // let su = []
+  // let un = []
   // useEffect(() => {
   //   all_news?.map((item) => {
   //     // item?.is_subscribed !== null &&
   //     if (item?.is_subscribed === true) {
-  //       subscribe_item.push({
+  //       su.push({
   //         name: item?.section_name,
   //         link: `#${item?.section_name}`,
   //         id: count++,
@@ -118,7 +121,7 @@ const Nav = ({ showCategory, all_news }) => {
   //       // console.log('yes -> ', item?.section_name)
   //     }
   //     if (item?.is_subscribed === false) {
-  //       unsubscribe_item.push({
+  //       un.push({
   //         name: item?.section_name,
   //         link: `#${item?.section_name}`,
   //         id: count++,
@@ -127,6 +130,10 @@ const Nav = ({ showCategory, all_news }) => {
   //     }
   //   })
   // }, [all_news])
+  // su.map((item) => {
+  //   console.log('item Name --> ', item.name)
+  // })
+  // console.log('B --> ', un)
   all_news?.map((item) => {
     // item?.is_subscribed !== null &&
     if (item?.is_subscribed === true) {
@@ -185,8 +192,8 @@ const Nav = ({ showCategory, all_news }) => {
     // console.log(active)
   }
 
-  let a = 'الاكثر مشاهدة'
-  console.log(' --> ', a.length)
+  // let a = 'الاكثر مشاهدة'
+  // console.log(' --> ', a.length)
 
   // typeof window != 'undefined' && window.scroll && console.log(true)
   return (
@@ -422,10 +429,10 @@ const Nav = ({ showCategory, all_news }) => {
               )}
             </div>
           </section>
-          {subscribe_item.map((item) => {
+          {/* {subscribe_item.map((item) => {
             console.log(subscribe_item)
-          })}
-          {subscribe_item.length > 0 && console.log(subscribe_item.length)}
+          })} */}
+          {/* {subscribe_item.length > 0 && console.log(subscribe_item.length)} */}
         </section>
       ) : (
         <div className="mx-auto w-11/12 border-t-2 border-Purp100"></div>

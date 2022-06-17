@@ -209,9 +209,7 @@ const Video = ({
                                 src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                                   item.stories_media_url[0]
                                 )}`}
-                                frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen=""
                                 loading="lazy"
                               ></iframe>
                             ) : (

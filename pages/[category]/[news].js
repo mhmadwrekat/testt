@@ -100,9 +100,7 @@ const indexx = () => {
                       src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                         head_news?.stories_media_url[0]
                       )}`}
-                      frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen=""
                       loading="eager"
                     ></iframe>
                   ) : (
@@ -178,7 +176,7 @@ const indexx = () => {
             category={router.query.news}
           />
         </section>
-        {console.log(related_news)}
+        {/* {console.log(related_news)} */}
       </div>
       <div className="py-4"></div>
       <Footer />
