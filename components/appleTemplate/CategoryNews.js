@@ -178,7 +178,7 @@ const Category_news = ({
                     </svg>
                   ))}
                 <p
-                  className={`${title_color} hover:underline mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                  className={`${title_color} mt-5 cursor-pointer font-TSExtra text-2xl hover:underline lg:text-4xl`}
                   onClick={() => {
                     handle_news_redirection(title)
                   }}
@@ -377,14 +377,14 @@ const Category_news = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full                                "
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
                                 />
                               ) : (
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                 />
                               ))}
                             <Like

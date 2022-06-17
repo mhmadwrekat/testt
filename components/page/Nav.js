@@ -152,16 +152,16 @@ const Nav = ({ showCategory, all_news }) => {
   return (
     <React.Fragment>
       <section className="z-50 w-full bg-white">
-        <section className="mx-4 flex justify-between lg:mx-10">
+        <section className="mx-4 mb-2 flex justify-between lg:mx-10">
           <div className="flex">
             <div className=" mt-2 lg:mx-8 lg:mt-3 lg:mb-2">
               {/* <Link href="/"> */}
               <svg
-                width="90"
-                height="50"
+                // width="90"
+                // height="50"
                 viewBox="0 0 61 28"
                 xmlns="http://www.w3.org/2000/svg"
-                className="cursor-pointer fill-Purp100 hover:fill-SKY"
+                className="h-10 w-20 cursor-pointer fill-Purp100 hover:fill-SKY lg:h-12 lg:w-24"
                 onClick={() => {
                   router.push('/')
                 }}
@@ -186,7 +186,7 @@ const Nav = ({ showCategory, all_news }) => {
         </div> */}
             {/* <section id="logoFooter" className="text-LogoPurp"> */}
 
-            <div className="hidden pt-2 pr-8 font-TSbold text-base lg:mt-3 lg:flex lg:pt-0 lg:pr-20 lg:text-lg">
+            <div className="mt-3 flex pr-5 font-TSbold text-base lg:flex lg:pt-0 lg:pr-20 lg:text-lg">
               {nav_items.map((item) => {
                 return (
                   <p
@@ -201,7 +201,18 @@ const Nav = ({ showCategory, all_news }) => {
                 )
               })}
 
-              <div className="my-auto ml-10 pt-3 lg:cursor-pointer "></div>
+              {/* <svg
+                className="text-slate-400 mx-4 mt-2 h-7 w-7"
+                viewBox="0 0 20 20"
+                fill="#FF0000"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clipRule="evenodd"
+                />
+              </svg> */}
+              {/* <div className="my-auto ml-10 pt-3 lg:cursor-pointer "></div> */}
             </div>
           </div>
           {/* {active && ( */}
@@ -212,24 +223,25 @@ const Nav = ({ showCategory, all_news }) => {
             //   router.push('/Search')
             // }}
           >
-            <div className="pointer-events-auto absolute ">
-              <svg
-                className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
-                viewBox="0 0 20 20"
-                fill="#FFFFFF"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
             <form
-            // onSubmit={() => {
-            //   handelFeedback()
-            // }}
+              className="hidden lg:flex"
+              // onSubmit={() => {
+              //   handelFeedback()
+              // }}
             >
+              <div className="pointer-events-auto absolute ">
+                <svg
+                  className="text-slate-400 absolute mx-4 mt-2 h-7 w-7"
+                  viewBox="0 0 20 20"
+                  fill="#FFFFFF"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
               <input
                 type="text"
                 name="name"
@@ -270,6 +282,9 @@ const Nav = ({ showCategory, all_news }) => {
 
           {/* )} */}
           {/* </section> */}
+          <div className="mt-4 flex h-6 w-6 text-left lg:hidden">
+            <img src="./assest/images/Union.jpg" className=" h-full w-full" />
+          </div>
         </section>
 
         {/* <div className="w-6/6 border-gray-500 mx-4 border-b-2 pt-1 opacity-50 lg:mx-28"></div> */}

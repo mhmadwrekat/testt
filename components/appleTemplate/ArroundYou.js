@@ -121,7 +121,7 @@ const Arround_you = ({
           <div className="flex justify-between ">
             <div className="my-3 mt-1 lg:mt-2">
               <p
-                className={`${text_color} hover:underline mt-5 cursor-pointer font-TSExtra text-2xl lg:text-4xl`}
+                className={`${text_color} mt-5 cursor-pointer font-TSExtra text-2xl hover:underline lg:text-4xl`}
                 onClick={() => {
                   handle_news_redirection(title)
                 }}
@@ -301,7 +301,7 @@ const Arround_you = ({
                 </div>
               </section>
               <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                {important_news.data.slice(1, 5).map((item) => {
+                {important_news?.data?.slice(1, 5).map((item) => {
                   stories.push(item?._id)
                   return (
                     <section key={item?._id}>
@@ -337,14 +337,14 @@ const Arround_you = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                 />
                               ) : (
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                 />
                               ))}
                             <div className="text-black rounded-full bg-white">

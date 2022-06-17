@@ -205,7 +205,7 @@ const Video = ({
                               //   />
                               // </video>
                               <iframe
-                                className="aspect-video h-full w-full rounded-lg shadow-lg"
+                                className="aspect-video h-full w-full rounded-b-lg shadow-lg"
                                 src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                                   item.stories_media_url[0]
                                 )}`}

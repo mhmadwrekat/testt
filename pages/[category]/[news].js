@@ -96,7 +96,7 @@ const indexx = () => {
                     //   className="relative h-72 w-full object-cover lg:h-full"
                     // />
                     <iframe
-                      className="aspect-video h-full w-full rounded-lg shadow-lg"
+                      className="aspect-video h-full w-full rounded-b-lg shadow-lg"
                       src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                         head_news?.stories_media_url[0]
                       )}`}
