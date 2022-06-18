@@ -41,7 +41,7 @@ export default function LoqaimaModal({
             close_loqaima()
           }}
         >
-          <section className="bg-gray-500">
+          <section className="bg-black">
             <div className=" min-h-xl flex items-end justify-center text-center sm:block sm:p-0 ">
               <Transition.Child
                 as={Fragment}
@@ -71,7 +71,7 @@ export default function LoqaimaModal({
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <div className="inline-block h-screen w-screen transform overflow-hidden bg-white text-left align-bottom transition-all lg:w-1/4">
+                <div className="bg-gray-800 inline-block h-screen w-screen transform overflow-hidden text-left align-bottom transition-all lg:w-4/12">
                   {/* <button
                     className="gallery_previous"
                     onClick={prevF()}
@@ -79,55 +79,83 @@ export default function LoqaimaModal({
                   >
                     <i className="fa fa-chevron-left" />
                   </button> */}
-                  <div className=" z-50 hidden  lg:flex">
-                    <div className=" z-50 p-3">
-                      <div
-                        className="control-arrow control-next cursor-pointer"
-                        onClick={() => {
-                          next()
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-12 w-12"
-                          viewBox="0 0 20 20"
-                          fill="#666666"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                  <section className="flex justify-center">
+                    <div className="bg-black">
+                      <div className="relative hidden p-7 lg:flex">
+                        {sum > 0 && (
+                          <div
+                            className="control-arrow control-next absolute top-80 left-0 z-50 cursor-pointer"
+                            aria-label="Left Align"
+                            onClick={() => {
+                              prev()
+                            }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-12 w-12"
+                              viewBox="0 0 20 20"
+                              fill="#666666"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </div>
-                  <Carousel
-                    selectedItem={sum}
-                    // showArrows={isMobile ? false : true}
-                    autoFocus={false}
-                    showArrows={false}
-                    showThumbs={false}
-                    useKeyboardArrows
-                  >
-                    {/* key={item._id} */}
-                    {loqaimatScreens.length > 0 ? (
-                      loqaimatScreens.map((item) => {
-                        // console.log(item)
-                        return (
-                          <div key={item._id} className="relative">
-                            <img
-                              className="h-screen"
-                              src={item.screen_link}
-                              alt={item.screen_link}
+                    <Carousel
+                      selectedItem={sum}
+                      // showArrows={isMobile ? false : true}
+                      autoFocus={false}
+                      showArrows={false}
+                      showThumbs={false}
+                      useKeyboardArrows
+                    >
+                      {/* key={item._id} */}
+                      {loqaimatScreens.length > 0 ? (
+                        loqaimatScreens.map((item) => {
+                          // console.log(item)
+                          return (
+                            <div key={item._id} className="">
+                              <img
+                                className="h-screen"
+                                src={item.screen_link}
+                                alt={item.screen_link}
+                              />
+                            </div>
+                          )
+                        })
+                      ) : (
+                        <div className="h-screen bg-white" />
+                      )}
+                    </Carousel>
+                    <div className="bg-black">
+                      <div className="relative hidden p-7 lg:flex">
+                        <div
+                          className="control-arrow control-next absolute top-80 right-0 z-50 cursor-pointer"
+                          onClick={() => {
+                            next()
+                          }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-12 w-12"
+                            viewBox="0 0 20 20"
+                            fill="#666666"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                              clipRule="evenodd"
                             />
-                          </div>
-                        )
-                      })
-                    ) : (
-                      <div className="h-screen bg-white" />
-                    )}
-                  </Carousel>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
 
                   {/* <button
                     className="gallery_next"
@@ -139,7 +167,7 @@ export default function LoqaimaModal({
                   {/* <div className="fixed bottom-0 w-full"></div> */}
                 </div>
               </Transition.Child>
-              {/* <div
+              <div
                 className="top-0 right-24 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
                 onClick={() => {
                   setOpen(true)
@@ -170,7 +198,7 @@ export default function LoqaimaModal({
                     setOpen(true)
                   }}
                 ></div>
-              </div> */}
+              </div>
 
               <span className="absolute top-0 right-2 p-3 lg:right-10">
                 <img
@@ -181,38 +209,77 @@ export default function LoqaimaModal({
                 />
               </span>
             </div>
-
-            {sum > 0 && (
-              <div className="absolute z-50 hidden p-3 lg:top-96 lg:left-48 lg:flex">
-                <div className="absolute z-50 p-3 lg:bottom-0 lg:left-48">
-                  <div className="absolute z-50 p-3 lg:bottom-0 lg:left-48">
-                    <div
-                      className="control-arrow control-next cursor-pointer"
-                      aria-label="Left Align"
-                      onClick={() => {
-                        prev()
-                      }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-12 w-12"
-                        viewBox="0 0 20 20"
-                        fill="#666666"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
           </section>
         </Dialog>
       </Transition.Root>
     </React.Fragment>
   )
 }
+/*
+    <>
+                            <section className="flex justify-center">
+                              <div className="relative h-screen w-8 bg-white">
+                                <div className=" z-50 hidden  lg:flex">
+                                  <div className="absolute top-24 right-10 z-50 p-3">
+                                    <div
+                                      className="control-arrow control-next cursor-pointer"
+                                      onClick={() => {
+                                        next()
+                                      }}
+                                    >
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-12 w-12"
+                                        viewBox="0 0 20 20"
+                                        fill="#666666"
+                                      >
+                                        <path
+                                          fillRule="evenodd"
+                                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                          clipRule="evenodd"
+                                        />
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div key={item._id} className="">
+                                <img
+                                  className="h-screen"
+                                  src={item.screen_link}
+                                  alt={item.screen_link}
+                                />
+                              </div>
+                              <div className="relative h-screen w-8 bg-white">
+                                {sum > 0 && (
+                                  <div className="absolute z-50 hidden p-3 lg:top-96 lg:left-48 lg:flex">
+                                    <div className="absolute z-50 p-3 lg:bottom-0 lg:left-48">
+                                      <div className="absolute z-50 p-3 lg:bottom-0 lg:left-48">
+                                        <div
+                                          className="control-arrow control-next cursor-pointer"
+                                          aria-label="Left Align"
+                                          onClick={() => {
+                                            prev()
+                                          }}
+                                        >
+                                          <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="h-12 w-12"
+                                            viewBox="0 0 20 20"
+                                            fill="#666666"
+                                          >
+                                            <path
+                                              fillRule="evenodd"
+                                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                                              clipRule="evenodd"
+                                            />
+                                          </svg>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </section>
+                          </>
+*/
