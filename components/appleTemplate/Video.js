@@ -293,7 +293,11 @@ const Video = ({
                         >
                           اقرا المزيد
                         </p>
-                        <MenuThreeDot title_color={title_color} />
+                        <MenuThreeDot
+                          title_color={title_color}
+                          category={item?.primary_category[0]?.category_name}
+                          story={item?.stories_headlines}
+                        />
                       </div>
                     </div>
                   </section>

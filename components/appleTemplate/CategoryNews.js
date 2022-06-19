@@ -342,7 +342,9 @@ const Category_news = ({
                       >
                         اقرأ المزيد
                       </p>
-                      <MenuThreeDot title_color={title_color} />
+                      <MenuThreeDot title_color={title_color}
+                      category={title}
+                      story={category_news?.data[0]?.stories_headlines} />
                     </div>
                   </div>
                 </div>
@@ -440,7 +442,9 @@ const Category_news = ({
                             اقرأ المزيد
                           </p>
 
-                          <MenuThreeDot title_color={title_color} />
+                          <MenuThreeDot title_color={title_color} 
+                          category={title}
+                          story={item?.stories_headlines} />
                         </div>
                       </div>
                     </section>

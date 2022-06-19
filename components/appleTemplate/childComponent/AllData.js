@@ -166,7 +166,11 @@ const AllData = ({ data, bg_color, category }) => {
                         </p>
                       )}
 
-                      <MenuThreeDot title_color={'text-Purp100'} />
+                      <MenuThreeDot
+                        title_color={'text-Purp100'}
+                        category={category}
+                        story={item?.stories_headlines}
+                      />
                     </div>
                   </div>
                 </section>

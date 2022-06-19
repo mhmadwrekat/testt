@@ -374,7 +374,11 @@ const index = () => {
                       <p
                         className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                       ></p>{' '}
-                      <MenuThreeDot title_color={'text-Purp100'} />
+                      <MenuThreeDot
+                        title_color={'text-Purp100'}
+                        category={item?.primary_category[0]?.category_name}
+                        story={item?.stories_headlines}
+                      />
                     </div>
                   </div>
                 </section>

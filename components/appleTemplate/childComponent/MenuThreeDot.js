@@ -33,7 +33,7 @@ const Test = ({ title_color, category, story }) => {
     }
 
     let ready_url = `https://alzubda.com/${ready_title}/${ready_category}`
-
+    // console.log(ready_url)
     navigator.clipboard.writeText(ready_url)
   }
 

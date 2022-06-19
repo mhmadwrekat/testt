@@ -173,7 +173,11 @@ const Search = ({ data, bg_color, category }) => {
                         </p>
                       )}
 
-                      <MenuThreeDot title_color={'text-Purp100'} />
+                      <MenuThreeDot
+                        title_color={'text-Purp100'}
+                        category={item?.primary_category[0]?.category_name}
+                        story={item?.stories_headlines}
+                      />
                     </div>
                   </div>
                 </section>

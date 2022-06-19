@@ -295,7 +295,14 @@ const Arround_you = ({
                       >
                         اقرأ المزيد
                       </p>
-                      <MenuThreeDot title_color={text_color} />
+                      <MenuThreeDot
+                        title_color={text_color}
+                        category={
+                          important_news?.data[0]?.primary_category[0]
+                            ?.category_name
+                        }
+                        story={important_news?.data[0]?.stories_headlines}
+                      />
                     </div>
                   </div>
                 </div>
@@ -399,7 +406,11 @@ const Arround_you = ({
                           >
                             اقرأ المزيد
                           </p>
-                          <MenuThreeDot title_color={text_color} />
+                          <MenuThreeDot
+                            title_color={text_color}
+                            category={item?.primary_category[0]?.category_name}
+                            story={item?.stories_headlines}
+                          />
                         </div>
                       </div>
                     </section>

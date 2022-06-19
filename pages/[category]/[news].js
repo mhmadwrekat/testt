@@ -163,7 +163,12 @@ const indexx = () => {
                   <p className="px-2.5 pt-2 font-TSbold text-GRAY300">
                     قبل {moment(head_news?.published_on).fromNow(true)}
                   </p>
-                  <MenuThreeDot title_color={title_color} />
+                  {console.log(router.query.news)}
+                  <MenuThreeDot
+                    title_color={title_color}
+                    category={router.query.news}
+                    story={head_news?.stories_headlines}
+                  />
                 </div>
               </div>
             </section>

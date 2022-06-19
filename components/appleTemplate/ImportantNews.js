@@ -341,7 +341,10 @@ const ImportantNews = ({
                       >
                         اقرأ المزيد
                       </p>
-                      <MenuThreeDot title_color={title_color} />
+                      <MenuThreeDot title_color={title_color}
+                      category={category_news?.data[0]?.primary_category[0]
+                        ?.category_name}
+                      story={category_news?.data[0]?.stories_headlines} />
                     </div>
                   </div>
                 </div>
