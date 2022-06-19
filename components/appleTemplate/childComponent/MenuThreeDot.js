@@ -4,6 +4,7 @@ import Image from 'next/image'
 import facebook from '../../../public/assest/images/facebook.jpg'
 import twiter from '../../../public/assest/images/twitter.jpg'
 import watsapp from '../../../public/assest/images/youtube.jpg'
+import { Slide } from 'react-awesome-reveal'
 
 const Test = ({ title_color, category, story }) => {
   // console.log(url)
@@ -62,43 +63,51 @@ const Test = ({ title_color, category, story }) => {
             </svg>
           </Menu.Button>
           <Menu.Items>
-            <section className="absolute bottom-1 left-10 w-32 lg:left-20">
-              <section className="text-black flex w-48 rounded p-1 text-center font-TSbold text-xs lg:w-auto ">
+            <section className="absolute bottom-1 left-10 w-32 lg:left-12">
+              <section className="text-black flex w-48 rounded p-1 text-center font-TSbold text-xs lg:w-56 ">
                 <Menu.Item>
                   {({ active }) => (
-                    <img
-                      src="./assest/images/facebook.jpg"
-                      className="mx-1 h-6 w-6 rounded-full lg:h-6 lg:w-12"
-                      alt="social media alzubda facebook"
-                    />
+                    <Slide delay={100}>
+                      <img
+                        src="./assest/images/facebook.jpg"
+                        className="ml-1.5 h-6 rounded-full lg:h-7"
+                        alt="social media alzubda facebook"
+                      />
+                    </Slide>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <img
-                      src="./assest/images/twitter.jpg"
-                      className="mx-1 h-6 w-20 rounded-full lg:h-6 lg:w-12"
-                      alt="social media alzubda twitter"
-                    />
+                    <Slide delay={300}>
+                      <img
+                        src="./assest/images/twitter.jpg"
+                        className="ml-1.5 h-6 rounded-full lg:h-7"
+                        alt="social media alzubda twitter"
+                      />
+                    </Slide>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <img
-                      src="./assest/images/whatsapp.WebP"
-                      className="mx-1 h-6 w-6 rounded-full lg:h-6 lg:w-12"
-                      alt="social media alzubda whatsapp"
-                    />
+                    <Slide delay={500}>
+                      <img
+                        src="./assest/images/whatsapp.WebP"
+                        className="ml-1.5 h-6 rounded-full lg:h-7"
+                        alt="social media alzubda whatsapp"
+                      />
+                    </Slide>
                   )}
                   {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <img
-                      src=" https://cdn-icons-png.flaticon.com/512/7304/7304848.png "
-                      className="mx-1 h-6 w-6 rounded-full lg:h-6 lg:w-12"
-                      alt="social media alzubda whatsapp"
-                    />
+                    <Slide delay={700}>
+                      <img
+                        src=" https://cdn-icons-png.flaticon.com/512/7304/7304848.png "
+                        className=" h-6 rounded-full lg:h-7"
+                        alt="social media alzubda whatsapp"
+                      />
+                    </Slide>
                   )}
                 </Menu.Item>
                 {/* <Menu.Item>
