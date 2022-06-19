@@ -117,7 +117,7 @@ const index = (props) => {
     //   : ''
   }, [user_id])
   // all_news && console.log(all_news[8].is_subscribed)
-  // console.log('---> ', country_code, user_id)
+  console.log('---> ', user_id)
   return (
     <React.Fragment>
       <HeadComp />

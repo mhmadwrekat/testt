@@ -17,17 +17,26 @@ const Search = () => {
   const [search_data, setSearchData] = useState()
   let bg_color = 'bg-GREEN'
 
-  const search = async () => {
-    // console.log(
-    //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}&category_id=5e4e90ac52561e16596649f9`
-    // )
+  // const search = async () => {
+  //   // console.log(
+  //   //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}&category_id=5e4e90ac52561e16596649f9`
+  //   // )
+
+  // }
+  const handelFeedback = () => {
+    event.preventDefault()
+    // setSearchKey(event.target.name.value)
     axios
-      .get(`${BASE_URL}/v1/User/Stories/Search/Keywords?phrase=${search_key}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(
+        `${BASE_URL}/v1/User/Stories/Search/Keywords?phrase=${event.target.name.value}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then(function (response) {
+        console.log(response.data.data)
         setSearchData(response.data.data)
         // console.log(response)
       })
@@ -35,13 +44,9 @@ const Search = () => {
         console.log(error)
       })
   }
-  const handelFeedback = () => {
-    event.preventDefault()
-    setSearchKey(event.target.name.value)
-  }
-  useEffect(() => {
-    search()
-  }, [search_key])
+  // useEffect(() => {
+  //   // search()
+  // }, [search_key])
   // console.log('DATA ->>>>>> ', search_data)
   return (
     <React.Fragment>

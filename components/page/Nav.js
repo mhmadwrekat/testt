@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { BASE_URL } from '../../config/config'
+
 // import { Menu } from '@headlessui/react'
 // import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
+const Search = dynamic(() => import('../appleTemplate/childComponent/Search'))
 // import { Refresh } from '@material-ui/icons'
 // import Image from 'next/image'
 
@@ -10,6 +15,14 @@ import { useRouter } from 'next/router'
 // import 'moment/locale/ar'
 const Nav = ({ showCategory, all_news }) => {
   const [active, setActive] = useState(true)
+  const [showSearch, setShowSearch] = useState(false)
+  const [token, setUserToken] =
+    typeof window !== 'undefined'
+      ? useState(localStorage.getItem('user_token'))
+      : useState()
+  const [search_key, setSearchKey] = useState('')
+  const [search_data, setSearchData] = useState()
+  let bg_color = 'bg-GREEN'
 
   const router = useRouter()
 
@@ -225,6 +238,27 @@ const Nav = ({ showCategory, all_news }) => {
     // console.log(active)
   }
 
+  const handelFeedback = () => {
+    event.preventDefault()
+    setSearchKey(event.target.name.value)
+    axios
+      .get(
+        `${BASE_URL}/v1/User/Stories/Search/Keywords?phrase=${event.target.name.value}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(function (response) {
+        console.log(response.data.data)
+        setSearchData(response.data.data)
+        // console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
   // let a = 'الاكثر مشاهدة'
   // console.log(' --> ', a.length)
 
@@ -305,9 +339,9 @@ const Nav = ({ showCategory, all_news }) => {
           >
             <form
               className="hidden lg:flex"
-              // onSubmit={() => {
-              //   handelFeedback()
-              // }}
+              onSubmit={() => {
+                handelFeedback()
+              }}
             >
               <div className="pointer-events-auto absolute ">
                 <svg
@@ -336,6 +370,7 @@ const Nav = ({ showCategory, all_news }) => {
                 بحث
               </button>
             </form>
+
             {/* <Link href="/Search">
               <div className="pointer-events-auto absolute ">
                 <svg
@@ -370,6 +405,9 @@ const Nav = ({ showCategory, all_news }) => {
               viewBox="0 0 24 24"
               stroke="#B0B0B0"
               // stroke-width="2"
+              onClick={() => {
+                setShowSearch(true)
+              }}
             >
               <path
                 strokeLinecap="round"
@@ -484,6 +522,60 @@ const Nav = ({ showCategory, all_news }) => {
       ) : (
         <div className="mx-auto w-11/12 border-t-2 border-Purp100"></div>
       )}
+
+      {showSearch ? (
+        <form
+          className="mt-5 flex justify-center lg:hidden"
+          onSubmit={() => {
+            handelFeedback()
+          }}
+        >
+          <div className="pointer-events-auto">
+            <svg
+              className="text-slate-400 absolute mx-0 mt-2 h-7 w-7"
+              viewBox="0 0 20 20"
+              fill="#FFFFFF"
+            >
+              <path
+                fillRule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="محرك البحث"
+              className="w-44 rounded-r-md bg-GRAY200 py-2 pr-8 text-base placeholder-white lg:w-96 lg:text-lg"
+            />
+          </div>
+          <button
+            type="submit"
+            className="rounded-l-md bg-Purp500 py-2 px-8 font-TSbold text-base text-white lg:text-lg"
+          >
+            بحث
+          </button>
+        </form>
+      ) : null}
+
+      <React.Fragment>
+        <div dir="rtl" id="project_body" translate="no">
+          <section className="text-black mx-auto grid w-11/12 bg-white lg:w-10/12">
+            {search_data?.length > 0 && (
+              <>
+                <p
+                  className={`mt-8 font-TSExtra text-2xl text-GREEN lg:text-4xl`}
+                >
+                  نتائج بحث {search_key}
+                </p>
+
+                <Search data={search_data} bg_color={'bg-GREEN'} />
+              </>
+            )}
+          </section>
+        </div>
+      </React.Fragment>
     </React.Fragment>
   )
 }
