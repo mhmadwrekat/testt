@@ -291,10 +291,14 @@ const Colored = ({
                       >
                         اقرأ المزيد
                       </p>
-                      <MenuThreeDot title_color={text_color} 
-                       category={important_news?.data[0]?.primary_category[0]
-                        ?.category_name}
-                       story={important_news?.data[0]?.stories_headlines}/>
+                      <MenuThreeDot
+                        title_color={text_color}
+                        category={
+                          important_news?.data[0]?.primary_category[0]
+                            ?.category_name
+                        }
+                        story={important_news?.data[0]?.stories_headlines}
+                      />
                     </div>
                   </div>
                 </div>
@@ -384,7 +388,7 @@ const Colored = ({
                           </p>
                         </div>
 
-                        <div className="mx-2.5 flex justify-between">
+                        <div className="mx-2.5 flex items-center justify-between">
                           <p
                             className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY200 hover:text-RED`}
                             onClick={() => {
@@ -396,9 +400,11 @@ const Colored = ({
                           >
                             اقرأ المزيد
                           </p>
-                          <MenuThreeDot title_color={text_color} 
-                          category={item?.primary_category[0]?.category_name}
-                           story={item?.stories_headlines} />
+                          <MenuThreeDot
+                            title_color={text_color}
+                            category={item?.primary_category[0]?.category_name}
+                            story={item?.stories_headlines}
+                          />
                         </div>
 
                         {/* <svg
