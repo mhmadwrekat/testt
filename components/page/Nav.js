@@ -23,6 +23,7 @@ const Nav = ({ showCategory, all_news, alternative_search }) => {
   const [search_key, setSearchKey] = useState('')
   const [search_data, setSearchData] = useState()
   const [loader, setLoader] = useState(null)
+  const [svgnull, setSvgNull] = useState(false)
 
   const [searches, setSearches] = useState(false)
 
@@ -62,7 +63,7 @@ const Nav = ({ showCategory, all_news, alternative_search }) => {
       name: 'لقيمات',
       link: '#لقيمات',
       id: 2,
-      width: 'w-12',
+      width: 'w-16',
     },
     {
       name: 'الصوتيات',
@@ -209,10 +210,12 @@ const Nav = ({ showCategory, all_news, alternative_search }) => {
           setSearchData(response.data.data)
           setLoader(false)
           setSearchKey(`نتائج بحث ${kee}`)
+          setSvgNull(false)
         } else {
           setSearchData(alternative_search)
           setLoader(false)
           setSearchKey('لم يتم العثور على نتائج')
+          setSvgNull(true)
         }
         // console.log(response)
       })
@@ -584,16 +587,32 @@ const Nav = ({ showCategory, all_news, alternative_search }) => {
             {
               search_data?.length > 0 && (
                 <section>
-                  <p
-                    className={`mt-8 font-TSExtra text-base text-GRAY400 lg:text-2xl`}
-                  >
-                    {search_key}
-                  </p>
+                  <div className="flex">
+                    {svgnull && (
+                      <svg
+                        className="mt-3.5 h-12 w-12 lg:h-14 lg:w-14"
+                        fill="none"
+                        viewBox="0 0 74 74"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m64.904 57.68-24.632-45.744c-1.746-3.2433-6.397-3.2433-8.1444 0l-24.631 45.744c-0.37909 0.7041-0.56914 1.4945-0.55162 2.2939 0.01753 0.7995 0.24203 1.5808 0.65161 2.2676s0.99023 1.2556 1.6853 1.6511c0.69504 0.3954 1.4807 0.6038 2.2804 0.605h49.269c0.8003 1e-4 1.5869-0.2075 2.2829-0.6024 0.6961-0.3949 1.2778-0.9636 1.6882-1.6506s0.6355-1.4688 0.6534-2.2689c0.0178-0.8-0.1722-1.591-0.5516-2.2957zm-28.704-0.2645c-0.5717 0-1.1306-0.1695-1.6059-0.4871-0.4754-0.3176-0.8459-0.7691-1.0647-1.2973s-0.276-1.1094-0.1645-1.6701c0.1116-0.5607 0.3869-1.0758 0.7911-1.4801 0.4043-0.4042 0.9194-0.6795 1.4801-0.7911 0.5607-0.1115 1.1419-0.0543 1.6701 0.1645s0.9797 0.5893 1.2973 1.0647c0.3176 0.4753 0.4871 1.0342 0.4871 1.6059 0 0.3796-0.0747 0.7555-0.22 1.1062s-0.3582 0.6694-0.6266 0.9378-0.5871 0.4813-0.9378 0.6266-0.7266 0.22-1.1062 0.22zm3.1392-29.072-0.8296 17.633c0 0.6133-0.2436 1.2015-0.6773 1.6352s-1.0219 0.6773-1.6352 0.6773-1.2015-0.2436-1.6352-0.6773c-0.4336-0.4337-0.6773-1.0219-0.6773-1.6352l-0.8296-17.626c-0.0186-0.4212 0.0477-0.8418 0.1951-1.2368s0.3728-0.7563 0.6627-1.0623c0.29-0.306 0.6386-0.5505 1.0251-0.719 0.3865-0.1684 0.803-0.2573 1.2245-0.2613h0.0304c0.4244-2e-4 0.8445 0.0855 1.2349 0.2521s0.743 0.4106 1.0365 0.7172 0.5218 0.6695 0.6712 1.0668 0.2168 0.8207 0.1981 1.2447l0.0057-0.0086z"
+                          fill="#ddd"
+                        />
+                      </svg>
+                    )}
 
+                    <p
+                      className={`mt-8 font-TSExtra text-base text-GRAY400 lg:text-2xl`}
+                    >
+                      {search_key}
+                    </p>
+                  </div>
                   <Search data={search_data} bg_color={'bg-GREEN'} />
                 </section>
               )
               // ) : (
+              // svgnull
               //   <div>
               //     <div className="flex pt-5">
               //       <svg
