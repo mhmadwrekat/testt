@@ -188,7 +188,7 @@ const index = (props) => {
             <div id="صحة">
               <CategoryNews
                 loading="lazy"
-                title={'الصحه'}
+                title={'الصحة'}
                 category_news={all_news[4]}
                 user_id={user_id}
                 subs={all_news[4]?.is_subscribed}
@@ -236,7 +236,7 @@ const index = (props) => {
             <div id="اخبار الفن">
               <CategoryNews
                 loading="lazy"
-                title={'اخبار الفن'}
+                title={'أخبار الفن'}
                 category_news={all_news[15]}
                 user_id={user_id}
                 subs={all_news[15]?.is_subscribed}
@@ -327,7 +327,7 @@ const index = (props) => {
             <div id="ألعاب">
               <CategoryNews
                 loading="lazy"
-                title={'العاب'}
+                title={'ألعاب'}
                 category_news={all_news[13]}
                 user_id={user_id}
                 subs={all_news[13]?.is_subscribed}

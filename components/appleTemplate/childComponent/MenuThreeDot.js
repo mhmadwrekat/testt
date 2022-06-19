@@ -33,7 +33,7 @@ const Test = ({ title_color }) => {
                     </p>
                   )}
                 </Menu.Item>
-                <Menu.Item>
+                {/* <Menu.Item>
                   {({ active }) => (
                     <p
                       className={`cursor-pointer border-b-1 border-GRAY200 pt-2 text-GRAY400 ${
@@ -41,12 +41,23 @@ const Test = ({ title_color }) => {
                       }`}
                       href=""
                     >
-                      مشاركه{' '}
+                      مشاركه
+                    </p>
+                  )}
+                </Menu.Item> */}
+                <Menu.Item>
+                  {({ active }) => (
+                    <p
+                      className={`mt-1 cursor-pointer text-GRAY400 hover:${title_color} ${
+                        active && `${title_color}`
+                      }`}
+                      href=""
+                    >
+                      مشاركة
                     </p>
                   )}
                 </Menu.Item>
-                <Menu.Item>
-                  {/* font-TSExtra */}
+                {/* <Menu.Item>
                   {({ active }) => (
                     <p
                       className={`mt-1 cursor-pointer text-GRAY400  ${
@@ -57,7 +68,7 @@ const Test = ({ title_color }) => {
                       أبلاغ
                     </p>
                   )}
-                </Menu.Item>
+                </Menu.Item> */}
               </section>
             </section>
           </Menu.Items>

@@ -35,13 +35,13 @@ const index = () => {
   let subscripe = true
   const categories = [
     {
-      name: 'الصحه',
+      name: 'الصحة',
       id: '5e5239f352561e1659664a0d',
       theme: 'bg-BLUE',
       text: 'text-BLUE',
     },
     {
-      name: 'اخبار_الفن',
+      name: 'أخبار_الفن',
       id: '618a4c3e1c504ea8f91aae2f',
       theme: 'bg-BLUE',
       text: 'text-BLUE',
@@ -71,7 +71,7 @@ const index = () => {
       text: 'text-RED',
     },
     {
-      name: 'العاب',
+      name: 'ألعاب',
       id: '620ba9f72429d569f754dc17',
       theme: 'bg-GREEN',
       text: 'text-GREEN',
