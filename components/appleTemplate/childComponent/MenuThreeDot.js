@@ -67,47 +67,47 @@ const Test = ({ title_color, category, story }) => {
               <section className="text-black flex w-48 rounded p-1 text-center font-TSbold text-xs lg:w-56 ">
                 <Menu.Item>
                   {({ active }) => (
-                    <Slide delay={100}>
+                    <Fade delay={100}>
                       <img
                         src="./assest/images/facebook.jpg"
                         className="ml-1.5 h-6 rounded-full lg:h-7"
                         alt="social media alzubda facebook"
                       />
-                    </Slide>
+                    </Fade>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <Slide delay={300}>
+                    <Fade delay={300}>
                       <img
                         src="./assest/images/twitter.jpg"
                         className="ml-1.5 h-6 rounded-full lg:h-7"
                         alt="social media alzubda twitter"
                       />
-                    </Slide>
+                    </Fade>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <Slide delay={500}>
+                    <Fade delay={500}>
                       <img
                         src="./assest/images/whatsapp.WebP"
                         className="ml-1.5 h-6 rounded-full lg:h-7"
                         alt="social media alzubda whatsapp"
                       />
-                    </Slide>
+                    </Fade>
                   )}
                   {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <Slide delay={700}>
+                    <Fade delay={700}>
                       <img
                         src=" https://cdn-icons-png.flaticon.com/512/7304/7304848.png "
                         className=" h-6 rounded-full lg:h-7"
                         alt="social media alzubda whatsapp"
                       />
-                    </Slide>
+                    </Fade>
                   )}
                 </Menu.Item>
                 {/* <Menu.Item>
