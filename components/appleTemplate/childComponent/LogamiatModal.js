@@ -109,7 +109,7 @@ export default function LoqaimaModal({
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="h-12 w-12 rounded-full bg-GRAY200"
+                                    className="h-12 w-12"
                                     viewBox="0 0 20 20"
                                     loading="lazy"
                                     fill="#666666"
@@ -147,7 +147,7 @@ export default function LoqaimaModal({
                                   >
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
-                                      className="h-12 w-12 rounded-full bg-GRAY200"
+                                      className="h-12 w-12"
                                       viewBox="0 0 20 20"
                                       fill="#666666"
                                       onClick={() => {

@@ -181,7 +181,7 @@ const Logaimat = ({
                             />
                           ))}
                         <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full cursor-pointer overflow-hidden bg-white opacity-0 transition ease-in-out hover:opacity-80">
-                          <p className="mx-auto w-8/12 text-center font-TSExtra text-2xl lg:pt-24">
+                          <p className="mx-auto w-8/12 pt-10 text-center font-TSExtra text-2xl lg:pt-24">
                             اضغط هنا لمتابعة القراءة
                           </p>
                           <img
