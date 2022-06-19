@@ -4,7 +4,7 @@ import Image from 'next/image'
 import facebook from '../../../public/assest/images/facebook.jpg'
 import twiter from '../../../public/assest/images/twitter.jpg'
 import watsapp from '../../../public/assest/images/youtube.jpg'
-import { Slide } from 'react-awesome-reveal'
+import { Slide, Fade } from 'react-awesome-reveal'
 
 const Test = ({ title_color, category, story }) => {
   // console.log(url)
