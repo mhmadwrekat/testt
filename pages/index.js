@@ -129,6 +129,21 @@ const index = (props) => {
 
   return (
     <React.Fragment>
+      {/* <button class="share-interaction__button">
+        شارِكْ
+        <svg
+          class="icon icon--share icon--grey icon--24 "
+          viewBox="0 0 20 20"
+          version="1.1"
+          aria-hidden="true"
+        >
+          <title>share</title>
+          <path
+            class="icon-main-color"
+            d="M12.62 6.93V3.52L20 9.6l-7.38 6.05v-3.16A17.55 17.55 0 0 0 0 16.57Q2.9 9.3 12.62 6.93z"
+          ></path>
+        </svg>
+      </button> */}
       <HeadComp />
       <div
         dir="rtl"
