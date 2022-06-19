@@ -125,6 +125,7 @@ const ImportantNews = ({
     // console.log(ready_title)
   }
   let stories = category_news && [category_news?.data[0]?._id]
+
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
@@ -453,7 +454,10 @@ const ImportantNews = ({
                           >
                             اقرأ المزيد
                           </p>
-                          <MenuThreeDot title_color={title_color} />
+                          <MenuThreeDot title_color={title_color}
+                          category={item?.primary_category[0]?.category_name}
+                          story={item?.stories_headlines}
+                          />
                         </div>
                       </div>
                     </section>

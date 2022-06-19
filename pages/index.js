@@ -127,7 +127,6 @@ const index = (props) => {
 
   // all_news && console.log('---> ', alternative_search)
 
-  // all_news && console.log('---> ', all_news)
   return (
     <React.Fragment>
       <HeadComp />

@@ -1,7 +1,42 @@
 import React from 'react'
 import { Menu } from '@headlessui/react'
 
-const Test = ({ title_color }) => {
+const Test = ({ title_color, category, story }) => {
+  // console.log(url)
+  // console.log(handle_news_url(category, story))
+  const copyy = (category, story) => {
+    let ready_category = ''
+    let ready_title = ''
+    if (category.includes('%')) {
+      let title = category.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_category = `${title.replace('%', '_')}`
+    } else if (category.includes(' ')) {
+      let title = category.replace(/\s+/g, '_')
+      ready_category = `${title.replace(' ', '_')}`
+    } else {
+      ready_category = category
+    }
+    if (story.includes('%')) {
+      let title = story.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_title = `${title.replace('%', '_')}`
+    } else if (story.includes(' ')) {
+      let title = story.replace(/\s+/g, '_')
+      ready_title = `${title.replace(' ', '_')}`
+    } else {
+      ready_title = story
+    }
+    if (story.includes('?')) {
+      let title = story.replace(/\s+/g, '')
+      ready_title = `${title.replace('?', '_')}`
+    }
+
+    let ready_url = `https://alzubda.com/${ready_title}/${ready_category}`
+
+    navigator.clipboard.writeText(ready_url)
+  }
+
   return (
     <React.Fragment>
       <div className="relative">
@@ -27,7 +62,9 @@ const Test = ({ title_color }) => {
                       className={`cursor-pointer border-b-1 border-GRAY200 pt-2 text-GRAY400 ${
                         active && `${title_color}`
                       }`}
-                      href=""
+                      onClick={() => {
+                        copyy(category, story)
+                      }}
                     >
                       نسخ الرابط
                     </p>
@@ -51,7 +88,6 @@ const Test = ({ title_color }) => {
                       className={`mt-1 cursor-pointer text-GRAY400 hover:${title_color} ${
                         active && `${title_color}`
                       }`}
-                      href=""
                     >
                       مشاركة
                     </p>
