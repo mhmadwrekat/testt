@@ -5,7 +5,7 @@ import moment from 'moment'
 import 'moment/locale/ar'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-// import MenuThreeDot from './childComponent/MenuThreeDot'
+const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 // const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
@@ -280,8 +280,8 @@ const Video = ({
                         </p>
                       </div>
 
-                      <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
-                      <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
+                      {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
+                      <div className="mx-2.5 flex justify-between">
                         <p
                           className={`$rounded-lg cursor-pointer py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                           onClick={() => {
@@ -293,7 +293,7 @@ const Video = ({
                         >
                           اقرا المزيد
                         </p>
-                        {/* <MenuThreeDot title_color={title_color} /> */}
+                        <MenuThreeDot title_color={title_color} />
                       </div>
                     </div>
                   </section>

@@ -7,6 +7,9 @@ import moment from 'moment'
 import 'moment/locale/ar'
 import axios from 'axios'
 import Like from '../../components/appleTemplate/childComponent/Like'
+const MenuThreeDot = dynamic(() =>
+  import('../../components/appleTemplate/childComponent/MenuThreeDot')
+)
 const HeadComp = dynamic(() => import('../../components/page/HeadComp'))
 const Nav = dynamic(() => import('../../components/page/Nav'))
 const Footer = dynamic(() => import('../../components/page/Footer'))
@@ -366,12 +369,12 @@ const index = () => {
                       </p>
                       {/* <p className="font-TSExtra text-GRAY300">{item.time} </p> */}
                     </div>
-                    <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
+                    {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
                     <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
                       <p
                         className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                       ></p>{' '}
-                      {/* <MenuThreeDot title_color={title_color} /> */}
+                      <MenuThreeDot title_color={'text-Purp100'} />
                     </div>
                   </div>
                 </section>

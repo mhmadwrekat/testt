@@ -7,7 +7,7 @@ import 'moment/locale/ar'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-// import MenuThreeDot from './child_comp/MenuThreeDot'
+const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
@@ -330,7 +330,7 @@ const Category_news = ({
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
-                    <div className="my-1 flex  justify-between pt-2.5">
+                    <div className="my-5 flex items-center justify-between">
                       <p
                         className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
                         onClick={() => {
@@ -342,7 +342,7 @@ const Category_news = ({
                       >
                         اقرأ المزيد
                       </p>
-                      {/* <MenuThreeDot title_color={title_color} /> */}
+                      <MenuThreeDot title_color={title_color} />
                     </div>
                   </div>
                 </div>
@@ -426,10 +426,10 @@ const Category_news = ({
                             قبل {moment(item.published_on).fromNow(true)}
                           </p>
                         </div>
-                        <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
-                        <div className="mx-2.5 flex justify-between py-1.5 lg:pt-1">
+                        {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
+                        <div className="mx-2.5 flex items-center justify-between">
                           <p
-                            className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            className={` cursor-pointer rounded-lg py-5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 title,
@@ -440,7 +440,7 @@ const Category_news = ({
                             اقرأ المزيد
                           </p>
 
-                          {/* <MenuThreeDot title_color={title_color} /> */}
+                          <MenuThreeDot title_color={title_color} />
                         </div>
                       </div>
                     </section>

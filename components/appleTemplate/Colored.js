@@ -6,7 +6,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-// import MenuThreeDot from './child_comp/MenuThreeDot'
+const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
@@ -291,7 +291,7 @@ const Colored = ({
                       >
                         اقرأ المزيد
                       </p>
-                      {/* <MenuThreeDot title_color={title_color} /> */}
+                      <MenuThreeDot title_color={text_color} />
                     </div>
                   </div>
                 </div>
@@ -330,14 +330,14 @@ const Colored = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="lg:rounded-b-md lg:rounded-none mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                 />
                               ) : (
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-b-md lg:rounded-none"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                 />
                               ))}
                             <div className="text-black rounded-full bg-white">
@@ -381,7 +381,7 @@ const Colored = ({
                           </p>
                         </div>
 
-                        <div className="mx-2.5 flex justify-between py-1.5 lg:pt-1">
+                        <div className="mx-2.5 flex justify-between">
                           <p
                             className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY200 hover:text-RED`}
                             onClick={() => {
@@ -393,7 +393,7 @@ const Colored = ({
                           >
                             اقرأ المزيد
                           </p>
-                          {/* <MenuThreeDot title_color={title_color} /> */}
+                          <MenuThreeDot title_color={text_color} />
                         </div>
 
                         {/* <svg

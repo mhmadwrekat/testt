@@ -6,7 +6,10 @@ import { BASE_URL } from '../../config/config'
 import moment from 'moment'
 import 'moment/locale/ar'
 import axios from 'axios'
-import Like from '../../components/appleTemplate/childComponent/Like'
+// import Like from '../../components/appleTemplate/childComponent/Like'
+const MenuThreeDot = dynamic(() =>
+  import('../../components/appleTemplate/childComponent/MenuThreeDot')
+)
 const HeadComp = dynamic(() => import('../../components/page/HeadComp'))
 const Nav = dynamic(() => import('../../components/page/Nav'))
 const Footer = dynamic(() => import('../../components/page/Footer'))
@@ -156,12 +159,12 @@ const indexx = () => {
                     {head_news?.publisher_name}
                   </b>
                 </p>
-                <p className="font-TSbold text-GRAY300">
-                  قبل {moment(head_news?.published_on).fromNow(true)}
-                </p>
-              </div>
-              <div className="float-left px-2.5">
-                {/* <MenuThreeDot title_color={title_color} /> */}
+                <div className="flex px-2.5">
+                  <p className="px-2.5 pt-2 font-TSbold text-GRAY300">
+                    قبل {moment(head_news?.published_on).fromNow(true)}
+                  </p>
+                  <MenuThreeDot title_color={title_color} />
+                </div>
               </div>
             </section>
           </section>

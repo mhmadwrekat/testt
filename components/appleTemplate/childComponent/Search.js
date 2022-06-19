@@ -4,7 +4,8 @@ import Link from 'next/link'
 import moment from 'moment'
 import { useRouter } from 'next/router'
 import 'moment/locale/ar'
-// import MenuThreeDot from './child_comp/MenuThreeDot'
+const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
+
 const Like = dynamic(() => import('./Like'))
 
 const Search = ({ data, bg_color, category }) => {
@@ -144,8 +145,8 @@ const Search = ({ data, bg_color, category }) => {
                       </p>
                       {/* {console.log(item?.primary_category[0]?.category_name)} */}
                     </div>
-                    <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
-                    <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
+                    {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
+                    <div className="mx-2.5 flex items-center justify-between">
                       {category ? (
                         <p
                           className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
@@ -172,7 +173,7 @@ const Search = ({ data, bg_color, category }) => {
                         </p>
                       )}
 
-                      {/* <MenuThreeDot title_color={title_color} /> */}
+                      <MenuThreeDot title_color={'text-Purp100'} />
                     </div>
                   </div>
                 </section>

@@ -6,7 +6,7 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-// import MenuThreeDot from './child_comp/MenuThreeDot'
+const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
@@ -282,7 +282,7 @@ const Arround_you = ({
                       {important_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
-                    <div className="my-1 flex  justify-between pt-2.5">
+                    <div className="my-2 flex justify-between">
                       <p
                         className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
                         onClick={() => {
@@ -295,7 +295,7 @@ const Arround_you = ({
                       >
                         اقرأ المزيد
                       </p>
-                      {/* <MenuThreeDot title_color={title_color} /> */}
+                      <MenuThreeDot title_color={text_color} />
                     </div>
                   </div>
                 </div>
@@ -387,7 +387,7 @@ const Arround_you = ({
                             قبل {moment(item.published_on).fromNow(true)}
                           </p>
                         </div>
-                        <div className="mx-2.5 flex justify-between py-1.5 lg:pt-1">
+                        <div className="mx-2.5 flex justify-between">
                           <p
                             className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
@@ -399,7 +399,7 @@ const Arround_you = ({
                           >
                             اقرأ المزيد
                           </p>
-                          {/* <MenuThreeDot title_color={title_color} /> */}
+                          <MenuThreeDot title_color={text_color} />
                         </div>
                       </div>
                     </section>

@@ -19,7 +19,7 @@ const Test = ({ title_color }) => {
             </svg>
           </Menu.Button>
           <Menu.Items>
-            <section className="absolute top-3 left-24 w-32 lg:left-32">
+            <section className="absolute top-0 left-24 w-32 lg:left-32">
               <section className="text-black grid w-48 rounded bg-white p-1 text-center font-TSbold text-sm shadow-lg lg:w-56 ">
                 <Menu.Item>
                   {({ active }) => (

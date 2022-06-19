@@ -7,7 +7,7 @@ import 'moment/locale/ar'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-// import MenuThreeDot from './child_comp/MenuThreeDot'
+const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
@@ -327,7 +327,7 @@ const ImportantNews = ({
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
-                    <div className="my-1 flex  justify-between pt-2.5">
+                    <div className="my-2 flex items-center justify-between">
                       <p
                         className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
                         onClick={() => {
@@ -340,7 +340,7 @@ const ImportantNews = ({
                       >
                         اقرأ المزيد
                       </p>
-                      {/* <MenuThreeDot title_color={title_color} /> */}
+                      <MenuThreeDot title_color={title_color} />
                     </div>
                   </div>
                 </div>
@@ -392,14 +392,14 @@ const ImportantNews = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-b-md lg:rounded-none"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md"
                                 />
                               ) : (
                                 <img
                                   loading="eager"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-b-md lg:rounded-none"
+                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                 />
                               ))}
                             <Like
@@ -440,10 +440,10 @@ const ImportantNews = ({
                             قبل {moment(item.published_on).fromNow(true)}
                           </p>
                         </div>
-                        <div className=" mx-auto w-11/12 pt-1 opacity-60"></div>
-                        <div className="mx-2.5 flex justify-between py-1.5 lg:pt-1">
+                        {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
+                        <div className="mx-2.5 flex items-center justify-between">
                           <p
-                            className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 item?.primary_category[0]?.category_name,
@@ -453,7 +453,7 @@ const ImportantNews = ({
                           >
                             اقرأ المزيد
                           </p>
-                          {/* <MenuThreeDot title_color={title_color} /> */}
+                          <MenuThreeDot title_color={title_color} />
                         </div>
                       </div>
                     </section>
