@@ -168,6 +168,7 @@ const indexx = () => {
                     title_color={title_color}
                     category={router.query.news}
                     story={head_news?.stories_headlines}
+                    fill={'fill-Purp300'}
                   />
                 </div>
               </div>
@@ -182,6 +183,7 @@ const indexx = () => {
             data={related_news}
             bg_color={'bg-Purp300'}
             category={router.query.news}
+            fill={'fill-Purp300'}
           />
         </section>
         {/* {console.log(related_news)} */}

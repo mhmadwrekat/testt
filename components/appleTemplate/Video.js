@@ -297,6 +297,7 @@ const Video = ({
                           title_color={title_color}
                           category={item?.primary_category[0]?.category_name}
                           story={item?.stories_headlines}
+                          fill={fill_color}
                         />
                       </div>
                     </div>

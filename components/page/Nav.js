@@ -608,7 +608,7 @@ const Nav = ({ showCategory, all_news, alternative_search }) => {
                       {search_key}
                     </p>
                   </div>
-                  <Search data={search_data} bg_color={'bg-GREEN'} />
+                  <Search data={search_data} bg_color={'bg-Purp100'} />
                 </section>
               )
               // ) : (

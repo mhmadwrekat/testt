@@ -7,7 +7,7 @@ import 'moment/locale/ar'
 const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
 const Like = dynamic(() => import('./Like'))
 
-const AllData = ({ data, bg_color, category }) => {
+const AllData = ({ data, bg_color, category, fill }) => {
   const router = useRouter()
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
@@ -170,6 +170,7 @@ const AllData = ({ data, bg_color, category }) => {
                         title_color={'text-Purp100'}
                         category={category}
                         story={item?.stories_headlines}
+                        fill={fill}
                       />
                     </div>
                   </div>

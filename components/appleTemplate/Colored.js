@@ -298,6 +298,7 @@ const Colored = ({
                             ?.category_name
                         }
                         story={important_news?.data[0]?.stories_headlines}
+                        fill={fill_color}
                       />
                     </div>
                   </div>
@@ -404,6 +405,7 @@ const Colored = ({
                             title_color={text_color}
                             category={item?.primary_category[0]?.category_name}
                             story={item?.stories_headlines}
+                            fill={fill_color}
                           />
                         </div>
 

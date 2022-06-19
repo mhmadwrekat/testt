@@ -39,84 +39,98 @@ const index = () => {
       id: '5e5239f352561e1659664a0d',
       theme: 'bg-BLUE',
       text: 'text-BLUE',
+      fill: 'fill-BLUE',
     },
     {
       name: 'أخبار_الفن',
       id: '618a4c3e1c504ea8f91aae2f',
       theme: 'bg-BLUE',
       text: 'text-BLUE',
+      fill: 'fill-BLUE',
     },
     {
       name: 'رياضة',
       id: '5e4e90ac52561e16596649f9',
       theme: 'bg-BLUE',
       text: 'text-BLUE',
+      fill: 'fill-BLUE',
     },
     {
       name: 'لايف_ستايل',
       id: '5e523b5752561e1659664a0f',
       theme: 'bg-RED',
       text: 'text-RED',
+      fill: 'fill-RED',
     },
     {
       name: 'أهم_الأخبار',
       id: 'أهم الأخبار',
       theme: 'bg-RED',
       text: 'text-RED',
+      fill: 'fill-RED',
     },
     {
       name: 'ترند',
       id: '5e52369452561e1659664a09',
       theme: 'bg-RED',
       text: 'text-RED',
+      fill: 'fill-RED',
     },
     {
       name: 'ألعاب',
       id: '620ba9f72429d569f754dc17',
       theme: 'bg-GREEN',
       text: 'text-GREEN',
+      fill: 'fill-GREEN',
     },
     {
       name: 'تكنولوجيا',
       id: '618a4c6d1c504ea8f91aae30',
       theme: 'bg-GREEN',
       text: 'text-GREEN',
+      fill: 'fill-GREEN',
     },
     {
       name: 'مال_وأعمال',
       id: '5e5239dd52561e1659664a0c',
       theme: 'bg-GREEN',
       text: 'text-GREEN',
+      fill: 'fill-GREEN',
     },
     {
       name: 'غزو_أوكرانيا',
       id: '62177bdd42a1b268827e388b',
       theme: 'bg-YELLOW',
       text: 'text-YELLOW',
+      fill: 'fill-YELLOW',
     },
     {
       name: 'الخليج_العربي',
       id: '5e4e770752561e16596649f6',
       theme: 'bg-YELLOW',
       text: 'text-YELLOW',
+      fill: 'fill-YELLOW',
     },
     {
       name: 'الشأن_الدولي',
       id: '5e5236c052561e1659664a0a',
       theme: 'bg-YELLOW',
       text: 'text-YELLOW',
+      fill: 'fill-YELLOW',
     },
     {
       name: 'الشرق_الاوسط',
       id: '5e64ea3452561e1659664abb',
       theme: 'bg-YELLOW',
       text: 'text-YELLOW',
+      fill: 'fill-YELLOW',
     },
     {
       name: 'مخصص_لك',
       id: 'مخصص لك',
       theme: 'bg-Purp200',
       text: 'text-Purp200',
+      fill: 'fill-Purp200',
     },
 
     {
@@ -124,6 +138,7 @@ const index = () => {
       id: 'يدور حولك',
       theme: 'bg-Purp100',
       text: 'text-Purp100',
+      fill: 'fill-Purp100',
     },
   ]
   const handle_title_name = (story) => {
@@ -155,6 +170,16 @@ const index = () => {
     categories.map((item) => {
       if (item.name === category) {
         ready = item.theme
+      } else {
+      }
+    })
+    return ready
+  }
+  const category_fill = (category) => {
+    let ready = 'fill-Purp300'
+    categories.map((item) => {
+      if (item.name === category) {
+        ready = item.fill
       } else {
       }
     })
@@ -301,7 +326,7 @@ const index = () => {
             {all_news?.slice(0, 3).map((item) => {
               return (
                 <section className="" key={item?._id}>
-                  <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
+                  <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
                     <div>
                       <p
                         className={`${category_theme(
@@ -378,8 +403,10 @@ const index = () => {
                         title_color={'text-Purp100'}
                         category={item?.primary_category[0]?.category_name}
                         story={item?.stories_headlines}
+                        fill={category_fill(router.query.category)}
                       />
                     </div>
+                    {/* {console.log(category_fill(router.query.category))} */}
                   </div>
                 </section>
               )
@@ -389,6 +416,7 @@ const index = () => {
             data={all_news}
             bg_color={category_theme(router.query.category)}
             category={router.query.category}
+            fill={category_fill(router.query.category)}
           />
         </section>
       </div>

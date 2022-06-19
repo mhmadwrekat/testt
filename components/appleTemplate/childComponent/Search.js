@@ -177,6 +177,7 @@ const Search = ({ data, bg_color, category }) => {
                         title_color={'text-Purp100'}
                         category={item?.primary_category[0]?.category_name}
                         story={item?.stories_headlines}
+                        fill={'fill-Purp300'}
                       />
                     </div>
                   </div>
