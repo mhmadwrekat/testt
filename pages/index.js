@@ -116,8 +116,18 @@ const index = (props) => {
     //   ? setUserId(localStorage.getItem('user_id'))
     //   : ''
   }, [user_id])
+
   // all_news && console.log(all_news[8].is_subscribed)
-  console.log('---> ', user_id)
+
+  let alternative_search = all_news && [
+    ...all_news[0].data.slice(0, 3),
+    ...all_news[11].data.slice(0, 3),
+    ...all_news[4].data.slice(0, 3),
+  ]
+
+  // all_news && console.log('---> ', alternative_search)
+
+  // all_news && console.log('---> ', all_news)
   return (
     <React.Fragment>
       <HeadComp />
@@ -127,7 +137,11 @@ const index = (props) => {
         className="text-black bg-white"
         translate="no"
       >
-        <Nav showCategory={showCategory} all_news={all_news} />
+        <Nav
+          showCategory={showCategory}
+          all_news={all_news}
+          alternative_search={alternative_search}
+        />
         {all_news && (
           <React.Fragment>
             <ImportantNews

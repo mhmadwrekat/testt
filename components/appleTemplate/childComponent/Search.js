@@ -65,16 +65,22 @@ const Search = ({ data, bg_color, category }) => {
         <div dir="rtl" id="project_body" translate="no">
           <section className="grid grid-cols-1 gap-5 pt-5 lg:grid-cols-3 lg:gap-16 lg:pt-10">
             {data?.slice(0, 24).map((item) => {
-              // console.log(item?.primary_category[0]?.category_name)
+              //   console.log(item?.primary_category[0]?.category_name)
               return (
                 <section key={item?._id}>
                   <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
                     <div>
-                      <p
-                        className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
-                      >
-                        {/* {item?.primary_category[0]?.category_name} */}
-                      </p>{' '}
+                      {item?.primary_category[0]?.category_name ? (
+                        <p
+                          className={`${bg_color} rounded-t-md px-1 pt-1 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                        >
+                          {item?.primary_category[0]?.category_name}
+                        </p>
+                      ) : (
+                        <p
+                          className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                        ></p>
+                      )}
                     </div>
                     <section className="grid bg-GRAY100">
                       <div className="relative w-full lg:w-auto">

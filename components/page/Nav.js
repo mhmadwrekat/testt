@@ -13,7 +13,7 @@ const Search = dynamic(() => import('../appleTemplate/childComponent/Search'))
 //import MobileMenu from './MobileMenu'
 // import moment from 'moment'
 // import 'moment/locale/ar'
-const Nav = ({ showCategory, all_news }) => {
+const Nav = ({ showCategory, all_news, alternative_search }) => {
   const [active, setActive] = useState(true)
   const [showSearch, setShowSearch] = useState(false)
   const [token, setUserToken] =
@@ -22,6 +22,10 @@ const Nav = ({ showCategory, all_news }) => {
       : useState()
   const [search_key, setSearchKey] = useState('')
   const [search_data, setSearchData] = useState()
+  const [loader, setLoader] = useState(null)
+
+  const [searches, setSearches] = useState(false)
+
   let bg_color = 'bg-GREEN'
 
   const router = useRouter()
@@ -44,60 +48,8 @@ const Nav = ({ showCategory, all_news }) => {
     },
   ]
 
-  const subscribe_item = [
-    // {
-    //   name: 'الصحه',
-    //   link: '#الصحه',
-    //   id: 1,
-    // },
-    // {
-    //   name: 'الخليج العربي',
-    //   link: '#الخليج العربي',
-    //   id: 2,
-    // },
-    // {
-    //   name: 'العاب',
-    //   link: '#العاب',
-    //   id: 3,
-    // },
-  ]
-  const unsubscribe_item = [
-    // {
-    //   name: 'غزو اوكرانيا',
-    //   link: '#اوكرانيا',
-    //   id: 4,
-    // },
-    // {
-    //   name: 'ترند',
-    //   link: '#ترند',
-    //   id: 5,
-    // },
-    // {
-    //   name: 'رياضه',
-    //   link: '#الرياضه',
-    //   id: 6,
-    // },
-    // {
-    //   name: 'لايف ستايل',
-    //   link: '#لايف ستايل',
-    //   id: 7,
-    // },
-    // {
-    //   name: 'تكنولوجيا',
-    //   link: '#تكنولوجيا',
-    //   id: 8,
-    // },
-    // {
-    //   name: 'الشأن الدولي',
-    //   link: '#الشأن الدولي',
-    //   id: 9,
-    // },
-    // {
-    //   name: 'الشرق الاوسط',
-    //   link: '#الشرق الاوسط',
-    //   id: 10,
-    // },
-  ]
+  const subscribe_item = []
+  const unsubscribe_item = []
   let count = 0
   const media_item = [
     {
@@ -188,21 +140,21 @@ const Nav = ({ showCategory, all_news }) => {
           name: item?.section_name,
           link: `#${item?.section_name}`,
           id: count++,
-          width: 'w-28',
+          width: 'w-32',
         })
       } else if (item?.section_name.length >= 9) {
         subscribe_item.push({
           name: item?.section_name,
           link: `#${item?.section_name}`,
           id: count++,
-          width: 'w-24',
+          width: 'w-28',
         })
       } else {
         subscribe_item.push({
           name: item?.section_name,
           link: `#${item?.section_name}`,
           id: count++,
-          width: 'w-12',
+          width: 'w-14',
         })
       }
       // console.log('yes -> ', item?.section_name)
@@ -213,21 +165,21 @@ const Nav = ({ showCategory, all_news }) => {
           name: item?.section_name,
           link: `#${item?.section_name}`,
           id: count++,
-          width: 'w-28',
+          width: 'w-32',
         })
       } else if (item?.section_name.length >= 9) {
         unsubscribe_item.push({
           name: item?.section_name,
           link: `#${item?.section_name}`,
           id: count++,
-          width: 'w-24',
+          width: 'w-28',
         })
       } else {
         unsubscribe_item.push({
           name: item?.section_name,
           link: `#${item?.section_name}`,
           id: count++,
-          width: 'w-12',
+          width: 'w-14',
         })
       }
       // console.log('No -> ', item?.section_name)
@@ -240,7 +192,10 @@ const Nav = ({ showCategory, all_news }) => {
 
   const handelFeedback = () => {
     event.preventDefault()
-    setSearchKey(event.target.name.value)
+    setLoader(true)
+    // setSearches(true)
+    setSearchKey(`نتائج بحث ${event.target.name.value}`)
+
     axios
       .get(
         `${BASE_URL}/v1/User/Stories/Search/Keywords?phrase=${event.target.name.value}`,
@@ -252,7 +207,14 @@ const Nav = ({ showCategory, all_news }) => {
       )
       .then(function (response) {
         console.log(response.data.data)
-        setSearchData(response.data.data)
+        if (response.data.data.length > 0) {
+          setSearchData(response.data.data)
+          setLoader(false)
+        } else {
+          setSearchData(alternative_search)
+          setLoader(false)
+          setSearchKey('لم يتم العثور على نتائج')
+        }
         // console.log(response)
       })
       .catch(function (error) {
@@ -365,12 +327,36 @@ const Nav = ({ showCategory, all_news }) => {
               />
               <button
                 type="submit"
-                className="rounded-l-md bg-Purp500 py-2 px-8 font-TSbold text-base text-white lg:text-lg"
+                className="flex rounded-l-md bg-Purp500 py-2 px-8 font-TSbold text-base text-white lg:text-lg"
               >
                 بحث
+                {loader ? (
+                  <svg
+                    class="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                    ></circle>
+                    <path
+                      class="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                ) : null}
+                {/* <p className="animate-spin">جاري</p> */}
               </button>
             </form>
-
+            {
+              // animate-spin
+            }
             {/* <Link href="/Search">
               <div className="pointer-events-auto absolute ">
                 <svg
@@ -425,13 +411,13 @@ const Nav = ({ showCategory, all_news }) => {
       {showCategory ? (
         <section className="sticky top-0 left-0 z-50 w-screen">
           <section className="flex w-screen justify-center bg-Purp100 py-0 text-center font-TSbold text-sm text-white lg:text-base">
-            <div className="mx-auto my-3 flex w-screen items-center justify-start overflow-x-auto lg:my-4 lg:mt-3 lg:justify-center">
+            <div className="mx-auto my-0 mt-2 flex w-screen items-center justify-start overflow-x-auto lg:my-4 lg:mt-4 lg:justify-center">
               <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
                 {/* <img
                   src="./assest/images/additional.jpg"
                   className="h-8 w-8 bg-Purp300"
                 /> */}
-                <svg
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-8 w-8 rounded-full bg-Purp300 lg:h-10 lg:w-10"
                   viewBox="0 0 20 20"
@@ -441,6 +427,19 @@ const Nav = ({ showCategory, all_news }) => {
                     fillRule="evenodd"
                     d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
                     clipRule="evenodd"
+                  />
+                </svg> */}
+                <svg
+                  fill="#695CAD"
+                  className="h-8 w-8 rounded-full bg-Purp300 lg:h-9 lg:w-9"
+                  viewBox="0 0 21 21"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m10.5 1.5v5.25c-0.99456 0-1.9484 0.39509-2.6516 1.0984s-1.0984 1.6571-1.0984 2.6516c0 0.9946 0.39509 1.9484 1.0984 2.6517 0.70326 0.7032 1.6571 1.0983 2.6516 1.0983v5.25c4.9706 0 9-4.0294 9-9 0-4.9706-4.0294-9-9-9zm0 12.75v-7.5c0.9946 0 1.9484 0.39509 2.6517 1.0984 0.7032 0.70326 1.0983 1.6571 1.0983 2.6516 0 0.9946-0.3951 1.9484-1.0983 2.6517-0.7033 0.7032-1.6571 1.0983-2.6517 1.0983zm-10.5-3.75c0-5.799 4.701-10.5 10.5-10.5 5.799 0 10.5 4.701 10.5 10.5 0 5.799-4.701 10.5-10.5 10.5-5.799 0-10.5-4.701-10.5-10.5z"
+                    clipRule="evenodd"
+                    fill="#695CAD"
+                    fillRule="evenodd"
                   />
                 </svg>
                 <div className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
@@ -552,9 +551,30 @@ const Nav = ({ showCategory, all_news }) => {
           </div>
           <button
             type="submit"
-            className="rounded-l-md bg-Purp500 py-2 px-8 font-TSbold text-base text-white lg:text-lg"
+            className="flex rounded-l-md bg-Purp500 py-2 px-8 font-TSbold text-base text-white lg:text-lg"
           >
             بحث
+            {loader ? (
+              <svg
+                className="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            ) : null}
           </button>
         </form>
       ) : null}
@@ -562,17 +582,42 @@ const Nav = ({ showCategory, all_news }) => {
       <React.Fragment>
         <div dir="rtl" id="project_body" translate="no">
           <section className="text-black mx-auto grid w-11/12 bg-white lg:w-10/12">
-            {search_data?.length > 0 && (
-              <>
-                <p
-                  className={`mt-8 font-TSExtra text-2xl text-GREEN lg:text-4xl`}
-                >
-                  نتائج بحث {search_key}
-                </p>
+            {
+              search_data?.length > 0 && (
+                <section>
+                  <p
+                    className={`mt-8 font-TSExtra text-base text-GRAY400 lg:text-2xl`}
+                  >
+                    {search_key}
+                  </p>
 
-                <Search data={search_data} bg_color={'bg-GREEN'} />
-              </>
-            )}
+                  <Search data={search_data} bg_color={'bg-GREEN'} />
+                </section>
+              )
+              // ) : (
+              //   <div>
+              //     <div className="flex pt-5">
+              //       <svg
+              //         className="h-14 w-14"
+              //         fill="none"
+              //         viewBox="0 0 74 74"
+              //         xmlns="http://www.w3.org/2000/svg"
+              //       >
+              //         <path
+              //           d="m64.904 57.68-24.632-45.744c-1.746-3.2433-6.397-3.2433-8.1444 0l-24.631 45.744c-0.37909 0.7041-0.56914 1.4945-0.55162 2.2939 0.01753 0.7995 0.24203 1.5808 0.65161 2.2676s0.99023 1.2556 1.6853 1.6511c0.69504 0.3954 1.4807 0.6038 2.2804 0.605h49.269c0.8003 1e-4 1.5869-0.2075 2.2829-0.6024 0.6961-0.3949 1.2778-0.9636 1.6882-1.6506s0.6355-1.4688 0.6534-2.2689c0.0178-0.8-0.1722-1.591-0.5516-2.2957zm-28.704-0.2645c-0.5717 0-1.1306-0.1695-1.6059-0.4871-0.4754-0.3176-0.8459-0.7691-1.0647-1.2973s-0.276-1.1094-0.1645-1.6701c0.1116-0.5607 0.3869-1.0758 0.7911-1.4801 0.4043-0.4042 0.9194-0.6795 1.4801-0.7911 0.5607-0.1115 1.1419-0.0543 1.6701 0.1645s0.9797 0.5893 1.2973 1.0647c0.3176 0.4753 0.4871 1.0342 0.4871 1.6059 0 0.3796-0.0747 0.7555-0.22 1.1062s-0.3582 0.6694-0.6266 0.9378-0.5871 0.4813-0.9378 0.6266-0.7266 0.22-1.1062 0.22zm3.1392-29.072-0.8296 17.633c0 0.6133-0.2436 1.2015-0.6773 1.6352s-1.0219 0.6773-1.6352 0.6773-1.2015-0.2436-1.6352-0.6773c-0.4336-0.4337-0.6773-1.0219-0.6773-1.6352l-0.8296-17.626c-0.0186-0.4212 0.0477-0.8418 0.1951-1.2368s0.3728-0.7563 0.6627-1.0623c0.29-0.306 0.6386-0.5505 1.0251-0.719 0.3865-0.1684 0.803-0.2573 1.2245-0.2613h0.0304c0.4244-2e-4 0.8445 0.0855 1.2349 0.2521s0.743 0.4106 1.0365 0.7172 0.5218 0.6695 0.6712 1.0668 0.2168 0.8207 0.1981 1.2447l0.0057-0.0086z"
+              //           fill="#ddd"
+              //         />
+              //       </svg>
+              //       <p
+              //         className={`mt-5 font-TSExtra text-sm text-GRAY400 lg:text-xl`}
+              //       >
+              //         لم يتم العثور على نتائج
+              //       </p>
+              //     </div>
+              //     <Search data={alternative_search} bg_color={'bg-GREEN'} />
+              //   </div>
+              // )
+            }
           </section>
         </div>
       </React.Fragment>

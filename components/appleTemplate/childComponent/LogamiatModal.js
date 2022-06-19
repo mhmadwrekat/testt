@@ -84,7 +84,7 @@ export default function LoqaimaModal({
                       <div className="relative hidden p-7 lg:flex">
                         {sum > 0 && (
                           <div
-                            className="control-arrow control-next absolute top-80 left-0 z-50 cursor-pointer"
+                            className="control-arrow control-next absolute top-96 left-0 z-50 cursor-pointer"
                             aria-label="Left Align"
                             onClick={() => {
                               prev()
@@ -121,6 +121,7 @@ export default function LoqaimaModal({
                           return (
                             <div key={item._id} className="">
                               <img
+                                loading="eager"
                                 className="h-screen"
                                 src={item.screen_link}
                                 alt={item.screen_link}
@@ -132,29 +133,32 @@ export default function LoqaimaModal({
                         <div className="h-screen bg-white" />
                       )}
                     </Carousel>
-                    <div className="bg-black">
-                      <div className="relative hidden p-7 lg:flex">
-                        <div
-                          className="control-arrow control-next absolute top-80 right-0 z-50 cursor-pointer"
-                          onClick={() => {
-                            next()
-                          }}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-12 w-12"
-                            viewBox="0 0 20 20"
-                            fill="#666666"
+                    {loqaimatScreens.length > 0 && (
+                      <div className="bg-black">
+                        <div className="relative hidden p-7 lg:flex">
+                          <div
+                            className="control-arrow control-next absolute top-96 right-0 z-50 cursor-pointer"
+                            onClick={() => {
+                              next()
+                            }}
                           >
-                            <path
-                              fillRule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-12 w-12"
+                              viewBox="0 0 20 20"
+                              loading="lazy"
+                              fill="#666666"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </section>
 
                   {/* <button
