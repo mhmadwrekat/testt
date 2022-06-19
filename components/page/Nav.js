@@ -189,13 +189,11 @@ const Nav = ({ showCategory, all_news, alternative_search }) => {
     setActive(false)
     // console.log(active)
   }
-
   const handelFeedback = () => {
     event.preventDefault()
+    let kee = event.target.name.value
     setLoader(true)
     // setSearches(true)
-    setSearchKey(`نتائج بحث ${event.target.name.value}`)
-
     axios
       .get(
         `${BASE_URL}/v1/User/Stories/Search/Keywords?phrase=${event.target.name.value}`,
@@ -206,10 +204,11 @@ const Nav = ({ showCategory, all_news, alternative_search }) => {
         }
       )
       .then(function (response) {
-        console.log(response.data.data)
         if (response.data.data.length > 0) {
+          console.log(kee)
           setSearchData(response.data.data)
           setLoader(false)
+          setSearchKey(`نتائج بحث ${kee}`)
         } else {
           setSearchData(alternative_search)
           setLoader(false)
