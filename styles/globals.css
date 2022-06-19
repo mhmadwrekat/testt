@@ -75,11 +75,5 @@ a {
 }
 
 .swiper-button-prev {
-  background-image: url('https://www.seekpng.com/png/detail/438-4383755_how-to-set-use-black-next-button-svg.png');
-  background-repeat: no-repeat;
-  background-size: 12px 19px !important;
-  height: 52px !important;
-  width: 52px !important;
-  background-position: center;
-  right: -15px !important;
+  display: none;
 }
