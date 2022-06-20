@@ -221,7 +221,6 @@ const Test = ({ title_color, category, story, fill }) => {
                             title={
                               '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
                             }
-                            separator=":: "
                           >
                             <TwitterIcon size={30} round className="ml-1.5" />
                           </TwitterShareButton>
@@ -237,7 +236,7 @@ const Test = ({ title_color, category, story, fill }) => {
                  alt="social media alzubda whatsapp"
                /> */}
                           <WhatsappShareButton
-                            url={share_link}
+                            url={`${share_link}`}
                             title={
                               '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
                             }
@@ -257,17 +256,13 @@ const Test = ({ title_color, category, story, fill }) => {
                  alt="social media alzubda facebook"
                /> */}
                           <FacebookShareButton
-                            url={share_link}
+                            url={`${share_link}`}
                             quote={
                               '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
                             }
                             hashtag={'#الزبدة'}
                           >
-                            <FacebookMessengerIcon
-                              size={30}
-                              round
-                              className="ml-1.5"
-                            />
+                            <FacebookIcon size={30} round className="ml-1.5" />
                           </FacebookShareButton>
                         </Fade>
                       )}
