@@ -557,14 +557,13 @@ const Nav = ({
                 />
               </svg>
             )}
-
             <input
               type="text"
               name="name"
               id="name"
               placeholder="محرك البحث"
-              className="w-44 rounded-r-md bg-GRAY200 py-2 pr-8 text-base placeholder-white lg:w-96 lg:text-lg"
-            />
+              className="w-44 bg-GRAY200 py-2 pr-8 text-base placeholder-white lg:w-96 lg:text-lg"
+            ></input>
           </div>
           <button
             type="submit"
