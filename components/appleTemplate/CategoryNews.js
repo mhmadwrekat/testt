@@ -232,7 +232,15 @@ const Category_news = ({
                       className={`${bg_color} hover:underlin rounded-t-md py-3.5 text-right font-TSbold text-base text-white`}
                     ></p>
                   </div>
-                  <div className=" relative h-56 w-full lg:h-80">
+                  <div
+                    className="relative h-56 w-full cursor-pointer lg:h-80"
+                    onClick={() => {
+                      handle_news_redirection_story(
+                        title,
+                        category_news?.data[0]?.stories_headlines
+                      )
+                    }}
+                  >
                     {/* Desktop View */}
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
@@ -315,7 +323,15 @@ const Category_news = ({
                       )}
                     </div>
                   </div>
-                  <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
+                  <div
+                    className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
+                    onClick={() => {
+                      handle_news_redirection_story(
+                        title,
+                        category_news?.data[0]?.stories_headlines
+                      )
+                    }}
+                  >
                     <p>
                       <b className="text-red-800 font-TSbold">
                         {category_news?.data[0]?.publisher_name}
@@ -330,14 +346,38 @@ const Category_news = ({
                   </div>
 
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl">
+                    <div
+                      className="mb-2 cursor-pointer font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          title,
+                          category_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {category_news?.data[0]?.stories_headlines}
                     </div>
-                    <p className=" hidden h-36 font-TSmedium text-base lg:grid lg:h-32">
+                    <p
+                      className="hidden h-36 cursor-pointer font-TSmedium text-base lg:grid lg:h-32"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          title,
+                          category_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {category_news?.data[0]?.stories_content.slice(0, 335)}
                       ......
                     </p>
-                    <p className="grid h-24 font-TSmedium text-base md:grid lg:hidden lg:h-32">
+                    <p
+                      className="grid h-24 cursor-pointer font-TSmedium text-base md:grid lg:hidden lg:h-32"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          title,
+                          category_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
@@ -383,7 +423,15 @@ const Category_news = ({
                             className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white`}
                           ></p>{' '}
                         </div>
-                        <section className="flex bg-GRAY100 lg:grid ">
+                        <section
+                          className="flex  cursor-pointer bg-GRAY100 lg:grid "
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              title,
+                              item?.stories_headlines
+                            )
+                          }}
+                        >
                           <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
@@ -432,7 +480,15 @@ const Category_news = ({
                           </div>
                         </section>
 
-                        <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
+                        <div
+                          className="flex cursor-pointer justify-between px-4 font-TSlight text-xs lg:hidden"
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              title,
+                              item?.stories_headlines
+                            )
+                          }}
+                        >
                           <p>
                             <b className=" text-red-800 font-TSExtra">
                               {item.publisher_name}

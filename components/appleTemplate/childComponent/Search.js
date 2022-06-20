@@ -83,7 +83,15 @@ const Search = ({ data, bg_color, category }) => {
                         ></p>
                       )}
                     </div>
-                    <section className="grid bg-GRAY100">
+                    <section
+                      className="grid cursor-pointer bg-GRAY100"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          category,
+                          item?.stories_headlines
+                        )
+                      }}
+                    >
                       <div className="relative w-full lg:w-auto">
                         {item?.stories_media_url[0] &&
                           (item?.stories_media_url[0].includes('youtube') ||

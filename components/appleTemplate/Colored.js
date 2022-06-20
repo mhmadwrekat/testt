@@ -180,7 +180,16 @@ const Colored = ({
                       }{' '}
                     </p>{' '}
                   </div>
-                  <div className="relative max-w-full">
+                  <div
+                    className="relative max-w-full cursor-pointer"
+                    onClick={() => {
+                      handle_news_redirection_story(
+                        important_news?.data[0]?.primary_category[0]
+                          ?.category_name,
+                        important_news?.data[0]?.stories_headlines
+                      )
+                    }}
+                  >
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
                     {/* {console.log(important_news_img)} */}
@@ -261,9 +270,14 @@ const Colored = ({
                     </div>
                   </div>
                   <div
-                    className=" my-2 flex justify-between px-2.5
-                  font-TSlight text-sm
-                  "
+                    className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
+                    onClick={() => {
+                      handle_news_redirection_story(
+                        important_news?.data[0]?.primary_category[0]
+                          ?.category_name,
+                        important_news?.data[0]?.stories_headlines
+                      )
+                    }}
                   >
                     <p>
                       <b className="text-red-600 font-TSbold">
@@ -278,14 +292,41 @@ const Colored = ({
                     </p>
                   </div>
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl">
+                    <div
+                      className="mb-2 cursor-pointer font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          important_news?.data[0]?.primary_category[0]
+                            ?.category_name,
+                          important_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {important_news?.data[0]?.stories_headlines}
                     </div>
-                    <p className=" hidden h-36 font-TSmedium text-base lg:grid lg:h-32">
+                    <p
+                      className="hidden h-36 cursor-pointer font-TSmedium text-base lg:grid lg:h-32"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          important_news?.data[0]?.primary_category[0]
+                            ?.category_name,
+                          important_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {important_news?.data[0]?.stories_content.slice(0, 335)}
                       ......
                     </p>
-                    <p className="grid h-24 font-TSmedium text-base md:grid lg:hidden lg:h-32">
+                    <p
+                      className="grid h-24 cursor-pointer font-TSmedium text-base md:grid lg:hidden lg:h-32"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          important_news?.data[0]?.primary_category[0]
+                            ?.category_name,
+                          important_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {important_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
@@ -338,7 +379,15 @@ const Colored = ({
                             ></p>
                           )}
                         </div>
-                        <section className={`${card_color} flex lg:grid`}>
+                        <section
+                          className={`${card_color} flex cursor-pointer lg:grid`}
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              item?.primary_category[0]?.category_name,
+                              item?.stories_headlines
+                            )
+                          }}
+                        >
                           <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
@@ -391,11 +440,27 @@ const Colored = ({
 
                         <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                           <p>
-                            <b className=" text-red-600 font-TSExtra">
+                            <b
+                              className="text-red-600 cursor-pointer font-TSExtra"
+                              onClick={() => {
+                                handle_news_redirection_story(
+                                  item?.primary_category[0]?.category_name,
+                                  item?.stories_headlines
+                                )
+                              }}
+                            >
                               {item.publisher_name}
                             </b>
                           </p>
-                          <p className="font-TSExtra">
+                          <p
+                            className="cursor-pointer font-TSExtra"
+                            onClick={() => {
+                              handle_news_redirection_story(
+                                item?.primary_category[0]?.category_name,
+                                item?.stories_headlines
+                              )
+                            }}
+                          >
                             قبل {moment(item.published_on).fromNow(true)}
                           </p>
                         </div>

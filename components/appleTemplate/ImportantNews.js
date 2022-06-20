@@ -222,7 +222,7 @@ const ImportantNews = ({
           <section className="w-12/12 lg:w-12/12 mx-auto">
             <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 ">
               <section>
-                <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
+                <div className=" rounded-lg bg-GRAY100  shadow-lg" id="card">
                   <div className="">
                     <p
                       className={`${bg_color} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white lg:pr-8`}
@@ -233,7 +233,16 @@ const ImportantNews = ({
                       }
                     </p>
                   </div>
-                  <div className=" relative h-56 w-full lg:h-80">
+                  <div
+                    className=" relative h-56 w-full cursor-pointer lg:h-80"
+                    onClick={() => {
+                      handle_news_redirection_story(
+                        category_news?.data[0]?.primary_category[0]
+                          ?.category_name,
+                        category_news?.data[0]?.stories_headlines
+                      )
+                    }}
+                  >
                     {/* Desktop View */}
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
@@ -243,7 +252,7 @@ const ImportantNews = ({
                       important_news_img.includes('youtu.be') ? (
                         <img
                           loading="eager"
-                          src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                          src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
@@ -259,26 +268,6 @@ const ImportantNews = ({
                     <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
                       {/* {console.log(category_news.data[0]._id)} */}
                       {like ? (
-                        // <svg
-                        //   xmlns="http://www.w3.org/2000/svg"
-                        //   className=" h-7 w-7 cursor-pointer"
-                        //   fill="#FF0000"
-                        //   viewBox="0 0 24 24"
-                        //   stroke="#FF0000"
-                        //   strokeWidth="2"
-                        //   onClick={() => {
-                        //     handle_like(
-                        //       category_news?.data[0]?._id,
-                        //       category_news?.data[0]?.is_loved
-                        //     )
-                        //   }}
-                        // >
-                        //   <path
-                        //     strokeLinecap="round"
-                        //     strokeLinejoin="round"
-                        //     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                        //   />
-                        // </svg>
                         <img
                           src="./assest/like-animation.gif"
                           className=" h-7 w-7 cursor-pointer"
@@ -314,7 +303,16 @@ const ImportantNews = ({
                       )}
                     </div>
                   </div>
-                  <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
+                  <div
+                    className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
+                    onClick={() => {
+                      handle_news_redirection_story(
+                        category_news?.data[0]?.primary_category[0]
+                          ?.category_name,
+                        category_news?.data[0]?.stories_headlines
+                      )
+                    }}
+                  >
                     <p>
                       <b className="text-red-800 font-TSbold">
                         {category_news?.data[0]?.publisher_name}
@@ -328,14 +326,41 @@ const ImportantNews = ({
                     </p>
                   </div>
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl">
+                    <div
+                      className="mb-2 cursor-pointer font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          category_news?.data[0]?.primary_category[0]
+                            ?.category_name,
+                          category_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {category_news?.data[0]?.stories_headlines}
                     </div>
-                    <p className=" hidden h-36 font-TSmedium text-base lg:grid lg:h-32">
+                    <p
+                      className="hidden h-36 cursor-pointer font-TSmedium text-base lg:grid lg:h-32"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          category_news?.data[0]?.primary_category[0]
+                            ?.category_name,
+                          category_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {category_news?.data[0]?.stories_content.slice(0, 335)}
                       ......
                     </p>
-                    <p className="grid h-24 font-TSmedium text-base md:grid lg:hidden lg:h-32">
+                    <p
+                      className="grid h-24 cursor-pointer font-TSmedium text-base md:grid lg:hidden lg:h-32"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          category_news?.data[0]?.primary_category[0]
+                            ?.category_name,
+                          category_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
@@ -377,10 +402,18 @@ const ImportantNews = ({
                         <HelloText />
                       </InView> */}
                       <div
-                        className=" rounded-lg bg-GRAY100 shadow-lg"
+                        className="rounded-lg bg-GRAY100 shadow-lg"
                         id="card"
                       >
-                        <div>
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              item?.primary_category[0]?.category_name,
+                              item?.stories_headlines
+                            )
+                          }}
+                        >
                           {item?.primary_category[0]?.category_name ? (
                             <p
                               className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white lg:pr-5`}
@@ -401,8 +434,24 @@ const ImportantNews = ({
                             </p>
                           )}
                         </div>
-                        <section className="flex bg-GRAY100 lg:grid ">
-                          <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
+                        <section
+                          className="flex cursor-pointer bg-GRAY100 lg:grid"
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              item?.primary_category[0]?.category_name,
+                              item?.stories_headlines
+                            )
+                          }}
+                        >
+                          <div
+                            className="relative mr-2 h-auto w-72 cursor-pointer py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0"
+                            onClick={() => {
+                              handle_news_redirection_story(
+                                item?.primary_category[0]?.category_name,
+                                item?.stories_headlines
+                              )
+                            }}
+                          >
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
@@ -429,7 +478,15 @@ const ImportantNews = ({
                             />
                           </div>
 
-                          <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">
+                          <div
+                            className="hidden cursor-pointer justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex"
+                            onClick={() => {
+                              handle_news_redirection_story(
+                                item?.primary_category[0]?.category_name,
+                                item?.stories_headlines
+                              )
+                            }}
+                          >
                             <p>
                               <b className="text-red-800 font-TSExtra">
                                 {item.publisher_name}
@@ -450,7 +507,15 @@ const ImportantNews = ({
                           </div>
                         </section>
 
-                        <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
+                        <div
+                          className="flex justify-between px-4 font-TSlight text-xs lg:hidden"
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              item?.primary_category[0]?.category_name,
+                              item?.stories_headlines
+                            )
+                          }}
+                        >
                           <p>
                             <b className=" text-red-800 font-TSExtra">
                               {item.publisher_name}

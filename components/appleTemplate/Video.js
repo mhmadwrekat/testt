@@ -191,7 +191,15 @@ const Video = ({
                           {item?.primary_category[0]?.category_name}{' '}
                         </p>{' '}
                       </div>
-                      <section className="flex bg-GRAY100 lg:grid ">
+                      <section
+                        className="flex cursor-pointer bg-GRAY100 lg:grid "
+                        onClick={() => {
+                          handle_news_redirection_story(
+                            item?.primary_category[0]?.category_name,
+                            item?.stories_headlines
+                          )
+                        }}
+                      >
                         <div className="relative h-32 w-80 py-2 lg:mr-0 lg:h-auto lg:w-full lg:py-0">
                           {item.stories_media_url[0] &&
                             (item.stories_media_url[0].includes('youtube') ||

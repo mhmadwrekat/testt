@@ -18,7 +18,17 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from 'next-share'
+import Swal from 'sweetalert2'
 
+/*
+Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Your work has been saved',
+  showConfirmButton: false,
+  timer: 1500
+})
+*/
 const Test = ({ title_color, category, story, fill }) => {
   const [share_link, setShareLink] = useState('')
 
@@ -26,12 +36,22 @@ const Test = ({ title_color, category, story, fill }) => {
   /*
               
   */
-
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom',
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    },
+  })
   // console.log(url)
   // console.log(handle_news_url(category, story))
   const copyy = (category, story) => {
-    // console.log(open_item)
-    // console.log(open_item)
+    setOpenItem(!open_item)
+
     let ready_category = ''
     let ready_title = ''
     if (category.includes('%')) {
@@ -62,7 +82,15 @@ const Test = ({ title_color, category, story, fill }) => {
     let ready_url = `https://alzubda.com/${ready_title}/${ready_category}`
     setShareLink(ready_url)
     //  console.log(ready_url)
-    navigator.clipboard.writeText(ready_url)
+    // navigator.clipboard.writeText(ready_url)
+  }
+
+  const copy_clip = () => {
+    Toast.fire({
+      icon: 'success',
+      title: 'تم نسخ الرابط بنجاح',
+    })
+    navigator.clipboard.writeText(share_link)
   }
 
   // share_link && console.log(`/${share_link}`)
@@ -80,7 +108,78 @@ const Test = ({ title_color, category, story, fill }) => {
   // copyy(category, story)
   return (
     <React.Fragment>
-      <div className="relative">
+      <div className="relative pb-1">
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          className={`${fill} h-7 w-7 cursor-pointer rounded-full `}
+          onClick={() => {
+            copyy(category, story)
+          }}
+        >
+          <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 15.889v-2.223s-3.78-.114-7 3.333c1.513-6.587 7-7.778 7-7.778v-2.221l5 4.425-5 4.464z" />
+        </svg>
+        {open_item ? (
+          <>
+            <div className="absolute top-0 left-12 w-32 border-0 lg:left-12">
+              <div
+                className="text-black flex w-48 border-0 pb-1 text-center font-TSbold text-xs lg:w-56"
+                onClick={() => {
+                  setOpenItem(!open_item)
+                }}
+              >
+                <Fade delay={400}>
+                  <div
+                    className="ml-1.5 rounded-full"
+                    onClick={() => {
+                      copy_clip()
+                    }}
+                  >
+                    <Image
+                      src="http://cdn.onlinewebfonts.com/svg/img_211187.png"
+                      alt="copy link"
+                      width={30}
+                      height={30}
+                      className="cursor-pointer rounded-full "
+                    />
+                  </div>
+                </Fade>
+                <Fade delay={300}>
+                  <TwitterShareButton
+                    url={`/${share_link}`}
+                    title={
+                      '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
+                    }
+                  >
+                    <TwitterIcon size={30} round className="ml-1.5" />
+                  </TwitterShareButton>
+                </Fade>
+                <Fade delay={200}>
+                  <WhatsappShareButton
+                    url={`${share_link}`}
+                    title={
+                      '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
+                    }
+                  >
+                    <WhatsappIcon size={30} round className="ml-1.5" />
+                  </WhatsappShareButton>
+                </Fade>
+                {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
+                <Fade delay={100}>
+                  <FacebookShareButton
+                    url={`${share_link}`}
+                    quote={
+                      '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
+                    }
+                    hashtag={'#الزبدة'}
+                  >
+                    <FacebookIcon size={30} round className="ml-1.5" />
+                  </FacebookShareButton>
+                </Fade>
+              </div>
+            </div>
+          </>
+        ) : null}
         {/* <div
           className="absolute top-44 z-50 flex w-44 items-center justify-center rounded-full bg-Purp100 px-3 py-1 text-center text-sm font-bold text-white"
           role="alert"
@@ -163,13 +262,17 @@ const Test = ({ title_color, category, story, fill }) => {
         {/************************** */}
         {/************************** */}
         {/************************** */}
+      </div>
+    </React.Fragment>
+  )
+}
 
+export default Test
+/*
         <Menu as="div" className="border-0 text-left	">
           {({ open }) => (
             <>
-              {/* <Menu.Button>0</Menu.Button> */}
               <Menu.Button>
-                {/* <span className="text-xs text-GRAY100">.</span> */}
                 <svg
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +291,12 @@ const Test = ({ title_color, category, story, fill }) => {
                     <Menu.Item>
                       {({ active }) => (
                         <Fade delay={400}>
-                          <div className="ml-1.5 rounded-full">
+                          <div
+                            className="ml-1.5 rounded-full"
+                            onClick={() => {
+                              copy_clip()
+                            }}
+                          >
                             <Image
                               src="http://cdn.onlinewebfonts.com/svg/img_211187.png"
                               alt="copy link"
@@ -203,12 +311,6 @@ const Test = ({ title_color, category, story, fill }) => {
                     <Menu.Item>
                       {({ active }) => (
                         <Fade delay={300}>
-                          {/* <img
-                 src="./assest/images/twitter.jpg"
-                 className="ml-1.5 h-6 rounded-full lg:h-7"
-                 alt="social media alzubda twitter"
-               /> */}
-
                           <TwitterShareButton
                             url={`/${share_link}`}
                             title={
@@ -223,11 +325,6 @@ const Test = ({ title_color, category, story, fill }) => {
                     <Menu.Item>
                       {({ active }) => (
                         <Fade delay={200}>
-                          {/* <img
-                 src="./assest/images/whatsapp.WebP"
-                 className="ml-1.5 h-6 rounded-full lg:h-7"
-                 alt="social media alzubda whatsapp"
-               /> */}
                           <WhatsappShareButton
                             url={`${share_link}`}
                             title={
@@ -238,16 +335,10 @@ const Test = ({ title_color, category, story, fill }) => {
                           </WhatsappShareButton>
                         </Fade>
                       )}
-                      {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
                     </Menu.Item>
                     <Menu.Item>
                       {({ active }) => (
                         <Fade delay={100}>
-                          {/* <img
-                 src="./assest/images/facebook.jpg"
-                 className="h-6 rounded-full lg:h-7"
-                 alt="social media alzubda facebook"
-               /> */}
                           <FacebookShareButton
                             url={`${share_link}`}
                             quote={
@@ -260,50 +351,11 @@ const Test = ({ title_color, category, story, fill }) => {
                         </Fade>
                       )}
                     </Menu.Item>
-                    {/* <Menu.Item>
-           {({ active }) => (
-             <p
-               className={`cursor-pointer border-b-1 border-GRAY200 pt-2 text-GRAY400 ${
-                 active && `${title_color}`
-               }`}
-               href=""
-             >
-               مشاركه
-             </p>
-           )}
-         </Menu.Item> */}
-                    {/* <Menu.Item>
-           {({ active }) => (
-             <p
-               className={`mt-1 cursor-pointer text-GRAY400 hover:${title_color} ${
-                 active && `${title_color}`
-               }`}
-             >
-               مشاركة
-             </p>
-           )}
-         </Menu.Item> */}
-                    {/* <Menu.Item>
-           {({ active }) => (
-             <p
-               className={`mt-1 cursor-pointer text-GRAY400  ${
-                 active && `${title_color}`
-               }`}
-               href=""
-             >
-               أبلاغ
-             </p>
-           )}
-         </Menu.Item> */}
+                 
                   </div>
                 </div>
               </Menu.Items>
             </>
           )}
         </Menu>
-      </div>
-    </React.Fragment>
-  )
-}
-
-export default Test
+*/

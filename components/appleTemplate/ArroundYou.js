@@ -184,7 +184,16 @@ const Arround_you = ({
                       }{' '}
                     </p>{' '}
                   </div>
-                  <div className="relative max-w-full">
+                  <div
+                    className="relative  max-w-full cursor-pointer"
+                    onClick={() => {
+                      handle_news_redirection_story(
+                        important_news?.data[0]?.primary_category[0]
+                          ?.category_name,
+                        important_news?.data[0]?.stories_headlines
+                      )
+                    }}
+                  >
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
                     {important_news_img &&
@@ -264,9 +273,14 @@ const Arround_you = ({
                     </div>
                   </div>
                   <div
-                    className=" my-2 flex justify-between px-2.5
-                  font-TSlight text-sm
-                  "
+                    className="my-2  flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
+                    onClick={() => {
+                      handle_news_redirection_story(
+                        important_news?.data[0]?.primary_category[0]
+                          ?.category_name,
+                        important_news?.data[0]?.stories_headlines
+                      )
+                    }}
                   >
                     <p>
                       <b className="text-red-600 font-TSbold">
@@ -282,14 +296,41 @@ const Arround_you = ({
                   </div>
 
                   <div className="px-2.5 pt-2 pb-0.5">
-                    <div className="mb-2 font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl">
+                    <div
+                      className="mb-2 cursor-pointer font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          important_news?.data[0]?.primary_category[0]
+                            ?.category_name,
+                          important_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {important_news?.data[0]?.stories_headlines}
                     </div>
-                    <p className=" hidden h-36 font-TSmedium text-base lg:grid lg:h-32">
+                    <p
+                      className="hidden  h-36 cursor-pointer font-TSmedium text-base lg:grid lg:h-32"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          important_news?.data[0]?.primary_category[0]
+                            ?.category_name,
+                          important_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {important_news?.data[0]?.stories_content.slice(0, 335)}
                       ......
                     </p>
-                    <p className="grid h-24 font-TSmedium text-base md:grid lg:hidden lg:h-32">
+                    <p
+                      className="grid  h-24 cursor-pointer font-TSmedium text-base md:grid lg:hidden lg:h-32"
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          important_news?.data[0]?.primary_category[0]
+                            ?.category_name,
+                          important_news?.data[0]?.stories_headlines
+                        )
+                      }}
+                    >
                       {important_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
@@ -323,7 +364,16 @@ const Arround_you = ({
                 {important_news?.data?.slice(1, 5).map((item) => {
                   stories.push(item?._id)
                   return (
-                    <section key={item?._id}>
+                    <section
+                      key={item?._id}
+                      onClick={() => {
+                        handle_news_redirection_story(
+                          item?.primary_category[0]?.category_name,
+                          item?.stories_headlines
+                        )
+                      }}
+                      className="cursor-pointer"
+                    >
                       <div
                         className={`${card_color} text-black rounded-lg shadow-lg`}
                         id="card"
