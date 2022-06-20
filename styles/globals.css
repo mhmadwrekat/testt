@@ -87,3 +87,21 @@ input[type='text'] {
 input[type='text']:focus {
   border: 0px;
 }
+button {
+  border: 0px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+button:focus {
+  border: 0px;
+}
+svg {
+  border: 0px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+svg:focus {
+  border: 0px;
+}
