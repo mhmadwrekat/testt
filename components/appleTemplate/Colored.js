@@ -166,7 +166,7 @@ const Colored = ({
           <section className="w-12/12 lg:w-12/12 mx-auto">
             <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 ">
               <section>
-                <div
+                <section
                   id="card"
                   className={`${card_color} rounded-lg border-2 border-Purp200 shadow-lg`}
                 >
@@ -313,7 +313,7 @@ const Colored = ({
                       />
                     </div>
                   </div>
-                </div>
+                </section>
               </section>
               <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 {important_news.data.slice(1, 5).map((item) => {
@@ -321,7 +321,7 @@ const Colored = ({
 
                   return (
                     <section key={item?._id}>
-                      <div
+                      <section
                         className={`${card_color} rounded-lg border-2 border-Purp200 shadow-lg`}
                         id="card"
                       >
@@ -428,7 +428,7 @@ const Colored = ({
                           >
                             <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                           </svg> */}
-                      </div>
+                      </section>
                     </section>
                   )
                 })}

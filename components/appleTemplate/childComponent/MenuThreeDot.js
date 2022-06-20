@@ -183,8 +183,8 @@ const Test = ({ title_color, category, story, fill }) => {
               </Menu.Button>
 
               <Menu.Items>
-                <section className="absolute top-0 left-12 w-32 border-0 lg:left-12">
-                  <section className="text-black flex w-48 border-0 pb-1 text-center font-TSbold text-xs lg:w-56">
+                <div className="absolute top-0 left-12 w-32 border-0 lg:left-12">
+                  <div className="text-black flex w-48 border-0 pb-1 text-center font-TSbold text-xs lg:w-56">
                     <Menu.Item>
                       {({ active }) => (
                         <Fade delay={400}>
@@ -295,8 +295,8 @@ const Test = ({ title_color, category, story, fill }) => {
              </p>
            )}
          </Menu.Item> */}
-                  </section>
-                </section>
+                  </div>
+                </div>
               </Menu.Items>
             </>
           )}

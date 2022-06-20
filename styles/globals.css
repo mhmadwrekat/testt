@@ -87,7 +87,12 @@ input[type='text'] {
 input[type='text']:focus {
   border: 0px;
 }
-section,
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+/*  Remove Border on Safari */
 div {
   border: 0px;
   -webkit-transition: 0.5s;
@@ -95,36 +100,6 @@ div {
   outline: none;
 }
 
-section,
 div:focus {
   border: 0px;
-}
-button {
-  border: 0px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
-}
-textarea:focus,
-input:focus {
-  outline: none;
-}
-
-button:focus {
-  border: 0px;
-  outline: none;
-}
-body {
-  border: 0px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
-  outline: none;
-}
-body:focus {
-  border: 0px;
-  outline: none;
-}
-body {
-  outline: none;
 }

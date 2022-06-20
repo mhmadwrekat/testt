@@ -407,8 +407,8 @@ const Nav = ({
       {showCategory ? (
         <section className="sticky top-0 left-0 z-50 w-screen">
           <section className="flex w-screen justify-center bg-Purp100 py-0 text-center font-TSbold text-sm text-white lg:text-base">
-            <div className="mx-auto my-1 mt-1.5 flex w-screen items-center justify-start overflow-x-auto lg:my-4 lg:mt-4 lg:justify-center">
-              <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
+            <section className="mx-auto my-1 mt-1.5 flex w-screen items-center justify-start overflow-x-auto lg:my-4 lg:mt-4 lg:justify-center">
+              <section className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
                 {/* <img
                   src="./assest/images/additional.jpg"
                   className="h-8 w-8 bg-Purp300"
@@ -438,23 +438,23 @@ const Nav = ({
                     fillRule="evenodd"
                   />
                 </svg>
-                <div className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
+                <section className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
                   {media_item.map((item) => {
                     return (
-                      <div
+                      <section
                         key={item.id}
                         className={`${item.width} mx-2 flex items-center justify-center gap-3`}
                       >
                         <a className={`rounded-full`} href={item.link}>
                           {item.name}
                         </a>
-                      </div>
+                      </section>
                     )
                   })}
-                </div>
-              </div>
+                </section>
+              </section>
               {subscribe_item?.length > 0 && (
-                <div className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
+                <section className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
                   {/* <img
               src="./assest/images/additional.jpg"
               className="h-8 w-8 bg-Purp300"
@@ -473,41 +473,41 @@ const Nav = ({
                     />
                   </svg>
 
-                  <div className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
+                  <section className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
                     {subscribe_item?.map((item) => {
                       return (
-                        <div
+                        <section
                           key={item.id}
                           className={`${item.width} flex items-center justify-center gap-0`}
                         >
                           <a className={`rounded-full`} href={item.link}>
                             {item.name}
                           </a>
-                        </div>
+                        </section>
                       )
                     })}
-                  </div>
-                </div>
+                  </section>
+                </section>
               )}
               {unsubscribe_item?.length > 0 && (
-                <div className="mx-2 flex h-10 justify-start rounded-full border-3 border-Purp200 px-3 lg:h-11">
-                  <div className="flex w-full py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
+                <section className="mx-2 flex h-10 justify-start rounded-full border-3 border-Purp200 px-3 lg:h-11">
+                  <section className="flex w-full py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
                     {unsubscribe_item?.map((item) => {
                       return (
-                        <div
+                        <section
                           key={item.id}
                           className={`${item.width} flex items-center justify-center gap-3`}
                         >
                           <a className={``} href={item.link}>
                             {item.name}
                           </a>
-                        </div>
+                        </section>
                       )
                     })}
-                  </div>
-                </div>
+                  </section>
+                </section>
               )}
-            </div>
+            </section>
           </section>
           {/* {subscribe_item.map((item) => {
             console.log(subscribe_item)
@@ -515,7 +515,7 @@ const Nav = ({
           {/* {subscribe_item.length > 0 && console.log(subscribe_item.length)} */}
         </section>
       ) : (
-        <div className="mx-auto w-11/12 border-t-2 border-Purp100"></div>
+        <section className="mx-auto w-11/12 border-t-2 border-Purp100"></section>
       )}
 
       {/* Mobile Search Form */}
