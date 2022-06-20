@@ -171,7 +171,7 @@ const indexx = () => {
                     </b>
                   </p>
                   <div className="flex px-2.5">
-                    {console.log(router.query.news)}
+                    {/* {console.log(router.query.news)} */}
                     <MenuThreeDot
                       title_color={title_color}
                       category={router.query.news}

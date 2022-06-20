@@ -71,7 +71,7 @@ const AllData = ({ data, bg_color, category, fill }) => {
                   <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
                     <div>
                       <p
-                        className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                        className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white lg:pr-5`}
                       >
                         {/* {item?.primary_category[0]?.category_name} */}
                       </p>{' '}

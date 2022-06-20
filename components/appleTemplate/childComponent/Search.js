@@ -73,13 +73,13 @@ const Search = ({ data, bg_color, category }) => {
                     <div>
                       {item?.primary_category[0]?.category_name ? (
                         <p
-                          className={`${bg_color} rounded-t-md px-1 pt-1 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                          className={`${bg_color} rounded-t-md px-1 pt-1 pb-0.5 text-right font-TSSemi text-base text-white lg:pr-5`}
                         >
                           {item?.primary_category[0]?.category_name}
                         </p>
                       ) : (
                         <p
-                          className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                          className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white lg:pr-5`}
                         ></p>
                       )}
                     </div>

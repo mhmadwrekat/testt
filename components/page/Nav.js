@@ -188,8 +188,7 @@ const Nav = ({
   const handel_show = () => {
     setSearches(false)
     setShowSearch(false)
-    console.log(event.target.name.reset())
-    // handel_search.event.target.reset()
+    document.getElementById('name').value = ''
   }
 
   const handel_search = () => {
@@ -225,6 +224,14 @@ const Nav = ({
       .catch(function (error) {
         console.log(error)
       })
+    // event.target.reset()
+    // }
+    // searches && event.target.reset()
+
+    // setSearches(false)
+    // setShowSearch(false)
+    // // event.target.reset()
+    // console.log(event.target.name.value)
   }
   let route_color = router.pathname === '/' && 'text-Purp100'
   let route_color_blogs = router?.pathname.includes('/blogs') && 'text-Purp100'
@@ -302,7 +309,15 @@ const Nav = ({
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="#FFFFFF"
-                    type="submit"
+                    // type="submit"
+                    // onClick={
+                    //   // () => {
+                    //   // setSearches(false)
+                    //   // setShowSearch(false)
+
+                    //   (document.getElementById('name').value = 'hi')
+                    //   // handel_search()
+                    // }
                     onClick={() => {
                       handel_show()
                     }}

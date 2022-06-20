@@ -162,7 +162,7 @@ const Test = ({ title_color, category, story, fill }) => {
         {/************************** */}
         {/************************** */}
 
-        <Menu as="div" className="inline-block text-left" show={open}>
+        <Menu as="div" className="inline-block text-left">
           {({ open }) => (
             <>
               {/* <Menu.Button>0</Menu.Button> */}
@@ -216,7 +216,7 @@ const Test = ({ title_color, category, story, fill }) => {
                           <TwitterShareButton
                             url={share_link}
                             title={
-                              'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
+                              '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
                             }
                             separator=":: "
                           >
@@ -236,9 +236,8 @@ const Test = ({ title_color, category, story, fill }) => {
                           <WhatsappShareButton
                             url={share_link}
                             title={
-                              'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
+                              '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
                             }
-                            separator=":: "
                           >
                             <WhatsappIcon size={30} round className="ml-1.5" />
                           </WhatsappShareButton>
@@ -257,7 +256,7 @@ const Test = ({ title_color, category, story, fill }) => {
                           <FacebookShareButton
                             url={share_link}
                             quote={
-                              'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
+                              '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
                             }
                             hashtag={'#الزبدة'}
                           >
