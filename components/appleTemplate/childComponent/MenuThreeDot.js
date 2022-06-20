@@ -164,7 +164,7 @@ const Test = ({ title_color, category, story, fill }) => {
         {/************************** */}
         {/************************** */}
 
-        <Menu as="div" className="inline-block text-left">
+        <Menu as="div" className="border-0 text-left	">
           {({ open }) => (
             <>
               {/* <Menu.Button>0</Menu.Button> */}
@@ -183,8 +183,8 @@ const Test = ({ title_color, category, story, fill }) => {
               </Menu.Button>
 
               <Menu.Items>
-                <section className="absolute top-0 left-12 w-32 lg:left-12">
-                  <section className="text-black flex w-48 rounded pb-1 text-center font-TSbold text-xs lg:w-56 ">
+                <section className="absolute top-0 left-12 w-32 border-0 lg:left-12">
+                  <section className="text-black flex w-48 border-0 pb-1 text-center font-TSbold text-xs lg:w-56">
                     <Menu.Item>
                       {({ active }) => (
                         <Fade delay={400}>
