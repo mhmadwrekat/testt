@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Menu } from '@headlessui/react'
 import Image from 'next/image'
 import facebook from '../../../public/assest/images/facebook.jpg'
 import twiter from '../../../public/assest/images/twitter.jpg'
 import watsapp from '../../../public/assest/images/youtube.jpg'
 import { Fade } from 'react-awesome-reveal'
+import { BASE_URL } from '../../../config/config'
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+} from 'next-share'
 
 const Test = ({ title_color, category, story, fill }) => {
+  const [share_link, setShareLink] = useState('')
+
+  /*
+              
+  */
+
   // console.log(url)
   // console.log(handle_news_url(category, story))
   const copyy = (category, story) => {
@@ -38,6 +57,7 @@ const Test = ({ title_color, category, story, fill }) => {
     }
 
     let ready_url = `https://alzubda.com/${ready_title}/${ready_category}`
+    setShareLink(ready_url)
     // console.log(ready_url)
     navigator.clipboard.writeText(ready_url)
   }
@@ -47,6 +67,12 @@ const Test = ({ title_color, category, story, fill }) => {
 
   */
   // console.log(fill)
+
+  // let share = () => {
+  //   copyy(category, story)
+  // }
+  // console.log(share)
+  // copyy(category, story)
   return (
     <React.Fragment>
       <div className="relative">
@@ -57,14 +83,17 @@ const Test = ({ title_color, category, story, fill }) => {
           <p className="font-TSbold">تم النسخ</p>
         </div> */}
         <Menu as="div" className="inline-block text-left">
-          <Menu.Button aria-expanded="false" className="flex">
+          <Menu.Button aria-expanded="false" className="">
             {/* <div className="flex justify-between"> */}
-            <p className="pt-2.5 pl-1.5 font-TSbold text-xs">شارِكْ</p>
+            {/* <p className="pt-2.5 pl-1.5 font-TSbold text-xs">شارِكْ</p> */}
 
             <svg
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
               className={`${fill} h-8 w-8 rounded-full`}
+              onClick={() => {
+                copyy(category, story)
+              }}
             >
               <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 15.889v-2.223s-3.78-.114-7 3.333c1.513-6.587 7-7.778 7-7.778v-2.221l5 4.425-5 4.464z" />
             </svg>
@@ -80,41 +109,59 @@ const Test = ({ title_color, category, story, fill }) => {
             </svg> */}
           </Menu.Button>
           <Menu.Items>
-            <section className="absolute top-0 left-16 w-32 lg:left-20">
-              <section className="text-black flex w-48 rounded p-1 text-center font-TSbold text-xs lg:w-56 ">
+            <section className="absolute top-0 left-12 w-32 lg:left-12">
+              <section className="text-black flex w-48 rounded pb-1 text-center font-TSbold text-xs lg:w-56 ">
                 <Menu.Item>
                   {({ active }) => (
                     <Fade delay={400}>
-                      <img
-                        src=" https://cdn-icons-png.flaticon.com/512/7304/7304848.png "
-                        className="ml-1.5 h-6 cursor-pointer rounded-full lg:h-7"
-                        alt="social media alzubda copy link"
-                        onClick={() => {
-                          copyy(category, story)
-                        }}
-                      />
+                      <div className="ml-1.5">
+                        <Image
+                          src="http://cdn.onlinewebfonts.com/svg/img_211187.png"
+                          alt="copy link"
+                          width={30}
+                          height={30}
+                          className="cursor-pointer rounded-full "
+                        />
+                      </div>
                     </Fade>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
                     <Fade delay={300}>
-                      <img
+                      {/* <img
                         src="./assest/images/twitter.jpg"
                         className="ml-1.5 h-6 rounded-full lg:h-7"
                         alt="social media alzubda twitter"
-                      />
+                      /> */}
+                      <TwitterShareButton
+                        url={share_link}
+                        title={
+                          'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
+                        }
+                      >
+                        <TwitterIcon size={30} round className="ml-1.5" />
+                      </TwitterShareButton>
                     </Fade>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
                     <Fade delay={200}>
-                      <img
+                      {/* <img
                         src="./assest/images/whatsapp.WebP"
                         className="ml-1.5 h-6 rounded-full lg:h-7"
                         alt="social media alzubda whatsapp"
-                      />
+                      /> */}
+                      <WhatsappShareButton
+                        url={share_link}
+                        title={
+                          'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
+                        }
+                        separator=":: "
+                      >
+                        <WhatsappIcon size={30} round className="ml-1.5" />
+                      </WhatsappShareButton>
                     </Fade>
                   )}
                   {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
@@ -122,11 +169,24 @@ const Test = ({ title_color, category, story, fill }) => {
                 <Menu.Item>
                   {({ active }) => (
                     <Fade delay={100}>
-                      <img
+                      {/* <img
                         src="./assest/images/facebook.jpg"
                         className="h-6 rounded-full lg:h-7"
                         alt="social media alzubda facebook"
-                      />
+                      /> */}
+                      <FacebookShareButton
+                        url={share_link}
+                        quote={
+                          'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
+                        }
+                        hashtag={'#الزبدة'}
+                      >
+                        <FacebookMessengerIcon
+                          size={30}
+                          round
+                          className="ml-1.5"
+                        />
+                      </FacebookShareButton>
                     </Fade>
                   )}
                 </Menu.Item>

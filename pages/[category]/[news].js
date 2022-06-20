@@ -149,6 +149,14 @@ const indexx = () => {
               </section>
               <section className="">
                 <div className="px-2.5 pt-2">
+                  <div className="flex justify-between">
+                    <b className="text-red-800 flex pt-1.5 font-TSbold lg:hidden">
+                      {head_news?.publisher_name}
+                    </b>
+                    <p className="flex px-2.5 pt-2 font-TSbold text-GRAY300 lg:hidden">
+                      قبل {moment(head_news?.published_on).fromNow(true)}
+                    </p>
+                  </div>
                   <div className="mt-3 font-TSExtra text-lg md:text-xl lg:h-28 lg:w-11/12 lg:text-3xl">
                     {head_news?.stories_headlines}
                   </div>
@@ -158,21 +166,21 @@ const indexx = () => {
                 </div>
                 <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
                   <p>
-                    <b className="text-red-800 font-TSbold">
+                    <b className="text-red-800 hidden font-TSbold lg:flex">
                       {head_news?.publisher_name}
                     </b>
                   </p>
                   <div className="flex px-2.5">
-                    <p className="px-2.5 pt-2 font-TSbold text-GRAY300">
-                      قبل {moment(head_news?.published_on).fromNow(true)}
-                    </p>
                     {console.log(router.query.news)}
                     <MenuThreeDot
                       title_color={title_color}
                       category={router.query.news}
                       story={head_news?.stories_headlines}
                       fill={'fill-Purp300'}
-                    />
+                    />{' '}
+                    <p className="hidden px-2.5 pt-2 font-TSbold text-GRAY300 lg:flex">
+                      قبل {moment(head_news?.published_on).fromNow(true)}
+                    </p>
                   </div>
                 </div>
               </section>

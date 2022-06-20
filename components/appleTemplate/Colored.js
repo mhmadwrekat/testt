@@ -400,7 +400,7 @@ const Colored = ({
                           </p>
                         </div>
 
-                        <div className="mx-2.5 flex items-center justify-between pb-1">
+                        <div className="mx-2.5 flex items-center justify-between">
                           <p
                             className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY200 hover:text-RED`}
                             onClick={() => {

@@ -73,6 +73,7 @@ module.exports = {
       'assets.devops.arabiaweather.com',
       'i2-prod.dailyrecord.co.uk',
       'media.gettyimages.com',
+      'cdn.onlinewebfonts.com',
       'aljaras.com',
       'cdn-icons-png.flaticon.com',
       'alzubda.com',

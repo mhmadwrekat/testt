@@ -281,7 +281,7 @@ const Video = ({
                       </div>
 
                       {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
-                      <div className="mx-2.5 flex items-center justify-between pb-2">
+                      <div className="mx-2.5 flex items-center justify-between">
                         <p
                           className={`$rounded-lg cursor-pointer py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                           onClick={() => {
