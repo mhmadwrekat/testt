@@ -184,16 +184,7 @@ const Arround_you = ({
                       }{' '}
                     </p>{' '}
                   </div>
-                  <div
-                    className="relative  max-w-full cursor-pointer"
-                    onClick={() => {
-                      handle_news_redirection_story(
-                        important_news?.data[0]?.primary_category[0]
-                          ?.category_name,
-                        important_news?.data[0]?.stories_headlines
-                      )
-                    }}
-                  >
+                  <div className="relative max-w-full">
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
                     {important_news_img &&
@@ -205,14 +196,28 @@ const Arround_you = ({
                             important_news_img
                           )}/0.jpg`}
                           alt={important_news.data[0].stories_headlines}
-                          className="relative h-56 w-full rounded-b-md object-cover lg:h-80"
+                          className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              important_news?.data[0]?.primary_category[0]
+                                ?.category_name,
+                              important_news?.data[0]?.stories_headlines
+                            )
+                          }}
                         />
                       ) : (
                         <img
                           loading="lazy"
                           src={important_news_img}
                           alt={important_news.data[0].stories_headlines}
-                          className="h-56 w-full rounded-b-md object-cover lg:h-80"
+                          className="h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              important_news?.data[0]?.primary_category[0]
+                                ?.category_name,
+                              important_news?.data[0]?.stories_headlines
+                            )
+                          }}
                         />
                       ))}
                     <div className="text-black absolute bottom-2 right-2 rounded-full bg-white p-1">
@@ -364,16 +369,7 @@ const Arround_you = ({
                 {important_news?.data?.slice(1, 5).map((item) => {
                   stories.push(item?._id)
                   return (
-                    <section
-                      key={item?._id}
-                      onClick={() => {
-                        handle_news_redirection_story(
-                          item?.primary_category[0]?.category_name,
-                          item?.stories_headlines
-                        )
-                      }}
-                      className="cursor-pointer"
-                    >
+                    <section key={item?._id}>
                       <div
                         className={`${card_color} text-black rounded-lg shadow-lg`}
                         id="card"
@@ -406,14 +402,26 @@ const Arround_you = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  onClick={() => {
+                                    handle_news_redirection_story(
+                                      item?.primary_category[0]?.category_name,
+                                      item?.stories_headlines
+                                    )
+                                  }}
                                 />
                               ) : (
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  onClick={() => {
+                                    handle_news_redirection_story(
+                                      item?.primary_category[0]?.category_name,
+                                      item?.stories_headlines
+                                    )
+                                  }}
                                 />
                               ))}
                             <div className="text-black rounded-full bg-white">
@@ -436,7 +444,15 @@ const Arround_you = ({
                             </p>
                           </div>
 
-                          <div className="py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2">
+                          <div
+                            className="cursor-pointer py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2"
+                            onClick={() => {
+                              handle_news_redirection_story(
+                                item?.primary_category[0]?.category_name,
+                                item?.stories_headlines
+                              )
+                            }}
+                          >
                             <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:h-10 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:text-sm">
                               {item.stories_headlines}
                             </div>
@@ -458,7 +474,7 @@ const Arround_you = ({
                         </div>
                         <div className="mx-2.5 flex items-center justify-between">
                           <p
-                            className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 item?.primary_category[0]?.category_name,

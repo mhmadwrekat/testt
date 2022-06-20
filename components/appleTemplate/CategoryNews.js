@@ -232,15 +232,7 @@ const Category_news = ({
                       className={`${bg_color} hover:underlin rounded-t-md py-3.5 text-right font-TSbold text-base text-white`}
                     ></p>
                   </div>
-                  <div
-                    className="relative h-56 w-full cursor-pointer lg:h-80"
-                    onClick={() => {
-                      handle_news_redirection_story(
-                        title,
-                        category_news?.data[0]?.stories_headlines
-                      )
-                    }}
-                  >
+                  <div className="relative h-56 w-full lg:h-80">
                     {/* Desktop View */}
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
@@ -255,14 +247,26 @@ const Category_news = ({
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
-                          className="relative h-56 w-full rounded-b-md object-cover lg:h-80"
+                          className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              title,
+                              category_news?.data[0]?.stories_headlines
+                            )
+                          }}
                         />
                       ) : (
                         <img
                           loading="lazy"
                           src={important_news_img}
                           alt={category_news.data[0].stories_headlines}
-                          className="relative h-56 w-full rounded-b-md object-cover lg:h-80"
+                          className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              title,
+                              category_news?.data[0]?.stories_headlines
+                            )
+                          }}
                         />
                       ))}
                     <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
@@ -423,15 +427,7 @@ const Category_news = ({
                             className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white`}
                           ></p>{' '}
                         </div>
-                        <section
-                          className="flex  cursor-pointer bg-GRAY100 lg:grid "
-                          onClick={() => {
-                            handle_news_redirection_story(
-                              title,
-                              item?.stories_headlines
-                            )
-                          }}
-                        >
+                        <section className="flex bg-GRAY100 lg:grid">
                           <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
@@ -442,14 +438,26 @@ const Category_news = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
+                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
+                                  onClick={() => {
+                                    handle_news_redirection_story(
+                                      title,
+                                      item?.stories_headlines
+                                    )
+                                  }}
                                 />
                               ) : (
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  onClick={() => {
+                                    handle_news_redirection_story(
+                                      title,
+                                      item?.stories_headlines
+                                    )
+                                  }}
                                 />
                               ))}
                             <Like
@@ -470,7 +478,15 @@ const Category_news = ({
                             </p>
                           </div>
 
-                          <div className="py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2">
+                          <div
+                            className="cursor-pointer py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2"
+                            onClick={() => {
+                              handle_news_redirection_story(
+                                title,
+                                item?.stories_headlines
+                              )
+                            }}
+                          >
                             <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:h-10 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:text-sm">
                               {item.stories_headlines}
                             </div>
