@@ -6,6 +6,7 @@ import twiter from '../../../public/assest/images/twitter.jpg'
 import watsapp from '../../../public/assest/images/youtube.jpg'
 import { Fade } from 'react-awesome-reveal'
 import { BASE_URL } from '../../../config/config'
+import axios from 'axios'
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -29,9 +30,11 @@ Swal.fire({
   timer: 1500
 })
 */
-const Test = ({ title_color, category, story, fill }) => {
+const Test = ({ title_color, category, story, fill, story_id, user_id }) => {
   const [share_link, setShareLink] = useState('')
 
+  user_id && console.log('User --> ', user_id)
+  story_id && console.log('Story --> ', story_id)
   const [open_item, setOpenItem] = useState(false)
   /*
               
@@ -47,11 +50,9 @@ const Test = ({ title_color, category, story, fill }) => {
       toast.addEventListener('mouseleave', Swal.resumeTimer)
     },
   })
-  // console.log(url)
-  // console.log(handle_news_url(category, story))
+
   const copyy = (category, story) => {
     setOpenItem(!open_item)
-
     let ready_category = ''
     let ready_title = ''
     if (category.includes('%')) {
@@ -81,8 +82,6 @@ const Test = ({ title_color, category, story, fill }) => {
 
     let ready_url = `https://alzubda.com/${ready_title}/${ready_category}`
     setShareLink(ready_url)
-    //  console.log(ready_url)
-    // navigator.clipboard.writeText(ready_url)
   }
 
   const copy_clip = () => {
@@ -92,20 +91,63 @@ const Test = ({ title_color, category, story, fill }) => {
     })
     navigator.clipboard.writeText(share_link)
   }
-
-  // share_link && console.log(`/${share_link}`)
-
   /*
-  <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square" class="w-5 h-5 mr-4 text-blue-500" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg>
+ let url = `https://sjffdhemsj.execute-api.us-east-2.amazonaws.com/prod`
+    //   let data = {
+    //     body: {
+    //       user: user_id,
+    //       stories: stories,
+    //     },
+    //   }
+    //   axios.post(url, data).then((res) => {
+    //     // console.log(data)
+    //     // console.log(res)
+    //     // console.log(data)
+    //     // console.log('Vieww')
+    //   })
+    //   // console.log(Data)
 
+
+
+    {
+    “user”: “5e500d8b52561e16596649fe”,
+    “stories”: [
+      “5e4e7a8f52561e16596649f8"
+    ],
+    “source_type”:“default”
+  }
   */
-  // console.log(fill)
+  const share_api = () => {
+    let url = `https://d1i218h7fe.execute-api.us-east-2.amazonaws.com/production/`
+    let data = {
+      user: '62aee7e4467dcb73be8438b0',
+      stories: ['62afae8f4a9866d5b5767a72'],
+      source_type: 'default',
+    }
 
-  // let share = () => {
-  //   copyy(category, story)
-  // }
-  // console.log(share)
-  // copyy(category, story)
+    let axiosConfig = {
+      headers: {
+        'x-api-key': 'RMLn73bLqH6OOPZOxX6RL8dJc8ET6NfAaIIV1ztm',
+      },
+    }
+    axios.post(url, data, axiosConfig).then((res) => {
+      // console.log(data)
+      console.log(res)
+      // console.log(data)
+      // console.log('Vieww')
+    })
+    // console.log(Data)
+
+    // const ss = axios({
+    //   method: 'GET',
+    //   url: `${BASE_URL}/v1/Web/Loqaimat`,
+    //   headers: {
+    //     "x-api-key": `RMLn73bLqH6OOPZOxX6RL8dJc8ET6NfAaIIV1ztm`,
+    //   },
+    // })
+    // const loqaimat = await ss
+    console.log('Called')
+  }
   return (
     <React.Fragment>
       <div className="relative pb-1">
@@ -140,7 +182,10 @@ const Test = ({ title_color, category, story, fill }) => {
                       alt="copy link"
                       width={30}
                       height={30}
-                      className="cursor-pointer rounded-full "
+                      className="cursor-pointer rounded-full"
+                      onClick={() => {
+                        share_api()
+                      }}
                     />
                   </div>
                 </Fade>
@@ -151,7 +196,14 @@ const Test = ({ title_color, category, story, fill }) => {
                       '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
                     }
                   >
-                    <TwitterIcon size={30} round className="ml-1.5" />
+                    <TwitterIcon
+                      size={30}
+                      round
+                      className="ml-1.5"
+                      onClick={() => {
+                        share_api()
+                      }}
+                    />
                   </TwitterShareButton>
                 </Fade>
                 <Fade delay={200}>
@@ -161,7 +213,14 @@ const Test = ({ title_color, category, story, fill }) => {
                       '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
                     }
                   >
-                    <WhatsappIcon size={30} round className="ml-1.5" />
+                    <WhatsappIcon
+                      size={30}
+                      round
+                      className="ml-1.5"
+                      onClick={() => {
+                        share_api()
+                      }}
+                    />
                   </WhatsappShareButton>
                 </Fade>
                 {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
@@ -173,95 +232,20 @@ const Test = ({ title_color, category, story, fill }) => {
                     }
                     hashtag={'#الزبدة'}
                   >
-                    <FacebookIcon size={30} round className="ml-1.5" />
+                    <FacebookIcon
+                      size={30}
+                      round
+                      className="ml-1.5"
+                      onClick={() => {
+                        share_api()
+                      }}
+                    />
                   </FacebookShareButton>
                 </Fade>
               </div>
             </div>
           </>
         ) : null}
-        {/* <div
-          className="absolute top-44 z-50 flex w-44 items-center justify-center rounded-full bg-Purp100 px-3 py-1 text-center text-sm font-bold text-white"
-          role="alert"
-        >
-          <p className="font-TSbold">تم النسخ</p>
-        </div> */}
-        {/* <Menu>
-          <Menu.Button>
-            {' '}
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              className={`${fill} h-8 w-8 cursor-pointer rounded-full `}
-              onClick={() => {
-                copyy(category, story)
-              }}
-            >
-              <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 15.889v-2.223s-3.78-.114-7 3.333c1.513-6.587 7-7.778 7-7.778v-2.221l5 4.425-5 4.464z" />
-            </svg>
-          </Menu.Button>
-          <Menu.Items>
-            <section className="absolute top-0 left-12 w-32 lg:left-12">
-              <section className="text-black flex w-48 rounded pb-1 text-center font-TSbold text-xs lg:w-56 ">
-                <Menu.Item>
-                  {({ active }) => (
-                    <Fade
-                      delay={400}
-                      className={`${
-                        active
-                          ? 'bg-blue-500 text-white'
-                          : 'text-black bg-white'
-                      }`}
-                    >
-                      <div className="ml-1.5">
-                        <Image
-                          src="http://cdn.onlinewebfonts.com/svg/img_211187.png"
-                          alt="copy link"
-                          width={30}
-                          height={30}
-                          className="cursor-pointer rounded-full "
-                        />
-                      </div>
-                    </Fade>
-                  )}
-                </Menu.Item>
-              </section>
-            </section>
-          </Menu.Items>
-        </Menu> */}
-
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
-        {/************************** */}
       </div>
     </React.Fragment>
   )

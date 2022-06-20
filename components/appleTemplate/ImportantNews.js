@@ -382,6 +382,7 @@ const ImportantNews = ({
                       >
                         اقرأ المزيد
                       </p>
+
                       <MenuThreeDot
                         title_color={title_color}
                         category={
@@ -390,6 +391,8 @@ const ImportantNews = ({
                         }
                         story={category_news?.data[0]?.stories_headlines}
                         fill={fill_color}
+                        user_id={user_id}
+                        story_id={category_news?.data[0]?._id}
                       />
                     </div>
                   </div>

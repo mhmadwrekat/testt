@@ -125,7 +125,8 @@ const index = (props) => {
     ...all_news[11].data.slice(0, 3),
     ...all_news[4].data.slice(0, 3),
   ]
-  // all_news && console.log('---> ', alternative_search)
+  all_news && console.log('---> ', user_id)
+  all_news && console.log('---> ', all_news[0].data[0]._id)
 
   return (
     <React.Fragment>
