@@ -187,15 +187,8 @@ const Test = ({ title_color, category, story, fill }) => {
                   <section className="text-black flex w-48 rounded pb-1 text-center font-TSbold text-xs lg:w-56 ">
                     <Menu.Item>
                       {({ active }) => (
-                        <Fade
-                          delay={400}
-                          className={`${
-                            active
-                              ? 'bg-blue-500 text-white'
-                              : 'text-black bg-white'
-                          }`}
-                        >
-                          <div className="ml-1.5">
+                        <Fade delay={400}>
+                          <div className="ml-1.5 rounded-full">
                             <Image
                               src="http://cdn.onlinewebfonts.com/svg/img_211187.png"
                               alt="copy link"
