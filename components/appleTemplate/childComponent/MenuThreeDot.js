@@ -58,7 +58,7 @@ const Test = ({ title_color, category, story, fill }) => {
 
     let ready_url = `https://alzubda.com/${ready_title}/${ready_category}`
     setShareLink(ready_url)
-    // console.log(ready_url)
+    console.log(ready_url)
     navigator.clipboard.writeText(ready_url)
   }
 
@@ -139,6 +139,7 @@ const Test = ({ title_color, category, story, fill }) => {
                         title={
                           'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
                         }
+                        separator=":: "
                       >
                         <TwitterIcon size={30} round className="ml-1.5" />
                       </TwitterShareButton>
