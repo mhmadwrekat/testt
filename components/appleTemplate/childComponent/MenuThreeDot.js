@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Menu } from '@headlessui/react'
+import { Menu, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import facebook from '../../../public/assest/images/facebook.jpg'
 import twiter from '../../../public/assest/images/twitter.jpg'
@@ -22,6 +22,7 @@ import {
 const Test = ({ title_color, category, story, fill }) => {
   const [share_link, setShareLink] = useState('')
 
+  const [open_item, setOpenItem] = useState(false)
   /*
               
   */
@@ -29,6 +30,8 @@ const Test = ({ title_color, category, story, fill }) => {
   // console.log(url)
   // console.log(handle_news_url(category, story))
   const copyy = (category, story) => {
+    // console.log(open_item)
+    // console.log(open_item)
     let ready_category = ''
     let ready_title = ''
     if (category.includes('%')) {
@@ -58,7 +61,7 @@ const Test = ({ title_color, category, story, fill }) => {
 
     let ready_url = `https://alzubda.com/${ready_title}/${ready_category}`
     setShareLink(ready_url)
-    console.log(ready_url)
+    //  console.log(ready_url)
     navigator.clipboard.writeText(ready_url)
   }
 
@@ -82,38 +85,33 @@ const Test = ({ title_color, category, story, fill }) => {
         >
           <p className="font-TSbold">تم النسخ</p>
         </div> */}
-        <Menu as="div" className="inline-block text-left">
-          <Menu.Button aria-expanded="false" className="">
-            {/* <div className="flex justify-between"> */}
-            {/* <p className="pt-2.5 pl-1.5 font-TSbold text-xs">شارِكْ</p> */}
-
+        {/* <Menu>
+          <Menu.Button>
+            {' '}
             <svg
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
-              className={`${fill} h-8 w-8 rounded-full`}
+              className={`${fill} h-8 w-8 cursor-pointer rounded-full `}
               onClick={() => {
                 copyy(category, story)
               }}
             >
               <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 15.889v-2.223s-3.78-.114-7 3.333c1.513-6.587 7-7.778 7-7.778v-2.221l5 4.425-5 4.464z" />
             </svg>
-
-            {/* </div> */}
-            {/* <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              // fill="#FFFFFF"
-              className="stroke-current		 h-8 w-8 rounded-full bg-GRAY400"
-            >
-              <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 15.889v-2.223s-3.78-.114-7 3.333c1.513-6.587 7-7.778 7-7.778v-2.221l5 4.425-5 4.464z" />
-            </svg> */}
           </Menu.Button>
           <Menu.Items>
             <section className="absolute top-0 left-12 w-32 lg:left-12">
               <section className="text-black flex w-48 rounded pb-1 text-center font-TSbold text-xs lg:w-56 ">
                 <Menu.Item>
                   {({ active }) => (
-                    <Fade delay={400}>
+                    <Fade
+                      delay={400}
+                      className={`${
+                        active
+                          ? 'bg-blue-500 text-white'
+                          : 'text-black bg-white'
+                      }`}
+                    >
                       <div className="ml-1.5">
                         <Image
                           src="http://cdn.onlinewebfonts.com/svg/img_211187.png"
@@ -126,109 +124,192 @@ const Test = ({ title_color, category, story, fill }) => {
                     </Fade>
                   )}
                 </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <Fade delay={300}>
-                      {/* <img
-                        src="./assest/images/twitter.jpg"
-                        className="ml-1.5 h-6 rounded-full lg:h-7"
-                        alt="social media alzubda twitter"
-                      /> */}
-                      <TwitterShareButton
-                        url={share_link}
-                        title={
-                          'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
-                        }
-                        separator=":: "
-                      >
-                        <TwitterIcon size={30} round className="ml-1.5" />
-                      </TwitterShareButton>
-                    </Fade>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <Fade delay={200}>
-                      {/* <img
-                        src="./assest/images/whatsapp.WebP"
-                        className="ml-1.5 h-6 rounded-full lg:h-7"
-                        alt="social media alzubda whatsapp"
-                      /> */}
-                      <WhatsappShareButton
-                        url={share_link}
-                        title={
-                          'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
-                        }
-                        separator=":: "
-                      >
-                        <WhatsappIcon size={30} round className="ml-1.5" />
-                      </WhatsappShareButton>
-                    </Fade>
-                  )}
-                  {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <Fade delay={100}>
-                      {/* <img
-                        src="./assest/images/facebook.jpg"
-                        className="h-6 rounded-full lg:h-7"
-                        alt="social media alzubda facebook"
-                      /> */}
-                      <FacebookShareButton
-                        url={share_link}
-                        quote={
-                          'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
-                        }
-                        hashtag={'#الزبدة'}
-                      >
-                        <FacebookMessengerIcon
-                          size={30}
-                          round
-                          className="ml-1.5"
-                        />
-                      </FacebookShareButton>
-                    </Fade>
-                  )}
-                </Menu.Item>
-                {/* <Menu.Item>
-                  {({ active }) => (
-                    <p
-                      className={`cursor-pointer border-b-1 border-GRAY200 pt-2 text-GRAY400 ${
-                        active && `${title_color}`
-                      }`}
-                      href=""
-                    >
-                      مشاركه
-                    </p>
-                  )}
-                </Menu.Item> */}
-                {/* <Menu.Item>
-                  {({ active }) => (
-                    <p
-                      className={`mt-1 cursor-pointer text-GRAY400 hover:${title_color} ${
-                        active && `${title_color}`
-                      }`}
-                    >
-                      مشاركة
-                    </p>
-                  )}
-                </Menu.Item> */}
-                {/* <Menu.Item>
-                  {({ active }) => (
-                    <p
-                      className={`mt-1 cursor-pointer text-GRAY400  ${
-                        active && `${title_color}`
-                      }`}
-                      href=""
-                    >
-                      أبلاغ
-                    </p>
-                  )}
-                </Menu.Item> */}
               </section>
             </section>
           </Menu.Items>
+        </Menu> */}
+
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+        {/************************** */}
+
+        <Menu as="div" className="inline-block text-left" show={open}>
+          {({ open }) => (
+            <>
+              {/* <Menu.Button>0</Menu.Button> */}
+              <Menu.Button>
+                {/* <span className="text-xs text-GRAY100">.</span> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`${fill} h-7 w-7 cursor-pointer rounded-full `}
+                  onClick={() => {
+                    copyy(category, story)
+                  }}
+                >
+                  <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 15.889v-2.223s-3.78-.114-7 3.333c1.513-6.587 7-7.778 7-7.778v-2.221l5 4.425-5 4.464z" />
+                </svg>
+              </Menu.Button>
+
+              <Menu.Items>
+                <section className="absolute top-0 left-12 w-32 lg:left-12">
+                  <section className="text-black flex w-48 rounded pb-1 text-center font-TSbold text-xs lg:w-56 ">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Fade
+                          delay={400}
+                          className={`${
+                            active
+                              ? 'bg-blue-500 text-white'
+                              : 'text-black bg-white'
+                          }`}
+                        >
+                          <div className="ml-1.5">
+                            <Image
+                              src="http://cdn.onlinewebfonts.com/svg/img_211187.png"
+                              alt="copy link"
+                              width={30}
+                              height={30}
+                              className="cursor-pointer rounded-full "
+                            />
+                          </div>
+                        </Fade>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Fade delay={300}>
+                          {/* <img
+                 src="./assest/images/twitter.jpg"
+                 className="ml-1.5 h-6 rounded-full lg:h-7"
+                 alt="social media alzubda twitter"
+               /> */}
+                          <TwitterShareButton
+                            url={share_link}
+                            title={
+                              'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
+                            }
+                            separator=":: "
+                          >
+                            <TwitterIcon size={30} round className="ml-1.5" />
+                          </TwitterShareButton>
+                        </Fade>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Fade delay={200}>
+                          {/* <img
+                 src="./assest/images/whatsapp.WebP"
+                 className="ml-1.5 h-6 rounded-full lg:h-7"
+                 alt="social media alzubda whatsapp"
+               /> */}
+                          <WhatsappShareButton
+                            url={share_link}
+                            title={
+                              'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
+                            }
+                            separator=":: "
+                          >
+                            <WhatsappIcon size={30} round className="ml-1.5" />
+                          </WhatsappShareButton>
+                        </Fade>
+                      )}
+                      {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Fade delay={100}>
+                          {/* <img
+                 src="./assest/images/facebook.jpg"
+                 className="h-6 rounded-full lg:h-7"
+                 alt="social media alzubda facebook"
+               /> */}
+                          <FacebookShareButton
+                            url={share_link}
+                            quote={
+                              'وفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.'
+                            }
+                            hashtag={'#الزبدة'}
+                          >
+                            <FacebookMessengerIcon
+                              size={30}
+                              round
+                              className="ml-1.5"
+                            />
+                          </FacebookShareButton>
+                        </Fade>
+                      )}
+                    </Menu.Item>
+                    {/* <Menu.Item>
+           {({ active }) => (
+             <p
+               className={`cursor-pointer border-b-1 border-GRAY200 pt-2 text-GRAY400 ${
+                 active && `${title_color}`
+               }`}
+               href=""
+             >
+               مشاركه
+             </p>
+           )}
+         </Menu.Item> */}
+                    {/* <Menu.Item>
+           {({ active }) => (
+             <p
+               className={`mt-1 cursor-pointer text-GRAY400 hover:${title_color} ${
+                 active && `${title_color}`
+               }`}
+             >
+               مشاركة
+             </p>
+           )}
+         </Menu.Item> */}
+                    {/* <Menu.Item>
+           {({ active }) => (
+             <p
+               className={`mt-1 cursor-pointer text-GRAY400  ${
+                 active && `${title_color}`
+               }`}
+               href=""
+             >
+               أبلاغ
+             </p>
+           )}
+         </Menu.Item> */}
+                  </section>
+                </section>
+              </Menu.Items>
+            </>
+          )}
         </Menu>
       </div>
     </React.Fragment>
