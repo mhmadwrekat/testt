@@ -93,15 +93,26 @@ button {
   transition: 0.5s;
   outline: none;
 }
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
 button:focus {
   border: 0px;
+  outline: none;
 }
 body {
   border: 0px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
+  outline: none;
 }
 body:focus {
   border: 0px;
+  outline: none;
+}
+body {
+  outline: none;
 }
