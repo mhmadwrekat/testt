@@ -146,10 +146,10 @@ const Search = ({ data, bg_color, category }) => {
                       {/* {console.log(item?.primary_category[0]?.category_name)} */}
                     </div>
                     {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
-                    <div className="mx-2.5 flex items-center justify-between">
+                    <div className="mx-2.5 flex items-center justify-between pb-1.5">
                       {category ? (
                         <p
-                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED `}
                           onClick={() => {
                             handle_news_redirection_story(
                               category,

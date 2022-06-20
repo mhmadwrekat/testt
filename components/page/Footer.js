@@ -16,7 +16,7 @@ const Footer = () => {
   }
   return (
     <React.Fragment>
-      <div className="" loading="lazy">
+      <div className="pt-6" loading="lazy">
         <footer className="pb-2">
           <div className="border-gray-400 mx-auto overflow-hidden border-t-2 bg-Purp100 py-5 text-white">
             <p className="text-md my-3 mr-1 text-center font-TSbold">

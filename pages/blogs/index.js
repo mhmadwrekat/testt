@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
 //next imports
@@ -48,6 +48,8 @@ const posts = [
 ]
 
 export default function blogs() {
+  const [searches, setSearches] = useState(false)
+
   return (
     <>
       <HeadComp />
@@ -57,7 +59,7 @@ export default function blogs() {
         className="text-black bg-white"
         translate="no"
       >
-        <Nav />
+        <Nav setSearches={setSearches} searches={searches} />
       </div>
 
       <div className="relative px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-12 lg:pb-28">

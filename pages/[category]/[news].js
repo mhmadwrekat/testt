@@ -20,6 +20,8 @@ const indexx = () => {
   const router = useRouter()
   const [head_news, setHeadNews] = useState()
   const [related_news, setRelatedNews] = useState()
+  const [searches, setSearches] = useState(false)
+
   let title_color = 'text-RED'
   let bg_color = 'bg-YELLOW'
   // Function Get all News
@@ -74,59 +76,60 @@ const indexx = () => {
     <React.Fragment>
       <div dir="rtl" id="project_body" translate="no">
         <HeadComp />
-        <Nav />
-        <section className="text-black mx-auto grid w-11/12 pt-10 lg:w-10/12 ">
-          <section
-            className="grid grid-cols-1 gap-0 bg-GRAY100 shadow-md lg:grid-cols-2 lg:gap-8"
-            id="card"
-          >
-            <section className="">
-              <div className="">
-                <p
-                  className={`rounded-t-md bg-Purp300 py-3 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
-                ></p>{' '}
-              </div>
-              <div className="relative mx-auto h-72 w-full shadow-md lg:h-96 ">
-                {head_news?.stories_media_url[0] &&
-                  (head_news?.stories_media_url[0].includes('youtube') ||
-                  head_news?.stories_media_url[0].includes('youtu.be') ? (
-                    // <iframe
-                    //   loading="eager"
-                    //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
-                    //     head_news?.stories_media_url[0]
-                    //   )}`}
-                    //   alt={head_news?.stories_headlines}
-                    //   className="relative h-72 w-full object-cover lg:h-full"
-                    // />
-                    <iframe
-                      className="aspect-video h-full w-full rounded-b-lg shadow-lg"
-                      src={`https://www.youtube.com/embed/${retrieve_youtube_code(
-                        head_news?.stories_media_url[0]
-                      )}`}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      loading="eager"
-                    ></iframe>
-                  ) : (
-                    // <iframe
-                    //   width="100%"
-                    //   className="relative mr-auto h-72 w-full object-cover text-right lg:h-full"
-                    //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
-                    //     head_news?.stories_media_url[0]
-                    //   )}`}
-                    //   alt={head_news?.stories_headlines}
-                    //   frameborder="0"
-                    //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    //   allowfullscreen=""
-                    //   loading="eager"
-                    // ></iframe>
-                    <img
-                      loading="eager"
-                      src={head_news?.stories_media_url[0]}
-                      alt={head_news?.stories_headlines}
-                      className="relative h-72 w-full object-cover lg:h-full"
-                    />
-                  ))}
-                {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
+        <Nav setSearches={setSearches} searches={searches} />
+        {searches ? null : (
+          <section className="text-black mx-auto grid w-11/12 pt-10 lg:w-10/12 ">
+            <section
+              className="grid grid-cols-1 gap-0 bg-GRAY100 shadow-md lg:grid-cols-2 lg:gap-8"
+              id="card"
+            >
+              <section className="">
+                <div className="">
+                  <p
+                    className={`rounded-t-md bg-Purp300 py-3 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
+                  ></p>{' '}
+                </div>
+                <div className="relative mx-auto h-72 w-full shadow-md lg:h-96 ">
+                  {head_news?.stories_media_url[0] &&
+                    (head_news?.stories_media_url[0].includes('youtube') ||
+                    head_news?.stories_media_url[0].includes('youtu.be') ? (
+                      // <iframe
+                      //   loading="eager"
+                      //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                      //     head_news?.stories_media_url[0]
+                      //   )}`}
+                      //   alt={head_news?.stories_headlines}
+                      //   className="relative h-72 w-full object-cover lg:h-full"
+                      // />
+                      <iframe
+                        className="aspect-video h-full w-full rounded-b-lg shadow-lg"
+                        src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                          head_news?.stories_media_url[0]
+                        )}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        loading="eager"
+                      ></iframe>
+                    ) : (
+                      // <iframe
+                      //   width="100%"
+                      //   className="relative mr-auto h-72 w-full object-cover text-right lg:h-full"
+                      //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                      //     head_news?.stories_media_url[0]
+                      //   )}`}
+                      //   alt={head_news?.stories_headlines}
+                      //   frameborder="0"
+                      //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      //   allowfullscreen=""
+                      //   loading="eager"
+                      // ></iframe>
+                      <img
+                        loading="eager"
+                        src={head_news?.stories_media_url[0]}
+                        alt={head_news?.stories_headlines}
+                        className="relative h-72 w-full object-cover lg:h-full"
+                      />
+                    ))}
+                  {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className=" h-7 w-7 cursor-pointer"
@@ -142,50 +145,52 @@ const indexx = () => {
                     />
                   </svg>
                 </div> */}
-              </div>
-            </section>
-            <section className="">
-              <div className="px-2.5 pt-2">
-                <div className="mt-3 font-TSExtra text-lg md:text-xl lg:h-28 lg:w-11/12 lg:text-3xl">
-                  {head_news?.stories_headlines}
                 </div>
-                <p className="pt-4 font-TSmedium text-lg lg:grid lg:h-60 lg:pt-0 ">
-                  {head_news?.stories_content}
-                </p>
-              </div>
-              <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
-                <p>
-                  <b className="text-red-800 font-TSbold">
-                    {head_news?.publisher_name}
-                  </b>
-                </p>
-                <div className="flex px-2.5">
-                  <p className="px-2.5 pt-2 font-TSbold text-GRAY300">
-                    قبل {moment(head_news?.published_on).fromNow(true)}
+              </section>
+              <section className="">
+                <div className="px-2.5 pt-2">
+                  <div className="mt-3 font-TSExtra text-lg md:text-xl lg:h-28 lg:w-11/12 lg:text-3xl">
+                    {head_news?.stories_headlines}
+                  </div>
+                  <p className="pt-4 font-TSmedium text-lg lg:grid lg:h-60 lg:pt-0 ">
+                    {head_news?.stories_content}
                   </p>
-                  {console.log(router.query.news)}
-                  <MenuThreeDot
-                    title_color={title_color}
-                    category={router.query.news}
-                    story={head_news?.stories_headlines}
-                    fill={'fill-Purp300'}
-                  />
                 </div>
-              </div>
+                <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
+                  <p>
+                    <b className="text-red-800 font-TSbold">
+                      {head_news?.publisher_name}
+                    </b>
+                  </p>
+                  <div className="flex px-2.5">
+                    <p className="px-2.5 pt-2 font-TSbold text-GRAY300">
+                      قبل {moment(head_news?.published_on).fromNow(true)}
+                    </p>
+                    {console.log(router.query.news)}
+                    <MenuThreeDot
+                      title_color={title_color}
+                      category={router.query.news}
+                      story={head_news?.stories_headlines}
+                      fill={'fill-Purp300'}
+                    />
+                  </div>
+                </div>
+              </section>
             </section>
+            <p
+              className={`mt-12 mb-3 font-TSExtra text-2xl text-Purp300 lg:text-4xl`}
+            >
+              أخبار ذات صلة
+            </p>
+            <AllData
+              data={related_news}
+              bg_color={'bg-Purp300'}
+              category={router.query.news}
+              fill={'fill-Purp300'}
+            />
           </section>
-          <p
-            className={`mt-12 mb-3 font-TSExtra text-2xl text-Purp300 lg:text-4xl`}
-          >
-            أخبار ذات صلة
-          </p>
-          <AllData
-            data={related_news}
-            bg_color={'bg-Purp300'}
-            category={router.query.news}
-            fill={'fill-Purp300'}
-          />
-        </section>
+        )}
+
         {/* {console.log(related_news)} */}
       </div>
       <div className="py-4"></div>

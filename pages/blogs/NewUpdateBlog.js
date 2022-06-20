@@ -1,6 +1,7 @@
 //next imports
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import React, { useState, useEffect } from 'react'
 
 //component imports
 import HeadComp from '../../components/page/HeadComp'
@@ -16,6 +17,7 @@ import appleStore from '../../public/assest/images/images/shared/apple-xhdpi.png
 import googlePlay from '../../public/assest/images/images/shared/google-xhdpi.png'
 
 export default function NewUpdateBlog() {
+  const [searches, setSearches] = useState(false)
   function new_tab(url) {
     window.open(url, '_blank')
   }
@@ -28,7 +30,7 @@ export default function NewUpdateBlog() {
         className="text-black bg-white"
         translate="no"
       >
-        <Nav />
+        <Nav setSearches={setSearches} searches={searches} />
       </div>
       <div className="min-h-full">
         <main className="py-10">
