@@ -402,6 +402,8 @@ const Category_news = ({
                         category={title}
                         story={category_news?.data[0]?.stories_headlines}
                         fill={fill_color}
+                        user_id={user_id}
+                        story_id={category_news?.data[0]?._id}
                       />
                     </div>
                   </div>
@@ -533,6 +535,8 @@ const Category_news = ({
                             category={title}
                             story={item?.stories_headlines}
                             fill={fill_color}
+                            user_id={user_id}
+                            story_id={item?._id}
                           />
                         </div>
                       </div>

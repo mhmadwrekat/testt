@@ -106,7 +106,6 @@ const index = (props) => {
       setBackgroundImage('bg-kuwait')
     }
   }
-
   // Call All Functions
   useEffect(() => {
     // register_user()
@@ -125,8 +124,8 @@ const index = (props) => {
     ...all_news[11].data.slice(0, 3),
     ...all_news[4].data.slice(0, 3),
   ]
-  all_news && console.log('---> ', user_id)
-  all_news && console.log('---> ', all_news[0].data[0]._id)
+  // all_news && console.log('---> ', user_id)
+  // all_news && console.log('---> ', all_news)
 
   return (
     <React.Fragment>
@@ -143,6 +142,7 @@ const index = (props) => {
           alternative_search={alternative_search}
           setSearches={setSearches}
           searches={searches}
+          user_id={user_id}
         />
         {searches
           ? null

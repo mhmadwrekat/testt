@@ -8,7 +8,7 @@ const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
 
 const Like = dynamic(() => import('./Like'))
 
-const Search = ({ data, bg_color, category }) => {
+const Search = ({ data, bg_color, category, user_id }) => {
   const router = useRouter()
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
@@ -30,7 +30,7 @@ const Search = ({ data, bg_color, category }) => {
       return code
     }
   }
-  const handle_news_redirection_story = (category, titles) => {
+  const handle_news_redirection_story = (category, titles, user_id) => {
     let ready_category = ''
     let ready_title = ''
     if (category?.includes('%')) {
@@ -186,6 +186,8 @@ const Search = ({ data, bg_color, category }) => {
                         category={item?.primary_category[0]?.category_name}
                         story={item?.stories_headlines}
                         fill={'fill-Purp300'}
+                        user_id={user_id}
+                        story_id={item?._id}
                       />
                     </div>
                   </div>

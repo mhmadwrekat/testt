@@ -213,6 +213,7 @@ const Video = ({
                               //   />
                               // </video>
                               <iframe
+                                title="Video"
                                 className="aspect-video h-full w-full rounded-lg shadow-lg lg:rounded-none lg:rounded-b-md "
                                 src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                                   item.stories_media_url[0]
@@ -243,6 +244,7 @@ const Video = ({
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen=""
+                                title="Video"
                                 loading="lazy"
                               ></iframe>
                               // <iframe
@@ -306,6 +308,8 @@ const Video = ({
                           category={item?.primary_category[0]?.category_name}
                           story={item?.stories_headlines}
                           fill={fill_color}
+                          user_id={user_id}
+                          story_id={item?._id}
                         />
                       </div>
                     </div>

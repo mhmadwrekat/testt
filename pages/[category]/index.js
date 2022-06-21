@@ -407,6 +407,8 @@ const index = () => {
                           category={item?.primary_category[0]?.category_name}
                           story={item?.stories_headlines}
                           fill={category_fill(router.query.category)}
+                          user_id={user_id}
+                          story_id={item?._id}
                         />
                       </div>
                       {/* {console.log(category_fill(router.query.category))} */}
@@ -420,6 +422,7 @@ const index = () => {
               bg_color={category_theme(router.query.category)}
               category={router.query.category}
               fill={category_fill(router.query.category)}
+              user_id={user_id}
             />
           </section>
         )}

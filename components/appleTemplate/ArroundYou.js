@@ -360,7 +360,8 @@ const Arround_you = ({
                         }
                         story={important_news?.data[0]?.stories_headlines}
                         fill={fill_color}
-                      />
+                        user_id={user_id}
+                        story_id={important_news?.data[0]?._id}                      />
                     </div>
                   </div>
                 </div>
@@ -489,6 +490,8 @@ const Arround_you = ({
                             category={item?.primary_category[0]?.category_name}
                             story={item?.stories_headlines}
                             fill={fill_color}
+                            user_id={user_id}
+                            story_id={item?._id}
                           />
                         </div>
                       </div>

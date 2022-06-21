@@ -555,6 +555,8 @@ const ImportantNews = ({
                             category={item?.primary_category[0]?.category_name}
                             story={item?.stories_headlines}
                             fill={fill_color}
+                            user_id={user_id}
+                            story_id={item?._id}
                           />
                         </div>
                       </div>

@@ -10,6 +10,7 @@ const Nav = ({
   alternative_search,
   setSearches,
   searches,
+  user_id,
 }) => {
   const [active, setActive] = useState(true)
   const [showSearch, setShowSearch] = useState(false)
@@ -635,7 +636,11 @@ const Nav = ({
                         {search_key}
                       </p>
                     </div>
-                    <Search data={search_data} bg_color={'bg-Purp100'} />
+                    <Search
+                      user_id={user_id}
+                      data={search_data}
+                      bg_color={'bg-Purp100'}
+                    />
                   </section>
                 )
               : null}

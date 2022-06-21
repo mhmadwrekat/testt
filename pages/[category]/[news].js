@@ -21,6 +21,10 @@ const indexx = () => {
   const [head_news, setHeadNews] = useState()
   const [related_news, setRelatedNews] = useState()
   const [searches, setSearches] = useState(false)
+  const [user_id, setUserId] =
+    typeof window !== 'undefined'
+      ? useState(localStorage.getItem('user_id'))
+      : useState()
 
   let title_color = 'text-RED'
   let bg_color = 'bg-YELLOW'
@@ -67,6 +71,9 @@ const indexx = () => {
   }
   // Call All Functions
   useEffect(() => {
+    typeof window !== 'undefined'
+      ? setUserId(localStorage.getItem('user_id'))
+      : ''
     get_all_news()
   }, [router.query.category])
 
@@ -78,7 +85,7 @@ const indexx = () => {
         <HeadComp />
         <Nav setSearches={setSearches} searches={searches} />
         {searches ? null : (
-          <section className="text-black mx-auto grid w-11/12 pt-10 lg:w-10/12 ">
+          <section className="text-black mx-auto grid w-11/12 pt-10 lg:w-10/12">
             <section
               className="grid grid-cols-1 gap-0 bg-GRAY100 shadow-md lg:grid-cols-2 lg:gap-8"
               id="card"
@@ -86,10 +93,10 @@ const indexx = () => {
               <section className="">
                 <div className="">
                   <p
-                    className={`rounded-t-md bg-Purp300 py-3 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
+                    className={`rounded-t-md bg-Purp300 py-4 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
                   ></p>{' '}
                 </div>
-                <div className="relative mx-auto h-72 w-full shadow-md lg:h-96 ">
+                <div className="relative mx-auto h-72 w-full shadow-md lg:h-96">
                   {head_news?.stories_media_url[0] &&
                     (head_news?.stories_media_url[0].includes('youtube') ||
                     head_news?.stories_media_url[0].includes('youtu.be') ? (
@@ -102,7 +109,8 @@ const indexx = () => {
                       //   className="relative h-72 w-full object-cover lg:h-full"
                       // />
                       <iframe
-                        className="aspect-video h-full w-full rounded-b-lg shadow-lg"
+                        title="Video"
+                        className="aspect-video h-full w-full rounded-b-lg shadow-lg "
                         src={`https://www.youtube.com/embed/${retrieve_youtube_code(
                           head_news?.stories_media_url[0]
                         )}`}
@@ -177,6 +185,8 @@ const indexx = () => {
                       category={router.query.news}
                       story={head_news?.stories_headlines}
                       fill={'fill-Purp300'}
+                      story_id={head_news?._id}
+                      user_id={user_id}
                     />{' '}
                     <p className="hidden px-2.5 pt-2 font-TSbold text-GRAY300 lg:flex">
                       قبل {moment(head_news?.published_on).fromNow(true)}
@@ -195,6 +205,7 @@ const indexx = () => {
               bg_color={'bg-Purp300'}
               category={router.query.news}
               fill={'fill-Purp300'}
+              user_id={user_id}
             />
           </section>
         )}
