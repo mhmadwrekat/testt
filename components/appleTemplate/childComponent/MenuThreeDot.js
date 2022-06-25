@@ -14,7 +14,15 @@ import {
 } from 'next-share'
 import Swal from 'sweetalert2'
 
-const Test = ({ title_color, category, story, fill, story_id, user_id }) => {
+const Test = ({
+  title_color,
+  category,
+  story,
+  fill,
+  story_id,
+  user_id,
+  id,
+}) => {
   const [share_link, setShareLink] = useState('')
   // console.log(x_key)
   const [open_item, setOpenItem] = useState(false)
@@ -42,48 +50,22 @@ const Test = ({ title_color, category, story, fill, story_id, user_id }) => {
         'x-api-key': x_key,
       },
     }
-    axios
-      .post(
-        `https://d1i218h7fe.execute-api.us-east-2.amazonaws.com/production/`,
-        data,
-        config
-      )
-      .then((res) => {
-        // console.log(res)
-        // console.log('OUTSIDE')
-      })
+    // axios
+    //   .post(
+    //     `https://d1i218h7fe.execute-api.us-east-2.amazonaws.com/production/`,
+    //     data,
+    //     config
+    //   )
+    //   .then((res) => {
+    //     // console.log(res)
+    //     // console.log('OUTSIDE')
+    //   })
   }
-  const share_button = (category, story) => {
+  const share_button = (id) => {
     setOpenItem(!open_item)
     share_event()
-    let ready_category = ''
-    let ready_title = ''
-    if (category.includes('%')) {
-      let title = category.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_category = `${title.replace('%', '_')}`
-    } else if (category.includes(' ')) {
-      let title = category.replace(/\s+/g, '_')
-      ready_category = `${title.replace(' ', '_')}`
-    } else {
-      ready_category = category
-    }
-    if (story.includes('%')) {
-      let title = story.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_title = `${title.replace('%', '_')}`
-    } else if (story.includes(' ')) {
-      let title = story.replace(/\s+/g, '_')
-      ready_title = `${title.replace(' ', '_')}`
-    } else {
-      ready_title = story
-    }
-    if (story.includes('?')) {
-      let title = story.replace(/\s+/g, '')
-      ready_title = `${title.replace('?', '_')}`
-    }
 
-    let ready_url = `https://alzubda.com/${ready_title}/${ready_category}`
+    let ready_url = `https://alzubda.com/${id}`
     setShareLink(ready_url)
   }
 
@@ -105,16 +87,16 @@ const Test = ({ title_color, category, story, fill, story_id, user_id }) => {
         'x-api-key': x_key_event,
       },
     }
-    axios
-      .post(
-        `https://b0l6mu9l13.execute-api.us-east-2.amazonaws.com/production/`,
-        data,
-        config
-      )
-      .then((res) => {
-        // console.log(res)
-        // console.log('INSIDE')
-      })
+    // axios
+    //   .post(
+    //     `https://b0l6mu9l13.execute-api.us-east-2.amazonaws.com/production/`,
+    //     data,
+    //     config
+    //   )
+    //   .then((res) => {
+    //     // console.log(res)
+    //     // console.log('INSIDE')
+    //   })
   }
   return (
     <React.Fragment>
@@ -124,7 +106,7 @@ const Test = ({ title_color, category, story, fill, story_id, user_id }) => {
           xmlns="http://www.w3.org/2000/svg"
           className={`${fill} h-7 w-7 cursor-pointer rounded-full `}
           onClick={() => {
-            share_button(category, story)
+            share_button(id)
           }}
         >
           <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 15.889v-2.223s-3.78-.114-7 3.333c1.513-6.587 7-7.778 7-7.778v-2.221l5 4.425-5 4.464z" />

@@ -30,35 +30,9 @@ const Search = ({ data, bg_color, category, user_id }) => {
       return code
     }
   }
-  const handle_news_redirection_story = (category, titles, user_id) => {
-    let ready_category = ''
-    let ready_title = ''
-    if (category?.includes('%')) {
-      let title = category.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_category = `${title.replace('%', '_')}`
-    } else if (category.includes(' ')) {
-      let title = category.replace(/\s+/g, '_')
-      ready_category = `${title.replace(' ', '_')}`
-    } else {
-      ready_category = category
-    }
-    if (titles.includes('%')) {
-      let title = titles.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_title = `${title.replace('%', '_')}`
-    } else if (titles.includes(' ')) {
-      let title = titles.replace(/\s+/g, '_')
-      ready_title = `${title.replace(' ', '_')}`
-    } else {
-      ready_title = titles
-    }
-    if (titles.includes('?')) {
-      let title = titles.replace(/\s+/g, '')
-      ready_title = `${title.replace('?', '_')}`
-    }
-
-    router.push(`/${ready_title}`)
+  const handle_news_redirection_story = (id, user_id) => {
+    router.push(`/${id}`)
+    location.replace(`/${id}`)
   }
   return (
     <React.Fragment>
@@ -86,11 +60,11 @@ const Search = ({ data, bg_color, category, user_id }) => {
                     <section
                       className="grid cursor-pointer bg-GRAY100"
                       onClick={() => {
-                        handle_news_redirection_story(
-                          category,
-                          item?.stories_headlines
-                        )
+                        handle_news_redirection_story(item?._id)
                       }}
+                      // onClick={() => {
+                      //   router.push(`/${item._id}`)
+                      // }}
                     >
                       <div className="relative w-full lg:w-auto">
                         {item?.stories_media_url[0] &&
@@ -159,10 +133,7 @@ const Search = ({ data, bg_color, category, user_id }) => {
                         <p
                           className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED `}
                           onClick={() => {
-                            handle_news_redirection_story(
-                              category,
-                              item?.stories_headlines
-                            )
+                            handle_news_redirection_story(item?._id)
                           }}
                         >
                           اقرا المزيد
@@ -171,10 +142,7 @@ const Search = ({ data, bg_color, category, user_id }) => {
                         <p
                           className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                           onClick={() => {
-                            handle_news_redirection_story(
-                              item?.primary_category[0]?.category_name,
-                              item?.stories_headlines
-                            )
+                            handle_news_redirection_story(item?._id)
                           }}
                         >
                           اقرا المزيد
@@ -182,6 +150,7 @@ const Search = ({ data, bg_color, category, user_id }) => {
                       )}
 
                       <MenuThreeDot
+                        id={item?._id}
                         title_color={'text-Purp100'}
                         category={item?.primary_category[0]?.category_name}
                         story={item?.stories_headlines}

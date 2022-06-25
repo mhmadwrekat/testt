@@ -192,13 +192,16 @@ const Video = ({
                         </p>{' '}
                       </div>
                       <section
-                        className="flex cursor-pointer bg-GRAY100 lg:grid "
+                        className="flex cursor-pointer bg-GRAY100 lg:grid"
                         onClick={() => {
-                          handle_news_redirection_story(
-                            item?.primary_category[0]?.category_name,
-                            item?.stories_headlines
-                          )
+                          router.push(`/${item?._id}`)
                         }}
+                        // onClick={() => {
+                        //   handle_news_redirection_story(
+                        //     item?.primary_category[0]?.category_name,
+                        //     item?.stories_headlines
+                        //   )
+                        // }}
                       >
                         <div className="relative h-32 w-80 py-2 lg:mr-0 lg:h-auto lg:w-full lg:py-0">
                           {item.stories_media_url[0] &&
@@ -305,6 +308,7 @@ const Video = ({
                           اقرا المزيد
                         </p>
                         <MenuThreeDot
+                      id={item?._id}
                           title_color={title_color}
                           category={item?.primary_category[0]?.category_name}
                           story={item?.stories_headlines}

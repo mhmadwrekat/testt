@@ -238,12 +238,15 @@ const ImportantNews = ({
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
                           onClick={() => {
-                            handle_news_redirection_story(
-                              category_news?.data[0]?.primary_category[0]
-                                ?.category_name,
-                              category_news?.data[0]?.stories_headlines
-                            )
+                            router.push(`/${category_news?.data[0]?._id}`)
                           }}
+                          // onClick={() => {
+                          //   handle_news_redirection_story(
+                          //     category_news?.data[0]?.primary_category[0]
+                          //       ?.category_name,
+                          //     category_news?.data[0]?.stories_headlines
+                          //   )
+                          // }}
                         />
                       ) : (
                         <img
@@ -251,12 +254,15 @@ const ImportantNews = ({
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
                           onClick={() => {
-                            handle_news_redirection_story(
-                              category_news?.data[0]?.primary_category[0]
-                                ?.category_name,
-                              category_news?.data[0]?.stories_headlines
-                            )
+                            router.push(`/${category_news?.data[0]?._id}`)
                           }}
+                          // onClick={() => {
+                          //   handle_news_redirection_story(
+                          //     category_news?.data[0]?.primary_category[0]
+                          //       ?.category_name,
+                          //     category_news?.data[0]?.stories_headlines
+                          //   )
+                          // }}
                         />
                       ))}
                     <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
@@ -300,12 +306,15 @@ const ImportantNews = ({
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
                     onClick={() => {
-                      handle_news_redirection_story(
-                        category_news?.data[0]?.primary_category[0]
-                          ?.category_name,
-                        category_news?.data[0]?.stories_headlines
-                      )
+                      router.push(`/${category_news?.data[0]?._id}`)
                     }}
+                    // onClick={() => {
+                    //   handle_news_redirection_story(
+                    //     category_news?.data[0]?.primary_category[0]
+                    //       ?.category_name,
+                    //     category_news?.data[0]?.stories_headlines
+                    //   )
+                    // }}
                   >
                     <p>
                       <b className="text-red-800 font-TSbold">
@@ -323,24 +332,30 @@ const ImportantNews = ({
                     <div
                       className="mb-2 cursor-pointer font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl"
                       onClick={() => {
-                        handle_news_redirection_story(
-                          category_news?.data[0]?.primary_category[0]
-                            ?.category_name,
-                          category_news?.data[0]?.stories_headlines
-                        )
+                        router.push(`/${category_news?.data[0]?._id}`)
                       }}
+                      // onClick={() => {
+                      //   handle_news_redirection_story(
+                      //     category_news?.data[0]?.primary_category[0]
+                      //       ?.category_name,
+                      //     category_news?.data[0]?.stories_headlines
+                      //   )
+                      // }}
                     >
                       {category_news?.data[0]?.stories_headlines}
                     </div>
                     <p
                       className="hidden h-36 cursor-pointer font-TSmedium text-base lg:grid lg:h-32"
                       onClick={() => {
-                        handle_news_redirection_story(
-                          category_news?.data[0]?.primary_category[0]
-                            ?.category_name,
-                          category_news?.data[0]?.stories_headlines
-                        )
+                        router.push(`/${category_news?.data[0]?._id}`)
                       }}
+                      // onClick={() => {
+                      //   handle_news_redirection_story(
+                      //     category_news?.data[0]?.primary_category[0]
+                      //       ?.category_name,
+                      //     category_news?.data[0]?.stories_headlines
+                      //   )
+                      // }}
                     >
                       {category_news?.data[0]?.stories_content.slice(0, 335)}
                       ......
@@ -348,12 +363,15 @@ const ImportantNews = ({
                     <p
                       className="grid h-24 cursor-pointer font-TSmedium text-base md:grid lg:hidden lg:h-32"
                       onClick={() => {
-                        handle_news_redirection_story(
-                          category_news?.data[0]?.primary_category[0]
-                            ?.category_name,
-                          category_news?.data[0]?.stories_headlines
-                        )
+                        router.push(`/${category_news?.data[0]?._id}`)
                       }}
+                      // onClick={() => {
+                      //   handle_news_redirection_story(
+                      //     category_news?.data[0]?.primary_category[0]
+                      //       ?.category_name,
+                      //     category_news?.data[0]?.stories_headlines
+                      //   )
+                      // }}
                     >
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
@@ -362,18 +380,22 @@ const ImportantNews = ({
                       <p
                         className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
                         onClick={() => {
-                          handle_news_redirection_story(
-                            category_news?.data[0]?.primary_category[0]
-                              ?.category_name,
-                            category_news?.data[0]?.stories_headlines
-                          )
+                          router.push(`/${category_news?.data[0]?._id}`)
                         }}
+                        // onClick={() => {
+                        //   handle_news_redirection_story(
+                        //     category_news?.data[0]?.primary_category[0]
+                        //       ?.category_name,
+                        //     category_news?.data[0]?.stories_headlines
+                        //   )
+                        // }}
                       >
                         اقرأ المزيد
                       </p>
 
                       <MenuThreeDot
-                        title_color={title_color}
+                      id={category_news?.data[0]?._id}
+                      title_color={title_color}
                         category={
                           category_news?.data[0]?.primary_category[0]
                             ?.category_name
@@ -389,6 +411,7 @@ const ImportantNews = ({
               </section>
               <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 {category_news?.data?.slice(1, 5).map((item, key) => {
+                  // console.log(item?._id)
                   // console.log(arr)
                   // {
                   stories.push(item?._id)
@@ -405,11 +428,14 @@ const ImportantNews = ({
                         <div
                           className="cursor-pointer"
                           onClick={() => {
-                            handle_news_redirection_story(
-                              item?.primary_category[0]?.category_name,
-                              item?.stories_headlines
-                            )
+                            router.push(`/${item._id}`)
                           }}
+                          // onClick={() => {
+                          //   handle_news_redirection_story(
+                          //     item?.primary_category[0]?.category_name,
+                          //     item?.stories_headlines
+                          //   )
+                          // }}
                         >
                           {item?.primary_category[0]?.category_name ? (
                             <p
@@ -444,10 +470,7 @@ const ImportantNews = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
-                                    handle_news_redirection_story(
-                                      item?.primary_category[0]?.category_name,
-                                      item?.stories_headlines
-                                    )
+                                    router.push(`/${item._id}`)
                                   }}
                                 />
                               ) : (
@@ -457,10 +480,7 @@ const ImportantNews = ({
                                   alt={item.stories_headlines}
                                   className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
-                                    handle_news_redirection_story(
-                                      item?.primary_category[0]?.category_name,
-                                      item?.stories_headlines
-                                    )
+                                    router.push(`/${item._id}`)
                                   }}
                                 />
                               ))}
@@ -474,10 +494,7 @@ const ImportantNews = ({
                           <div
                             className="hidden cursor-pointer justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex"
                             onClick={() => {
-                              handle_news_redirection_story(
-                                item?.primary_category[0]?.category_name,
-                                item?.stories_headlines
-                              )
+                              router.push(`/${item._id}`)
                             }}
                           >
                             <p>
@@ -493,10 +510,7 @@ const ImportantNews = ({
                           <div
                             className="cursor-pointer py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2"
                             onClick={() => {
-                              handle_news_redirection_story(
-                                item?.primary_category[0]?.category_name,
-                                item?.stories_headlines
-                              )
+                              router.push(`/${item._id}`)
                             }}
                           >
                             <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:h-10 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:text-sm">
@@ -511,10 +525,7 @@ const ImportantNews = ({
                         <div
                           className="flex justify-between px-4 font-TSlight text-xs lg:hidden"
                           onClick={() => {
-                            handle_news_redirection_story(
-                              item?.primary_category[0]?.category_name,
-                              item?.stories_headlines
-                            )
+                            router.push(`/${item._id}`)
                           }}
                         >
                           <p>
@@ -531,15 +542,13 @@ const ImportantNews = ({
                           <p
                             className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
-                              handle_news_redirection_story(
-                                item?.primary_category[0]?.category_name,
-                                item?.stories_headlines
-                              )
+                              router.push(`/${item._id}`)
                             }}
                           >
                             اقرأ المزيد
                           </p>
                           <MenuThreeDot
+                      id={item._id}
                             title_color={title_color}
                             category={item?.primary_category[0]?.category_name}
                             story={item?.stories_headlines}

@@ -249,11 +249,14 @@ const Category_news = ({
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
                           onClick={() => {
-                            handle_news_redirection_story(
-                              title,
-                              category_news?.data[0]?.stories_headlines
-                            )
+                            router.push(`/${category_news?.data[0]?._id}`)
                           }}
+                          // onClick={() => {
+                          //   handle_news_redirection_story(
+                          //     title,
+                          //     category_news?.data[0]?.stories_headlines
+                          //   )
+                          // }}
                         />
                       ) : (
                         <img
@@ -262,10 +265,7 @@ const Category_news = ({
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
                           onClick={() => {
-                            handle_news_redirection_story(
-                              title,
-                              category_news?.data[0]?.stories_headlines
-                            )
+                            router.push(`/${category_news?.data[0]?._id}`)
                           }}
                         />
                       ))}
@@ -330,10 +330,7 @@ const Category_news = ({
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
                     onClick={() => {
-                      handle_news_redirection_story(
-                        title,
-                        category_news?.data[0]?.stories_headlines
-                      )
+                      router.push(`/${category_news?.data[0]?._id}`)
                     }}
                   >
                     <p>
@@ -353,10 +350,7 @@ const Category_news = ({
                     <div
                       className="mb-2 cursor-pointer font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl"
                       onClick={() => {
-                        handle_news_redirection_story(
-                          title,
-                          category_news?.data[0]?.stories_headlines
-                        )
+                        router.push(`/${category_news?.data[0]?._id}`)
                       }}
                     >
                       {category_news?.data[0]?.stories_headlines}
@@ -364,10 +358,7 @@ const Category_news = ({
                     <p
                       className="hidden h-36 cursor-pointer font-TSmedium text-base lg:grid lg:h-32"
                       onClick={() => {
-                        handle_news_redirection_story(
-                          title,
-                          category_news?.data[0]?.stories_headlines
-                        )
+                        router.push(`/${category_news?.data[0]?._id}`)
                       }}
                     >
                       {category_news?.data[0]?.stories_content.slice(0, 335)}
@@ -376,10 +367,7 @@ const Category_news = ({
                     <p
                       className="grid h-24 cursor-pointer font-TSmedium text-base md:grid lg:hidden lg:h-32"
                       onClick={() => {
-                        handle_news_redirection_story(
-                          title,
-                          category_news?.data[0]?.stories_headlines
-                        )
+                        router.push(`/${category_news?.data[0]?._id}`)
                       }}
                     >
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
@@ -389,16 +377,14 @@ const Category_news = ({
                       <p
                         className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
                         onClick={() => {
-                          handle_news_redirection_story(
-                            title,
-                            category_news?.data[0]?.stories_headlines
-                          )
+                          router.push(`/${category_news?.data[0]?._id}`)
                         }}
                       >
                         اقرأ المزيد
                       </p>
                       <MenuThreeDot
-                        title_color={title_color}
+                      id={category_news?.data[0]?._id}
+                      title_color={title_color}
                         category={title}
                         story={category_news?.data[0]?.stories_headlines}
                         fill={fill_color}
@@ -442,11 +428,14 @@ const Category_news = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
                                   onClick={() => {
-                                    handle_news_redirection_story(
-                                      title,
-                                      item?.stories_headlines
-                                    )
+                                    router.push(`/${item?._id}`)
                                   }}
+                                  // onClick={() => {
+                                  //   handle_news_redirection_story(
+                                  //     title,
+                                  //     item?.stories_headlines
+                                  //   )
+                                  // }}
                                 />
                               ) : (
                                 <img
@@ -455,10 +444,7 @@ const Category_news = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
-                                    handle_news_redirection_story(
-                                      title,
-                                      item?.stories_headlines
-                                    )
+                                    router.push(`/${item?._id}`)
                                   }}
                                 />
                               ))}
@@ -483,10 +469,7 @@ const Category_news = ({
                           <div
                             className="cursor-pointer py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2"
                             onClick={() => {
-                              handle_news_redirection_story(
-                                title,
-                                item?.stories_headlines
-                              )
+                              router.push(`/${item?._id}`)
                             }}
                           >
                             <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:h-10 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:text-sm">
@@ -501,10 +484,7 @@ const Category_news = ({
                         <div
                           className="flex cursor-pointer justify-between px-4 font-TSlight text-xs lg:hidden"
                           onClick={() => {
-                            handle_news_redirection_story(
-                              title,
-                              item?.stories_headlines
-                            )
+                            router.push(`/${item?._id}`)
                           }}
                         >
                           <p>
@@ -521,16 +501,14 @@ const Category_news = ({
                           <p
                             className={` cursor-pointer rounded-lg py-4 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
-                              handle_news_redirection_story(
-                                title,
-                                item?.stories_headlines
-                              )
+                              router.push(`/${item?._id}`)
                             }}
                           >
                             اقرأ المزيد
                           </p>
 
                           <MenuThreeDot
+                      id={item?._id}
                             title_color={title_color}
                             category={title}
                             story={item?.stories_headlines}

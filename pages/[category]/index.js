@@ -360,6 +360,7 @@ const index = () => {
                           className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                         ></p>{' '}
                         <MenuThreeDot
+                      id={item?._id}
                           title_color={'text-Purp100'}
                           category={item?.primary_category[0]?.category_name}
                           story={item?.stories_headlines}
@@ -379,6 +380,7 @@ const index = () => {
               category={router.query.category}
               fill={category_fill(router.query.category)}
               user_id={user_id}
+              relace={true}
             />
           </section>
         ) : (

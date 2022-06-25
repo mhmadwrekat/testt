@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import moment from 'moment'
@@ -7,7 +7,7 @@ import 'moment/locale/ar'
 const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
 const Like = dynamic(() => import('./Like'))
 
-const AllData = ({ data, bg_color, category, fill, user_id }) => {
+const AllData = ({ data, bg_color, category, fill, user_id, relace }) => {
   const router = useRouter()
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
@@ -29,35 +29,9 @@ const AllData = ({ data, bg_color, category, fill, user_id }) => {
       return code
     }
   }
-  const handle_news_redirection_story = (category, titles) => {
-    let ready_category = ''
-    let ready_title = ''
-    if (category?.includes('%')) {
-      let title = category.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_category = `${title.replace('%', '_')}`
-    } else if (category.includes(' ')) {
-      let title = category.replace(/\s+/g, '_')
-      ready_category = `${title.replace(' ', '_')}`
-    } else {
-      ready_category = category
-    }
-    if (titles.includes('%')) {
-      let title = titles.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_title = `${title.replace('%', '_')}`
-    } else if (titles.includes(' ')) {
-      let title = titles.replace(/\s+/g, '_')
-      ready_title = `${title.replace(' ', '_')}`
-    } else {
-      ready_title = titles
-    }
-    if (titles.includes('?')) {
-      let title = titles.replace(/\s+/g, '')
-      ready_title = `${title.replace('?', '_')}`
-    }
-
-    router.push(`/${ready_title}`)
+  const handle_news_redirection_story = (id) => {
+    router.push(`/${id}`)
+    relace && location.replace(`/${id}`)
   }
   return (
     <React.Fragment>
@@ -79,11 +53,11 @@ const AllData = ({ data, bg_color, category, fill, user_id }) => {
                     <section
                       className="grid cursor-pointer bg-GRAY100"
                       onClick={() => {
-                        handle_news_redirection_story(
-                          category,
-                          item?.stories_headlines
-                        )
+                        handle_news_redirection_story(item?._id)
                       }}
+                      // onClick={() => {
+                      //   router.push(`/${item._id}`)
+                      // }}
                     >
                       <div className="relative w-full lg:w-auto">
                         {item?.stories_media_url[0] &&
@@ -152,10 +126,7 @@ const AllData = ({ data, bg_color, category, fill, user_id }) => {
                         <p
                           className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                           onClick={() => {
-                            handle_news_redirection_story(
-                              category,
-                              item?.stories_headlines
-                            )
+                            handle_news_redirection_story(item?._id)
                           }}
                         >
                           اقرا المزيد
@@ -164,10 +135,7 @@ const AllData = ({ data, bg_color, category, fill, user_id }) => {
                         <p
                           className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                           onClick={() => {
-                            handle_news_redirection_story(
-                              item?.primary_category[0]?.category_name,
-                              item?.stories_headlines
-                            )
+                            handle_news_redirection_story(item?._id)
                           }}
                         >
                           اقرا المزيد
@@ -175,6 +143,7 @@ const AllData = ({ data, bg_color, category, fill, user_id }) => {
                       )}
 
                       <MenuThreeDot
+                        id={item?._id}
                         title_color={'text-Purp100'}
                         category={category}
                         story={item?.stories_headlines}

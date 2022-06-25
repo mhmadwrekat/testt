@@ -27,9 +27,11 @@ const StoryShow = () => {
     // console.log(
     //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}&category_id=5e4e90ac52561e16596649f9`
     // )
+    // /v1/Web/Story?story_id=
+
     router.query.category &&
       axios
-        .get(`${BASE_URL}/v1/Web/Story?title=${router.query.category}`)
+        .get(`${BASE_URL}/v1/Web/Story?story_id=${router.query.category}`)
         .then((res) => {
           // console.log(res.data.data)
           setHeadNews(res?.data?.data?.story)
@@ -68,8 +70,8 @@ const StoryShow = () => {
     typeof window !== 'undefined'
       ? setUserId(localStorage.getItem('user_id'))
       : ''
-    get_all_news()
-  }, [router.query.category])
+    router?.query?.category?.length > 15 && get_all_news()
+  }, [router, router.query.category])
   return (
     <React.Fragment>
       <div dir="rtl" id="project_body" translate="no">
@@ -170,6 +172,7 @@ const StoryShow = () => {
                 <div className="flex px-2.5">
                   {/* {console.log(router.query.news)} */}
                   <MenuThreeDot
+                    id={head_news?._id}
                     title_color={title_color}
                     category={router.query.news}
                     story={head_news?.stories_headlines}
