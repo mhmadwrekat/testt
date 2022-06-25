@@ -3,6 +3,7 @@ module.exports = {
     locales: ['en'],
     defaultLocale: 'en',
   },
+
   productionBrowserSourceMaps: true,
   entry: './src/js/main.js',
   output: {

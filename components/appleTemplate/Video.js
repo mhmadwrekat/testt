@@ -86,7 +86,7 @@ const Video = ({
       ready_title = `${title.replace('?', '_')}`
     }
 
-    router.push(`/${ready_title}/${ready_category}`)
+    router.push(`/${ready_title}`)
     // console.log(ready_title)
   }
   return (
@@ -220,6 +220,7 @@ const Video = ({
                                 )}`}
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 loading="lazy"
+                                allowFullScreen=""
                               ></iframe>
                             ) : (
                               // <iframe
@@ -241,9 +242,9 @@ const Video = ({
                               <iframe
                                 className="aspect-video h-full w-full rounded-lg shadow-lg lg:rounded-none lg:rounded-b-md "
                                 src={`https://www.youtube.com/embed/65416`}
-                                frameborder="0"
+                                frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen=""
+                                allowFullScreen=""
                                 title="Video"
                                 loading="lazy"
                               ></iframe>

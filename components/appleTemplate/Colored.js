@@ -111,7 +111,7 @@ const Colored = ({
       ready_title = `${title.replace('?', '_')}`
     }
 
-    router.push(`/${ready_title}/${ready_category}`)
+    router.push(`/${ready_title}`)
     // console.log(ready_title)
   }
   return (

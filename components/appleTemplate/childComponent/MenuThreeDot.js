@@ -32,26 +32,26 @@ const Test = ({ title_color, category, story, fill, story_id, user_id }) => {
   })
 
   const share_event = () => {
-    // let data = {
-    //   user: user_id,
-    //   stories: [story_id],
-    //   source_type: 'default',
-    // }
-    // const config = {
-    //   headers: {
-    //     'x-api-key': x_key,
-    //   },
-    // }
-    // axios
-    //   .post(
-    //     `https://d1i218h7fe.execute-api.us-east-2.amazonaws.com/production/`,
-    //     data,
-    //     config
-    //   )
-    //   .then((res) => {
-    //     console.log(res)
-    //     console.log('OUTSIDE')
-    //   })
+    let data = {
+      user: user_id,
+      stories: [story_id],
+      source_type: 'default',
+    }
+    const config = {
+      headers: {
+        'x-api-key': x_key,
+      },
+    }
+    axios
+      .post(
+        `https://d1i218h7fe.execute-api.us-east-2.amazonaws.com/production/`,
+        data,
+        config
+      )
+      .then((res) => {
+        // console.log(res)
+        // console.log('OUTSIDE')
+      })
   }
   const share_button = (category, story) => {
     setOpenItem(!open_item)
@@ -95,26 +95,26 @@ const Test = ({ title_color, category, story, fill, story_id, user_id }) => {
     navigator.clipboard.writeText(share_link)
   }
   const share_api = () => {
-    // let data = {
-    //   user: user_id,
-    //   stories: [story_id],
-    //   source_type: 'default',
-    // }
-    // const config = {
-    //   headers: {
-    //     'x-api-key': x_key_event,
-    //   },
-    // }
-    // axios
-    //   .post(
-    //     `https://b0l6mu9l13.execute-api.us-east-2.amazonaws.com/production/`,
-    //     data,
-    //     config
-    //   )
-    //   .then((res) => {
-    //     console.log(res)
-    //     console.log('INSIDE')
-    //   })
+    let data = {
+      user: user_id,
+      stories: [story_id],
+      source_type: 'default',
+    }
+    const config = {
+      headers: {
+        'x-api-key': x_key_event,
+      },
+    }
+    axios
+      .post(
+        `https://b0l6mu9l13.execute-api.us-east-2.amazonaws.com/production/`,
+        data,
+        config
+      )
+      .then((res) => {
+        // console.log(res)
+        // console.log('INSIDE')
+      })
   }
   return (
     <React.Fragment>

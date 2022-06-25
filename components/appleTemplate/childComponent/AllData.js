@@ -57,7 +57,7 @@ const AllData = ({ data, bg_color, category, fill, user_id }) => {
       ready_title = `${title.replace('?', '_')}`
     }
 
-    router.push(`/${ready_title}/${ready_category}`)
+    router.push(`/${ready_title}`)
   }
   return (
     <React.Fragment>

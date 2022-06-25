@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
+// import { generateFeeds } from '../utils/feed'
 
 // Apple View component
 const CategoryNews = dynamic(() =>
@@ -41,6 +42,7 @@ export async function getServerSideProps({ req, res }) {
   //   'Cache-Control',
   //   'public, s-maxage=10, stale-while-revalidate=59'
   // )
+  // await generateFeeds()
   // Get Logaimat API
   let user_token = ''
   const LoqaimatDataReq = axios({

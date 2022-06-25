@@ -94,18 +94,7 @@ const ImportantNews = ({
     }
   }
   const handle_news_redirection_story = (category, titles) => {
-    let ready_category = ''
     let ready_title = ''
-    if (category.includes('%')) {
-      let title = category.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_category = `${title.replace('%', '_')}`
-    } else if (category.includes(' ')) {
-      let title = category.replace(/\s+/g, '_')
-      ready_category = `${title.replace(' ', '_')}`
-    } else {
-      ready_category = category
-    }
     if (titles.includes('%')) {
       let title = titles.replace(/\s+/g, '_')
       // console.log(`/${title.replace('%', '_')}`)
@@ -121,7 +110,7 @@ const ImportantNews = ({
       ready_title = `${title.replace('?', '_')}`
     }
 
-    router.push(`/${ready_title}/${ready_category}`)
+    router.push(`/${ready_title}`)
     // console.log(ready_title)
   }
   let stories = category_news && [category_news?.data[0]?._id]
