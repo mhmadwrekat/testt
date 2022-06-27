@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import dynamic from 'next/dynamic'
 
 //next imports
@@ -6,11 +6,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 //component imports
-import HeadComp from '../../components/page/HeadComp'
+const HeadComp = dynamic(() => import('../../components/page/HeadComp'))
 const Footer = dynamic(() => import('../../components/page/Footer'))
 const Nav = dynamic(() => import('../../components/page/Nav'))
-
-// import Nav from '../../components/page/Nav'
 
 //image imports
 import AppUpdateImg from '../../public/assest/blogs/app-upadte.jpg'
@@ -49,9 +47,8 @@ const posts = [
 
 export default function blogs() {
   const [searches, setSearches] = useState(false)
-
   return (
-    <>
+    <React.Fragment>
       <HeadComp />
       <div
         dir="rtl"
@@ -130,6 +127,6 @@ export default function blogs() {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   )
 }

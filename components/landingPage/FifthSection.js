@@ -1,9 +1,3 @@
-import Image from 'next/image'
-
-//laptop
-// import appleStore from "../../public/assets/images/shared/apple-xhdpi.png";
-// import googlePlay from "../../public/assets/images/shared/google-xhdpi.png";
-
 export default function FifthSection() {
   function NewTab(url) {
     window.open(url, '_blank')

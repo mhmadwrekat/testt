@@ -1,11 +1,13 @@
+// Library imports
 import React, { useState } from 'react'
 import moment from 'moment'
-import Link from 'next/link'
 import 'moment/locale/ar'
 import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
+
+// component imports
 const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
@@ -65,9 +67,7 @@ const Arround_you = ({
       .then((res) => {
         setLike(!like)
       })
-      .catch((err) => {
-        // console.log(err)
-      })
+      .catch((err) => {})
   }
   // Function to handle specific Redirection
   const handle_news_redirection = (story) => {
@@ -82,20 +82,11 @@ const Arround_you = ({
       router.push(story)
     }
   }
+
   let stories = important_news && [important_news?.data[0]?._id]
-  const handle_news_redirection_story = (category, titles) => {
-    let ready_category = ''
+
+  const handle_news_redirection_story = (titles) => {
     let ready_title = ''
-    if (category.includes('%')) {
-      let title = category.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_category = `${title.replace('%', '_')}`
-    } else if (category.includes(' ')) {
-      let title = category.replace(/\s+/g, '_')
-      ready_category = `${title.replace(' ', '_')}`
-    } else {
-      ready_category = category
-    }
     if (titles.includes('%')) {
       let title = titles.replace(/\s+/g, '_')
       // console.log(`/${title.replace('%', '_')}`)
@@ -117,7 +108,7 @@ const Arround_you = ({
   return (
     <React.Fragment>
       <section className={` ${text_color} mx-auto w-11/12 lg:w-10/12`}>
-        <>
+        <React.Fragment>
           <div className="flex justify-between ">
             <div className="my-3 mt-1 lg:mt-2">
               <p
@@ -163,7 +154,6 @@ const Arround_you = ({
               {description}
             </p>
           )}
-
           <section className="w-12/12 lg:w-12/12 mx-auto ">
             <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 ">
               <section>
@@ -172,9 +162,6 @@ const Arround_you = ({
                   className={`text-black ${card_color} rounded-lg shadow-lg`}
                 >
                   <div>
-                    {/* <p
-                      className={`${theme} rounded-t-md py-3 text-right font-TSbold text-base text-white hover:underline`}
-                    > */}
                     <p
                       className={`${theme} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white lg:pr-8`}
                     >
@@ -197,16 +184,14 @@ const Arround_you = ({
                           )}/0.jpg`}
                           alt={important_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          onClick={() => {
-                            router.push(`/${important_news?.data[0]?._id}`)
-                          }}
                           // onClick={() => {
-                          //   handle_news_redirection_story(
-                          //     important_news?.data[0]?.primary_category[0]
-                          //       ?.category_name,
-                          //     important_news?.data[0]?.stories_headlines
-                          //   )
+                          //   router.push(`/${important_news?.data[0]?._id}`)
                           // }}
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              important_news?.data[0]?.stories_headlines
+                            )
+                          }}
                         />
                       ) : (
                         <img
@@ -215,7 +200,9 @@ const Arround_you = ({
                           alt={important_news.data[0].stories_headlines}
                           className="h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
                           onClick={() => {
-                            router.push(`/${important_news?.data[0]?._id}`)
+                            handle_news_redirection_story(
+                              important_news?.data[0]?.stories_headlines
+                            )
                           }}
                         />
                       ))}
@@ -279,7 +266,9 @@ const Arround_you = ({
                   <div
                     className="my-2  flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
                     onClick={() => {
-                      router.push(`/${important_news?.data[0]?._id}`)
+                      handle_news_redirection_story(
+                        important_news?.data[0]?.stories_headlines
+                      )
                     }}
                   >
                     <p>
@@ -299,7 +288,9 @@ const Arround_you = ({
                     <div
                       className="mb-2 cursor-pointer font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl"
                       onClick={() => {
-                        router.push(`/${important_news?.data[0]?._id}`)
+                        handle_news_redirection_story(
+                          important_news?.data[0]?.stories_headlines
+                        )
                       }}
                     >
                       {important_news?.data[0]?.stories_headlines}
@@ -307,7 +298,9 @@ const Arround_you = ({
                     <p
                       className="hidden  h-36 cursor-pointer font-TSmedium text-base lg:grid lg:h-32"
                       onClick={() => {
-                        router.push(`/${important_news?.data[0]?._id}`)
+                        handle_news_redirection_story(
+                          important_news?.data[0]?.stories_headlines
+                        )
                       }}
                     >
                       {important_news?.data[0]?.stories_content.slice(0, 335)}
@@ -316,7 +309,9 @@ const Arround_you = ({
                     <p
                       className="grid  h-24 cursor-pointer font-TSmedium text-base md:grid lg:hidden lg:h-32"
                       onClick={() => {
-                        router.push(`/${important_news?.data[0]?._id}`)
+                        handle_news_redirection_story(
+                          important_news?.data[0]?.stories_headlines
+                        )
                       }}
                     >
                       {important_news?.data[0]?.stories_content.slice(0, 170)}
@@ -326,7 +321,9 @@ const Arround_you = ({
                       <p
                         className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
                         onClick={() => {
-                          router.push(`/${important_news?.data[0]?._id}`)
+                          handle_news_redirection_story(
+                            important_news?.data[0]?.stories_headlines
+                          )
                         }}
                       >
                         اقرأ المزيد
@@ -385,15 +382,14 @@ const Arround_you = ({
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                  onClick={() => {
-                                    router.push(`/${item?._id}`)
-                                  }}
                                   // onClick={() => {
-                                  //   handle_news_redirection_story(
-                                  //     item?.primary_category[0]?.category_name,
-                                  //     item?.stories_headlines
-                                  //   )
+                                  //   router.push(`/${item?._id}`)
                                   // }}
+                                  onClick={() => {
+                                    handle_news_redirection_story(
+                                      item?.stories_headlines
+                                    )
+                                  }}
                                 />
                               ) : (
                                 <img
@@ -402,7 +398,9 @@ const Arround_you = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
-                                    router.push(`/${item?._id}`)
+                                    handle_news_redirection_story(
+                                      item?.stories_headlines
+                                    )
                                   }}
                                 />
                               ))}
@@ -429,7 +427,9 @@ const Arround_you = ({
                           <div
                             className="cursor-pointer py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2"
                             onClick={() => {
-                              router.push(`/${item?._id}`)
+                              handle_news_redirection_story(
+                                item?.stories_headlines
+                              )
                             }}
                           >
                             <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:h-10 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:text-sm">
@@ -455,7 +455,9 @@ const Arround_you = ({
                           <p
                             className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
-                              router.push(`/${item?._id}`)
+                              handle_news_redirection_story(
+                                item?.stories_headlines
+                              )
                             }}
                           >
                             اقرأ المزيد
@@ -477,7 +479,7 @@ const Arround_you = ({
               </section>
             </section>
           </section>
-        </>
+        </React.Fragment>
       </section>
       <ReadImpression stories={stories.slice(1, 5)} user_id={user_id} />
     </React.Fragment>

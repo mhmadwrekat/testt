@@ -1,17 +1,8 @@
-import Image from 'next/image'
-
-//laptop view
-// import vector from "../../public/assets/images/web/thirdSection/Vector.png";
-// import threeMobile from "../../public/assets/images/web/thirdSection/three-mobiles.png";
-
-//mobile images imports
-// import rectangle from "../../public/assets/images/mobile/thirdSection/Rectangle-mobile.png";
-// import rectangleLong from "../../public/assets/images/mobile/thirdSection/Rectangle-long-mobile.png";
-// import mobileInMobileView from "../../public/assets/images/mobile/thirdSection/mobiles-mobile-view.png";
+import React from 'react'
 
 export default function ThirdSection() {
   return (
-    <>
+    <React.Fragment>
       {/* ------------------- LAPTOP VIEW ----------------------- */}
       {/* ------------------- LAPTOP VIEW ----------------------- */}
       <div className="relative hidden min-h-full overflow-hidden bg-GRAYLIGHT lg:block">
@@ -52,10 +43,8 @@ export default function ThirdSection() {
           <br /> في كل الخطوات
         </div>
       </div>
-
       {/* ------------------- MOBILE VIEW ----------------------- */}
       {/* ------------------- MOBILE VIEW ----------------------- */}
-
       <div className="relative min-h-full overflow-hidden bg-GRAYLIGHT lg:hidden">
         {/* <div className="mx-auto flex h-12 justify-center">
          <img
@@ -95,6 +84,6 @@ export default function ThirdSection() {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   )
 }

@@ -1,3 +1,4 @@
+// Library imports
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
@@ -5,7 +6,8 @@ import { BASE_URL } from '../../config/config'
 import moment from 'moment'
 import 'moment/locale/ar'
 import axios from 'axios'
-// import Like from '../../components/appleTemplate/childComponent/Like'
+
+// component imports
 const StoryShow = dynamic(() =>
   import('../../components/appleTemplate/childComponent/StoryShow')
 )
@@ -20,6 +22,7 @@ const AllData = dynamic(() =>
 )
 const index = () => {
   const router = useRouter()
+
   // Declare State
   const [country_code, setCountryCode] =
     typeof window !== 'undefined'
@@ -34,8 +37,6 @@ const index = () => {
   const [valid_category, setValidCategory] = useState(false)
   const [valid_story, setValidStory] = useState(false)
 
-  let subs = !null
-  let subscripe = true
   const categories = [
     {
       name: 'الصحة',
@@ -155,6 +156,7 @@ const index = () => {
     return ready
   }
   let title = router.query.category && handle_title_name(router.query.category)
+
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
     let code = ''
@@ -216,7 +218,6 @@ const index = () => {
     return ready
   }
   const is_valid_category = (category) => {
-    // console.log(category)
     let custom = null
     categories.map((item) => {
       if (item.name === category) {
@@ -232,6 +233,7 @@ const index = () => {
       setValidStory(true)
     }
   }
+
   // Function Get all News
   const get_all_news_category = async () => {
     router.query.category &&
@@ -242,13 +244,6 @@ const index = () => {
           )}`
         )
         .then((res) => {
-          // console.log(res.data)
-          // setAllNews(res.data.data)
-          // console.log(
-          //   `${BASE_URL}/v1/Web/Section?current_country=${country_code}&userId=${user_id}&category_id=${valid_category(
-          //     router.query.category
-          //   )}`
-          // )
           let keys = Object.keys(res.data.data)
           let custom_array = []
           keys.map((item) => {
@@ -271,8 +266,6 @@ const index = () => {
     valid_category ? get_all_news_category() : null
   }, [valid_category, valid_story, router.query.category])
 
-  // console.log('category ->> ', valid_category)
-  // console.log('story ->> ', valid_story)
   return (
     <React.Fragment>
       <div dir="rtl" id="project_body" translate="no">
@@ -360,7 +353,7 @@ const index = () => {
                           className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                         ></p>{' '}
                         <MenuThreeDot
-                      id={item?._id}
+                          id={item?._id}
                           title_color={'text-Purp100'}
                           category={item?.primary_category[0]?.category_name}
                           story={item?.stories_headlines}
@@ -380,7 +373,7 @@ const index = () => {
               category={router.query.category}
               fill={category_fill(router.query.category)}
               user_id={user_id}
-              relace={true}
+              replace={true}
             />
           </section>
         ) : (
@@ -394,111 +387,3 @@ const index = () => {
 }
 
 export default index
-/* 
-(
-          <section className="text-black mx-auto w-11/12 bg-white lg:w-10/12 lg:pt-10">
-            <div className="flex justify-between">
-              <div className="my-3 mt-3 lg:mt-4">
-                <div className="flex">
-                
-          <p
-          className={`${category_text(
-            router.query.category
-          )} mt-5 font-TSExtra text-2xl lg:text-4xl`}
-        >
-          {title}{' '}
-        </p>
-      </div>
-    </div>
-  </div>{' '}
-  <section className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-16">
-    {all_news?.slice(0, 3).map((item) => {
-      return (
-        <section className="" key={item?._id}>
-          <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
-            <div>
-              <p
-                className={`${category_theme(
-                  router.query.category
-                )} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
-              >
-              </p>{' '}
-            </div>
-            <section className="grid bg-GRAY100 lg:grid ">
-              <div className="relative w-full lg:w-auto">
-                {item.stories_media_url[0] &&
-                  (item.stories_media_url[0].includes('youtube') ||
-                  item.stories_media_url[0].includes('youtu.be') ? (
-                    <img
-                      loading="eager"
-                      src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                        item.stories_media_url[0]
-                      )}/0.jpg`}
-                      alt={item.stories_headlines}
-                      className="mx-auto h-32 w-full object-cover md:h-full md:w-full lg:h-72 lg:w-full"
-                    />
-                  ) : (
-                    <img
-                      loading="eager"
-                      src={item.stories_media_url[0]}
-                      alt={item.stories_headlines}
-                      className="mx-auto h-32 w-full object-cover md:h-full md:w-full lg:h-72 lg:w-full"
-                    />
-                  ))}
-
-              </div>
-
-              <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
-                <p>
-                  <b className=" text-red-800 font-TSExtra">
-                    {item.publisher_name}
-                  </b>
-                </p>
-                <p className="font-TSExtra text-GRAY400">
-                  قبل {moment(item.published_on).fromNow(true)}
-                </p>
-              </div>
-
-              <div className=" py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2">
-                <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-20 lg:text-xl">
-                  {item.stories_headlines}
-                </div>
-                <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-44 lg:pt-1.5 lg:text-sm">
-                  {item.stories_content}
-                </div>
-              </div>
-            </section>
-
-            <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
-              <p>
-                <b className=" text-red-800 font-TSExtra">
-                </b>
-              </p>
-            </div>
-            <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
-              <p
-                className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
-              ></p>{' '}
-              <MenuThreeDot
-                title_color={'text-Purp100'}
-                category={item?.primary_category[0]?.category_name}
-                story={item?.stories_headlines}
-                fill={category_fill(router.query.category)}
-                user_id={user_id}
-                story_id={item?._id}
-              />
-            </div>
-          </div>
-        </section>
-      )
-    })}
-  </section>
-  <AllData
-    data={all_news}
-    bg_color={category_theme(router.query.category)}
-    category={router.query.category}
-    fill={category_fill(router.query.category)}
-    user_id={user_id}
-  />
-</section>
-)*/

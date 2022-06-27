@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+// Library imports
+import React, { useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../../config/config'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 const Search = dynamic(() => import('../appleTemplate/childComponent/Search'))
+
 const Nav = ({
   showCategory,
   all_news,
@@ -12,7 +14,9 @@ const Nav = ({
   searches,
   user_id,
 }) => {
-  const [active, setActive] = useState(true)
+  const router = useRouter()
+
+  // const [active, setActive] = useState(true)
   const [showSearch, setShowSearch] = useState(false)
   const [token, setUserToken] =
     typeof window !== 'undefined'
@@ -23,31 +27,9 @@ const Nav = ({
   const [loader, setLoader] = useState(null)
   const [svgnull, setSvgNull] = useState(false)
 
-  let bg_color = 'bg-GREEN'
-
-  const router = useRouter()
-
-  const nav_items = [
-    {
-      name: 'الرئيسية',
-      id: 1,
-      link: '/home',
-    },
-    {
-      name: 'المدونة',
-      id: 2,
-      link: '/blogs',
-    },
-    {
-      name: 'أخبار',
-      id: 3,
-      link: '/',
-    },
-  ]
-
+  let count = 0
   const subscribe_item = []
   const unsubscribe_item = []
-  let count = 0
   const media_item = [
     {
       name: 'الأكثر مشاهدة',
@@ -69,69 +51,8 @@ const Nav = ({
     },
   ]
 
-  // useEffect(() => {
-  //   all_news?.map((item) => {
-  //     // item?.is_subscribed !== null &&
-  //     if (item?.is_subscribed === true) {
-  //       // console.log('Y')
-
-  //       if (item?.section_name === 'الشرق الاوسط') {
-  //         subscribe_item.push({
-  //           name: item?.section_name,
-  //           link: `#${item?.section_name}`,
-  //           id: count++,
-  //           width: 'w-28',
-  //         })
-  //       } else if (item?.section_name.length >= 9) {
-  //         subscribe_item.push({
-  //           name: item?.section_name,
-  //           link: `#${item?.section_name}`,
-  //           id: count++,
-  //           width: 'w-24',
-  //         })
-  //       } else {
-  //         subscribe_item.push({
-  //           name: item?.section_name,
-  //           link: `#${item?.section_name}`,
-  //           id: count++,
-  //           width: 'w-12',
-  //         })
-  //       }
-  //       // console.log('yes -> ', item?.section_name)
-  //     }
-  //     if (item?.is_subscribed === false) {
-  //       if (item?.section_name === 'الشرق الاوسط') {
-  //         unsubscribe_item.push({
-  //           name: item?.section_name,
-  //           link: `#${item?.section_name}`,
-  //           id: count++,
-  //           width: 'w-28',
-  //         })
-  //       } else if (item?.section_name.length >= 9) {
-  //         unsubscribe_item.push({
-  //           name: item?.section_name,
-  //           link: `#${item?.section_name}`,
-  //           id: count++,
-  //           width: 'w-24',
-  //         })
-  //       } else {
-  //         unsubscribe_item.push({
-  //           name: item?.section_name,
-  //           link: `#${item?.section_name}`,
-  //           id: count++,
-  //           width: 'w-12',
-  //         })
-  //       }
-  //       // console.log('No -> ', item?.section_name)
-  //     }
-  //   })
-  // }, [all_news])
-
   all_news?.map((item) => {
-    // item?.is_subscribed !== null &&
     if (item?.is_subscribed === true) {
-      // console.log('Y')
-
       if (item?.section_name === 'الشرق الاوسط') {
         subscribe_item.push({
           name: item?.section_name,
@@ -154,7 +75,6 @@ const Nav = ({
           width: 'w-14',
         })
       }
-      // console.log('yes -> ', item?.section_name)
     }
     if (item?.is_subscribed === false) {
       if (item?.section_name === 'الشرق الاوسط') {
@@ -179,13 +99,9 @@ const Nav = ({
           width: 'w-14',
         })
       }
-      // console.log('No -> ', item?.section_name)
     }
   })
-  const activate = () => {
-    setActive(false)
-    // console.log(active)
-  }
+
   const handel_show = () => {
     setSearches(false)
     setShowSearch(false)
@@ -197,7 +113,6 @@ const Nav = ({
     let kee = event.target.name.value
     setLoader(true)
     setSearches && setSearches(true)
-    // setSearches(true)
     axios
       .get(
         `${BASE_URL}/v1/User/Stories/Search/Keywords?phrase=${event.target.name.value}`,
@@ -209,7 +124,6 @@ const Nav = ({
       )
       .then(function (response) {
         if (response.data.data.length > 0) {
-          // console.log(kee)
           setSearchData(response.data.data)
           setLoader(false)
           setSearchKey(`نتائج بحث ${kee}`)
@@ -220,22 +134,15 @@ const Nav = ({
           setSearchKey('لم يتم العثور على نتائج')
           setSvgNull(true)
         }
-        // console.log(response)
       })
       .catch(function (error) {
         console.log(error)
       })
-    // event.target.reset()
-    // }
-    // searches && event.target.reset()
-
-    // setSearches(false)
-    // setShowSearch(false)
-    // // event.target.reset()
-    // console.log(event.target.name.value)
   }
+
   let route_color = router.pathname === '/' && 'text-Purp100'
   let route_color_blogs = router?.pathname.includes('/blogs') && 'text-Purp100'
+
   return (
     <React.Fragment>
       <section className="z-50 w-full bg-white">
@@ -291,12 +198,7 @@ const Nav = ({
           </div>
           {/* Desktop Search Form */}
           {/* Desktop Search Form */}
-          <div
-            className="mt-3 font-TSSemi lg:ml-5 lg:mt-4 lg:block lg:pl-3"
-            // onClick={() => {
-            //   router.push('/Search')
-            // }}
-          >
+          <div className="mt-3 font-TSSemi lg:ml-5 lg:mt-4 lg:block lg:pl-3">
             <form
               className="hidden lg:flex"
               onSubmit={() => {
@@ -310,15 +212,6 @@ const Nav = ({
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="#FFFFFF"
-                    // type="submit"
-                    // onClick={
-                    //   // () => {
-                    //   // setSearches(false)
-                    //   // setShowSearch(false)
-
-                    //   (document.getElementById('name').value = 'hi')
-                    //   // handel_search()
-                    // }
                     onClick={() => {
                       handel_show()
                     }}
@@ -410,22 +303,6 @@ const Nav = ({
           <section className="flex w-screen justify-center bg-Purp100 py-0 text-center font-TSbold text-sm text-white lg:text-base">
             <section className="mx-auto my-1 mt-1.5 flex w-screen items-center justify-start overflow-x-auto lg:my-4 lg:mt-4 lg:justify-center">
               <section className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
-                {/* <img
-                  src="./assest/images/additional.jpg"
-                  className="h-8 w-8 bg-Purp300"
-                /> */}
-                {/* <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 rounded-full bg-Purp300 lg:h-10 lg:w-10"
-                  viewBox="0 0 20 20"
-                  fill="#695CAD"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    clipRule="evenodd"
-                  />
-                </svg> */}
                 <svg
                   fill="#695CAD"
                   className="h-8 w-8 rounded-full bg-Purp300 lg:h-9 lg:w-9"
@@ -456,23 +333,6 @@ const Nav = ({
               </section>
               {subscribe_item?.length > 0 && (
                 <section className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
-                  {/* <img
-              src="./assest/images/additional.jpg"
-              className="h-8 w-8 bg-Purp300"
-            /> */}
-                  {/* <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 rounded-full bg-Purp300 lg:h-10 lg:w-10"
-                    viewBox="0 0 20 20"
-                    fill="#695CAD"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      className="rounded-full"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg> */}
                   <svg
                     fill="#695CAD"
                     viewBox="0 0 22 22"
@@ -521,15 +381,10 @@ const Nav = ({
               )}
             </section>
           </section>
-          {/* {subscribe_item.map((item) => {
-            console.log(subscribe_item)
-          })} */}
-          {/* {subscribe_item.length > 0 && console.log(subscribe_item.length)} */}
         </section>
       ) : (
         <section className="mx-auto w-11/12 border-t-2 border-Purp100"></section>
       )}
-
       {/* Mobile Search Form */}
       {/* Mobile Search Form */}
       {showSearch ? (
@@ -606,7 +461,6 @@ const Nav = ({
           </button>
         </form>
       ) : null}
-
       {/* Search Data */}
       {/* Search Data */}
       <React.Fragment>
@@ -637,6 +491,7 @@ const Nav = ({
                       </p>
                     </div>
                     <Search
+                      replace={true}
                       user_id={user_id}
                       data={search_data}
                       bg_color={'bg-Purp100'}

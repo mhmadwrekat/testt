@@ -3,12 +3,13 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import moment from 'moment'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import 'moment/locale/ar'
 const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
 
 const Like = dynamic(() => import('./Like'))
 
-const Search = ({ data, bg_color, category, user_id }) => {
+const Search = ({ data, bg_color, category, user_id, replace }) => {
   const router = useRouter()
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
@@ -30,9 +31,24 @@ const Search = ({ data, bg_color, category, user_id }) => {
       return code
     }
   }
-  const handle_news_redirection_story = (id, user_id) => {
-    router.push(`/${id}`)
-    location.replace(`/${id}`)
+  const handle_news_redirection_story = (titles) => {
+    let ready_title = ''
+    if (titles.includes('%')) {
+      let title = titles.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_title = `${title.replace('%', '_')}`
+    } else if (titles.includes(' ')) {
+      let title = titles.replace(/\s+/g, '_')
+      ready_title = `${title.replace(' ', '_')}`
+    } else {
+      ready_title = titles
+    }
+    if (titles.includes('?')) {
+      let title = titles.replace(/\s+/g, '')
+      ready_title = `${title.replace('?', '_')}`
+    }
+    router.push(`/${ready_title}`)
+    replace && location.replace(`/${ready_title}`)
   }
   return (
     <React.Fragment>
@@ -60,7 +76,7 @@ const Search = ({ data, bg_color, category, user_id }) => {
                     <section
                       className="grid cursor-pointer bg-GRAY100"
                       onClick={() => {
-                        handle_news_redirection_story(item?._id)
+                        handle_news_redirection_story(item?.stories_headlines)
                       }}
                       // onClick={() => {
                       //   router.push(`/${item._id}`)

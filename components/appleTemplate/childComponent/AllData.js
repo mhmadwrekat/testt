@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import Image from 'next/image'
 import moment from 'moment'
 import { useRouter } from 'next/router'
 import 'moment/locale/ar'
 const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
 const Like = dynamic(() => import('./Like'))
 
-const AllData = ({ data, bg_color, category, fill, user_id, relace }) => {
+const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
   const router = useRouter()
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
@@ -29,9 +30,24 @@ const AllData = ({ data, bg_color, category, fill, user_id, relace }) => {
       return code
     }
   }
-  const handle_news_redirection_story = (id) => {
-    router.push(`/${id}`)
-    relace && location.replace(`/${id}`)
+  const handle_news_redirection_story = (titles) => {
+    let ready_title = ''
+    if (titles.includes('%')) {
+      let title = titles.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_title = `${title.replace('%', '_')}`
+    } else if (titles.includes(' ')) {
+      let title = titles.replace(/\s+/g, '_')
+      ready_title = `${title.replace(' ', '_')}`
+    } else {
+      ready_title = titles
+    }
+    if (titles.includes('?')) {
+      let title = titles.replace(/\s+/g, '')
+      ready_title = `${title.replace('?', '_')}`
+    }
+    router.push(`/${ready_title}`)
+    replace && location.replace(`/${ready_title}`)
   }
   return (
     <React.Fragment>
@@ -53,7 +69,7 @@ const AllData = ({ data, bg_color, category, fill, user_id, relace }) => {
                     <section
                       className="grid cursor-pointer bg-GRAY100"
                       onClick={() => {
-                        handle_news_redirection_story(item?._id)
+                        handle_news_redirection_story(item?.stories_headlines)
                       }}
                       // onClick={() => {
                       //   router.push(`/${item._id}`)
@@ -72,6 +88,38 @@ const AllData = ({ data, bg_color, category, fill, user_id, relace }) => {
                               className="mx-auto h-32 w-full object-cover md:h-full md:w-full lg:h-44 lg:w-full"
                             />
                           ) : (
+                            // <Image
+                            //   src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                            //     item.stories_media_url[0]
+                            //   )}/0.jpg`}
+                            //   className="mx-auto object-cover"
+                            //   alt={item.stories_headlines}
+                            //   quality={75}
+                            //   layout="responsive"
+                            //   objectFit="cover"
+                            //   width={800}
+                            //   height={350}
+                            //   loading="eager"
+                            //   priority
+                            //   placeholder="blur"
+                            //   blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                            //     item.stories_media_url[0]
+                            //   )}/0.jpg`}
+                            // />
+                            // <Image
+                            //   src={item?.stories_media_url[0]}
+                            //   className="mx-auto object-cover"
+                            //   alt={item.stories_headlines}
+                            //   quality={75}
+                            //   layout="responsive"
+                            //   objectFit="cover"
+                            //   width={800}
+                            //   height={350}
+                            //   loading="eager"
+                            //   priority
+                            //   placeholder="blur"
+                            //   blurDataURL={item?.stories_media_url[0]}
+                            // />
                             <img
                               loading="eager"
                               src={item.stories_media_url[0]}

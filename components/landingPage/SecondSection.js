@@ -1,6 +1,3 @@
-import Image from 'next/image'
-// import news from '../../public/assets/images/web/secondSection/news.png'
-
 export default function SecondSection() {
   return (
     <div className="relative min-h-full  overflow-hidden bg-gradient-to-r from-primary to-secondary">

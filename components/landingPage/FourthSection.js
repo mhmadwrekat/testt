@@ -1,7 +1,3 @@
-import Image from 'next/image'
-
-// import mobile from "../../public/assets/images/shared/mobile.png";
-
 export default function FourthSection() {
   return (
     <div className="relative h-full overflow-hidden bg-white">

@@ -61,11 +61,26 @@ const Test = ({
     //     // console.log('OUTSIDE')
     //   })
   }
-  const share_button = (id) => {
+  const share_button = (story) => {
     setOpenItem(!open_item)
     share_event()
+    let ready_title = ''
+    if (story.includes('%')) {
+      let title = story.replace(/\s+/g, '_')
+      // console.log(`/${title.replace('%', '_')}`)
+      ready_title = `${title.replace('%', '_')}`
+    } else if (story.includes(' ')) {
+      let title = story.replace(/\s+/g, '_')
+      ready_title = `${title.replace(' ', '_')}`
+    } else {
+      ready_title = story
+    }
+    if (story.includes('?')) {
+      let title = story.replace(/\s+/g, '')
+      ready_title = `${title.replace('?', '_')}`
+    }
 
-    let ready_url = `https://alzubda.com/${id}`
+    let ready_url = `https://alzubda.com/${ready_title}`
     setShareLink(ready_url)
   }
 
@@ -106,7 +121,7 @@ const Test = ({
           xmlns="http://www.w3.org/2000/svg"
           className={`${fill} h-7 w-7 cursor-pointer rounded-full `}
           onClick={() => {
-            share_button(id)
+            share_button(story)
           }}
         >
           <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 15.889v-2.223s-3.78-.114-7 3.333c1.513-6.587 7-7.778 7-7.778v-2.221l5 4.425-5 4.464z" />

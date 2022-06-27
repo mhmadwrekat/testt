@@ -4,9 +4,10 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/ar'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
+
+// component imports
 const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
@@ -80,6 +81,7 @@ const Category_news = ({
       // console.log(res)
     })
   }
+
   let stories = category_news && [category_news?.data[0]?._id]
 
   // Function to handle specific Redirection
@@ -95,19 +97,19 @@ const Category_news = ({
       router.push(story)
     }
   }
-  const handle_news_redirection_story = (category, titles) => {
-    let ready_category = ''
+  const handle_news_redirection_story = (titles) => {
+    // let ready_category = ''
     let ready_title = ''
-    if (category.includes('%')) {
-      let title = category.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_category = `${title.replace('%', '_')}`
-    } else if (category.includes(' ')) {
-      let title = category.replace(/\s+/g, '_')
-      ready_category = `${title.replace(' ', '_')}`
-    } else {
-      ready_category = category
-    }
+    // if (category.includes('%')) {
+    //   let title = category.replace(/\s+/g, '_')
+    //   // console.log(`/${title.replace('%', '_')}`)
+    //   ready_category = `${title.replace('%', '_')}`
+    // } else if (category.includes(' ')) {
+    //   let title = category.replace(/\s+/g, '_')
+    //   ready_category = `${title.replace(' ', '_')}`
+    // } else {
+    //   ready_category = category
+    // }
     if (titles.includes('%')) {
       let title = titles.replace(/\s+/g, '_')
       // console.log(`/${title.replace('%', '_')}`)
@@ -130,9 +132,6 @@ const Category_news = ({
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
-        {/* {console.log(title)}
-        {console.log(category_news.category_id)} */}
-
         <React.Fragment>
           <div className="flex justify-between">
             <div className="my-3 mt-3 lg:mt-4">
@@ -248,24 +247,42 @@ const Category_news = ({
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          onClick={() => {
-                            router.push(`/${category_news?.data[0]?._id}`)
-                          }}
                           // onClick={() => {
-                          //   handle_news_redirection_story(
-                          //     title,
-                          //     category_news?.data[0]?.stories_headlines
-                          //   )
+                          //   router.push(`/${category_news?.data[0]?._id}`)
                           // }}
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              category_news?.data[0]?.stories_headlines
+                            )
+                          }}
                         />
                       ) : (
+                        // <Image
+                        //   src={important_news_img}
+                        //   className="relative cursor-pointer rounded-b-md object-cover "
+                        //   alt={category_news.data[0].stories_headlines}
+                        //   quality={75}
+                        //   layout="fill"
+                        //   objectFit="cover"
+                        //   loading="eager"
+                        //   priority
+                        //   placeholder="blur"
+                        //   blurDataURL={important_news_img}
+                        //   onClick={() => {
+                        //     handle_news_redirection_story(
+                        //       category_news?.data[0]?.stories_headlines
+                        //     )
+                        //   }}
+                        // />
                         <img
                           loading="lazy"
                           src={important_news_img}
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
                           onClick={() => {
-                            router.push(`/${category_news?.data[0]?._id}`)
+                            handle_news_redirection_story(
+                              category_news?.data[0]?.stories_headlines
+                            )
                           }}
                         />
                       ))}
@@ -330,7 +347,9 @@ const Category_news = ({
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
                     onClick={() => {
-                      router.push(`/${category_news?.data[0]?._id}`)
+                      handle_news_redirection_story(
+                        category_news?.data[0]?.stories_headlines
+                      )
                     }}
                   >
                     <p>
@@ -350,7 +369,9 @@ const Category_news = ({
                     <div
                       className="mb-2 cursor-pointer font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl"
                       onClick={() => {
-                        router.push(`/${category_news?.data[0]?._id}`)
+                        handle_news_redirection_story(
+                          category_news?.data[0]?.stories_headlines
+                        )
                       }}
                     >
                       {category_news?.data[0]?.stories_headlines}
@@ -358,7 +379,9 @@ const Category_news = ({
                     <p
                       className="hidden h-36 cursor-pointer font-TSmedium text-base lg:grid lg:h-32"
                       onClick={() => {
-                        router.push(`/${category_news?.data[0]?._id}`)
+                        handle_news_redirection_story(
+                          category_news?.data[0]?.stories_headlines
+                        )
                       }}
                     >
                       {category_news?.data[0]?.stories_content.slice(0, 335)}
@@ -367,7 +390,9 @@ const Category_news = ({
                     <p
                       className="grid h-24 cursor-pointer font-TSmedium text-base md:grid lg:hidden lg:h-32"
                       onClick={() => {
-                        router.push(`/${category_news?.data[0]?._id}`)
+                        handle_news_redirection_story(
+                          category_news?.data[0]?.stories_headlines
+                        )
                       }}
                     >
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
@@ -377,14 +402,16 @@ const Category_news = ({
                       <p
                         className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
                         onClick={() => {
-                          router.push(`/${category_news?.data[0]?._id}`)
+                          handle_news_redirection_story(
+                            category_news?.data[0]?.stories_headlines
+                          )
                         }}
                       >
                         اقرأ المزيد
                       </p>
                       <MenuThreeDot
-                      id={category_news?.data[0]?._id}
-                      title_color={title_color}
+                        id={category_news?.data[0]?._id}
+                        title_color={title_color}
                         category={title}
                         story={category_news?.data[0]?.stories_headlines}
                         fill={fill_color}
@@ -427,15 +454,14 @@ const Category_news = ({
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
-                                  onClick={() => {
-                                    router.push(`/${item?._id}`)
-                                  }}
                                   // onClick={() => {
-                                  //   handle_news_redirection_story(
-                                  //     title,
-                                  //     item?.stories_headlines
-                                  //   )
+                                  //   router.push(`/${item?._id}`)
                                   // }}
+                                  onClick={() => {
+                                    handle_news_redirection_story(
+                                      item?.stories_headlines
+                                    )
+                                  }}
                                 />
                               ) : (
                                 <img
@@ -444,7 +470,9 @@ const Category_news = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
-                                    router.push(`/${item?._id}`)
+                                    handle_news_redirection_story(
+                                      item?.stories_headlines
+                                    )
                                   }}
                                 />
                               ))}
@@ -469,7 +497,9 @@ const Category_news = ({
                           <div
                             className="cursor-pointer py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2"
                             onClick={() => {
-                              router.push(`/${item?._id}`)
+                              handle_news_redirection_story(
+                                item?.stories_headlines
+                              )
                             }}
                           >
                             <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:h-10 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:text-sm">
@@ -484,7 +514,9 @@ const Category_news = ({
                         <div
                           className="flex cursor-pointer justify-between px-4 font-TSlight text-xs lg:hidden"
                           onClick={() => {
-                            router.push(`/${item?._id}`)
+                            handle_news_redirection_story(
+                              item?.stories_headlines
+                            )
                           }}
                         >
                           <p>
@@ -501,14 +533,16 @@ const Category_news = ({
                           <p
                             className={` cursor-pointer rounded-lg py-4 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
-                              router.push(`/${item?._id}`)
+                              handle_news_redirection_story(
+                                item?.stories_headlines
+                              )
                             }}
                           >
                             اقرأ المزيد
                           </p>
 
                           <MenuThreeDot
-                      id={item?._id}
+                            id={item?._id}
                             title_color={title_color}
                             category={title}
                             story={item?.stories_headlines}

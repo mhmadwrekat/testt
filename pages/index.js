@@ -1,8 +1,8 @@
+// Library imports
 import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
-// import { generateFeeds } from '../utils/feed'
 
 // Apple View component
 const CategoryNews = dynamic(() =>
@@ -25,11 +25,6 @@ const Logaimat = dynamic(() => import('../components/appleTemplate/Logaimat'))
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
 const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
-const All = dynamic(() =>
-  import('../components/appleTemplate/childComponent/AllData')
-)
-import { v4 as uuidv4 } from 'uuid'
-// import { nanoid } from 'nanoid'
 
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
@@ -38,11 +33,7 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
-  // res.setHeader(
-  //   'Cache-Control',
-  //   'public, s-maxage=10, stale-while-revalidate=59'
-  // )
-  // await generateFeeds()
+
   // Get Logaimat API
   let user_token = ''
   const LoqaimatDataReq = axios({
@@ -63,18 +54,12 @@ export async function getServerSideProps({ req, res }) {
 
 const index = (props) => {
   // Declare State
-  // const [country_code, setCountryCode] = useState()
   const [all_news, setAllNews] = useState()
   const [bg_image, setBackgroundImage] = useState('')
   const [showCategory, setShowCategory] = useState(true)
   const [searches, setSearches] = useState(false)
   let user_id = props.user_id && props.user_id
   let country_code = props.country_code && props.country_code
-
-  let isMobile =
-    typeof window !== 'undefined'
-      ? /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-      : ''
 
   // Function Get all News
   const get_all_news = async () => {
@@ -84,10 +69,7 @@ const index = (props) => {
           `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
         )
         .then((res) => {
-          // console.log(
-          //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
-          // )
-          // Convert API Data From (Object To Array)
+          console.log(res)
           let keys = Object.keys(res.data.data)
           let custom_array = []
           keys.map((item) => {
@@ -110,24 +92,15 @@ const index = (props) => {
   }
   // Call All Functions
   useEffect(() => {
-    // register_user()
-    // get_country()
     get_all_news()
     get_background_image()
-    // typeof window !== 'undefined'
-    //   ? setUserId(localStorage.getItem('user_id'))
-    //   : ''
   }, [user_id])
-
-  // all_news && console.log(all_news[8].is_subscribed)
 
   let alternative_search = all_news && [
     ...all_news[0].data.slice(0, 3),
     ...all_news[11].data.slice(0, 3),
     ...all_news[4].data.slice(0, 3),
   ]
-  // all_news && console.log('---> ', user_id)
-  // all_news && console.log('---> ', all_news)
 
   return (
     <React.Fragment>
@@ -423,6 +396,3 @@ const index = (props) => {
   )
 }
 export default index
-/*
-
-*/

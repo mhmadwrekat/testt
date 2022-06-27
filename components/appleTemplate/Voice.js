@@ -1,3 +1,4 @@
+// Import Libraries
 import React, { useState } from 'react'
 import Like from './childComponent/Like'
 import LikeAudio from './childComponent/LikeAudio'
@@ -13,7 +14,7 @@ import 'swiper/css/effect-fade'
 import 'swiper/css/scrollbar'
 const Voice = ({
   title,
-  fill_color,
+  // fill_color,
   title_color,
   theme,
   subs,

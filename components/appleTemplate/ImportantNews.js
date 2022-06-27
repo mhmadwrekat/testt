@@ -4,9 +4,10 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/ar'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
+
+// component imports
 const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
@@ -51,6 +52,7 @@ const ImportantNews = ({
 
   // function to handle Subscribe Category & Unsubscribe
   const [subscripe, setSubscripe] = useState(category_news?.is_subscribed)
+
   const handle_subscripe = (category_id, is_subscribed) => {
     setSubscripe(!subscripe)
     // console.log(category_id, is_subscribed, user_id)
@@ -67,6 +69,7 @@ const ImportantNews = ({
 
   // function to handle Love & Unlove for First News
   const [like, setLike] = useState(category_news?.data[0]?.is_loved)
+
   const handle_like = (story_id, is_loved) => {
     // console.log(user_id, story_id, is_loved)
     setLike(!like)
@@ -93,7 +96,7 @@ const ImportantNews = ({
       router.push(story)
     }
   }
-  const handle_news_redirection_story = (category, titles) => {
+  const handle_news_redirection_story = (titles) => {
     let ready_title = ''
     if (titles.includes('%')) {
       let title = titles.replace(/\s+/g, '_')
@@ -114,7 +117,6 @@ const ImportantNews = ({
     // console.log(ready_title)
   }
   let stories = category_news && [category_news?.data[0]?._id]
-
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
@@ -222,7 +224,7 @@ const ImportantNews = ({
                       }
                     </p>
                   </div>
-                  <div className=" w-ful relative h-56 lg:h-80">
+                  <div className=" relative h-56 w-full lg:h-80">
                     {/* Desktop View */}
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
@@ -237,32 +239,47 @@ const ImportantNews = ({
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          onClick={() => {
-                            router.push(`/${category_news?.data[0]?._id}`)
-                          }}
                           // onClick={() => {
-                          //   handle_news_redirection_story(
-                          //     category_news?.data[0]?.primary_category[0]
-                          //       ?.category_name,
-                          //     category_news?.data[0]?.stories_headlines
-                          //   )
+                          //   router.push(`/${category_news?.data[0]?._id}`)
                           // }}
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              category_news?.data[0]?.stories_headlines
+                            )
+                          }}
                         />
                       ) : (
+                        // <Image
+                        //   src={important_news_img}
+                        //   className="relative cursor-pointer rounded-b-md object-cover"
+                        //   alt={category_news.data[0].stories_headlines}
+                        //   quality={100}
+                        //   layout="fill"
+                        //   objectFit="cover"
+                        //   // width={800}
+                        //   // height={350}
+                        //   loading="eager"
+                        //   priority
+                        //   placeholder="blur"
+                        //   blurDataURL={important_news_img}
+                        //   onClick={() => {
+                        //     handle_news_redirection_story(
+                        //       category_news?.data[0]?.stories_headlines
+                        //     )
+                        //   }}
+                        // />
                         <img
                           src={important_news_img}
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          onClick={() => {
-                            router.push(`/${category_news?.data[0]?._id}`)
-                          }}
                           // onClick={() => {
-                          //   handle_news_redirection_story(
-                          //     category_news?.data[0]?.primary_category[0]
-                          //       ?.category_name,
-                          //     category_news?.data[0]?.stories_headlines
-                          //   )
+                          //   router.push(`/${category_news?.data[0]?._id}`)
                           // }}
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              category_news?.data[0]?.stories_headlines
+                            )
+                          }}
                         />
                       ))}
                     <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
@@ -306,15 +323,10 @@ const ImportantNews = ({
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
                     onClick={() => {
-                      router.push(`/${category_news?.data[0]?._id}`)
+                      handle_news_redirection_story(
+                        category_news?.data[0]?.stories_headlines
+                      )
                     }}
-                    // onClick={() => {
-                    //   handle_news_redirection_story(
-                    //     category_news?.data[0]?.primary_category[0]
-                    //       ?.category_name,
-                    //     category_news?.data[0]?.stories_headlines
-                    //   )
-                    // }}
                   >
                     <p>
                       <b className="text-red-800 font-TSbold">
@@ -332,30 +344,20 @@ const ImportantNews = ({
                     <div
                       className="mb-2 cursor-pointer font-TSExtra md:text-xl lg:h-20 lg:w-11/12 lg:text-2xl"
                       onClick={() => {
-                        router.push(`/${category_news?.data[0]?._id}`)
+                        handle_news_redirection_story(
+                          category_news?.data[0]?.stories_headlines
+                        )
                       }}
-                      // onClick={() => {
-                      //   handle_news_redirection_story(
-                      //     category_news?.data[0]?.primary_category[0]
-                      //       ?.category_name,
-                      //     category_news?.data[0]?.stories_headlines
-                      //   )
-                      // }}
                     >
                       {category_news?.data[0]?.stories_headlines}
                     </div>
                     <p
                       className="hidden h-36 cursor-pointer font-TSmedium text-base lg:grid lg:h-32"
                       onClick={() => {
-                        router.push(`/${category_news?.data[0]?._id}`)
+                        handle_news_redirection_story(
+                          category_news?.data[0]?.stories_headlines
+                        )
                       }}
-                      // onClick={() => {
-                      //   handle_news_redirection_story(
-                      //     category_news?.data[0]?.primary_category[0]
-                      //       ?.category_name,
-                      //     category_news?.data[0]?.stories_headlines
-                      //   )
-                      // }}
                     >
                       {category_news?.data[0]?.stories_content.slice(0, 335)}
                       ......
@@ -363,15 +365,10 @@ const ImportantNews = ({
                     <p
                       className="grid h-24 cursor-pointer font-TSmedium text-base md:grid lg:hidden lg:h-32"
                       onClick={() => {
-                        router.push(`/${category_news?.data[0]?._id}`)
+                        handle_news_redirection_story(
+                          category_news?.data[0]?.stories_headlines
+                        )
                       }}
-                      // onClick={() => {
-                      //   handle_news_redirection_story(
-                      //     category_news?.data[0]?.primary_category[0]
-                      //       ?.category_name,
-                      //     category_news?.data[0]?.stories_headlines
-                      //   )
-                      // }}
                     >
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
@@ -380,22 +377,17 @@ const ImportantNews = ({
                       <p
                         className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
                         onClick={() => {
-                          router.push(`/${category_news?.data[0]?._id}`)
+                          handle_news_redirection_story(
+                            category_news?.data[0]?.stories_headlines
+                          )
                         }}
-                        // onClick={() => {
-                        //   handle_news_redirection_story(
-                        //     category_news?.data[0]?.primary_category[0]
-                        //       ?.category_name,
-                        //     category_news?.data[0]?.stories_headlines
-                        //   )
-                        // }}
                       >
                         اقرأ المزيد
                       </p>
 
                       <MenuThreeDot
-                      id={category_news?.data[0]?._id}
-                      title_color={title_color}
+                        id={category_news?.data[0]?._id}
+                        title_color={title_color}
                         category={
                           category_news?.data[0]?.primary_category[0]
                             ?.category_name
@@ -427,15 +419,14 @@ const ImportantNews = ({
                       >
                         <div
                           className="cursor-pointer"
-                          onClick={() => {
-                            router.push(`/${item._id}`)
-                          }}
                           // onClick={() => {
-                          //   handle_news_redirection_story(
-                          //     item?.primary_category[0]?.category_name,
-                          //     item?.stories_headlines
-                          //   )
+                          //   router.push(`/${item._id}`)
                           // }}
+                          onClick={() => {
+                            handle_news_redirection_story(
+                              item?.stories_headlines
+                            )
+                          }}
                         >
                           {item?.primary_category[0]?.category_name ? (
                             <p
@@ -458,7 +449,7 @@ const ImportantNews = ({
                           )}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid">
-                          <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
+                          <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-full lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
@@ -468,9 +459,11 @@ const ImportantNews = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md"
+                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
-                                    router.push(`/${item._id}`)
+                                    handle_news_redirection_story(
+                                      item?.stories_headlines
+                                    )
                                   }}
                                 />
                               ) : (
@@ -480,7 +473,9 @@ const ImportantNews = ({
                                   alt={item.stories_headlines}
                                   className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
-                                    router.push(`/${item._id}`)
+                                    handle_news_redirection_story(
+                                      item?.stories_headlines
+                                    )
                                   }}
                                 />
                               ))}
@@ -494,7 +489,9 @@ const ImportantNews = ({
                           <div
                             className="hidden cursor-pointer justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex"
                             onClick={() => {
-                              router.push(`/${item._id}`)
+                              handle_news_redirection_story(
+                                item?.stories_headlines
+                              )
                             }}
                           >
                             <p>
@@ -510,7 +507,9 @@ const ImportantNews = ({
                           <div
                             className="cursor-pointer py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2"
                             onClick={() => {
-                              router.push(`/${item._id}`)
+                              handle_news_redirection_story(
+                                item?.stories_headlines
+                              )
                             }}
                           >
                             <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:h-10 md:text-lg lg:my-0 lg:mb-0 lg:h-12 lg:text-sm">
@@ -525,7 +524,9 @@ const ImportantNews = ({
                         <div
                           className="flex justify-between px-4 font-TSlight text-xs lg:hidden"
                           onClick={() => {
-                            router.push(`/${item._id}`)
+                            handle_news_redirection_story(
+                              item?.stories_headlines
+                            )
                           }}
                         >
                           <p>
@@ -542,13 +543,15 @@ const ImportantNews = ({
                           <p
                             className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
-                              router.push(`/${item._id}`)
+                              handle_news_redirection_story(
+                                item?.stories_headlines
+                              )
                             }}
                           >
                             اقرأ المزيد
                           </p>
                           <MenuThreeDot
-                      id={item._id}
+                            id={item._id}
                             title_color={title_color}
                             category={item?.primary_category[0]?.category_name}
                             story={item?.stories_headlines}

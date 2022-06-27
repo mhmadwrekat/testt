@@ -1,7 +1,11 @@
+// Import Libraries
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Autoplay, Navigation } from 'swiper'
-import LogaimaModal from './childComponent/LogamiatModal'
+import { Navigation } from 'swiper'
+import dynamic from 'next/dynamic'
+
+// component imports
+const LogaimaModal = dynamic(() => import('./childComponent/LogamiatModal'))
 
 // Import Swiper styles
 import 'swiper/css'
@@ -14,7 +18,7 @@ const Logaimat = ({
   setShowCategory,
   title,
   important_news,
-  fill_color,
+  // fill_color,
   title_color,
   subs,
   desc_color,
@@ -61,7 +65,7 @@ const Logaimat = ({
   return (
     <React.Fragment>
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
-        <>
+        <React.Fragment>
           <div className="flex justify-between">
             <div className="my-3 mt-3 lg:mt-4">
               <div className="flex">
@@ -200,7 +204,7 @@ const Logaimat = ({
               })}
             </Swiper>
           </section>
-        </>
+        </React.Fragment>
       </section>
       <LogaimaModal
         open={openLoqaima}

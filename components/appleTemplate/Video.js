@@ -1,3 +1,4 @@
+// Import Libraries
 import React, { useState } from 'react'
 import { BASE_URL } from '../../config/config'
 import axios from 'axios'
@@ -5,8 +6,9 @@ import moment from 'moment'
 import 'moment/locale/ar'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
+
+// component imports
 const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
-// const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Video = ({
@@ -58,19 +60,19 @@ const Video = ({
     })
   }
   let stories = []
-  const handle_news_redirection_story = (category, titles) => {
-    let ready_category = ''
+  const handle_news_redirection_story = (titles) => {
+    // let ready_category = ''
     let ready_title = ''
-    if (category.includes('%')) {
-      let title = category.replace(/\s+/g, '_')
-      // console.log(`/${title.replace('%', '_')}`)
-      ready_category = `${title.replace('%', '_')}`
-    } else if (category.includes(' ')) {
-      let title = category.replace(/\s+/g, '_')
-      ready_category = `${title.replace(' ', '_')}`
-    } else {
-      ready_category = category
-    }
+    // if (category.includes('%')) {
+    //   let title = category.replace(/\s+/g, '_')
+    //   // console.log(`/${title.replace('%', '_')}`)
+    //   ready_category = `${title.replace('%', '_')}`
+    // } else if (category.includes(' ')) {
+    //   let title = category.replace(/\s+/g, '_')
+    //   ready_category = `${title.replace(' ', '_')}`
+    // } else {
+    //   ready_category = category
+    // }
     if (titles.includes('%')) {
       let title = titles.replace(/\s+/g, '_')
       // console.log(`/${title.replace('%', '_')}`)
@@ -93,7 +95,7 @@ const Video = ({
     <React.Fragment>
       {/* {console.log('User_ID = ', user_id)} */}
       <section className="mx-auto w-11/12 lg:w-10/12 lg:pt-10">
-        <>
+        <React.Fragment>
           <div className="flex justify-between">
             <div className="my-3 mt-3 lg:mt-4">
               <div className="flex">
@@ -193,15 +195,12 @@ const Video = ({
                       </div>
                       <section
                         className="flex cursor-pointer bg-GRAY100 lg:grid"
-                        onClick={() => {
-                          router.push(`/${item?._id}`)
-                        }}
                         // onClick={() => {
-                        //   handle_news_redirection_story(
-                        //     item?.primary_category[0]?.category_name,
-                        //     item?.stories_headlines
-                        //   )
+                        //   router.push(`/${item?._id}`)
                         // }}
+                        onClick={() => {
+                          handle_news_redirection_story(item?.stories_headlines)
+                        }}
                       >
                         <div className="relative h-32 w-80 py-2 lg:mr-0 lg:h-auto lg:w-full lg:py-0">
                           {item.stories_media_url[0] &&
@@ -308,7 +307,7 @@ const Video = ({
                           اقرا المزيد
                         </p>
                         <MenuThreeDot
-                      id={item?._id}
+                          id={item?._id}
                           title_color={title_color}
                           category={item?.primary_category[0]?.category_name}
                           story={item?.stories_headlines}
@@ -323,7 +322,7 @@ const Video = ({
               })}
             </div>
           </section>
-        </>
+        </React.Fragment>
       </section>
       <ViewImpression stories={stories} user_id={user_id} /> <></>
       <ReadImpression stories={stories} user_id={user_id} />

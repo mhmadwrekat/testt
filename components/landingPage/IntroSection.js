@@ -1,21 +1,10 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/dist/client/router'
-
-//mobile
-// import phoneNews from '../../public/assest/images/images/mobile/firstSection/phoneNews.png'
-
-//shared
-// import logo from '../../public/assest/images/images/shared/alzubda-logo.png'
-
-//laptop
-// import mobile from '../../public/asset/images/images/web/introSection/mobile-circle.png'
-// import appleStore from '../../public/asset/images/images/shared/apple-xhdpi.png'
-// import googlePlay from '../../public/asset/images/images/shared/google-xhdpi.png'
-// import phoneNewsWeb from '../../public/asset/images/images/web/introSection/phoneNewsWeb.png'
+import React from 'react'
 
 export default function IntroSection() {
   const router = useRouter()
+
   function new_tab(url) {
     window.open(url, '_blank')
   }
@@ -36,9 +25,8 @@ export default function IntroSection() {
       id: 3,
     },
   ]
-
   return (
-    <>
+    <React.Fragment>
       {/* ------------------- LAPTOP VIEW ----------------------- */}
       {/* ------------------- LAPTOP VIEW ----------------------- */}
       <div className="sr-only lg:not-sr-only">
@@ -88,7 +76,6 @@ export default function IntroSection() {
           </div>
         </div>
       </div>
-
       <div className="relative hidden h-full grid-cols-1 bg-BLUE100 bg-branding-outlines bg-cover bg-no-repeat pt-24 lg:grid lg:grid-cols-6">
         <div className="absolute -bottom-10 z-10  w-full">
           <img
@@ -143,10 +130,9 @@ export default function IntroSection() {
           </div>
         </div>
       </div>
-
       {/* ------------------- MOBILE VIEW ----------------------- */}
       {/* ------------------- MOBILE VIEW ----------------------- */}
-      <>
+      <React.Fragment>
         <div className="w-3/3 not-sr-only fixed z-20 block w-full pb-5 pl-5 pr-2 pt-10   backdrop-blur-2xl backdrop-filter lg:sr-only">
           <div>
             <svg
@@ -208,7 +194,7 @@ export default function IntroSection() {
             />
           </div>
         </div>
-      </>
-    </>
+      </React.Fragment>
+    </React.Fragment>
   )
 }

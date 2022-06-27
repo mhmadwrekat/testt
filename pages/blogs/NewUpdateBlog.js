@@ -1,10 +1,10 @@
 //next imports
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 //component imports
-import HeadComp from '../../components/page/HeadComp'
+const HeadComp = dynamic(() => import('../../components/page/HeadComp'))
 const Footer = dynamic(() => import('../../components/page/Footer'))
 const Nav = dynamic(() => import('../../components/page/Nav'))
 
@@ -22,7 +22,7 @@ export default function NewUpdateBlog() {
     window.open(url, '_blank')
   }
   return (
-    <>
+    <React.Fragment>
       <HeadComp />
       <div
         dir="rtl"
@@ -314,6 +314,6 @@ export default function NewUpdateBlog() {
         </main>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   )
 }

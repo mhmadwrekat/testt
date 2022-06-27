@@ -34,7 +34,6 @@ const WaveAudio = ({ url }) => {
       wavesurfer.current.load(url)
       // console.log('Not Loaded')
     },
-    // onLeave: () => {console.log('None')},
   })
   // useEffect(() => {
   //   const options = formWaveSurferOptions(waveformRef.current)

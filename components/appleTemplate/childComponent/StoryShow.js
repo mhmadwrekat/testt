@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 // import FakeData from '../FakeData.json'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { BASE_URL } from '../../../config/config'
 import moment from 'moment'
 import 'moment/locale/ar'
@@ -31,7 +32,7 @@ const StoryShow = () => {
 
     router.query.category &&
       axios
-        .get(`${BASE_URL}/v1/Web/Story?story_id=${router.query.category}`)
+        .get(`${BASE_URL}/v1/Web/Story?title=${router.query.category}`)
         .then((res) => {
           // console.log(res.data.data)
           setHeadNews(res?.data?.data?.story)
@@ -109,18 +110,20 @@ const StoryShow = () => {
                       loading="eager"
                     ></iframe>
                   ) : (
-                    // <iframe
-                    //   width="100%"
-                    //   className="relative mr-auto h-72 w-full object-cover text-right lg:h-full"
-                    //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
-                    //     head_news?.stories_media_url[0]
-                    //   )}`}
+                    // <Image
+                    //   src={head_news?.stories_media_url[0]}
+                    //   className="relative object-cover"
                     //   alt={head_news?.stories_headlines}
-                    //   frameborder="0"
-                    //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    //   allowfullscreen=""
+                    //   quality={100}
+                    //   layout="fill"
+                    //   objectFit="cover"
+                    //   // width={800}
+                    //   // height={350}
                     //   loading="eager"
-                    // ></iframe>
+                    //   priority
+                    //   placeholder="blur"
+                    //   blurDataURL={head_news?.stories_media_url[0]}
+                    // />
                     <img
                       loading="eager"
                       src={head_news?.stories_media_url[0]}
