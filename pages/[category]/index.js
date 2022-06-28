@@ -20,6 +20,9 @@ const Footer = dynamic(() => import('../../components/page/Footer'))
 const AllData = dynamic(() =>
   import('../../components/appleTemplate/childComponent/AllData')
 )
+const CategorySkeleton = dynamic(() =>
+  import('../../components/Skeletons/CategorySkeleton')
+)
 const index = () => {
   const router = useRouter()
 
@@ -271,111 +274,117 @@ const index = () => {
       <div dir="rtl" id="project_body" translate="no">
         <HeadComp />
         <Nav setSearches={setSearches} searches={searches} />
-
         {searches ? null : valid_category ? (
-          <section className="text-black mx-auto w-11/12 bg-white lg:w-10/12 lg:pt-10">
-            <div className="flex justify-between">
-              <div className="my-3 mt-3 lg:mt-4">
-                <div className="flex">
-                  <p
-                    className={`${category_text(
-                      router.query.category
-                    )} mt-5 font-TSExtra text-2xl lg:text-4xl`}
-                  >
-                    {title}{' '}
-                  </p>
+          all_news ? (
+            <section className="text-black mx-auto w-11/12 bg-white lg:w-10/12 lg:pt-10">
+              <div className="flex justify-between">
+                <div className="my-3 mt-3 lg:mt-4">
+                  <div className="flex">
+                    <p
+                      className={`${category_text(
+                        router.query.category
+                      )} mt-5 font-TSExtra text-2xl lg:text-4xl`}
+                    >
+                      {title}{' '}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </div>{' '}
-            <section className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-16">
-              {all_news?.slice(0, 3).map((item) => {
-                return (
-                  <section className="" key={item?._id}>
-                    <div className="rounded-lg bg-GRAY100 shadow-lg" id="card">
-                      <div>
-                        <p
-                          className={`${category_theme(
-                            router.query.category
-                          )} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
-                        ></p>{' '}
-                      </div>
-                      <section className="grid bg-GRAY100 lg:grid ">
-                        <div className="relative w-full lg:w-auto">
-                          {item.stories_media_url[0] &&
-                            (item.stories_media_url[0].includes('youtube') ||
-                            item.stories_media_url[0].includes('youtu.be') ? (
-                              <img
-                                loading="eager"
-                                src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                  item.stories_media_url[0]
-                                )}/0.jpg`}
-                                alt={item.stories_headlines}
-                                className="mx-auto h-32 w-full object-cover md:h-full md:w-full lg:h-72 lg:w-full"
-                              />
-                            ) : (
-                              <img
-                                loading="eager"
-                                src={item.stories_media_url[0]}
-                                alt={item.stories_headlines}
-                                className="mx-auto h-32 w-full object-cover md:h-full md:w-full lg:h-72 lg:w-full"
-                              />
-                            ))}
+              </div>{' '}
+              <section className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-16">
+                {all_news?.slice(0, 3).map((item) => {
+                  return (
+                    <section className="" key={item?._id}>
+                      <div
+                        className="rounded-lg bg-GRAY100 shadow-lg"
+                        id="card"
+                      >
+                        <div>
+                          <p
+                            className={`${category_theme(
+                              router.query.category
+                            )} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                          ></p>{' '}
                         </div>
+                        <section className="grid bg-GRAY100 lg:grid ">
+                          <div className="relative w-full lg:w-auto">
+                            {item.stories_media_url[0] &&
+                              (item.stories_media_url[0].includes('youtube') ||
+                              item.stories_media_url[0].includes('youtu.be') ? (
+                                <img
+                                  loading="eager"
+                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-32 w-full object-cover md:h-full md:w-full lg:h-72 lg:w-full"
+                                />
+                              ) : (
+                                <img
+                                  loading="eager"
+                                  src={item.stories_media_url[0]}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-32 w-full object-cover md:h-full md:w-full lg:h-72 lg:w-full"
+                                />
+                              ))}
+                          </div>
 
-                        <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
+                          <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
+                            <p>
+                              <b className=" text-red-800 font-TSExtra">
+                                {item.publisher_name}
+                              </b>
+                            </p>
+                            <p className="font-TSExtra text-GRAY400">
+                              قبل {moment(item.published_on).fromNow(true)}
+                            </p>
+                          </div>
+
+                          <div className=" py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2">
+                            <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-20 lg:text-xl">
+                              {item.stories_headlines}
+                            </div>
+                            <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-28 lg:pt-1.5 lg:text-sm">
+                              {item.stories_content}
+                            </div>
+                          </div>
+                        </section>
+
+                        <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                           <p>
-                            <b className=" text-red-800 font-TSExtra">
-                              {item.publisher_name}
-                            </b>
-                          </p>
-                          <p className="font-TSExtra text-GRAY400">
-                            قبل {moment(item.published_on).fromNow(true)}
+                            <b className=" text-red-800 font-TSExtra"></b>
                           </p>
                         </div>
-
-                        <div className=" py-1.5 px-3 sm:mb-0 lg:mb-1 lg:px-2 lg:py-2">
-                          <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-20 lg:text-xl">
-                            {item.stories_headlines}
-                          </div>
-                          <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-28 lg:pt-1.5 lg:text-sm">
-                            {item.stories_content}
-                          </div>
+                        <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
+                          <p
+                            className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                          ></p>{' '}
+                          <MenuThreeDot
+                            id={item?._id}
+                            title_color={'text-Purp100'}
+                            category={item?.primary_category[0]?.category_name}
+                            story={item?.stories_headlines}
+                            fill={category_fill(router.query.category)}
+                            user_id={user_id}
+                            story_id={item?._id}
+                          />
                         </div>
-                      </section>
-
-                      <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
-                        <p>
-                          <b className=" text-red-800 font-TSExtra"></b>
-                        </p>
                       </div>
-                      <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
-                        <p
-                          className={`$rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
-                        ></p>{' '}
-                        <MenuThreeDot
-                          id={item?._id}
-                          title_color={'text-Purp100'}
-                          category={item?.primary_category[0]?.category_name}
-                          story={item?.stories_headlines}
-                          fill={category_fill(router.query.category)}
-                          user_id={user_id}
-                          story_id={item?._id}
-                        />
-                      </div>
-                    </div>
-                  </section>
-                )
-              })}
+                    </section>
+                  )
+                })}
+              </section>
+              <AllData
+                data={all_news}
+                bg_color={category_theme(router.query.category)}
+                category={router.query.category}
+                fill={category_fill(router.query.category)}
+                user_id={user_id}
+                replace={true}
+              />
             </section>
-            <AllData
-              data={all_news}
-              bg_color={category_theme(router.query.category)}
-              category={router.query.category}
-              fill={category_fill(router.query.category)}
-              user_id={user_id}
-              replace={true}
-            />
-          </section>
+          ) : (
+            <CategorySkeleton />
+          )
         ) : (
           <StoryShow />
         )}

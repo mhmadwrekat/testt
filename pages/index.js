@@ -28,7 +28,9 @@ const Footer = dynamic(() => import('../components/page/Footer'))
 const IndexSkeleton = dynamic(() =>
   import('../components/Skeletons/IndexSkeleton')
 )
-
+const CategorySkeleton = dynamic(() =>
+  import('../components/Skeletons/CategorySkeleton')
+)
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -36,6 +38,7 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
+
   // Get Logaimat API
   let user_token = ''
   const LoqaimatDataReq = axios({
@@ -135,7 +138,9 @@ const index = (props) => {
             country_code={country_code}
           />
         )}
-        {searches ? null : all_news ? (
+        {searches ? (
+          <CategorySkeleton />
+        ) : all_news ? (
           <React.Fragment>
             <ImportantNews
               loading="eager"

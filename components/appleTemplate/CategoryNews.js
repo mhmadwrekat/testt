@@ -64,6 +64,7 @@ const Category_news = ({
     }
     axios.post(url, data).then((res) => {
       setSubscripe(!subscripe)
+      setClickSubscribe(!click_subscribe)
     })
   }
 

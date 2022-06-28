@@ -12,6 +12,7 @@ const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
 const HeadComp = dynamic(() => import('../../page/HeadComp'))
 const Nav = dynamic(() => import('../../page/Nav'))
 const AllData = dynamic(() => import('./AllData'))
+const StorySkeleton = dynamic(() => import('../../Skeletons/StorySkeleton'))
 const StoryShow = () => {
   const router = useRouter()
   const [head_news, setHeadNews] = useState()
@@ -76,133 +77,137 @@ const StoryShow = () => {
   return (
     <React.Fragment>
       <div dir="rtl" id="project_body" translate="no">
-        <section className="text-black mx-auto grid w-11/12 pt-10 lg:w-10/12">
-          <section
-            className="grid grid-cols-1 gap-0 bg-GRAY100 shadow-md lg:grid-cols-2 lg:gap-8"
-            id="card"
-          >
-            <section className="">
-              <div className="">
-                <p
-                  className={`rounded-t-md bg-Purp300 py-4 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
-                ></p>{' '}
-              </div>
-              <div className="relative mx-auto h-72 w-full shadow-md lg:h-96">
-                {head_news?.stories_media_url[0] &&
-                  (head_news?.stories_media_url[0].includes('youtube') ||
-                  head_news?.stories_media_url[0].includes('youtu.be') ? (
-                    // <iframe
-                    //   loading="eager"
-                    //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
-                    //     head_news?.stories_media_url[0]
-                    //   )}`}
-                    //   alt={head_news?.stories_headlines}
-                    //   className="relative h-72 w-full object-cover lg:h-full"
-                    // />
-                    <iframe
-                      allowFullScreen=""
-                      title="Video"
-                      className="aspect-video h-full w-full rounded-b-lg shadow-lg "
-                      src={`https://www.youtube.com/embed/${retrieve_youtube_code(
-                        head_news?.stories_media_url[0]
-                      )}`}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      loading="eager"
-                    ></iframe>
-                  ) : (
-                    // <Image
-                    //   src={head_news?.stories_media_url[0]}
-                    //   className="relative object-cover"
-                    //   alt={head_news?.stories_headlines}
-                    //   quality={100}
-                    //   layout="fill"
-                    //   objectFit="cover"
-                    //   // width={800}
-                    //   // height={350}
-                    //   loading="eager"
-                    //   priority
-                    //   placeholder="blur"
-                    //   blurDataURL={head_news?.stories_media_url[0]}
-                    // />
-                    <img
-                      loading="eager"
-                      src={head_news?.stories_media_url[0]}
-                      alt={head_news?.stories_headlines}
-                      className="relative h-72 w-full object-cover lg:h-full"
-                    />
-                  ))}
-                {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className=" h-7 w-7 cursor-pointer"
-                  fill="#FF0000"
-                  viewBox="0 0 24 24"
-                  stroke="#FF0000"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-              </div> */}
-              </div>
-            </section>
-            <section className="">
-              <div className="px-2.5 pt-2">
-                <div className="flex justify-between">
-                  <b className="text-red-800 flex pt-1.5 font-TSbold lg:hidden">
-                    {head_news?.publisher_name}
-                  </b>
-                  <p className="flex px-2.5 pt-2 font-TSbold text-GRAY300 lg:hidden">
-                    قبل {moment(head_news?.published_on).fromNow(true)}
-                  </p>
+        {head_news ? (
+          <section className="text-black mx-auto grid w-11/12 pt-10 lg:w-10/12">
+            <section
+              className="grid grid-cols-1 gap-0 bg-GRAY100 shadow-md lg:grid-cols-2 lg:gap-8"
+              id="card"
+            >
+              <section className="">
+                <div className="">
+                  <p
+                    className={`rounded-t-md bg-Purp300 py-4 text-right font-TSbold text-base text-white hover:underline lg:pr-8`}
+                  ></p>{' '}
                 </div>
-                <div className="mt-3 font-TSExtra text-lg md:text-xl lg:h-28 lg:w-11/12 lg:text-3xl">
-                  {head_news?.stories_headlines}
-                </div>
-                <p className="pt-4 font-TSmedium text-lg lg:grid lg:h-60 lg:pt-0 ">
-                  {head_news?.stories_content}
-                </p>
-              </div>
-              <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
-                <p>
-                  <b className="text-red-800 hidden font-TSbold lg:flex">
-                    {head_news?.publisher_name}
-                  </b>
-                </p>
-                <div className="flex px-2.5">
-                  {/* {console.log(router.query.news)} */}
-                  <MenuThreeDot
-                    id={head_news?._id}
-                    title_color={title_color}
-                    category={router.query.news}
-                    story={head_news?.stories_headlines}
-                    fill={'fill-Purp300'}
-                    story_id={head_news?._id}
-                    user_id={user_id}
-                  />{' '}
-                  <p className="hidden px-2.5 pt-2 font-TSbold text-GRAY300 lg:flex">
-                    قبل {moment(head_news?.published_on).fromNow(true)}
-                  </p>
-                </div>
-              </div>
-            </section>
-          </section>
-          <p
-            className={`mt-12 mb-3 font-TSExtra text-2xl text-Purp300 lg:text-4xl`}
-          >
-            أخبار ذات صلة
-          </p>
-          <AllData
-            data={related_news}
-            bg_color={'bg-Purp300'}
-            category={router.query.news}
-            fill={'fill-Purp300'}
-            user_id={user_id}
+                <div className="relative mx-auto h-72 w-full shadow-md lg:h-96">
+                  {head_news?.stories_media_url[0] &&
+                    (head_news?.stories_media_url[0].includes('youtube') ||
+                    head_news?.stories_media_url[0].includes('youtu.be') ? (
+                      // <iframe
+                      //   loading="eager"
+                      //   src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                      //     head_news?.stories_media_url[0]
+                      //   )}`}
+                      //   alt={head_news?.stories_headlines}
+                      //   className="relative h-72 w-full object-cover lg:h-full"
+                      // />
+                      <iframe
+                        allowFullScreen=""
+                        title="Video"
+                        className="aspect-video h-full w-full rounded-b-lg shadow-lg "
+                        src={`https://www.youtube.com/embed/${retrieve_youtube_code(
+                          head_news?.stories_media_url[0]
+                        )}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        loading="eager"
+                      ></iframe>
+                    ) : (
+                      // <Image
+                      //   src={head_news?.stories_media_url[0]}
+                      //   className="relative object-cover"
+                      //   alt={head_news?.stories_headlines}
+                      //   quality={100}
+                      //   layout="fill"
+                      //   objectFit="cover"
+                      //   // width={800}
+                      //   // height={350}
+                      //   loading="eager"
+                      //   priority
+                      //   placeholder="blur"
+                      //   blurDataURL={head_news?.stories_media_url[0]}
+                      // />
+                      <img
+                        loading="eager"
+                        src={head_news?.stories_media_url[0]}
+                        alt={head_news?.stories_headlines}
+                        className="relative h-72 w-full object-cover lg:h-full"
+                      />
+                    ))}
+                  {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className=" h-7 w-7 cursor-pointer"
+          fill="#FF0000"
+          viewBox="0 0 24 24"
+          stroke="#FF0000"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
           />
-        </section>
+        </svg>
+      </div> */}
+                </div>
+              </section>
+              <section className="">
+                <div className="px-2.5 pt-2">
+                  <div className="flex justify-between">
+                    <b className="text-red-800 flex pt-1.5 font-TSbold lg:hidden">
+                      {head_news?.publisher_name}
+                    </b>
+                    <p className="flex px-2.5 pt-2 font-TSbold text-GRAY300 lg:hidden">
+                      قبل {moment(head_news?.published_on).fromNow(true)}
+                    </p>
+                  </div>
+                  <div className="mt-3 font-TSExtra text-lg md:text-xl lg:h-28 lg:w-11/12 lg:text-3xl">
+                    {head_news?.stories_headlines}
+                  </div>
+                  <p className="pt-4 font-TSmedium text-lg lg:grid lg:h-60 lg:pt-0 ">
+                    {head_news?.stories_content}
+                  </p>
+                </div>
+                <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
+                  <p>
+                    <b className="text-red-800 hidden font-TSbold lg:flex">
+                      {head_news?.publisher_name}
+                    </b>
+                  </p>
+                  <div className="flex px-2.5">
+                    {/* {console.log(router.query.news)} */}
+                    <MenuThreeDot
+                      id={head_news?._id}
+                      title_color={title_color}
+                      category={router.query.news}
+                      story={head_news?.stories_headlines}
+                      fill={'fill-Purp300'}
+                      story_id={head_news?._id}
+                      user_id={user_id}
+                    />{' '}
+                    <p className="hidden px-2.5 pt-2 font-TSbold text-GRAY300 lg:flex">
+                      قبل {moment(head_news?.published_on).fromNow(true)}
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </section>
+            <p
+              className={`mt-12 mb-3 font-TSExtra text-2xl text-Purp300 lg:text-4xl`}
+            >
+              أخبار ذات صلة
+            </p>
+            <AllData
+              data={related_news}
+              bg_color={'bg-Purp300'}
+              category={router.query.news}
+              fill={'fill-Purp300'}
+              user_id={user_id}
+            />
+          </section>
+        ) : (
+          <StorySkeleton />
+        )}
 
         {/* {console.log(related_news)} */}
       </div>
