@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import WaveSurfer from 'wavesurfer.js'
-import { useInView, InView } from 'react-cool-inview'
+import { useInView } from 'react-cool-inview'
 
 const WaveAudio = ({ url }) => {
   const formWaveSurferOptions = (ref) => ({
@@ -35,53 +35,14 @@ const WaveAudio = ({ url }) => {
       // console.log('Not Loaded')
     },
   })
-  // useEffect(() => {
-  //   const options = formWaveSurferOptions(waveformRef.current)
-  //   wavesurfer.current = WaveSurfer.create(options)
-  //   wavesurfer.current.load(url)
-  //   // const options = formWaveSurferOptions(waveformRef.current)
-  //   // wavesurfer.current = WaveSurfer.create(options)
-  //   // wavesurfer.current.load(url)
-  //   // wavesurfer.current.pause(url)
-  //   // wavesurfer.current.on('ready', function () {
-  //   //   // https://wavesurfer-js.org/docs/methods.html
-  //   //   // wavesurfer.current.play();
-  //   //   // setPlay(true);
-  //   //   // make sure object stillavailable when file loaded
-  //   //   // if (wavesurfer.current) {
-  //   //   //   wavesurfer.current.setVolume(volume)
-  //   //   //   setVolume(volume)
-  //   //   // }
-  //   // })
-  //   // Removes events, elements and disconnects Web Audio nodes.
-  //   // when component unmount
-  //   // return () => wavesurfer.current.destroy()
-  // }, [])
-  // On component mount and when url changes
-  // const get_voice = async () => {
-  //   const options = formWaveSurferOptions(waveformRef.current)
-  //   wavesurfer.current = WaveSurfer.create(options)
-  //   wavesurfer.current.load(url)
-  //   wavesurfer.current.on('ready', function () {
-  //     wavesurfer.current.play()
-  //   })
-  // }
   const handlePlay = () => {
     // get_voice()
     // wavesurfer.current.load(url) && playi()
     wavesurfer.current.playPause()
     setPlay(!playing)
   }
-  const handlePause = () => {
-    // wavesurfer.current.load(url) && playi()
-    wavesurfer.current.destroy()
-    setPlay(!playing)
-  }
-
   return (
     <React.Fragment>
-      {/* <iframe src="https://cross-origin.com/myvideo.html" allow="autoplay" /> */}
-
       <div className="w-12/12 lg:w-12/12 mx-auto grid" ref={observe}>
         <section className=" flex justify-center pt-5 pl-0 pr-0 lg:pt-0 lg:pl-5 lg:pr-0">
           <div
@@ -161,18 +122,39 @@ const WaveAudio = ({ url }) => {
 }
 
 export default WaveAudio
-{
-  /* <svg
-xmlns="http://www.w3.org/2000/svg"
-className="h-12 w-12 lg:h-14 lg:w-14"
-fill="#E0A719"
-viewBox="0 0 20 20"
-
->
-<path
-  fillRule="evenodd"
-  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-  clipRule="evenodd"
-/>
-</svg> */
-}
+// useEffect(() => {
+//   const options = formWaveSurferOptions(waveformRef.current)
+//   wavesurfer.current = WaveSurfer.create(options)
+//   wavesurfer.current.load(url)
+//   // const options = formWaveSurferOptions(waveformRef.current)
+//   // wavesurfer.current = WaveSurfer.create(options)
+//   // wavesurfer.current.load(url)
+//   // wavesurfer.current.pause(url)
+//   // wavesurfer.current.on('ready', function () {
+//   //   // https://wavesurfer-js.org/docs/methods.html
+//   //   // wavesurfer.current.play();
+//   //   // setPlay(true);
+//   //   // make sure object stillavailable when file loaded
+//   //   // if (wavesurfer.current) {
+//   //   //   wavesurfer.current.setVolume(volume)
+//   //   //   setVolume(volume)
+//   //   // }
+//   // })
+//   // Removes events, elements and disconnects Web Audio nodes.
+//   // when component unmount
+//   // return () => wavesurfer.current.destroy()
+// }, [])
+// On component mount and when url changes
+// const get_voice = async () => {
+//   const options = formWaveSurferOptions(waveformRef.current)
+//   wavesurfer.current = WaveSurfer.create(options)
+//   wavesurfer.current.load(url)
+//   wavesurfer.current.on('ready', function () {
+//     wavesurfer.current.play()
+//   })
+// }
+// const handlePause = () => {
+//   // wavesurfer.current.load(url) && playi()
+//   wavesurfer.current.destroy()
+//   setPlay(!playing)
+// }

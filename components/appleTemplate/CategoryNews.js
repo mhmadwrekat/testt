@@ -53,7 +53,7 @@ const Category_news = ({
   }
 
   // function to handle Subscribe Category & Unsubscribe
-  const [subscripe, setSubscripe] = useState(category_news?.is_subscribed)
+  const [subscripe, setSubscripe] = useState(subs)
   const handle_subscripe = async (category_id, is_subscribed) => {
     setClickSubscribe(!click_subscribe)
     let url = `${BASE_URL}/v1/Web/Category/Subscribe`
@@ -146,10 +146,7 @@ const Category_news = ({
                       viewBox="0 0 20 20"
                       fill="#32CD32"
                       onClick={() => {
-                        handle_subscripe(
-                          category_news?.category_id,
-                          category_news?.is_subscribed
-                        )
+                        handle_subscripe(category_news?.category_id, subs)
                       }}
                     >
                       <path
@@ -165,10 +162,7 @@ const Category_news = ({
                       viewBox="0 0 20 20"
                       fill="#B0B0B0"
                       onClick={() => {
-                        handle_subscripe(
-                          category_news?.category_id,
-                          category_news?.is_subscribed
-                        )
+                        handle_subscripe(category_news?.category_id, subs)
                       }}
                     >
                       <path

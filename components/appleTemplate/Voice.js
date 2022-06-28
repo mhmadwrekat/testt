@@ -136,7 +136,7 @@ const Voice = ({
             <Swiper
               // install Swiper modules
               slidesPerView={2.1}
-              spaceBetween={0}
+              spaceBetween={50}
               loop={true}
             >
               {news_one.data.slice(0, 7).map((item) => {
@@ -157,7 +157,7 @@ const Voice = ({
                                   {item?.primary_category[0]?.category_name}
                                 </p>
                               </div>
-                              <div className="relative h-40 w-60 lg:h-36 lg:w-60">
+                              <div className="relative h-40 w-60 lg:h-36 lg:w-56">
                                 <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
@@ -189,7 +189,7 @@ const Voice = ({
                                 <p className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
                                   {item.stories_headlines}
                                 </p>
-                                <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
+                                <div className=" my-3 flex justify-between px-5 font-TSlight text-xs">
                                   <p className="">
                                     <b className="text-red-700 font-TSbold">
                                       {item.publisher_name}
@@ -201,7 +201,8 @@ const Voice = ({
                                   </p>
                                 </div>
                               </section>
-                              <section className="float-left mx-2 flex">
+                              <section className="mx-auto flex w-full">
+                                {' '}
                                 <WaveAudio
                                   url={Object.values(item.voices)[1]}
                                 />
@@ -219,7 +220,7 @@ const Voice = ({
                                   {item?.primary_category[0]?.category_name}
                                 </p>
                               </div>
-                              <div className="relative h-40 w-60 lg:h-36 lg:w-60">
+                              <div className="relative h-40 w-60 lg:h-36 lg:w-56">
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
@@ -249,7 +250,7 @@ const Voice = ({
                                 <p className="mx-3 pt-3 font-TSbold text-lg lg:text-xl">
                                   {item.stories_headlines}
                                 </p>
-                                <div className=" my-3 flex justify-between px-5 font-TSlight text-sm">
+                                <div className=" my-3 flex justify-between px-5 font-TSlight text-xs">
                                   <p className="">
                                     <b className="text-red-700 font-TSbold">
                                       {item.publisher_name}
@@ -279,7 +280,7 @@ const Voice = ({
             <Swiper
               // install Swiper modules
               slidesPerView={2.1}
-              spaceBetween={0}
+              spaceBetween={50}
               loop={true}
             >
               {news_one.data.slice(7, 15).map((item) => {
@@ -300,7 +301,7 @@ const Voice = ({
                                   {item?.primary_category[0]?.category_name}
                                 </p>
                               </div>
-                              <div className="relative h-40 w-60 lg:h-36 lg:w-60">
+                              <div className="relative h-40 w-60 lg:h-36 lg:w-56">
                                 <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
@@ -362,7 +363,7 @@ const Voice = ({
                                   {item?.primary_category[0]?.category_name}
                                 </p>
                               </div>
-                              <div className="relative h-40 w-60 lg:h-36 lg:w-60">
+                              <div className="relative h-40 w-60 lg:h-36 lg:w-56">
                                 <img
                                   loading="lazy"
                                   src={item.stories_media_url[0]}
@@ -404,7 +405,7 @@ const Voice = ({
                                   </p>
                                 </div>
                               </section>
-                              <section className="float-left mx-2 flex">
+                              <section className="mx-auto flex w-full">
                                 <WaveAudio
                                   url={Object.values(item.voices)[1]}
                                 />

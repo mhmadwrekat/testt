@@ -18,14 +18,12 @@ const ReadImpression = ({ user_id, stories }) => {
     //     },
     //   }
     //   axios.post(url, data).then((res) => {
-    //     // console.log(data)
     //     // console.log(res)
     //     // console.log(data)
     //     // console.log('Read')
     //   })
     //   // console.log(Data)
     // },
-    // onLeave: () => {console.log('None')},
   })
   return (
     <React.Fragment>

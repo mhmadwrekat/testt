@@ -33,7 +33,7 @@ const Logaimat = ({
       ? /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
       : ''
 
-  let slides_per_view = isMobile ? 2 : 5
+  let slides_per_view = isMobile ? 2 : 4.5
   let space_between = isMobile ? 5 : 50
 
   // function to return the youtube code to show the thumbnail

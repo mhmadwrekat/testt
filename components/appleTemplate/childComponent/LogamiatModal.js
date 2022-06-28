@@ -9,13 +9,8 @@ export default function LoqaimaModal({
   setOpen,
   loqaimatScreens,
 }) {
-  var isMobile =
-    typeof window !== 'undefined'
-      ? /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-      : ''
   const [sum, setNum] = useState(0)
 
-  // setShowCategory(false)
   const next = () => {
     setNum(sum + 1)
   }
@@ -39,7 +34,7 @@ export default function LoqaimaModal({
           }}
         >
           <section className="bg-black">
-            <div className=" min-h-sm flex items-end justify-center text-center sm:block sm:p-0">
+            <div className="min-h-sm flex items-end justify-center text-center sm:block sm:p-0">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -79,9 +74,25 @@ export default function LoqaimaModal({
                   <section className="z-50 flex justify-center">
                     <Carousel
                       selectedItem={sum}
+                      // renderIndicator={(
+                      // ) => {
+                      //   return (
+                      //     <span
+                      //       style={style}
+                      //       value={index}
+                      //       key={index}
+                      //       role="button"
+                      //       tabIndex={0}
+                      //       aria-label={`${label} ${index + 1}`}
+                      //       className="h-5 w-96 bg-BLUE"
+                      //     ></span>
+                      //   )
+                      // }}
                       // showArrows={isMobile ? false : true}
                       autoFocus={false}
                       showArrows={false}
+                      // showIndicators={false}
+                      // renderBottomCenterControls={false}
                       showThumbs={false}
                       // useKeyboardArrows
                     >
@@ -172,42 +183,7 @@ export default function LoqaimaModal({
                         <div className="h-full bg-white" />
                       )}
                     </Carousel>
-                    {/* {loqaimatScreens.length > 0 && (
-                      <div className="bg-black">
-                        <div className="relative hidden p-7 lg:flex">
-                          <div
-                            className="control-arrow control-next absolute top-96 right-0 z-50 cursor-pointer"
-                            onClick={() => {
-                              next()
-                            }}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-12 w-12"
-                              viewBox="0 0 20 20"
-                              loading="lazy"
-                              fill="#666666"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    )} */}
                   </section>
-
-                  {/* <button
-                    className="gallery_next"
-                    onClick={nextF()}
-                    type="button"
-                  >
-                    <i className="fa fa-chevron-right" />
-                  </button> */}
-                  {/* <div className="fixed bottom-0 w-full"></div> */}
                 </div>
               </Transition.Child>
               <div
@@ -242,7 +218,6 @@ export default function LoqaimaModal({
                   }}
                 ></div>
               </div>
-
               <span className="absolute top-0 right-2 z-50 p-3 lg:right-10">
                 <img
                   src="./assest/images/close.svg"
@@ -258,71 +233,3 @@ export default function LoqaimaModal({
     </React.Fragment>
   )
 }
-/*
-    <>
-                            <section className="flex justify-center">
-                              <div className="relative h-screen w-8 bg-white">
-                                <div className=" z-50 hidden  lg:flex">
-                                  <div className="absolute top-24 right-10 z-50 p-3">
-                                    <div
-                                      className="control-arrow control-next cursor-pointer"
-                                      onClick={() => {
-                                        next()
-                                      }}
-                                    >
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-12 w-12"
-                                        viewBox="0 0 20 20"
-                                        fill="#666666"
-                                      >
-                                        <path
-                                          fillRule="evenodd"
-                                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                                          clipRule="evenodd"
-                                        />
-                                      </svg>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div key={item._id} className="">
-                                <img
-                                  className="h-screen"
-                                  src={item.screen_link}
-                                  alt={item.screen_link}
-                                />
-                              </div>
-                              <div className="relative h-screen w-8 bg-white">
-                                {sum > 0 && (
-                                  <div className="absolute z-50 hidden p-3 lg:top-96 lg:left-48 lg:flex">
-                                    <div className="absolute z-50 p-3 lg:bottom-0 lg:left-48">
-                                      <div className="absolute z-50 p-3 lg:bottom-0 lg:left-48">
-                                        <div
-                                          className="control-arrow control-next cursor-pointer"
-                                          aria-label="Left Align"
-                                          onClick={() => {
-                                            prev()
-                                          }}
-                                        >
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="h-12 w-12"
-                                            viewBox="0 0 20 20"
-                                            fill="#666666"
-                                          >
-                                            <path
-                                              fillRule="evenodd"
-                                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-                                              clipRule="evenodd"
-                                            />
-                                          </svg>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            </section>
-                          </>
-*/

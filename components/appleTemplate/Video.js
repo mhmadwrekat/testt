@@ -222,7 +222,7 @@ const Video = ({
                                 )}`}
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 loading="lazy"
-                                allowFullScreen=""
+                                allowFullScreen={true}
                               ></iframe>
                             ) : (
                               // <iframe
@@ -246,7 +246,7 @@ const Video = ({
                                 src={`https://www.youtube.com/embed/65416`}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen=""
+                                allowFullScreen={true}
                                 title="Video"
                                 loading="lazy"
                               ></iframe>

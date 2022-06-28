@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
 import Image from 'next/image'
 import moment from 'moment'
 import { useRouter } from 'next/router'

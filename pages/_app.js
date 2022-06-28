@@ -99,21 +99,18 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <React.Fragment>
-      <NextSeo
-        title="الزبدة | الأخبار"
-        description={headDescription}
-        twitter={{
-          image: '/twitter.png',
-          handle: '@handle',
-          site: '@site',
-          cardType: 'summary_large_image',
-        }}
-        facebook={{
-          image: '/facebook.png',
-          url: 'https://alzubda.com',
-          type: 'website',
-        }}
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS}`}
       />
+      <Script strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${ANALYTICS}');
+        `}
+      </Script>
       <Component {...pageProps} country_code={country_code} user_id={user_id} />
     </React.Fragment>
   )

@@ -55,12 +55,16 @@ html {
 }
 
 .control-dots {
+  /* display: none; */
   position: absolute !important;
   top: 0 !important;
   width: 100% !important;
   height: fit-content !important;
+  z-index: 0;
 }
-
+/* .control-dots:hover {
+  display: none;
+} */
 .carousel-status {
   display: none !important;
 }

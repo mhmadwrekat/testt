@@ -22,17 +22,16 @@ const StorySkeleton = () => {
             <section className="">
               <div className="px-2.5 pt-2">
                 <div className="my-8 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-9 lg:w-5/12 lg:text-3xl"></div>
-                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-6/12 lg:text-3xl"></div>
-                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-7/12 lg:text-3xl"></div>
-                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-8/12 lg:text-3xl"></div>
-                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-9/12 lg:text-3xl"></div>
-                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-10/12 lg:text-3xl"></div>
+                <div className="my-5 rounded-full font-TSExtra text-lg md:text-xl lg:h-6 lg:w-11/12 lg:text-3xl"></div>
                 <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-11/12 lg:text-3xl"></div>
+                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-11/12 lg:text-3xl"></div>
+                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-11/12 lg:text-3xl"></div>
+                <div className="my-5 rounded-full font-TSExtra text-lg md:text-xl lg:h-6 lg:w-11/12 lg:text-3xl"></div>
+                <div className="my-5 rounded-full font-TSExtra text-lg md:text-xl lg:h-3 lg:w-11/12 lg:text-3xl"></div>
               </div>
               <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
-                <p></p>
-                <div className="flex px-2.5">
-                  {/* {console.log(router.query.news)} */}
+                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-2/6 lg:text-3xl"></div>
+                <div className="flex px-2.5 pl-24 pt-5">
                   <svg
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"

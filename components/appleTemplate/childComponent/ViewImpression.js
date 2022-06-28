@@ -18,7 +18,6 @@ const ViewImpression = ({ user_id, stories }) => {
     //     },
     //   }
     //   axios.post(url, data).then((res) => {
-    //     // console.log(data)
     //     // console.log(res)
     //     // console.log(data)
     //     // console.log('Vieww')
