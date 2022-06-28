@@ -174,7 +174,9 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
                         <p
                           className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                           onClick={() => {
-                            handle_news_redirection_story(item?._id)
+                            handle_news_redirection_story(
+                              item?.stories_headlines
+                            )
                           }}
                         >
                           اقرا المزيد
@@ -183,7 +185,9 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
                         <p
                           className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                           onClick={() => {
-                            handle_news_redirection_story(item?._id)
+                            handle_news_redirection_story(
+                              item?.stories_headlines
+                            )
                           }}
                         >
                           اقرا المزيد

@@ -28,21 +28,18 @@ export default function LoqaimaModal({
     setShowCategory(true)
     setNum(0)
   }
-  // open === false && setNum(0)
-
-  // currentImageIndex
   return (
     <React.Fragment>
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto"
+          className="fixed inset-0 z-50 overflow-y-auto"
           onClose={() => {
             close_loqaima()
           }}
         >
           <section className="bg-black">
-            <div className=" min-h-xl flex items-end justify-center text-center sm:block sm:p-0 ">
+            <div className=" min-h-sm flex items-end justify-center text-center sm:block sm:p-0">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -57,7 +54,7 @@ export default function LoqaimaModal({
 
               {/* This element is to trick the browser into centering the modal contents. */}
               <span
-                className="hidden sm:inline-block sm:h-screen sm:align-middle"
+                className="hidden sm:inline-block sm:h-full sm:align-middle"
                 aria-hidden="true"
               >
                 &#8203;
@@ -71,7 +68,7 @@ export default function LoqaimaModal({
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <div className="bg-gray-800 inline-block h-screen w-screen transform overflow-hidden text-left align-bottom transition-all lg:w-1/4">
+                <div className="bg-gray-800 inline-block h-full w-screen transform overflow-hidden text-left align-bottom transition-all lg:w-1/4">
                   {/* <button
                     className="gallery_previous"
                     onClick={prevF()}
@@ -79,55 +76,60 @@ export default function LoqaimaModal({
                   >
                     <i className="fa fa-chevron-left" />
                   </button> */}
-                  <section className="flex justify-center">
+                  <section className="z-50 flex justify-center">
                     <Carousel
                       selectedItem={sum}
                       // showArrows={isMobile ? false : true}
                       autoFocus={false}
                       showArrows={false}
                       showThumbs={false}
-                      useKeyboardArrows
+                      // useKeyboardArrows
                     >
                       {/* key={item._id} */}
                       {loqaimatScreens.length > 0 ? (
                         loqaimatScreens.map((item) => {
                           // console.log(item)
                           return (
-                            <div key={item._id} className="relative h-screen">
+                            <div
+                              key={item._id}
+                              className="relative z-50 h-full"
+                            >
                               <div
                                 className="absolute top-96 right-0 z-50 hidden p-1 lg:flex"
                                 onClick={() => {
                                   next()
                                 }}
                               >
-                                <div
-                                  // className="control-arrow control-next cursor-pointer"
-                                  className="cursor-pointer"
-                                  onClick={() => {
-                                    next()
-                                  }}
-                                >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-12 w-12"
-                                    viewBox="0 0 20 20"
-                                    loading="lazy"
-                                    fill="#666666"
+                                {sum < loqaimatScreens.length - 1 && (
+                                  <div
+                                    // className="control-arrow control-next cursor-pointer"
+                                    className="cursor-pointer"
                                     onClick={() => {
                                       next()
                                     }}
                                   >
-                                    <path
-                                      fillRule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                                      clipRule="evenodd"
-                                    />
-                                  </svg>
-                                </div>
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      className="h-12 w-12"
+                                      viewBox="0 0 20 20"
+                                      loading="lazy"
+                                      fill="#666666"
+                                      onClick={() => {
+                                        next()
+                                      }}
+                                    >
+                                      <path
+                                        fillRule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                        clipRule="evenodd"
+                                      />
+                                    </svg>
+                                  </div>
+                                )}
                               </div>
                               <img
                                 loading="eager"
-                                className="h-screen"
+                                className="h-full"
                                 src={item.screen_link}
                                 alt={item.screen_link}
                               />
@@ -167,7 +169,7 @@ export default function LoqaimaModal({
                           )
                         })
                       ) : (
-                        <div className="h-screen bg-white" />
+                        <div className="h-full bg-white" />
                       )}
                     </Carousel>
                     {/* {loqaimatScreens.length > 0 && (
@@ -208,43 +210,43 @@ export default function LoqaimaModal({
                   {/* <div className="fixed bottom-0 w-full"></div> */}
                 </div>
               </Transition.Child>
-              {/* <div
-                className="top-0 right-24 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
+              <div
+                className="top-0 right-24 z-10 hidden h-full w-96 p-3 opacity-70 lg:absolute lg:flex"
                 onClick={() => {
                   setOpen(true)
                 }}
               >
                 <div
-                  className="top-0 right-28 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
+                  className="top-0 right-36 z-20 hidden h-full w-96 p-3 opacity-70 lg:absolute lg:flex"
                   onClick={() => {
                     setOpen(true)
                   }}
                 ></div>
               </div>
               <div
-                className="top-20 right-0 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
+                className=" bottom-0 right-0 z-30 hidden h-full w-96 p-3 opacity-70 lg:absolute lg:flex"
                 onClick={() => {
                   setOpen(true)
                 }}
               ></div>
               <div
-                className="top-0 left-0 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
+                className="top-0 left-0 z-10 hidden h-full w-96 p-3 opacity-70 lg:absolute lg:flex"
                 onClick={() => {
                   setOpen(true)
                 }}
               >
                 <div
-                  className="top-0 left-52 hidden h-screen w-96 p-3 opacity-70 lg:absolute lg:flex"
+                  className="top-0 left-56 z-20 hidden h-full w-96 p-3 opacity-70 lg:absolute lg:flex"
                   onClick={() => {
                     setOpen(true)
                   }}
                 ></div>
-              </div> */}
+              </div>
 
-              <span className="absolute top-0 right-2 p-3 lg:right-10">
+              <span className="absolute top-0 right-2 z-50 p-3 lg:right-10">
                 <img
                   src="./assest/images/close.svg"
-                  className="mx-auto w-12 cursor-pointer cursor-pointer justify-center pt-4"
+                  className="z-50 mx-auto w-12 cursor-pointer cursor-pointer justify-center pt-4"
                   alt="close button"
                   onClick={() => close_loqaima()}
                 />

@@ -1,5 +1,5 @@
 // Library imports
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../../config/config'
 import dynamic from 'next/dynamic'
@@ -8,15 +8,18 @@ const Search = dynamic(() => import('../appleTemplate/childComponent/Search'))
 
 const Nav = ({
   showCategory,
-  all_news,
   alternative_search,
   setSearches,
   searches,
   user_id,
+  country_code,
+  news_subscribe,
+  click_subscribe,
 }) => {
   const router = useRouter()
 
   // const [active, setActive] = useState(true)
+  const [all_news, setAllNews] = useState()
   const [showSearch, setShowSearch] = useState(false)
   const [token, setUserToken] =
     typeof window !== 'undefined'
@@ -50,58 +53,79 @@ const Nav = ({
       width: 'w-16',
     },
   ]
+  // Function Get all News
+  const get_all_news = () => {
+    user_id &&
+      axios
+        .get(
+          `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+        )
+        .then((res) => {
+          let keys = Object.keys(res.data.data)
+          let custom_array = []
+          keys.map((item) => {
+            custom_array.push(res.data.data[item])
+          })
+          setAllNews(custom_array)
+        })
+  }
+  news_subscribe &&
+    useEffect(() => {
+      get_all_news()
+    }, [user_id, click_subscribe])
 
-  all_news?.map((item) => {
-    if (item?.is_subscribed === true) {
-      if (item?.section_name === 'الشرق الاوسط') {
-        subscribe_item.push({
-          name: item?.section_name,
-          link: `#${item?.section_name}`,
-          id: count++,
-          width: 'w-32',
-        })
-      } else if (item?.section_name.length >= 9) {
-        subscribe_item.push({
-          name: item?.section_name,
-          link: `#${item?.section_name}`,
-          id: count++,
-          width: 'w-28',
-        })
-      } else {
-        subscribe_item.push({
-          name: item?.section_name,
-          link: `#${item?.section_name}`,
-          id: count++,
-          width: 'w-14',
-        })
+  news_subscribe &&
+    all_news?.map((item) => {
+      if (item?.is_subscribed === true) {
+        if (item?.section_name === 'الشرق الاوسط') {
+          subscribe_item.push({
+            name: item?.section_name,
+            link: `#${item?.section_name}`,
+            id: count++,
+            width: 'w-32',
+          })
+        } else if (item?.section_name.length >= 9) {
+          subscribe_item.push({
+            name: item?.section_name,
+            link: `#${item?.section_name}`,
+            id: count++,
+            width: 'w-28',
+          })
+        } else {
+          subscribe_item.push({
+            name: item?.section_name,
+            link: `#${item?.section_name}`,
+            id: count++,
+            width: 'w-14',
+          })
+        }
       }
-    }
-    if (item?.is_subscribed === false) {
-      if (item?.section_name === 'الشرق الاوسط') {
-        unsubscribe_item.push({
-          name: item?.section_name,
-          link: `#${item?.section_name}`,
-          id: count++,
-          width: 'w-32',
-        })
-      } else if (item?.section_name.length >= 9) {
-        unsubscribe_item.push({
-          name: item?.section_name,
-          link: `#${item?.section_name}`,
-          id: count++,
-          width: 'w-28',
-        })
-      } else {
-        unsubscribe_item.push({
-          name: item?.section_name,
-          link: `#${item?.section_name}`,
-          id: count++,
-          width: 'w-14',
-        })
-      }
-    }
-  })
 
+      if (item?.is_subscribed === false) {
+        if (item?.section_name === 'الشرق الاوسط') {
+          unsubscribe_item.push({
+            name: item?.section_name,
+            link: `#${item?.section_name}`,
+            id: count++,
+            width: 'w-32',
+          })
+        } else if (item?.section_name.length >= 9) {
+          unsubscribe_item.push({
+            name: item?.section_name,
+            link: `#${item?.section_name}`,
+            id: count++,
+            width: 'w-28',
+          })
+        } else {
+          unsubscribe_item.push({
+            name: item?.section_name,
+            link: `#${item?.section_name}`,
+            id: count++,
+            width: 'w-14',
+          })
+        }
+      }
+    })
   const handel_show = () => {
     setSearches(false)
     setShowSearch(false)
@@ -301,7 +325,7 @@ const Nav = ({
       {showCategory ? (
         <section className="sticky top-0 left-0 z-50 w-screen">
           <section className="flex w-screen justify-center bg-Purp100 py-0 text-center font-TSbold text-sm text-white lg:text-base">
-            <section className="mx-auto my-1 mt-1.5 flex w-screen items-center justify-start overflow-x-auto lg:my-4 lg:mt-4 lg:justify-center">
+            <section className="w-12/12 mx-auto my-1 mt-1.5 flex items-center justify-start overflow-x-auto lg:my-4 lg:mt-4 lg:justify-start lg:overflow-hidden">
               <section className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
                 <svg
                   fill="#695CAD"

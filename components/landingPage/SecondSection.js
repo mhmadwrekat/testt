@@ -17,7 +17,7 @@ export default function SecondSection() {
           </h1>
           <br />
 
-          <div className="my-12 mx-auto h-80 w-auto px-6 md:h-full lg:mb-32 lg:h-3/5  ">
+          <div className="my-12 mx-auto h-80 w-full px-6 md:h-full lg:mb-32 lg:flex lg:h-3/5 lg:justify-center">
             <img
               src="./assest/images/images/web/secondSection/news.png"
               alt="news"

@@ -22,6 +22,8 @@ const Category_news = ({
   description,
   fill_color,
   user_id,
+  setClickSubscribe,
+  click_subscribe,
 }) => {
   const router = useRouter()
   const important_news_img =
@@ -52,9 +54,8 @@ const Category_news = ({
 
   // function to handle Subscribe Category & Unsubscribe
   const [subscripe, setSubscripe] = useState(category_news?.is_subscribed)
-  const handle_subscripe = (category_id, is_subscribed) => {
-    setSubscripe(!subscripe)
-    // console.log(category_id, is_subscribed, user_id)
+  const handle_subscripe = async (category_id, is_subscribed) => {
+    setClickSubscribe(!click_subscribe)
     let url = `${BASE_URL}/v1/Web/Category/Subscribe`
     let data = {
       userId: `${user_id}`,
@@ -62,7 +63,7 @@ const Category_news = ({
       isSubscribe: !is_subscribed,
     }
     axios.post(url, data).then((res) => {
-      // console.log(res)
+      setSubscripe(!subscripe)
     })
   }
 

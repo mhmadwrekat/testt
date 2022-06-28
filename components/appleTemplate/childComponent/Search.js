@@ -1,14 +1,9 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
 import moment from 'moment'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import 'moment/locale/ar'
 const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
-
-const Like = dynamic(() => import('./Like'))
-
 const Search = ({ data, bg_color, category, user_id, replace }) => {
   const router = useRouter()
   // function to return the youtube code to show the thumbnail
@@ -149,7 +144,9 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
                         <p
                           className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED `}
                           onClick={() => {
-                            handle_news_redirection_story(item?._id)
+                            handle_news_redirection_story(
+                              item?.stories_headlines
+                            )
                           }}
                         >
                           اقرا المزيد
@@ -158,13 +155,14 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
                         <p
                           className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                           onClick={() => {
-                            handle_news_redirection_story(item?._id)
+                            handle_news_redirection_story(
+                              item?.stories_headlines
+                            )
                           }}
                         >
                           اقرا المزيد
                         </p>
                       )}
-
                       <MenuThreeDot
                         id={item?._id}
                         title_color={'text-Purp100'}

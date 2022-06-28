@@ -337,7 +337,7 @@ const index = () => {
                           <div className="my-3 mb-2 font-TSExtra text-sm md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-20 lg:text-xl">
                             {item.stories_headlines}
                           </div>
-                          <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-44 lg:pt-1.5 lg:text-sm">
+                          <div className="my-3 mb-2 font-TSmedium text-xs md:my-20 md:text-lg lg:my-0 lg:mb-0 lg:h-28 lg:pt-1.5 lg:text-sm">
                             {item.stories_content}
                           </div>
                         </div>

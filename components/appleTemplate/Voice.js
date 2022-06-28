@@ -135,7 +135,7 @@ const Voice = ({
             {/**** SWIPER ONE DESKTOP ****/}
             <Swiper
               // install Swiper modules
-              slidesPerView={2.5}
+              slidesPerView={2.1}
               spaceBetween={0}
               loop={true}
             >
@@ -152,7 +152,7 @@ const Voice = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white`}
                                 >
                                   {item?.primary_category[0]?.category_name}
                                 </p>
@@ -214,7 +214,7 @@ const Voice = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white`}
                                 >
                                   {item?.primary_category[0]?.category_name}
                                 </p>
@@ -261,7 +261,7 @@ const Voice = ({
                                   </p>
                                 </div>
                               </section>
-                              <section className="float-left mx-2 flex">
+                              <section className="mx-auto flex w-full">
                                 <WaveAudio
                                   url={Object.values(item.voices)[1]}
                                 />
@@ -278,7 +278,7 @@ const Voice = ({
             {/**** SWIPER TWO DESKTOP ****/}
             <Swiper
               // install Swiper modules
-              slidesPerView={2.5}
+              slidesPerView={2.1}
               spaceBetween={0}
               loop={true}
             >
@@ -286,7 +286,7 @@ const Voice = ({
                 // console.log(Object.values(item.voices)[1])
                 return (
                   <SwiperSlide key={item._id}>
-                    <div className="mx-auto rounded-md " loading="lazy">
+                    <div className="mx-auto rounded-md" loading="lazy">
                       {item.stories_media_url[0] &&
                         (item.stories_media_url[0].includes('youtube') ||
                         item.stories_media_url[0].includes('youtu.be') ? (
@@ -295,7 +295,7 @@ const Voice = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white`}
                                 >
                                   {item?.primary_category[0]?.category_name}
                                 </p>
@@ -344,7 +344,7 @@ const Voice = ({
                                   </p>
                                 </div>
                               </section>
-                              <section className="float-left mx-2 flex">
+                              <section className="mx-auto flex w-full">
                                 <WaveAudio
                                   url={Object.values(item.voices)[1]}
                                 />
@@ -357,7 +357,7 @@ const Voice = ({
                               {/* {console.log(item.stories_media_url[0])} */}
                               <div className="">
                                 <p
-                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white hover:underline`}
+                                  className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSbold text-base text-base text-white`}
                                 >
                                   {item?.primary_category[0]?.category_name}
                                 </p>
@@ -441,7 +441,7 @@ const Voice = ({
                             <section className="grid grid-cols-2">
                               <div>
                                 <p
-                                  className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
+                                  className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white md:w-96`}
                                 >
                                   {item?.primary_category[0]?.category_name}{' '}
                                 </p>
@@ -507,7 +507,7 @@ const Voice = ({
                               <div>
                                 <div className="">
                                   <p
-                                    className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
+                                    className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white md:w-96`}
                                   >
                                     {item?.primary_category[0]?.category_name}{' '}
                                   </p>
@@ -592,7 +592,7 @@ const Voice = ({
                               <div>
                                 <div className="">
                                   <p
-                                    className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
+                                    className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white md:w-96`}
                                   >
                                     {item?.primary_category[0]?.category_name}{' '}
                                   </p>
@@ -659,7 +659,7 @@ const Voice = ({
                               <div>
                                 <div className="">
                                   <p
-                                    className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white hover:underline md:w-96`}
+                                    className={`${theme} w-36 rounded-t-md pt-1.5 pr-1 text-right font-TSbold text-base text-white md:w-96`}
                                   >
                                     {item?.primary_category[0]?.category_name}{' '}
                                   </p>

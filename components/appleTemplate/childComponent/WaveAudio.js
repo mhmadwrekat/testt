@@ -82,7 +82,7 @@ const WaveAudio = ({ url }) => {
     <React.Fragment>
       {/* <iframe src="https://cross-origin.com/myvideo.html" allow="autoplay" /> */}
 
-      <div className="w-12/12 mx-auto grid lg:w-10/12" ref={observe}>
+      <div className="w-12/12 lg:w-12/12 mx-auto grid" ref={observe}>
         <section className=" flex justify-center pt-5 pl-0 pr-0 lg:pt-0 lg:pl-5 lg:pr-0">
           <div
             id="waveform"
