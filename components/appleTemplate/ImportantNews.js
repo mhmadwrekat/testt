@@ -6,7 +6,7 @@ import moment from 'moment'
 import 'moment/locale/ar'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-
+import Image from 'next/image'
 // component imports
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
@@ -236,16 +236,39 @@ const ImportantNews = ({
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
-                        <img
-                          loading="eager"
+                        // <img
+                        //   loading="eager"
+                        //   src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                        //     important_news_img
+                        //   )}/0.jpg`}
+                        //   alt={category_news.data[0].stories_headlines}
+                        //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                        //   // onClick={() => {
+                        //   //   router.push(`/${category_news?.data[0]?._id}`)
+                        //   // }}
+                        //   onClick={() => {
+                        //     handle_news_redirection_story(
+                        //       category_news?.data[0]?.stories_headlines
+                        //     )
+                        //   }}
+                        // />
+                        <Image
                           src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
+                          quality={100}
+                          layout="fill"
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          // onClick={() => {
-                          //   router.push(`/${category_news?.data[0]?._id}`)
-                          // }}
+                          objectFit="cover"
+                          // width={800}
+                          // height={350}
+                          loading="eager"
+                          priority
+                          placeholder="blur"
+                          blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                            important_news_img
+                          )}/0.jpg`}
                           onClick={() => {
                             handle_news_redirection_story(
                               category_news?.data[0]?.stories_headlines
@@ -253,38 +276,38 @@ const ImportantNews = ({
                           }}
                         />
                       ) : (
-                        // <Image
-                        //   src={important_news_img}
-                        //   className="relative cursor-pointer rounded-b-md object-cover"
-                        //   alt={category_news.data[0].stories_headlines}
-                        //   quality={100}
-                        //   layout="fill"
-                        //   objectFit="cover"
-                        //   // width={800}
-                        //   // height={350}
-                        //   loading="eager"
-                        //   priority
-                        //   placeholder="blur"
-                        //   blurDataURL={important_news_img}
-                        //   onClick={() => {
-                        //     handle_news_redirection_story(
-                        //       category_news?.data[0]?.stories_headlines
-                        //     )
-                        //   }}
-                        // />
-                        <img
+                        <Image
                           src={important_news_img}
+                          className="relative cursor-pointer rounded-b-md"
                           alt={category_news.data[0].stories_headlines}
-                          className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          // onClick={() => {
-                          //   router.push(`/${category_news?.data[0]?._id}`)
-                          // }}
+                          quality={100}
+                          layout="fill"
+                          objectFit="cover"
+                          // width={800}
+                          // height={350}
+                          loading="eager"
+                          priority
+                          placeholder="blur"
+                          blurDataURL={important_news_img}
                           onClick={() => {
                             handle_news_redirection_story(
                               category_news?.data[0]?.stories_headlines
                             )
                           }}
                         />
+                        // <img
+                        //   src={important_news_img}
+                        //   alt={category_news.data[0].stories_headlines}
+                        //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                        //   // onClick={() => {
+                        //   //   router.push(`/${category_news?.data[0]?._id}`)
+                        //   // }}
+                        //   onClick={() => {
+                        //     handle_news_redirection_story(
+                        //       category_news?.data[0]?.stories_headlines
+                        //     )
+                        //   }}
+                        // />
                       ))}
                     {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1"> */}
                     {/* {console.log(category_news.data[0]._id)} */}
@@ -426,37 +449,82 @@ const ImportantNews = ({
                           )}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid">
-                          <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-full lg:py-0">
+                          <div className="relative my-2 mr-2 h-full w-72 py-2 lg:my-0 lg:mr-0 lg:h-full lg:w-full lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
-                                <img
-                                  loading="eager"
-                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                    item.stories_media_url[0]
-                                  )}/0.jpg`}
-                                  alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                  onClick={() => {
-                                    handle_news_redirection_story(
-                                      item?.stories_headlines
-                                    )
-                                  }}
-                                />
+                                // <img
+                                //   loading="eager"
+                                //   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                //     item.stories_media_url[0]
+                                //   )}/0.jpg`}
+                                //   alt={item.stories_headlines}
+                                //   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                //   onClick={() => {
+                                //     handle_news_redirection_story(
+                                //       item?.stories_headlines
+                                //     )
+                                //   }}
+                                // />
+                                <div className="h-28 w-28">
+                                  <Image
+                                    src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                    quality={100}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    // width={800}
+                                    // height={300}
+                                    loading="eager"
+                                    priority
+                                    placeholder="blur"
+                                    blurDataURL={item.stories_media_url[0]}
+                                    onClick={() => {
+                                      handle_news_redirection_story(
+                                        item?.stories_headlines
+                                      )
+                                    }}
+                                  />
+                                </div>
                               ) : (
-                                <img
-                                  loading="eager"
-                                  src={item.stories_media_url[0]}
-                                  alt={item.stories_headlines}
-                                  className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                  onClick={() => {
-                                    handle_news_redirection_story(
-                                      item?.stories_headlines
-                                    )
-                                  }}
-                                />
+                                <div className="h-28 w-28">
+                                  <Image
+                                    src={item.stories_media_url[0]}
+                                    alt={item.stories_headlines}
+                                    className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                    quality={100}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    // width={800}
+                                    // height={300}
+                                    loading="eager"
+                                    priority
+                                    placeholder="blur"
+                                    blurDataURL={item.stories_media_url[0]}
+                                    onClick={() => {
+                                      handle_news_redirection_story(
+                                        item?.stories_headlines
+                                      )
+                                    }}
+                                  />
+                                </div>
+                                // <img
+                                //   loading="eager"
+                                //   src={item.stories_media_url[0]}
+                                //   alt={item.stories_headlines}
+                                //   className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                //   onClick={() => {
+                                //     handle_news_redirection_story(
+                                //       item?.stories_headlines
+                                //     )
+                                //   }}
+                                // />
                               ))}
                             <Like
+                              bottom={'bottom-2'}
                               loading="eager"
                               user_id={user_id}
                               story_id={item?._id}

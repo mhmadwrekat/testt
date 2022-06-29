@@ -3,16 +3,18 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
+import { generateFeeds } from '../utils/feed'
 
 // Apple View component
-import CategoryNews from '../components/appleTemplate/CategoryNews'
-const ImportantNews = dynamic(() =>
-  import('../components/appleTemplate/ImportantNews')
-)
+import Nav from '../components/page/Nav'
+import ImportantNews from '../components/appleTemplate/ImportantNews'
+import Colored from '../components/appleTemplate/Colored'
 const ArroundYou = dynamic(() =>
   import('../components/appleTemplate/ArroundYou')
 )
-const Colored = dynamic(() => import('../components/appleTemplate/Colored'))
+const CategoryNews = dynamic(() =>
+  import('../components/appleTemplate/CategoryNews')
+)
 const Video = dynamic(() => import('../components/appleTemplate/Video'))
 const Voice = dynamic(() => import('../components/appleTemplate/Voice'), {
   ssr: false,
@@ -21,7 +23,6 @@ const Logaimat = dynamic(() => import('../components/appleTemplate/Logaimat'))
 
 // page Component
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
-const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
 const IndexSkeleton = dynamic(() =>
   import('../components/Skeletons/IndexSkeleton')
@@ -36,6 +37,7 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
+  await generateFeeds()
 
   // Get Logaimat API
   let user_token = ''
@@ -344,6 +346,8 @@ sky news
   media@alzubda.com
   `
   const headTitle = 'الزبدة | الأخبار'
+
+  // news_unsubscribe && console.log(news_unsubscribe)
   return (
     <React.Fragment>
       <HeadComp
@@ -383,7 +387,7 @@ sky news
               title_color={'text-RED'}
               fill_color={'fill-RED'}
             />
-            {all_news[1]?.data?.length > 4 ? (
+            {/* {all_news[1]?.data?.length > 4 ? (
               <Colored
                 loading="eager"
                 title={'مخصص لك'}
@@ -649,7 +653,7 @@ sky news
                 fill_color={'fill-GREEN'}
                 description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
               />
-            </div>
+            </div> */}
             <div className="py-3"></div>
           </React.Fragment>
         ) : (

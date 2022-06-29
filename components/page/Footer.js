@@ -25,8 +25,8 @@ const Footer = () => {
                 <Image
                   src={appleStore}
                   alt="apple Store"
-                  // width="130"
-                  // height="40"
+                  width="130"
+                  height="40"
                   onClick={() => {
                     new_tab(
                       'https://apps.apple.com/us/app/%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-alzubda-%D8%A7%D9%84%D8%B2%D8%A8%D8%AF%D8%A9/id1440466617'
@@ -40,6 +40,8 @@ const Footer = () => {
                 <Image
                   src={googlePlay}
                   alt="google Play"
+                  width="130"
+                  height="40"
                   onClick={() => {
                     new_tab(
                       'https://play.google.com/store/apps/details?id=com.live.alzubda.newsapp&hl=ar&gl=US'
