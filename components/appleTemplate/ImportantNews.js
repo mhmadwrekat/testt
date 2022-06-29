@@ -236,45 +236,45 @@ const ImportantNews = ({
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
-                        // <img
-                        //   loading="eager"
-                        //   src={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                        //     important_news_img
-                        //   )}/0.jpg`}
-                        //   alt={category_news.data[0].stories_headlines}
-                        //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                        //   // onClick={() => {
-                        //   //   router.push(`/${category_news?.data[0]?._id}`)
-                        //   // }}
-                        //   onClick={() => {
-                        //     handle_news_redirection_story(
-                        //       category_news?.data[0]?.stories_headlines
-                        //     )
-                        //   }}
-                        // />
-                        <Image
+                        <img
+                          loading="eager"
                           src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
-                          quality={100}
-                          layout="fill"
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          objectFit="cover"
-                          // width={800}
-                          // height={350}
-                          loading="eager"
-                          priority
-                          placeholder="blur"
-                          blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                            important_news_img
-                          )}/0.jpg`}
+                          // onClick={() => {
+                          //   router.push(`/${category_news?.data[0]?._id}`)
+                          // }}
                           onClick={() => {
                             handle_news_redirection_story(
                               category_news?.data[0]?.stories_headlines
                             )
                           }}
                         />
+                        // <Image
+                        //   src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                        //     important_news_img
+                        //   )}/0.jpg`}
+                        //   alt={category_news.data[0].stories_headlines}
+                        //   quality={100}
+                        //   layout="fill"
+                        //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                        //   objectFit="cover"
+                        //   // width={800}
+                        //   // height={350}
+                        //   loading="eager"
+                        //   priority
+                        //   placeholder="blur"
+                        //   blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                        //     important_news_img
+                        //   )}/0.jpg`}
+                        //   onClick={() => {
+                        //     handle_news_redirection_story(
+                        //       category_news?.data[0]?.stories_headlines
+                        //     )
+                        //   }}
+                        // />
                       ) : (
                         <Image
                           src={important_news_img}
