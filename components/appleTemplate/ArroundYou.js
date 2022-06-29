@@ -181,7 +181,7 @@ const Arround_you = ({
                       <ViewImpression stories={stories} user_id={user_id} />{' '}
                       <></>
                       <ReadImpression stories={stories[0]} user_id={user_id} />
-                      <div className=" relative relative h-56 w-full lg:h-80">
+                      <div className="relative h-56 w-full lg:h-80">
                         {important_news_img &&
                           (important_news_img.includes('youtube') ||
                           important_news_img.includes('youtu.be') ? (
@@ -202,7 +202,7 @@ const Arround_you = ({
                             //   }}
                             // />
                             <Image
-                              src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                              src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                 important_news_img
                               )}/0.jpg`}
                               alt={important_news.data[0].stories_headlines}
@@ -373,7 +373,7 @@ const Arround_you = ({
                             )}
                           </div>
                           <section className={`${card_color} flex lg:grid`}>
-                            <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
+                            <div className="mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
                               {item.stories_media_url[0] &&
                                 (item.stories_media_url[0].includes(
                                   'youtube'
@@ -381,7 +381,7 @@ const Arround_you = ({
                                 item.stories_media_url[0].includes(
                                   'youtu.be'
                                 ) ? (
-                                  <div className="h-28 w-28">
+                                  <div className="relative h-28">
                                     <Image
                                       src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                         item.stories_media_url[0]
@@ -405,6 +405,13 @@ const Arround_you = ({
                                         )
                                       }}
                                     />
+                                    <Like
+                                      bottom={'bottom-1'}
+                                      loading="eager"
+                                      user_id={user_id}
+                                      story_id={item?._id}
+                                      isLoved={item?.is_loved}
+                                    />
                                   </div>
                                 ) : (
                                   // <img
@@ -423,7 +430,23 @@ const Arround_you = ({
                                   //     )
                                   //   }}
                                   // />
-                                  <div className="h-28 w-28">
+                                  // <img
+                                  //   loading="eager"
+                                  //   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                  //     item.stories_media_url[0]
+                                  //   )}/0.jpg`}
+                                  //   alt={item.stories_headlines}
+                                  //   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  //   // onClick={() => {
+                                  //   //   router.push(`/${item?._id}`)
+                                  //   // }}
+                                  //   onClick={() => {
+                                  //     handle_news_redirection_story(
+                                  //       item?.stories_headlines
+                                  //     )
+                                  //   }}
+                                  // />
+                                  <div className="relative h-28">
                                     <Image
                                       src={item.stories_media_url[0]}
                                       alt={item.stories_headlines}
@@ -443,6 +466,13 @@ const Arround_you = ({
                                         )
                                       }}
                                     />
+                                    <Like
+                                      bottom={'bottom-1'}
+                                      loading="eager"
+                                      user_id={user_id}
+                                      story_id={item?._id}
+                                      isLoved={item?.is_loved}
+                                    />
                                   </div>
                                   // <img
                                   //   loading="eager"
@@ -456,15 +486,7 @@ const Arround_you = ({
                                   //   }}
                                   // />
                                 ))}
-                              <div className="rounded-full bg-white text-black">
-                                <Like
-                                  bottom={'bottom-2'}
-                                  loading="eager"
-                                  user_id={user_id}
-                                  story_id={item?._id}
-                                  isLoved={item?.is_loved}
-                                />
-                              </div>
+                              <div className="rounded-full bg-white text-black"></div>
                             </div>
 
                             <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">

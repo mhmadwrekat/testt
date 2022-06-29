@@ -228,7 +228,7 @@ const ImportantNews = ({
                       }
                     </p>
                   </div>
-                  <div className=" relative h-56 w-full lg:h-80">
+                  <div className="relative h-56 w-full lg:h-80">
                     {/* Desktop View */}
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
@@ -449,7 +449,7 @@ const ImportantNews = ({
                           )}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid">
-                          <div className="relative my-2 mr-2 h-full w-72 py-2 lg:my-0 lg:mr-0 lg:h-full lg:w-full lg:py-0">
+                          <div className="my-2 mr-2 h-full w-72 py-2 lg:my-0 lg:mr-0 lg:h-full lg:w-full lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
@@ -466,9 +466,9 @@ const ImportantNews = ({
                                 //     )
                                 //   }}
                                 // />
-                                <div className="h-28 w-28">
+                                <div className="relative h-28 w-28">
                                   <Image
-                                    src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
                                     alt={item.stories_headlines}
@@ -488,13 +488,20 @@ const ImportantNews = ({
                                       )
                                     }}
                                   />
+                                  <Like
+                                    bottom={'bottom-1'}
+                                    loading="eager"
+                                    user_id={user_id}
+                                    story_id={item?._id}
+                                    isLoved={item?.is_loved}
+                                  />
                                 </div>
                               ) : (
-                                <div className="h-28 w-28">
+                                <div className="relative h-28">
                                   <Image
                                     src={item.stories_media_url[0]}
                                     alt={item.stories_headlines}
-                                    className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                     quality={100}
                                     layout="fill"
                                     objectFit="cover"
@@ -510,6 +517,13 @@ const ImportantNews = ({
                                       )
                                     }}
                                   />
+                                  <Like
+                                    bottom={'bottom-1'}
+                                    loading="eager"
+                                    user_id={user_id}
+                                    story_id={item?._id}
+                                    isLoved={item?.is_loved}
+                                  />
                                 </div>
                                 // <img
                                 //   loading="eager"
@@ -523,13 +537,6 @@ const ImportantNews = ({
                                 //   }}
                                 // />
                               ))}
-                            <Like
-                              bottom={'bottom-2'}
-                              loading="eager"
-                              user_id={user_id}
-                              story_id={item?._id}
-                              isLoved={item?.is_loved}
-                            />
                           </div>
 
                           <div

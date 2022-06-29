@@ -4,7 +4,7 @@
         <title>ترند | الزبدة</title>
         <link>https://alzubda.com/rss/%D8%AA%D8%B1%D9%86%D8%AF/feed.xml</link>
         <description>ترند | الزبدة</description>
-        <lastBuildDate>Wed, 29 Jun 2022 14:09:18 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 Jun 2022 14:31:54 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>ar</language>
@@ -112,19 +112,6 @@
 
 ]]></content:encoded>
             <enclosure url="https://netaq.s3.ap-south-1.amazonaws.com/5c9hs9t8hvk.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
-            <title><![CDATA[«ستحاسبون على الغلاء» شيخ الأزهر لم يعلق على أسعار الحج]]></title>
-            <link>https://alzubda.com/%C2%AB%D8%B3%D8%AA%D8%AD%D8%A7%D8%B3%D8%A8%D9%88%D9%86_%D8%B9%D9%84%D9%89_%D8%A7%D9%84%D8%BA%D9%84%D8%A7%D8%A1%C2%BB_%D8%B4%D9%8A%D8%AE_%D8%A7%D9%84%D8%A3%D8%B2%D9%87%D8%B1_%D9%84%D9%85_%D9%8A%D8%B9%D9%84%D9%82_%D8%B9%D9%84%D9%89_%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1_%D8%A7%D9%84%D8%AD%D8%AC</link>
-            <guid>https://alzubda.com/%C2%AB%D8%B3%D8%AA%D8%AD%D8%A7%D8%B3%D8%A8%D9%88%D9%86_%D8%B9%D9%84%D9%89_%D8%A7%D9%84%D8%BA%D9%84%D8%A7%D8%A1%C2%BB_%D8%B4%D9%8A%D8%AE_%D8%A7%D9%84%D8%A3%D8%B2%D9%87%D8%B1_%D9%84%D9%85_%D9%8A%D8%B9%D9%84%D9%82_%D8%B9%D9%84%D9%89_%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1_%D8%A7%D9%84%D8%AD%D8%AC</guid>
-            <pubDate>Tue, 28 Jun 2022 12:59:32 GMT</pubDate>
-            <description><![CDATA[نسبت بعض صفحات مواقع التواصل إلى شيخ الأزهر، الدكتور أحمد الطيب، تصريحات مفبركة مفادها انتقاده لأسعار الحج 2020 بقوله: «إنكم محاسبون على ذلك الغلاء الفاحش». وخلت حسابات الشيخ «الطيب» الرسمية من هذه التصريحات. وبدأت وزارة الداخلية تلقي رسوم حج القرعة 2022 في البنوك ومكاتب البريد منذ الأحد الماضي وحتي الخميس المقبل. وتصل تكلفة الحج إلى نحو «94 ألفا و490 جنيها». 
-
-]]></description>
-            <content:encoded><![CDATA[نسبت بعض صفحات مواقع التواصل إلى شيخ الأزهر، الدكتور أحمد الطيب، تصريحات مفبركة مفادها انتقاده لأسعار الحج 2020 بقوله: «إنكم محاسبون على ذلك الغلاء الفاحش». وخلت حسابات الشيخ «الطيب» الرسمية من هذه التصريحات. وبدأت وزارة الداخلية تلقي رسوم حج القرعة 2022 في البنوك ومكاتب البريد منذ الأحد الماضي وحتي الخميس المقبل. وتصل تكلفة الحج إلى نحو «94 ألفا و490 جنيها». 
-
-]]></content:encoded>
-            <enclosure url="https://netaq.s3.ap-south-1.amazonaws.com/v789c756y.jpg" length="0" type="image/jpg"/>
         </item>
     </channel>
 </rss>
