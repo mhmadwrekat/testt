@@ -453,21 +453,21 @@ const ImportantNews = ({
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
-                                // <img
-                                //   loading="eager"
-                                //   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                //     item.stories_media_url[0]
-                                //   )}/0.jpg`}
-                                //   alt={item.stories_headlines}
-                                //   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                //   onClick={() => {
-                                //     handle_news_redirection_story(
-                                //       item?.stories_headlines
-                                //     )
-                                //   }}
-                                // />
-                                <div className="relative h-28 w-28">
-                                  <Image
+                                <div className="relative h-28 w-full">
+                                  <img
+                                    loading="eager"
+                                    src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                    onClick={() => {
+                                      handle_news_redirection_story(
+                                        item?.stories_headlines
+                                      )
+                                    }}
+                                  />
+                                  {/* <Image
                                     src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
@@ -487,7 +487,7 @@ const ImportantNews = ({
                                         item?.stories_headlines
                                       )
                                     }}
-                                  />
+                                  /> */}
                                   <Like
                                     bottom={'bottom-1'}
                                     loading="eager"
