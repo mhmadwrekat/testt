@@ -8,7 +8,7 @@ import haha_json from '../../../public/assest/emoji/haha.json'
 import sad_json from '../../../public/assest/emoji/sad.json'
 import wow_json from '../../../public/assest/emoji/wow.json'
 
-const Like = ({ user_id, isLoved, story_id }) => {
+const Like = ({ user_id, isLoved, story_id, bottom }) => {
   const [openLike, setOpenLike] = useState(false)
 
   const [like, setLike] = useState(isLoved)
@@ -21,27 +21,27 @@ const Like = ({ user_id, isLoved, story_id }) => {
   const handleLike = (story_id, isLoved) => {
     setLike(!like)
     setShow(!show)
-    // let config = {
-    //   method: 'PUT',
-    //   baseURL: `${BASE_URL}`,
-    //   url: `/v1/Web/Story/Love`,
-    //   data: {
-    //     userId: user_id,
-    //     story: story_id,
-    //     isLove: !isLoved,
-    //   },
-    // }
-    // axios(config).then((res) => {
-    //   // console.log(res)
-    // })
+    let config = {
+      method: 'PUT',
+      baseURL: `${BASE_URL}`,
+      url: `/v1/Web/Story/Love`,
+      data: {
+        userId: user_id,
+        story: story_id,
+        isLove: !isLoved,
+      },
+    }
+    axios(config).then((res) => {
+      console.log(res)
+    })
     setOpenLike(false)
   }
-
+  bottom ? bottom : (bottom = 'bottom-4')
   return (
     <React.Fragment>
-      <div className="absolute bottom-5 right-1 rounded-full bg-white lg:bottom-1">
+      <div className={`${bottom} absolute right-1 rounded-full lg:bottom-0`}>
         {openLike ? (
-          <div className="flex">
+          <div className="flex rounded-full bg-white">
             <div
               className="h-8 w-8 cursor-pointer"
               onClick={() => {
@@ -91,7 +91,7 @@ const Like = ({ user_id, isLoved, story_id }) => {
             onClick={() => {
               handle_open()
             }}
-            className=" m-0 h-7 w-7 cursor-pointer"
+            className=" m-0 h-8 w-8 cursor-pointer"
           >
             <g filter="url(#a)">
               <circle cx="20" cy="16" r="15.5" fill="#fff" stroke="#E9E9F2" />
@@ -140,7 +140,7 @@ const Like = ({ user_id, isLoved, story_id }) => {
                   transform="translate(9 5)"
                   width="22"
                   height="22"
-                  fill="#fff"
+                  fill="#ffffff"
                 />
               </clipPath>
             </defs>

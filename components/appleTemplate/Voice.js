@@ -1,7 +1,6 @@
 // Import Libraries
 import React, { useState } from 'react'
 import Like from './childComponent/Like'
-import LikeAudio from './childComponent/LikeAudio'
 import moment from 'moment'
 import 'moment/locale/ar'
 import WaveAudio from './childComponent/WaveAudio'
@@ -472,7 +471,8 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <LikeAudio
+                                  <Like
+                                    bottom={'bottom-0'}
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
@@ -537,7 +537,8 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <LikeAudio
+                                  <Like
+                                    bottom={'bottom-0'}
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
@@ -624,7 +625,8 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <LikeAudio
+                                  <Like
+                                    bottom={'bottom-0'}
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
@@ -689,7 +691,8 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <LikeAudio
+                                  <Like
+                                    bottom={'bottom-0'}
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}

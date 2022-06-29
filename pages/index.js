@@ -214,6 +214,51 @@ const index = (props) => {
   جرائد الكويت
   جرائد السعودية
   جرائد السعوديه
+  nabde
+تطبيق اخبار
+nabd news
+nabdapp
+nabd app
+nabd website
+nabd arabic news
+نبض
+تطبيق نبض
+اخبار نبض
+alwakeel news
+الوكيل
+اخبار الوكيل
+alwakil 
+Garaa news
+جراءة اخبار
+عاجل خبرني
+خبرني اخبار
+khberni
+roya news
+رؤيا اخبار
+طقس العرب
+arabia weather
+alnaba اخبار 
+النبء
+النبأ اخبار
+alwatan kuwait
+الوطن الكويت
+النهار الكويت
+annahar news
+aljazeera news
+سبق اخبار
+sabaq
+alyoum 7 news
+youm7 
+يوم 7 اخبار
+اليوم السابع 
+كورة
+كوورة
+coora
+kora
+koora
+الجزيرة نت
+سكاي نيوز
+sky news
   News
   News live
   Newspaper
@@ -301,7 +346,7 @@ const index = (props) => {
   media@alzubda.com
   `
   const headTitle = 'الزبدة | الأخبار'
-  
+
   // news_unsubscribe && console.log(news_unsubscribe)
   return (
     <React.Fragment>

@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
+import index from '../../../pages'
 
 export default function LoqaimaModal({
   setShowCategory,
@@ -74,18 +75,41 @@ export default function LoqaimaModal({
                   <section className="z-50 flex justify-center">
                     <Carousel
                       selectedItem={sum}
+                      // onChange={onChange}
+                      // onClickItem={onClickItem}
+                      // onClickThumb={onClickThumb}
                       // renderIndicator={(
+                      //   onClickHandler,
+                      //   isSelected,
+                      //   sum,
+                      //   label
                       // ) => {
+                      //   const defStyle = {
+                      //     marginLeft: 20,
+                      //     color: 'white',
+                      //     cursor: 'pointer',
+                      //     backgroundcolor: 'white',
+                      //     'border-radius': '0% !important',
+                      //     width: '5% !important',
+                      //     height: '3px !important',
+                      //   }
+                      //   const style = isSelected
+                      //     ? { ...defStyle, color: 'red' }
+                      //     : { ...defStyle }
                       //   return (
                       //     <span
-                      //       style={style}
-                      //       value={index}
-                      //       key={index}
+                      //       // style={style}
+                      //       className="h-2 w-10 rounded-full bg-BLUE"
+                      //       // onClick={onClickHandler}
+                      //       onKeyDown={onClickHandler}
+                      //       value={sum}
+                      //       key={sum}
                       //       role="button"
-                      //       tabIndex={0}
-                      //       aria-label={`${label} ${index + 1}`}
-                      //       className="h-5 w-96 bg-BLUE"
-                      //     ></span>
+                      //       // tabIndex={0}
+                      //       aria-label={`${label} ${sum + 1}`}
+                      //     >
+                      //       {'cust ' + sum}
+                      //     </span>
                       //   )
                       // }}
                       // showArrows={isMobile ? false : true}
@@ -96,6 +120,7 @@ export default function LoqaimaModal({
                       showThumbs={false}
                       // useKeyboardArrows
                     >
+                      {/* {console.log(onClickHandler)} */}
                       {/* key={item._id} */}
                       {loqaimatScreens.length > 0 ? (
                         loqaimatScreens.map((item) => {

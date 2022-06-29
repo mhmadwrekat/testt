@@ -211,62 +211,12 @@ const Arround_you = ({
                             }}
                           />
                         ))}
-                      <div className="text-black absolute bottom-2 right-2 rounded-full bg-white p-1">
-                        {like ? (
-                          // <svg
-                          //   xmlns="http://www.w3.org/2000/svg"
-                          //   className=" h-7 w-7 cursor-pointer"
-                          //   fill="#FF0000"
-                          //   viewBox="0 0 24 24"
-                          //   stroke="#FF0000"
-                          //   strokeWidth="2"
-                          //   onClick={() => {
-                          //     handle_like(
-                          //       important_news?.data[0]?._id,
-                          //       important_news?.data[0]?.is_loved
-                          //     )
-                          //   }}
-                          // >
-                          //   <path
-                          //     strokeLinecap="round"
-                          //     strokeLinejoin="round"
-                          //     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                          //   />
-                          // </svg>
-                          <img
-                            src="./assest/like-animation.gif"
-                            className=" h-7 w-7 cursor-pointer"
-                            alt="Like | Love"
-                            onClick={() => {
-                              handle_like(
-                                important_news?.data[0]?._id,
-                                important_news?.data[0]?.is_loved
-                              )
-                            }}
-                          />
-                        ) : (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className=" h-7 w-7 cursor-pointer opacity-70"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            onClick={() => {
-                              handle_like(
-                                important_news?.data[0]?._id,
-                                important_news?.data[0]?.is_loved
-                              )
-                            }}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                            />
-                          </svg>
-                        )}
-                      </div>
+                      <Like
+                        bottom={'bottom-1'}
+                        user_id={user_id}
+                        story_id={important_news?.data[0]?._id}
+                        isLoved={important_news?.data[0]?.is_loved}
+                      />
                     </div>
                     <div
                       className="my-2  flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"

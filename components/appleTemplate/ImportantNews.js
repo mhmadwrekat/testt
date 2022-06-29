@@ -68,8 +68,11 @@ const ImportantNews = ({
   }
 
   // function to handle Love & Unlove for First News
+  const [openLike, setOpenLike] = useState(false)
   const [like, setLike] = useState(category_news?.data[0]?.is_loved)
-
+  const handle_open = () => {
+    setOpenLike(true)
+  }
   const handle_like = (story_id, is_loved) => {
     // console.log(user_id, story_id, is_loved)
     setLike(!like)
@@ -82,6 +85,7 @@ const ImportantNews = ({
     axios.put(url, data).then((res) => {
       // console.log(res)
     })
+    setOpenLike(false)
   }
   // Function to handle specific Redirection
   const handle_news_redirection = (story) => {
@@ -282,43 +286,15 @@ const ImportantNews = ({
                           }}
                         />
                       ))}
-                    <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
-                      {/* {console.log(category_news.data[0]._id)} */}
-                      {like ? (
-                        <img
-                          src="./assest/like-animation.gif"
-                          className=" h-7 w-7 cursor-pointer"
-                          alt="Like | Love"
-                          onClick={() => {
-                            handle_like(
-                              category_news?.data[0]?._id,
-                              category_news?.data[0]?.is_loved
-                            )
-                          }}
-                        />
-                      ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className=" h-7 w-7 cursor-pointer opacity-70"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          onClick={() => {
-                            handle_like(
-                              category_news?.data[0]?._id,
-                              category_news?.data[0]?.is_loved
-                            )
-                          }}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                          />
-                        </svg>
-                      )}
-                    </div>
+                    {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1"> */}
+                    {/* {console.log(category_news.data[0]._id)} */}
+                    <Like
+                      bottom={'bottom-1'}
+                      user_id={user_id}
+                      story_id={category_news?.data[0]?._id}
+                      isLoved={category_news?.data[0]?.is_loved}
+                    />
+                    {/* </div> */}
                   </div>
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
