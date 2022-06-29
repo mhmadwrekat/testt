@@ -2,10 +2,9 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
-import dynamic from 'next/dynamic'
 
 // component imports
-const LogaimaModal = dynamic(() => import('./childComponent/LogamiatModal'))
+import LogaimaModal from './childComponent/LogamiatModal'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -168,7 +167,7 @@ const Logaimat = ({
                           (item.cover_photo.includes('youtube') ||
                           item.cover_photo.includes('youtu.be') ? (
                             <img
-                              loading="lazy"
+                              loading="eager"
                               src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                 item.cover_photo
                               )}/0.jpg`}
@@ -178,7 +177,7 @@ const Logaimat = ({
                             />
                           ) : (
                             <img
-                              loading="lazy"
+                              loading="eager"
                               src={item.cover_photo}
                               alt={item.topic_name}
                               className="mx-auto h-72 w-44 cursor-pointer rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"

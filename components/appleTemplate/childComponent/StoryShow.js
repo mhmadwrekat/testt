@@ -1,18 +1,19 @@
+// Import Libraries
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
-// import FakeData from '../FakeData.json'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { BASE_URL } from '../../../config/config'
 import moment from 'moment'
 import 'moment/locale/ar'
 import axios from 'axios'
-// import Like from '../../components/appleTemplate/childComponent/Like'
-const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
+
+// component imports
 const HeadComp = dynamic(() => import('../../page/HeadComp'))
-const Nav = dynamic(() => import('../../page/Nav'))
 const AllData = dynamic(() => import('./AllData'))
 const StorySkeleton = dynamic(() => import('../../Skeletons/StorySkeleton'))
+import MenuThreeDot from './MenuThreeDot'
+
 const StoryShow = () => {
   const router = useRouter()
   const [head_news, setHeadNews] = useState()

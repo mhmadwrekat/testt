@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
-import dynamic from 'next/dynamic'
+// Import Libraries
+import React from 'react'
 import Image from 'next/image'
 import moment from 'moment'
 import { useRouter } from 'next/router'
 import 'moment/locale/ar'
-const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
-const Like = dynamic(() => import('./Like'))
+
+// component imports
+import MenuThreeDot from './MenuThreeDot'
 
 const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
   const router = useRouter()

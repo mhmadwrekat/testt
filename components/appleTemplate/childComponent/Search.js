@@ -1,12 +1,15 @@
+// Import Libraries
 import React from 'react'
 import dynamic from 'next/dynamic'
 import moment from 'moment'
 import { useRouter } from 'next/router'
 import 'moment/locale/ar'
-const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
+
+// component imports
 const CategorySkeleton = dynamic(() =>
   import('../../Skeletons/CategorySkeleton')
 )
+import MenuThreeDot from './MenuThreeDot'
 
 const Search = ({ data, bg_color, category, user_id, replace }) => {
   const router = useRouter()

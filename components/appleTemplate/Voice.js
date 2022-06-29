@@ -166,6 +166,7 @@ const Voice = ({
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
+                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
@@ -227,6 +228,7 @@ const Voice = ({
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
+                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
@@ -310,6 +312,7 @@ const Voice = ({
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
+                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
@@ -370,6 +373,7 @@ const Voice = ({
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
+                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
@@ -472,6 +476,7 @@ const Voice = ({
                                   </svg>
                                 </div> */}
                                   <Like
+                                    loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
                                     story_id={item._id}
@@ -538,6 +543,7 @@ const Voice = ({
                                   </svg>
                                 </div> */}
                                   <Like
+                                    loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
                                     story_id={item._id}
@@ -626,6 +632,7 @@ const Voice = ({
                                   </svg>
                                 </div> */}
                                   <Like
+                                    loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
                                     story_id={item._id}
@@ -692,6 +699,7 @@ const Voice = ({
                                   </svg>
                                 </div> */}
                                   <Like
+                                    loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
                                     story_id={item._id}

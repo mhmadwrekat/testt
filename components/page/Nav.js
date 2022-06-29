@@ -5,6 +5,7 @@ import { BASE_URL } from '../../config/config'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 const Search = dynamic(() => import('../appleTemplate/childComponent/Search'))
+
 const Nav = ({
   showCategory,
   alternative_search,

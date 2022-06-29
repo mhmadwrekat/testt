@@ -5,9 +5,7 @@ import { BASE_URL } from '../config/config'
 import axios from 'axios'
 
 // Apple View component
-const CategoryNews = dynamic(() =>
-  import('../components/appleTemplate/CategoryNews')
-)
+import CategoryNews from '../components/appleTemplate/CategoryNews'
 const ImportantNews = dynamic(() =>
   import('../components/appleTemplate/ImportantNews')
 )
@@ -346,8 +344,6 @@ sky news
   media@alzubda.com
   `
   const headTitle = 'الزبدة | الأخبار'
-
-  // news_unsubscribe && console.log(news_unsubscribe)
   return (
     <React.Fragment>
       <HeadComp
@@ -389,7 +385,7 @@ sky news
             />
             {all_news[1]?.data?.length > 4 ? (
               <Colored
-                loading="lazy"
+                loading="eager"
                 title={'مخصص لك'}
                 important_news={all_news[1]}
                 user_id={user_id}
@@ -407,7 +403,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'الشأن الدولي'}
                 category_news={all_news[11]}
                 user_id={user_id}
@@ -422,7 +418,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'الصحة'}
                 category_news={all_news[4]}
                 user_id={user_id}
@@ -438,7 +434,7 @@ sky news
             {all_news[2] ? (
               <ArroundYou
                 bg_image={bg_image}
-                loading="lazy"
+                loading="eager"
                 title={'يدور حولك'}
                 important_news={all_news[2]}
                 user_id={user_id}
@@ -467,7 +463,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'أخبار الفن'}
                 category_news={all_news[15]}
                 user_id={user_id}
@@ -484,7 +480,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'مال وأعمال'}
                 category_news={all_news[7]}
                 user_id={user_id}
@@ -502,7 +498,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'غزو أوكرانيا'}
                 category_news={all_news[8]}
                 user_id={user_id}
@@ -516,7 +512,7 @@ sky news
             <div id="لقيمات">
               <Logaimat
                 setShowCategory={setShowCategory}
-                loading="lazy"
+                loading="eager"
                 title={'لقيمات'}
                 important_news={props?.loqaimat?.data}
                 subs={null}
@@ -534,7 +530,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'ترند'}
                 category_news={all_news[5]}
                 user_id={user_id}
@@ -549,7 +545,7 @@ sky news
             </div>
             <div id="الصوتيات">
               <Voice
-                loading="lazy"
+                loading="eager"
                 title={'الصوتيات'}
                 news_one={all_news[6]}
                 user_id={user_id}
@@ -566,7 +562,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'ألعاب'}
                 category_news={all_news[13]}
                 user_id={user_id}
@@ -582,7 +578,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'الخليج العربي'}
                 category_news={all_news[10]}
                 user_id={user_id}
@@ -598,7 +594,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'رياضة'}
                 category_news={all_news[3]}
                 user_id={user_id}
@@ -613,7 +609,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'لايف ستايل'}
                 category_news={all_news[16]}
                 user_id={user_id}
@@ -627,7 +623,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'الشرق الاوسط'}
                 category_news={all_news[14]}
                 user_id={user_id}
@@ -643,7 +639,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                loading="eager"
                 title={'تكنولوجيا'}
                 category_news={all_news[12]}
                 user_id={user_id}

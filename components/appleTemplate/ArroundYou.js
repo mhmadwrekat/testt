@@ -8,10 +8,11 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 // component imports
-const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
-const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
+import Like from './childComponent/Like'
+import MenuThreeDot from './childComponent/MenuThreeDot'
+
 const Arround_you = ({
   title,
   important_news,
@@ -183,7 +184,7 @@ const Arround_you = ({
                         (important_news_img.includes('youtube') ||
                         important_news_img.includes('youtu.be') ? (
                           <img
-                            loading="lazy"
+                            loading="eager"
                             src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                               important_news_img
                             )}/0.jpg`}
@@ -200,7 +201,7 @@ const Arround_you = ({
                           />
                         ) : (
                           <img
-                            loading="lazy"
+                            loading="eager"
                             src={important_news_img}
                             alt={important_news.data[0].stories_headlines}
                             className="h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
@@ -212,6 +213,7 @@ const Arround_you = ({
                           />
                         ))}
                       <Like
+                        loading="eager"
                         bottom={'bottom-1'}
                         user_id={user_id}
                         story_id={important_news?.data[0]?._id}
@@ -335,7 +337,7 @@ const Arround_you = ({
                                   'youtu.be'
                                 ) ? (
                                   <img
-                                    loading="lazy"
+                                    loading="eager"
                                     src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
@@ -352,7 +354,7 @@ const Arround_you = ({
                                   />
                                 ) : (
                                   <img
-                                    loading="lazy"
+                                    loading="eager"
                                     src={item.stories_media_url[0]}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
@@ -365,6 +367,7 @@ const Arround_you = ({
                                 ))}
                               <div className="text-black rounded-full bg-white">
                                 <Like
+                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}

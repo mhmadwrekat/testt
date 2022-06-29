@@ -2,7 +2,6 @@ import React, { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
-import index from '../../../pages'
 
 export default function LoqaimaModal({
   setShowCategory,
@@ -148,7 +147,7 @@ export default function LoqaimaModal({
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12"
                                       viewBox="0 0 20 20"
-                                      loading="lazy"
+                                      loading="eager"
                                       fill="#666666"
                                       onClick={() => {
                                         next()

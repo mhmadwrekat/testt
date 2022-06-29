@@ -8,9 +8,10 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 // component imports
-const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
+import MenuThreeDot from './childComponent/MenuThreeDot'
+
 const Video = ({
   title,
   title_color,

@@ -8,10 +8,11 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 // component imports
-const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
-const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
+import Like from './childComponent/Like'
+import MenuThreeDot from './childComponent/MenuThreeDot'
+
 const Colored = ({
   title,
   important_news,
@@ -186,7 +187,7 @@ const Colored = ({
                         (important_news_img.includes('youtube') ||
                         important_news_img.includes('youtu.be') ? (
                           <img
-                            loading="lazy"
+                            loading="eager"
                             src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                               important_news_img
                             )}/0.jpg`}
@@ -203,7 +204,7 @@ const Colored = ({
                           />
                         ) : (
                           <img
-                            loading="lazy"
+                            loading="eager"
                             src={important_news_img}
                             alt={important_news.data[0].stories_headlines}
                             className=" h-56 w-full cursor-pointer object-cover lg:h-80"
@@ -215,6 +216,7 @@ const Colored = ({
                           />
                         ))}
                       <Like
+                      loading="eager"
                       bottom={'bottom-1'}
                         user_id={user_id}
                         story_id={important_news?.data[0]?._id}
@@ -334,7 +336,7 @@ const Colored = ({
                                   'youtu.be'
                                 ) ? (
                                   <img
-                                    loading="lazy"
+                                    loading="eager"
                                     src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
@@ -351,7 +353,7 @@ const Colored = ({
                                   />
                                 ) : (
                                   <img
-                                    loading="lazy"
+                                    loading="eager"
                                     src={item.stories_media_url[0]}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
@@ -364,6 +366,7 @@ const Colored = ({
                                 ))}
                               <div className="text-black rounded-full bg-white">
                                 <Like
+                                loading="eager"
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}

@@ -11,9 +11,6 @@ import axios from 'axios'
 const StoryShow = dynamic(() =>
   import('../../components/appleTemplate/childComponent/StoryShow')
 )
-const MenuThreeDot = dynamic(() =>
-  import('../../components/appleTemplate/childComponent/MenuThreeDot')
-)
 const HeadComp = dynamic(() => import('../../components/page/HeadComp'))
 const Nav = dynamic(() => import('../../components/page/Nav'))
 const Footer = dynamic(() => import('../../components/page/Footer'))
@@ -23,6 +20,9 @@ const AllData = dynamic(() =>
 const CategorySkeleton = dynamic(() =>
   import('../../components/Skeletons/CategorySkeleton')
 )
+
+import MenuThreeDot from '../../components/appleTemplate/childComponent/MenuThreeDot'
+
 const index = () => {
   const router = useRouter()
 

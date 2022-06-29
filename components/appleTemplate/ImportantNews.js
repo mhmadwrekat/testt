@@ -8,10 +8,10 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 // component imports
-const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
-const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
+import Like from './childComponent/Like'
+import MenuThreeDot from './childComponent/MenuThreeDot'
 
 const ImportantNews = ({
   title,
@@ -289,6 +289,7 @@ const ImportantNews = ({
                     {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1"> */}
                     {/* {console.log(category_news.data[0]._id)} */}
                     <Like
+                      loading="eager"
                       bottom={'bottom-1'}
                       user_id={user_id}
                       story_id={category_news?.data[0]?._id}
@@ -430,7 +431,7 @@ const ImportantNews = ({
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
                                 <img
-                                  loading="lazy"
+                                  loading="eager"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
@@ -456,6 +457,7 @@ const ImportantNews = ({
                                 />
                               ))}
                             <Like
+                              loading="eager"
                               user_id={user_id}
                               story_id={item?._id}
                               isLoved={item?.is_loved}

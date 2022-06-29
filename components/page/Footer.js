@@ -16,7 +16,7 @@ const Footer = () => {
     <React.Fragment>
       <div className="pt-6" loading="lazy">
         <footer className="pb-2">
-          <div className="border-gray-400 mx-auto overflow-hidden border-t-2 bg-Purp100 py-5 text-white">
+          <div className=" mx-auto bg-Purp100 py-5 text-white">
             <p className="text-md my-3 mr-1 text-center font-TSbold">
               إستخدم التطبيق لتجربة أفضل
             </p>
@@ -25,6 +25,8 @@ const Footer = () => {
                 <Image
                   src={appleStore}
                   alt="apple Store"
+                  // width="130"
+                  // height="40"
                   onClick={() => {
                     new_tab(
                       'https://apps.apple.com/us/app/%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-alzubda-%D8%A7%D9%84%D8%B2%D8%A8%D8%AF%D8%A9/id1440466617'
