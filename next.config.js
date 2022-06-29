@@ -33,22 +33,22 @@ module.exports = {
       },
     ],
   },
-  async headers() {
-    return [
-      {
-        source: '/:all*(svg|jpg|png)',
-        locale: false,
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=9999, must-revalidate',
-          },
-        ],
-      },
-    ]
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/:all*(svg|jpg|png)',
+  //       locale: false,
+  //       headers: [
+  //         {
+  //           key: 'Cache-Control',
+  //           value: 'public, max-age=9999, must-revalidate',
+  //         },
+  //       ],
+  //     },
+  //   ]
+  // },
   images: {
-    minimumCacheTTL: 9999,
+    // minimumCacheTTL: 9999,
     domains: [
       'netaq.s3.ap-south-1.amazonaws.com',
       'cdn2.unrealengine.com',
@@ -57,6 +57,7 @@ module.exports = {
       'i.ytimg.com',
       'admin-panel-alzubda.s3.us-east-2.amazonaws.com',
       'https://img.youtube.com/',
+      'www.sarayanews.com',
       'psycatgames.com',
       'mediaaws.almasryalyoum.com',
       'www.rd.com',
@@ -79,14 +80,8 @@ module.exports = {
       'i2-prod.dailyrecord.co.uk',
       'media.gettyimages.com',
       'cdn.onlinewebfonts.com',
-      // 'aljaras.com',
       'cdn-icons-png.flaticon.com',
       'cdn4.premiumread.com',
-      // 'alzubda.com',
-      // 'localhost',
-      // 'https://securitytrails.com/list/apex_domain/googleusercontent.com',
-      // 'https://',
-      // '*.com',
       'violetsyria.org',
       'donyayadonya.com',
       'files.elfann.com',
@@ -104,8 +99,15 @@ module.exports = {
       'cdnnarabic1.img.sputniknews.com',
       'jo24.net',
       'static.dw.com',
-      'img.btolat.com',
-      'm.wsj.net',
+      'm.media-amazon.com',
+      // 'img.btolat.com',
+      // 'm.wsj.net',
+      // 'aljaras.com',
+      // 'alzubda.com',
+      // 'localhost',
+      // 'https://securitytrails.com/list/apex_domain/googleusercontent.com',
+      // 'https://',
+      // '*.com',
     ],
     formats: ['image/avif', 'image/webp'],
   },

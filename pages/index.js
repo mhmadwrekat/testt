@@ -32,11 +32,11 @@ const CategorySkeleton = dynamic(() =>
 )
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
-  // Cache the content of this page for 12 hrs
-  res.setHeader(
-    'Cache-Control',
-    'public, max-age=345600, stale-while-revalidate=59'
-  )
+  // // Cache the content of this page for 12 hrs
+  // res.setHeader(
+  //   'Cache-Control',
+  //   'public, no-cache=no-cache, stale-while-revalidate=59'
+  // )
   await generateFeeds()
 
   // Get Logaimat API
@@ -387,7 +387,8 @@ sky news
               title_color={'text-RED'}
               fill_color={'fill-RED'}
             />
-            {/* {all_news[2] ? (
+
+            {all_news[2] ? (
               <ArroundYou
                 bg_image={bg_image}
                 loading="eager"
@@ -400,7 +401,7 @@ sky news
                 fill_color={'fill-Purp100'}
                 description={' جميع ما يدور من حولك من أخبار و مواضيع'}
               />
-            ) : null} */}
+            ) : null}
             {/* {all_news[1]?.data?.length > 4 ? (
               <Colored
                 loading="eager"

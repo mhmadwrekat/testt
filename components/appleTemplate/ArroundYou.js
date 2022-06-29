@@ -6,6 +6,7 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 
 // component imports
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
@@ -176,49 +177,93 @@ const Arround_you = ({
                         }
                       </p>{' '}
                     </div>
-                    <div className="relative max-w-full">
+                    <div className="max-w-full">
                       <ViewImpression stories={stories} user_id={user_id} />{' '}
                       <></>
                       <ReadImpression stories={stories[0]} user_id={user_id} />
-                      {important_news_img &&
-                        (important_news_img.includes('youtube') ||
-                        important_news_img.includes('youtu.be') ? (
-                          <img
-                            loading="eager"
-                            src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                              important_news_img
-                            )}/0.jpg`}
-                            alt={important_news.data[0].stories_headlines}
-                            className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                            // onClick={() => {
-                            //   router.push(`/${important_news?.data[0]?._id}`)
-                            // }}
-                            onClick={() => {
-                              handle_news_redirection_story(
-                                important_news?.data[0]?.stories_headlines
-                              )
-                            }}
-                          />
-                        ) : (
-                          <img
-                            loading="eager"
-                            src={important_news_img}
-                            alt={important_news.data[0].stories_headlines}
-                            className="h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                            onClick={() => {
-                              handle_news_redirection_story(
-                                important_news?.data[0]?.stories_headlines
-                              )
-                            }}
-                          />
-                        ))}
-                      <Like
-                        loading="eager"
-                        bottom={'bottom-1'}
-                        user_id={user_id}
-                        story_id={important_news?.data[0]?._id}
-                        isLoved={important_news?.data[0]?.is_loved}
-                      />
+                      <div className=" relative relative h-56 w-full lg:h-80">
+                        {important_news_img &&
+                          (important_news_img.includes('youtube') ||
+                          important_news_img.includes('youtu.be') ? (
+                            // <img
+                            //   loading="eager"
+                            //   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                            //     important_news_img
+                            //   )}/0.jpg`}
+                            //   alt={important_news.data[0].stories_headlines}
+                            //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                            //   // onClick={() => {
+                            //   //   router.push(`/${important_news?.data[0]?._id}`)
+                            //   // }}
+                            //   onClick={() => {
+                            //     handle_news_redirection_story(
+                            //       important_news?.data[0]?.stories_headlines
+                            //     )
+                            //   }}
+                            // />
+                            <Image
+                              src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                important_news_img
+                              )}/0.jpg`}
+                              alt={important_news.data[0].stories_headlines}
+                              quality={100}
+                              layout="fill"
+                              className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                              objectFit="cover"
+                              // width={800}
+                              // height={350}
+                              loading="eager"
+                              priority
+                              placeholder="blur"
+                              blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                important_news_img
+                              )}/0.jpg`}
+                              onClick={() => {
+                                handle_news_redirection_story(
+                                  important_news?.data[0]?.stories_headlines
+                                )
+                              }}
+                            />
+                          ) : (
+                            <Image
+                              src={important_news_img}
+                              alt={important_news.data[0].stories_headlines}
+                              quality={100}
+                              layout="fill"
+                              className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                              objectFit="cover"
+                              // width={800}
+                              // height={350}
+                              loading="eager"
+                              priority
+                              placeholder="blur"
+                              blurDataURL={important_news_img}
+                              onClick={() => {
+                                handle_news_redirection_story(
+                                  important_news?.data[0]?.stories_headlines
+                                )
+                              }}
+                            />
+                            // <img
+                            //   loading="eager"
+                            //   src={important_news_img}
+                            //   alt={important_news.data[0].stories_headlines}
+                            //   className="h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                            //   onClick={() => {
+                            //     handle_news_redirection_story(
+                            //       important_news?.data[0]?.stories_headlines
+                            //     )
+                            //   }}
+                            // />
+                          ))}
+                        <Like
+                          loading="eager"
+                          bottom={'bottom-1'}
+                          user_id={user_id}
+                          story_id={important_news?.data[0]?._id}
+                          isLoved={important_news?.data[0]?.is_loved}
+                        />
+                      </div>
                     </div>
                     <div
                       className="my-2  flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
@@ -229,7 +274,7 @@ const Arround_you = ({
                       }}
                     >
                       <p>
-                        <b className="text-red-600 font-TSbold">
+                        <b className="font-TSbold text-red-600">
                           {important_news?.data[0]?.publisher_name}
                         </b>
                       </p>
@@ -307,7 +352,7 @@ const Arround_you = ({
                     return (
                       <section key={item?._id}>
                         <div
-                          className={`${card_color} text-black rounded-lg shadow-lg`}
+                          className={`${card_color} rounded-lg text-black shadow-lg`}
                           id="card"
                         >
                           <div>
@@ -336,37 +381,84 @@ const Arround_you = ({
                                 item.stories_media_url[0].includes(
                                   'youtu.be'
                                 ) ? (
-                                  <img
-                                    loading="eager"
-                                    src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                      item.stories_media_url[0]
-                                    )}/0.jpg`}
-                                    alt={item.stories_headlines}
-                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                    // onClick={() => {
-                                    //   router.push(`/${item?._id}`)
-                                    // }}
-                                    onClick={() => {
-                                      handle_news_redirection_story(
-                                        item?.stories_headlines
-                                      )
-                                    }}
-                                  />
+                                  <div className="h-28 w-28">
+                                    <Image
+                                      src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                        item.stories_media_url[0]
+                                      )}/0.jpg`}
+                                      alt={item.stories_headlines}
+                                      className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                      quality={100}
+                                      layout="fill"
+                                      objectFit="cover"
+                                      // width={800}
+                                      // height={300}
+                                      loading="eager"
+                                      priority
+                                      placeholder="blur"
+                                      blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                        item.stories_media_url[0]
+                                      )}/0.jpg`}
+                                      onClick={() => {
+                                        handle_news_redirection_story(
+                                          item?.stories_headlines
+                                        )
+                                      }}
+                                    />
+                                  </div>
                                 ) : (
-                                  <img
-                                    loading="eager"
-                                    src={item.stories_media_url[0]}
-                                    alt={item.stories_headlines}
-                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                    onClick={() => {
-                                      handle_news_redirection_story(
-                                        item?.stories_headlines
-                                      )
-                                    }}
-                                  />
+                                  // <img
+                                  //   loading="eager"
+                                  //   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                  //     item.stories_media_url[0]
+                                  //   )}/0.jpg`}
+                                  //   alt={item.stories_headlines}
+                                  //   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  //   // onClick={() => {
+                                  //   //   router.push(`/${item?._id}`)
+                                  //   // }}
+                                  //   onClick={() => {
+                                  //     handle_news_redirection_story(
+                                  //       item?.stories_headlines
+                                  //     )
+                                  //   }}
+                                  // />
+                                  <div className="h-28 w-28">
+                                    <Image
+                                      src={item.stories_media_url[0]}
+                                      alt={item.stories_headlines}
+                                      className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                      quality={100}
+                                      layout="fill"
+                                      objectFit="cover"
+                                      // width={800}
+                                      // height={300}
+                                      loading="eager"
+                                      priority
+                                      placeholder="blur"
+                                      blurDataURL={item.stories_media_url[0]}
+                                      onClick={() => {
+                                        handle_news_redirection_story(
+                                          item?.stories_headlines
+                                        )
+                                      }}
+                                    />
+                                  </div>
+                                  // <img
+                                  //   loading="eager"
+                                  //   src={item.stories_media_url[0]}
+                                  //   alt={item.stories_headlines}
+                                  //   className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  //   onClick={() => {
+                                  //     handle_news_redirection_story(
+                                  //       item?.stories_headlines
+                                  //     )
+                                  //   }}
+                                  // />
                                 ))}
-                              <div className="text-black rounded-full bg-white">
+                              <div className="rounded-full bg-white text-black">
                                 <Like
+                                  bottom={'bottom-2'}
                                   loading="eager"
                                   user_id={user_id}
                                   story_id={item?._id}
@@ -377,7 +469,7 @@ const Arround_you = ({
 
                             <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">
                               <p>
-                                <b className="text-red-800 font-TSExtra">
+                                <b className="font-TSExtra text-red-800">
                                   {item.publisher_name}
                                 </b>
                               </p>
@@ -405,7 +497,7 @@ const Arround_you = ({
 
                           <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                             <p>
-                              <b className=" text-red-600 font-TSExtra">
+                              <b className=" font-TSExtra text-red-600">
                                 {item.publisher_name}
                               </b>
                             </p>

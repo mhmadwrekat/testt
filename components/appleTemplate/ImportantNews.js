@@ -209,7 +209,7 @@ const ImportantNews = ({
           </div>
           {description && (
             <p
-              className={`text-black grid w-10/12 px-1 pb-2 font-TSmedium text-lg lg:hidden lg:text-xl`}
+              className={`grid w-10/12 px-1 pb-2 font-TSmedium text-lg text-black lg:hidden lg:text-xl`}
             >
               {description}
             </p>
@@ -329,7 +329,7 @@ const ImportantNews = ({
                     }}
                   >
                     <p>
-                      <b className="text-red-800 font-TSbold">
+                      <b className="font-TSbold text-red-800">
                         {category_news?.data[0]?.publisher_name}
                       </b>
                     </p>
@@ -541,7 +541,7 @@ const ImportantNews = ({
                             }}
                           >
                             <p>
-                              <b className="text-red-800 font-TSExtra">
+                              <b className="font-TSExtra text-red-800">
                                 {item.publisher_name}
                               </b>
                             </p>
@@ -576,7 +576,7 @@ const ImportantNews = ({
                           }}
                         >
                           <p>
-                            <b className=" text-red-800 font-TSExtra">
+                            <b className=" font-TSExtra text-red-800">
                               {item.publisher_name}
                             </b>
                           </p>
