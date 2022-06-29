@@ -1,4 +1,9 @@
 import Image from 'next/image'
+import facebook from '../../public/assest/images/facebook.jpg'
+import twiter from '../../public/assest/images/twitter.jpg'
+import youtube from '../../public/assest/images/youtube.jpg'
+import instagram from '../../public/assest/images/instagram.jpg'
+import linkedin from '../../public/assest/images/linkedin.jpg'
 import React from 'react'
 
 const Footer = () => {
@@ -20,7 +25,6 @@ const Footer = () => {
                   alt="apple Store"
                   layout="fixed"
                   width="130"
-                  priority
                   height="40"
                   onClick={() => {
                     new_tab(
@@ -36,7 +40,6 @@ const Footer = () => {
                   alt="google Play"
                   layout="responsive"
                   width="130"
-                  priority
                   height="40"
                   onClick={() => {
                     new_tab(
@@ -53,22 +56,22 @@ const Footer = () => {
           <div className="my-1 mt-4">
             <div className=" mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
-                src="/../public/assest/images/instagram.jpg"
+                src={instagram}
                 alt="social media alzubda instagram"
                 onClick={() => {
                   new_tab(
                     'https://instagram.com/alzubdaapp?utm_medium=copy_link'
                   )
                 }}
-                layout="responsive"
                 priority
+                layout="responsive"
                 width="35"
                 height="35"
               />
             </div>
             <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
-                src="/../public/assest/images/twitter.jpg"
+                src={twiter}
                 alt="social media alzubda twitter"
                 onClick={() => {
                   new_tab('https://twitter.com/alzubdaapp')
@@ -81,7 +84,7 @@ const Footer = () => {
             </div>
             <div className="mx-auto mr-7 inline-block  h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
-                src="/../public/assest/images/facebook.jpg"
+                src={facebook}
                 alt="social media alzubda facebook"
                 onClick={() => {
                   new_tab('https://www.facebook.com/alzubdaapp/')
@@ -94,8 +97,7 @@ const Footer = () => {
             </div>
             <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
-                src="/../public/assest/images/youtube.jpg"
-                layout="responsive"
+                src={youtube}
                 alt="social media alzubda youtube"
                 onClick={() => {
                   new_tab(
@@ -103,13 +105,14 @@ const Footer = () => {
                   )
                 }}
                 priority
+                layout="responsive"
                 width="35"
                 height="35"
               />
             </div>
             <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
-                src="/../public/assest/images/linkedin.jpg"
+                src={linkedin}
                 alt="social media alzubda linkedin"
                 onClick={() => {
                   new_tab('https://www.linkedin.com/company/alzubda/')
