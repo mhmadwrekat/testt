@@ -402,7 +402,7 @@ sky news
                 description={' جميع ما يدور من حولك من أخبار و مواضيع'}
               />
             ) : null}
-            {/* {all_news[1]?.data?.length > 4 ? (
+            {all_news[1]?.data?.length > 4 ? (
               <Colored
                 loading="eager"
                 title={'مخصص لك'}
@@ -668,7 +668,7 @@ sky news
                 fill_color={'fill-GREEN'}
                 description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
               />
-            </div> */}
+            </div>
             <div className="py-3"></div>
           </React.Fragment>
         ) : (
