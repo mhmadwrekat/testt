@@ -51,7 +51,7 @@ const MostEmoji = ({ user_id, isLoved, story_id, bottom, reactions }) => {
         loading="eager"
       >
         <div className="absolute left-0 bottom-6 w-8 rounded-full bg-white text-center font-TSExtra text-xs text-black">
-          1234
+          {Math.floor(Math.random() * 100)}
         </div>
         <div className="h-8 w-8 cursor-pointer rounded-full bg-white">
           <Lottie animationData={sad_json} loop={false} loading="eager" />

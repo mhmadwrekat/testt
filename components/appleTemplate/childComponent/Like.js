@@ -12,6 +12,10 @@ import wow_json from '../../../public/assest/emoji/wow.json'
 
 const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
   const [openLike, setOpenLike] = useState(false)
+  const [myEmoji, setMyEmoji] = useState(reactions?.my_selected_emoji)
+  const [openMyEmoji, setOpenMyEmoji] = reactions?.my_selected_emoji
+    ? useState(true)
+    : useState(false)
 
   const [like, setLike] = useState(isLoved)
   const [show, setShow] = useState(isLoved)
@@ -21,7 +25,7 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
     loop: false,
   }
 
-  // console.log(reactions?.my_selected_emoji)
+  console.log(reactions?.my_selected_emoji)
 
   const handle_open = () => {
     setOpenLike(!openLike)
@@ -30,24 +34,21 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
   const handleLike = (story_id, emojiSelect) => {
     setLike(!like)
     setShow(!show)
+    setMyEmoji(`${emojiSelect}`)
     console.log(story_id)
-    const config = {
-      headers: {
-        Authorization: `${userToken}`,
-      },
-    }
     axios
       .put(
-        `https://api.alzubda.com/v1/Users/Stories/${story_id}/Emoji`,
-        { emoji: 'haha' },
+        `${BASE_URL}/v1/Users/Stories/${story_id}/Emoji`,
+        { emoji: `${emojiSelect}` },
         {
           headers: {
-            Authorization: `Basic ${userToken}`,
+            Authorization: `Bearer ${userToken}`,
           },
         }
       )
       .then((res) => {
         console.log(res)
+        setOpenMyEmoji(!openMyEmoji)
         // console.log('OUTSIDE')
       })
     // let config = {
@@ -73,9 +74,9 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
         loading="eager"
       >
         {
-          reactions?.my_selected_emoji ? (
+          openMyEmoji ? (
             <React.Fragment>
-              {reactions?.my_selected_emoji === 'haha' && (
+              {myEmoji === 'haha' && (
                 <div className="h-8 w-8 rounded-full bg-white">
                   <Lottie
                     animationData={sad_json}
@@ -84,7 +85,7 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
                   />
                 </div>
               )}
-              {reactions?.my_selected_emoji === 'like' && (
+              {myEmoji === 'like' && (
                 <div className="h-8 w-8 rounded-full bg-white">
                   <Lottie
                     animationData={like_json}
@@ -93,7 +94,7 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
                   />
                 </div>
               )}
-              {reactions?.my_selected_emoji === 'sad' && (
+              {myEmoji === 'sad' && (
                 <div className="h-8 w-8 rounded-full bg-white">
                   <Lottie
                     animationData={sad_json}
@@ -102,7 +103,7 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
                   />
                 </div>
               )}
-              {reactions?.my_selected_emoji === 'wow' && (
+              {myEmoji === 'wow' && (
                 <div className="h-8 w-8 rounded-full bg-white">
                   <Lottie
                     animationData={wow_json}
@@ -111,7 +112,7 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
                   />
                 </div>
               )}
-              {reactions?.my_selected_emoji === 'angry' && (
+              {myEmoji === 'angry' && (
                 <div className="h-8 w-8 rounded-full bg-white">
                   <Lottie
                     animationData={angry_json}

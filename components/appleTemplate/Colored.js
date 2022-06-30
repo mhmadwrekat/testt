@@ -9,11 +9,13 @@ import dynamic from 'next/dynamic'
 
 // component imports
 const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
+const MostEmoji = dynamic(() => import('./childComponent/MostEmoji'))
 const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Colored = ({
   title,
+  userToken,
   important_news,
   desc_color,
   user_id,
@@ -218,6 +220,15 @@ const Colored = ({
                         user_id={user_id}
                         story_id={important_news.data[0]?._id}
                         isLoved={important_news.data[0]?.is_loved}
+                        userToken={userToken}
+                        reactions={important_news.data[0]?.reactions}
+                      />
+                      <MostEmoji
+                        userToken={userToken}
+                        reactions={important_news.data[0]?.reactions}
+                        user_id={user_id}
+                        story_id={item?._id}
+                        isLoved={item?.is_loved}
                       />
                     </div>
                     <div
@@ -363,6 +374,15 @@ const Colored = ({
                                 ))}
                               <div className="rounded-full bg-white text-black">
                                 <Like
+                                  user_id={user_id}
+                                  story_id={item?._id}
+                                  isLoved={item?.is_loved}
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                />
+                                <MostEmoji
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}

@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic'
 // component imports
 const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
+const MostEmoji = dynamic(() => import('./childComponent/MostEmoji'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 
@@ -20,6 +21,7 @@ const Category_news = ({
   bg_color,
   subs,
   description,
+  userToken,
   fill_color,
   user_id,
   setClickSubscribe,
@@ -282,12 +284,21 @@ const Category_news = ({
                           }}
                         />
                       ))}
-                      {/* {console.log(category_news.data[0]._id)} */}
-                      <Like
-                        user_id={user_id}
-                        story_id={category_news.data[0]?._id}
-                        isLoved={category_news.data[0]?.is_loved}
-                      />
+                    {/* {console.log(category_news.data[0]._id)} */}
+                    <Like
+                      user_id={user_id}
+                      story_id={category_news.data[0]?._id}
+                      isLoved={category_news.data[0]?.is_loved}
+                      userToken={userToken}
+                      reactions={category_news.data[0]?.reactions}
+                    />
+                    <MostEmoji
+                      userToken={userToken}
+                      reactions={category_news.data[0]?.reactions}
+                      user_id={user_id}
+                      story_id={category_news.data[0]?._id}
+                      isLoved={category_news.data[0]?.is_loved}
+                    />
                   </div>
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
@@ -422,6 +433,15 @@ const Category_news = ({
                                 />
                               ))}
                             <Like
+                              user_id={user_id}
+                              story_id={item?._id}
+                              isLoved={item?.is_loved}
+                              userToken={userToken}
+                              reactions={item?.reactions}
+                            />
+                            <MostEmoji
+                              userToken={userToken}
+                              reactions={item?.reactions}
                               user_id={user_id}
                               story_id={item?._id}
                               isLoved={item?.is_loved}

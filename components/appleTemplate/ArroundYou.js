@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic'
 // component imports
 const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
+const MostEmoji = dynamic(() => import('./childComponent/MostEmoji'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Arround_you = ({
@@ -18,6 +19,7 @@ const Arround_you = ({
   user_id,
   fill_color,
   text_color,
+  userToken,
   card_color,
   theme,
   bg_image,
@@ -215,6 +217,15 @@ const Arround_you = ({
                         user_id={user_id}
                         story_id={important_news.data[0]?._id}
                         isLoved={important_news.data[0]?.is_loved}
+                        userToken={userToken}
+                        reactions={important_news.data[0]?.reactions}
+                      />
+                      <MostEmoji
+                        userToken={userToken}
+                        reactions={important_news.data[0]?.reactions}
+                        user_id={user_id}
+                        story_id={important_news.data[0]?.reactions_id}
+                        isLoved={important_news.data[0]?.reactionsis_loved}
                       />
                     </div>
                     <div
@@ -364,6 +375,15 @@ const Arround_you = ({
                                 ))}
                               <div className="rounded-full bg-white text-black">
                                 <Like
+                                  user_id={user_id}
+                                  story_id={item?._id}
+                                  isLoved={item?.is_loved}
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                />
+                                <MostEmoji
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}

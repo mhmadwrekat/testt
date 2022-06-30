@@ -4,6 +4,7 @@ import Like from './childComponent/Like'
 import moment from 'moment'
 import 'moment/locale/ar'
 import WaveAudio from './childComponent/WaveAudio'
+import MostEmoji from './childComponent/MostEmoji'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
@@ -15,6 +16,7 @@ const Voice = ({
   title,
   // fill_color,
   title_color,
+  userToken,
   theme,
   subs,
   desc_color,
@@ -170,6 +172,15 @@ const Voice = ({
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                />
+                                <MostEmoji
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                  user_id={user_id}
+                                  story_id={item?._id}
+                                  isLoved={item?.is_loved}
                                 />
 
                                 {/* <div className="absolute bottom-1 left-1">
@@ -232,6 +243,15 @@ const Voice = ({
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                />
+                                <MostEmoji
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                  user_id={user_id}
+                                  story_id={item?._id}
+                                  isLoved={item?.is_loved}
                                 />
 
                                 {/* <div className="absolute bottom-1 left-1">
@@ -316,6 +336,15 @@ const Voice = ({
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                />
+                                <MostEmoji
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                  user_id={user_id}
+                                  story_id={item?._id}
+                                  isLoved={item?.is_loved}
                                 />
 
                                 {/* <div className="absolute bottom-1 left-1">
@@ -377,6 +406,15 @@ const Voice = ({
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                />
+                                <MostEmoji
+                                  userToken={userToken}
+                                  reactions={item?.reactions}
+                                  user_id={user_id}
+                                  story_id={item?._id}
+                                  isLoved={item?.is_loved}
                                 />
 
                                 {/* <div className="absolute bottom-1 left-1">
@@ -481,6 +519,15 @@ const Voice = ({
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
+                                    userToken={userToken}
+                                    reactions={item?.reactions}
+                                  />
+                                  <MostEmoji
+                                    userToken={userToken}
+                                    reactions={item?.reactions}
+                                    user_id={user_id}
+                                    story_id={item?._id}
+                                    isLoved={item?.is_loved}
                                   />
                                 </div>
                               </div>
@@ -548,6 +595,15 @@ const Voice = ({
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
+                                    userToken={userToken}
+                                    reactions={item?.reactions}
+                                  />
+                                  <MostEmoji
+                                    userToken={userToken}
+                                    reactions={item?.reactions}
+                                    user_id={user_id}
+                                    story_id={item?._id}
+                                    isLoved={item?.is_loved}
                                   />
                                 </div>
                               </div>
@@ -637,6 +693,15 @@ const Voice = ({
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
+                                    userToken={userToken}
+                                    reactions={item?.reactions}
+                                  />
+                                  <MostEmoji
+                                    userToken={userToken}
+                                    reactions={item?.reactions}
+                                    user_id={user_id}
+                                    story_id={item?._id}
+                                    isLoved={item?.is_loved}
                                   />
                                 </div>
                               </div>
@@ -704,6 +769,15 @@ const Voice = ({
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
+                                    userToken={userToken}
+                                    reactions={item?.reactions}
+                                  />
+                                  <MostEmoji
+                                    userToken={userToken}
+                                    reactions={item?.reactions}
+                                    user_id={user_id}
+                                    story_id={item?._id}
+                                    isLoved={item?.is_loved}
                                   />
                                 </div>
                               </div>

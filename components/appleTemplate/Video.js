@@ -13,6 +13,7 @@ const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Video = ({
   title,
+  userToken,
   title_color,
   category_news,
   bg_color,
