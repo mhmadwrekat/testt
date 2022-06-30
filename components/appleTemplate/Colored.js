@@ -214,12 +214,61 @@ const Colored = ({
                             }}
                           />
                         ))}
-                      <div className="text-black absolute bottom-2 right-2 rounded-full p-1">
-                        <Like
-                          user_id={user_id}
-                          story_id={important_news.data[0]?._id}
-                          isLoved={important_news.data[0]?.is_loved}
-                        />
+                      <div className="text-black absolute bottom-2 right-2 rounded-full bg-white p-1">
+                        {like ? (
+                          // <svg
+                          //   xmlns="http://www.w3.org/2000/svg"
+                          //   className=" h-7 w-7 cursor-pointer"
+                          //   fill="#FF0000"
+                          //   viewBox="0 0 24 24"
+                          //   stroke="#FF0000"
+                          //   strokeWidth="2"
+                          //   onClick={() => {
+                          //     handle_like(
+                          //       important_news.data[0]._id,
+                          //       important_news.data[0].is_loved
+                          //     )
+                          //   }}
+                          // >
+                          //   <path
+                          //     strokeLinecap="round"
+                          //     strokeLinejoin="round"
+                          //     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                          //   />
+                          // </svg>
+                          <img
+                            src="./assest/like-animation.gif"
+                            className=" h-7 w-7 cursor-pointer"
+                            alt="Like | Love"
+                            onClick={() => {
+                              handle_like(
+                                important_news.data[0]._id,
+                                important_news.data[0].is_loved
+                              )
+                            }}
+                          />
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className=" h-7 w-7 cursor-pointer opacity-70"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            onClick={() => {
+                              handle_like(
+                                important_news?.data[0]?._id,
+                                important_news?.data[0]?.is_loved
+                              )
+                            }}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                            />
+                          </svg>
+                        )}
                       </div>
                     </div>
                     <div
@@ -275,9 +324,9 @@ const Colored = ({
                         {important_news?.data[0]?.stories_content.slice(0, 170)}
                         .....
                       </p>
-                      <div className="my-1 flex justify-between  py-1 pt-2.5">
+                      <div className="my-1 flex  justify-between pt-2.5">
                         <p
-                          className={`${theme} cursor-pointer rounded-lg py-1.5 px-5 font-TSExtra text-white hover:scale-110`}
+                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY200 hover:text-RED`}
                           onClick={() => {
                             handle_news_redirection_story(
                               important_news?.data[0]?.stories_headlines
@@ -425,9 +474,9 @@ const Colored = ({
                             </p>
                           </div>
 
-                          <div className="mx-2.5 flex items-center justify-between py-1">
+                          <div className="mx-2.5 flex items-center justify-between">
                             <p
-                              className={`${theme} cursor-pointer rounded-lg py-1 px-4 font-TSExtra text-sm text-white hover:scale-110`}
+                              className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY200 hover:text-RED`}
                               onClick={() => {
                                 handle_news_redirection_story(
                                   item?.stories_headlines

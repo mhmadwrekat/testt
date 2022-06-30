@@ -294,9 +294,9 @@ const Video = ({
                       </div>
 
                       {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
-                      <div className="mx-2.5 flex items-center justify-between py-1.5">
+                      <div className="mx-2.5 flex items-center justify-between">
                         <p
-                          className={`${bg_color} cursor-pointer rounded-lg py-1 px-4 font-TSExtra text-sm text-white hover:scale-110`}
+                          className={`$rounded-lg cursor-pointer py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                           onClick={() => {
                             handle_news_redirection_story(
                               item?.primary_category[0]?.category_name,

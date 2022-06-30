@@ -17,7 +17,6 @@ module.exports = {
     },
     colors: {
       white: '#FFFFFF',
-      black: '#000000',
       BLUE: '#187498',
       BLUE50: '#4f46e5',
       BLUE100: '#17B9B4',
@@ -33,8 +32,6 @@ module.exports = {
       YELLOW: '#E0A719',
       SKY: '#17C1BC',
       RED: '#EB5353',
-      'red-600': '#991b1b',
-      'red-800': '#991b1b',
       GRAY: '#CCCCCC',
       GRAYLIGHT: '#EAE9E9',
       GRAY50: '#B0B0B0',

@@ -282,13 +282,42 @@ const ImportantNews = ({
                           }}
                         />
                       ))}
-                    <div className="absolute bottom-2 right-2 rounded-full p-1">
+                    <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
                       {/* {console.log(category_news.data[0]._id)} */}
-                      <Like
-                        user_id={user_id}
-                        story_id={category_news.data[0]?._id}
-                        isLoved={category_news.data[0]?.is_loved}
-                      />
+                      {like ? (
+                        <img
+                          src="./assest/like-animation.gif"
+                          className=" h-7 w-7 cursor-pointer"
+                          alt="Like | Love"
+                          onClick={() => {
+                            handle_like(
+                              category_news?.data[0]?._id,
+                              category_news?.data[0]?.is_loved
+                            )
+                          }}
+                        />
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className=" h-7 w-7 cursor-pointer opacity-70"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          onClick={() => {
+                            handle_like(
+                              category_news?.data[0]?._id,
+                              category_news?.data[0]?.is_loved
+                            )
+                          }}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                          />
+                        </svg>
+                      )}
                     </div>
                   </div>
                   <div
@@ -346,7 +375,7 @@ const ImportantNews = ({
                     </p>
                     <div className="my-2 flex items-center justify-between">
                       <p
-                        className={`cursor-pointer rounded-lg bg-RED px-5 py-1 font-TSExtra text-white hover:scale-110`}
+                        className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
                         onClick={() => {
                           handle_news_redirection_story(
                             category_news?.data[0]?.stories_headlines
@@ -512,7 +541,7 @@ const ImportantNews = ({
                         {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
                         <div className="mx-2.5 flex items-center justify-between">
                           <p
-                            className={`cursor-pointer rounded-lg bg-RED py-1 px-3 font-TSExtra text-sm text-white hover:scale-110`}
+                            className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 item?.stories_headlines
