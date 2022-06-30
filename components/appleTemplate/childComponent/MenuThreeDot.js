@@ -4,6 +4,8 @@ import { Fade } from 'react-awesome-reveal'
 import axios from 'axios'
 const x_key = process.env.NEXT_PUBLIC_X_API_KEY
 const x_key_event = process.env.NEXT_PUBLIC_X_API_KEY_EVENT
+import copyImage from '../../../public/assest/images/share.png'
+
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -119,7 +121,8 @@ const Test = ({
         <svg
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
-          className={`${fill} h-7 w-7 cursor-pointer rounded-full `}
+          className={`h-7 w-7 cursor-pointer rounded-full `}
+          fill="#686767"
           onClick={() => {
             share_button(story)
           }}
@@ -128,7 +131,7 @@ const Test = ({
         </svg>
         {open_item ? (
           <>
-            <div className="absolute top-0 left-12 w-32 border-0 lg:left-12">
+            <div className="absolute top-0 left-9 w-32 border-0 lg:left-9">
               <div
                 className="text-black flex w-48 border-0 pb-1 text-center font-TSbold text-xs lg:w-56"
                 onClick={() => {
@@ -143,10 +146,11 @@ const Test = ({
                     }}
                   >
                     <Image
-                      src="http://cdn.onlinewebfonts.com/svg/img_211187.png"
+                      src={copyImage}
                       alt="copy link"
-                      width={30}
-                      height={30}
+                      width={28}
+                      layout="fixed"
+                      height={28}
                       className="cursor-pointer rounded-full"
                       onClick={() => {
                         share_api()
@@ -162,7 +166,7 @@ const Test = ({
                     }
                   >
                     <TwitterIcon
-                      size={30}
+                      size={28}
                       round
                       className="ml-1.5"
                       onClick={() => {
@@ -179,7 +183,7 @@ const Test = ({
                     }
                   >
                     <WhatsappIcon
-                      size={30}
+                      size={28}
                       round
                       className="ml-1.5"
                       onClick={() => {
@@ -198,7 +202,7 @@ const Test = ({
                     hashtag={'#الزبدة'}
                   >
                     <FacebookIcon
-                      size={30}
+                      size={28}
                       round
                       className="ml-1.5"
                       onClick={() => {

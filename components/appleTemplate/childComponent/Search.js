@@ -33,25 +33,25 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
   const handle_news_redirection_story = (titles) => {
     let ready_title = ''
     if (titles.includes('%')) {
-      let title = titles.replace(/\s+/g, '_')
+      let title = titles.replace(/\s+/g, '-')
       // console.log(`/${title.replace('%', '_')}`)
-      ready_title = `${title.replace('%', '_')}`
+      ready_title = `${title.replace('%', '-')}`
     } else if (titles.includes(' ')) {
-      let title = titles.replace(/\s+/g, '_')
-      ready_title = `${title.replace(' ', '_')}`
+      let title = titles.replace(/\s+/g, '-')
+      ready_title = `${title.replace(' ', '-')}`
     } else {
       ready_title = titles
     }
     if (titles.includes('?')) {
       let title = titles.replace(/\s+/g, '')
-      ready_title = `${title.replace('?', '_')}`
+      ready_title = `${title.replace('?', '-')}`
     }
     router.push(`/${ready_title}`)
     replace && location.replace(`/${ready_title}`)
   }
   return (
     <React.Fragment>
-      <section className="text-black w-12/12 lg:w-12/12 mx-auto bg-white">
+      <section className="w-12/12 lg:w-12/12 mx-auto bg-white text-black">
         <div dir="rtl" id="project_body" translate="no">
           <section className="grid grid-cols-1 gap-5 pt-5 lg:grid-cols-3 lg:gap-16 lg:pt-10">
             {data ? (
@@ -113,7 +113,7 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
 
                         <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
                           <p>
-                            <b className=" text-red-800 font-TSExtra">
+                            <b className=" font-TSExtra text-red-800">
                               {item.publisher_name}
                             </b>
                           </p>
@@ -134,7 +134,7 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
 
                       <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                         <p>
-                          <b className=" text-red-800 font-TSExtra">
+                          <b className=" font-TSExtra text-red-800">
                             {item.publisher_name}
                           </b>
                         </p>
@@ -147,7 +147,7 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
                       <div className="mx-2.5 flex items-center justify-between pb-1.5">
                         {category ? (
                           <p
-                            className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED `}
+                            className={`${bg_color} cursor-pointer rounded-lg px-4 py-1 font-TSExtra text-sm text-white hover:scale-110`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 item?.stories_headlines
@@ -158,7 +158,7 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
                           </p>
                         ) : (
                           <p
-                            className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            className={`${bg_color} cursor-pointer rounded-lg px-4 py-1 font-TSExtra text-sm text-white hover:scale-110`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 item?.stories_headlines

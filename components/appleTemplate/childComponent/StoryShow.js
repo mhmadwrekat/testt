@@ -16,6 +16,7 @@ const StorySkeleton = dynamic(() => import('../../Skeletons/StorySkeleton'))
 const StoryShow = () => {
   const router = useRouter()
   const [head_news, setHeadNews] = useState()
+  // const [getTitle, setGetTitle] = useState(router.query.category)
   const [related_news, setRelatedNews] = useState()
   const [user_id, setUserId] =
     typeof window !== 'undefined'
@@ -25,15 +26,32 @@ const StoryShow = () => {
   let title_color = 'text-RED'
   let bg_color = 'bg-YELLOW'
   // Function Get all News
+  const handle_news_redirection_story = (titles) => {
+    let ready_title = ''
+    if (titles?.includes('-')) {
+      let title = titles.replaceAll(/\s+/g, '-')
+      ready_title = `${title.replaceAll('-', '_')}`
+      // console.log(titles.includes('-'))
+      return `${ready_title}`
+    } else {
+      return titles
+    }
+
+    // console.log(ready_title)
+  }
   const get_all_news = async () => {
     // console.log(
     //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}&category_id=5e4e90ac52561e16596649f9`
     // )
     // /v1/Web/Story?story_id=
 
-    router.query.category &&
+    handle_news_redirection_story(router?.query?.category) &&
       axios
-        .get(`${BASE_URL}/v1/Web/Story?title=${router.query.category}`)
+        .get(
+          `${BASE_URL}/v1/Web/Story?title=${handle_news_redirection_story(
+            router?.query?.category
+          )}`
+        )
         .then((res) => {
           // console.log(res.data.data)
           setHeadNews(res?.data?.data?.story)
@@ -261,13 +279,15 @@ const StoryShow = () => {
   للتواصل معنا:
   media@alzubda.com
   `
+
+  // console.log(handle_news_redirection_story(a))
   const headTitle = `الزبدة | ${router.query.category}`
   // head_news && console.log(head_news)
   return (
     <React.Fragment>
       <div dir="rtl" id="project_body" translate="no">
         {head_news ? (
-          <section className="text-black mx-auto grid w-11/12 pt-10 lg:w-10/12">
+          <section className="mx-auto grid w-11/12 pt-10 text-black lg:w-10/12">
             <HeadComp
               headKeywords={headKeywords}
               headDescription={head_news?.stories_content.slice(0, 200)}
@@ -348,7 +368,7 @@ const StoryShow = () => {
               <section className="">
                 <div className="px-2.5 pt-2">
                   <div className="flex justify-between">
-                    <b className="text-red-800 flex pt-1.5 font-TSbold lg:hidden">
+                    <b className="flex pt-1.5 font-TSbold text-red-800 lg:hidden">
                       {head_news?.publisher_name}
                     </b>
                     <p className="flex px-2.5 pt-2 font-TSbold text-GRAY300 lg:hidden">
@@ -364,7 +384,7 @@ const StoryShow = () => {
                 </div>
                 <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
                   <p>
-                    <b className="text-red-800 hidden font-TSbold lg:flex">
+                    <b className="hidden font-TSbold text-red-800 lg:flex">
                       {head_news?.publisher_name}
                     </b>
                   </p>

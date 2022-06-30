@@ -89,18 +89,18 @@ const Arround_you = ({
   const handle_news_redirection_story = (titles) => {
     let ready_title = ''
     if (titles.includes('%')) {
-      let title = titles.replace(/\s+/g, '_')
+      let title = titles.replace(/\s+/g, '-')
       // console.log(`/${title.replace('%', '_')}`)
-      ready_title = `${title.replace('%', '_')}`
+      ready_title = `${title.replace('%', '-')}`
     } else if (titles.includes(' ')) {
-      let title = titles.replace(/\s+/g, '_')
-      ready_title = `${title.replace(' ', '_')}`
+      let title = titles.replace(/\s+/g, '-')
+      ready_title = `${title.replace(' ', '-')}`
     } else {
       ready_title = titles
     }
     if (titles.includes('?')) {
       let title = titles.replace(/\s+/g, '')
-      ready_title = `${title.replace('?', '_')}`
+      ready_title = `${title.replace('?', '-')}`
     }
 
     router.push(`/${ready_title}`)
@@ -211,61 +211,12 @@ const Arround_you = ({
                             }}
                           />
                         ))}
-                      <div className="text-black absolute bottom-2 right-2 rounded-full bg-white p-1">
-                        {like ? (
-                          // <svg
-                          //   xmlns="http://www.w3.org/2000/svg"
-                          //   className=" h-7 w-7 cursor-pointer"
-                          //   fill="#FF0000"
-                          //   viewBox="0 0 24 24"
-                          //   stroke="#FF0000"
-                          //   strokeWidth="2"
-                          //   onClick={() => {
-                          //     handle_like(
-                          //       important_news?.data[0]?._id,
-                          //       important_news?.data[0]?.is_loved
-                          //     )
-                          //   }}
-                          // >
-                          //   <path
-                          //     strokeLinecap="round"
-                          //     strokeLinejoin="round"
-                          //     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                          //   />
-                          // </svg>
-                          <img
-                            src="./assest/like-animation.gif"
-                            className=" h-7 w-7 cursor-pointer"
-                            alt="Like | Love"
-                            onClick={() => {
-                              handle_like(
-                                important_news?.data[0]?._id,
-                                important_news?.data[0]?.is_loved
-                              )
-                            }}
-                          />
-                        ) : (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className=" h-7 w-7 cursor-pointer opacity-70"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            onClick={() => {
-                              handle_like(
-                                important_news?.data[0]?._id,
-                                important_news?.data[0]?.is_loved
-                              )
-                            }}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                            />
-                          </svg>
-                        )}
+                      <div className="absolute bottom-2 right-2 rounded-full p-1 text-black">
+                        <Like
+                          user_id={user_id}
+                          story_id={important_news.data[0]?._id}
+                          isLoved={important_news.data[0]?.is_loved}
+                        />
                       </div>
                     </div>
                     <div
@@ -277,7 +228,7 @@ const Arround_you = ({
                       }}
                     >
                       <p>
-                        <b className="text-red-600 font-TSbold">
+                        <b className="font-TSbold text-red-600">
                           {important_news?.data[0]?.publisher_name}
                         </b>
                       </p>
@@ -324,7 +275,7 @@ const Arround_you = ({
                       </p>
                       <div className="my-2 flex justify-between">
                         <p
-                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
+                          className={`${theme} cursor-pointer rounded-lg py-1.5 px-5 font-TSExtra text-white hover:scale-110`}
                           onClick={() => {
                             handle_news_redirection_story(
                               important_news?.data[0]?.stories_headlines
@@ -355,7 +306,7 @@ const Arround_you = ({
                     return (
                       <section key={item?._id}>
                         <div
-                          className={`${card_color} text-black rounded-lg shadow-lg`}
+                          className={`${card_color} rounded-lg text-black shadow-lg`}
                           id="card"
                         >
                           <div>
@@ -413,7 +364,7 @@ const Arround_you = ({
                                     }}
                                   />
                                 ))}
-                              <div className="text-black rounded-full bg-white">
+                              <div className="rounded-full bg-white text-black">
                                 <Like
                                   user_id={user_id}
                                   story_id={item?._id}
@@ -424,7 +375,7 @@ const Arround_you = ({
 
                             <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">
                               <p>
-                                <b className="text-red-800 font-TSExtra">
+                                <b className="font-TSExtra text-red-800">
                                   {item.publisher_name}
                                 </b>
                               </p>
@@ -452,7 +403,7 @@ const Arround_you = ({
 
                           <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                             <p>
-                              <b className=" text-red-600 font-TSExtra">
+                              <b className=" font-TSExtra text-red-600">
                                 {item.publisher_name}
                               </b>
                             </p>
@@ -460,9 +411,9 @@ const Arround_you = ({
                               قبل {moment(item.published_on).fromNow(true)}
                             </p>
                           </div>
-                          <div className="mx-2.5 flex items-center justify-between">
+                          <div className="mx-2.5 flex items-center justify-between py-1">
                             <p
-                              className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                              className={`${theme} cursor-pointer rounded-lg py-1 px-4 font-TSExtra text-sm text-white hover:scale-110`}
                               onClick={() => {
                                 handle_news_redirection_story(
                                   item?.stories_headlines

@@ -74,18 +74,18 @@ const Video = ({
     //   ready_category = category
     // }
     if (titles.includes('%')) {
-      let title = titles.replace(/\s+/g, '_')
+      let title = titles.replace(/\s+/g, '-')
       // console.log(`/${title.replace('%', '_')}`)
-      ready_title = `${title.replace('%', '_')}`
+      ready_title = `${title.replace('%', '-')}`
     } else if (titles.includes(' ')) {
-      let title = titles.replace(/\s+/g, '_')
-      ready_title = `${title.replace(' ', '_')}`
+      let title = titles.replace(/\s+/g, '-')
+      ready_title = `${title.replace(' ', '-')}`
     } else {
       ready_title = titles
     }
     if (titles.includes('?')) {
       let title = titles.replace(/\s+/g, '')
-      ready_title = `${title.replace('?', '_')}`
+      ready_title = `${title.replace('?', '-')}`
     }
 
     router.push(`/${ready_title}`)
@@ -173,7 +173,7 @@ const Video = ({
           </div>{' '}
           {description && (
             <p
-              className={`text-black grid w-10/12 px-1 pb-2 font-TSmedium text-lg lg:hidden lg:text-xl`}
+              className={`grid w-10/12 px-1 pb-2 font-TSmedium text-lg text-black lg:hidden lg:text-xl`}
             >
               {description}
             </p>
@@ -266,7 +266,7 @@ const Video = ({
 
                         <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex lg:h-8">
                           <p>
-                            <b className=" text-red-800 font-TSExtra">
+                            <b className=" font-TSExtra text-red-800">
                               {item.publisher_name}
                             </b>
                           </p>
@@ -284,7 +284,7 @@ const Video = ({
 
                       <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                         <p>
-                          <b className=" text-red-800 font-TSExtra">
+                          <b className=" font-TSExtra text-red-800">
                             {item.publisher_name}
                           </b>
                         </p>
@@ -294,9 +294,9 @@ const Video = ({
                       </div>
 
                       {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
-                      <div className="mx-2.5 flex items-center justify-between">
+                      <div className="mx-2.5 flex items-center justify-between py-1.5">
                         <p
-                          className={`$rounded-lg cursor-pointer py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                          className={`${bg_color} cursor-pointer rounded-lg py-1 px-4 font-TSExtra text-sm text-white hover:scale-110`}
                           onClick={() => {
                             handle_news_redirection_story(
                               item?.primary_category[0]?.category_name,

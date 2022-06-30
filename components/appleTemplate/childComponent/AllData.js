@@ -32,18 +32,18 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
   const handle_news_redirection_story = (titles) => {
     let ready_title = ''
     if (titles.includes('%')) {
-      let title = titles.replace(/\s+/g, '_')
+      let title = titles.replace(/\s+/g, '-')
       // console.log(`/${title.replace('%', '_')}`)
-      ready_title = `${title.replace('%', '_')}`
+      ready_title = `${title.replace('%', '-')}`
     } else if (titles.includes(' ')) {
-      let title = titles.replace(/\s+/g, '_')
-      ready_title = `${title.replace(' ', '_')}`
+      let title = titles.replace(/\s+/g, '-')
+      ready_title = `${title.replace(' ', '-')}`
     } else {
       ready_title = titles
     }
     if (titles.includes('?')) {
       let title = titles.replace(/\s+/g, '')
-      ready_title = `${title.replace('?', '_')}`
+      ready_title = `${title.replace('?', '-')}`
     }
     router.push(`/${ready_title}`)
     replace && location.replace(`/${ready_title}`)
@@ -171,7 +171,7 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
                     <div className="mx-2.5 flex items-center justify-between pb-1.5">
                       {category ? (
                         <p
-                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                          className={`${bg_color} cursor-pointer rounded-lg px-4 py-1 font-TSExtra text-sm text-white hover:scale-110`}
                           onClick={() => {
                             handle_news_redirection_story(
                               item?.stories_headlines
@@ -182,8 +182,8 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
                         </p>
                       ) : (
                         <p
-                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
-                          onClick={() => {
+                        className={`${bg_color} cursor-pointer rounded-lg px-4 py-1 font-TSExtra text-sm text-white hover:scale-110`}
+                        onClick={() => {
                             handle_news_redirection_story(
                               item?.stories_headlines
                             )

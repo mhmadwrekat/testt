@@ -81,18 +81,18 @@ export const generateFeeds = async () => {
   const handle_url = (story) => {
     let ready_title = ''
     if (story.includes('%')) {
-      let title = story.replace(/\s+/g, '_')
+      let title = story.replace(/\s+/g, '-')
       // console.log(`/${title.replace('%', '_')}`)
-      ready_title = `${title.replace('%', '_')}`
+      ready_title = `${title.replace('%', '-')}`
     } else if (story.includes(' ')) {
-      let title = story.replace(/\s+/g, '_')
-      ready_title = `${title.replace(' ', '_')}`
+      let title = story.replace(/\s+/g, '-')
+      ready_title = `${title.replace(' ', '-')}`
     } else {
       ready_title = story
     }
     if (story.includes('?')) {
       let title = story.replace(/\s+/g, '')
-      ready_title = `${title.replace('?', '_')}`
+      ready_title = `${title.replace('?', '-')}`
     }
 
     let ready_url = ready_title
