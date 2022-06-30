@@ -346,7 +346,7 @@ const ImportantNews = ({
                     </p>
                     <div className="my-2 flex items-center justify-between">
                       <p
-                        className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
+                        className={`cursor-pointer rounded-lg bg-RED px-5 py-1 font-TSExtra text-white hover:scale-110`}
                         onClick={() => {
                           handle_news_redirection_story(
                             category_news?.data[0]?.stories_headlines
@@ -512,7 +512,7 @@ const ImportantNews = ({
                         {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
                         <div className="mx-2.5 flex items-center justify-between">
                           <p
-                            className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            className={`cursor-pointer rounded-lg bg-RED py-1 px-3 font-TSExtra text-sm text-white hover:scale-110`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 item?.stories_headlines

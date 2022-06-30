@@ -275,7 +275,7 @@ const Arround_you = ({
                       </p>
                       <div className="my-2 flex justify-between">
                         <p
-                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
+                          className={`${theme} cursor-pointer rounded-lg py-1.5 px-5 font-TSExtra text-white hover:scale-110`}
                           onClick={() => {
                             handle_news_redirection_story(
                               important_news?.data[0]?.stories_headlines
@@ -411,9 +411,9 @@ const Arround_you = ({
                               قبل {moment(item.published_on).fromNow(true)}
                             </p>
                           </div>
-                          <div className="mx-2.5 flex items-center justify-between">
+                          <div className="mx-2.5 flex items-center justify-between py-1">
                             <p
-                              className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                              className={`${theme} cursor-pointer rounded-lg py-1 px-4 font-TSExtra text-sm text-white hover:scale-110`}
                               onClick={() => {
                                 handle_news_redirection_story(
                                   item?.stories_headlines

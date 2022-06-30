@@ -275,9 +275,9 @@ const Colored = ({
                         {important_news?.data[0]?.stories_content.slice(0, 170)}
                         .....
                       </p>
-                      <div className="my-1 flex  justify-between pt-2.5">
+                      <div className="my-1 flex justify-between  py-1 pt-2.5">
                         <p
-                          className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY200 hover:text-RED`}
+                          className={`${theme} cursor-pointer rounded-lg py-1.5 px-5 font-TSExtra text-white hover:scale-110`}
                           onClick={() => {
                             handle_news_redirection_story(
                               important_news?.data[0]?.stories_headlines
@@ -425,9 +425,9 @@ const Colored = ({
                             </p>
                           </div>
 
-                          <div className="mx-2.5 flex items-center justify-between">
+                          <div className="mx-2.5 flex items-center justify-between py-1">
                             <p
-                              className={` cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY200 hover:text-RED`}
+                              className={`${theme} cursor-pointer rounded-lg py-1 px-4 font-TSExtra text-sm text-white hover:scale-110`}
                               onClick={() => {
                                 handle_news_redirection_story(
                                   item?.stories_headlines

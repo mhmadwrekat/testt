@@ -147,7 +147,7 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
                       <div className="mx-2.5 flex items-center justify-between pb-1.5">
                         {category ? (
                           <p
-                            className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED `}
+                            className={`${bg_color} cursor-pointer rounded-lg px-4 py-1 font-TSExtra text-sm text-white hover:scale-110`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 item?.stories_headlines
@@ -158,7 +158,7 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
                           </p>
                         ) : (
                           <p
-                            className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            className={`${bg_color} cursor-pointer rounded-lg px-4 py-1 font-TSExtra text-sm text-white hover:scale-110`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 item?.stories_headlines

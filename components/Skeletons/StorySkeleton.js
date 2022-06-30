@@ -30,7 +30,7 @@ const StorySkeleton = () => {
                 <div className="my-5 rounded-full font-TSExtra text-lg md:text-xl lg:h-3 lg:w-11/12 lg:text-3xl"></div>
               </div>
               <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
-                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-2/6 lg:text-3xl"></div>
+                <div className="my-5 rounded-full bg-GRAY50 font-TSExtra text-lg md:text-xl lg:h-6 lg:w-1/12 lg:text-3xl"></div>
                 <div className="flex px-2.5 pl-24 pt-5">
                   <svg
                     viewBox="0 0 24 24"

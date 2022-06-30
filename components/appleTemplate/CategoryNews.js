@@ -285,10 +285,10 @@ const Category_news = ({
                     <div className="absolute bottom-2 right-2 rounded-full p-1">
                       {/* {console.log(category_news.data[0]._id)} */}
                       <Like
-                          user_id={user_id}
-                          story_id={category_news.data[0]?._id}
-                          isLoved={category_news.data[0]?.is_loved}
-                        />
+                        user_id={user_id}
+                        story_id={category_news.data[0]?._id}
+                        isLoved={category_news.data[0]?.is_loved}
+                      />
                     </div>
                   </div>
                   <div
@@ -347,7 +347,7 @@ const Category_news = ({
                     </p>
                     <div className="my-5 flex items-center justify-between">
                       <p
-                        className={`cursor-pointer rounded-lg py-0.5 font-TSExtra text-GRAY400 hover:text-RED`}
+                        className={`${bg_color} cursor-pointer rounded-lg px-5 py-1.5 font-TSExtra text-white hover:scale-110`}
                         onClick={() => {
                           handle_news_redirection_story(
                             category_news?.data[0]?.stories_headlines
@@ -476,9 +476,9 @@ const Category_news = ({
                           </p>
                         </div>
                         {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
-                        <div className="mx-2.5 flex items-center justify-between">
+                        <div className="mx-2.5 flex items-center justify-between py-2.5">
                           <p
-                            className={` cursor-pointer rounded-lg py-4 font-TSExtra text-sm text-GRAY400 hover:text-RED`}
+                            className={`${bg_color} cursor-pointer rounded-lg px-4 py-1 font-TSExtra text-sm text-white hover:scale-110`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 item?.stories_headlines
