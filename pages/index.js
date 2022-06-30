@@ -66,6 +66,7 @@ const index = (props) => {
   const [showCategory, setShowCategory] = useState(true)
   const [searches, setSearches] = useState(false)
   const [click_subscribe, setClickSubscribe] = useState(true)
+  let userToken = props.userToken && props.userToken
   let user_id = props.user_id && props.user_id
   let country_code = props.country_code && props.country_code
 
@@ -303,8 +304,10 @@ const index = (props) => {
   media@alzubda.com
   `
   const headTitle = 'الزبدة | الأخبار'
-  
-  // news_unsubscribe && console.log(news_unsubscribe)
+
+  // console.log(userToken)
+  // all_news && console.log(all_news[0])
+
   return (
     <React.Fragment>
       <HeadComp
@@ -315,7 +318,7 @@ const index = (props) => {
       <div
         dir="rtl"
         id="project_body"
-        className="text-black bg-white"
+        className="bg-white text-black"
         translate="no"
       >
         {click_subscribe !== null && (
@@ -339,6 +342,7 @@ const index = (props) => {
               title={'أهم الأخبار'}
               category_news={all_news[0]}
               user_id={user_id}
+              userToken={userToken}
               subs={null}
               bg_color={'bg-RED'}
               title_color={'text-RED'}

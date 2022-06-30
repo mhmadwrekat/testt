@@ -52,6 +52,8 @@ function MyApp({ Component, pageProps }) {
   `
   const [country_code, setCountryCode] = useState()
   const [user_id, setUserId] = useState()
+  const [userToken, setUserToken] = useState()
+
   // Function Get User Info From LocalStorage else From API
   const register_user = async () => {
     try {
@@ -95,6 +97,9 @@ function MyApp({ Component, pageProps }) {
     typeof window !== 'undefined'
       ? setUserId(localStorage.getItem('user_id'))
       : ''
+    typeof window !== 'undefined'
+      ? setUserToken(localStorage.getItem('user_token'))
+      : ''
   }, [])
 
   return (
@@ -111,7 +116,12 @@ function MyApp({ Component, pageProps }) {
           gtag('config', '${ANALYTICS}');
         `}
       </Script>
-      <Component {...pageProps} country_code={country_code} user_id={user_id} />
+      <Component
+        {...pageProps}
+        country_code={country_code}
+        user_id={user_id}
+        userToken={userToken}
+      />
     </React.Fragment>
   )
 }

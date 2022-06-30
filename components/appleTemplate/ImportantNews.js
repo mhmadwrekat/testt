@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic'
 // component imports
 const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const Like = dynamic(() => import('./childComponent/Like'))
+const MostEmoji = dynamic(() => import('./childComponent/MostEmoji'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 
@@ -19,6 +20,7 @@ const ImportantNews = ({
   category_news,
   bg_color,
   subs,
+  userToken,
   description,
   fill_color,
   user_id,
@@ -224,7 +226,7 @@ const ImportantNews = ({
                       }
                     </p>
                   </div>
-                  <div className=" relative h-56 w-full lg:h-80">
+                  <div className="relative h-56 w-full lg:h-80">
                     {/* Desktop View */}
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
@@ -282,14 +284,21 @@ const ImportantNews = ({
                           }}
                         />
                       ))}
-                    <div className="absolute bottom-2 right-2 rounded-full p-1">
-                      {/* {console.log(category_news.data[0]._id)} */}
-                      <Like
-                        user_id={user_id}
-                        story_id={category_news.data[0]?._id}
-                        isLoved={category_news.data[0]?.is_loved}
-                      />
-                    </div>
+                    {/* {console.log(category_news.data[0]._id)} */}
+                    <Like
+                            userToken={userToken}
+                      user_id={user_id}
+                      story_id={category_news.data[0]?._id}
+                      isLoved={category_news.data[0]?.is_loved}
+                      reactions={category_news.data[0]?.reactions}
+                    />
+                    <MostEmoji
+                            userToken={userToken}
+                            user_id={user_id}
+                      story_id={category_news.data[0]?._id}
+                      isLoved={category_news.data[0]?.is_loved}
+                      reactions={category_news.data[0]?.reactions}
+                    />
                   </div>
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
@@ -344,7 +353,7 @@ const ImportantNews = ({
                       {category_news?.data[0]?.stories_content.slice(0, 170)}
                       .....
                     </p>
-                    <div className="my-2 flex items-center justify-between">
+                    <div className="my-3.5 flex items-center justify-between">
                       <p
                         className={`cursor-pointer rounded-lg bg-RED px-5 py-1 font-TSExtra text-white hover:scale-110`}
                         onClick={() => {
@@ -419,8 +428,8 @@ const ImportantNews = ({
                             </p>
                           )}
                         </div>
-                        <section className="flex bg-GRAY100 lg:grid">
-                          <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-full lg:py-0">
+                        <section className="grid bg-GRAY100 lg:grid">
+                          <div className="relative h-auto w-full lg:mr-0 lg:h-auto lg:w-full lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
@@ -430,7 +439,7 @@ const ImportantNews = ({
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  className="mx-auto h-32 w-full cursor-pointer rounded-b-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
                                     handle_news_redirection_story(
                                       item?.stories_headlines
@@ -442,7 +451,7 @@ const ImportantNews = ({
                                   loading="eager"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  className=" mx-auto h-32 w-full cursor-pointer rounded-b-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
                                     handle_news_redirection_story(
                                       item?.stories_headlines
@@ -451,6 +460,15 @@ const ImportantNews = ({
                                 />
                               ))}
                             <Like
+                            userToken={userToken}
+                            reactions={item?.reactions}
+                              user_id={user_id}
+                              story_id={item?._id}
+                              isLoved={item?.is_loved}
+                            />
+                            <MostEmoji
+                            userToken={userToken}
+                            reactions={item?.reactions}
                               user_id={user_id}
                               story_id={item?._id}
                               isLoved={item?.is_loved}
@@ -510,7 +528,7 @@ const ImportantNews = ({
                           </p>
                         </div>
                         {/* <div className=" mx-auto w-11/12 pt-1 opacity-60"></div> */}
-                        <div className="mx-2.5 flex items-center justify-between">
+                        <div className="mx-2.5 flex items-center justify-between py-1.5">
                           <p
                             className={`cursor-pointer rounded-lg bg-RED py-1 px-3 font-TSExtra text-sm text-white hover:scale-110`}
                             onClick={() => {

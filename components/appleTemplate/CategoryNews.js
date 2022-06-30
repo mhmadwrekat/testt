@@ -282,14 +282,12 @@ const Category_news = ({
                           }}
                         />
                       ))}
-                    <div className="absolute bottom-2 right-2 rounded-full p-1">
                       {/* {console.log(category_news.data[0]._id)} */}
                       <Like
                         user_id={user_id}
                         story_id={category_news.data[0]?._id}
                         isLoved={category_news.data[0]?.is_loved}
                       />
-                    </div>
                   </div>
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
