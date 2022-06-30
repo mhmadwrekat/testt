@@ -292,13 +292,14 @@ const Category_news = ({
                       userToken={userToken}
                       reactions={category_news.data[0]?.reactions}
                     />
+                    {/*
                     <MostEmoji
                       userToken={userToken}
                       reactions={category_news.data[0]?.reactions}
                       user_id={user_id}
                       story_id={category_news.data[0]?._id}
                       isLoved={category_news.data[0]?.is_loved}
-                    />
+                    /> */}
                   </div>
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
@@ -432,7 +433,7 @@ const Category_news = ({
                                   }}
                                 />
                               ))}
-                            <Like
+                            {/* <Like
                               user_id={user_id}
                               story_id={item?._id}
                               isLoved={item?.is_loved}
@@ -445,7 +446,7 @@ const Category_news = ({
                               user_id={user_id}
                               story_id={item?._id}
                               isLoved={item?.is_loved}
-                            />
+                            /> */}
                           </div>
 
                           <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">

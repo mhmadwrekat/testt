@@ -227,8 +227,8 @@ const Colored = ({
                         userToken={userToken}
                         reactions={important_news.data[0]?.reactions}
                         user_id={user_id}
-                        story_id={item?._id}
-                        isLoved={item?.is_loved}
+                        story_id={important_news.data[0]?._id}
+                        isLoved={important_news.data[0]?.is_loved}
                       />
                     </div>
                     <div
@@ -373,7 +373,7 @@ const Colored = ({
                                   />
                                 ))}
                               <div className="rounded-full bg-white text-black">
-                                <Like
+                                {/* <Like
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
@@ -386,7 +386,7 @@ const Colored = ({
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
-                                />
+                                /> */}
                               </div>
                             </div>
 

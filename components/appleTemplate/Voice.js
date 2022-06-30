@@ -167,7 +167,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
-                                <Like
+                                {/* <Like
                                   loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
@@ -181,7 +181,7 @@ const Voice = ({
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
-                                />
+                                /> */}
 
                                 {/* <div className="absolute bottom-1 left-1">
                                   <svg
@@ -238,7 +238,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
-                                <Like
+                                {/* <Like
                                   loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
@@ -252,7 +252,7 @@ const Voice = ({
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
-                                />
+                                /> */}
 
                                 {/* <div className="absolute bottom-1 left-1">
                                  <svg
@@ -331,7 +331,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
-                                <Like
+                                {/* <Like
                                   loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
@@ -345,7 +345,7 @@ const Voice = ({
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
-                                />
+                                /> */}
 
                                 {/* <div className="absolute bottom-1 left-1">
                                   <svg
@@ -401,7 +401,7 @@ const Voice = ({
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
-                                <Like
+                                {/* <Like
                                   loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
@@ -415,7 +415,7 @@ const Voice = ({
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
-                                />
+                                /> */}
 
                                 {/* <div className="absolute bottom-1 left-1">
                                  <svg
@@ -513,7 +513,7 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <Like
+                                  {/* <Like
                                     loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
@@ -528,7 +528,7 @@ const Voice = ({
                                     user_id={user_id}
                                     story_id={item?._id}
                                     isLoved={item?.is_loved}
-                                  />
+                                  /> */}
                                 </div>
                               </div>
                               <section>
@@ -589,7 +589,7 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <Like
+                                  {/* <Like
                                     loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
@@ -604,7 +604,7 @@ const Voice = ({
                                     user_id={user_id}
                                     story_id={item?._id}
                                     isLoved={item?.is_loved}
-                                  />
+                                  /> */}
                                 </div>
                               </div>
                               <section>
@@ -687,7 +687,7 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <Like
+                                  {/* <Like
                                     loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
@@ -702,7 +702,7 @@ const Voice = ({
                                     user_id={user_id}
                                     story_id={item?._id}
                                     isLoved={item?.is_loved}
-                                  />
+                                  /> */}
                                 </div>
                               </div>
                               <section>
@@ -763,7 +763,7 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <Like
+                                  {/* <Like
                                     loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
@@ -778,7 +778,7 @@ const Voice = ({
                                     user_id={user_id}
                                     story_id={item?._id}
                                     isLoved={item?.is_loved}
-                                  />
+                                  /> */}
                                 </div>
                               </div>
                               <section>
