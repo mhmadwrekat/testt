@@ -187,6 +187,7 @@ const Logaimat = ({
                               // width={800}
                               // height={350}
                               // priority
+                              loading="eager"
                               placeholder="blur"
                               blurDataURL={item.cover_photo}
                             />
@@ -205,6 +206,8 @@ const Logaimat = ({
                           <img
                             src="./assest/images/LogaimatHand.svg"
                             className="mx-auto w-4/12 justify-center pt-4"
+                            width="100"
+                            height="100"
                             alt="hand click"
                           />
                         </div>

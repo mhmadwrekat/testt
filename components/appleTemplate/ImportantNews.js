@@ -276,38 +276,38 @@ const ImportantNews = ({
                         //     )
                         //   }}
                         // />
-                        // <Image
-                        //   src={important_news_img}
-                        //   className="relative cursor-pointer rounded-b-md"
-                        //   alt={category_news.data[0].stories_headlines}
-                        //   quality={100}
-                        //   layout="fill"
-                        //   objectFit="cover"
-                        //   // width={800}
-                        //   // height={350}
-                        //   loading="eager"
-                        //   priority
-                        //   placeholder="blur"
-                        //   blurDataURL={important_news_img}
-                        //   onClick={() => {
-                        //     handle_news_redirection_story(
-                        //       category_news?.data[0]?.stories_headlines
-                        //     )
-                        //   }}
-                        // />
-                        <img
+                        <Image
                           src={important_news_img}
+                          className="relative cursor-pointer rounded-b-md"
                           alt={category_news.data[0].stories_headlines}
-                          className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          // onClick={() => {
-                          //   router.push(`/${category_news?.data[0]?._id}`)
-                          // }}
+                          quality={100}
+                          layout="fill"
+                          objectFit="cover"
+                          // width={800}
+                          // height={350}
+                          // loading="eager"
+                          // priority
+                          placeholder="blur"
+                          blurDataURL={important_news_img}
                           onClick={() => {
                             handle_news_redirection_story(
                               category_news?.data[0]?.stories_headlines
                             )
                           }}
                         />
+                        // <img
+                        //   src={important_news_img}
+                        //   alt={category_news.data[0].stories_headlines}
+                        //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                        //   // onClick={() => {
+                        //   //   router.push(`/${category_news?.data[0]?._id}`)
+                        //   // }}
+                        //   onClick={() => {
+                        //     handle_news_redirection_story(
+                        //       category_news?.data[0]?.stories_headlines
+                        //     )
+                        //   }}
+                        // />
                       ))}
                     {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1"> */}
                     {/* {console.log(category_news.data[0]._id)} */}

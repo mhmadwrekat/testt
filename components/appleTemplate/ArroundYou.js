@@ -225,36 +225,36 @@ const Arround_you = ({
                             //     )
                             //   }}
                             // />
-                            // <Image
-                            //   src={important_news_img}
-                            //   alt={important_news.data[0].stories_headlines}
-                            //   quality={100}
-                            //   layout="fill"
-                            //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                            //   objectFit="cover"
-                            //   // width={800}
-                            //   // height={350}
-                            //   loading="eager"
-                            //   priority
-                            //   placeholder="blur"
-                            //   blurDataURL={important_news_img}
-                            //   onClick={() => {
-                            //     handle_news_redirection_story(
-                            //       important_news?.data[0]?.stories_headlines
-                            //     )
-                            //   }}
-                            // />
-                            <img
-                              loading="eager"
+                            <Image
                               src={important_news_img}
                               alt={important_news.data[0].stories_headlines}
-                              className="h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                              quality={100}
+                              layout="fill"
+                              className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                              objectFit="cover"
+                              // width={800}
+                              // height={350}
+                              // loading="eager"
+                              // priority
+                              placeholder="blur"
+                              blurDataURL={important_news_img}
                               onClick={() => {
                                 handle_news_redirection_story(
                                   important_news?.data[0]?.stories_headlines
                                 )
                               }}
                             />
+                            // <img
+                            //   loading="eager"
+                            //   src={important_news_img}
+                            //   alt={important_news.data[0].stories_headlines}
+                            //   className="h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                            //   onClick={() => {
+                            //     handle_news_redirection_story(
+                            //       important_news?.data[0]?.stories_headlines
+                            //     )
+                            //   }}
+                            // />
                           ))}
                         <Like
                           loading="eager"
