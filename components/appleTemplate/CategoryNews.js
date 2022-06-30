@@ -261,8 +261,8 @@ const Category_news = ({
                           quality={75}
                           layout="fill"
                           objectFit="cover"
-                          loading="eager"
-                          priority
+                          // loading="eager"
+                          // priority
                           placeholder="blur"
                           blurDataURL={important_news_img}
                           onClick={() => {

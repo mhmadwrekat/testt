@@ -186,7 +186,7 @@ const Logaimat = ({
                               objectFit="cover"
                               // width={800}
                               // height={350}
-                              priority
+                              // priority
                               placeholder="blur"
                               blurDataURL={item.cover_photo}
                             />
