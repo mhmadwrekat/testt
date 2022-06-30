@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
+import Image from 'next/image'
 
 // component imports
 import LogaimaModal from './childComponent/LogamiatModal'
@@ -176,17 +177,31 @@ const Logaimat = ({
                                 h-72 w-44 cursor-pointer rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
                             />
                           ) : (
-                            <img
-                              loading="eager"
+                            <Image
                               src={item.cover_photo}
                               alt={item.topic_name}
                               className="mx-auto h-72 w-44 cursor-pointer rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
+                              quality={70}
+                              layout="fill"
+                              objectFit="cover"
+                              // width={800}
+                              // height={350}
+                              priority
+                              placeholder="blur"
+                              blurDataURL={item.cover_photo}
                             />
+                            // <img
+                            //   loading="eager"
+                            //   src={item.cover_photo}
+                            //   alt={item.topic_name}
+                            //   className="mx-auto h-72 w-44 cursor-pointer rounded-md object-cover object-top md:h-full md:w-full lg:h-96 lg:w-72"
+                            // />
                           ))}
                         <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full cursor-pointer overflow-hidden bg-white opacity-0 transition ease-in-out hover:opacity-80">
                           <p className="mx-auto w-8/12 pt-10 text-center font-TSExtra text-2xl lg:pt-24">
                             اضغط هنا لمتابعة القراءة
                           </p>
+
                           <img
                             src="./assest/images/LogaimatHand.svg"
                             className="mx-auto w-4/12 justify-center pt-4"

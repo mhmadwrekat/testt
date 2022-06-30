@@ -187,7 +187,7 @@ const Arround_you = ({
                           important_news_img.includes('youtu.be') ? (
                             <img
                               loading="eager"
-                              src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                              src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                 important_news_img
                               )}/0.jpg`}
                               alt={important_news.data[0].stories_headlines}
@@ -384,7 +384,7 @@ const Arround_you = ({
                                   <div className="relative h-28 w-full">
                                     <img
                                       loading="eager"
-                                      src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                         item.stories_media_url[0]
                                       )}/0.jpg`}
                                       alt={item.stories_headlines}

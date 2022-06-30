@@ -387,21 +387,6 @@ sky news
               title_color={'text-RED'}
               fill_color={'fill-RED'}
             />
-
-            {all_news[2] ? (
-              <ArroundYou
-                bg_image={bg_image}
-                loading="eager"
-                title={'يدور حولك'}
-                important_news={all_news[2]}
-                user_id={user_id}
-                card_color={'bg-GRAY100'}
-                theme={'bg-Purp100'}
-                text_color={'text-GRAY100'}
-                fill_color={'fill-Purp100'}
-                description={' جميع ما يدور من حولك من أخبار و مواضيع'}
-              />
-            ) : null}
             {all_news[1]?.data?.length > 4 ? (
               <Colored
                 loading="eager"

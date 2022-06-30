@@ -252,6 +252,7 @@ const ImportantNews = ({
                             )
                           }}
                         />
+                      ) : (
                         // <Image
                         //   src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                         //     important_news_img
@@ -275,7 +276,6 @@ const ImportantNews = ({
                         //     )
                         //   }}
                         // />
-                      ) : (
                         <Image
                           src={important_news_img}
                           className="relative cursor-pointer rounded-b-md"
@@ -456,7 +456,7 @@ const ImportantNews = ({
                                 <div className="relative h-28 w-full">
                                   <img
                                     loading="eager"
-                                    src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
                                     alt={item.stories_headlines}
