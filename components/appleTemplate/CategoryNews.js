@@ -237,16 +237,38 @@ const Category_news = ({
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
-                        <img
-                          loading="eager"
-                          src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                        // <img
+                        //   loading="eager"
+                        //   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                        //     important_news_img
+                        //   )}/0.jpg`}
+                        //   alt={category_news.data[0].stories_headlines}
+                        //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                        //   // onClick={() => {
+                        //   //   router.push(`/${category_news?.data[0]?._id}`)
+                        //   // }}
+                        //   onClick={() => {
+                        //     handle_news_redirection_story(
+                        //       category_news?.data[0]?.stories_headlines
+                        //     )
+                        //   }}
+                        // />
+                        <Image
+                          src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          // onClick={() => {
-                          //   router.push(`/${category_news?.data[0]?._id}`)
-                          // }}
+                          quality={75}
+                          layout="fill"
+                          objectFit="cover"
+                          loading="lazy"
+                          // loading="eager"
+                          // priority
+                          placeholder="blur"
+                          blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                            important_news_img
+                          )}/0.jpg`}
                           onClick={() => {
                             handle_news_redirection_story(
                               category_news?.data[0]?.stories_headlines
@@ -396,7 +418,7 @@ const Category_news = ({
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
                                 <div className="relative h-28">
-                                  <img
+                                  {/* <img
                                     loading="eager"
                                     src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
@@ -406,6 +428,29 @@ const Category_news = ({
                                     // onClick={() => {
                                     //   router.push(`/${item?._id}`)
                                     // }}
+                                    onClick={() => {
+                                      handle_news_redirection_story(
+                                        item?.stories_headlines
+                                      )
+                                    }}
+                                  /> */}
+                                  <Image
+                                    src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
+                                    quality={75}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    // width={800}
+                                    // height={300}
+                                    loading="lazy"
+                                    // priority
+                                    placeholder="blur"
+                                    blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
                                     onClick={() => {
                                       handle_news_redirection_story(
                                         item?.stories_headlines

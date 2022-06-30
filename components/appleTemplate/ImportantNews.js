@@ -236,16 +236,23 @@ const ImportantNews = ({
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
-                        <img
-                          loading="eager"
+                        <Image
                           src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
+                          quality={75}
+                          layout="fill"
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          // onClick={() => {
-                          //   router.push(`/${category_news?.data[0]?._id}`)
-                          // }}
+                          objectFit="cover"
+                          // width={800}
+                          // height={350}
+                          loading="lazy"
+                          // priority
+                          placeholder="blur"
+                          blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                            important_news_img
+                          )}/0.jpg`}
                           onClick={() => {
                             handle_news_redirection_story(
                               category_news?.data[0]?.stories_headlines
@@ -253,23 +260,16 @@ const ImportantNews = ({
                           }}
                         />
                       ) : (
-                        // <Image
+                        // <img
+                        //   loading="eager"
                         //   src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                         //     important_news_img
                         //   )}/0.jpg`}
                         //   alt={category_news.data[0].stories_headlines}
-                        //   quality={100}
-                        //   layout="fill"
                         //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                        //   objectFit="cover"
-                        //   // width={800}
-                        //   // height={350}
-                        //   loading="eager"
-                        //   priority
-                        //   placeholder="blur"
-                        //   blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                        //     important_news_img
-                        //   )}/0.jpg`}
+                        //   // onClick={() => {
+                        //   //   router.push(`/${category_news?.data[0]?._id}`)
+                        //   // }}
                         //   onClick={() => {
                         //     handle_news_redirection_story(
                         //       category_news?.data[0]?.stories_headlines
@@ -454,7 +454,7 @@ const ImportantNews = ({
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
                                 <div className="relative h-28 w-full">
-                                  <img
+                                  {/* <img
                                     loading="eager"
                                     src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
@@ -466,8 +466,8 @@ const ImportantNews = ({
                                         item?.stories_headlines
                                       )
                                     }}
-                                  />
-                                  {/* <Image
+                                  /> */}
+                                  <Image
                                     src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
@@ -478,16 +478,18 @@ const ImportantNews = ({
                                     objectFit="cover"
                                     // width={800}
                                     // height={300}
-                                    loading="eager"
-                                    priority
+                                    loading="lazy"
+                                    // priority
                                     placeholder="blur"
-                                    blurDataURL={item.stories_media_url[0]}
+                                    blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
                                     onClick={() => {
                                       handle_news_redirection_story(
                                         item?.stories_headlines
                                       )
                                     }}
-                                  /> */}
+                                  />
                                   <Like
                                     bottom={'bottom-0'}
                                     loading="eager"
