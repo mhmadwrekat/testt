@@ -10,7 +10,15 @@ import haha_json from '../../../public/assest/emoji/haha.json'
 import sad_json from '../../../public/assest/emoji/sad.json'
 import wow_json from '../../../public/assest/emoji/wow.json'
 
-const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
+const Like = ({
+  user_id,
+  isLoved,
+  story_id,
+  bottom,
+  reactions,
+  userToken,
+  lgBottom,
+}) => {
   const [openLike, setOpenLike] = useState(false)
   const [myEmoji, setMyEmoji] = useState(reactions?.my_selected_emoji)
   const [openMyEmoji, setOpenMyEmoji] = reactions?.my_selected_emoji
@@ -66,58 +74,84 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
     // })
     setOpenLike(false)
   }
-  bottom ? bottom : (bottom = 'bottom-2')
+  bottom ? bottom : (bottom = 'bottom-3')
+  lgBottom ? lgBottom : (lgBottom = 'lg:bottom-0')
   return (
     <React.Fragment>
       <div
-        className={`${bottom} absolute right-1 rounded-full lg:bottom-1`}
+        className={`${bottom} absolute right-1 rounded-full ${lgBottom}`}
         loading="eager"
       >
         {
           openMyEmoji ? (
             <React.Fragment>
               {myEmoji === 'haha' && (
-                <div className="h-8 w-8 rounded-full bg-white">
-                  <Lottie
+                <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white">
+                  {/* <Lottie
                     animationData={haha_json}
                     loop={false}
                     loading="eager"
+                  /> */}
+                  <img
+                    src="./assest/haha.jpg"
+                    className="mx-auto h-5 w-5 rounded-full"
+                    alt="sad"
                   />
                 </div>
               )}
               {myEmoji === 'like' && (
-                <div className="h-8 w-8 rounded-full bg-white">
-                  <Lottie
+                <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white">
+                  {/* <Lottie
                     animationData={like_json}
                     loop={false}
                     loading="eager"
+                  /> */}
+                  <img
+                    src="./assest/like.jpg"
+                    className="mx-auto h-5 w-5 rounded-full"
+                    alt="sad"
                   />
                 </div>
               )}
               {myEmoji === 'sad' && (
-                <div className="h-8 w-8 rounded-full bg-white">
-                  <Lottie
+                <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white">
+                  {/* <Lottie
                     animationData={sad_json}
                     loop={false}
                     loading="eager"
+                  /> */}
+                  <img
+                    src="./assest/sad.jpg"
+                    className="mx-auto h-5 w-5 rounded-full"
+                    alt="sad"
                   />
                 </div>
               )}
               {myEmoji === 'wow' && (
-                <div className="h-8 w-8 rounded-full bg-white">
-                  <Lottie
+                <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white">
+                  {/* <Lottie
                     animationData={wow_json}
                     loop={false}
                     loading="eager"
+                  /> */}
+                  <img
+                    src="./assest/wow.jpg"
+                    className="mx-auto h-5 w-5 rounded-full"
+                    alt="sad"
                   />
                 </div>
               )}
               {myEmoji === 'angry' && (
-                <div className="h-8 w-8 rounded-full bg-white">
-                  <Lottie
+                <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white">
+                  {/* <Lottie
                     animationData={angry_json}
                     loop={false}
                     loading="eager"
+                  /> */}
+                  <img
+                    src="./assest/angry.jpg"
+                    className="mx-auto h-5 w-5 rounded-full"
+                    alt="sad"
                   />
                 </div>
               )}
@@ -132,7 +166,7 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
                 onClick={() => {
                   handle_open()
                 }}
-                className=" absolute right-1 bottom-0 m-0 h-9 w-9 cursor-pointer"
+                className={`${lgBottom} absolute right-1 bottom-0 m-0 h-10 w-10 cursor-pointer`}
               >
                 <g filter="url(#a)">
                   <circle
@@ -195,75 +229,100 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
               {openLike && (
                 <Fade>
                   <div
-                    className="mb-1 flex rounded-full bg-white"
+                    className="mb-2 flex rounded-full bg-white"
                     loading="eager"
                   >
                     <div
                       loading="eager"
-                      className="h-8 w-8 cursor-pointer"
+                      className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
                       onClick={() => {
                         handleLike(story_id, 'like')
                       }}
                     >
-                      <Lottie
+                      {/* <Lottie
                         animationData={like_json}
                         loop={false}
                         loading="eager"
+                      /> */}
+                      <img
+                        src="./assest/like.jpg"
+                        className="mx-auto h-5 w-5 rounded-full"
+                        alt="sad"
                       />
                     </div>
                     {/* <Fade delay={200}> */}
                     <div
-                      className="h-8 w-8 cursor-pointer"
+                      className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
                       onClick={() => {
                         handleLike(story_id, 'angry')
                       }}
                     >
-                      <Lottie
+                      {/* <Lottie
                         animationData={angry_json}
                         loop={false}
                         loading="eager"
+                      /> */}
+                      <img
+                        src="./assest/angry.jpg"
+                        className="mx-auto h-5 w-5 rounded-full"
+                        alt="sad"
                       />
                     </div>
                     {/* </Fade> */}
                     {/* <Fade delay={300}> */}
                     <div
-                      className="h-8 w-8 cursor-pointer"
+                      className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
                       onClick={() => {
                         handleLike(story_id, 'haha')
                       }}
                     >
-                      <Lottie
+                      {/* <Lottie
                         animationData={haha_json}
                         loop={false}
                         loading="eager"
+                      /> */}
+                      <img
+                        src="./assest/haha.jpg"
+                        className="mx-auto h-5 w-5 rounded-full"
+                        alt="sad"
                       />
                     </div>
                     {/* </Fade> */}
                     {/* <Fade delay={400}> */}
                     <div
-                      className="h-8 w-8 cursor-pointer"
+                      className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
                       onClick={() => {
                         handleLike(story_id, 'wow')
                       }}
                     >
-                      <Lottie
+                      {/* <Lottie
                         animationData={wow_json}
                         loop={false}
                         loading="eager"
+                      /> */}
+                      <img
+                        src="./assest/wow.jpg"
+                        className="mx-auto h-5 w-5 rounded-full"
+                        alt="sad"
                       />
                     </div>
                     {/* </Fade> */}
                     {/* <Fade delay={500}> */}
                     <div
-                      className="h-8 w-8 cursor-pointer"
+                      className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
                       onClick={() => {
                         handleLike(story_id, 'sad')
                       }}
                     >
-                      <Lottie
+                      {/* <Lottie
                         animationData={sad_json}
                         loop={false}
                         loading="eager"
+                      /> */}
+                      <img
+                        src="./assest/sad.jpg"
+                        className="mx-auto h-5 w-5 rounded-full"
+                        alt="sad"
                       />
                     </div>
                     {/* </Fade> */}

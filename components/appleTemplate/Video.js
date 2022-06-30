@@ -300,7 +300,6 @@ const Video = ({
                           className={`${bg_color} cursor-pointer rounded-lg py-1 px-4 font-TSExtra text-sm text-white hover:scale-110`}
                           onClick={() => {
                             handle_news_redirection_story(
-                              item?.primary_category[0]?.category_name,
                               item?.stories_headlines
                             )
                           }}

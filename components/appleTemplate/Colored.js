@@ -217,19 +217,21 @@ const Colored = ({
                           />
                         ))}
                       <Like
+                      lgBottom={'lg-bottom-1'}
+
                         user_id={user_id}
                         story_id={important_news.data[0]?._id}
                         isLoved={important_news.data[0]?.is_loved}
                         userToken={userToken}
                         reactions={important_news.data[0]?.reactions}
                       />
-                      <MostEmoji
+                      {/* <MostEmoji
                         userToken={userToken}
                         reactions={important_news.data[0]?.reactions}
                         user_id={user_id}
                         story_id={important_news.data[0]?._id}
                         isLoved={important_news.data[0]?.is_loved}
-                      />
+                      /> */}
                     </div>
                     <div
                       className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
@@ -373,14 +375,14 @@ const Colored = ({
                                   />
                                 ))}
                               <div className="rounded-full bg-white text-black">
-                                {/* <Like
+                                <Like
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
                                   userToken={userToken}
                                   reactions={item?.reactions}
                                 />
-                                <MostEmoji
+                                {/* <MostEmoji
                                   userToken={userToken}
                                   reactions={item?.reactions}
                                   user_id={user_id}

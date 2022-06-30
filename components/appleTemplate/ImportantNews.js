@@ -286,19 +286,20 @@ const ImportantNews = ({
                       ))}
                     {/* {console.log(category_news.data[0]._id)} */}
                     <Like
-                            userToken={userToken}
+                      lgBottom={'lg-bottom-1'}
+                      userToken={userToken}
                       user_id={user_id}
                       story_id={category_news.data[0]?._id}
                       isLoved={category_news.data[0]?.is_loved}
                       reactions={category_news.data[0]?.reactions}
                     />
-                    <MostEmoji
+                    {/* <MostEmoji
                             userToken={userToken}
                             user_id={user_id}
                       story_id={category_news.data[0]?._id}
                       isLoved={category_news.data[0]?.is_loved}
                       reactions={category_news.data[0]?.reactions}
-                    />
+                    /> */}
                   </div>
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
@@ -460,19 +461,20 @@ const ImportantNews = ({
                                 />
                               ))}
                             <Like
+                              bottom={'bottom-1'}
+                              userToken={userToken}
+                              reactions={item?.reactions}
+                              user_id={user_id}
+                              story_id={item?._id}
+                              isLoved={item?.is_loved}
+                            />
+                            {/* <MostEmoji
                             userToken={userToken}
                             reactions={item?.reactions}
                               user_id={user_id}
                               story_id={item?._id}
                               isLoved={item?.is_loved}
-                            />
-                            <MostEmoji
-                            userToken={userToken}
-                            reactions={item?.reactions}
-                              user_id={user_id}
-                              story_id={item?._id}
-                              isLoved={item?.is_loved}
-                            />
+                            /> */}
                           </div>
 
                           <div

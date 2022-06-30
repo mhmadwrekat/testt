@@ -53,8 +53,13 @@ const MostEmoji = ({ user_id, isLoved, story_id, bottom, reactions }) => {
         <div className="absolute left-0 bottom-6 w-8 rounded-full bg-white text-center font-TSExtra text-xs text-black">
           {Math.floor(Math.random() * 100)}
         </div>
-        <div className="h-8 w-8 cursor-pointer rounded-full bg-white">
-          <Lottie animationData={sad_json} loop={false} loading="eager" />
+        <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white">
+          <img
+            src="./assest/sad.jpg"
+            className="mx-auto h-5 w-5 rounded-full"
+            alt="sad"
+          />
+          {/* <Lottie animationData={sad_json} loop={false} loading="eager" /> */}
         </div>
       </div>
     </React.Fragment>

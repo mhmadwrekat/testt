@@ -286,6 +286,7 @@ const Category_news = ({
                       ))}
                     {/* {console.log(category_news.data[0]._id)} */}
                     <Like
+                      lgBottom={'lg-bottom-1'}
                       user_id={user_id}
                       story_id={category_news.data[0]?._id}
                       isLoved={category_news.data[0]?.is_loved}
@@ -433,14 +434,14 @@ const Category_news = ({
                                   }}
                                 />
                               ))}
-                            {/* <Like
+                            <Like
                               user_id={user_id}
                               story_id={item?._id}
                               isLoved={item?.is_loved}
                               userToken={userToken}
                               reactions={item?.reactions}
                             />
-                            <MostEmoji
+                            {/*  <MostEmoji
                               userToken={userToken}
                               reactions={item?.reactions}
                               user_id={user_id}
