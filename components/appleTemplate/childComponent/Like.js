@@ -79,7 +79,7 @@ const Like = ({ user_id, isLoved, story_id, bottom, reactions, userToken }) => {
               {myEmoji === 'haha' && (
                 <div className="h-8 w-8 rounded-full bg-white">
                   <Lottie
-                    animationData={sad_json}
+                    animationData={haha_json}
                     loop={false}
                     loading="eager"
                   />
