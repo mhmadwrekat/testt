@@ -464,7 +464,7 @@ const Arround_you = ({
                                   //   }}
                                   // />
                                   <div className="relative h-28">
-                                    {/* <Image
+                                    <Image
                                       src={item.stories_media_url[0]}
                                       alt={item.stories_headlines}
                                       className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
@@ -473,8 +473,8 @@ const Arround_you = ({
                                       objectFit="cover"
                                       // width={800}
                                       // height={300}
-                                      loading="eager"
-                                      priority
+                                      loading="lazy"
+                                      // priority
                                       placeholder="blur"
                                       blurDataURL={item.stories_media_url[0]}
                                       onClick={() => {
@@ -482,8 +482,8 @@ const Arround_you = ({
                                           item?.stories_headlines
                                         )
                                       }}
-                                    /> */}
-                                    <img
+                                    />
+                                    {/* <img
                                       loading="eager"
                                       src={item.stories_media_url[0]}
                                       alt={item.stories_headlines}
@@ -492,8 +492,8 @@ const Arround_you = ({
                                         handle_news_redirection_story(
                                           item?.stories_headlines
                                         )
-                                      }}
-                                    />
+                                      }} 
+                                    />*/}
                                     <Like
                                       bottom={'-bottom-2'}
                                       loading="eager"

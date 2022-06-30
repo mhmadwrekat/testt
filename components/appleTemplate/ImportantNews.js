@@ -489,7 +489,7 @@ const ImportantNews = ({
                                     }}
                                   /> */}
                                   <Like
-                                    bottom={'-bottom-2'}
+                                    bottom={'bottom-0'}
                                     loading="eager"
                                     user_id={user_id}
                                     story_id={item?._id}
@@ -498,7 +498,7 @@ const ImportantNews = ({
                                 </div>
                               ) : (
                                 <div className="relative h-28">
-                                  {/* <Image
+                                  <Image
                                     src={item.stories_media_url[0]}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
@@ -507,8 +507,8 @@ const ImportantNews = ({
                                     objectFit="cover"
                                     // width={800}
                                     // height={300}
-                                    loading="eager"
-                                    priority
+                                    loading="lazy"
+                                    // priority
                                     placeholder="blur"
                                     blurDataURL={item.stories_media_url[0]}
                                     onClick={() => {
@@ -516,8 +516,8 @@ const ImportantNews = ({
                                         item?.stories_headlines
                                       )
                                     }}
-                                  /> */}
-                                  <img
+                                  />
+                                  {/* <img
                                     loading="eager"
                                     src={item.stories_media_url[0]}
                                     alt={item.stories_headlines}
@@ -527,9 +527,9 @@ const ImportantNews = ({
                                         item?.stories_headlines
                                       )
                                     }}
-                                  />
+                                  /> */}
                                   <Like
-                                    bottom={'-bottom-2'}
+                                    bottom={'bottom-0'}
                                     loading="eager"
                                     user_id={user_id}
                                     story_id={item?._id}

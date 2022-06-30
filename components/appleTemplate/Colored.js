@@ -6,6 +6,7 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 
 // component imports
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
@@ -203,21 +204,39 @@ const Colored = ({
                             }}
                           />
                         ) : (
-                          <img
-                            loading="eager"
+                          <Image
                             src={important_news_img}
                             alt={important_news.data[0].stories_headlines}
                             className=" h-56 w-full cursor-pointer object-cover lg:h-80"
+                            quality={75}
+                            layout="fill"
+                            objectFit="cover"
+                            loading="lazy"
+                            // loading="eager"
+                            // priority
+                            placeholder="blur"
+                            blurDataURL={important_news_img}
                             onClick={() => {
                               handle_news_redirection_story(
                                 important_news?.data[0]?.stories_headlines
                               )
                             }}
                           />
+                          // <img
+                          //   loading="eager"
+                          //   src={important_news_img}
+                          //   alt={important_news.data[0].stories_headlines}
+                          //   className=" h-56 w-full cursor-pointer object-cover lg:h-80"
+                          //   onClick={() => {
+                          //     handle_news_redirection_story(
+                          //       important_news?.data[0]?.stories_headlines
+                          //     )
+                          //   }}
+                          // />
                         ))}
                       <Like
-                      loading="eager"
-                      bottom={'bottom-1'}
+                        loading="eager"
+                        bottom={'bottom-1'}
                         user_id={user_id}
                         story_id={important_news?.data[0]?._id}
                         isLoved={important_news?.data[0]?.is_loved}
@@ -232,7 +251,7 @@ const Colored = ({
                       }}
                     >
                       <p>
-                        <b className="text-red-600 font-TSbold">
+                        <b className="font-TSbold text-red-600">
                           {important_news?.data[0]?.publisher_name}
                         </b>
                       </p>
@@ -364,9 +383,9 @@ const Colored = ({
                                     }}
                                   />
                                 ))}
-                              <div className="text-black rounded-full bg-white">
+                              <div className="rounded-full bg-white text-black">
                                 <Like
-                                loading="eager"
+                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
@@ -376,7 +395,7 @@ const Colored = ({
 
                             <div className="hidden h-6 justify-between px-0 pt-1.5 font-TSlight text-xs lg:flex">
                               <p>
-                                <b className="text-red-600 font-TSExtra">
+                                <b className="font-TSExtra text-red-600">
                                   {item.publisher_name}
                                 </b>
                               </p>
@@ -405,7 +424,7 @@ const Colored = ({
                           <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                             <p>
                               <b
-                                className="text-red-600 cursor-pointer font-TSExtra"
+                                className="cursor-pointer font-TSExtra text-red-600"
                                 onClick={() => {
                                   handle_news_redirection_story(
                                     item?.stories_headlines
