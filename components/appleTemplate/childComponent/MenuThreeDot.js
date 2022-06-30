@@ -52,16 +52,16 @@ const Test = ({
         'x-api-key': x_key,
       },
     }
-    axios
-      .post(
-        `https://d1i218h7fe.execute-api.us-east-2.amazonaws.com/production/`,
-        data,
-        config
-      )
-      .then((res) => {
-        // console.log(res)
-        // console.log('OUTSIDE')
-      })
+    // axios
+    //   .post(
+    //     `https://d1i218h7fe.execute-api.us-east-2.amazonaws.com/production/`,
+    //     data,
+    //     config
+    //   )
+    //   .then((res) => {
+    //     // console.log(res)
+    //     // console.log('OUTSIDE')
+    //   })
   }
   const share_button = (story) => {
     setOpenItem(!open_item)
@@ -104,16 +104,16 @@ const Test = ({
         'x-api-key': x_key_event,
       },
     }
-    axios
-      .post(
-        `https://b0l6mu9l13.execute-api.us-east-2.amazonaws.com/production/`,
-        data,
-        config
-      )
-      .then((res) => {
-        // console.log(res)
-        // console.log('INSIDE')
-      })
+    // axios
+    //   .post(
+    //     `https://b0l6mu9l13.execute-api.us-east-2.amazonaws.com/production/`,
+    //     data,
+    //     config
+    //   )
+    //   .then((res) => {
+    //     // console.log(res)
+    //     // console.log('INSIDE')
+    //   })
   }
   return (
     <React.Fragment>
@@ -133,7 +133,7 @@ const Test = ({
           <>
             <div className="absolute top-0 left-9 w-32 border-0 lg:left-9">
               <div
-                className="text-black flex w-48 border-0 pb-1 text-center font-TSbold text-xs lg:w-56"
+                className="flex w-48 border-0 pb-1 text-center font-TSbold text-xs text-black lg:w-56"
                 onClick={() => {
                   setOpenItem(!open_item)
                 }}
