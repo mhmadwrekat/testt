@@ -285,7 +285,7 @@ const ImportantNews = ({
                           objectFit="cover"
                           // width={800}
                           // height={350}
-                          // loading="eager"
+                          loading="lazy"
                           // priority
                           placeholder="blur"
                           blurDataURL={important_news_img}

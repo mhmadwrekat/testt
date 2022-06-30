@@ -187,7 +187,7 @@ const Logaimat = ({
                               // width={800}
                               // height={350}
                               // priority
-                              loading="eager"
+                              // loading="eager"
                               placeholder="blur"
                               blurDataURL={item.cover_photo}
                             />

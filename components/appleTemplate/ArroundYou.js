@@ -232,6 +232,7 @@ const Arround_you = ({
                               layout="fill"
                               className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
                               objectFit="cover"
+                              loading="lazy"
                               // width={800}
                               // height={350}
                               // loading="eager"

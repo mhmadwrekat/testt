@@ -261,6 +261,7 @@ const Category_news = ({
                           quality={75}
                           layout="fill"
                           objectFit="cover"
+                          loading="lazy"
                           // loading="eager"
                           // priority
                           placeholder="blur"
