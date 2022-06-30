@@ -383,7 +383,7 @@ const Arround_you = ({
                                   'youtu.be'
                                 ) ? (
                                   <div className="relative h-28 w-full">
-                                    <img
+                                    {/* <img
                                       loading="eager"
                                       src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                         item.stories_media_url[0]
@@ -398,8 +398,8 @@ const Arround_you = ({
                                           item?.stories_headlines
                                         )
                                       }}
-                                    />
-                                    {/* <Image
+                                    /> */}
+                                    <Image
                                       src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                         item.stories_media_url[0]
                                       )}/0.jpg`}
@@ -410,8 +410,7 @@ const Arround_you = ({
                                       objectFit="cover"
                                       // width={800}
                                       // height={300}
-                                      loading="eager"
-                                      priority
+                                      loading="lazy"
                                       placeholder="blur"
                                       blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                         item.stories_media_url[0]
@@ -421,7 +420,7 @@ const Arround_you = ({
                                           item?.stories_headlines
                                         )
                                       }}
-                                    /> */}
+                                    />
                                     <Like
                                       bottom={'-bottom-2'}
                                       loading="eager"
