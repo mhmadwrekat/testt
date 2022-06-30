@@ -66,7 +66,7 @@ const IndexSkeleton = () => {
                         fill="#B0B0B0"
                         viewBox="0 0 40 40"
                         xmlns="http://www.w3.org/2000/svg"
-                        className=" h-7 w-7 cursor-pointer opacity-50"
+                        className=" h-10 w-10 cursor-pointer opacity-50"
                       >
                         <g filter="url(#a)">
                           <circle
@@ -181,7 +181,7 @@ const IndexSkeleton = () => {
                                 fill="#B0B0B0"
                                 viewBox="0 0 40 40"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className=" h-5 w-5 cursor-pointer opacity-50"
+                                className=" h-7 w-7 cursor-pointer opacity-50"
                               >
                                 <g filter="url(#a)">
                                   <circle
