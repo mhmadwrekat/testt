@@ -204,35 +204,35 @@ const Colored = ({
                             }}
                           />
                         ) : (
-                          <Image
-                            src={important_news_img}
-                            alt={important_news.data[0].stories_headlines}
-                            className=" h-56 w-full cursor-pointer object-cover lg:h-80"
-                            quality={75}
-                            layout="fill"
-                            objectFit="cover"
-                            loading="lazy"
-                            // loading="eager"
-                            // priority
-                            placeholder="blur"
-                            blurDataURL={important_news_img}
-                            onClick={() => {
-                              handle_news_redirection_story(
-                                important_news?.data[0]?.stories_headlines
-                              )
-                            }}
-                          />
-                          // <img
-                          //   loading="eager"
+                          // <Image
                           //   src={important_news_img}
                           //   alt={important_news.data[0].stories_headlines}
                           //   className=" h-56 w-full cursor-pointer object-cover lg:h-80"
+                          //   quality={75}
+                          //   layout="fill"
+                          //   objectFit="cover"
+                          //   loading="lazy"
+                          //   // loading="eager"
+                          //   // priority
+                          //   placeholder="blur"
+                          //   blurDataURL={important_news_img}
                           //   onClick={() => {
                           //     handle_news_redirection_story(
                           //       important_news?.data[0]?.stories_headlines
                           //     )
                           //   }}
                           // />
+                          <img
+                            loading="eager"
+                            src={important_news_img}
+                            alt={important_news.data[0].stories_headlines}
+                            className=" h-56 w-full cursor-pointer object-cover lg:h-80"
+                            onClick={() => {
+                              handle_news_redirection_story(
+                                important_news?.data[0]?.stories_headlines
+                              )
+                            }}
+                          />
                         ))}
                       <Like
                         loading="eager"

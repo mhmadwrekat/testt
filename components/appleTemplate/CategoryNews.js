@@ -391,28 +391,64 @@ const Category_news = ({
                           ></p>{' '}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid">
-                          <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
+                          <div className="mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
-                                <img
-                                  loading="eager"
-                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                                    item.stories_media_url[0]
-                                  )}/0.jpg`}
-                                  alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
-                                  // onClick={() => {
-                                  //   router.push(`/${item?._id}`)
-                                  // }}
-                                  onClick={() => {
-                                    handle_news_redirection_story(
-                                      item?.stories_headlines
-                                    )
-                                  }}
-                                />
+                                <div className="relative h-28">
+                                  <img
+                                    loading="eager"
+                                    src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
+                                    // onClick={() => {
+                                    //   router.push(`/${item?._id}`)
+                                    // }}
+                                    onClick={() => {
+                                      handle_news_redirection_story(
+                                        item?.stories_headlines
+                                      )
+                                    }}
+                                  />
+                                  <Like
+                                    bottom={'bottom-0'}
+                                    loading="eager"
+                                    user_id={user_id}
+                                    story_id={item?._id}
+                                    isLoved={item?.is_loved}
+                                  />
+                                </div>
                               ) : (
-                                <img
+                                <div className="relative h-28 w-full">
+                                  <Image
+                                    src={item.stories_media_url[0]}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                    quality={75}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    // width={800}
+                                    // height={300}
+                                    loading="lazy"
+                                    // priority
+                                    placeholder="blur"
+                                    blurDataURL={item.stories_media_url[0]}
+                                    onClick={() => {
+                                      handle_news_redirection_story(
+                                        item?.stories_headlines
+                                      )
+                                    }}
+                                  />
+                                  <Like
+                                    bottom={'bottom-0'}
+                                    loading="eager"
+                                    user_id={user_id}
+                                    story_id={item?._id}
+                                    isLoved={item?.is_loved}
+                                  />
+                                  {/* <img
                                   loading="eager"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
@@ -422,14 +458,9 @@ const Category_news = ({
                                       item?.stories_headlines
                                     )
                                   }}
-                                />
+                                /> */}
+                                </div>
                               ))}
-                            <Like
-                              loading="eager"
-                              user_id={user_id}
-                              story_id={item?._id}
-                              isLoved={item?.is_loved}
-                            />
                           </div>
 
                           <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">

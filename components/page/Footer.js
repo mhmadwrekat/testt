@@ -25,6 +25,8 @@ const Footer = () => {
                 <Image
                   src={appleStore}
                   alt="apple Store"
+                  loading="eager"
+                  priority
                   layout="fixed"
                   width="130"
                   height="40"
@@ -42,6 +44,8 @@ const Footer = () => {
                   alt="google Play"
                   layout="responsive"
                   width="130"
+                  loading="eager"
+                  priority
                   height="40"
                   onClick={() => {
                     new_tab(
