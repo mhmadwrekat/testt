@@ -5,7 +5,6 @@ import { BASE_URL } from '../../config/config'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 const Search = dynamic(() => import('../appleTemplate/childComponent/Search'))
-
 const Nav = ({
   showCategory,
   alternative_search,
@@ -53,21 +52,6 @@ const Nav = ({
       width: 'w-16',
     },
   ]
-  const media_item_fake = [
-    {
-      name: 'لقيمات',
-      link: '#لقيمات',
-      id: 2,
-      width: 'w-10',
-    },
-    {
-      name: 'الصوتيات',
-      link: '#الصوتيات',
-      id: 3,
-      width: 'w-10',
-    },
-  ]
-
   // Function Get all News
   const get_all_news = () => {
     user_id &&
@@ -340,22 +324,7 @@ const Nav = ({
       {showCategory ? (
         <section className="sticky top-0 left-0 z-50 w-screen">
           <section className="flex w-screen justify-center bg-Purp100 py-0 text-center font-TSbold text-sm text-white lg:text-base">
-            {/* lg:overflow-hidden */}
-            <section className="w-12/12 mx-auto my-1 mt-1.5 flex items-center justify-start overflow-x-auto lg:my-0 lg:mt-4 lg:justify-start">
-              <section className="mx-2 hidden justify-start rounded-full border-0 border-Purp200 pl-3 lg:flex">
-                <section className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
-                  {media_item_fake.map((item) => {
-                    return (
-                      <section
-                        key={item.id}
-                        className={`${item.width} mx-2 flex items-center justify-center gap-3`}
-                      >
-                        <a className={`rounded-full`} href={item.link}></a>
-                      </section>
-                    )
-                  })}
-                </section>
-              </section>
+            <section className="w-12/12 mx-auto my-1 mt-1.5 flex items-center justify-start overflow-x-auto lg:my-4 lg:mt-4 lg:justify-start lg:overflow-hidden">
               <section className="mx-2 flex justify-start rounded-full border-3 border-Purp200 pl-3">
                 <svg
                   fill="#695CAD"
@@ -433,20 +402,6 @@ const Nav = ({
                   </section>
                 </section>
               )}
-              <section className="mx-2 hidden justify-start rounded-full border-0 border-Purp200 pl-3 lg:flex">
-                <section className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
-                  {media_item.map((item) => {
-                    return (
-                      <section
-                        key={item.id}
-                        className={`${item.width} mx-2 flex items-center justify-center gap-3`}
-                      >
-                        <a className={`rounded-full`} href={item.link}></a>
-                      </section>
-                    )
-                  })}
-                </section>
-              </section>
             </section>
           </section>
         </section>

@@ -6,15 +6,16 @@ import axios from 'axios'
 import { generateFeeds } from '../utils/feed'
 
 // Apple View component
-import Nav from '../components/page/Nav'
-import ImportantNews from '../components/appleTemplate/ImportantNews'
-import Colored from '../components/appleTemplate/Colored'
-const ArroundYou = dynamic(() =>
-  import('../components/appleTemplate/ArroundYou')
-)
 const CategoryNews = dynamic(() =>
   import('../components/appleTemplate/CategoryNews')
 )
+const ImportantNews = dynamic(() =>
+  import('../components/appleTemplate/ImportantNews')
+)
+const ArroundYou = dynamic(() =>
+  import('../components/appleTemplate/ArroundYou')
+)
+const Colored = dynamic(() => import('../components/appleTemplate/Colored'))
 const Video = dynamic(() => import('../components/appleTemplate/Video'))
 const Voice = dynamic(() => import('../components/appleTemplate/Voice'), {
   ssr: false,
@@ -23,6 +24,7 @@ const Logaimat = dynamic(() => import('../components/appleTemplate/Logaimat'))
 
 // page Component
 const HeadComp = dynamic(() => import('../components/page/HeadComp'))
+const Nav = dynamic(() => import('../components/page/Nav'))
 const Footer = dynamic(() => import('../components/page/Footer'))
 const IndexSkeleton = dynamic(() =>
   import('../components/Skeletons/IndexSkeleton')
@@ -32,11 +34,11 @@ const CategorySkeleton = dynamic(() =>
 )
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
-  // // Cache the content of this page for 12 hrs
-  // res.setHeader(
-  //   'Cache-Control',
-  //   'public, no-cache=no-cache, stale-while-revalidate=59'
-  // )
+  // Cache the content of this page for 12 hrs
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=604800, stale-while-revalidate=59'
+  )
   await generateFeeds()
 
   // Get Logaimat API
@@ -214,51 +216,6 @@ const index = (props) => {
   جرائد الكويت
   جرائد السعودية
   جرائد السعوديه
-  nabde
-تطبيق اخبار
-nabd news
-nabdapp
-nabd app
-nabd website
-nabd arabic news
-نبض
-تطبيق نبض
-اخبار نبض
-alwakeel news
-الوكيل
-اخبار الوكيل
-alwakil 
-Garaa news
-جراءة اخبار
-عاجل خبرني
-خبرني اخبار
-khberni
-roya news
-رؤيا اخبار
-طقس العرب
-arabia weather
-alnaba اخبار 
-النبء
-النبأ اخبار
-alwatan kuwait
-الوطن الكويت
-النهار الكويت
-annahar news
-aljazeera news
-سبق اخبار
-sabaq
-alyoum 7 news
-youm7 
-يوم 7 اخبار
-اليوم السابع 
-كورة
-كوورة
-coora
-kora
-koora
-الجزيرة نت
-سكاي نيوز
-sky news
   News
   News live
   Newspaper
@@ -346,7 +303,7 @@ sky news
   media@alzubda.com
   `
   const headTitle = 'الزبدة | الأخبار'
-
+  
   // news_unsubscribe && console.log(news_unsubscribe)
   return (
     <React.Fragment>
@@ -358,7 +315,7 @@ sky news
       <div
         dir="rtl"
         id="project_body"
-        className="bg-white text-black"
+        className="text-black bg-white"
         translate="no"
       >
         {click_subscribe !== null && (
@@ -389,7 +346,7 @@ sky news
             />
             {all_news[1]?.data?.length > 4 ? (
               <Colored
-                loading="eager"
+                loading="lazy"
                 title={'مخصص لك'}
                 important_news={all_news[1]}
                 user_id={user_id}
@@ -407,7 +364,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'الشأن الدولي'}
                 category_news={all_news[11]}
                 user_id={user_id}
@@ -422,7 +379,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'الصحة'}
                 category_news={all_news[4]}
                 user_id={user_id}
@@ -438,7 +395,7 @@ sky news
             {all_news[2] ? (
               <ArroundYou
                 bg_image={bg_image}
-                loading="eager"
+                loading="lazy"
                 title={'يدور حولك'}
                 important_news={all_news[2]}
                 user_id={user_id}
@@ -467,7 +424,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'أخبار الفن'}
                 category_news={all_news[15]}
                 user_id={user_id}
@@ -484,7 +441,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'مال وأعمال'}
                 category_news={all_news[7]}
                 user_id={user_id}
@@ -502,7 +459,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'غزو أوكرانيا'}
                 category_news={all_news[8]}
                 user_id={user_id}
@@ -516,7 +473,7 @@ sky news
             <div id="لقيمات">
               <Logaimat
                 setShowCategory={setShowCategory}
-                loading="eager"
+                loading="lazy"
                 title={'لقيمات'}
                 important_news={props?.loqaimat?.data}
                 subs={null}
@@ -534,7 +491,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'ترند'}
                 category_news={all_news[5]}
                 user_id={user_id}
@@ -549,7 +506,7 @@ sky news
             </div>
             <div id="الصوتيات">
               <Voice
-                loading="eager"
+                loading="lazy"
                 title={'الصوتيات'}
                 news_one={all_news[6]}
                 user_id={user_id}
@@ -566,7 +523,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'ألعاب'}
                 category_news={all_news[13]}
                 user_id={user_id}
@@ -582,7 +539,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'الخليج العربي'}
                 category_news={all_news[10]}
                 user_id={user_id}
@@ -598,7 +555,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'رياضة'}
                 category_news={all_news[3]}
                 user_id={user_id}
@@ -613,7 +570,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'لايف ستايل'}
                 category_news={all_news[16]}
                 user_id={user_id}
@@ -627,7 +584,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'الشرق الاوسط'}
                 category_news={all_news[14]}
                 user_id={user_id}
@@ -643,7 +600,7 @@ sky news
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="eager"
+                loading="lazy"
                 title={'تكنولوجيا'}
                 category_news={all_news[12]}
                 user_id={user_id}

@@ -1,19 +1,18 @@
-// Import Libraries
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
+// import FakeData from '../FakeData.json'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { BASE_URL } from '../../../config/config'
 import moment from 'moment'
 import 'moment/locale/ar'
 import axios from 'axios'
-
-// component imports
+// import Like from '../../components/appleTemplate/childComponent/Like'
+const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
 const HeadComp = dynamic(() => import('../../page/HeadComp'))
+const Nav = dynamic(() => import('../../page/Nav'))
 const AllData = dynamic(() => import('./AllData'))
 const StorySkeleton = dynamic(() => import('../../Skeletons/StorySkeleton'))
-import MenuThreeDot from './MenuThreeDot'
-
 const StoryShow = () => {
   const router = useRouter()
   const [head_news, setHeadNews] = useState()
@@ -268,7 +267,7 @@ const StoryShow = () => {
     <React.Fragment>
       <div dir="rtl" id="project_body" translate="no">
         {head_news ? (
-          <section className="mx-auto grid w-11/12 pt-10 text-black lg:w-10/12">
+          <section className="text-black mx-auto grid w-11/12 pt-10 lg:w-10/12">
             <HeadComp
               headKeywords={headKeywords}
               headDescription={head_news?.stories_content.slice(0, 200)}
@@ -349,7 +348,7 @@ const StoryShow = () => {
               <section className="">
                 <div className="px-2.5 pt-2">
                   <div className="flex justify-between">
-                    <b className="flex pt-1.5 font-TSbold text-red-800 lg:hidden">
+                    <b className="text-red-800 flex pt-1.5 font-TSbold lg:hidden">
                       {head_news?.publisher_name}
                     </b>
                     <p className="flex px-2.5 pt-2 font-TSbold text-GRAY300 lg:hidden">
@@ -365,7 +364,7 @@ const StoryShow = () => {
                 </div>
                 <div className=" my-2 flex justify-between px-2.5 font-TSlight text-sm">
                   <p>
-                    <b className="hidden font-TSbold text-red-800 lg:flex">
+                    <b className="text-red-800 hidden font-TSbold lg:flex">
                       {head_news?.publisher_name}
                     </b>
                   </p>

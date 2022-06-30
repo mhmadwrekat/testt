@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BASE_URL } from '../../../config/config'
 import axios from 'axios'
 
-const Like = ({ user_id, isLoved, story_id }) => {
+const LikeAudio = ({ user_id, isLoved, story_id }) => {
   const [like, setLike] = useState(isLoved)
 
   // function to handle Love & Unlove
@@ -25,7 +25,7 @@ const Like = ({ user_id, isLoved, story_id }) => {
   return (
     <React.Fragment>
       {/* {user_id && console.log('0', user_id, ' 0 ', isLoved)} */}
-      <div className="absolute bottom-5 right-1 rounded-full bg-white p-1 lg:bottom-1">
+      <div className="absolute bottom-0 right-1 rounded-full bg-white p-1 lg:bottom-1">
         {like ? (
           <img
             src="./assest/like-animation.gif"
@@ -76,4 +76,4 @@ const Like = ({ user_id, isLoved, story_id }) => {
   )
 }
 
-export default Like
+export default LikeAudio

@@ -33,22 +33,22 @@ module.exports = {
       },
     ],
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/:all*(svg|jpg|png)',
-  //       locale: false,
-  //       headers: [
-  //         {
-  //           key: 'Cache-Control',
-  //           value: 'public, max-age=9999, must-revalidate',
-  //         },
-  //       ],
-  //     },
-  //   ]
-  // },
+  async headers() {
+    return [
+      {
+        source: '/:all*(svg|jpg|png)',
+        locale: false,
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=9999, must-revalidate',
+          },
+        ],
+      },
+    ]
+  },
   images: {
-    // minimumCacheTTL: 9999,
+    minimumCacheTTL: 9999,
     domains: [
       'netaq.s3.ap-south-1.amazonaws.com',
       'cdn2.unrealengine.com',
@@ -57,12 +57,12 @@ module.exports = {
       'i.ytimg.com',
       'admin-panel-alzubda.s3.us-east-2.amazonaws.com',
       'https://img.youtube.com/',
-      'www.sarayanews.com',
       'psycatgames.com',
       'mediaaws.almasryalyoum.com',
       'www.rd.com',
       'cdnuploads.aa.com.tr',
       'orient-news.net',
+      'alghad.com',
       'www.youtube.com',
       'img.youtube.com',
       'youtu.be',
@@ -76,10 +76,17 @@ module.exports = {
       'storage.googleapis.com',
       'miro.medium.com',
       'assets.devops.arabiaweather.com',
+      'i2-prod.dailyrecord.co.uk',
       'media.gettyimages.com',
       'cdn.onlinewebfonts.com',
+      // 'aljaras.com',
       'cdn-icons-png.flaticon.com',
       'cdn4.premiumread.com',
+      // 'alzubda.com',
+      // 'localhost',
+      // 'https://securitytrails.com/list/apex_domain/googleusercontent.com',
+      // 'https://',
+      // '*.com',
       'violetsyria.org',
       'donyayadonya.com',
       'files.elfann.com',
@@ -97,18 +104,8 @@ module.exports = {
       'cdnnarabic1.img.sputniknews.com',
       'jo24.net',
       'static.dw.com',
-      'm.media-amazon.com',
-      'www.almamlakatv.com',
-      'petra.gov.jo',
-      // 'img.btolat.com',
-      // 'i2-prod.dailyrecord.co.uk',
-      // 'm.wsj.net',
-      // 'aljaras.com',
-      // 'alzubda.com',
-      // 'localhost',
-      // 'https://securitytrails.com/list/apex_domain/googleusercontent.com',
-      // 'https://',
-      // '*.com',
+      'img.btolat.com',
+      'm.wsj.net',
     ],
     formats: ['image/avif', 'image/webp'],
   },
