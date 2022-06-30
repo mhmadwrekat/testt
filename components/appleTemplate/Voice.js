@@ -1,6 +1,7 @@
 // Import Libraries
 import React, { useState } from 'react'
 import Like from './childComponent/Like'
+import LikeAudio from './childComponent/LikeAudio'
 import moment from 'moment'
 import 'moment/locale/ar'
 import WaveAudio from './childComponent/WaveAudio'
@@ -166,7 +167,6 @@ const Voice = ({
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
-                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
@@ -228,7 +228,6 @@ const Voice = ({
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
-                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
@@ -312,7 +311,6 @@ const Voice = ({
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
-                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
@@ -373,7 +371,6 @@ const Voice = ({
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
                                 <Like
-                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
                                   isLoved={item.is_loved}
@@ -475,9 +472,7 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <Like
-                                    loading="eager"
-                                    bottom={'bottom-0'}
+                                  <LikeAudio
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
@@ -542,9 +537,7 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <Like
-                                    loading="eager"
-                                    bottom={'bottom-0'}
+                                  <LikeAudio
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
@@ -631,9 +624,7 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <Like
-                                    loading="eager"
-                                    bottom={'bottom-0'}
+                                  <LikeAudio
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}
@@ -698,9 +689,7 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  <Like
-                                    loading="eager"
-                                    bottom={'bottom-0'}
+                                  <LikeAudio
                                     user_id={user_id}
                                     story_id={item._id}
                                     isLoved={item.is_loved}

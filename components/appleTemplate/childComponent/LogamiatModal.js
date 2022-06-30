@@ -74,43 +74,6 @@ export default function LoqaimaModal({
                   <section className="z-50 flex justify-center">
                     <Carousel
                       selectedItem={sum}
-                      // onChange={onChange}
-                      // onClickItem={onClickItem}
-                      // onClickThumb={onClickThumb}
-                      // renderIndicator={(
-                      //   onClickHandler,
-                      //   isSelected,
-                      //   sum,
-                      //   label
-                      // ) => {
-                      //   const defStyle = {
-                      //     marginLeft: 20,
-                      //     color: 'white',
-                      //     cursor: 'pointer',
-                      //     backgroundcolor: 'white',
-                      //     'border-radius': '0% !important',
-                      //     width: '5% !important',
-                      //     height: '3px !important',
-                      //   }
-                      //   const style = isSelected
-                      //     ? { ...defStyle, color: 'red' }
-                      //     : { ...defStyle }
-                      //   return (
-                      //     <span
-                      //       // style={style}
-                      //       className="h-2 w-10 rounded-full bg-BLUE"
-                      //       // onClick={onClickHandler}
-                      //       onKeyDown={onClickHandler}
-                      //       value={sum}
-                      //       key={sum}
-                      //       role="button"
-                      //       // tabIndex={0}
-                      //       aria-label={`${label} ${sum + 1}`}
-                      //     >
-                      //       {'cust ' + sum}
-                      //     </span>
-                      //   )
-                      // }}
                       // showArrows={isMobile ? false : true}
                       autoFocus={false}
                       showArrows={false}
@@ -119,7 +82,6 @@ export default function LoqaimaModal({
                       showThumbs={false}
                       // useKeyboardArrows
                     >
-                      {/* {console.log(onClickHandler)} */}
                       {/* key={item._id} */}
                       {loqaimatScreens.length > 0 ? (
                         loqaimatScreens.map((item) => {
@@ -147,7 +109,7 @@ export default function LoqaimaModal({
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-12 w-12"
                                       viewBox="0 0 20 20"
-                                      loading="eager"
+                                      loading="lazy"
                                       fill="#666666"
                                       onClick={() => {
                                         next()

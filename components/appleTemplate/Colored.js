@@ -6,14 +6,12 @@ import { BASE_URL } from '../../config/config'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
 
 // component imports
+const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
+const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
-import Like from './childComponent/Like'
-import MenuThreeDot from './childComponent/MenuThreeDot'
-
 const Colored = ({
   title,
   important_news,
@@ -188,7 +186,7 @@ const Colored = ({
                         (important_news_img.includes('youtube') ||
                         important_news_img.includes('youtu.be') ? (
                           <img
-                            loading="eager"
+                            loading="lazy"
                             src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                               important_news_img
                             )}/0.jpg`}
@@ -204,26 +202,8 @@ const Colored = ({
                             }}
                           />
                         ) : (
-                          // <Image
-                          //   src={important_news_img}
-                          //   alt={important_news.data[0].stories_headlines}
-                          //   className=" h-56 w-full cursor-pointer object-cover lg:h-80"
-                          //   quality={75}
-                          //   layout="fill"
-                          //   objectFit="cover"
-                          //   loading="lazy"
-                          //   // loading="eager"
-                          //   // priority
-                          //   placeholder="blur"
-                          //   blurDataURL={important_news_img}
-                          //   onClick={() => {
-                          //     handle_news_redirection_story(
-                          //       important_news?.data[0]?.stories_headlines
-                          //     )
-                          //   }}
-                          // />
                           <img
-                            loading="eager"
+                            loading="lazy"
                             src={important_news_img}
                             alt={important_news.data[0].stories_headlines}
                             className=" h-56 w-full cursor-pointer object-cover lg:h-80"
@@ -234,13 +214,62 @@ const Colored = ({
                             }}
                           />
                         ))}
-                      <Like
-                        loading="eager"
-                        bottom={'bottom-1'}
-                        user_id={user_id}
-                        story_id={important_news?.data[0]?._id}
-                        isLoved={important_news?.data[0]?.is_loved}
-                      />
+                      <div className="text-black absolute bottom-2 right-2 rounded-full bg-white p-1">
+                        {like ? (
+                          // <svg
+                          //   xmlns="http://www.w3.org/2000/svg"
+                          //   className=" h-7 w-7 cursor-pointer"
+                          //   fill="#FF0000"
+                          //   viewBox="0 0 24 24"
+                          //   stroke="#FF0000"
+                          //   strokeWidth="2"
+                          //   onClick={() => {
+                          //     handle_like(
+                          //       important_news.data[0]._id,
+                          //       important_news.data[0].is_loved
+                          //     )
+                          //   }}
+                          // >
+                          //   <path
+                          //     strokeLinecap="round"
+                          //     strokeLinejoin="round"
+                          //     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                          //   />
+                          // </svg>
+                          <img
+                            src="./assest/like-animation.gif"
+                            className=" h-7 w-7 cursor-pointer"
+                            alt="Like | Love"
+                            onClick={() => {
+                              handle_like(
+                                important_news.data[0]._id,
+                                important_news.data[0].is_loved
+                              )
+                            }}
+                          />
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className=" h-7 w-7 cursor-pointer opacity-70"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            onClick={() => {
+                              handle_like(
+                                important_news?.data[0]?._id,
+                                important_news?.data[0]?.is_loved
+                              )
+                            }}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                            />
+                          </svg>
+                        )}
+                      </div>
                     </div>
                     <div
                       className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
@@ -251,7 +280,7 @@ const Colored = ({
                       }}
                     >
                       <p>
-                        <b className="font-TSbold text-red-600">
+                        <b className="text-red-600 font-TSbold">
                           {important_news?.data[0]?.publisher_name}
                         </b>
                       </p>
@@ -355,7 +384,7 @@ const Colored = ({
                                   'youtu.be'
                                 ) ? (
                                   <img
-                                    loading="eager"
+                                    loading="lazy"
                                     src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
@@ -372,7 +401,7 @@ const Colored = ({
                                   />
                                 ) : (
                                   <img
-                                    loading="eager"
+                                    loading="lazy"
                                     src={item.stories_media_url[0]}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
@@ -383,9 +412,8 @@ const Colored = ({
                                     }}
                                   />
                                 ))}
-                              <div className="rounded-full bg-white text-black">
+                              <div className="text-black rounded-full bg-white">
                                 <Like
-                                  loading="eager"
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
@@ -395,7 +423,7 @@ const Colored = ({
 
                             <div className="hidden h-6 justify-between px-0 pt-1.5 font-TSlight text-xs lg:flex">
                               <p>
-                                <b className="font-TSExtra text-red-600">
+                                <b className="text-red-600 font-TSExtra">
                                   {item.publisher_name}
                                 </b>
                               </p>
@@ -424,7 +452,7 @@ const Colored = ({
                           <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                             <p>
                               <b
-                                className="cursor-pointer font-TSExtra text-red-600"
+                                className="text-red-600 cursor-pointer font-TSExtra"
                                 onClick={() => {
                                   handle_news_redirection_story(
                                     item?.stories_headlines

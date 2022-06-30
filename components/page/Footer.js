@@ -1,11 +1,11 @@
 import Image from 'next/image'
+import appleStore from '../../public/assest/images/apple-xhdpi.png'
+import googlePlay from '../../public/assest/images/google-xhdpi.png'
 import facebook from '../../public/assest/images/facebook.jpg'
 import twiter from '../../public/assest/images/twitter.jpg'
 import youtube from '../../public/assest/images/youtube.jpg'
 import instagram from '../../public/assest/images/instagram.jpg'
 import linkedin from '../../public/assest/images/linkedin.jpg'
-import appleStore from '../../public/assest/images/apple-xhdpi.png'
-import googlePlay from '../../public/assest/images/google-xhdpi.png'
 import React from 'react'
 
 const Footer = () => {
@@ -16,7 +16,7 @@ const Footer = () => {
     <React.Fragment>
       <div className="pt-6" loading="lazy">
         <footer className="pb-2">
-          <div className=" mx-auto bg-Purp100 py-5 text-white">
+          <div className="border-gray-400 mx-auto overflow-hidden border-t-2 bg-Purp100 py-5 text-white">
             <p className="text-md my-3 mr-1 text-center font-TSbold">
               إستخدم التطبيق لتجربة أفضل
             </p>
@@ -25,16 +25,12 @@ const Footer = () => {
                 <Image
                   src={appleStore}
                   alt="apple Store"
-                  loading="eager"
-                  priority
-                  layout="fixed"
-                  width="130"
-                  height="40"
                   onClick={() => {
                     new_tab(
                       'https://apps.apple.com/us/app/%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-alzubda-%D8%A7%D9%84%D8%B2%D8%A8%D8%AF%D8%A9/id1440466617'
                     )
                   }}
+                  priority
                 />
               </div>
               <div className="w-10"></div>
@@ -42,16 +38,12 @@ const Footer = () => {
                 <Image
                   src={googlePlay}
                   alt="google Play"
-                  layout="responsive"
-                  width="130"
-                  loading="eager"
-                  priority
-                  height="40"
                   onClick={() => {
                     new_tab(
                       'https://play.google.com/store/apps/details?id=com.live.alzubda.newsapp&hl=ar&gl=US'
                     )
                   }}
+                  priority
                 />
               </div>
             </div>
@@ -60,6 +52,7 @@ const Footer = () => {
         <div className=" text-center">
           <p className="mt-4 font-TSSemi text-sm lg:text-lg">تابع الزبده على</p>
           <div className="my-1 mt-4">
+            {/* instagram */}
             <div className=" mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
                 src={instagram}
@@ -70,11 +63,11 @@ const Footer = () => {
                   )
                 }}
                 priority
-                layout="responsive"
                 width="35"
                 height="35"
               />
             </div>
+            {/* twitter */}
             <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
                 src={twiter}
@@ -83,11 +76,11 @@ const Footer = () => {
                   new_tab('https://twitter.com/alzubdaapp')
                 }}
                 priority
-                layout="responsive"
                 width="35"
                 height="35"
               />
             </div>
+            {/* facebook */}
             <div className="mx-auto mr-7 inline-block  h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
                 src={facebook}
@@ -97,10 +90,10 @@ const Footer = () => {
                 }}
                 priority
                 width="35"
-                layout="responsive"
                 height="35"
               />
             </div>
+            {/* youtube */}
             <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
                 src={youtube}
@@ -111,11 +104,11 @@ const Footer = () => {
                   )
                 }}
                 priority
-                layout="responsive"
                 width="35"
                 height="35"
               />
             </div>
+            {/* linkedin */}
             <div className="mx-auto mr-7 inline-block h-7 w-7 cursor-pointer md:h-8 md:w-8 lg:mr-10 lg:h-9 lg:w-9 lg:hover:scale-110">
               <Image
                 src={linkedin}
@@ -123,7 +116,6 @@ const Footer = () => {
                 onClick={() => {
                   new_tab('https://www.linkedin.com/company/alzubda/')
                 }}
-                layout="responsive"
                 priority
                 width="35"
                 height="35"

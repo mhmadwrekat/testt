@@ -130,7 +130,7 @@ const Test = ({
           <>
             <div className="absolute top-0 left-12 w-32 border-0 lg:left-12">
               <div
-                className="flex w-48 border-0 pb-1 text-center font-TSbold text-xs text-black lg:w-56"
+                className="text-black flex w-48 border-0 pb-1 text-center font-TSbold text-xs lg:w-56"
                 onClick={() => {
                   setOpenItem(!open_item)
                 }}
@@ -146,7 +146,6 @@ const Test = ({
                       src="http://cdn.onlinewebfonts.com/svg/img_211187.png"
                       alt="copy link"
                       width={30}
-                      layout="responsive"
                       height={30}
                       className="cursor-pointer rounded-full"
                       onClick={() => {

@@ -6,12 +6,12 @@ import moment from 'moment'
 import 'moment/locale/ar'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
+
 // component imports
+const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
+const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
-import Like from './childComponent/Like'
-import MenuThreeDot from './childComponent/MenuThreeDot'
 
 const ImportantNews = ({
   title,
@@ -68,11 +68,8 @@ const ImportantNews = ({
   }
 
   // function to handle Love & Unlove for First News
-  const [openLike, setOpenLike] = useState(false)
   const [like, setLike] = useState(category_news?.data[0]?.is_loved)
-  const handle_open = () => {
-    setOpenLike(true)
-  }
+
   const handle_like = (story_id, is_loved) => {
     // console.log(user_id, story_id, is_loved)
     setLike(!like)
@@ -85,7 +82,6 @@ const ImportantNews = ({
     axios.put(url, data).then((res) => {
       // console.log(res)
     })
-    setOpenLike(false)
   }
   // Function to handle specific Redirection
   const handle_news_redirection = (story) => {
@@ -228,7 +224,7 @@ const ImportantNews = ({
                       }
                     </p>
                   </div>
-                  <div className="relative h-56 w-full lg:h-80">
+                  <div className=" relative h-56 w-full lg:h-80">
                     {/* Desktop View */}
                     <ViewImpression stories={stories} user_id={user_id} /> <></>
                     <ReadImpression stories={stories[0]} user_id={user_id} />
@@ -236,29 +232,6 @@ const ImportantNews = ({
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
-                        // <Image
-                        //   src={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                        //     important_news_img
-                        //   )}/0.jpg`}
-                        //   alt={category_news.data[0].stories_headlines}
-                        //   quality={75}
-                        //   layout="fill"
-                        //   className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                        //   objectFit="cover"
-                        //   // width={800}
-                        //   // height={350}
-                        //   loading="lazy"
-                        //   // priority
-                        //   placeholder="blur"
-                        //   blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                        //     important_news_img
-                        //   )}/0.jpg`}
-                        //   onClick={() => {
-                        //     handle_news_redirection_story(
-                        //       category_news?.data[0]?.stories_headlines
-                        //     )
-                        //   }}
-                        // />
                         <img
                           loading="eager"
                           src={`https://img.youtube.com/vi/${retrieve_youtube_code(
@@ -278,15 +251,15 @@ const ImportantNews = ({
                       ) : (
                         // <Image
                         //   src={important_news_img}
-                        //   className="relative cursor-pointer rounded-b-md"
+                        //   className="relative cursor-pointer rounded-b-md object-cover"
                         //   alt={category_news.data[0].stories_headlines}
                         //   quality={100}
                         //   layout="fill"
                         //   objectFit="cover"
                         //   // width={800}
                         //   // height={350}
-                        //   loading="lazy"
-                        //   // priority
+                        //   loading="eager"
+                        //   priority
                         //   placeholder="blur"
                         //   blurDataURL={important_news_img}
                         //   onClick={() => {
@@ -309,15 +282,43 @@ const ImportantNews = ({
                           }}
                         />
                       ))}
-                    {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1"> */}
-                    {/* {console.log(category_news.data[0]._id)} */}
-                    <Like
-                      bottom={'bottom-1'}
-                      user_id={user_id}
-                      story_id={category_news?.data[0]?._id}
-                      isLoved={category_news?.data[0]?.is_loved}
-                    />
-                    {/* </div> */}
+                    <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
+                      {/* {console.log(category_news.data[0]._id)} */}
+                      {like ? (
+                        <img
+                          src="./assest/like-animation.gif"
+                          className=" h-7 w-7 cursor-pointer"
+                          alt="Like | Love"
+                          onClick={() => {
+                            handle_like(
+                              category_news?.data[0]?._id,
+                              category_news?.data[0]?.is_loved
+                            )
+                          }}
+                        />
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className=" h-7 w-7 cursor-pointer opacity-70"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          onClick={() => {
+                            handle_like(
+                              category_news?.data[0]?._id,
+                              category_news?.data[0]?.is_loved
+                            )
+                          }}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                          />
+                        </svg>
+                      )}
+                    </div>
                   </div>
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
@@ -448,94 +449,41 @@ const ImportantNews = ({
                           )}
                         </div>
                         <section className="flex bg-GRAY100 lg:grid">
-                          <div className="my-2 mr-2 h-full w-72 py-2 lg:my-0 lg:mr-0 lg:h-full lg:w-full lg:py-0">
+                          <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-full lg:py-0">
                             {item.stories_media_url[0] &&
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
-                                <div className="relative h-28 w-full">
-                                  <img
-                                    loading="eager"
-                                    src={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                                      item.stories_media_url[0]
-                                    )}/0.jpg`}
-                                    alt={item.stories_headlines}
-                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                    onClick={() => {
-                                      handle_news_redirection_story(
-                                        item?.stories_headlines
-                                      )
-                                    }}
-                                  />
-                                  {/* <Image
-                                    src={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                                      item.stories_media_url[0]
-                                    )}/0.jpg`}
-                                    alt={item.stories_headlines}
-                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                    quality={100}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    // width={800}
-                                    // height={300}
-                                    loading="lazy"
-                                    // priority
-                                    placeholder="blur"
-                                    blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                                      item.stories_media_url[0]
-                                    )}/0.jpg`}
-                                    onClick={() => {
-                                      handle_news_redirection_story(
-                                        item?.stories_headlines
-                                      )
-                                    }}
-                                  /> */}
-                                  <Like
-                                    bottom={'bottom-0'}
-                                    user_id={user_id}
-                                    story_id={item?._id}
-                                    isLoved={item?.is_loved}
-                                  />
-                                </div>
+                                <img
+                                  loading="lazy"
+                                  src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  onClick={() => {
+                                    handle_news_redirection_story(
+                                      item?.stories_headlines
+                                    )
+                                  }}
+                                />
                               ) : (
-                                <div className="relative h-28">
-                                  {/* <Image
-                                    src={item.stories_media_url[0]}
-                                    alt={item.stories_headlines}
-                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                    quality={100}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    // width={800}
-                                    // height={300}
-                                    loading="lazy"
-                                    // priority
-                                    placeholder="blur"
-                                    blurDataURL={item.stories_media_url[0]}
-                                    onClick={() => {
-                                      handle_news_redirection_story(
-                                        item?.stories_headlines
-                                      )
-                                    }}
-                                  /> */}
-                                  <img
-                                    loading="eager"
-                                    src={item.stories_media_url[0]}
-                                    alt={item.stories_headlines}
-                                    className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                    onClick={() => {
-                                      handle_news_redirection_story(
-                                        item?.stories_headlines
-                                      )
-                                    }}
-                                  />
-                                  <Like
-                                    bottom={'bottom-0'}
-                                    user_id={user_id}
-                                    story_id={item?._id}
-                                    isLoved={item?.is_loved}
-                                  />
-                                </div>
+                                <img
+                                  loading="eager"
+                                  src={item.stories_media_url[0]}
+                                  alt={item.stories_headlines}
+                                  className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  onClick={() => {
+                                    handle_news_redirection_story(
+                                      item?.stories_headlines
+                                    )
+                                  }}
+                                />
                               ))}
+                            <Like
+                              user_id={user_id}
+                              story_id={item?._id}
+                              isLoved={item?.is_loved}
+                            />
                           </div>
 
                           <div
