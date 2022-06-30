@@ -4,6 +4,8 @@ import twiter from '../../public/assest/images/twitter.jpg'
 import youtube from '../../public/assest/images/youtube.jpg'
 import instagram from '../../public/assest/images/instagram.jpg'
 import linkedin from '../../public/assest/images/linkedin.jpg'
+import appleStore from '../../public/assest/images/apple-xhdpi.png'
+import googlePlay from '../../public/assest/images/google-xhdpi.png'
 import React from 'react'
 
 const Footer = () => {
@@ -21,7 +23,7 @@ const Footer = () => {
             <div className="mx-auto block flex w-full justify-center">
               <div className="relative inline-block w-32 cursor-pointer ">
                 <Image
-                  src="/../public/assest/images/apple-xhdpi.png"
+                  src={appleStore}
                   alt="apple Store"
                   layout="fixed"
                   width="130"
@@ -36,7 +38,7 @@ const Footer = () => {
               <div className="w-10"></div>
               <div className="relative inline-block w-32 cursor-pointer">
                 <Image
-                  src="/../public/assest/images/google-xhdpi.png"
+                  src={googlePlay}
                   alt="google Play"
                   layout="responsive"
                   width="130"
