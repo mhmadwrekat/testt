@@ -4,7 +4,7 @@
         <title>محليات-الأردن | الزبدة</title>
         <link>https://alzubda.com/rss/%D9%85%D8%AD%D9%84%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/feed.xml</link>
         <description>محليات-الأردن | الزبدة</description>
-        <lastBuildDate>Sat, 02 Jul 2022 14:55:24 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 02 Jul 2022 15:14:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>ar</language>
@@ -36,7 +36,7 @@
 													]]></description>
             <content:encoded><![CDATA[أظهر مقطع فيديو سائق دراجة بخارية يعمل ضمن فريق «كباتن طلبات»، وهو يستعرض بقيادته للدراجة في شوارع منطقة بالعاصمة عمان. وبحسب الفيديو، فإن سائق الدراجة رفع مقدمة دراجته وسار على عجلة واحدة فقط، بطريقة استعراضية معرضاً حياته وحياة الاخرين للخطر. وتباينت ردود الفعل على تصرف السائق، وأبدى البعض إعجابهم بمهارته. فيما استنكر آخرون التصرف، وطالبوا بمنع هذه الحركات تجنبا للحوادث.
 													]]></content:encoded>
-            <enclosure url="https://www.sarayanews.com/image.php?token=b6182402bf997080025c23a5e949abbf&size=" length="0" type="image/php"/>
+            <enclosure url="https://netaq.s3.ap-south-1.amazonaws.com/5nowpbdcqp.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[وفاة مراهق عمره 16 سنة غرقًا في قناة الملك عبد الله بالمنشية]]></title>

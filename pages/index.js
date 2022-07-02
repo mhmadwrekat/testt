@@ -107,7 +107,7 @@ const index = (props) => {
   useEffect(() => {
     get_all_news()
     get_background_image()
-  }, [user_id])
+  }, [user_id, click_subscribe])
 
   let alternative_search = all_news && [
     ...all_news[0].data.slice(0, 3),
@@ -302,7 +302,7 @@ const index = (props) => {
   `
   const headTitle = 'الزبدة | الأخبار'
 
-  props?.loqaimat?.data && console.log(props?.loqaimat)
+  // props?.loqaimat?.data && console.log(props?.loqaimat)
   // all_news && console.log(all_news[0])
 
   return (
@@ -320,6 +320,7 @@ const index = (props) => {
       >
         {click_subscribe !== null && (
           <Nav
+            all_news={all_news}
             click_subscribe={click_subscribe}
             showCategory={showCategory}
             news_subscribe={true}

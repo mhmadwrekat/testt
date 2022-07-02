@@ -13,13 +13,13 @@ const Nav = ({
   searches,
   user_id,
   country_code,
+  all_news,
   news_subscribe,
   click_subscribe,
 }) => {
   const router = useRouter()
 
   // const [active, setActive] = useState(true)
-  const [all_news, setAllNews] = useState()
   const [showSearch, setShowSearch] = useState(false)
   const [token, setUserToken] =
     typeof window !== 'undefined'
@@ -67,27 +67,6 @@ const Nav = ({
       width: 'w-10',
     },
   ]
-
-  // Function Get all News
-  const get_all_news = () => {
-    user_id &&
-      axios
-        .get(
-          `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
-        )
-        .then((res) => {
-          let keys = Object.keys(res.data.data)
-          let custom_array = []
-          keys.map((item) => {
-            custom_array.push(res.data.data[item])
-          })
-          setAllNews(custom_array)
-        })
-  }
-  news_subscribe &&
-    useEffect(() => {
-      get_all_news()
-    }, [user_id, click_subscribe])
 
   news_subscribe &&
     all_news?.map((item) => {
@@ -533,7 +512,7 @@ const Nav = ({
       {/* Search Data */}
       <React.Fragment>
         <div dir="rtl" id="project_body" translate="no">
-          <section className="text-black mx-auto grid w-11/12 bg-white lg:w-10/12">
+          <section className="mx-auto grid w-11/12 bg-white text-black lg:w-10/12">
             {searches
               ? search_data?.length > 0 && (
                   <section>
