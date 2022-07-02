@@ -34,27 +34,6 @@ const HeadComp = ({ headKeywords, headDescription, headTitle }) => {
         <meta property="og:keywords" content={headKeywords} />
         {/* <meta name="keywords" content={headKeywords} /> */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="facebook-domain-verification"
-          content="y4ylg5eq8d7lgh9w8vol92gr076mfd"
-        />
-
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-              page_path: window.location.pathname,
-            });
-          `,
-          }}
-        />
 
         {/* <link
           rel="stylesheet"
