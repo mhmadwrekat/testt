@@ -214,8 +214,8 @@ const Arround_you = ({
                           />
                         ))}
                       <Like
-                      lgBottom={'lg-bottom-1'}
-
+                        lgBottom={'lg:bottom-0'}
+                        bottom={'bottom-1'}
                         user_id={user_id}
                         story_id={important_news.data[0]?._id}
                         isLoved={important_news.data[0]?.is_loved}
@@ -376,7 +376,10 @@ const Arround_you = ({
                                   />
                                 ))}
                               <div className="rounded-full bg-white text-black">
-                             <Like
+                                <Like
+                                  lgBottom={'lg:bottom-0'}
+                                  right={'right-1'}
+                                  bottom={'bottom-4'}
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}

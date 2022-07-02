@@ -9,9 +9,6 @@ import { generateFeeds } from '../utils/feed'
 const CategoryNews = dynamic(() =>
   import('../components/appleTemplate/CategoryNews')
 )
-const ImportantNews = dynamic(() =>
-  import('../components/appleTemplate/ImportantNews')
-)
 const ArroundYou = dynamic(() =>
   import('../components/appleTemplate/ArroundYou')
 )
@@ -305,7 +302,7 @@ const index = (props) => {
   `
   const headTitle = 'الزبدة | الأخبار'
 
-  // console.log(userToken)
+  props?.loqaimat?.data && console.log(props?.loqaimat)
   // all_news && console.log(all_news[0])
 
   return (
@@ -337,7 +334,7 @@ const index = (props) => {
           <CategorySkeleton />
         ) : all_news ? (
           <React.Fragment>
-            <ImportantNews
+            <CategoryNews
               loading="eager"
               title={'أهم الأخبار'}
               category_news={all_news[0]}
@@ -353,8 +350,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'مخصص لك'}
                 important_news={all_news[1]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 card_color={'bg-Purp100'}
                 theme={'bg-Purp200'}
                 text_color={'text-white'}
@@ -372,8 +369,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'الشأن الدولي'}
                 category_news={all_news[11]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[11]?.is_subscribed}
                 bg_color={'bg-YELLOW'}
                 title_color={'text-YELLOW'}
@@ -381,6 +378,21 @@ const index = (props) => {
                 description={'جميع ما يحدث حول العالم '}
               />
             </div>
+            {all_news[2] ? (
+              <ArroundYou
+                bg_image={bg_image}
+                loading="lazy"
+                title={'يدور حولك'}
+                important_news={all_news[2]}
+                userToken={userToken}
+                user_id={user_id}
+                card_color={'bg-GRAY100'}
+                theme={'bg-Purp100'}
+                text_color={'text-GRAY100'}
+                fill_color={'fill-Purp100'}
+                description={' جميع ما يدور من حولك من أخبار و مواضيع'}
+              />
+            ) : null}
             <div id="صحة">
               <CategoryNews
                 click_subscribe={click_subscribe}
@@ -388,8 +400,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'الصحة'}
                 category_news={all_news[4]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[4]?.is_subscribed}
                 bg_color={'bg-BLUE'}
                 title_color={'text-BLUE'}
@@ -399,28 +411,13 @@ const index = (props) => {
                 }
               />
             </div>
-            {all_news[2] ? (
-              <ArroundYou
-                bg_image={bg_image}
-                loading="lazy"
-                title={'يدور حولك'}
-                important_news={all_news[2]}
-              userToken={userToken}
-              user_id={user_id}
-                card_color={'bg-GRAY100'}
-                theme={'bg-Purp100'}
-                text_color={'text-GRAY100'}
-                fill_color={'fill-Purp100'}
-                description={' جميع ما يدور من حولك من أخبار و مواضيع'}
-              />
-            ) : null}
             {all_news[9]?.data?.length > 3 && (
               <div id="الأكثر مشاهدة">
                 <Video
                   title={'الأكثر مشاهدة'}
                   category_news={all_news[9]}
-              userToken={userToken}
-              user_id={user_id}
+                  userToken={userToken}
+                  user_id={user_id}
                   subs={null}
                   bg_color={'bg-Purp300'}
                   title_color={'text-Purp300'}
@@ -454,8 +451,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'مال وأعمال'}
                 category_news={all_news[7]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[7]?.is_subscribed}
                 bg_color={'bg-GREEN'}
                 title_color={'text-GREEN'}
@@ -473,8 +470,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'غزو أوكرانيا'}
                 category_news={all_news[8]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[8]?.is_subscribed}
                 bg_color={'bg-YELLOW'}
                 title_color={'text-YELLOW'}
@@ -506,8 +503,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'ترند'}
                 category_news={all_news[5]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[5]?.is_subscribed}
                 bg_color={'bg-RED'}
                 title_color={'text-RED'}
@@ -522,8 +519,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'الصوتيات'}
                 news_one={all_news[6]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={null}
                 title_color={'text-YELLOW'}
                 fill_color={'fill-YELLOW'}
@@ -540,8 +537,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'ألعاب'}
                 category_news={all_news[13]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[13]?.is_subscribed}
                 bg_color={'bg-GREEN'}
                 title_color={'text-GREEN'}
@@ -557,8 +554,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'الخليج العربي'}
                 category_news={all_news[10]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[10]?.is_subscribed}
                 bg_color={'bg-YELLOW'}
                 title_color={'text-YELLOW'}
@@ -574,8 +571,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'رياضة'}
                 category_news={all_news[3]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[3]?.is_subscribed}
                 bg_color={'bg-BLUE'}
                 title_color={'text-BLUE'}
@@ -590,8 +587,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'لايف ستايل'}
                 category_news={all_news[16]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[16]?.is_subscribed}
                 bg_color={'bg-RED'}
                 title_color={'text-RED'}
@@ -605,8 +602,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'الشرق الاوسط'}
                 category_news={all_news[14]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[14]?.is_subscribed}
                 bg_color={'bg-YELLOW'}
                 title_color={'text-YELLOW'}
@@ -622,8 +619,8 @@ const index = (props) => {
                 loading="lazy"
                 title={'تكنولوجيا'}
                 category_news={all_news[12]}
-              userToken={userToken}
-              user_id={user_id}
+                userToken={userToken}
+                user_id={user_id}
                 subs={all_news[12]?.is_subscribed}
                 bg_color={'bg-GREEN'}
                 title_color={'text-GREEN'}

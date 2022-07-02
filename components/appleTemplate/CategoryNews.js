@@ -286,7 +286,8 @@ const Category_news = ({
                       ))}
                     {/* {console.log(category_news.data[0]._id)} */}
                     <Like
-                      lgBottom={'lg-bottom-1'}
+                      lgBottom={'lg:bottom-0'}
+                      bottom={'bottom-1'}
                       user_id={user_id}
                       story_id={category_news.data[0]?._id}
                       isLoved={category_news.data[0]?.is_loved}
@@ -435,6 +436,9 @@ const Category_news = ({
                                 />
                               ))}
                             <Like
+                              lgBottom={'lg:bottom-0'}
+                              right={'right-1'}
+                              bottom={'bottom-4'}
                               user_id={user_id}
                               story_id={item?._id}
                               isLoved={item?.is_loved}

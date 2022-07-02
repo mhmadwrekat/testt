@@ -286,7 +286,7 @@ const ImportantNews = ({
                       ))}
                     {/* {console.log(category_news.data[0]._id)} */}
                     <Like
-                      lgBottom={'lg-bottom-1'}
+                      lgBottom={'lg-bottom-0'}
                       userToken={userToken}
                       user_id={user_id}
                       story_id={category_news.data[0]?._id}
