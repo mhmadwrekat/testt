@@ -8,9 +8,9 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 // component imports
+import Like from './childComponent/Like'
 const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
 const MostEmoji = dynamic(() => import('./childComponent/MostEmoji'))
-const Like = dynamic(() => import('./childComponent/Like'))
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Colored = ({

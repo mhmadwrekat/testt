@@ -6,9 +6,7 @@ import axios from 'axios'
 import { generateFeeds } from '../utils/feed'
 
 // Apple View component
-const CategoryNews = dynamic(() =>
-  import('../components/appleTemplate/CategoryNews')
-)
+import CategoryNews from '../components/appleTemplate/CategoryNews'
 const ArroundYou = dynamic(() =>
   import('../components/appleTemplate/ArroundYou')
 )
