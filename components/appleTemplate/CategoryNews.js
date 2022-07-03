@@ -9,8 +9,8 @@ import dynamic from 'next/dynamic'
 
 // component imports
 import Like from './childComponent/Like'
-const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
-const MostEmoji = dynamic(() => import('./childComponent/MostEmoji'))
+import MenuThreeDot from './childComponent/MenuThreeDot'
+import MostEmoji from './childComponent/MostEmoji'
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 
@@ -294,14 +294,14 @@ const Category_news = ({
                       userToken={userToken}
                       reactions={category_news.data[0]?.reactions}
                     />
-                    {/*
                     <MostEmoji
+                      bottom={'bottom-3'}
                       userToken={userToken}
                       reactions={category_news.data[0]?.reactions}
                       user_id={user_id}
                       story_id={category_news.data[0]?._id}
                       isLoved={category_news.data[0]?.is_loved}
-                    /> */}
+                    />
                   </div>
                   <div
                     className="my-2 flex cursor-pointer justify-between px-2.5 font-TSlight text-sm"
@@ -445,13 +445,15 @@ const Category_news = ({
                               userToken={userToken}
                               reactions={item?.reactions}
                             />
-                            {/*  <MostEmoji
+                            <MostEmoji
+                              bottom={'bottom-5'}
+                              left={'left-1'}
                               userToken={userToken}
                               reactions={item?.reactions}
                               user_id={user_id}
                               story_id={item?._id}
                               isLoved={item?.is_loved}
-                            /> */}
+                            />
                           </div>
 
                           <div className="hidden justify-between px-2.5 pt-1.5 font-TSlight text-xs lg:flex">
