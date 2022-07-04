@@ -1,6 +1,7 @@
 import React from 'react'
 import { useInView, InView } from 'react-cool-inview'
 import axios from 'axios'
+const READ = process.env.NEXT_PUBLIC_READS_URL
 
 const ReadImpression = ({ user_id, stories }) => {
   const { observe, inView } = useInView({
@@ -10,7 +11,7 @@ const ReadImpression = ({ user_id, stories }) => {
     // For performance perspective, use the largest tolerable value as much as possible // (ms)
     delay: 15000,
     // onEnter: () => {
-    //   let url = `https://734slo1j48.execute-api.us-east-2.amazonaws.com/prod`
+    //   let url = `https://${READ}`
     //   let data = {
     //     body: {
     //       user: user_id,
