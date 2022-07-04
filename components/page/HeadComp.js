@@ -37,7 +37,10 @@ const HeadComp = ({ headKeywords, headDescription, headTitle }) => {
           content="image/jpeg/png/svg/jpg/webp"
           data-react-helmet="true"
         />
-
+        <script
+          src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+          async=""
+        ></script>
         {/* <meta property="fb:app_id" content="2663104457235241" /> */}
         {/* <meta
           content="https://alzubda.com"

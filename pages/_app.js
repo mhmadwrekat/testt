@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import axios from 'axios'
 import { NextSeo } from 'next-seo'
@@ -101,6 +101,67 @@ function MyApp({ Component, pageProps }) {
       ? setUserToken(localStorage.getItem('user_token'))
       : ''
   }, [])
+
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  const workerRef = useRef()
+  useEffect(() => {
+    workerRef.current = new Worker(
+      new URL('../public/OneSignalSDKWorker.js', import.meta.url)
+    )
+    workerRef.current.onmessage = (evt) =>
+      alert(`WebWorker Response => ${evt.data}`)
+    return () => {
+      workerRef.current.terminate()
+    }
+  }, [])
+
+  const handleWork = useCallback(async () => {
+    workerRef.current.postMessage(100000)
+  }, [])
+
+  useEffect(() => {
+    navigator.serviceWorker.getRegistrations()
+    window.OneSignal = window.OneSignal || []
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: '270f0280-bc60-44f1-b09c-9bb8db7641eb',
+        safari_web_id:
+          'web.onesignal.auto.67813ec5-45a5-4c64-95fb-a167cd7c4d3a',
+        notifyButton: {
+          enable: true,
+        },
+        allowLocalhostAsSecureOrigin: true,
+        subdomainName: 'mhmadwrekat',
+      })
+    })
+    return () => {
+      window.OneSignal = undefined
+    }
+  }, []) // <-- run this effect once on mount
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
+  /********************************************** */
 
   return (
     <React.Fragment>
