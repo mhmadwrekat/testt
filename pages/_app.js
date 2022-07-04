@@ -137,12 +137,10 @@ function MyApp({ Component, pageProps }) {
       OneSignal.init({
         appId: '270f0280-bc60-44f1-b09c-9bb8db7641eb',
         safari_web_id:
-          'web.onesignal.auto.67813ec5-45a5-4c64-95fb-a167cd7c4d3a',
+          'web.onesignal.auto.3437296f-1581-4c9c-99a7-ef947df2b18c',
         notifyButton: {
           enable: true,
         },
-        allowLocalhostAsSecureOrigin: true,
-        subdomainName: 'mhmadwrekat',
       })
     })
     return () => {

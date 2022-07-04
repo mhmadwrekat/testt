@@ -449,7 +449,7 @@ const Category_news = ({
                                   <Like
                                     lgBottom={'lg:bottom-0'}
                                     right={'right-1'}
-                                    bottom={'bottom-4'}
+                                    bottom={'bottom-0'}
                                     user_id={user_id}
                                     story_id={item?._id}
                                     isLoved={item?.is_loved}
@@ -457,7 +457,7 @@ const Category_news = ({
                                     reactions={item?.reactions}
                                   />
                                   <MostEmoji
-                                    bottom={'bottom-5'}
+                                    bottom={'bottom-1'}
                                     left={'left-1'}
                                     userToken={userToken}
                                     reactions={item?.reactions}
