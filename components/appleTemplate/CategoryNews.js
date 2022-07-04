@@ -6,6 +6,7 @@ import moment from 'moment'
 import 'moment/locale/ar'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 
 // component imports
 import Like from './childComponent/Like'
@@ -238,16 +239,38 @@ const Category_news = ({
                     {important_news_img &&
                       (important_news_img.includes('youtube') ||
                       important_news_img.includes('youtu.be') ? (
-                        <img
-                          loading="lazy"
-                          src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                        // <img
+                        //   // loading="lazy"
+                        //   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                        //     important_news_img
+                        //   )}/0.jpg`}
+                        //   alt={category_news.data[0].stories_headlines}
+                        //   className=" relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                        //   // onClick={() => {
+                        //   //   router.push(`/${category_news?.data[0]?._id}`)
+                        //   // }}
+                        //   onClick={() => {
+                        //     handle_news_redirection_story(
+                        //       category_news?.data[0]?.stories_headlines
+                        //     )
+                        //   }}
+                        // />
+                        <Image
+                          src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                             important_news_img
                           )}/0.jpg`}
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
-                          // onClick={() => {
-                          //   router.push(`/${category_news?.data[0]?._id}`)
-                          // }}
+                          quality={50}
+                          layout="fill"
+                          objectFit="cover"
+                          // loading="lazy"
+                          loading="eager"
+                          priority
+                          placeholder="blur"
+                          blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                            important_news_img
+                          )}/0.jpg`}
                           onClick={() => {
                             handle_news_redirection_story(
                               category_news?.data[0]?.stories_headlines
@@ -255,34 +278,34 @@ const Category_news = ({
                           }}
                         />
                       ) : (
-                        // <Image
-                        //   src={important_news_img}
-                        //   className="relative cursor-pointer rounded-b-md object-cover "
-                        //   alt={category_news.data[0].stories_headlines}
-                        //   quality={75}
-                        //   layout="fill"
-                        //   objectFit="cover"
-                        //   loading="eager"
-                        //   priority
-                        //   placeholder="blur"
-                        //   blurDataURL={important_news_img}
-                        //   onClick={() => {
-                        //     handle_news_redirection_story(
-                        //       category_news?.data[0]?.stories_headlines
-                        //     )
-                        //   }}
-                        // />
-                        <img
-                          loading="lazy"
+                        <Image
                           src={important_news_img}
                           alt={category_news.data[0].stories_headlines}
                           className="relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                          quality={50}
+                          layout="fill"
+                          objectFit="cover"
+                          loading="eager"
+                          priority
+                          placeholder="blur"
+                          blurDataURL={important_news_img}
                           onClick={() => {
                             handle_news_redirection_story(
                               category_news?.data[0]?.stories_headlines
                             )
                           }}
                         />
+                        // <img
+                        //   // loading="lazy"
+                        //   src={important_news_img}
+                        //   alt={category_news.data[0].stories_headlines}
+                        //   className=" relative h-56 w-full cursor-pointer rounded-b-md object-cover lg:h-80"
+                        //   onClick={() => {
+                        //     handle_news_redirection_story(
+                        //       category_news?.data[0]?.stories_headlines
+                        //     )
+                        //   }}
+                        // />
                       ))}
                     {/* {console.log(category_news.data[0]._id)} */}
                     <Like
@@ -407,12 +430,12 @@ const Category_news = ({
                               (item.stories_media_url[0].includes('youtube') ||
                               item.stories_media_url[0].includes('youtu.be') ? (
                                 <img
-                                  loading="lazy"
+                                  // loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
+                                  className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full  lg:rounded-none lg:rounded-b-md                             "
                                   // onClick={() => {
                                   //   router.push(`/${item?._id}`)
                                   // }}
@@ -424,10 +447,10 @@ const Category_news = ({
                                 />
                               ) : (
                                 <img
-                                  loading="lazy"
+                                  // loading="lazy"
                                   src={item.stories_media_url[0]}
                                   alt={item.stories_headlines}
-                                  className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                  className=" mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                   onClick={() => {
                                     handle_news_redirection_story(
                                       item?.stories_headlines
