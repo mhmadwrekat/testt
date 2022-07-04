@@ -32,6 +32,7 @@ const HeadComp = ({ headKeywords, headDescription, headTitle }) => {
           property="og:image"
           content="https://www.alzubda.com/favicon.ico"
         />
+
         <meta
           property="og:image:type"
           content="image/jpeg/png/svg/jpg/webp"
