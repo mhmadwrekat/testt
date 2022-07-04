@@ -286,7 +286,6 @@ const Category_news = ({
                           layout="fill"
                           objectFit="cover"
                           loading="eager"
-                          priority
                           placeholder="blur"
                           blurDataURL={important_news_img}
                           onClick={() => {
@@ -490,7 +489,6 @@ const Category_news = ({
                                     // width={800}
                                     // height={300}
                                     loading="eager"
-                                    priority
                                     placeholder="blur"
                                     blurDataURL={item.stories_media_url[0]}
                                     onClick={() => {
