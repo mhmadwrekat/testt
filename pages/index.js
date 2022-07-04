@@ -476,23 +476,24 @@ const index = (props) => {
                 description={'جميع ما يخص أحداث غزو أوكرانيا'}
               />
             </div>
-            <div id="لقيمات">
-              <Logaimat
-                setShowCategory={setShowCategory}
-                loading="lazy"
-                title={'لقيمات'}
-                important_news={props?.loqaimat?.data}
-                subs={null}
-                title_color={'text-SKY'}
-                theme={'bg-SKY'}
-                card_color={'bg-GRAY100'}
-                fill_color={'fill-SKY'}
-                desc_color={'text-GRAY400'}
-                text_color={'text-black'}
-                description={'بطريقة جميلة يمكنك قرائه المواضيع'}
-              />
-            </div>
-
+            {props?.loqaimat?.data.length > 3 && (
+              <div id="لقيمات">
+                <Logaimat
+                  setShowCategory={setShowCategory}
+                  loading="lazy"
+                  title={'لقيمات'}
+                  important_news={props?.loqaimat?.data}
+                  subs={null}
+                  title_color={'text-SKY'}
+                  theme={'bg-SKY'}
+                  card_color={'bg-GRAY100'}
+                  fill_color={'fill-SKY'}
+                  desc_color={'text-GRAY400'}
+                  text_color={'text-black'}
+                  description={'بطريقة جميلة يمكنك قرائه المواضيع'}
+                />
+              </div>
+            )}
             <div id="ترند">
               <CategoryNews
                 click_subscribe={click_subscribe}

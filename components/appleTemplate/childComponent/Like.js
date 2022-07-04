@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { BASE_URL } from '../../../config/config'
 import axios from 'axios'
-import Lottie from 'lottie-react'
+// import Lottie from 'lottie-react'
 import { Fade } from 'react-awesome-reveal'
 
-import like_json from '../../../public/assest/emoji/like.json'
-import angry_json from '../../../public/assest/emoji/angry.json'
-import haha_json from '../../../public/assest/emoji/haha.json'
-import sad_json from '../../../public/assest/emoji/sad.json'
-import wow_json from '../../../public/assest/emoji/wow.json'
+// import like_json from '../../../public/assest/emoji/like.json'
+// import angry_json from '../../../public/assest/emoji/angry.json'
+// import haha_json from '../../../public/assest/emoji/haha.json'
+// import sad_json from '../../../public/assest/emoji/sad.json'
+// import wow_json from '../../../public/assest/emoji/wow.json'
 
 const Like = ({
   user_id,
@@ -22,6 +22,7 @@ const Like = ({
   right,
 }) => {
   const [openLike, setOpenLike] = useState(false)
+  const [changeLike, setChangeLike] = useState(false)
   const [myEmoji, setMyEmoji] = useState(reactions?.my_selected_emoji)
   const [openMyEmoji, setOpenMyEmoji] = reactions?.my_selected_emoji
     ? useState(true)
@@ -30,15 +31,13 @@ const Like = ({
   const [like, setLike] = useState(isLoved)
   const [show, setShow] = useState(isLoved)
 
-  const options = {
-    animationData: like_json,
-    loop: false,
-  }
-
   // console.log(reactions?.my_selected_emoji)
 
   const handle_open = () => {
     setOpenLike(!openLike)
+  }
+  const handle_change = () => {
+    setChangeLike(!changeLike)
   }
   // function to handle Love & Unlove
   const handleLike = (story_id, emojiSelect) => {
@@ -60,7 +59,8 @@ const Like = ({
         // console.log(res)
         // console.log('OUTSIDE')
       })
-    setOpenMyEmoji(!openMyEmoji)
+    setOpenMyEmoji(true)
+    setChangeLike(false)
     // let config = {
     //   method: 'PUT',
     //   baseURL: `${BASE_URL}`,
@@ -74,7 +74,6 @@ const Like = ({
     // axios(config).then((res) => {
     //   console.log(res)
     // })
-    setOpenLike(false)
   }
   bottom ? bottom : (bottom = 'bottom-0')
   lgBottom ? lgBottom : (lgBottom = 'lg:bottom-1')
@@ -91,7 +90,12 @@ const Like = ({
             <React.Fragment>
               <div className="mb-1 flex rounded-full bg-white lg:mb-1.5 lg:mr-1.5">
                 {myEmoji === 'haha' && (
-                  <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9">
+                  <div
+                    className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9"
+                    onClick={() => {
+                      handle_change()
+                    }}
+                  >
                     {/* <Lottie
                     animationData={haha_json}
                     loop={false}
@@ -105,7 +109,12 @@ const Like = ({
                   </div>
                 )}
                 {myEmoji === 'like' && (
-                  <div className=" mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9">
+                  <div
+                    className=" mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9"
+                    onClick={() => {
+                      handle_change()
+                    }}
+                  >
                     {/* <Lottie
                     animationData={like_json}
                     loop={false}
@@ -119,7 +128,12 @@ const Like = ({
                   </div>
                 )}
                 {myEmoji === 'sad' && (
-                  <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9">
+                  <div
+                    className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9"
+                    onClick={() => {
+                      handle_change()
+                    }}
+                  >
                     {/* <Lottie
                     animationData={sad_json}
                     loop={false}
@@ -133,7 +147,12 @@ const Like = ({
                   </div>
                 )}
                 {myEmoji === 'wow' && (
-                  <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9">
+                  <div
+                    className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9"
+                    onClick={() => {
+                      handle_change()
+                    }}
+                  >
                     {/* <Lottie
                     animationData={wow_json}
                     loop={false}
@@ -147,7 +166,12 @@ const Like = ({
                   </div>
                 )}
                 {myEmoji === 'angry' && (
-                  <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9">
+                  <div
+                    className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 lg:h-9 lg:w-9"
+                    onClick={() => {
+                      handle_change()
+                    }}
+                  >
                     {/* <Lottie
                     animationData={angry_json}
                     loop={false}
@@ -159,6 +183,109 @@ const Like = ({
                       alt="angry emoji"
                     />
                   </div>
+                )}
+                {changeLike && (
+                  <Fade>
+                    <div
+                      className="z-50 mb-0 flex rounded-full lg:mb-1"
+                      loading="eager"
+                    >
+                      <div
+                        loading="eager"
+                        className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
+                        onClick={() => {
+                          handleLike(story_id, 'like')
+                        }}
+                      >
+                        {/* <Lottie
+                        animationData={like_json}
+                        loop={false}
+                        loading="eager"
+                      /> */}
+                        <img
+                          src="./assest/like.jpg"
+                          className="mx-auto h-5 w-5 rounded-full "
+                          alt="like emoji"
+                        />
+                      </div>
+                      <Fade delay={200}>
+                        <div
+                          className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
+                          onClick={() => {
+                            handleLike(story_id, 'angry')
+                          }}
+                        >
+                          {/* <Lottie
+                        animationData={angry_json}
+                        loop={false}
+                        loading="eager"
+                      /> */}
+                          <img
+                            src="./assest/angry.jpg"
+                            className="mx-auto h-5 w-5 rounded-full"
+                            alt="angry emoji"
+                          />
+                        </div>
+                      </Fade>
+                      <Fade delay={300}>
+                        <div
+                          className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
+                          onClick={() => {
+                            handleLike(story_id, 'haha')
+                          }}
+                        >
+                          {/* <Lottie
+                        animationData={haha_json}
+                        loop={false}
+                        loading="eager"
+                      /> */}
+                          <img
+                            src="./assest/haha.jpg"
+                            className="mx-auto h-5 w-5 rounded-full"
+                            alt="haha emoji"
+                          />
+                        </div>
+                      </Fade>
+                      <Fade delay={400}>
+                        <div
+                          className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
+                          onClick={() => {
+                            handleLike(story_id, 'wow')
+                          }}
+                        >
+                          {/* <Lottie
+                        animationData={wow_json}
+                        loop={false}
+                        loading="eager"
+                      /> */}
+                          <img
+                            src="./assest/wow.jpg"
+                            className="mx-auto h-5 w-5 rounded-full"
+                            alt="wow emoji"
+                          />
+                        </div>
+                      </Fade>
+                      <Fade delay={500}>
+                        <div
+                          className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
+                          onClick={() => {
+                            handleLike(story_id, 'sad')
+                          }}
+                        >
+                          {/* <Lottie
+                        animationData={sad_json}
+                        loop={false}
+                        loading="eager"
+                      /> */}
+                          <img
+                            src="./assest/sad.jpg"
+                            className="mx-auto h-5 w-5 rounded-full"
+                            alt="sad emoji"
+                          />
+                        </div>
+                      </Fade>
+                    </div>
+                  </Fade>
                 )}
               </div>
             </React.Fragment>
@@ -235,7 +362,7 @@ const Like = ({
               {openLike && (
                 <Fade>
                   <div
-                    className="flex rounded-full bg-white lg:mb-1.5"
+                    className="z-50 mb-9 flex rounded-full bg-white lg:mb-2"
                     loading="eager"
                   >
                     <div
@@ -256,82 +383,82 @@ const Like = ({
                         alt="like emoji"
                       />
                     </div>
-                    {/* <Fade delay={200}> */}
-                    <div
-                      className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
-                      onClick={() => {
-                        handleLike(story_id, 'angry')
-                      }}
-                    >
-                      {/* <Lottie
+                    <Fade delay={200}>
+                      <div
+                        className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
+                        onClick={() => {
+                          handleLike(story_id, 'angry')
+                        }}
+                      >
+                        {/* <Lottie
                         animationData={angry_json}
                         loop={false}
                         loading="eager"
                       /> */}
-                      <img
-                        src="./assest/angry.jpg"
-                        className="mx-auto h-5 w-5 rounded-full"
-                        alt="angry emoji"
-                      />
-                    </div>
-                    {/* </Fade> */}
-                    {/* <Fade delay={300}> */}
-                    <div
-                      className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
-                      onClick={() => {
-                        handleLike(story_id, 'haha')
-                      }}
-                    >
-                      {/* <Lottie
+                        <img
+                          src="./assest/angry.jpg"
+                          className="mx-auto h-5 w-5 rounded-full"
+                          alt="angry emoji"
+                        />
+                      </div>
+                    </Fade>
+                    <Fade delay={300}>
+                      <div
+                        className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
+                        onClick={() => {
+                          handleLike(story_id, 'haha')
+                        }}
+                      >
+                        {/* <Lottie
                         animationData={haha_json}
                         loop={false}
                         loading="eager"
                       /> */}
-                      <img
-                        src="./assest/haha.jpg"
-                        className="mx-auto h-5 w-5 rounded-full"
-                        alt="haha emoji"
-                      />
-                    </div>
-                    {/* </Fade> */}
-                    {/* <Fade delay={400}> */}
-                    <div
-                      className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
-                      onClick={() => {
-                        handleLike(story_id, 'wow')
-                      }}
-                    >
-                      {/* <Lottie
+                        <img
+                          src="./assest/haha.jpg"
+                          className="mx-auto h-5 w-5 rounded-full"
+                          alt="haha emoji"
+                        />
+                      </div>
+                    </Fade>
+                    <Fade delay={400}>
+                      <div
+                        className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
+                        onClick={() => {
+                          handleLike(story_id, 'wow')
+                        }}
+                      >
+                        {/* <Lottie
                         animationData={wow_json}
                         loop={false}
                         loading="eager"
                       /> */}
-                      <img
-                        src="./assest/wow.jpg"
-                        className="mx-auto h-5 w-5 rounded-full"
-                        alt="wow emoji"
-                      />
-                    </div>
-                    {/* </Fade> */}
-                    {/* <Fade delay={500}> */}
-                    <div
-                      className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
-                      onClick={() => {
-                        handleLike(story_id, 'sad')
-                      }}
-                    >
-                      {/* <Lottie
+                        <img
+                          src="./assest/wow.jpg"
+                          className="mx-auto h-5 w-5 rounded-full"
+                          alt="wow emoji"
+                        />
+                      </div>
+                    </Fade>
+                    <Fade delay={500}>
+                      <div
+                        className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white"
+                        onClick={() => {
+                          handleLike(story_id, 'sad')
+                        }}
+                      >
+                        {/* <Lottie
                         animationData={sad_json}
                         loop={false}
                         loading="eager"
                       /> */}
-                      <img
-                        src="./assest/sad.jpg"
-                        className="mx-auto h-5 w-5 rounded-full"
-                        alt="sad emoji"
-                      />
-                    </div>
-                    {/* </Fade> */}
+                        <img
+                          src="./assest/sad.jpg"
+                          className="mx-auto h-5 w-5 rounded-full"
+                          alt="sad emoji"
+                        />
+                      </div>
+                    </Fade>
                   </div>
                 </Fade>
               )}

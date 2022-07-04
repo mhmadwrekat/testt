@@ -51,9 +51,7 @@ module.exports = {
     minimumCacheTTL: 9999,
     domains: [
       'netaq.s3.ap-south-1.amazonaws.com',
-      'cdn2.unrealengine.com',
       'cdn1.epicgames.com',
-      'www.shorouknews.com',
       'i.ytimg.com',
       'admin-panel-alzubda.s3.us-east-2.amazonaws.com',
       'https://img.youtube.com/',
@@ -106,6 +104,8 @@ module.exports = {
       'static.dw.com',
       'img.btolat.com',
       'm.wsj.net',
+      'vid.alarabiya.net',
+      'www.egypttoday.com',
     ],
     formats: ['image/avif', 'image/webp'],
   },

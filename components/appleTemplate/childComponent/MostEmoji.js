@@ -59,7 +59,7 @@ const MostEmoji = ({ lgBottom, bottom, left, lgLeft, reactions }) => {
   return (
     <React.Fragment>
       <div
-        className={`${bottom} absolute ${lgBottom} rounded-full ${left} ${lgLeft} shadow-2xl`}
+        className={`${bottom} absolute ${lgBottom} rounded-full ${left} ${lgLeft} z-0 shadow-2xl`}
         loading="eager"
       >
         {handle_most_select_emoji(reactions)[0] > 0 && (
