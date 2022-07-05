@@ -132,18 +132,16 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     navigator.serviceWorker.getRegistrations()
-    window.OneSignal = window.OneSignal || []
-    OneSignal.push(function () {
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
       OneSignal.init({
-        appId: '270f0280-bc60-44f1-b09c-9bb8db7641eb',
-        safari_web_id:
-          'web.onesignal.auto.3437296f-1581-4c9c-99a7-ef947df2b18c',
+        appId: "270f0280-bc60-44f1-b09c-9bb8db7641eb",
+        safari_web_id: "web.onesignal.auto.3437296f-1581-4c9c-99a7-ef947df2b18c",
         notifyButton: {
           enable: true,
         },
-        subdomainName: 'alzubda',
-      })
-    })
+      });
+    });
     return () => {
       window.OneSignal = undefined
     }
