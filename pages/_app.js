@@ -141,6 +141,7 @@ function MyApp({ Component, pageProps }) {
         notifyButton: {
           enable: true,
         },
+        subdomainName: 'alzubda',
       })
     })
     return () => {
