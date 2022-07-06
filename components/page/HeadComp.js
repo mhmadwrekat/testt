@@ -83,14 +83,14 @@ const HeadComp = ({ headKeywords, headDescription, headTitle }) => {
         />
         {/* UNPKG */}
 
-        {/* <script
+        <script
           crossorigin
           src="https://unpkg.com/react@^18/umd/react.development.js"
         ></script>
         <script
           crossorigin
           src="https://unpkg.com/react@^18/umd/react.production.min.js"
-        ></script> */}
+        ></script>
         {/* <link
           rel="stylesheet"
           href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
