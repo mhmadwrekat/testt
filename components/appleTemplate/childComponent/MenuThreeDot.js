@@ -66,20 +66,21 @@ const Test = ({
   const share_button = (story) => {
     setOpenItem(!open_item)
     share_event()
+
     let ready_title = ''
     if (story.includes('%')) {
-      let title = story.replace(/\s+/g, '_')
+      let title = story.replace(/\s+/g, '-')
       // console.log(`/${title.replace('%', '_')}`)
-      ready_title = `${title.replace('%', '_')}`
+      ready_title = `${title.replace('%', '-')}`
     } else if (story.includes(' ')) {
-      let title = story.replace(/\s+/g, '_')
-      ready_title = `${title.replace(' ', '_')}`
+      let title = story.replace(/\s+/g, '-')
+      ready_title = `${title.replace(' ', '-')}`
     } else {
       ready_title = story
     }
     if (story.includes('?')) {
       let title = story.replace(/\s+/g, '')
-      ready_title = `${title.replace('?', '_')}`
+      ready_title = `${title.replace('?', '-')}`
     }
 
     let ready_url = `https://alzubda.com/${ready_title}`
@@ -120,7 +121,7 @@ const Test = ({
       <div className="relative pb-1">
         <svg
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns="https://www.w3.org/2000/svg"
           className={`h-7 w-7 cursor-pointer rounded-full `}
           fill="#686767"
           onClick={() => {

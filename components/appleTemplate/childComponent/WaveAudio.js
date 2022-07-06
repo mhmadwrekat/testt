@@ -68,7 +68,7 @@ const WaveAudio = ({ url }) => {
           {/* <button> */}
           {!playing ? (
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="https://www.w3.org/2000/svg"
               className="h-12 w-12 lg:h-14 lg:w-14"
               fill="#E0A719"
               viewBox="0 0 20 20"
@@ -84,7 +84,7 @@ const WaveAudio = ({ url }) => {
             </svg>
           ) : (
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="https://www.w3.org/2000/svg"
               className="h-12 w-12 lg:h-14 lg:w-14"
               viewBox="0 0 20 20"
               fill="#E0A719"

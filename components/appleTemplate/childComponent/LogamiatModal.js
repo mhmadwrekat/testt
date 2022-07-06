@@ -106,7 +106,7 @@ export default function LoqaimaModal({
                                     }}
                                   >
                                     <svg
-                                      xmlns="http://www.w3.org/2000/svg"
+                                      xmlns="https://www.w3.org/2000/svg"
                                       className="h-12 w-12"
                                       viewBox="0 0 20 20"
                                       loading="lazy"
@@ -145,7 +145,7 @@ export default function LoqaimaModal({
                                     }}
                                   >
                                     <svg
-                                      xmlns="http://www.w3.org/2000/svg"
+                                      xmlns="https://www.w3.org/2000/svg"
                                       className="h-12 w-12"
                                       viewBox="0 0 20 20"
                                       fill="#666666"

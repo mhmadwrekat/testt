@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 // component imports
-const MenuThreeDot = dynamic(() => import('./childComponent/MenuThreeDot'))
+import MenuThreeDot from './childComponent/MenuThreeDot' 
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Video = ({
@@ -103,7 +103,7 @@ const Video = ({
                 {subs !== null &&
                   (subscripe ? (
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="https://www.w3.org/2000/svg"
                       className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
                       viewBox="0 0 20 20"
                       fill="#32CD32"
@@ -122,7 +122,7 @@ const Video = ({
                     </svg>
                   ) : (
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="https://www.w3.org/2000/svg"
                       className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
                       viewBox="0 0 20 20"
                       fill="#B0B0B0"
@@ -188,10 +188,10 @@ const Video = ({
                     <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
                       <div>
                         <p
-                          className={`${bg_color} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
+                          className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white hover:underline lg:pr-5`}
                         >
                           {/* {category_news.section_name} */}
-                          {item?.primary_category[0]?.category_name}{' '}
+                          {/* {item?.primary_category[0]?.category_name} */}
                         </p>{' '}
                       </div>
                       <section
@@ -309,7 +309,7 @@ const Video = ({
                         <MenuThreeDot
                           id={item?._id}
                           title_color={title_color}
-                          category={item?.primary_category[0]?.category_name}
+                          // category={item?.primary_category[0]?.category_name}
                           story={item?.stories_headlines}
                           fill={fill_color}
                           user_id={user_id}

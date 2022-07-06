@@ -72,7 +72,7 @@ const Logaimat = ({
                 {subscripe !== null &&
                   (subscripe ? (
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="https://www.w3.org/2000/svg"
                       className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
                       viewBox="0 0 20 20"
                       fill="#B0B0B0"
@@ -88,7 +88,7 @@ const Logaimat = ({
                     </svg>
                   ) : (
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="https://www.w3.org/2000/svg"
                       className="ml-0.5 mt-3 h-10 w-10 hover:cursor-pointer lg:h-12 lg:w-12"
                       viewBox="0 0 20 20"
                       fill="#32CD32"

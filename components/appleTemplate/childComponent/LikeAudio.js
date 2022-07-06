@@ -54,7 +54,7 @@ const LikeAudio = ({ user_id, isLoved, story_id }) => {
           //   />
           // </svg>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="https://www.w3.org/2000/svg"
             className=" h-5 w-5 cursor-pointer opacity-70"
             fill="none"
             viewBox="0 0 24 24"

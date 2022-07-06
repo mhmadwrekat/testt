@@ -4,8 +4,8 @@ import Image from 'next/image'
 import moment from 'moment'
 import { useRouter } from 'next/router'
 import 'moment/locale/ar'
-const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
-const Like = dynamic(() => import('./Like'))
+import MenuThreeDot from './MenuThreeDot'
+// const Like = dynamic(() => import('./Like'))
 
 const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
   const router = useRouter()
@@ -50,7 +50,7 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
   }
   return (
     <React.Fragment>
-      <section className="text-black w-12/12 lg:w-12/12 mx-auto bg-white">
+      <section className="w-12/12 lg:w-12/12 mx-auto bg-white text-black">
         <div dir="rtl" id="project_body" translate="no">
           <section className="grid grid-cols-1 gap-5 pt-5 lg:grid-cols-3 lg:gap-16 lg:pt-10">
             {data?.slice(3, 50).map((item) => {
@@ -137,7 +137,7 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
 
                       <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
                         <p>
-                          <b className=" text-red-800 font-TSExtra">
+                          <b className=" font-TSExtra text-red-800">
                             {item.publisher_name}
                           </b>
                         </p>
@@ -158,7 +158,7 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
 
                     <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                       <p>
-                        <b className=" text-red-800 font-TSExtra">
+                        <b className=" font-TSExtra text-red-800">
                           {item.publisher_name}
                         </b>
                       </p>
@@ -182,8 +182,8 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
                         </p>
                       ) : (
                         <p
-                        className={`${bg_color} cursor-pointer rounded-lg px-4 py-1 font-TSExtra text-sm text-white hover:scale-110`}
-                        onClick={() => {
+                          className={`${bg_color} cursor-pointer rounded-lg px-4 py-1 font-TSExtra text-sm text-white hover:scale-110`}
+                          onClick={() => {
                             handle_news_redirection_story(
                               item?.stories_headlines
                             )

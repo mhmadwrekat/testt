@@ -1,10 +1,11 @@
 // Import Libraries
 import React, { useState } from 'react'
-import Like from './childComponent/Like'
 import moment from 'moment'
 import 'moment/locale/ar'
+import dynamic from 'next/dynamic'
 import WaveAudio from './childComponent/WaveAudio'
-import MostEmoji from './childComponent/MostEmoji'
+// const Like = dynamic(() => import('./childComponent/Like'))
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
@@ -234,7 +235,7 @@ const Voice = ({
                               <div className="relative h-40 w-60 lg:h-36 lg:w-56">
                                 <img
                                   loading="lazy"
-                                  src={item.stories_media_url[0]}
+                                  src={item.optimized_image}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
@@ -397,7 +398,7 @@ const Voice = ({
                               <div className="relative h-40 w-60 lg:h-36 lg:w-56">
                                 <img
                                   loading="lazy"
-                                  src={item.stories_media_url[0]}
+                                  src={item.optimized_image}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
                                 />
@@ -569,7 +570,7 @@ const Voice = ({
                                 <div className="relative h-36 w-36 md:h-72 md:w-96">
                                   <img
                                     loading="lazy"
-                                    src={item.stories_media_url[0]}
+                                    src={item.optimized_image}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                   />
@@ -743,7 +744,7 @@ const Voice = ({
                                 <div className="relative h-36 w-36 md:h-72 md:w-96">
                                   <img
                                     loading="lazy"
-                                    src={item.stories_media_url[0]}
+                                    src={item.optimized_image}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
                                   />

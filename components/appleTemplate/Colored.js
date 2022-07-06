@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 // component imports
+
 import Like from './childComponent/Like'
 import MenuThreeDot from './childComponent/MenuThreeDot'
 import MostEmoji from './childComponent/MostEmoji'
@@ -26,11 +27,9 @@ const Colored = ({
   description,
 }) => {
   const router = useRouter()
-
-  const important_news_img =
-    important_news?.data[0]?.stories_media_url.length > 0
-      ? important_news.data[0].stories_media_url[0]
-      : null
+  const important_news_img = important_news?.data[0]?.optimized_image
+    ? important_news?.data[0]?.optimized_image
+    : important_news?.data[0]?.stories_media_url[0]
 
   // function to return the youtube code to show the thumbnail
   function retrieve_youtube_code(link) {
@@ -143,7 +142,7 @@ const Colored = ({
                   عرض الجميع
                 </p>
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns="https://www.w3.org/2000/svg"
                   className={`${fill_color} mt-4 mr-2 h-9 w-9 font-TSbold text-4xl lg:mt-3 lg:h-11 lg:w-11 lg:text-xl`}
                   viewBox="0 0 20 20"
                 >
@@ -171,12 +170,12 @@ const Colored = ({
                   >
                     <div>
                       <p
-                        className={`${theme} rounded-t-md pr-5 pt-1.5 pb-0.5 text-right font-TSbold text-base text-white lg:pr-8`}
+                        className={`${theme} rounded-t-md py-3.5 text-right font-TSbold text-base text-white lg:pr-8`}
                       >
-                        {
+                        {/* {
                           important_news?.data[0]?.primary_category[0]
                             ?.category_name
-                        }{' '}
+                        }{' '} */}
                       </p>{' '}
                     </div>
                     <div className="relative max-w-full">
@@ -188,9 +187,9 @@ const Colored = ({
                         (important_news_img.includes('youtube') ||
                         important_news_img.includes('youtu.be') ? (
                           <img
-                            // loading="lazy"
-                            src={` https://img.youtube.com/vi/${retrieve_youtube_code(
-                              important_news_img
+                            loading="lazy"
+                            src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                              important_news.data[0].stories_media_url[0]
                             )}/0.jpg`}
                             alt={important_news.data[0].stories_headlines}
                             className="relative h-56 w-full cursor-pointer object-cover lg:h-80"
@@ -205,7 +204,7 @@ const Colored = ({
                           />
                         ) : (
                           <img
-                            // loading="lazy"
+                            loading="lazy"
                             src={important_news_img}
                             alt={important_news.data[0].stories_headlines}
                             className=" h-56 w-full cursor-pointer object-cover lg:h-80"
@@ -301,10 +300,6 @@ const Colored = ({
                         <MenuThreeDot
                           id={important_news?.data[0]?._id}
                           title_color={text_color}
-                          category={
-                            important_news?.data[0]?.primary_category[0]
-                              ?.category_name
-                          }
                           story={important_news?.data[0]?.stories_headlines}
                           fill={fill_color}
                           user_id={user_id}
@@ -325,17 +320,17 @@ const Colored = ({
                           id="card"
                         >
                           <div>
-                            {item?.primary_category[0]?.category_name ? (
+                            {/* {item?.primary_category[0]?.category_name ? (
                               <p
                                 className={`${theme} rounded-t-md pr-3 pt-1.5 pb-0.5 text-right font-TSSemi text-base text-white lg:pr-5`}
                               >
                                 {item?.primary_category[0]?.category_name}{' '}
                               </p>
-                            ) : (
-                              <p
-                                className={`${theme} rounded-t-md py-3 text-right font-TSSemi text-base text-white lg:pr-5`}
-                              ></p>
-                            )}
+                            ) : ( */}
+                            <p
+                              className={`${theme} rounded-t-md py-3 text-right font-TSSemi text-base text-white lg:pr-5`}
+                            ></p>
+                            {/* )} */}
                           </div>
                           <section className={`${card_color} flex lg:grid`}>
                             <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
@@ -347,8 +342,8 @@ const Colored = ({
                                   'youtu.be'
                                 ) ? (
                                   <img
-                                    // loading="lazy"
-                                    src={` https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    loading="lazy"
+                                    src={`https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
                                     alt={item.stories_headlines}
@@ -364,8 +359,8 @@ const Colored = ({
                                   />
                                 ) : (
                                   <img
-                                    // loading="lazy"
-                                    src={item.stories_media_url[0]}
+                                    loading="lazy"
+                                    src={item.optimized_image}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
                                     onClick={() => {
@@ -465,9 +460,9 @@ const Colored = ({
                             <MenuThreeDot
                               id={item._id}
                               title_color={text_color}
-                              category={
-                                item?.primary_category[0]?.category_name
-                              }
+                              // category={
+                              //   item?.primary_category[0]?.category_name
+                              // }
                               story={item?.stories_headlines}
                               fill={fill_color}
                               user_id={user_id}

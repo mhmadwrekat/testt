@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
+// import { generateFeeds } from '../utils/feed'
 
 // Apple View component
 import CategoryNews from '../components/appleTemplate/CategoryNews'
-const ArroundYou = dynamic(() =>
-  import('../components/appleTemplate/ArroundYou')
-)
+// const CategoryNews = dynamic(() =>
+//   import('../components/appleTemplate/CategoryNews')
+// )
 const Colored = dynamic(() => import('../components/appleTemplate/Colored'))
 const Video = dynamic(() => import('../components/appleTemplate/Video'))
 const Voice = dynamic(() => import('../components/appleTemplate/Voice'), {
@@ -26,6 +27,7 @@ const IndexSkeleton = dynamic(() =>
 const CategorySkeleton = dynamic(() =>
   import('../components/Skeletons/CategorySkeleton')
 )
+
 // Get Server Side Function
 export async function getServerSideProps({ req, res }) {
   // Cache the content of this page for 12 hrs
@@ -33,6 +35,7 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
+  // await generateFeeds()
 
   // Get Logaimat API
   let user_token = ''
@@ -55,7 +58,6 @@ export async function getServerSideProps({ req, res }) {
 const index = (props) => {
   // Declare State
   const [all_news, setAllNews] = useState()
-  const [oneSignalId, setOneSignalId] = useState()
   const [bg_image, setBackgroundImage] = useState('')
   const [showCategory, setShowCategory] = useState(true)
   const [searches, setSearches] = useState(false)
@@ -100,14 +102,8 @@ const index = (props) => {
       setBackgroundImage('bg-kuwait')
     }
   }
-  // Function to Get One Signal User Id
-  const get_user_id_onesignal = async () => {
-    typeof window !== 'undefined' &&
-      setOneSignalId(await window.OneSignal.getUserId())
-  }
   // Call All Functions
   useEffect(() => {
-    get_user_id_onesignal()
     get_all_news()
     get_background_image()
   }, [user_id, click_subscribe])
@@ -307,80 +303,8 @@ const index = (props) => {
 
   // props?.loqaimat?.data && console.log(props?.loqaimat)
   // all_news && console.log(all_news[0])
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  const sendNotification = (data) => {
-    var headers = {
-      'Content-Type': 'application/json; charset=utf-8',
-      Authorization: 'Basic MGIwYzdhZGMtZmU2ZC00M2ZkLTliNjEtMDRkNTE2ZmE3OGE0',
-    }
-    var options = {
-      host: 'onesignal.com',
-      port: 443,
-      path: '/api/v1/notifications',
-      method: 'POST',
-      headers: headers,
-    }
 
-    var https = require('https')
-    var req = https.request(options, function (res) {
-      res.on('data', function (data) {
-        // console.log("Response:");
-        // console.log(JSON.parse(data));
-      })
-    })
-
-    req.on('error', function (e) {
-      // console.log("ERROR:");
-      // console.log(e);
-    })
-
-    req.write(JSON.stringify(data))
-    // setID(data);
-    req.end()
-  }
-  var message = {
-    app_id: '270f0280-bc60-44f1-b09c-9bb8db7641eb',
-    contents: {
-      en: '😊 Test Message For One user 😊',
-    },
-    include_player_ids: [oneSignalId],
-  }
-  sendNotification(message)
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-  /******************************************************************** */
-
-  console.log('---> ', oneSignalId)
+  // all_news && console.log(all_news)
   return (
     <React.Fragment>
       <HeadComp
@@ -412,7 +336,7 @@ const index = (props) => {
         ) : all_news ? (
           <React.Fragment>
             <CategoryNews
-              loading="eager"
+              load={'eager'}
               title={'أهم الأخبار'}
               category_news={all_news[0]}
               user_id={user_id}
@@ -424,7 +348,6 @@ const index = (props) => {
             />
             {all_news[1]?.data?.length > 4 ? (
               <Colored
-                loading="lazy"
                 title={'مخصص لك'}
                 important_news={all_news[1]}
                 userToken={userToken}
@@ -435,7 +358,7 @@ const index = (props) => {
                 fill_color={'fill-Purp200'}
                 desc_color={'text-GRAY'}
                 description={
-                  'الأخبار المقترحه لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
+                  'الأخبار المقترحة لك بناء على المواضيع او الفئات الاخبارية التي تم قرائتها'
                 }
               />
             ) : null}
@@ -443,7 +366,7 @@ const index = (props) => {
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                load={'lazy'}
                 title={'الشأن الدولي'}
                 category_news={all_news[11]}
                 userToken={userToken}
@@ -453,30 +376,36 @@ const index = (props) => {
                 title_color={'text-YELLOW'}
                 fill_color={'fill-YELLOW'}
                 description={'جميع ما يحدث حول العالم '}
+                descriptionColor={'text-GRAY400'}
               />
             </div>
             {all_news[2] ? (
-              <ArroundYou
-                bg_image={bg_image}
-                loading="lazy"
-                title={'يدور حولك'}
-                important_news={all_news[2]}
-                userToken={userToken}
-                user_id={user_id}
-                card_color={'bg-GRAY100'}
-                theme={'bg-Purp100'}
-                text_color={'text-GRAY100'}
-                fill_color={'fill-Purp100'}
-                description={' جميع ما يدور من حولك من أخبار و مواضيع'}
-              />
+              <div loading="lazy">
+                <CategoryNews
+                  bg_image={bg_image}
+                  load={'lazy'}
+                  title={'يدور حولك'}
+                  category_news={all_news[2]}
+                  userToken={userToken}
+                  user_id={user_id}
+                  descriptionColor={'text-white'}
+                  subs={null}
+                  // card_color={'bg-GRAY100'}
+                  bg_color={'bg-Purp100'}
+                  title_color={'text-GRAY100'}
+                  fill_color={'fill-Purp100'}
+                  description={' جميع ما يدور من حولك من أخبار و مواضيع'}
+                />
+              </div>
             ) : null}
             <div id="صحة">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                load={'lazy'}
                 title={'الصحة'}
                 category_news={all_news[4]}
+                descriptionColor={'text-GRAY400'}
                 userToken={userToken}
                 user_id={user_id}
                 subs={all_news[4]?.is_subscribed}
@@ -484,7 +413,7 @@ const index = (props) => {
                 title_color={'text-BLUE'}
                 fill_color={'fill-BLUE'}
                 description={
-                  'جميع الأخبار المتعلقة في عالم الصحه من أهم المصادر'
+                  'جميع الأخبار المتعلقة في عالم الصحة من أهم المصادر'
                 }
               />
             </div>
@@ -503,7 +432,7 @@ const index = (props) => {
                 />
               </div>
             )}
-            <div id="اخبار الفن">
+            {/* <div id="اخبار الفن">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -520,16 +449,17 @@ const index = (props) => {
                   'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'
                 }
               />
-            </div>
+            </div> */}
             <div id="مال وأعمال">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                load={'lazy'}
                 title={'مال وأعمال'}
                 category_news={all_news[7]}
                 userToken={userToken}
                 user_id={user_id}
+                descriptionColor={'text-GRAY400'}
                 subs={all_news[7]?.is_subscribed}
                 bg_color={'bg-GREEN'}
                 title_color={'text-GREEN'}
@@ -544,7 +474,7 @@ const index = (props) => {
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                load={'lazy'}
                 title={'غزو أوكرانيا'}
                 category_news={all_news[8]}
                 userToken={userToken}
@@ -552,15 +482,15 @@ const index = (props) => {
                 subs={all_news[8]?.is_subscribed}
                 bg_color={'bg-YELLOW'}
                 title_color={'text-YELLOW'}
+                descriptionColor={'text-GRAY400'}
                 fill_color={'fill-YELLOW'}
                 description={'جميع ما يخص أحداث غزو أوكرانيا'}
               />
             </div>
-            {props?.loqaimat?.data.length > 3 && (
+            {props?.loqaimat?.data.length > 4 ? (
               <div id="لقيمات">
                 <Logaimat
                   setShowCategory={setShowCategory}
-                  loading="lazy"
                   title={'لقيمات'}
                   important_news={props?.loqaimat?.data}
                   subs={null}
@@ -570,18 +500,20 @@ const index = (props) => {
                   fill_color={'fill-SKY'}
                   desc_color={'text-GRAY400'}
                   text_color={'text-black'}
-                  description={'بطريقة جميلة يمكنك قرائه المواضيع'}
+                  description={'بطريقة جميلة يمكنك قراءة المواضيع'}
                 />
               </div>
-            )}
+            ) : null}
+
             <div id="ترند">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                load={'lazy'}
                 title={'ترند'}
                 category_news={all_news[5]}
                 userToken={userToken}
+                descriptionColor={'text-GRAY400'}
                 user_id={user_id}
                 subs={all_news[5]?.is_subscribed}
                 bg_color={'bg-RED'}
@@ -605,10 +537,10 @@ const index = (props) => {
                 card_color={'bg-GRAY100'}
                 desc_color={'text-GRAY400'}
                 theme={'bg-YELLOW'}
-                description={'استمع للاخبار الصوتيه الاكثر استماعا على الزبده'}
+                description={'استمع للاخبار الصوتية الاكثر استماعا على الزبده'}
               />
             </div>
-            <div id="ألعاب">
+            {/* <div id="ألعاب">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -623,13 +555,14 @@ const index = (props) => {
                 fill_color={'fill-GREEN'}
                 description={'جميع ما يخص عالم الالعاب بين يديك'}
               />
-            </div>
+            </div> */}
 
             <div id="الخليج العربي">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                descriptionColor={'text-GRAY400'}
+                load={'lazy'}
                 title={'الخليج العربي'}
                 category_news={all_news[10]}
                 userToken={userToken}
@@ -646,19 +579,20 @@ const index = (props) => {
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                load={'lazy'}
                 title={'رياضة'}
                 category_news={all_news[3]}
                 userToken={userToken}
                 user_id={user_id}
                 subs={all_news[3]?.is_subscribed}
                 bg_color={'bg-BLUE'}
+                descriptionColor={'text-GRAY400'}
                 title_color={'text-BLUE'}
                 fill_color={'fill-BLUE'}
-                description={'جميع الأخبار المتعلقة في عالم الرياضه حول العالم'}
+                description={'جميع الأخبار المتعلقة في عالم الرياضة حول العالم'}
               />
             </div>
-            <div id="لايف ستايل">
+            {/* <div id="لايف ستايل">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -672,8 +606,8 @@ const index = (props) => {
                 title_color={'text-RED'}
                 fill_color={'fill-RED'}
               />
-            </div>
-            <div id="الشرق الاوسط">
+            </div> */}
+            {/* <div id="الشرق الاوسط">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -688,15 +622,16 @@ const index = (props) => {
                 fill_color={'fill-YELLOW'}
                 description={'جميع ما يحدث حول العالم '}
               />
-            </div>
+            </div> */}
 
             <div id="تكنولوجيا">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
-                loading="lazy"
+                load={'lazy'}
                 title={'تكنولوجيا'}
                 category_news={all_news[12]}
+                descriptionColor={'text-GRAY400'}
                 userToken={userToken}
                 user_id={user_id}
                 subs={all_news[12]?.is_subscribed}
@@ -714,7 +649,7 @@ const index = (props) => {
             <IndexSkeleton />
           </React.Fragment>
         )}
-        {all_news && <Footer loading="lazy" />}
+        <Footer />
       </div>
     </React.Fragment>
   )

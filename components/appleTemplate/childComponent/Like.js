@@ -102,7 +102,7 @@ const Like = ({
                     loading="eager"
                   /> */}
                     <img
-                      src="./assest/haha.jpg"
+                      src="./assest/haha.svg"
                       className="mx-auto h-5 w-5 rounded-full lg:h-6 lg:w-6 "
                       alt="haha emoji"
                     />
@@ -121,7 +121,7 @@ const Like = ({
                     loading="eager"
                   /> */}
                     <img
-                      src="./assest/like.jpg"
+                      src="./assest/like.svg"
                       className="mx-auto h-5 w-5 rounded-full lg:h-6 lg:w-6"
                       alt="like emoji"
                     />
@@ -140,7 +140,7 @@ const Like = ({
                     loading="eager"
                   /> */}
                     <img
-                      src="./assest/sad.jpg"
+                      src="./assest/sad.svg"
                       className="mx-auto h-5 w-5 rounded-full lg:h-6 lg:w-6"
                       alt="sad emoji"
                     />
@@ -159,7 +159,7 @@ const Like = ({
                     loading="eager"
                   /> */}
                     <img
-                      src="./assest/wow.jpg"
+                      src="./assest/wow.svg"
                       className="mx-auto h-5 w-5 rounded-full lg:h-6 lg:w-6"
                       alt="wow emoji"
                     />
@@ -178,7 +178,7 @@ const Like = ({
                     loading="eager"
                   /> */}
                     <img
-                      src="./assest/angry.jpg"
+                      src="./assest/angry.svg"
                       className="mx-auto h-5 w-5 rounded-full lg:h-6 lg:w-6"
                       alt="angry emoji"
                     />
@@ -203,7 +203,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                         <img
-                          src="./assest/like.jpg"
+                          src="./assest/like.svg"
                           className="mx-auto h-5 w-5 rounded-full "
                           alt="like emoji"
                         />
@@ -221,7 +221,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                           <img
-                            src="./assest/angry.jpg"
+                            src="./assest/angry.svg"
                             className="mx-auto h-5 w-5 rounded-full"
                             alt="angry emoji"
                           />
@@ -240,7 +240,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                           <img
-                            src="./assest/haha.jpg"
+                            src="./assest/haha.svg"
                             className="mx-auto h-5 w-5 rounded-full"
                             alt="haha emoji"
                           />
@@ -259,7 +259,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                           <img
-                            src="./assest/wow.jpg"
+                            src="./assest/wow.svg"
                             className="mx-auto h-5 w-5 rounded-full"
                             alt="wow emoji"
                           />
@@ -278,7 +278,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                           <img
-                            src="./assest/sad.jpg"
+                            src="./assest/sad.svg"
                             className="mx-auto h-5 w-5 rounded-full"
                             alt="sad emoji"
                           />
@@ -295,7 +295,7 @@ const Like = ({
                 loading="eager"
                 fill="none"
                 viewBox="0 0 40 40"
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="https://www.w3.org/2000/svg"
                 onClick={() => {
                   handle_open()
                 }}
@@ -378,7 +378,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                       <img
-                        src="./assest/like.jpg"
+                        src="./assest/like.svg"
                         className="mx-auto h-5 w-5 rounded-full"
                         alt="like emoji"
                       />
@@ -396,7 +396,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                         <img
-                          src="./assest/angry.jpg"
+                          src="./assest/angry.svg"
                           className="mx-auto h-5 w-5 rounded-full"
                           alt="angry emoji"
                         />
@@ -415,7 +415,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                         <img
-                          src="./assest/haha.jpg"
+                          src="./assest/haha.svg"
                           className="mx-auto h-5 w-5 rounded-full"
                           alt="haha emoji"
                         />
@@ -434,7 +434,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                         <img
-                          src="./assest/wow.jpg"
+                          src="./assest/wow.svg"
                           className="mx-auto h-5 w-5 rounded-full"
                           alt="wow emoji"
                         />
@@ -453,7 +453,7 @@ const Like = ({
                         loading="eager"
                       /> */}
                         <img
-                          src="./assest/sad.jpg"
+                          src="./assest/sad.svg"
                           className="mx-auto h-5 w-5 rounded-full"
                           alt="sad emoji"
                         />

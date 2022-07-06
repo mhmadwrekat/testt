@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import axios from 'axios'
 import { NextSeo } from 'next-seo'
@@ -102,67 +102,9 @@ function MyApp({ Component, pageProps }) {
       : ''
   }, [])
 
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  const workerRef = useRef()
-  useEffect(() => {
-    workerRef.current = new Worker(
-      new URL('../public/OneSignalSDKWorker.js', import.meta.url)
-    )
-    workerRef.current.onmessage = (evt) =>
-      alert(`WebWorker Response => ${evt.data}`)
-    return () => {
-      workerRef.current.terminate()
-    }
-  }, [])
-
-  const handleWork = useCallback(async () => {
-    workerRef.current.postMessage(100000)
-  }, [])
-
-  useEffect(() => {
-    navigator.serviceWorker.getRegistrations()
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-      OneSignal.init({
-        appId: "270f0280-bc60-44f1-b09c-9bb8db7641eb",
-        safari_web_id: "web.onesignal.auto.3437296f-1581-4c9c-99a7-ef947df2b18c",
-        notifyButton: {
-          enable: true,
-        },
-      });
-    });
-    return () => {
-      window.OneSignal = undefined
-    }
-  }, []) // <-- run this effect once on mount
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-  /********************************************** */
-
   return (
     <React.Fragment>
-      {/* <Script
+      <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS}`}
       />
@@ -173,7 +115,7 @@ function MyApp({ Component, pageProps }) {
           gtag('js', new Date());
           gtag('config', '${ANALYTICS}');
         `}
-      </Script> */}
+      </Script>
       {/* <Script>
         {`!function(){var analytics=window.analytics=window.analytics||[]
   if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.")

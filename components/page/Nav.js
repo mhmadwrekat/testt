@@ -4,6 +4,7 @@ import axios from 'axios'
 import { BASE_URL } from '../../config/config'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
+import NavSkeleton from '../Skeletons/NavSkeleton'
 const Search = dynamic(() => import('../appleTemplate/childComponent/Search'))
 
 const Nav = ({
@@ -57,14 +58,44 @@ const Nav = ({
     {
       name: 'لقيمات',
       link: '#لقيمات',
+      id: 1,
+      width: 'w-20',
+    },
+    {
+      name: 'لقيمات',
+      link: '#لقيمات',
       id: 2,
-      width: 'w-10',
+      width: 'w-20',
     },
     {
       name: 'الصوتيات',
       link: '#الصوتيات',
       id: 3,
-      width: 'w-10',
+      width: 'w-20',
+    },
+    {
+      name: 'الصوتيات',
+      link: '#الصوتيات',
+      id: 4,
+      width: 'w-20',
+    },
+    {
+      name: 'الصوتيات',
+      link: '#الصوتيات',
+      id: 5,
+      width: 'w-20',
+    },
+    {
+      name: 'الصوتيات',
+      link: '#الصوتيت',
+      id: 6,
+      width: 'w-96',
+    },
+    {
+      name: 'الصوتيات',
+      link: '#الصوتيت',
+      id: 7,
+      width: 'w-96',
     },
   ]
 
@@ -171,7 +202,7 @@ const Nav = ({
             <div className=" mt-2 lg:mx-8 lg:mt-3 lg:mb-2">
               <svg
                 viewBox="0 0 61 28"
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="https://www.w3.org/2000/svg"
                 className="h-8 w-20 cursor-pointer fill-Purp100 hover:fill-SKY lg:h-12 lg:w-24"
                 onClick={() => {
                   router.push('/')
@@ -227,7 +258,7 @@ const Nav = ({
                 {searches ? (
                   <svg
                     className="text-slate-400  mx-4 mt-2 h-7 w-7 cursor-pointer"
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="https://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="#FFFFFF"
                     onClick={() => {
@@ -270,7 +301,7 @@ const Nav = ({
                 {loader ? (
                   <svg
                     className="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="https://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                   >
@@ -295,7 +326,7 @@ const Nav = ({
           {/* mobile Search Img */}
           <div className="mt-4 flex h-6 w-6 text-left lg:hidden">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="https://www.w3.org/2000/svg"
               className="h-6 w-6"
               fill="#FFFFFF"
               viewBox="0 0 24 24"
@@ -323,13 +354,13 @@ const Nav = ({
             <section className="w-12/12 mx-auto my-1 mt-1.5 flex items-center justify-start overflow-x-auto lg:my-0 lg:mt-4 lg:justify-start">
               <section className="mx-2 hidden justify-start rounded-full border-0 border-Purp200 pl-3 lg:flex">
                 <section className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
-                  {media_item_fake.map((item) => {
+                  {media_item_fake.slice(0, 3).map((item) => {
                     return (
                       <section
                         key={item.id}
                         className={`${item.width} mx-2 flex items-center justify-center gap-3`}
                       >
-                        <a className={`rounded-full`} href={item.link}></a>
+                        <p className={`rounded-full`}></p>
                       </section>
                     )
                   })}
@@ -340,7 +371,7 @@ const Nav = ({
                   fill="#695CAD"
                   className="h-8 w-8 rounded-full bg-Purp300 lg:h-9 lg:w-9"
                   viewBox="0 0 21 21"
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns="https://www.w3.org/2000/svg"
                 >
                   <path
                     d="m10.5 1.5v5.25c-0.99456 0-1.9484 0.39509-2.6516 1.0984s-1.0984 1.6571-1.0984 2.6516c0 0.9946 0.39509 1.9484 1.0984 2.6517 0.70326 0.7032 1.6571 1.0983 2.6516 1.0983v5.25c4.9706 0 9-4.0294 9-9 0-4.9706-4.0294-9-9-9zm0 12.75v-7.5c0.9946 0 1.9484 0.39509 2.6517 1.0984 0.7032 0.70326 1.0983 1.6571 1.0983 2.6516 0 0.9946-0.3951 1.9484-1.0983 2.6517-0.7033 0.7032-1.6571 1.0983-2.6517 1.0983zm-10.5-3.75c0-5.799 4.701-10.5 10.5-10.5 5.799 0 10.5 4.701 10.5 10.5 0 5.799-4.701 10.5-10.5 10.5-5.799 0-10.5-4.701-10.5-10.5z"
@@ -369,7 +400,7 @@ const Nav = ({
                   <svg
                     fill="#695CAD"
                     viewBox="0 0 22 22"
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="https://www.w3.org/2000/svg"
                     className="h-8 w-8 rounded-full bg-Purp300 lg:h-9 lg:w-9"
                   >
                     <path
@@ -394,7 +425,7 @@ const Nav = ({
                   </section>
                 </section>
               )}
-              {unsubscribe_item?.length > 0 && (
+              {unsubscribe_item?.length > 0 ? (
                 <section className="mx-2 flex h-10 justify-start rounded-full border-3 border-Purp200 px-3 lg:h-11">
                   <section className="flex w-full py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
                     {unsubscribe_item?.map((item) => {
@@ -411,16 +442,18 @@ const Nav = ({
                     })}
                   </section>
                 </section>
+              ) : (
+                <NavSkeleton />
               )}
               <section className="mx-2 hidden justify-start rounded-full border-0 border-Purp200 pl-3 lg:flex">
                 <section className="flex py-0 px-0 first:mr-0 first:pr-0 lg:first:mr-0 lg:first:pr-0">
-                  {media_item.map((item) => {
+                  {media_item_fake.map((item) => {
                     return (
                       <section
                         key={item.id}
                         className={`${item.width} mx-2 flex items-center justify-center gap-3`}
                       >
-                        <a className={`rounded-full`} href={item.link}></a>
+                        <p className={`rounded-full`}></p>
                       </section>
                     )
                   })}
@@ -445,7 +478,7 @@ const Nav = ({
             {searches ? (
               <svg
                 className="text-slate-400 absolute mx-0 mt-2 h-7 w-7 cursor-pointer"
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="https://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="#FFFFFF"
                 onClick={() => {
@@ -487,7 +520,7 @@ const Nav = ({
             {loader ? (
               <svg
                 className="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="https://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
               >
@@ -522,7 +555,7 @@ const Nav = ({
                           className="mt-3.5 h-12 w-12 lg:h-14 lg:w-14"
                           fill="none"
                           viewBox="0 0 74 74"
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                         >
                           <path
                             d="m64.904 57.68-24.632-45.744c-1.746-3.2433-6.397-3.2433-8.1444 0l-24.631 45.744c-0.37909 0.7041-0.56914 1.4945-0.55162 2.2939 0.01753 0.7995 0.24203 1.5808 0.65161 2.2676s0.99023 1.2556 1.6853 1.6511c0.69504 0.3954 1.4807 0.6038 2.2804 0.605h49.269c0.8003 1e-4 1.5869-0.2075 2.2829-0.6024 0.6961-0.3949 1.2778-0.9636 1.6882-1.6506s0.6355-1.4688 0.6534-2.2689c0.0178-0.8-0.1722-1.591-0.5516-2.2957zm-28.704-0.2645c-0.5717 0-1.1306-0.1695-1.6059-0.4871-0.4754-0.3176-0.8459-0.7691-1.0647-1.2973s-0.276-1.1094-0.1645-1.6701c0.1116-0.5607 0.3869-1.0758 0.7911-1.4801 0.4043-0.4042 0.9194-0.6795 1.4801-0.7911 0.5607-0.1115 1.1419-0.0543 1.6701 0.1645s0.9797 0.5893 1.2973 1.0647c0.3176 0.4753 0.4871 1.0342 0.4871 1.6059 0 0.3796-0.0747 0.7555-0.22 1.1062s-0.3582 0.6694-0.6266 0.9378-0.5871 0.4813-0.9378 0.6266-0.7266 0.22-1.1062 0.22zm3.1392-29.072-0.8296 17.633c0 0.6133-0.2436 1.2015-0.6773 1.6352s-1.0219 0.6773-1.6352 0.6773-1.2015-0.2436-1.6352-0.6773c-0.4336-0.4337-0.6773-1.0219-0.6773-1.6352l-0.8296-17.626c-0.0186-0.4212 0.0477-0.8418 0.1951-1.2368s0.3728-0.7563 0.6627-1.0623c0.29-0.306 0.6386-0.5505 1.0251-0.719 0.3865-0.1684 0.803-0.2573 1.2245-0.2613h0.0304c0.4244-2e-4 0.8445 0.0855 1.2349 0.2521s0.743 0.4106 1.0365 0.7172 0.5218 0.6695 0.6712 1.0668 0.2168 0.8207 0.1981 1.2447l0.0057-0.0086z"

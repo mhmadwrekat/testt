@@ -5,7 +5,7 @@ const CategorySkeleton = () => {
   return (
     <React.Fragment>
       <div dir="rtl" translate="no">
-        <section className="text-black mx-auto w-11/12 animate-pulse bg-white lg:w-10/12 lg:pt-10">
+        <section className="mx-auto w-11/12 animate-pulse bg-white text-black lg:w-10/12 lg:pt-10">
           <div className="flex justify-between">
             <div className="my-3 mt-3 w-6/12 lg:mt-4">
               <div className="flex">
@@ -39,7 +39,7 @@ const CategorySkeleton = () => {
 
                     <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                       <p>
-                        <b className=" text-red-800 font-TSExtra"></b>
+                        <b className=" font-TSExtra text-red-800"></b>
                       </p>
                     </div>
                     <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
@@ -48,7 +48,7 @@ const CategorySkeleton = () => {
                       ></p>{' '}
                       <svg
                         viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns="https://www.w3.org/2000/svg"
                         className={`h-7 w-7 cursor-pointer rounded-full`}
                         fill="#B0B0B0"
                       >

@@ -61,17 +61,17 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
                   <section key={item?._id}>
                     <div className=" rounded-lg bg-GRAY100 shadow-lg" id="card">
                       <div>
-                        {item?.primary_category[0]?.category_name ? (
+                        {/* {item?.primary_category[0]?.category_name ? (
                           <p
                             className={`${bg_color} rounded-t-md px-1 pt-1 pb-0.5 text-right font-TSSemi text-base text-white lg:pr-5`}
                           >
                             {item?.primary_category[0]?.category_name}
                           </p>
-                        ) : (
-                          <p
-                            className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white lg:pr-5`}
-                          ></p>
-                        )}
+                        ) : ( */}
+                        <p
+                          className={`${bg_color} rounded-t-md py-3 text-right font-TSSemi text-base text-white lg:pr-5`}
+                        ></p>
+                        {/* )} */}
                       </div>
                       <section
                         className="grid cursor-pointer bg-GRAY100"
@@ -171,7 +171,7 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
                         <MenuThreeDot
                           id={item?._id}
                           title_color={'text-Purp100'}
-                          category={item?.primary_category[0]?.category_name}
+                          // category={item?.primary_category[0]?.category_name}
                           story={item?.stories_headlines}
                           fill={'fill-Purp300'}
                           user_id={user_id}
