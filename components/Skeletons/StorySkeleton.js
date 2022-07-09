@@ -4,7 +4,7 @@ const StorySkeleton = () => {
   return (
     <React.Fragment>
       <div dir="rtl" id="project_body" translate="no">
-        <section className="text-black mx-auto grid w-11/12 animate-pulse pt-10 lg:w-10/12">
+        <section className="mx-auto grid w-11/12 animate-pulse pt-10 text-black lg:w-10/12">
           <section
             className="grid grid-cols-1 gap-0 bg-GRAY100 shadow-md lg:grid-cols-2 lg:gap-8"
             id="card"
@@ -49,9 +49,8 @@ const StorySkeleton = () => {
 
         {/* {console.log(related_news)} */}
       </div>
-      <div className="py-4"></div>
     </React.Fragment>
   )
 }
 
-export default StorySkeleton
+export default React.memo(StorySkeleton)

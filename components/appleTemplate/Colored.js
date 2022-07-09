@@ -1,14 +1,12 @@
 // Import Libraries
-import React, { useState } from 'react'
+import React from 'react'
 import moment from 'moment'
 import 'moment/locale/ar'
-import { BASE_URL } from '../../config/config'
-import axios from 'axios'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 
 // component imports
-
 import Like from './childComponent/Like'
 import MenuThreeDot from './childComponent/MenuThreeDot'
 import MostEmoji from './childComponent/MostEmoji'
@@ -51,28 +49,6 @@ const Colored = ({
       return code
     }
   }
-
-  // function to handle Love & Unlove for First News
-  const [like, setLike] = useState(important_news?.data[0]?.is_loved)
-
-  const handle_like = (story_id, is_loved) => {
-    // console.log(story_id, is_loved)
-    let config = {
-      method: 'PUT',
-      baseURL: `${BASE_URL}`,
-      url: `/v1/Web/Story/Love`,
-      data: {
-        userId: user_id,
-        story: story_id,
-        isLove: !is_loved,
-      },
-    }
-    axios(config).then((res) => {
-      // console.log(res)
-      setLike(!like)
-    })
-    // return !is_loved
-  }
   // Function to handle specific Redirection
   const handle_news_redirection = (story) => {
     if (story.includes('%')) {
@@ -86,7 +62,6 @@ const Colored = ({
       router.push(story)
     }
   }
-
   let stories = important_news && [important_news?.data[0]?._id]
 
   const handle_news_redirection_story = (titles) => {
@@ -105,7 +80,11 @@ const Colored = ({
       let title = titles.replace(/\s+/g, '')
       ready_title = `${title.replace('?', '-')}`
     }
-
+    // typeof window !== 'undefined' &&
+    //   analytics.page('Internal Story Page', {
+    //     title: 'Story Page',
+    //     url: `https://alzubda.com/${ready_title}`,
+    //   })
     router.push(`/${ready_title}`)
     // console.log(ready_title)
   }
@@ -178,7 +157,8 @@ const Colored = ({
                         }{' '} */}
                       </p>{' '}
                     </div>
-                    <div className="relative max-w-full">
+                    {/* <div className="relative max-w-full"> */}
+                    <div className="relative h-56 w-full lg:h-80">
                       <ViewImpression stories={stories} user_id={user_id} />{' '}
                       <></>
                       <ReadImpression stories={stories[0]} user_id={user_id} />
@@ -186,16 +166,21 @@ const Colored = ({
                       {important_news_img &&
                         (important_news_img.includes('youtube') ||
                         important_news_img.includes('youtu.be') ? (
-                          <img
-                            loading="lazy"
+                          <Image
                             src={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                              important_news.data[0].stories_media_url[0]
+                              important_news?.data[0].stories_media_url[0]
                             )}/0.jpg`}
                             alt={important_news.data[0].stories_headlines}
                             className="relative h-56 w-full cursor-pointer object-cover lg:h-80"
-                            // onClick={() => {
-                            //   router.push(`/${important_news?.data[0]?._id}`)
-                            // }}
+                            // quality={50}
+                            layout="fill"
+                            objectFit="cover"
+                            loading="lazy"
+                            // priority
+                            placeholder="blur"
+                            blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                              important_news.data[0].stories_media_url[0]
+                            )}/0.jpg`}
                             onClick={() => {
                               handle_news_redirection_story(
                                 important_news?.data[0]?.stories_headlines
@@ -203,17 +188,50 @@ const Colored = ({
                             }}
                           />
                         ) : (
-                          <img
-                            loading="lazy"
+                          // <img
+                          //   loading="lazy"
+                          //   src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                          //     important_news.data[0].stories_media_url[0]
+                          //   )}/0.jpg`}
+                          //   alt={important_news.data[0].stories_headlines}
+                          //   className="relative h-56 w-full cursor-pointer object-cover lg:h-80"
+                          //   // onClick={() => {
+                          //   //   router.push(`/${important_news?.data[0]?._id}`)
+                          //   // }}
+                          //   onClick={() => {
+                          //     handle_news_redirection_story(
+                          //       important_news?.data[0]?.stories_headlines
+                          //     )
+                          //   }}
+                          // />
+                          <Image
                             src={important_news_img}
                             alt={important_news.data[0].stories_headlines}
-                            className=" h-56 w-full cursor-pointer object-cover lg:h-80"
+                            className="h-56 w-full cursor-pointer object-cover lg:h-80"
+                            // quality={50}
+                            layout="fill"
+                            objectFit="cover"
+                            loading="lazy"
+                            // priority
+                            placeholder="blur"
+                            blurDataURL={important_news_img}
                             onClick={() => {
                               handle_news_redirection_story(
                                 important_news?.data[0]?.stories_headlines
                               )
                             }}
                           />
+                          // <img
+                          //   loading="lazy"
+                          //   src={important_news_img}
+                          //   alt={important_news.data[0].stories_headlines}
+                          //   className=" h-56 w-full cursor-pointer object-cover lg:h-80"
+                          //   onClick={() => {
+                          //     handle_news_redirection_story(
+                          //       important_news?.data[0]?.stories_headlines
+                          //     )
+                          //   }}
+                          // />
                         ))}
                       <Like
                         lgBottom={'lg:bottom-0'}
@@ -333,7 +351,8 @@ const Colored = ({
                             {/* )} */}
                           </div>
                           <section className={`${card_color} flex lg:grid`}>
-                            <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
+                            {/* <div className="relative mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0"> */}
+                            <div className="mr-2 h-auto w-72 py-2 lg:mr-0 lg:h-auto lg:w-auto lg:py-0">
                               {item.stories_media_url[0] &&
                                 (item.stories_media_url[0].includes(
                                   'youtube'
@@ -341,56 +360,128 @@ const Colored = ({
                                 item.stories_media_url[0].includes(
                                   'youtu.be'
                                 ) ? (
-                                  <img
-                                    loading="lazy"
-                                    src={`https://img.youtube.com/vi/${retrieve_youtube_code(
-                                      item.stories_media_url[0]
-                                    )}/0.jpg`}
-                                    alt={item.stories_headlines}
-                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                    // onClick={() => {
-                                    //   router.push(`/${item._id}`)
-                                    // }}
-                                    onClick={() => {
-                                      handle_news_redirection_story(
-                                        item?.stories_headlines
-                                      )
-                                    }}
-                                  />
+                                  <div className="relative h-28">
+                                    {/* <img
+                                      loading="lazy"
+                                      src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                        item.stories_media_url[0]
+                                      )}/0.jpg`}
+                                      alt={item.stories_headlines}
+                                      className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                      // onClick={() => {
+                                      //   router.push(`/${item._id}`)
+                                      // }}
+                                      onClick={() => {
+                                        handle_news_redirection_story(
+                                          item?.stories_headlines
+                                        )
+                                      }}
+                                    /> */}
+                                    <Image
+                                      src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                        item.stories_media_url[0]
+                                      )}/0.jpg`}
+                                      alt={item.stories_headlines}
+                                      className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                      // quality={75}
+                                      layout="fill"
+                                      objectFit="cover"
+                                      // width={800}
+                                      // height={300}
+                                      loading="lazy"
+                                      // priority
+                                      placeholder="blur"
+                                      blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                        item.stories_media_url[0]
+                                      )}/0.jpg`}
+                                      onClick={() => {
+                                        handle_news_redirection_story(
+                                          item?.stories_headlines
+                                        )
+                                      }}
+                                    />
+                                    <Like
+                                      lgBottom={'lg:-bottom-1'}
+                                      right={'right-2'}
+                                      bottom={'bottom-0'}
+                                      user_id={user_id}
+                                      story_id={item?._id}
+                                      isLoved={item?.is_loved}
+                                      userToken={userToken}
+                                      reactions={item?.reactions}
+                                    />
+                                    <MostEmoji
+                                      bottom={'bottom-1'}
+                                      left={'left-1'}
+                                      userToken={userToken}
+                                      reactions={item?.reactions}
+                                      user_id={user_id}
+                                      story_id={item?._id}
+                                      isLoved={item?.is_loved}
+                                    />
+                                  </div>
                                 ) : (
-                                  <img
-                                    loading="lazy"
-                                    src={item.optimized_image}
-                                    alt={item.stories_headlines}
-                                    className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
-                                    onClick={() => {
-                                      handle_news_redirection_story(
-                                        item?.stories_headlines
-                                      )
-                                    }}
-                                  />
+                                  <div className="relative h-28">
+                                    {/* <img
+                                      loading="lazy"
+                                      src={item.optimized_image}
+                                      alt={item.stories_headlines}
+                                      className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                      onClick={() => {
+                                        handle_news_redirection_story(
+                                          item?.stories_headlines
+                                        )
+                                      }}
+                                    /> */}
+                                    <Image
+                                      src={
+                                        item?.optimized_image ||
+                                        item.stories_media_url[0]
+                                      }
+                                      alt={item.stories_headlines}
+                                      className="mx-auto h-32 w-40 cursor-pointer rounded-md object-cover md:h-full md:w-full lg:h-28 lg:w-full lg:rounded-none lg:rounded-b-md"
+                                      // quality={75}
+                                      layout="fill"
+                                      objectFit="cover"
+                                      // width={800}
+                                      // height={300}
+                                      loading="lazy"
+                                      // priority
+                                      placeholder="blur"
+                                      blurDataURL={
+                                        item?.optimized_image ||
+                                        item.stories_media_url[0]
+                                      }
+                                      onClick={() => {
+                                        handle_news_redirection_story(
+                                          item?.stories_headlines
+                                        )
+                                      }}
+                                    />
+                                    <Like
+                                      lgBottom={'lg:-bottom-1'}
+                                      right={'right-2'}
+                                      bottom={'bottom-0'}
+                                      user_id={user_id}
+                                      story_id={item?._id}
+                                      isLoved={item?.is_loved}
+                                      userToken={userToken}
+                                      reactions={item?.reactions}
+                                    />
+                                    <MostEmoji
+                                      bottom={'bottom-1'}
+                                      left={'left-1'}
+                                      userToken={userToken}
+                                      reactions={item?.reactions}
+                                      user_id={user_id}
+                                      story_id={item?._id}
+                                      isLoved={item?.is_loved}
+                                    />
+                                  </div>
                                 ))}
-                              <div className="rounded-full bg-white text-black">
-                                <Like
-                                  lgBottom={'lg:bottom-0'}
-                                  right={'right-1'}
-                                  bottom={'bottom-4'}
-                                  user_id={user_id}
-                                  story_id={item?._id}
-                                  isLoved={item?.is_loved}
-                                  userToken={userToken}
-                                  reactions={item?.reactions}
-                                />
-                                <MostEmoji
-                                  bottom={'bottom-5'}
-                                  left={'left-1'}
-                                  userToken={userToken}
-                                  reactions={item?.reactions}
-                                  user_id={user_id}
-                                  story_id={item?._id}
-                                  isLoved={item?.is_loved}
-                                />
-                              </div>
+                              {/* <div className="rounded-full bg-white text-black">
+                   
+                              </div> */}
                             </div>
 
                             <div className="hidden h-6 justify-between px-0 pt-1.5 font-TSlight text-xs lg:flex">
@@ -492,4 +583,4 @@ const Colored = ({
     </React.Fragment>
   )
 }
-export default Colored
+export default React.memo(Colored)

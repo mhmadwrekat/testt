@@ -35,7 +35,14 @@ const WaveAudio = ({ url }) => {
       // console.log('Not Loaded')
     },
   })
-  const handlePlay = () => {
+  const handle_play = () => {
+    // get_voice()
+    // wavesurfer.current.load(url) && playi()
+    wavesurfer.current.playPause()
+    setPlay(!playing)
+    // analytics.track('play_story', [null], [null], [null])
+  }
+  const handle_pause = () => {
     // get_voice()
     // wavesurfer.current.load(url) && playi()
     wavesurfer.current.playPause()
@@ -69,11 +76,11 @@ const WaveAudio = ({ url }) => {
           {!playing ? (
             <svg
               xmlns="https://www.w3.org/2000/svg"
-              className="h-12 w-12 lg:h-14 lg:w-14"
+              className="h-12 w-12 cursor-grabbing lg:h-14 lg:w-14"
               fill="#E0A719"
               viewBox="0 0 20 20"
               onClick={() => {
-                handlePlay()
+                handle_play()
               }}
             >
               <path
@@ -85,11 +92,11 @@ const WaveAudio = ({ url }) => {
           ) : (
             <svg
               xmlns="https://www.w3.org/2000/svg"
-              className="h-12 w-12 lg:h-14 lg:w-14"
+              className="h-12 w-12 cursor-grabbing lg:h-14 lg:w-14"
               viewBox="0 0 20 20"
               fill="#E0A719"
               onClick={() => {
-                handlePlay()
+                handle_pause()
               }}
             >
               <path

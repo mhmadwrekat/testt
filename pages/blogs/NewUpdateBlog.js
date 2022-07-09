@@ -210,7 +210,7 @@ export default function NewUpdateBlog() {
   const headTitle = 'الزبدة | المدونة'
   return (
     <React.Fragment>
-       <HeadComp
+      <HeadComp
         headKeywords={headKeywords}
         headDescription={headDescription}
         headTitle={headTitle}
@@ -218,7 +218,7 @@ export default function NewUpdateBlog() {
       <div
         dir="rtl"
         id="project_body"
-        className="text-black bg-white"
+        className="bg-white text-black"
         translate="no"
       >
         <Nav setSearches={setSearches} searches={searches} />
@@ -504,7 +504,9 @@ export default function NewUpdateBlog() {
           </div>
         </main>
       </div>
-      <Footer />
+      <div dir="rtl">
+        <Footer />
+      </div>
     </React.Fragment>
   )
 }

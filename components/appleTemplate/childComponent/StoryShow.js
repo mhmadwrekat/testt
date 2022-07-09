@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
-// import FakeData from '../FakeData.json'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { BASE_URL } from '../../../config/config'
@@ -8,9 +7,9 @@ import moment from 'moment'
 import 'moment/locale/ar'
 import axios from 'axios'
 // import Like from '../../components/appleTemplate/childComponent/Like'
+
 const MenuThreeDot = dynamic(() => import('./MenuThreeDot'))
 const HeadComp = dynamic(() => import('../../page/HeadComp'))
-const Nav = dynamic(() => import('../../page/Nav'))
 const AllData = dynamic(() => import('./AllData'))
 const StorySkeleton = dynamic(() => import('../../Skeletons/StorySkeleton'))
 const StoryShow = () => {
@@ -44,7 +43,6 @@ const StoryShow = () => {
     //   `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}&category_id=5e4e90ac52561e16596649f9`
     // )
     // /v1/Web/Story?story_id=
-
     handle_news_redirection_story(router?.query?.category) &&
       axios
         .get(
@@ -283,6 +281,7 @@ const StoryShow = () => {
   // console.log(handle_news_redirection_story(a))
   const headTitle = `الزبدة | ${router.query.category}`
   // head_news && console.log(head_news)
+  // console.log('hi')
   return (
     <React.Fragment>
       <div dir="rtl" id="project_body" translate="no">
@@ -304,6 +303,11 @@ const StoryShow = () => {
                   ></p>
                 </div>
                 <div className="relative mx-auto h-72 w-full shadow-md lg:h-96">
+                  {/* {console.log(
+                    head_news?.stories_headlines,
+                    ' --> ',
+                    head_news?.optimized_image
+                  )} */}
                   {head_news?.stories_media_url[0] &&
                     (head_news?.stories_media_url[0].includes('youtube') ||
                     head_news?.stories_media_url[0].includes('youtu.be') ? (
@@ -326,26 +330,28 @@ const StoryShow = () => {
                         loading="eager"
                       ></iframe>
                     ) : (
-                      // <Image
-                      //   src={head_news?.stories_media_url[0]}
-                      //   className="relative object-cover"
-                      //   alt={head_news?.stories_headlines}
-                      //   quality={100}
-                      //   layout="fill"
-                      //   objectFit="cover"
-                      //   // width={800}
-                      //   // height={350}
-                      //   loading="eager"
-                      //   priority
-                      //   placeholder="blur"
-                      //   blurDataURL={head_news?.stories_media_url[0]}
-                      // />
-                      <img
-                        loading="eager"
-                        src={head_news?.stories_media_url[0]}
+                      <Image
+                        src={
+                          head_news?.optimized_image ||
+                          head_news?.stories_media_url[0]
+                        }
+                        className="relative object-cover"
                         alt={head_news?.stories_headlines}
-                        className="relative h-72 w-full object-cover lg:h-full"
+                        quality={100}
+                        layout="fill"
+                        objectFit="cover"
+                        // width={800}
+                        // height={350}
+                        loading="eager"
+                        placeholder="blur"
+                        blurDataURL={head_news?.stories_media_url[0]}
                       />
+                      // <img
+                      //   loading="eager"
+                      //   src={head_news?.stories_media_url[0]}
+                      //   alt={head_news?.stories_headlines}
+                      //   className="relative h-72 w-full object-cover lg:h-full"
+                      // />
                     ))}
                   {/* <div className="absolute bottom-2 right-2 rounded-full bg-white p-1">
         <svg
@@ -414,7 +420,7 @@ const StoryShow = () => {
             <AllData
               data={related_news}
               bg_color={'bg-Purp300'}
-              category={router.query.news}
+              category={router?.query.news}
               fill={'fill-Purp300'}
               user_id={user_id}
             />
@@ -425,7 +431,6 @@ const StoryShow = () => {
 
         {/* {console.log(related_news)} */}
       </div>
-      <div className="py-4"></div>
     </React.Fragment>
   )
 }

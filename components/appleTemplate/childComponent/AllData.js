@@ -121,7 +121,10 @@ const AllData = ({ data, bg_color, category, fill, user_id, replace }) => {
                             // />
                             <img
                               loading="eager"
-                              src={item.stories_media_url[0]}
+                              src={
+                                item?.optimized_image ||
+                                item?.stories_media_url[0]
+                              }
                               alt={item.stories_headlines}
                               className="mx-auto h-32 w-full object-cover md:h-full md:w-full lg:h-44 lg:w-full"
                             />

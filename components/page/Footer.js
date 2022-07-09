@@ -21,7 +21,6 @@ const Footer = () => {
                 <Image
                   src={appleStore}
                   alt="apple Store"
-                  loading="eager"
                   layout="fixed"
                   width="130"
                   height="40"
@@ -39,7 +38,6 @@ const Footer = () => {
                   alt="google Play"
                   layout="responsive"
                   width="130"
-                  loading="eager"
                   height="40"
                   onClick={() => {
                     new_tab(
@@ -215,4 +213,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default React.memo(Footer)

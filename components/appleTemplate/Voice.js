@@ -4,7 +4,10 @@ import moment from 'moment'
 import 'moment/locale/ar'
 import dynamic from 'next/dynamic'
 import WaveAudio from './childComponent/WaveAudio'
-// const Like = dynamic(() => import('./childComponent/Like'))
+import Image from 'next/image'
+
+const Like = dynamic(() => import('./childComponent/Like'))
+const MostEmoji = dynamic(() => import('./childComponent/MostEmoji'))
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
@@ -160,15 +163,32 @@ const Voice = ({
                                 </p>
                               </div>
                               <div className="relative h-40 w-60 lg:h-36 lg:w-56">
-                                <img
+                                {/* <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
+                                /> */}
+                                <Image
+                                  src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
+                                  // quality={50}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  loading="lazy"
+                                  // priority
+                                  placeholder="blur"
+                                  blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
                                 />
-                                {/* <Like
+                                <Like
+                                  lgBottom={'lg:-bottom-1'}
                                   loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
@@ -177,12 +197,13 @@ const Voice = ({
                                   reactions={item?.reactions}
                                 />
                                 <MostEmoji
+                                  lgBottom={'lg:bottom-1'}
                                   userToken={userToken}
                                   reactions={item?.reactions}
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
-                                /> */}
+                                />
 
                                 {/* <div className="absolute bottom-1 left-1">
                                   <svg
@@ -233,13 +254,32 @@ const Voice = ({
                                 </p>
                               </div>
                               <div className="relative h-40 w-60 lg:h-36 lg:w-56">
-                                <img
+                                {/* <img
                                   loading="lazy"
                                   src={item.optimized_image}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
+                                /> */}
+                                <Image
+                                  src={
+                                    item?.optimized_image ||
+                                    item.stories_media_url[0]
+                                  }
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
+                                  // quality={50}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  loading="lazy"
+                                  // priority
+                                  placeholder="blur"
+                                  blurDataURL={
+                                    item?.optimized_image ||
+                                    item.stories_media_url[0]
+                                  }
                                 />
-                                {/* <Like
+                                <Like
+                                  lgBottom={'lg:-bottom-1'}
                                   loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
@@ -248,12 +288,13 @@ const Voice = ({
                                   reactions={item?.reactions}
                                 />
                                 <MostEmoji
+                                  lgBottom={'lg:bottom-1'}
                                   userToken={userToken}
                                   reactions={item?.reactions}
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
-                                /> */}
+                                />
 
                                 {/* <div className="absolute bottom-1 left-1">
                                  <svg
@@ -324,15 +365,32 @@ const Voice = ({
                                 </p>
                               </div>
                               <div className="relative h-40 w-60 lg:h-36 lg:w-56">
-                                <img
+                                {/* <img
                                   loading="lazy"
                                   src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                     item.stories_media_url[0]
                                   )}/0.jpg`}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
+                                /> */}
+                                <Image
+                                  src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
+                                  // quality={50}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  loading="lazy"
+                                  // priority
+                                  placeholder="blur"
+                                  blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                    item.stories_media_url[0]
+                                  )}/0.jpg`}
                                 />
-                                {/* <Like
+                                <Like
+                                  lgBottom={'lg:-bottom-1'}
                                   loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
@@ -341,12 +399,13 @@ const Voice = ({
                                   reactions={item?.reactions}
                                 />
                                 <MostEmoji
+                                  lgBottom={'lg:bottom-1'}
                                   userToken={userToken}
                                   reactions={item?.reactions}
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
-                                /> */}
+                                />
 
                                 {/* <div className="absolute bottom-1 left-1">
                                   <svg
@@ -396,13 +455,32 @@ const Voice = ({
                                 </p>
                               </div>
                               <div className="relative h-40 w-60 lg:h-36 lg:w-56">
-                                <img
+                                {/* <img
                                   loading="lazy"
                                   src={item.optimized_image}
                                   alt={item.stories_headlines}
                                   className="mx-auto h-full w-full rounded-b-md object-cover"
+                                /> */}
+                                <Image
+                                  src={
+                                    item?.optimized_image ||
+                                    item.stories_media_url[0]
+                                  }
+                                  alt={item.stories_headlines}
+                                  className="mx-auto h-full w-full rounded-b-md object-cover"
+                                  // quality={50}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  loading="lazy"
+                                  // priority
+                                  placeholder="blur"
+                                  blurDataURL={
+                                    item?.optimized_image ||
+                                    item.stories_media_url[0]
+                                  }
                                 />
-                                {/* <Like
+                                <Like
+                                  lgBottom={'lg:-bottom-1'}
                                   loading="eager"
                                   user_id={user_id}
                                   story_id={item._id}
@@ -411,12 +489,13 @@ const Voice = ({
                                   reactions={item?.reactions}
                                 />
                                 <MostEmoji
+                                  lgBottom={'lg:bottom-1'}
                                   userToken={userToken}
                                   reactions={item?.reactions}
                                   user_id={user_id}
                                   story_id={item?._id}
                                   isLoved={item?.is_loved}
-                                /> */}
+                                />
 
                                 {/* <div className="absolute bottom-1 left-1">
                                  <svg
@@ -490,13 +569,29 @@ const Voice = ({
                                 </p>
 
                                 <div className="relative h-36 w-36 md:h-72 md:w-96">
-                                  <img
+                                  {/* <img
                                     loading="lazy"
                                     src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  /> */}
+                                  <Image
+                                    src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                    // quality={50}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    loading="lazy"
+                                    // priority
+                                    placeholder="blur"
+                                    blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
                                   />
                                   {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -514,7 +609,8 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  {/* <Like
+                                  <Like
+                                    lgBottom={'lg:-bottom-1'}
                                     loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
@@ -524,12 +620,13 @@ const Voice = ({
                                     reactions={item?.reactions}
                                   />
                                   <MostEmoji
+                                    bottom={'bottom-1'}
                                     userToken={userToken}
                                     reactions={item?.reactions}
                                     user_id={user_id}
                                     story_id={item?._id}
                                     isLoved={item?.is_loved}
-                                  /> */}
+                                  />
                                 </div>
                               </div>
                               <section>
@@ -568,11 +665,29 @@ const Voice = ({
                                 </div>
 
                                 <div className="relative h-36 w-36 md:h-72 md:w-96">
-                                  <img
+                                  {/* <img
                                     loading="lazy"
                                     src={item.optimized_image}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  /> */}
+                                  <Image
+                                    src={
+                                      item?.optimized_image ||
+                                      item.stories_media_url[0]
+                                    }
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                    // quality={50}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    loading="lazy"
+                                    // priority
+                                    placeholder="blur"
+                                    blurDataURL={
+                                      item?.optimized_image ||
+                                      item.stories_media_url[0]
+                                    }
                                   />
                                   {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -590,7 +705,8 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  {/* <Like
+                                  <Like
+                                    lgBottom={'lg:-bottom-1'}
                                     loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
@@ -600,12 +716,13 @@ const Voice = ({
                                     reactions={item?.reactions}
                                   />
                                   <MostEmoji
+                                    bottom={'bottom-1'}
                                     userToken={userToken}
                                     reactions={item?.reactions}
                                     user_id={user_id}
                                     story_id={item?._id}
                                     isLoved={item?.is_loved}
-                                  /> */}
+                                  />
                                 </div>
                               </div>
                               <section>
@@ -664,13 +781,29 @@ const Voice = ({
                                 </div>
 
                                 <div className="relative h-36 w-36 md:h-72 md:w-96">
-                                  <img
+                                  {/* <img
                                     loading="lazy"
                                     src={` https://img.youtube.com/vi/${retrieve_youtube_code(
                                       item.stories_media_url[0]
                                     )}/0.jpg`}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  /> */}
+                                  <Image
+                                    src={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                    // quality={50}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    loading="lazy"
+                                    // priority
+                                    placeholder="blur"
+                                    blurDataURL={`https://img.youtube.com/vi/${retrieve_youtube_code(
+                                      item.stories_media_url[0]
+                                    )}/0.jpg`}
                                   />
                                   {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -688,7 +821,8 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  {/* <Like
+                                  <Like
+                                    lgBottom={'lg:-bottom-1'}
                                     loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
@@ -698,12 +832,13 @@ const Voice = ({
                                     reactions={item?.reactions}
                                   />
                                   <MostEmoji
+                                    bottom={'bottom-1'}
                                     userToken={userToken}
                                     reactions={item?.reactions}
                                     user_id={user_id}
                                     story_id={item?._id}
                                     isLoved={item?.is_loved}
-                                  /> */}
+                                  />
                                 </div>
                               </div>
                               <section>
@@ -742,11 +877,29 @@ const Voice = ({
                                 </div>
 
                                 <div className="relative h-36 w-36 md:h-72 md:w-96">
-                                  <img
+                                  {/* <img
                                     loading="lazy"
                                     src={item.optimized_image}
                                     alt={item.stories_headlines}
                                     className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                  /> */}
+                                  <Image
+                                    src={
+                                      item?.optimized_image ||
+                                      item.stories_media_url[0]
+                                    }
+                                    alt={item.stories_headlines}
+                                    className="mx-auto h-40 w-60 rounded-b-md object-cover lg:h-36 lg:w-60"
+                                    // quality={50}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    loading="lazy"
+                                    // priority
+                                    placeholder="blur"
+                                    blurDataURL={
+                                      item?.optimized_image ||
+                                      item.stories_media_url[0]
+                                    }
                                   />
                                   {/* <div className="bg-white absolute bottom-1 right-1 rounded-full p-1">
                                   <svg
@@ -764,7 +917,8 @@ const Voice = ({
                                     />
                                   </svg>
                                 </div> */}
-                                  {/* <Like
+                                  <Like
+                                    lgBottom={'lg:-bottom-1'}
                                     loading="eager"
                                     bottom={'bottom-0'}
                                     user_id={user_id}
@@ -774,12 +928,13 @@ const Voice = ({
                                     reactions={item?.reactions}
                                   />
                                   <MostEmoji
+                                    bottom={'bottom-1'}
                                     userToken={userToken}
                                     reactions={item?.reactions}
                                     user_id={user_id}
                                     story_id={item?._id}
                                     isLoved={item?.is_loved}
-                                  /> */}
+                                  />
                                 </div>
                               </div>
                               <section>

@@ -10,28 +10,25 @@ const ViewImpression = ({ user_id, stories }) => {
     unobserveOnEnter: true,
     // For performance perspective, use the largest tolerable value as much as possible // (ms)
     delay: 500,
-    onEnter: () => {
-      let url = `https://${VIEW}`
-      let data = {
-        body: {
-          user: user_id,
-          stories: stories,
-        },
-      }
-      axios.post(url, data).then((res) => {
-        // console.log(res)
-        // console.log(data)
-        // console.log('Vieww')
-      })
-      // console.log(Data)
-    },
+    // onEnter: () => {
+    //   let url = `https://${VIEW}`
+    //   let data = {
+    //     body: {
+    //       user: user_id,
+    //       stories: stories,
+    //     },
+    //   }
+    //   axios.post(url, data).then((res) => {
+    //     analytics.track('View_Story', [null], [null], [null])
+    //     // console.log(res)
+    //     // console.log(data)
+    //     // console.log('Vieww')
+    //   })
+    //   // console.log(Data)
+    // },
     // onLeave: () => {console.log('None')},
   })
-  return (
-    <React.Fragment>
-      <div ref={observe}></div>
-    </React.Fragment>
-  )
+  return <div ref={observe}></div>
 }
 
-export default ViewImpression
+export default React.memo(ViewImpression)

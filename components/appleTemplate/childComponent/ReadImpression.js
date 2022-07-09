@@ -10,27 +10,24 @@ const ReadImpression = ({ user_id, stories }) => {
     unobserveOnEnter: true,
     // For performance perspective, use the largest tolerable value as much as possible // (ms)
     delay: 15000,
-    onEnter: () => {
-      let url = `https://${READ}`
-      let data = {
-        body: {
-          user: user_id,
-          stories: stories,
-        },
-      }
-      axios.post(url, data).then((res) => {
-        // console.log(res)
-        // console.log(data)
-        // console.log('Read')
-      })
-      // console.log(Data)
-    },
+    // onEnter: () => {
+    //   let url = `https://${READ}`
+    //   let data = {
+    //     body: {
+    //       user: user_id,
+    //       stories: stories,
+    //     },
+    //   }
+    //   axios.post(url, data).then((res) => {
+    //     analytics.track('Read_Story', [null], [null], [null])
+    //     // console.log(res)
+    //     // console.log(data)
+    //     // console.log('Read')
+    //   })
+    //   // console.log(Data)
+    // },
   })
-  return (
-    <React.Fragment>
-      <div ref={observe}></div>
-    </React.Fragment>
-  )
+  return <div ref={observe}></div>
 }
 
-export default ReadImpression
+export default React.memo(ReadImpression)

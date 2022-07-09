@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
 //next imports
@@ -234,6 +234,13 @@ export default function blogs() {
   media@alzubda.com
   `
   const headTitle = 'الزبدة | المدونة'
+  useEffect(() => {
+    analytics.page('Blog Page', {
+      title: 'Blog Page',
+      url: 'https://alzubda.com/blogs',
+    })
+  }, [])
+
   return (
     <React.Fragment>
       <HeadComp
@@ -244,7 +251,7 @@ export default function blogs() {
       <div
         dir="rtl"
         id="project_body"
-        className="text-black bg-white"
+        className="bg-white text-black"
         translate="no"
       >
         <Nav setSearches={setSearches} searches={searches} />
@@ -319,7 +326,9 @@ export default function blogs() {
           </div>
         </div>
       </div>
-      <Footer />
+      <div dir="rtl">
+        <Footer />
+      </div>
     </React.Fragment>
   )
 }

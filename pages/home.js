@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // component imports
 import IntroSection from '../components/landingPage/IntroSection'
 import SecondSection from '../components/landingPage/SecondSection'
@@ -8,6 +8,13 @@ import FifthSection from '../components/landingPage/FifthSection'
 import ContactSection from '../components/landingPage/ContactSection'
 
 export default function home() {
+  // useEffect(() => {
+  //   analytics.page('Landing Page', {
+  //     title: 'Landing Page',
+  //     url: 'https://alzubda.com/home',
+  //   })
+  // }, [])
+
   return (
     <React.Fragment>
       <IntroSection />

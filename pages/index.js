@@ -3,13 +3,11 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
-import { generateFeeds } from '../utils/feed'
+// import { generateFeeds } from '../utils/feed'
 
 // Apple View component
+import TTest from '../components/appleTemplate/TTest'
 import CategoryNews from '../components/appleTemplate/CategoryNews'
-// const CategoryNews = dynamic(() =>
-//   import('../components/appleTemplate/CategoryNews')
-// )
 const Colored = dynamic(() => import('../components/appleTemplate/Colored'))
 const Video = dynamic(() => import('../components/appleTemplate/Video'))
 const Voice = dynamic(() => import('../components/appleTemplate/Voice'), {
@@ -35,9 +33,8 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
-  await generateFeeds()
+  // await generateFeeds()
 
-  // Get Logaimat API
   let user_token = ''
   const LoqaimatDataReq = axios({
     method: 'GET',
@@ -47,7 +44,6 @@ export async function getServerSideProps({ req, res }) {
     },
   })
   const loqaimat = await LoqaimatDataReq
-
   return {
     props: {
       loqaimat: loqaimat.data,
@@ -68,10 +64,20 @@ const index = (props) => {
 
   // Function Get all News
   const get_all_news = async () => {
+    let country =
+      country_code === 'JO'
+        ? country_code
+        : country_code === 'EG'
+        ? country_code
+        : country_code === 'SA'
+        ? country_code
+        : 'KW'
+
     user_id &&
       axios
         .get(
-          `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+          // `${BASE_URL}/v1/Web/Sections?current_country=${country_code}&userId=${user_id}`
+          `${BASE_URL}/v1/Web/Sections?current_country=${country}&userId=${user_id}`
         )
         .then((res) => {
           let keys = Object.keys(res.data.data)
@@ -106,8 +112,18 @@ const index = (props) => {
   useEffect(() => {
     get_all_news()
     get_background_image()
-  }, [user_id, click_subscribe])
+  }, [user_id, click_subscribe, country_code])
 
+  // useEffect(() => {
+  //   user_id && analytics.identify(user_id, null)
+  //   user_id &&
+  //     analytics.page('News Feed', {
+  //       title: 'News page',
+  //       url: 'https://alzubda.com/',
+  //     })
+  // }, [user_id])
+
+  // user_id && console.log(typeof user_id)
   let alternative_search = all_news && [
     ...all_news[0].data.slice(0, 3),
     ...all_news[11].data.slice(0, 3),
@@ -305,6 +321,7 @@ const index = (props) => {
   // all_news && console.log(all_news[0])
 
   // all_news && console.log(all_news)
+
   return (
     <React.Fragment>
       <HeadComp
@@ -362,7 +379,18 @@ const index = (props) => {
                 }
               />
             ) : null}
-            <div id="الشأن الدولي">
+            <TTest
+              category_news={all_news[11]}
+              userToken={userToken}
+              user_id={user_id}
+              bg_image={bg_image}
+              all_news={all_news}
+              props={props?.loqaimat}
+              subs={all_news[11]?.is_subscribed}
+              click_subscribe={click_subscribe}
+              setClickSubscribe={setClickSubscribe}
+            />
+            {/* <div id="الشأن الدولي" loading="lazy">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -378,13 +406,13 @@ const index = (props) => {
                 description={'جميع ما يحدث حول العالم '}
                 descriptionColor={'text-GRAY400'}
               />
-            </div>
-            {all_news[2] ? (
+              </div>*/}
+            {/* {all_news[2].data.length > 4 ? (
               <div loading="lazy">
                 <CategoryNews
-                  bg_image={bg_image}
                   load={'lazy'}
                   title={'يدور حولك'}
+                  bg_image={bg_image}
                   category_news={all_news[2]}
                   userToken={userToken}
                   user_id={user_id}
@@ -398,7 +426,7 @@ const index = (props) => {
                 />
               </div>
             ) : null}
-            <div id="صحة">
+            <div id="صحة" loading="lazy">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -418,7 +446,7 @@ const index = (props) => {
               />
             </div>
             {all_news[9]?.data?.length > 3 && (
-              <div id="الأكثر مشاهدة">
+              <div id="الأكثر مشاهدة" loading="lazy">
                 <Video
                   title={'الأكثر مشاهدة'}
                   category_news={all_news[9]}
@@ -432,25 +460,7 @@ const index = (props) => {
                 />
               </div>
             )}
-            {/* <div id="اخبار الفن">
-              <CategoryNews
-                click_subscribe={click_subscribe}
-                setClickSubscribe={setClickSubscribe}
-                loading="lazy"
-                title={'أخبار الفن'}
-                category_news={all_news[15]}
-                user_id={user_id}
-                userToken={userToken}
-                subs={all_news[15]?.is_subscribed}
-                bg_color={'bg-BLUE'}
-                title_color={'text-BLUE'}
-                fill_color={'fill-BLUE'}
-                description={
-                  'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'
-                }
-              />
-            </div> */}
-            <div id="مال وأعمال">
+            <div id="مال وأعمال" loading="lazy">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -469,8 +479,7 @@ const index = (props) => {
                 }
               />
             </div>
-
-            <div id="غزو أوكرانيا">
+            <div id="غزو أوكرانيا" loading="lazy">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -487,8 +496,8 @@ const index = (props) => {
                 description={'جميع ما يخص أحداث غزو أوكرانيا'}
               />
             </div>
-            {props?.loqaimat?.data.length > 4 ? (
-              <div id="لقيمات">
+            {props?.loqaimat?.data.length > 3 ? (
+              <div id="لقيمات" loading="lazy">
                 <Logaimat
                   setShowCategory={setShowCategory}
                   title={'لقيمات'}
@@ -504,8 +513,7 @@ const index = (props) => {
                 />
               </div>
             ) : null}
-
-            <div id="ترند">
+            <div id="ترند" loading="lazy">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -524,7 +532,7 @@ const index = (props) => {
                 }
               />
             </div>
-            <div id="الصوتيات">
+            <div id="الصوتيات" loading="lazy">
               <Voice
                 loading="lazy"
                 title={'الصوتيات'}
@@ -540,24 +548,7 @@ const index = (props) => {
                 description={'استمع للاخبار الصوتية الاكثر استماعا على الزبده'}
               />
             </div>
-            {/* <div id="ألعاب">
-              <CategoryNews
-                click_subscribe={click_subscribe}
-                setClickSubscribe={setClickSubscribe}
-                loading="lazy"
-                title={'ألعاب'}
-                category_news={all_news[13]}
-                userToken={userToken}
-                user_id={user_id}
-                subs={all_news[13]?.is_subscribed}
-                bg_color={'bg-GREEN'}
-                title_color={'text-GREEN'}
-                fill_color={'fill-GREEN'}
-                description={'جميع ما يخص عالم الالعاب بين يديك'}
-              />
-            </div> */}
-
-            <div id="الخليج العربي">
+            <div id="الخليج العربي" loading="lazy">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -574,8 +565,7 @@ const index = (props) => {
                 description={'جميع ما يخص أحداث الخليج العربي'}
               />
             </div>
-
-            <div id="رياضة">
+            <div id="رياضة" loading="lazy">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -592,39 +582,7 @@ const index = (props) => {
                 description={'جميع الأخبار المتعلقة في عالم الرياضة حول العالم'}
               />
             </div>
-            {/* <div id="لايف ستايل">
-              <CategoryNews
-                click_subscribe={click_subscribe}
-                setClickSubscribe={setClickSubscribe}
-                loading="lazy"
-                title={'لايف ستايل'}
-                category_news={all_news[16]}
-                userToken={userToken}
-                user_id={user_id}
-                subs={all_news[16]?.is_subscribed}
-                bg_color={'bg-RED'}
-                title_color={'text-RED'}
-                fill_color={'fill-RED'}
-              />
-            </div> */}
-            {/* <div id="الشرق الاوسط">
-              <CategoryNews
-                click_subscribe={click_subscribe}
-                setClickSubscribe={setClickSubscribe}
-                loading="lazy"
-                title={'الشرق الاوسط'}
-                category_news={all_news[14]}
-                userToken={userToken}
-                user_id={user_id}
-                subs={all_news[14]?.is_subscribed}
-                bg_color={'bg-YELLOW'}
-                title_color={'text-YELLOW'}
-                fill_color={'fill-YELLOW'}
-                description={'جميع ما يحدث حول العالم '}
-              />
-            </div> */}
-
-            <div id="تكنولوجيا">
+            <div id="تكنولوجيا" loading="lazy">
               <CategoryNews
                 click_subscribe={click_subscribe}
                 setClickSubscribe={setClickSubscribe}
@@ -640,8 +598,7 @@ const index = (props) => {
                 fill_color={'fill-GREEN'}
                 description={'جميع ما يخص عالم التكنولوجيا بين يديك'}
               />
-            </div>
-            <div className="py-3"></div>
+            </div> */}
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -654,4 +611,69 @@ const index = (props) => {
     </React.Fragment>
   )
 }
-export default index
+export default React.memo(index)
+// <div id="اخبار الفن">
+// <CategoryNews
+//   click_subscribe={click_subscribe}
+//   setClickSubscribe={setClickSubscribe}
+//   loading="lazy"
+//   title={'أخبار الفن'}
+//   category_news={all_news[15]}
+//   user_id={user_id}
+//   userToken={userToken}
+//   subs={all_news[15]?.is_subscribed}
+//   bg_color={'bg-BLUE'}
+//   title_color={'text-BLUE'}
+//   fill_color={'fill-BLUE'}
+//   description={
+//     'جميع الأخبار المتعلقة في عالم الفن من أهم المصادر'
+//   }
+// />
+// </div>
+// <div id="ألعاب">
+// <CategoryNews
+//   click_subscribe={click_subscribe}
+//   setClickSubscribe={setClickSubscribe}
+//   loading="lazy"
+//   title={'ألعاب'}
+//   category_news={all_news[13]}
+//   userToken={userToken}
+//   user_id={user_id}
+//   subs={all_news[13]?.is_subscribed}
+//   bg_color={'bg-GREEN'}
+//   title_color={'text-GREEN'}
+//   fill_color={'fill-GREEN'}
+//   description={'جميع ما يخص عالم الالعاب بين يديك'}
+// />
+// </div>
+// <div id="لايف ستايل">
+// <CategoryNews
+//   click_subscribe={click_subscribe}
+//   setClickSubscribe={setClickSubscribe}
+//   loading="lazy"
+//   title={'لايف ستايل'}
+//   category_news={all_news[16]}
+//   userToken={userToken}
+//   user_id={user_id}
+//   subs={all_news[16]?.is_subscribed}
+//   bg_color={'bg-RED'}
+//   title_color={'text-RED'}
+//   fill_color={'fill-RED'}
+// />
+// </div>
+// <div id="الشرق الاوسط">
+// <CategoryNews
+//   click_subscribe={click_subscribe}
+//   setClickSubscribe={setClickSubscribe}
+//   loading="lazy"
+//   title={'الشرق الاوسط'}
+//   category_news={all_news[14]}
+//   userToken={userToken}
+//   user_id={user_id}
+//   subs={all_news[14]?.is_subscribed}
+//   bg_color={'bg-YELLOW'}
+//   title_color={'text-YELLOW'}
+//   fill_color={'fill-YELLOW'}
+//   description={'جميع ما يحدث حول العالم '}
+// />
+// </div>

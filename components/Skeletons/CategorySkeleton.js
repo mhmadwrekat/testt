@@ -66,4 +66,4 @@ const CategorySkeleton = () => {
   )
 }
 
-export default CategorySkeleton
+export default React.memo(CategorySkeleton)

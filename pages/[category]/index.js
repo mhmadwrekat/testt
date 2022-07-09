@@ -497,7 +497,7 @@ const index = () => {
         <Nav setSearches={setSearches} searches={searches} />
         {searches ? null : valid_category ? (
           all_news ? (
-            <section className="text-black mx-auto w-11/12 bg-white lg:w-10/12 lg:pt-10">
+            <section className="mx-auto w-11/12 bg-white text-black lg:w-10/12 lg:pt-10">
               <HeadComp
                 headKeywords={category_keywords(router.query.category)}
                 headDescription={category_description(router.query.category)}
@@ -556,7 +556,7 @@ const index = () => {
 
                           <div className="hidden justify-between px-2.5 pt-2 font-TSlight text-xs lg:flex">
                             <p>
-                              <b className=" text-red-800 font-TSExtra">
+                              <b className=" font-TSExtra text-red-800">
                                 {item.publisher_name}
                               </b>
                             </p>
@@ -577,7 +577,7 @@ const index = () => {
 
                         <div className="flex justify-between px-4 font-TSlight text-xs lg:hidden">
                           <p>
-                            <b className=" text-red-800 font-TSExtra"></b>
+                            <b className=" font-TSExtra text-red-800"></b>
                           </p>
                         </div>
                         <div className="mx-2.5 flex justify-between py-1.5 lg:pt-2">
@@ -615,8 +615,9 @@ const index = () => {
           <StoryShow />
         )}
       </div>
-      <div className="py-4"></div>
-      <Footer />
+      <div className="py-4" dir="rtl">
+        <Footer />
+      </div>
     </React.Fragment>
   )
 }

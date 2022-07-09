@@ -25,6 +25,7 @@ const Test = ({
   user_id,
   id,
 }) => {
+  console.log('HELLLLLLLLLO')
   const [share_link, setShareLink] = useState('')
   // console.log(x_key)
   const [open_item, setOpenItem] = useState(false)
@@ -52,16 +53,17 @@ const Test = ({
         'x-api-key': x_key,
       },
     }
-    axios
-      .post(
-        `https://d1i218h7fe.execute-api.us-east-2.amazonaws.com/production/`,
-        data,
-        config
-      )
-      .then((res) => {
-        // console.log(res)
-        // console.log('OUTSIDE')
-      })
+    // axios
+    //   .post(
+    //     `https://d1i218h7fe.execute-api.us-east-2.amazonaws.com/production/`,
+    //     data,
+    //     config
+    //   )
+    //   .then((res) => {
+    //     analytics.track('share_button_story', [null], [null], [null])
+    //     // console.log(res)
+    //     // console.log('OUTSIDE')
+    //   })
   }
   const share_button = (story) => {
     setOpenItem(!open_item)
@@ -105,16 +107,17 @@ const Test = ({
         'x-api-key': x_key_event,
       },
     }
-    axios
-      .post(
-        `https://b0l6mu9l13.execute-api.us-east-2.amazonaws.com/production/`,
-        data,
-        config
-      )
-      .then((res) => {
-        // console.log(res)
-        // console.log('INSIDE')
-      })
+    // axios
+    //   .post(
+    //     `https://b0l6mu9l13.execute-api.us-east-2.amazonaws.com/production/`,
+    //     data,
+    //     config
+    //   )
+    //   .then((res) => {
+    //     analytics.track('share_event_story', [null], [null], [null])
+    //     // console.log(res)
+    //     // console.log('INSIDE')
+    //   })
   }
   return (
     <React.Fragment>
@@ -122,7 +125,7 @@ const Test = ({
         <svg
           viewBox="0 0 24 24"
           xmlns="https://www.w3.org/2000/svg"
-          className={`h-7 w-7 cursor-pointer rounded-full `}
+          className={`h-7 w-7 cursor-pointer rounded-full`}
           fill="#686767"
           onClick={() => {
             share_button(story)
@@ -131,94 +134,92 @@ const Test = ({
           <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 15.889v-2.223s-3.78-.114-7 3.333c1.513-6.587 7-7.778 7-7.778v-2.221l5 4.425-5 4.464z" />
         </svg>
         {open_item ? (
-          <>
-            <div className="absolute top-0 left-9 w-32 border-0 lg:left-9">
-              <div
-                className="flex w-48 border-0 pb-1 text-center font-TSbold text-xs text-black lg:w-56"
-                onClick={() => {
-                  setOpenItem(!open_item)
-                }}
-              >
-                <Fade delay={400}>
-                  <div
-                    className="ml-1.5 rounded-full"
+          <div className="absolute top-0 left-9 w-32 border-0 lg:left-9">
+            <div
+              className="flex w-48 border-0 pb-1 text-center font-TSbold text-xs text-black lg:w-56"
+              onClick={() => {
+                setOpenItem(!open_item)
+              }}
+            >
+              <Fade delay={400}>
+                <div
+                  className="ml-1.5 rounded-full"
+                  onClick={() => {
+                    copy_clip()
+                  }}
+                >
+                  <Image
+                    src={copyImage}
+                    alt="copy link"
+                    width={28}
+                    layout="fixed"
+                    height={28}
+                    className="cursor-pointer rounded-full"
                     onClick={() => {
-                      copy_clip()
+                      share_api()
                     }}
-                  >
-                    <Image
-                      src={copyImage}
-                      alt="copy link"
-                      width={28}
-                      layout="fixed"
-                      height={28}
-                      className="cursor-pointer rounded-full"
-                      onClick={() => {
-                        share_api()
-                      }}
-                    />
-                  </div>
-                </Fade>
-                <Fade delay={300}>
-                  <TwitterShareButton
-                    url={`/${share_link}`}
-                    title={
-                      '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
-                    }
-                  >
-                    <TwitterIcon
-                      size={28}
-                      round
-                      className="ml-1.5"
-                      onClick={() => {
-                        share_api()
-                      }}
-                    />
-                  </TwitterShareButton>
-                </Fade>
-                <Fade delay={200}>
-                  <WhatsappShareButton
-                    url={`${share_link}`}
-                    title={
-                      '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
-                    }
-                  >
-                    <WhatsappIcon
-                      size={28}
-                      round
-                      className="ml-1.5"
-                      onClick={() => {
-                        share_api()
-                      }}
-                    />
-                  </WhatsappShareButton>
-                </Fade>
-                {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
-                <Fade delay={100}>
-                  <FacebookShareButton
-                    url={`${share_link}`}
-                    quote={
-                      '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
-                    }
-                    hashtag={'#الزبدة'}
-                  >
-                    <FacebookIcon
-                      size={28}
-                      round
-                      className="ml-1.5"
-                      onClick={() => {
-                        share_api()
-                      }}
-                    />
-                  </FacebookShareButton>
-                </Fade>
-              </div>
+                  />
+                </div>
+              </Fade>
+              <Fade delay={300}>
+                <TwitterShareButton
+                  url={`/${share_link}`}
+                  title={
+                    '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
+                  }
+                >
+                  <TwitterIcon
+                    size={28}
+                    round
+                    className="ml-1.5"
+                    onClick={() => {
+                      share_api()
+                    }}
+                  />
+                </TwitterShareButton>
+              </Fade>
+              <Fade delay={200}>
+                <WhatsappShareButton
+                  url={`${share_link}`}
+                  title={
+                    '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
+                  }
+                >
+                  <WhatsappIcon
+                    size={28}
+                    round
+                    className="ml-1.5"
+                    onClick={() => {
+                      share_api()
+                    }}
+                  />
+                </WhatsappShareButton>
+              </Fade>
+              {/* https://cdn-icons-png.flaticon.com/512/7304/7304848.png */}
+              <Fade delay={100}>
+                <FacebookShareButton
+                  url={`${share_link}`}
+                  quote={
+                    '\nوفر وقتك. حمل تطبيق الزبدة الإخباري، لقراءة الأخبار في 60 كلمة من مصادرها الأصلية.\n'
+                  }
+                  hashtag={'#الزبدة'}
+                >
+                  <FacebookIcon
+                    size={28}
+                    round
+                    className="ml-1.5"
+                    onClick={() => {
+                      share_api()
+                    }}
+                  />
+                </FacebookShareButton>
+              </Fade>
             </div>
-          </>
+          </div>
         ) : null}
       </div>
     </React.Fragment>
   )
 }
 
-export default Test
+export default React.memo(Test)

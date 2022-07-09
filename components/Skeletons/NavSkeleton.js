@@ -22,4 +22,4 @@ const NavSkeleton = () => {
   )
 }
 
-export default NavSkeleton
+export default React.memo(NavSkeleton)

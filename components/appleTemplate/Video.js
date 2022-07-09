@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 // component imports
-import MenuThreeDot from './childComponent/MenuThreeDot' 
+import MenuThreeDot from './childComponent/MenuThreeDot'
 const ViewImpression = dynamic(() => import('./childComponent/ViewImpression'))
 const ReadImpression = dynamic(() => import('./childComponent/ReadImpression'))
 const Video = ({
@@ -88,7 +88,11 @@ const Video = ({
       let title = titles.replace(/\s+/g, '')
       ready_title = `${title.replace('?', '-')}`
     }
-
+    // typeof window !== 'undefined' &&
+    //   analytics.page('Internal Story Page', {
+    //     title: 'Story Page',
+    //     url: `https://alzubda.com/${ready_title}`,
+    //   })
     router.push(`/${ready_title}`)
     // console.log(ready_title)
   }
@@ -223,7 +227,7 @@ const Video = ({
                                 )}`}
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 loading="lazy"
-                                allowFullScreen={true}
+                                // allowFullScreen={true}
                               ></iframe>
                             ) : (
                               // <iframe
@@ -247,7 +251,7 @@ const Video = ({
                                 src={`https://www.youtube.com/embed/65416`}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen={true}
+                                // allowFullScreen={true}
                                 title="Video"
                                 loading="lazy"
                               ></iframe>
@@ -329,4 +333,4 @@ const Video = ({
     </React.Fragment>
   )
 }
-export default Video
+export default React.memo(Video)

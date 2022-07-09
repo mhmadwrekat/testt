@@ -1,11 +1,11 @@
 import React from 'react'
-import Lottie from 'lottie-react'
-
-import like_json from '../../../public/assest/emoji/like.json'
-import angry_json from '../../../public/assest/emoji/angry.json'
-import haha_json from '../../../public/assest/emoji/haha.json'
-import sad_json from '../../../public/assest/emoji/sad.json'
-import wow_json from '../../../public/assest/emoji/wow.json'
+// import Lottie from 'lottie-react'
+import Image from 'next/image'
+// import like_json from '../../../public/assest/emoji/like.json'
+// import angry_json from '../../../public/assest/emoji/angry.json'
+// import haha_json from '../../../public/assest/emoji/haha.json'
+// import sad_json from '../../../public/assest/emoji/sad.json'
+// import wow_json from '../../../public/assest/emoji/wow.json'
 const MostEmoji = ({ lgBottom, bottom, left, lgLeft, reactions }) => {
   const handle_most_select_emoji = (reactions) => {
     let returned_array = []
@@ -75,28 +75,62 @@ const MostEmoji = ({ lgBottom, bottom, left, lgLeft, reactions }) => {
             alt="sad"
           /> */}
         {handle_most_select_emoji(reactions)[1] === 'wow' && (
-          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white shadow-2xl">
-            <Lottie animationData={wow_json} loop={false} loading="eager" />
+          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 shadow-2xl">
+            {/* <Lottie animationData={wow_json} loop={false} loading="eager" /> */}
+            <Image
+              src="/assest/wow.svg"
+              alt="sad emoji"
+              layout="fixed"
+              width="25"
+              height="25"
+            />
           </div>
         )}
         {handle_most_select_emoji(reactions)[1] === 'like' && (
-          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white shadow-2xl">
-            <Lottie animationData={like_json} loop={false} loading="eager" />
+          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 shadow-2xl">
+            {/* <Lottie animationData={like_json} loop={false} loading="eager" /> */}
+            <Image
+              src="/assest/like.svg"
+              alt="sad emoji"
+              layout="fixed"
+              width="25"
+              height="25"
+            />
           </div>
         )}
         {handle_most_select_emoji(reactions)[1] === 'haha' && (
-          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white shadow-2xl">
-            <Lottie animationData={haha_json} loop={false} loading="eager" />
+          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 shadow-2xl">
+            {/* <Lottie animationData={haha_json} loop={false} loading="eager" /> */}
+            <Image
+              src="/assest/haha.svg"
+              alt="sad emoji"
+              layout="fixed"
+              width="25"
+              height="25"
+            />
           </div>
         )}
         {handle_most_select_emoji(reactions)[1] === 'angry' && (
-          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white shadow-2xl">
-            <Lottie animationData={angry_json} loop={false} loading="eager" />
+          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 shadow-2xl">
+            <Image
+              src="/assest/angry.svg"
+              alt="sad emoji"
+              layout="fixed"
+              width="25"
+              height="25"
+            />
           </div>
         )}
         {handle_most_select_emoji(reactions)[1] === 'sad' && (
-          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white shadow-2xl">
-            <Lottie animationData={sad_json} loop={false} loading="eager" />
+          <div className="mx-auto flex h-8 w-8 cursor-pointer items-center rounded-full bg-white p-1 shadow-2xl">
+            {/* <Lottie animationData={sad_json} loop={false} loading="eager" /> */}
+            <Image
+              src="/assest/sad.svg"
+              alt="sad emoji"
+              layout="fixed"
+              width="25"
+              height="25"
+            />
           </div>
         )}
       </div>
@@ -104,4 +138,4 @@ const MostEmoji = ({ lgBottom, bottom, left, lgLeft, reactions }) => {
   )
 }
 
-export default MostEmoji
+export default React.memo(MostEmoji)

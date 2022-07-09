@@ -192,4 +192,4 @@ const Search = ({ data, bg_color, category, user_id, replace }) => {
   )
 }
 
-export default Search
+export default React.memo(Search)

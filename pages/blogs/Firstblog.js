@@ -509,7 +509,10 @@ export default function Firstblog() {
           </div>
         </main>
       </div>
+      <div dir="rtl">
       <Footer />
+
+      </div>
     </React.Fragment>
   )
 }
