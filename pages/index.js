@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { BASE_URL } from '../config/config'
 import axios from 'axios'
-import { generateFeeds } from '../utils/feed'
+// import { generateFeeds } from '../utils/feed'
 
 // Apple View component
 import TTest from '../components/appleTemplate/TTest'
@@ -33,7 +33,7 @@ export async function getServerSideProps({ req, res }) {
     'Cache-Control',
     'public, s-maxage=604800, stale-while-revalidate=59'
   )
-  await generateFeeds()
+  // await generateFeeds()
 
   let user_token = ''
   const LoqaimatDataReq = axios({

@@ -40,7 +40,7 @@ const WaveAudio = ({ url }) => {
     // wavesurfer.current.load(url) && playi()
     wavesurfer.current.playPause()
     setPlay(!playing)
-    analytics.track('play_story', [null], [null], [null])
+    // analytics.track('play_story', [null], [null], [null])
   }
   const handle_pause = () => {
     // get_voice()

@@ -35,7 +35,7 @@ const Like = ({
 
   const handle_open = () => {
     setOpenLike(!openLike)
-    analytics.track('add_reaction', [null], [null], [null])
+    // analytics.track('add_reaction', [null], [null], [null])
   }
   const handle_change = () => {
     setChangeLike(!changeLike)
@@ -46,20 +46,20 @@ const Like = ({
     setShow(!show)
     setMyEmoji(`${emojiSelect}`)
     // console.log(story_id)
-    axios
-      .put(
-        `${BASE_URL}/v1/Users/Stories/${story_id}/Emoji`,
-        { emoji: `${emojiSelect}` },
-        {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        }
-      )
-      .then((res) => {
-        // console.log(res)
-        // console.log('OUTSIDE')
-      })
+    // axios
+    //   .put(
+    //     `${BASE_URL}/v1/Users/Stories/${story_id}/Emoji`,
+    //     { emoji: `${emojiSelect}` },
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${userToken}`,
+    //       },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     // console.log(res)
+    //     // console.log('OUTSIDE')
+    //   })
     setOpenMyEmoji(true)
     setChangeLike(false)
     // let config = {

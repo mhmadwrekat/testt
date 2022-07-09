@@ -234,12 +234,12 @@ export default function blogs() {
   media@alzubda.com
   `
   const headTitle = 'الزبدة | المدونة'
-  useEffect(() => {
-    analytics.page('Blog Page', {
-      title: 'Blog Page',
-      url: 'https://alzubda.com/blogs',
-    })
-  }, [])
+  // useEffect(() => {
+  //   analytics.page('Blog Page', {
+  //     title: 'Blog Page',
+  //     url: 'https://alzubda.com/blogs',
+  //   })
+  // }, [])
 
   return (
     <React.Fragment>

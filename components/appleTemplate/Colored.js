@@ -80,11 +80,11 @@ const Colored = ({
       let title = titles.replace(/\s+/g, '')
       ready_title = `${title.replace('?', '-')}`
     }
-    typeof window !== 'undefined' &&
-      analytics.page('Internal Story Page', {
-        title: 'Story Page',
-        url: `https://alzubda.com/${ready_title}`,
-      })
+    // typeof window !== 'undefined' &&
+    //   analytics.page('Internal Story Page', {
+    //     title: 'Story Page',
+    //     url: `https://alzubda.com/${ready_title}`,
+    //   })
     router.push(`/${ready_title}`)
     // console.log(ready_title)
   }
