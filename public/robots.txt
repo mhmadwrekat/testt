@@ -1,0 +1,17 @@
+# *
+User-agent: *
+Disallow: /404
+
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Allow: /Health
+
+# Host
+Host: https://alzubda.com
+
+# Sitemaps
+Sitemap: https://alzubda.com/sitemap.xml

@@ -8,12 +8,12 @@ import FifthSection from '../components/landingPage/FifthSection'
 import ContactSection from '../components/landingPage/ContactSection'
 
 export default function home() {
-  // useEffect(() => {
-  //   analytics.page('Landing Page', {
-  //     title: 'Landing Page',
-  //     url: 'https://alzubda.com/home',
-  //   })
-  // }, [])
+  useEffect(() => {
+    analytics.page('Landing Page', {
+      title: 'Landing Page',
+      url: 'https://alzubda.com/home',
+    })
+  }, [])
 
   return (
     <React.Fragment>
